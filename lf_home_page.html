@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LegalForensics.AI</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #000;
+            color: #fff;
+        }
+        header {
+            background-color: #000;
+            color: white;
+            padding: 4rem; /* Increased padding for taller header */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            font-weight: bold; /* Make the header more bold */
+            flex-direction: column; /* Stack elements vertically */
+        }
+        header::after {
+            content: '';
+            width: 60%; /* Centered on the page with 20% margins on each side */
+            height: 10px; /* Increased height for thicker divider line */
+            background-color: #555; /* Less obvious divider line */
+            position: absolute;
+            bottom: 0;
+            left: 20%;
+        }
+        header img.logo {
+            height: 220px; /* Increased image size by 10% */
+            position: absolute;
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        header h1 {
+            margin: 0;
+            font-size: 3rem; /* Increase font size to make it bolder */
+        }
+        header p.tagline {
+            margin: 0;
+            margin-top: 1rem; /* Space between the title and the tagline */
+            font-family: 'Roboto', sans-serif; /* Less bold font */
+            font-size: 1.5rem;
+            font-weight: 300;
+        }
+        .container {
+            display: flex;
+            justify-content: space-between; /* Distribute space evenly */
+            padding: 1rem;
+            margin: 0 auto;
+            max-width: 1200px; /* Adjust the maximum width */
+        }
+        .content {
+            flex: 3;
+            text-align: left; /* Left align text */
+            margin-right: 1rem; /* Add space between content and tiles */
+        }
+        .content h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #f39c12; /* Fancy color for the heading */
+            text-align: center; /* Center align heading */
+        }
+        .content p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            margin-bottom: 1rem; /* Add space between paragraphs */
+        }
+        .tiles {
+            flex: 2;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: flex-start; /* Align items to the left edge */
+            height: 500px; /* Adjusted to fit the content */
+        }
+        .tile {
+            width: 220px; /* 2x2 tiles */
+            height: 220px; /* 2x2 tiles */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            margin-bottom: 1rem;
+            border-radius: 10px;
+            background-color: #fff;
+            color: #000;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 10px;
+            box-sizing: border-box; /* Ensure padding is included in width and height */
+        }
+        .tile h3 {
+            margin: 0;
+            font-size: 1.5rem; /* Increase font size for impact */
+        }
+        .tile p {
+            margin: 0;
+            font-size: 2rem; /* Increase font size for more impact */
+            font-weight: bold;
+        }
+        .tile:nth-child(1) {
+            background-color: #5DADE2; /* Muted Blue */
+        }
+        .tile:nth-child(2) {
+            background-color: #58D68D; /* Muted Green */
+        }
+        .tile:nth-child(3) {
+            background-color: #EC7063; /* Muted Red */
+        }
+        .tile:nth-child(4) {
+            background-color: #AF7AC5; /* Muted Purple */
+        }
+        .images {
+            flex: 2;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start; /* Align items to the right edge */
+            height: 500px; /* Adjusted to fit the content */
+        }
+        .images img {
+            width: 300px; /* Increased width to prevent text cutting */
+            height: 220px;
+            margin-bottom: 20px; /* Add space between images */
+            object-fit: cover; /* Ensure images cover the placeholder area */
+            border-radius: 10px;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 0.5rem; /* Reduced padding for shorter footer */
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+        footer a {
+            color: #f39c12; /* Link color */
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="assets/lf_logo_no_tag_line.png" alt="LegalForensics.AI Logo" class="logo">
+        <h1>LegalForensics.AI</h1>
+        <p class="tagline">A Legal Analytics Platform</p>
+    </header>
+
+    <div class="container">
+        <div class="tiles">
+            <div class="tile">
+                <div>
+                    <h3>Cases</h3>
+                    <p>9 mi</p>
+                </div>
+            </div>
+            <div class="tile">
+                <div>
+                    <h3>Dockets</h3>
+                    <p>60 mi</p>
+                </div>
+            </div>
+            <div class="tile">
+                <div>
+                    <h3>Citations</h3>
+                    <p>10 mi</p>
+                </div>
+            </div>
+            <div class="tile">
+                <div>
+                    <h3>And Many More...</h3>
+                </div>
+            </div>
+        </div>
+        <section id="content" class="content">
+            <h2>Discover Legal Insights Like Never Before</h2>
+            <p>
+                At Legal Forensics, we provide unparalleled access to a comprehensive legal dataset that forms the backbone of our cutting-edge platform.
+            </p>
+            <p>
+                Empowering legal professionals with the tools to uncover critical insights and make informed decisions, our curated data transforms information into actionable intelligence.
+            </p>
+            <p>
+                Experience the future of legal research and analytics with advanced capabilities designed to streamline your workflow and enhance your strategic planning. Join us in revolutionizing the way legal research is conducted and unlock the true potential of your legal practice.
+            </p>
+        </section>
+        <div class="images">
+            <img src="C:/Users/amitn/Downloads/slider-visualizations/charts/nature of suit.png" alt="Image 1" class="placeholder">
+            <img src="C:/Users/amitn/Downloads/slider-visualizations/charts/distibution by amendments.png" alt="Image 2" class="placeholder">
+            <img src="C:/Users/amitn/Downloads/slider-visualizations/charts/distribution by case type.png" alt="Image 3" class="placeholder">
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 LegalForensics.AI. All rights reserved.</p>
+        <p>Follow us on <a href="https://x.com/legalforenscis">Twitter</a> | <a href="mailto:amit@legalforensics.com">Contact us</a></p>
+    </footer>
+</body>
+</html>
