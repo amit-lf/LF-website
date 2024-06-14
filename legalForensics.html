@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LegalForensics.AI</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #000;
+            color: #fff;
+        }
+        header {
+            background-color: #000;
+            color: white;
+            padding: 4rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            font-weight: bold;
+            flex-direction: column;
+        }
+        header img.logo {
+            height: 220px;
+            position: absolute;
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        header h1 {
+            margin: 0;
+            font-size: 3rem;
+        }
+        header p.tagline {
+            margin: 0;
+            margin-top: 1rem;
+            font-family: 'Roboto', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 300;
+        }
+        .ticker {
+            width: 100%;
+            background-color: #444;
+            color: white;
+            overflow: hidden;
+            white-space: nowrap;
+            box-sizing: border-box;
+        }
+        .ticker-content {
+            display: inline-block;
+            padding: 10px 0;
+            animation: ticker 30s linear infinite;
+        }
+        .ticker-item {
+            display: inline-block;
+            padding: 10px 20px;
+            text-align: center;
+            text-transform: none;
+            font-size: 1.2rem;
+        }
+        .ticker-item span {
+            color: #f39c12;
+            font-weight: bold;
+        }
+        @keyframes ticker {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+        .container {
+            display: flex;
+            justify-content: space-between;
+            padding: 1rem;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        /* Images container with light blue background */
+        .images-container {
+            background-color: #000;
+            padding: 1rem;
+            border-radius: 10px;
+        }
+        .column {
+            padding: 1rem;
+        }
+        .column.content {
+            flex: 1;
+            max-width: 33%;
+        }
+        .column.small {
+            flex: 1;
+            max-width: 33%;
+        }
+        .column h2 {
+            font-size: 1.8rem; /* Reduced font size */
+            margin-bottom: 0rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #f39c12;
+            text-align: center;
+        }
+        .column p {
+            font-size: 1.6rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+        .images img {
+            width: 50%;
+            max-width: 100%; /* Ensure full alignment with text */
+            height: auto;
+            margin-bottom: 40px;
+            object-fit: contain
+            border-radius: 10px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            filter: blur(1px); /* Apply blur effect */
+
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 0.00rem;
+            position: floating;
+            width: 100%;
+            bottom: 0;
+        }
+        footer a {
+            color: #f39c12;
+            text-decoration: none;
+        }
+        /* New Section Styles */
+        .new-section {
+            padding: 2rem 1rem;
+            background-color: #111;
+            margin: 1rem 0;
+        }
+        .new-section h2 {
+            color: #f39c12;
+        }
+        .new-section p {
+            margin: 0.5rem 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="lf_logo_no_tag_line.png" alt="LegalForensics.AI Logo" class="logo">
+        <h1>LegalForensics.AI</h1>
+        <p class="tagline">A Legal Analytics Platform</p>
+    </header>
+
+    <div class="ticker">
+        <div class="ticker-content">
+            <div class="ticker-item"><span>Case law data lake with</span></div>
+            <div class="ticker-item"><span></span>-- 9 mi cases, 60 mi dockets, 10 mi citation, and more --. </div>
+            <div class="ticker-item"><span></span> | </div>
+            <div class="ticker-item">Supported by monthly updates.</div>
+            <div class="ticker-item"><span></span> | </div>
+            <div class="ticker-item">Lawyers, Paralegals, Companies, Pro se litigants, Non Profits</div>
+            <div class="ticker-item"><span></span> | </div>
+            <div class="ticker-item">Use for Legal Research, Legal Analytics and many other applications.</div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="column content">
+            <h2>Discover Legal Insights</h2>
+            <p>At Legal Forensics, we provide unparalleled access to a comprehensive legal dataset that forms the backbone of our cutting-edge platform.</p>
+            <p>Empowering legal professionals with the tools to uncover critical insights and make informed decisions, our curated data transforms information into actionable intelligence.</p>
+            <p>Experience the future of legal research and analytics with advanced capabilities designed to streamline your workflow and enhance your strategic planning. Join us in revolutionizing the way legal research is conducted and unlock the true potential of your legal practice.</p>
+        </div>
+        <div class="column content">
+        <h2>How We Can Help</h2>
+        <p><strong>Legal Professionals:</strong> Leverage our comprehensive data lake for in-depth legal research and gain insights into legal trends.</p>
+        <p><strong>Corporations:</strong> Research how courts have handled issues like patent disputes and employment discrimination.</p>
+        <p><strong>Individuals:</strong> Research into legal cases involving contractor disputes, landlord-tenant conflicts, immigration matters, etc.</p>
+        <p><strong>Non-Profits:</strong> Access crucial legal data to support your mission. Understand legal precedents in areas such as grant compliance, volunteer liability, and organizational governance to ensure your operations are legally sound.</p>
+        </div>
+        <div class="column content">
+            <h2>What We Offer</h2>
+             <p>Custom Dashboards - Visualizations to your needs.</p>
+            <p>Custom Legal Analytics - Trends, Legal pricniples applied, rulings and more. </p>
+            <p>Curated Datasets - Real Estate, Cannbis, Patent, Employment Discrimination etc. </p>
+            <p>APIs - Query our database according to your needs.</p>
+            <div class="new-section">
+                <h2>Contact Us</h2>
+                <p>We are eager to discuss your specific needs and collaborate with you as our beta customer. Please reach out to us at <a href="mailto:beta@legalforensics.ai">beta@legalforensics.ai</a>.</p>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="container images-container">
+    <div class="column small images">
+            <img src="lf_nature_of_suit.png" alt="Distribution by Nature of Suit">
+    </div>
+    <div class="column small images">
+            <img src="lf_distibution_by_amendments.png" alt="Amendements">
+    </div>
+    <div class="column small images">
+            <img src="lf_distribution_by_case_type.png" alt="Case Type">
+    </div>
+</div>
+
+
+    <footer>
+        <p>&copy; 2024 LegalForensics.AI. All rights reserved.</p>
+        <p>Follow us on <a href="https://x.com/legalforensics">Twitter</a> | <a href="mailto:info@legalforensics.com">Contact us</a></p>
+    </footer>
+</body>
+</html>
