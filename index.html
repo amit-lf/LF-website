@@ -7,252 +7,241 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700&family=Merriweather:wght@700&display=swap" rel="stylesheet">
     <style>
         body {
-    margin: 0;
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    background-color: white;
-    color: black;
-}
-.navbar-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    padding: 2em;
-    background-color: white;
-    margin-left: 3.75%;
-    margin-right: 3.75%;
-}
-.logo-section {
-    display: flex;
-    align-items: center;
-    transition: transform 0.3s;
-    text-decoration: none;
-    color: black; 
-    margin-top: 1em;
-}
-.logo-section img {
-    height: 3.125em;
-    margin-right: -0.625em;
-    transition: transform 0.3s;
-}
-.legal-text {
-    font-family: 'Merriweather', serif;
-    font-weight: bold;
-    text-align: left;
-    margin-left: 0.625em;
-    transition: transform 0.3s;
-    color: black;
-}
-.logo-section:hover {
-    transform: scale(1.1);
-}
-.navbar {
-    background-color: #f7f7f7;
-    padding: 1em 2em;
-    border-radius: 2.5em;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-grow: 1;
-    margin-left: 2em;
-}
-.navbar a {
-    color: black;
-    text-decoration: none;
-    padding: 1em 2em 1.2em;
-    border-radius: 2.5em;
-    font-weight: bold;
-    display: flex;
-    align-items: center;
-    transition: transform 0.3s;
-    position: relative;
-}
-.navbar a img {
-    margin-left: 0.5em;
-    transition: transform 0.3s;
-    width: 0.625em;
-    height: auto;
-}
-.navbar a:hover {
-    transform: scale(1.1);
-}
-.navbar a:hover img {
-    transform: translateX(0.3em);
-}
-.navbar a::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 0;
-    height: 0.25em;
-    background-color: black;
-    transition: width 0.3s, opacity 0.3s;
-    border-radius: 1em;
-    opacity: 0;
-}
-.navbar a.active::after {
-    width: 80%;
-    opacity: 1;
-}
-.reach-us {
-    background-color: black;
-    color: white !important;
-    padding: 1em 2em;
-    border-radius: 2.5em;
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    font-weight: bold;
-    transition: background-color 0.3s, transform 0.3s;
-}
-.reach-us img {
-    margin-left: 0.5em;
-    transition: transform 0.3s;
-    width: 0.625em;
-    height: auto;
-}
-.reach-us:hover {
-    background-color: black;
-    transform: scale(1.05);
-}
-.reach-us:hover img {
-    transform: translateX(0.3em);
-}
-.content {
-    display: flex;
-    padding: 2em;
-    margin-left: 3.75%;
-    margin-right: 3.75%;
-    align-items: stretch;
-    justify-content: space-between;
-}
-.main-content {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    max-width: 35%;
-}
-.headline {
-    font-size: 2.5em;
-    font-weight: bold;
-    margin-bottom: 0.5em;
-}
-.subtitle {
-    font-size: 1em;
-    margin-bottom: 1.5em;
-}
-.button-container {
-    display: flex;
-    gap: 1em;
-    margin-top: 2em;
-}
-.button {
-    padding: 1em 2em;
-    border-radius: 2.5em;
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    font-weight: bold;
-    transition: background-color 0.3s, transform 0.3s;
-}
-.demo-button {
-    background-color: black;
-    color: white;
-}
-.tour-button {
-    background-color: white;
-    color: black;
-    border: 2px solid black;
-}
-.tour-button img {
-    margin-left: 0.5em;
-    transition: transform 0.3s;
-    width: 0.625em;
-    height: auto;
-}
-.tour-button:hover img {
-    transform: translateX(0.3em);
-}
-.button:hover {
-    transform: scale(1.05);
-}
-.dynamic-view {
-    flex: 2;
-    background-color: white;
-    border: 2px solid black;
-    border-radius: 2.5em;
-    padding: 3em;
-    margin-left: 2em;
-    position: relative;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    min-height: 400px;
-    max-width: 55%;
-}
-.progress-bar-container {
-    position: absolute;
-    top: 1.5em;
-    left: 1.5em;
-    display: flex;
-    gap: 0.5em;
-    opacity: 0;
-    transition: opacity 0.5s ease-in-out;
-}
-.progress-bar {
-    width: 50px;
-    height: 10px;
-    background-color: white;
-    border: 2px solid black;
-    border-radius: 10px;
-    overflow: hidden;
-    cursor: pointer;
-}
-.progress {
-    height: 100%;
-    width: 0;
-    background-color: black;
-    transition: width 5s linear, opacity 0.5s ease-in-out;
-}
-.dynamic-content {
-    opacity: 1;
-    transition: opacity 0.5s ease-in-out;
-    text-align: center;
-}
-.dynamic-content h2 {
-    font-size: 2.5em;
-    margin-bottom: 0.5em;
-}
-.dynamic-content p {
-    font-size: 1.2em;
-}
-.reach-us-button {
-    background-color: black;
-    color: white;
-    padding: 1em 2em;
-    border-radius: 2.5em;
-    display: inline-flex;
-    align-items: center;
-    text-decoration: none;
-    font-weight: bold;
-    transition: background-color 0.3s, transform 0.3s;
-    margin-top: 1em;
-}
-.reach-us-button img {
-    margin-left: 0.5em;
-    transition: transform 0.3s;
-    width: 0.625em;
-    height: auto;
-}
-.reach-us-button:hover {
-    transform: scale(1.05);
-}
-.reach-us-button:hover img {
-    transform: translateX(0.3em);
-}
+            margin: 0;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: white;
+            color: black;
+        }
+        .navbar-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: 2em;
+            background-color: white;
+            margin-left: 3.75%;
+            margin-right: 3.75%;
+        }
+        .logo-section {
+            display: flex;
+            align-items: center;
+            transition: transform 0.3s;
+            text-decoration: none;
+            color: black; 
+            margin-top: 1em;
+        }
+        .logo-section img {
+            height: 3.125em;
+            margin-right: -0.625em;
+            transition: transform 0.3s;
+        }
+        .legal-text {
+            font-family: 'Merriweather', serif;
+            font-weight: bold;
+            text-align: left;
+            margin-left: 0.625em;
+            transition: transform 0.3s;
+            color: black;
+        }
+        .logo-section:hover {
+            transform: scale(1.1);
+        }
+        .navbar {
+            background-color: #f7f7f7;
+            padding: 1em 2em;
+            border-radius: 2.5em;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-grow: 1;
+            margin-left: 2em;
+        }
+        .navbar a {
+            color: black;
+            text-decoration: none;
+            padding: 1em 2em 1.2em;
+            border-radius: 2.5em;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            transition: transform 0.3s;
+            position: relative;
+        }
+        .navbar a img {
+            margin-left: 0.5em;
+            transition: transform 0.3s;
+            width: 0.625em;
+            height: auto;
+        }
+        .navbar a:hover {
+            transform: scale(1.1);
+        }
+        .navbar a:hover img {
+            transform: translateX(0.3em);
+        }
+        .navbar a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0.25em;
+            background-color: black;
+            transition: width 0.3s, opacity 0.3s;
+            border-radius: 1em;
+            opacity: 0;
+        }
+        .navbar a.active::after {
+            width: 80%;
+            opacity: 1;
+        }
+        .reach-us {
+            background-color: black;
+            color: white !important;
+            padding: 1em 2em;
+            border-radius: 2.5em;
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        .reach-us img {
+            margin-left: 0.5em;
+            transition: transform 0.3s;
+            width: 0.625em;
+            height: auto;
+        }
+        .reach-us:hover {
+            background-color: black;
+            transform: scale(1.05);
+        }
+        .reach-us:hover img {
+            transform: translateX(0.3em);
+        }
+        .content {
+            display: flex;
+            padding: 2em;
+            margin-left: 3.75%;
+            margin-right: 3.75%;
+            align-items: stretch;
+            justify-content: space-between;
+        }
+        .main-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            max-width: 35%;
+        }
+        .headline {
+            font-size: 2.5em;
+            font-weight: bold;
+            margin-bottom: 0.5em;
+        }
+        .subtitle {
+            font-size: 1em;
+            margin-bottom: 1.5em;
+        }
+        .button-container {
+            display: flex;
+            gap: 1em;
+            margin-top: 2em;
+        }
+        .button {
+            padding: 1em 2em;
+            border-radius: 2.5em;
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        .demo-button {
+            background-color: black;
+            color: white;
+        }
+        .tour-button {
+            background-color: white;
+            color: black;
+            border: 0.125em solid black;
+        }
+        .tour-button img {
+            margin-left: 0.5em;
+            transition: transform 0.3s;
+            width: 0.625em;
+            height: auto;
+        }
+        .tour-button:hover img {
+            transform: translateX(0.3em);
+        }
+        .button:hover {
+            transform: scale(1.05);
+        }
+        .dynamic-view {
+            flex: 2;
+            background-color: white;
+            border: 0.125em solid black;
+            border-radius: 2.5em;
+            padding: 3em;
+            margin-left: 2em;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            min-height: 25em;
+            max-width: 55%;
+        }
+        .progress-bar-container {
+            position: absolute;
+            top: 1.5em;
+            left: 1.5em;
+            display: flex;
+            gap: 0.5em;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+        .progress-bar {
+            width: 3.125em;
+            height: 0.625em;
+            background-color: white;
+            border: 0.125em solid black;
+            border-radius: 0.625em;
+            overflow: hidden;
+            cursor: pointer;
+        }
+        .progress {
+            height: 100%;
+            width: 0;
+            background-color: black;
+            transition: width 5s linear, opacity 0.5s ease-in-out;
+        }
+        .dynamic-content {
+            opacity: 1;
+            transition: opacity 0.5s ease-in-out;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+        }
+        .dynamic-content .reach-us {
+            width: var(--reach-us-width, auto);
+            box-sizing: border-box;
+            margin-top: 1em;
+        }
+        .dynamic-content h2 {
+            font-size: 2.5em;
+            margin-bottom: 0.5em;
+        }
+        .dynamic-content p {
+            font-size: 1.2em;
+        }
+        .navbar-reach-us {
+            width: auto;
+        }
     </style>
 </head>
 <body>
@@ -266,7 +255,7 @@
         <nav class="navbar">
             <a href="#" id="products">Products <img src="images/right-sel.png" alt="arrow"></a>
             <a href="#" id="company">Company <img src="images/right-sel.png" alt="arrow"></a>
-            <a href="#reach-us" class="reach-us">Reach us
+            <a href="mailto:info@legalforensics.ai" class="reach-us navbar-reach-us">Reach us
                 <img src="images/right.png" alt="right arrow">
             </a>
         </nav>
@@ -275,7 +264,6 @@
         <div class="main-content">
             <div class="headline">A legal platform,<br>powered by AI</div>
             <div class="subtitle">Empowering you with the tools to uncover <br> legal insights and make informed decisions.</div>
-            
             <div class="button-container">
                 <a href="#" class="button demo-button" id="talkToUsBtn">Talk to us</a>
                 <a href="#" class="button tour-button" id="joinTeamBtn">Join our team
@@ -290,228 +278,237 @@
     </div>
 
     <script>
-         document.addEventListener('DOMContentLoaded', () => {
-    const productsLink = document.getElementById('products');
-    const companyLink = document.getElementById('company');
-    const talkToUsBtn = document.getElementById('talkToUsBtn');
-    const joinTeamBtn = document.getElementById('joinTeamBtn');
-    const dynamicView = document.getElementById('dynamicView');
-    const dynamicContent = document.getElementById('dynamicContent');
-    const progressBarContainer = document.getElementById('progressBarContainer');
+        document.addEventListener('DOMContentLoaded', () => {
+            const productsLink = document.getElementById('products');
+            const companyLink = document.getElementById('company');
+            const talkToUsBtn = document.getElementById('talkToUsBtn');
+            const joinTeamBtn = document.getElementById('joinTeamBtn');
+            const dynamicView = document.getElementById('dynamicView');
+            const dynamicContent = document.getElementById('dynamicContent');
+            const progressBarContainer = document.getElementById('progressBarContainer');
 
-    const productsContent = [
-        { title: "Legal Search", description: "Advanced search capabilities for legal documents." },
-        { title: "Document Forensics", description: "In-depth analysis of legal documents." },
-        { title: "Legal Analytics", description: "Data-driven insights for legal professionals." },
-        { title: "Enhanced Datalake", description: "Comprehensive repository of legal information." }
-    ];
+            const productsContent = [
+                { title: "Legal Search", description: "Advanced search capabilities for legal documents." },
+                { title: "Document Forensics", description: "In-depth analysis of legal documents." },
+                { title: "Legal Analytics", description: "Data-driven insights for legal professionals." },
+                { title: "Enhanced Datalake", description: "Comprehensive repository of legal information." }
+            ];
 
-    const companyContent = [
-        { title: "About Us", description: "Learn about our mission and values." },
-        { title: "Our Team", description: "Meet the experts behind our innovative solutions." }
-    ];
+            const companyContent = [
+                { title: "About Us", description: "Learn about our mission and values." },
+                { title: "Our Team", description: "Meet the experts behind our innovative solutions." }
+            ];
 
-    let currentContent = productsContent;
-    let currentIndex = 0;
-    let timeoutId;
-    let isCycling = true;
+            let currentContent = productsContent;
+            let currentIndex = 0;
+            let timeoutId;
+            let isCycling = true;
 
-    function handleProgressBarClick(index) {
-    if (index === currentIndex) return; 
+            function setReachUsWidth() {
+                const navbarReachUs = document.querySelector('.navbar-reach-us');
+                const width = navbarReachUs.offsetWidth + 'px';
+                document.documentElement.style.setProperty('--reach-us-width', width);
+            }
 
-    clearTimeout(timeoutId);
-    const oldIndex = currentIndex;
-    currentIndex = index;
-    
-    const progressBars = progressBarContainer.querySelectorAll('.progress-bar');
-    const oldProgressBar = progressBars[oldIndex];
-    const oldProgress = oldProgressBar.querySelector('.progress');
-    const newProgress = progressBars[index].querySelector('.progress');
-    
-    const computedStyle = window.getComputedStyle(oldProgress);
-    const currentWidth = computedStyle.getPropertyValue('width');
-    
-    oldProgress.style.transition = 'none';
-    oldProgress.style.width = currentWidth;
-    
-    void oldProgress.offsetWidth;
-    
-    oldProgress.style.transition = 'opacity 0.5s ease-out';
-    oldProgress.style.opacity = '0';
-    
-    newProgress.style.transition = 'none';
-    newProgress.style.width = '0';
-    newProgress.style.opacity = '0';
-    
-    setTimeout(() => {
-        oldProgress.style.transition = 'none';
-        oldProgress.style.width = '0';
-        oldProgress.style.opacity = '1';
-        
-        newProgress.style.opacity = '1';
-        
-        void newProgress.offsetWidth; 
-        newProgress.style.transition = 'width 5s linear';
-        newProgress.style.width = '100%';
-        
-        updateDynamicView(true, oldIndex);
-    }, 500);
-}
+            function handleProgressBarClick(index) {
+                if (index === currentIndex) return; 
 
-    function createProgressBars() {
-        progressBarContainer.innerHTML = '';
-        progressBarContainer.style.opacity = '1';
-        currentContent.forEach((_, index) => {
-            const progressBar = document.createElement('div');
-            progressBar.className = 'progress-bar';
-            progressBar.innerHTML = '<div class="progress" style="width: 0%; opacity: 1;"></div>';
-            progressBar.addEventListener('click', () => handleProgressBarClick(index));
-            progressBarContainer.appendChild(progressBar);
-        });
-    }
-
-    function updateDynamicView(isClick = false, oldIndex = null) {
-        const progressBars = progressBarContainer.querySelectorAll('.progress-bar');
-        
-        dynamicContent.style.opacity = '0';
-
-        progressBars.forEach((bar, index) => {
-            const progress = bar.querySelector('.progress');
-            if (index === currentIndex) {
-                progress.style.transition = 'width 5s linear';
-                progress.style.width = '0%';
-                progress.style.opacity = '1';
+                clearTimeout(timeoutId);
+                const oldIndex = currentIndex;
+                currentIndex = index;
+                
+                const progressBars = progressBarContainer.querySelectorAll('.progress-bar');
+                const oldProgressBar = progressBars[oldIndex];
+                const oldProgress = oldProgressBar.querySelector('.progress');
+                const newProgress = progressBars[index].querySelector('.progress');
+                
+                const computedStyle = window.getComputedStyle(oldProgress);
+                const currentWidth = computedStyle.getPropertyValue('width');
+                
+                oldProgress.style.transition = 'none';
+                oldProgress.style.width = currentWidth;
+                
+                void oldProgress.offsetWidth;
+                
+                oldProgress.style.transition = 'opacity 0.5s ease-out';
+                oldProgress.style.opacity = '0';
+                
+                newProgress.style.transition = 'none';
+                newProgress.style.width = '0';
+                newProgress.style.opacity = '0';
+                
                 setTimeout(() => {
-                    progress.style.width = '100%';
-                }, 50);
-            } else if (isClick && index === oldIndex) {
-                progress.style.transition = 'opacity 0.5s ease-out';
-                progress.style.opacity = '0';
-            } else {
-                progress.style.transition = 'none';
-                progress.style.width = '0%';
-                progress.style.opacity = '0';
-            }
-        });
-
-        setTimeout(() => {
-            dynamicContent.innerHTML = `
-                <h2>${currentContent[currentIndex].title}</h2>
-                <p>${currentContent[currentIndex].description}</p>
-            `;
-            dynamicContent.style.opacity = '1';
-
-            if (isCycling) {
-                timeoutId = setTimeout(() => {
-                    const currentProgress = progressBars[currentIndex].querySelector('.progress');
-                    currentProgress.style.transition = 'opacity 0.5s ease-out';
-                    currentProgress.style.opacity = '0';
+                    oldProgress.style.transition = 'none';
+                    oldProgress.style.width = '0';
+                    oldProgress.style.opacity = '1';
                     
-                    setTimeout(() => {
-                        currentIndex = (currentIndex + 1) % currentContent.length;
-                        updateDynamicView();
-                    }, 500);
-                }, 5000);
+                    newProgress.style.opacity = '1';
+                    
+                    void newProgress.offsetWidth; 
+                    newProgress.style.transition = 'width 5s linear';
+                    newProgress.style.width = '100%';
+                    
+                    updateDynamicView(true, oldIndex);
+                }, 500);
             }
-        }, 500);
-    }
 
-    function startCycling() {
-        clearTimeout(timeoutId);
-        currentIndex = 0;
-        isCycling = true;
-        progressBarContainer.style.opacity = '1';
-        
-        const progressBars = progressBarContainer.querySelectorAll('.progress-bar');
-        progressBars.forEach((bar, index) => {
-            const progress = bar.querySelector('.progress');
-            progress.style.transition = 'none';
-            progress.style.width = '0%';
-            progress.style.opacity = index === 0 ? '1' : '0';
+            function createProgressBars() {
+                progressBarContainer.innerHTML = '';
+                progressBarContainer.style.opacity = '1';
+                currentContent.forEach((_, index) => {
+                    const progressBar = document.createElement('div');
+                    progressBar.className = 'progress-bar';
+                    progressBar.innerHTML = '<div class="progress" style="width: 0%; opacity: 1;"></div>';
+                    progressBar.addEventListener('click', () => handleProgressBarClick(index));
+                    progressBarContainer.appendChild(progressBar);
+                });
+            }
+
+            function updateDynamicView(isClick = false, oldIndex = null) {
+                const progressBars = progressBarContainer.querySelectorAll('.progress-bar');
+                
+                dynamicContent.style.opacity = '0';
+
+                progressBars.forEach((bar, index) => {
+                    const progress = bar.querySelector('.progress');
+                    if (index === currentIndex) {
+                        progress.style.transition = 'width 5s linear';
+                        progress.style.width = '0%';
+                        progress.style.opacity = '1';
+                        setTimeout(() => {
+                            progress.style.width = '100%';
+                        }, 50);
+                    } else if (isClick && index === oldIndex) {
+                        progress.style.transition = 'opacity 0.5s ease-out';
+                        progress.style.opacity = '0';
+                    } else {
+                        progress.style.transition = 'none';
+                        progress.style.width = '0%';
+                        progress.style.opacity = '0';
+                    }
+                });
+
+                setTimeout(() => {
+                    dynamicContent.innerHTML = `
+                        <h2>${currentContent[currentIndex].title}</h2>
+                        <p>${currentContent[currentIndex].description}</p>
+                    `;
+                    dynamicContent.style.opacity = '1';
+
+                    if (isCycling) {
+                        timeoutId = setTimeout(() => {
+                            const currentProgress = progressBars[currentIndex].querySelector('.progress');
+                            currentProgress.style.transition = 'opacity 0.5s ease-out';
+                            currentProgress.style.opacity = '0';
+                            
+                            setTimeout(() => {
+                                currentIndex = (currentIndex + 1) % currentContent.length;
+                                updateDynamicView();
+                            }, 500);
+                        }, 5000);
+                    }
+                }, 500);
+            }
+
+            function startCycling() {
+                clearTimeout(timeoutId);
+                currentIndex = 0;
+                isCycling = true;
+                progressBarContainer.style.opacity = '1';
+                
+                const progressBars = progressBarContainer.querySelectorAll('.progress-bar');
+                progressBars.forEach((bar, index) => {
+                    const progress = bar.querySelector('.progress');
+                    progress.style.transition = 'none';
+                    progress.style.width = '0%';
+                    progress.style.opacity = index === 0 ? '1' : '0';
+                });
+                
+                void progressBarContainer.offsetWidth;
+                
+                const firstProgress = progressBars[0].querySelector('.progress');
+                firstProgress.style.transition = 'width 5s linear';
+                firstProgress.style.width = '100%';
+
+                updateDynamicView();
+            }
+
+            function setActiveNavItem(item) {
+                document.querySelectorAll('.navbar a').forEach(link => {
+                    link.classList.remove('active');
+                });
+                item.classList.add('active');
+            }
+
+            function showTalkToUs() {
+                const content = `
+                    <h2>Talk to Us</h2>
+                    <p>We're here to answer your questions and provide assistance.</p>
+                    <a href="mailto:info@legalforensics.ai" class="reach-us dynamic-reach-us">Reach us
+                        <img src="images/right.png" alt="right arrow">
+                    </a>
+                `;
+                updateCustomView(content);
+            }
+
+            function showJoinTeam() {
+                const content = `
+                    <h2>Join Our Team</h2>
+                    <p>Explore exciting career opportunities with us.</p>
+                    <a href="mailto:info@legalforensics.ai" class="reach-us dynamic-reach-us">Reach us
+                        <img src="images/right.png" alt="right arrow">
+                    </a>
+                `;
+                updateCustomView(content);
+            }
+
+            function updateCustomView(content) {
+                clearTimeout(timeoutId);
+                isCycling = false;
+                dynamicContent.style.opacity = '0';
+                progressBarContainer.style.opacity = '0';
+                setTimeout(() => {
+                    dynamicContent.innerHTML = content;
+                    dynamicContent.style.opacity = '1';
+                }, 500);
+                document.querySelectorAll('.navbar a').forEach(link => {
+                    link.classList.remove('active');
+                });
+            }
+
+            productsLink.addEventListener('click', (e) => {
+                e.preventDefault();
+                currentContent = productsContent;
+                createProgressBars();
+                startCycling();
+                setActiveNavItem(productsLink);
+            });
+
+            companyLink.addEventListener('click', (e) => {
+                e.preventDefault();
+                currentContent = companyContent;
+                createProgressBars();
+                startCycling();
+                setActiveNavItem(companyLink);
+            });
+
+            talkToUsBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                showTalkToUs();
+            });
+
+            joinTeamBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                showJoinTeam();
+            });
+
+            setReachUsWidth();
+            window.addEventListener('resize', setReachUsWidth);
+
+            createProgressBars();
+            startCycling();
+            setActiveNavItem(productsLink);
         });
-        
-        void progressBarContainer.offsetWidth;
-        
-        const firstProgress = progressBars[0].querySelector('.progress');
-        firstProgress.style.transition = 'width 5s linear';
-        firstProgress.style.width = '100%';
-        
-        updateDynamicView();
-    }
-
-    function setActiveNavItem(item) {
-        document.querySelectorAll('.navbar a').forEach(link => {
-            link.classList.remove('active');
-        });
-        item.classList.add('active');
-    }
-
-    function showTalkToUs() {
-        const content = `
-            <h2>Talk to Us</h2>
-            <p>We're here to answer your questions and provide assistance.</p>
-            <a href="#reach-us" class="reach-us-button">Reach us
-                <img src="images/right.png" alt="right arrow">
-            </a>
-        `;
-        updateCustomView(content);
-    }
-
-    function showJoinTeam() {
-        const content = `
-            <h2>Join Our Team</h2>
-            <p>Explore exciting career opportunities with us.</p>
-            <a href="#reach-us" class="reach-us-button">Reach us
-                <img src="images/right.png" alt="right arrow">
-            </a>
-        `;
-        updateCustomView(content);
-    }
-
-    function updateCustomView(content) {
-        clearTimeout(timeoutId);
-        isCycling = false;
-        dynamicContent.style.opacity = '0';
-        progressBarContainer.style.opacity = '0';
-        setTimeout(() => {
-            dynamicContent.innerHTML = content;
-            dynamicContent.style.opacity = '1';
-        }, 500);
-        document.querySelectorAll('.navbar a').forEach(link => {
-            link.classList.remove('active');
-        });
-    }
-
-    productsLink.addEventListener('click', (e) => {
-        e.preventDefault();
-        currentContent = productsContent;
-        createProgressBars();
-        startCycling();
-        setActiveNavItem(productsLink);
-    });
-
-    companyLink.addEventListener('click', (e) => {
-        e.preventDefault();
-        currentContent = companyContent;
-        createProgressBars();
-        startCycling();
-        setActiveNavItem(companyLink);
-    });
-
-    talkToUsBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        showTalkToUs();
-    });
-
-    joinTeamBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        showJoinTeam();
-    });
-
-    createProgressBars();
-    startCycling();
-    setActiveNavItem(productsLink);
-});
     </script>
 </body>
 </html>
