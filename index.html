@@ -254,6 +254,7 @@
         </a>
         <nav class="navbar">
             <a href="#" id="products">Products <img src="images/right-sel.png" alt="arrow"></a>
+            <a href="#" id="solutions">Solutions <img src="images/right-sel.png" alt="arrow"></a>
             <a href="#" id="company">Company <img src="images/right-sel.png" alt="arrow"></a>
             <a href="mailto:info@legalforensics.ai" class="reach-us navbar-reach-us">Reach us
                 <img src="images/right.png" alt="right arrow">
@@ -265,8 +266,8 @@
             <div class="headline">A legal platform,<br>powered by AI</div>
             <div class="subtitle">Empowering you with the tools to uncover <br> legal insights and make informed decisions.</div>
             <div class="button-container">
-                <a href="#" class="button demo-button" id="talkToUsBtn">Talk to us</a>
-                <a href="#" class="button tour-button" id="joinTeamBtn">Join our team
+                <a href="#" class="button demo-button" id="talkToUsBtn">Test Drive</a>
+                <a href="#" class="button tour-button" id="joinTeamBtn">Collaborate
                     <img src="images/right-modified.png" alt="right arrow">
                 </a>
             </div>
@@ -280,6 +281,7 @@
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const productsLink = document.getElementById('products');
+            const solutionsLink = document.getElementById('solutions');
             const companyLink = document.getElementById('company');
             const talkToUsBtn = document.getElementById('talkToUsBtn');
             const joinTeamBtn = document.getElementById('joinTeamBtn');
@@ -288,16 +290,24 @@
             const progressBarContainer = document.getElementById('progressBarContainer');
 
             const productsContent = [
-                { title: "Legal Search", description: "Advanced search capabilities for legal documents." },
-                { title: "Document Forensics", description: "In-depth analysis of legal documents." },
-                { title: "Legal Analytics", description: "Data-driven insights for legal professionals." },
-                { title: "Enhanced Datalake", description: "Comprehensive repository of legal information." }
+                { title: "Legal Search", description: "Utilize advanced search capabilities to efficiently navigate a vast repository of millions of case laws." },
+                { title: "Document Forensics", description: "Analyze your documents—whether it's a property lease, business contract, trademark application, or employment agreement—to detect relevant legal precedents." },
+                { title: "Legal Analytics", description: "Empower yourself with data-driven insights." },
+                // { title: "Enriched Datalake", description: "Comprehensive repository of legal information." }
+            ];
+
+            const solutionsContent = [
+                { title: "Corporations: Protect Your Business", description: "Make informed decisions by understanding historical precedents set by case law. Quickly identify winning legal strategies and fortify your contracts against risks. Legal Forensics empowers corporate legal teams to transform challenges into strategic advantages." },
+                { title: "Individuals: Empower Your Rights", description: "Gain instant access to crucial case laws and confidently address issues such as contractor dispute, tenant-landlord dispute, employee discrimination, and more. Legal Forensics equips you with the knowledge and insights needed to secure your rights in any legal battle." },
+                { title: "Law Firms: Elevate Your Practice", description: "Streamline your legal research and enhance your strategies with AI-driven insights. Legal Forensics sets your practice apart, helping you achieve landmark victories for your clients." },
+                { title: "Advocacy Groups: Amplify Your Cause", description: "Turn passion into powerful legal action with deep insights into relevant precedents. Legal Forensics strengthens your advocacy efforts and drives significant positive change." },
+                { title: "Pro Bono Organizations: Champion Justice", description: "Uncover critical evidence and relevant case laws quickly to make justice accessible for all. Legal Forensics empowers your mission to exonerate the wrongfully convicted and fight for justice." }   
             ];
 
             const companyContent = [
-                { title: "About Us", description: "Learn about our mission and values." },
-                { title: "Our Team", description: "Meet the experts behind our innovative solutions." }
-            ];
+                {title: "About Us", description: "Legal Forensics is a pioneering startup at the intersection of law and technology, dedicated to revolutionizing legal research and analytics. <p> We leverage advanced AI and machine learning tools to provide comprehensive legal insights and risk assessments, empowering legal professionals with precise and actionable data."},
+                {title: "Our Mission", description: "At Legal Forensics, our mission is to democratize access to legal data, empowering individuals and organizations with the insights they need to navigate the legal landscape. <p> We believe that everyone deserves equal access to comprehensive legal research, enabling informed decisions and justice for all." }
+             ];
 
             let currentContent = productsContent;
             let currentIndex = 0;
@@ -398,7 +408,7 @@
                     if (isCycling) {
                         timeoutId = setTimeout(() => {
                             const currentProgress = progressBars[currentIndex].querySelector('.progress');
-                            currentProgress.style.transition = 'opacity 0.5s ease-out';
+                            currentProgress.style.transition = 'opacity 1.5s ease-out';
                             currentProgress.style.opacity = '0';
                             
                             setTimeout(() => {
@@ -442,8 +452,8 @@
 
             function showTalkToUs() {
                 const content = `
-                    <h2>Talk to Us</h2>
-                    <p>We're here to answer your questions and provide assistance.</p>
+                    <h2>Beta Customers</h2>
+                    <p>We are seeking beta customers to test drive our solution, provide valuable feedback, and collaborate with us on developing cutting-edge features. <p> We invite individuals, corporations, and law firms to join us in this exciting journey. If you are interested, please click the button below to get in touch with us.</p>
                     <a href="mailto:info@legalforensics.ai" class="reach-us dynamic-reach-us">Reach us
                         <img src="images/right.png" alt="right arrow">
                     </a>
@@ -453,8 +463,8 @@
 
             function showJoinTeam() {
                 const content = `
-                    <h2>Join Our Team</h2>
-                    <p>Explore exciting career opportunities with us.</p>
+                    <h2>Collaborate with us</h2>
+                    <p>If you are a legal domain expert, we would love to talk to you and explore collaboration possibilities.</p>
                     <a href="mailto:info@legalforensics.ai" class="reach-us dynamic-reach-us">Reach us
                         <img src="images/right.png" alt="right arrow">
                     </a>
@@ -482,6 +492,14 @@
                 createProgressBars();
                 startCycling();
                 setActiveNavItem(productsLink);
+            });
+
+            solutionsLink.addEventListener('click', (e) => {
+                e.preventDefault();
+                currentContent = solutionsContent;
+                createProgressBars();
+                startCycling();
+                setActiveNavItem(solutionsLink);
             });
 
             companyLink.addEventListener('click', (e) => {
