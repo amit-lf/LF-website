@@ -1,215 +1,532 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LegalForensics.AI</title>
+    <title>Legal Forensics</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700&family=Merriweather:wght@700&display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
-
         body {
-            font-family: Arial, sans-serif;
             margin: 0;
-            padding: 0;
-            background-color: #000;
-            color: #fff;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: white;
+            color: black;
         }
-        header {
-            background-color: #000;
-            color: white;
-            padding: 4rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            font-weight: bold;
-            flex-direction: column;
-        }
-        header img.logo {
-            height: 220px;
-            position: absolute;
-            left: 10px;
-            top: 50%;
-            transform: translateY(-50%);
-        }
-        header h1 {
-            margin: 0;
-            font-size: 3rem;
-        }
-        header p.tagline {
-            margin: 0;
-            margin-top: 1rem;
-            font-family: 'Roboto', sans-serif;
-            font-size: 1.5rem;
-            font-weight: 300;
-        }
-        .ticker {
-            width: 100%;
-            background-color: #444;
-            color: white;
-            overflow: hidden;
-            white-space: nowrap;
-            box-sizing: border-box;
-        }
-        .ticker-content {
-            display: inline-block;
-            padding: 10px 0;
-            animation: ticker 30s linear infinite;
-        }
-        .ticker-item {
-            display: inline-block;
-            padding: 10px 20px;
-            text-align: center;
-            text-transform: none;
-            font-size: 1.2rem;
-        }
-        .ticker-item span {
-            color: #f39c12;
-            font-weight: bold;
-        }
-        @keyframes ticker {
-            0% { transform: translateX(100%); }
-            100% { transform: translateX(-100%); }
-        }
-        .container {
+        .navbar-container {
             display: flex;
             justify-content: space-between;
-            padding: 1rem;
-            width: 100%;
-            box-sizing: border-box;
+            align-items: flex-start;
+            padding: 2em;
+            background-color: white;
+            margin-left: 3.75%;
+            margin-right: 3.75%;
         }
-        /* Images container with light blue background */
-        .images-container {
-            background-color: #000;
-            padding: 1rem;
-            border-radius: 10px;
-        }
-        .column {
-            padding: 1rem;
-        }
-        .column.content {
-            flex: 1;
-            max-width: 33%;
-        }
-        .column.small {
-            flex: 1;
-            max-width: 33%;
-        }
-        .column h2 {
-            font-size: 1.8rem; /* Reduced font size */
-            margin-bottom: 0rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: #f39c12;
-            text-align: center;
-        }
-        .column p {
-            font-size: 1.6rem;
-            line-height: 1.6;
-            margin-bottom: 1rem;
-        }
-        .images img {
-            width: 50%;
-            max-width: 100%; /* Ensure full alignment with text */
-            height: auto;
-            margin-bottom: 40px;
-            object-fit: contain
-            border-radius: 10px;
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-            filter: blur(1px); /* Apply blur effect */
-
-        }
-        footer {
-            background-color: #333;
-            color: white;
-            text-align: center;
-            padding: 0.00rem;
-            position: floating;
-            width: 100%;
-            bottom: 0;
-        }
-        footer a {
-            color: #f39c12;
+        .logo-section {
+            display: flex;
+            align-items: center;
+            transition: transform 0.3s;
             text-decoration: none;
+            color: black; 
+            margin-top: 1em;
         }
-        /* New Section Styles */
-        .new-section {
-            padding: 2rem 1rem;
-            background-color: #111;
-            margin: 1rem 0;
+        .logo-section img {
+            height: 3.125em;
+            margin-right: -0.625em;
+            transition: transform 0.3s;
         }
-        .new-section h2 {
-            color: #f39c12;
+        .legal-text {
+            font-family: 'Merriweather', serif;
+            font-weight: bold;
+            text-align: left;
+            margin-left: 0.625em;
+            transition: transform 0.3s;
+            color: black;
         }
-        .new-section p {
-            margin: 0.5rem 0;
+        .logo-section:hover {
+            transform: scale(1.1);
+        }
+        .navbar {
+            background-color: #f7f7f7;
+            padding: 1em 2em;
+            border-radius: 2.5em;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-grow: 1;
+            margin-left: 2em;
+        }
+        .navbar a {
+            color: black;
+            text-decoration: none;
+            padding: 1em 2em 1.2em;
+            border-radius: 2.5em;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            transition: transform 0.3s;
+            position: relative;
+        }
+        .navbar a img {
+            margin-left: 0.5em;
+            transition: transform 0.3s;
+            width: 0.625em;
+            height: auto;
+        }
+        .navbar a:hover {
+            transform: scale(1.1);
+        }
+        .navbar a:hover img {
+            transform: translateX(0.3em);
+        }
+        .navbar a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0.25em;
+            background-color: black;
+            transition: width 0.3s, opacity 0.3s;
+            border-radius: 1em;
+            opacity: 0;
+        }
+        .navbar a.active::after {
+            width: 80%;
+            opacity: 1;
+        }
+        .reach-us {
+            background-color: black;
+            color: white !important;
+            padding: 1em 2em;
+            border-radius: 2.5em;
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        .reach-us img {
+            margin-left: 0.5em;
+            transition: transform 0.3s;
+            width: 0.625em;
+            height: auto;
+        }
+        .reach-us:hover {
+            background-color: black;
+            transform: scale(1.05);
+        }
+        .reach-us:hover img {
+            transform: translateX(0.3em);
+        }
+        .content {
+            display: flex;
+            padding: 2em;
+            margin-left: 3.75%;
+            margin-right: 3.75%;
+            align-items: stretch;
+            justify-content: space-between;
+        }
+        .main-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            max-width: 35%;
+        }
+        .headline {
+            font-size: 2.5em;
+            font-weight: bold;
+            margin-bottom: 0.5em;
+        }
+        .subtitle {
+            font-size: 1em;
+            margin-bottom: 1.5em;
+        }
+        .button-container {
+            display: flex;
+            gap: 1em;
+            margin-top: 2em;
+        }
+        .button {
+            padding: 1em 2em;
+            border-radius: 2.5em;
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        .demo-button {
+            background-color: black;
+            color: white;
+        }
+        .tour-button {
+            background-color: white;
+            color: black;
+            border: 0.125em solid black;
+        }
+        .tour-button img {
+            margin-left: 0.5em;
+            transition: transform 0.3s;
+            width: 0.625em;
+            height: auto;
+        }
+        .tour-button:hover img {
+            transform: translateX(0.3em);
+        }
+        .button:hover {
+            transform: scale(1.05);
+        }
+        .dynamic-view {
+            flex: 2;
+            background-color: white;
+            border: 0.125em solid black;
+            border-radius: 2.5em;
+            padding: 3em;
+            margin-left: 2em;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            min-height: 25em;
+            max-width: 55%;
+        }
+        .progress-bar-container {
+            position: absolute;
+            top: 1.5em;
+            left: 1.5em;
+            display: flex;
+            gap: 0.5em;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+        .progress-bar {
+            width: 3.125em;
+            height: 0.625em;
+            background-color: white;
+            border: 0.125em solid black;
+            border-radius: 0.625em;
+            overflow: hidden;
+            cursor: pointer;
+        }
+        .progress {
+            height: 100%;
+            width: 0;
+            background-color: black;
+            transition: width 5s linear, opacity 0.5s ease-in-out;
+        }
+        .dynamic-content {
+            opacity: 1;
+            transition: opacity 0.5s ease-in-out;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+        }
+        .dynamic-content .reach-us {
+            width: var(--reach-us-width, auto);
+            box-sizing: border-box;
+            margin-top: 1em;
+        }
+        .dynamic-content h2 {
+            font-size: 2.5em;
+            margin-bottom: 0.5em;
+        }
+        .dynamic-content p {
+            font-size: 1.2em;
+        }
+        .navbar-reach-us {
+            width: auto;
         }
     </style>
 </head>
 <body>
-    <header>
-        <img src="lf_logo_no_tag_line.png" alt="LegalForensics.AI Logo" class="logo">
-        <h1>LegalForensics.AI</h1>
-        <p class="tagline">A Legal Analytics Platform</p>
-    </header>
-
-    <div class="ticker">
-        <div class="ticker-content">
-            <div class="ticker-item"><span>Case law data lake with</span></div>
-            <div class="ticker-item"><span></span>-- 9+ mi cases with data about citations, jurisdictions, courts, judges, and much more -- </div>
-            <div class="ticker-item"><span></span> | </div>
-            <div class="ticker-item">Supported by monthly updates</div>
-            <div class="ticker-item"><span></span> | </div>
-            <div class="ticker-item">Lawyers, Paralegals, Companies, Pro se litigants, Non Profits</div>
-            <div class="ticker-item"><span></span> | </div>
-            <div class="ticker-item">Use for Legal Research, Legal Analytics, and many other applications</div>
-        </div>
+    <div class="navbar-container">
+        <a href="index.html" class="logo-section">
+            <img src="images/logo.png" alt="Logo">
+            <div class="legal-text">
+                LEGAL<br>FORENSICS
+            </div>
+        </a>
+        <nav class="navbar">
+            <a href="#" id="products">Products <img src="images/right-sel.png" alt="arrow"></a>
+            <a href="#" id="solutions">Solutions <img src="images/right-sel.png" alt="arrow"></a>
+            <a href="#" id="company">Company <img src="images/right-sel.png" alt="arrow"></a>
+            <a href="mailto:info@legalforensics.ai" class="reach-us navbar-reach-us">Reach us
+                <img src="images/right.png" alt="right arrow">
+            </a>
+        </nav>
     </div>
-
-    <div class="container">
-        <div class="column content">
-            <h2>Discover Legal Insights</h2>
-            <p>At Legal Forensics, we provide unparalleled access to a comprehensive legal dataset that forms the backbone of our cutting-edge platform.</p>
-            <p>Empowering legal professionals with the tools to uncover critical insights and make informed decisions, our curated data transforms information into actionable intelligence.</p>
-            <p>Experience the future of legal research and analytics with advanced capabilities designed to streamline your workflow and enhance your strategic planning. Join us in revolutionizing the way legal research is conducted and unlock the true potential of your legal practice.</p>
-        </div>
-        <div class="column content">
-        <h2>How We Can Help</h2>
-        <p><strong>Legal Professionals:</strong> Leverage our comprehensive data lake for in-depth legal research and gain insights into legal trends.</p>
-        <p><strong>Corporations:</strong> Research how courts have handled issues like patent disputes and employment discrimination.</p>
-        <p><strong>Individuals:</strong> Research into legal cases involving contractor disputes, landlord-tenant conflicts, immigration matters, etc.</p>
-        <p><strong>Non-Profits:</strong> Access crucial legal data to support your mission. Research into categorized data lake involving cases dealing with privacy rights, cruel and unusual punishment, and other constitutional amendments.</p>
-        </div>
-        <div class="column content">
-            <h2>Products</h2>
-             <p>A comprehensive toolset for Legal Research & Analytics.</p>
-            <p>Document forensics to assess litigation risk for contracts and other business documents. </p>
-            <p>Curated case law datasets for verticals such as Real Estate, Cannabis, Intellectual Property, Employment Discrimination, etc. </p>
-            <div class="new-section">
-                <h2>Contact Us</h2>
-                <p>We are eager to discuss your specific needs and collaborate with you as our beta customer. Please <a href="mailto:beta@legalforensics.ai" style="color: #f39c12;">contact us</a> to get started.</p>
+    <div class="content">
+        <div class="main-content">
+            <div class="headline">A legal platform,<br>powered by AI</div>
+            <div class="subtitle">Empowering you with the tools to uncover <br> legal insights and make informed decisions.</div>
+            <div class="button-container">
+                <a href="#" class="button demo-button" id="talkToUsBtn">Test Drive</a>
+                <a href="#" class="button tour-button" id="joinTeamBtn">Collaborate
+                    <img src="images/right-modified.png" alt="right arrow">
+                </a>
             </div>
         </div>
-
+        <div class="dynamic-view" id="dynamicView">
+            <div class="progress-bar-container" id="progressBarContainer"></div>
+            <div class="dynamic-content" id="dynamicContent"></div>
+        </div>
     </div>
 
-    <div class="container images-container">
-    <div class="column small images">
-            <img src="lf_nature_of_suit.png" alt="Distribution by Nature of Suit">
-    </div>
-    <div class="column small images">
-            <img src="lf_distibution_by_amendments.png" alt="Amendements">
-    </div>
-    <div class="column small images">
-            <img src="lf_distribution_by_case_type.png" alt="Case Type">
-    </div>
-</div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const productsLink = document.getElementById('products');
+            const solutionsLink = document.getElementById('solutions');
+            const companyLink = document.getElementById('company');
+            const talkToUsBtn = document.getElementById('talkToUsBtn');
+            const joinTeamBtn = document.getElementById('joinTeamBtn');
+            const dynamicView = document.getElementById('dynamicView');
+            const dynamicContent = document.getElementById('dynamicContent');
+            const progressBarContainer = document.getElementById('progressBarContainer');
 
+            const productsContent = [
+                { title: "Legal Search", description: "Utilize advanced search capabilities to efficiently navigate a vast repository of millions of case laws." },
+                { title: "Document Forensics", description: "Analyze your documents—whether it's a property lease, business contract, trademark application, or employment agreement—to detect relevant legal precedents." },
+                { title: "Legal Analytics", description: "Empower yourself with data-driven insights." },
+                // { title: "Enriched Datalake", description: "Comprehensive repository of legal information." }
+            ];
 
-    <footer>
-        <p>&copy; 2024 LegalForensics.AI. All rights reserved.</p>
-        <p><a href="mailto:info@legalforensics.ai">Contact us</a></p>
-    </footer>
+            const solutionsContent = [
+                { title: "Corporations: Protect Your Business", description: "Make informed decisions by understanding historical precedents set by case law. Quickly identify winning legal strategies and fortify your contracts against risks. Legal Forensics empowers corporate legal teams to transform challenges into strategic advantages." },
+                { title: "Individuals: Empower Your Rights", description: "Gain instant access to crucial case laws and confidently address issues such as contractor dispute, tenant-landlord dispute, employee discrimination, and more. Legal Forensics equips you with the knowledge and insights needed to secure your rights in any legal battle." },
+                { title: "Law Firms: Elevate Your Practice", description: "Streamline your legal research and enhance your strategies with AI-driven insights. Legal Forensics sets your practice apart, helping you achieve landmark victories for your clients." },
+                { title: "Advocacy Groups: Amplify Your Cause", description: "Turn passion into powerful legal action with deep insights into relevant precedents. Legal Forensics strengthens your advocacy efforts and drives significant positive change." },
+                { title: "Pro Bono Organizations: Champion Justice", description: "Uncover critical evidence and relevant case laws quickly to make justice accessible for all. Legal Forensics empowers your mission to exonerate the wrongfully convicted and fight for justice." }   
+            ];
+
+            const companyContent = [
+                {title: "About Us", description: "Legal Forensics is a pioneering startup at the intersection of law and technology, dedicated to revolutionizing legal research and analytics. <p> We leverage advanced AI and machine learning tools to provide comprehensive legal insights and risk assessments, empowering legal professionals with precise and actionable data."},
+                {title: "Our Mission", description: "At Legal Forensics, our mission is to democratize access to legal data, empowering individuals and organizations with the insights they need to navigate the legal landscape. <p> We believe that everyone deserves equal access to comprehensive legal research, enabling informed decisions and justice for all." }
+             ];
+
+            let currentContent = productsContent;
+            let currentIndex = 0;
+            let timeoutId;
+            let isCycling = true;
+
+            function setReachUsWidth() {
+                const navbarReachUs = document.querySelector('.navbar-reach-us');
+                const width = navbarReachUs.offsetWidth + 'px';
+                document.documentElement.style.setProperty('--reach-us-width', width);
+            }
+
+            function handleProgressBarClick(index) {
+                if (index === currentIndex) return; 
+
+                clearTimeout(timeoutId);
+                const oldIndex = currentIndex;
+                currentIndex = index;
+                
+                const progressBars = progressBarContainer.querySelectorAll('.progress-bar');
+                const oldProgressBar = progressBars[oldIndex];
+                const oldProgress = oldProgressBar.querySelector('.progress');
+                const newProgress = progressBars[index].querySelector('.progress');
+                
+                const computedStyle = window.getComputedStyle(oldProgress);
+                const currentWidth = computedStyle.getPropertyValue('width');
+                
+                oldProgress.style.transition = 'none';
+                oldProgress.style.width = currentWidth;
+                
+                void oldProgress.offsetWidth;
+                
+                oldProgress.style.transition = 'opacity 0.5s ease-out';
+                oldProgress.style.opacity = '0';
+                
+                newProgress.style.transition = 'none';
+                newProgress.style.width = '0';
+                newProgress.style.opacity = '0';
+                
+                setTimeout(() => {
+                    oldProgress.style.transition = 'none';
+                    oldProgress.style.width = '0';
+                    oldProgress.style.opacity = '1';
+                    
+                    newProgress.style.opacity = '1';
+                    
+                    void newProgress.offsetWidth; 
+                    newProgress.style.transition = 'width 5s linear';
+                    newProgress.style.width = '100%';
+                    
+                    updateDynamicView(true, oldIndex);
+                }, 500);
+            }
+
+            function createProgressBars() {
+                progressBarContainer.innerHTML = '';
+                progressBarContainer.style.opacity = '1';
+                currentContent.forEach((_, index) => {
+                    const progressBar = document.createElement('div');
+                    progressBar.className = 'progress-bar';
+                    progressBar.innerHTML = '<div class="progress" style="width: 0%; opacity: 1;"></div>';
+                    progressBar.addEventListener('click', () => handleProgressBarClick(index));
+                    progressBarContainer.appendChild(progressBar);
+                });
+            }
+
+            function updateDynamicView(isClick = false, oldIndex = null) {
+                const progressBars = progressBarContainer.querySelectorAll('.progress-bar');
+                
+                dynamicContent.style.opacity = '0';
+
+                progressBars.forEach((bar, index) => {
+                    const progress = bar.querySelector('.progress');
+                    if (index === currentIndex) {
+                        progress.style.transition = 'width 5s linear';
+                        progress.style.width = '0%';
+                        progress.style.opacity = '1';
+                        setTimeout(() => {
+                            progress.style.width = '100%';
+                        }, 50);
+                    } else if (isClick && index === oldIndex) {
+                        progress.style.transition = 'opacity 0.5s ease-out';
+                        progress.style.opacity = '0';
+                    } else {
+                        progress.style.transition = 'none';
+                        progress.style.width = '0%';
+                        progress.style.opacity = '0';
+                    }
+                });
+
+                setTimeout(() => {
+                    dynamicContent.innerHTML = `
+                        <h2>${currentContent[currentIndex].title}</h2>
+                        <p>${currentContent[currentIndex].description}</p>
+                    `;
+                    dynamicContent.style.opacity = '1';
+
+                    if (isCycling) {
+                        timeoutId = setTimeout(() => {
+                            const currentProgress = progressBars[currentIndex].querySelector('.progress');
+                            currentProgress.style.transition = 'opacity 1.5s ease-out';
+                            currentProgress.style.opacity = '0';
+                            
+                            setTimeout(() => {
+                                currentIndex = (currentIndex + 1) % currentContent.length;
+                                updateDynamicView();
+                            }, 500);
+                        }, 5000);
+                    }
+                }, 500);
+            }
+
+            function startCycling() {
+                clearTimeout(timeoutId);
+                currentIndex = 0;
+                isCycling = true;
+                progressBarContainer.style.opacity = '1';
+                
+                const progressBars = progressBarContainer.querySelectorAll('.progress-bar');
+                progressBars.forEach((bar, index) => {
+                    const progress = bar.querySelector('.progress');
+                    progress.style.transition = 'none';
+                    progress.style.width = '0%';
+                    progress.style.opacity = index === 0 ? '1' : '0';
+                });
+                
+                void progressBarContainer.offsetWidth;
+                
+                const firstProgress = progressBars[0].querySelector('.progress');
+                firstProgress.style.transition = 'width 5s linear';
+                firstProgress.style.width = '100%';
+
+                updateDynamicView();
+            }
+
+            function setActiveNavItem(item) {
+                document.querySelectorAll('.navbar a').forEach(link => {
+                    link.classList.remove('active');
+                });
+                item.classList.add('active');
+            }
+
+            function showTalkToUs() {
+                const content = `
+                    <h2>Beta Customers</h2>
+                    <p>We are seeking beta customers to test drive our solution, provide valuable feedback, and collaborate with us on developing cutting-edge features. <p> We invite individuals, corporations, and law firms to join us in this exciting journey. If you are interested, please click the button below to get in touch with us.</p>
+                    <a href="mailto:info@legalforensics.ai" class="reach-us dynamic-reach-us">Reach us
+                        <img src="images/right.png" alt="right arrow">
+                    </a>
+                `;
+                updateCustomView(content);
+            }
+
+            function showJoinTeam() {
+                const content = `
+                    <h2>Collaborate with us</h2>
+                    <p>If you are a legal domain expert, we would love to talk to you and explore collaboration possibilities.</p>
+                    <a href="mailto:info@legalforensics.ai" class="reach-us dynamic-reach-us">Reach us
+                        <img src="images/right.png" alt="right arrow">
+                    </a>
+                `;
+                updateCustomView(content);
+            }
+
+            function updateCustomView(content) {
+                clearTimeout(timeoutId);
+                isCycling = false;
+                dynamicContent.style.opacity = '0';
+                progressBarContainer.style.opacity = '0';
+                setTimeout(() => {
+                    dynamicContent.innerHTML = content;
+                    dynamicContent.style.opacity = '1';
+                }, 500);
+                document.querySelectorAll('.navbar a').forEach(link => {
+                    link.classList.remove('active');
+                });
+            }
+
+            productsLink.addEventListener('click', (e) => {
+                e.preventDefault();
+                currentContent = productsContent;
+                createProgressBars();
+                startCycling();
+                setActiveNavItem(productsLink);
+            });
+
+            solutionsLink.addEventListener('click', (e) => {
+                e.preventDefault();
+                currentContent = solutionsContent;
+                createProgressBars();
+                startCycling();
+                setActiveNavItem(solutionsLink);
+            });
+
+            companyLink.addEventListener('click', (e) => {
+                e.preventDefault();
+                currentContent = companyContent;
+                createProgressBars();
+                startCycling();
+                setActiveNavItem(companyLink);
+            });
+
+            talkToUsBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                showTalkToUs();
+            });
+
+            joinTeamBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                showJoinTeam();
+            });
+
+            setReachUsWidth();
+            window.addEventListener('resize', setReachUsWidth);
+
+            createProgressBars();
+            startCycling();
+            setActiveNavItem(productsLink);
+        });
+    </script>
 </body>
 </html>
