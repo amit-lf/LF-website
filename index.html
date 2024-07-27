@@ -7,232 +7,238 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Merriweather:wght@700&display=swap" rel="stylesheet">
     <style>
         body {
-            margin: 0;
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            background-color: white;
-            color: black;
-        }
-        .navbar-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            padding: 2em;
-            background-color: white;
-            margin-left: 3.75%;
-            margin-right: 3.75%;
-        }
-        .logo-section {
-            display: flex;
-            align-items: center;
-            transition: transform 0.3s;
-            text-decoration: none;
-            color: black; 
-            margin-top: 1.5em;
-        }
-        .logo-section img {
-            height: 2em;
-            margin-right: -0.6em;
-            transition: transform 0.3s;
-        }
-        .legal-text {
-            font-family: 'Merriweather', serif;
-            font-weight: bold;
-            text-align: left;
-            margin-left: 0.625em;
-            transition: transform 0.3s;
-            color: black;
-        }
-        .navbar {
-            background-color: #f7f7f7;
-            padding: 1em 2em;
-            border-radius: 2.5em;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-grow: 1;
-            margin-left: 2em;
-        }
-        .navbar a {
-            color: black;
-            text-decoration: none;
-            padding: 1em 2em 1.2em;
-            border-radius: 2.5em;
-            font-weight: bold;
-            display: flex;
-            align-items: center;
-            transition: transform 0.3s;
-            position: relative;
-        }
-        .navbar a img {
-            margin-left: 0.5em;
-            transition: transform 0.3s;
-            width: 0.625em;
-            height: auto;
-        }
-        .navbar a:hover {
-            transform: scale(1.1);
-        }
-        .navbar a:hover img {
-            transform: translateX(0.3em);
-        }
-        .navbar a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 0;
-            height: 0.25em;
-            background-color: black;
-            transition: width 0.3s, opacity 0.3s;
-            border-radius: 1em;
-            opacity: 0;
-        }
-        .navbar a.active::after {
-            width: 80%;
-            opacity: 1;
-        }
-        .reach-us {
-            background-color: black;
-            color: white !important;
-            padding: 1em 2em;
-            border-radius: 2.5em;
-            display: flex;
-            align-items: center;
-            text-decoration: none;
-            font-weight: bold;
-            transition: background-color 0.3s, transform 0.3s;
-        }
-        .reach-us img {
-            margin-left: 0.5em;
-            transition: transform 0.3s;
-            width: 0.625em;
-            height: auto;
-        }
-        .reach-us:hover {
-            background-color: black;
-            transform: scale(1.05);
-        }
-        .reach-us:hover img {
-            transform: translateX(0.3em);
-        }
-        .content {
-            display: flex;
-            padding: 2em;
-            margin-left: 3.75%;
-            margin-right: 3.75%;
-            align-items: stretch;
-            justify-content: space-between;
-            flex-wrap: wrap;
-        }
-        .main-content {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            max-width: 35%;
-            min-width: 20em;
-        }
-        .headline {
-            font-size: 2.5em;
-            font-weight: bold;
-            margin-bottom: 0.5em;
-        }
-        .subtitle {
-            font-size: 1em;
-            margin-bottom: 1.5em;
-        }
-        .button-container {
-            display: flex;
-            gap: 1em;
-            margin-top: 2em;
-        }
-        .button {
-            padding: 1em 2em;
-            border-radius: 2.5em;
-            display: flex;
-            align-items: center;
-            text-decoration: none;
-            font-weight: bold;
-            transition: background-color 0.3s, transform 0.3s;
-        }
-        .demo-button {
-            background-color: black;
-            color: white;
-        }
-        .tour-button {
-            background-color: white;
-            color: black;
-            border: 0.125em solid black;
-        }
-        .tour-button img {
-            margin-left: 0.5em;
-            transition: transform 0.3s;
-            width: 0.625em;
-            height: auto;
-        }
-        .tour-button:hover img {
-            transform: translateX(0.3em);
-        }
-        .button:hover {
-            transform: scale(1.05);
-        }
-        .dynamic-view {
-            flex: 2;
-            background-color: white;
-            border: 0.125em solid black;
-            border-radius: 2.5em;
-            padding: 1.5em;
-            margin-left: 2em;
-            position: relative;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            height: 40vw;
-            max-height: 80vh;
-            width: 55%;
-            max-width: 60em;
-            min-width: 30em;
-            box-sizing: border-box;
-        }
-        .progress-bar-container {
-            position: absolute;
-            top: 1em;
-            left: 1.5em;
-            display: flex;
-            gap: 0.5em;
-            opacity: 0;
-            transition: opacity 0.5s ease-in-out;
-            z-index: 10;
-        }
-        .progress-bar {
-            width: 3.125em;
-            height: 0.625em;
-            background-color: white;
-            border: 0.125em solid black;
-            border-radius: 0.625em;
-            overflow: hidden;
-            cursor: pointer;
-        }
-        .progress {
-            height: 100%;
-            width: 0;
-            background-color: black;
-            transition: width 5s linear, opacity 0.5s ease-in-out;
-        }
-        .dynamic-content {
-            opacity: 1;
-            transition: opacity 0.5s ease-in-out;
-            text-align: left;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            align-items: flex-start;
-            height: 100%;
-            padding-top: 2em;
-            overflow-y: auto;
-        }
-        .dynamic-content .reach-us {
+    margin: 0;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background-color: white;
+    color: black;
+}
+.navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 2em;
+    background-color: white;
+    margin-left: 3.75%;
+    margin-right: 3.75%;
+}
+.logo-section {
+    display: flex;
+    align-items: center;
+    transition: transform 0.3s;
+    text-decoration: none;
+    color: black; 
+    margin-top: 1.5em;
+}
+.logo-section img {
+    height: 2em;
+    margin-right: -0.6em;
+    transition: transform 0.3s;
+}
+.legal-text {
+    font-family: 'Merriweather', serif;
+    font-weight: bold;
+    text-align: left;
+    margin-left: 0.625em;
+    transition: transform 0.3s;
+    color: black;
+}
+.navbar {
+    background-color: #f7f7f7;
+    padding: 1em 2em;
+    border-radius: 2.5em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-grow: 1;
+    margin-left: 2em;
+}
+.navbar a {
+    color: black;
+    text-decoration: none;
+    padding: 1em 2em 1.2em;
+    border-radius: 2.5em;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    transition: transform 0.3s;
+    position: relative;
+}
+.navbar a img {
+    margin-left: 0.5em;
+    transition: transform 0.3s;
+    width: 0.625em;
+    height: auto;
+}
+.navbar a:hover {
+    transform: scale(1.1);
+}
+.navbar a:hover img {
+    transform: translateX(0.3em);
+}
+.navbar a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0.25em;
+    background-color: black;
+    transition: width 0.3s, opacity 0.3s;
+    border-radius: 1em;
+    opacity: 0;
+}
+.navbar a.active::after {
+    width: 80%;
+    opacity: 1;
+}
+.reach-us {
+    background-color: black;
+    color: white !important;
+    padding: 1em 2em;
+    border-radius: 2.5em;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s, transform 0.3s;
+}
+.reach-us img {
+    margin-left: 0.5em;
+    transition: transform 0.3s;
+    width: 0.625em;
+    height: auto;
+}
+.reach-us:hover {
+    background-color: black;
+    transform: scale(1.05);
+}
+.reach-us:hover img {
+    transform: translateX(0.3em);
+}
+.content {
+    display: flex;
+    padding: 2em;
+    margin-left: 3.75%;
+    margin-right: 3.75%;
+    align-items: stretch;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 35%;
+    min-width: 20em;
+}
+.headline {
+    font-size: 2.5em;
+    font-weight: bold;
+    margin-bottom: 0.5em;
+}
+.subtitle {
+    font-size: 1em;
+    margin-bottom: 1.5em;
+}
+.button-container {
+    display: flex;
+    gap: 1em;
+    margin-top: 2em;
+}
+.button {
+    padding: 1em 2em;
+    border-radius: 2.5em;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s, transform 0.3s;
+}
+.demo-button {
+    background-color: black;
+    color: white;
+}
+.tour-button {
+    background-color: white;
+    color: black;
+    border: 0.125em solid black;
+}
+.tour-button img {
+    margin-left: 0.5em;
+    transition: transform 0.3s;
+    width: 0.625em;
+    height: auto;
+}
+.tour-button:hover img {
+    transform: translateX(0.3em);
+}
+.button:hover {
+    transform: scale(1.05);
+}
+.dynamic-view {
+    flex: 2;
+    background-color: white;
+    border: 0.125em solid white;
+    border-radius: 2.5em;
+    padding: 1.5em;
+    margin-left: 2em;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    height: 40vw;
+    max-height: 80vh;
+    width: 55%;
+    max-width: 60em;
+    min-width: 30em;
+    box-sizing: border-box;
+}
+.progress-bar-container {
+    position: absolute;
+    top: 1em;
+    left: 1.5em;
+    display: flex;
+    gap: 0.5em;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    z-index: 10;
+}
+.progress-bar {
+    width: 3.125em;
+    height: 0.625em;
+    background-color: white;
+    border: 0.125em solid black;
+    border-radius: 0.625em;
+    overflow: hidden;
+    cursor: pointer;
+}
+.progress {
+    height: 100%;
+    width: 0;
+    background-color: black;
+    transition: width 5s linear, opacity 0.5s ease-in-out;
+}
+.dynamic-content {
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    height: 100%;
+    padding: 2em;
+    overflow-y: auto;
+}
+.dynamic-content img {
+    max-width: 100%;
+    max-height: calc(100% - 4em);
+    object-fit: contain;
+    margin-bottom: 1em;
+}
+.dynamic-content .reach-us {
     width: 9em;
     box-sizing: border-box;
     margin-top: 1em;
@@ -243,82 +249,67 @@
     white-space: nowrap;
     overflow: visible;
 }
-
 .dynamic-content .reach-us img {
-    display: inline-block;
-    margin-left: 0.25em;
+    margin-left: 0.5em;
+    transition: transform 0.3s;
     width: 0.625em;
     height: auto;
-    vertical-align: middle;
 }
-        .dynamic-content ul {
-            list-style-type: none;
-            padding-left: 0;
-            margin-top: 0;
-        }
-        .dynamic-content li {
-            margin-bottom: 0.5em;
-        }
-        .dynamic-content h2 {
-            font-size: 2em;
-            margin-bottom: 0.5em;
-            font-weight: 800;
-        }
-        .dynamic-content p {
-            font-size: 1em;
-            margin-bottom: 1em;
-            font-weight: 600;
-        }
-        .navbar-reach-us {
-            width: auto;
-        }
-        .dynamic-content img {
-    max-width: 100%;
-    max-height: calc(100% - 4em);
-    object-fit: contain;
+.dynamic-content ul {
+    list-style-type: none;
+    padding-left: 0;
+    margin-top: 0;
 }
-
-.dynamic-content.products-view img {
+.dynamic-content li {
+    margin-bottom: 0.5em;
+}
+.dynamic-content h2 {
+    font-size: 2em;
+    margin-bottom: 0.5em;
+    font-weight: 800;
+    text-align: left;
+}
+.dynamic-content p {
+    font-size: 1em;
+    margin-bottom: 1em;
+    font-weight: 500;
+    line-height: 1.6;
+}
+.navbar-reach-us {
+    width: auto;
+}
+.dynamic-reach-us {
     position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    max-width: 100%;
-    max-height: calc(100% - 4em);
-    object-fit: contain;
+    bottom: 1.5em;
+    left: 1.5em;
+    z-index: 10;
 }
-        .dynamic-reach-us {
-            position: absolute;
-            bottom: 1.5em;
-            left: 1.5em;
-            z-index: 10;
-        }
-        .dynamic-reach-us:hover {
-            transform: scale(1.05) translateY(-5px);
-        }
-        @media (max-width: 1200px) {
-            .content {
-                flex-direction: column;
-                align-items: center;
-            }
-            .main-content {
-                max-width: 100%;
-                margin-bottom: 2em;
-                align-items: center;
-                text-align: center;
-            }
-            .dynamic-view {
-                width: 90%;
-                margin-left: 0;
-                height: 50vw;
-            }
-        }
-        @media (max-width: 600px) {
-            .dynamic-view {
-                height: 70vw;
-                min-width: unset;
-            }
-        }
+.dynamic-reach-us:hover {
+    transform: scale(1.05) translateY(-5px);
+}
+@media (max-width: 1200px) {
+    .content {
+        flex-direction: column;
+        align-items: center;
+    }
+    .main-content {
+        max-width: 100%;
+        margin-bottom: 2em;
+        align-items: center;
+        text-align: center;
+    }
+    .dynamic-view {
+        width: 90%;
+        margin-left: 0;
+        height: 50vw;
+    }
+}
+@media (max-width: 600px) {
+    .dynamic-view {
+        height: 70vw;
+        min-width: unset;
+    }
+}
     </style>
 </head>
 <body>
@@ -359,13 +350,12 @@
     const companyLink = document.getElementById('company');
     const talkToUsBtn = document.getElementById('talkToUsBtn');
     const joinTeamBtn = document.getElementById('joinTeamBtn');
-    const dynamicView = document.getElementById('dynamicView');
     const dynamicContent = document.getElementById('dynamicContent');
     const progressBarContainer = document.getElementById('progressBarContainer');
 
     const productsContent = [
         { image: "images/legalsearch.png", description: "" },
-        { image: "images/docforensics.png", description: ""  },
+        { image: "images/docforensics.png", description: "" },
         { image: "images/leganalytics.png", description: "" },
     ];
 
@@ -378,34 +368,20 @@
     ];
 
     const companyContent = [
-        {title: "About Us", description: "Legal Forensics is a pioneering startup at the intersection of law and technology, dedicated to revolutionizing legal research and analytics. We leverage advanced AI and machine learning tools to provide comprehensive legal insights and risk assessments, empowering legal professionals with precise and actionable data."},
-        {title: "Our Mission", description: "At Legal Forensics, our mission is to democratize access to legal data, empowering individuals and organizations with the insights they need to navigate the legal landscape. We believe that everyone deserves equal access to comprehensive legal research, enabling informed decisions and justice for all." }
+        {title: "About Us", description: "Legal Forensics stands at the forefront of legal technology innovation. As a pioneering startup, we merge cutting-edge AI and machine learning with comprehensive legal expertise. Our mission is to revolutionize legal research and analytics, providing legal professionals with unparalleled insights and risk assessments. Through our advanced tools, we empower our clients with precise, actionable data, enabling them to navigate the complex legal landscape with confidence and clarity."},
+        {title: "Our Mission", description: "At Legal Forensics, we are driven by a singular purpose: to democratize access to legal information. We believe that comprehensive, insightful legal research should be accessible to all, from individual citizens to global corporations. By leveraging the power of AI and data analytics, we aim to level the playing field, ensuring that everyone has the tools they need to make informed legal decisions. Our commitment to innovation and accessibility is reshaping the legal industry, fostering a future where justice and information are within reach for all." }
     ];
 
     let currentContent = productsContent;
     let currentIndex = 0;
-    let timeoutId;
-    const SACRED_DURATION = 5000; // 5 seconds per slide, unchangeable
+    let cycleInterval;
+    const SACRED_DURATION = 5000; // 5 seconds per slide
+    const FADE_DURATION = 300; // 300ms for fading
 
     function setReachUsWidth() {
         const navbarReachUs = document.querySelector('.navbar-reach-us');
         const width = navbarReachUs.offsetWidth + 'px';
         document.documentElement.style.setProperty('--reach-us-width', width);
-    }
-
-    function handleProgressBarClick(index) {
-        if (index === currentIndex) return;
-        
-        clearTimeout(timeoutId);
-        fadeOutCurrentProgressBar();
-        currentIndex = index;
-        updateDynamicView();
-    }
-
-    function fadeOutCurrentProgressBar() {
-        const currentProgressBar = progressBarContainer.children[currentIndex].querySelector('.progress');
-        currentProgressBar.style.transition = 'opacity 0.5s ease-out';
-        currentProgressBar.style.opacity = '0';
     }
 
     function createProgressBars() {
@@ -420,17 +396,18 @@
         });
     }
 
-    function updateProgressBars() {
+    function updateProgressBars(newIndex) {
         const progressBars = progressBarContainer.querySelectorAll('.progress-bar');
         progressBars.forEach((bar, index) => {
             const progress = bar.querySelector('.progress');
             if (index === currentIndex) {
-                progress.style.transition = `width ${SACRED_DURATION}ms linear, opacity 0.5s ease-in-out`;
+                progress.style.transition = `width ${SACRED_DURATION}ms linear, opacity ${FADE_DURATION}ms ease-out`;
+                progress.style.width = '100%';
+                progress.style.opacity = '1';
+            } else if (index === newIndex) {
+                progress.style.transition = `width ${SACRED_DURATION}ms linear, opacity ${FADE_DURATION}ms ease-in`;
                 progress.style.width = '0%';
                 progress.style.opacity = '1';
-                setTimeout(() => {
-                    progress.style.width = '100%';
-                }, 50);
             } else {
                 progress.style.transition = 'none';
                 progress.style.width = '0%';
@@ -439,11 +416,13 @@
         });
     }
 
-    function updateDynamicView() {
+    function updateDynamicView(newIndex) {
         dynamicContent.style.opacity = '0';
-        updateProgressBars();
+        const currentProgressBar = progressBarContainer.children[currentIndex].querySelector('.progress');
+        currentProgressBar.style.opacity = '0';
 
         setTimeout(() => {
+            currentIndex = newIndex;
             if (currentContent[currentIndex].image) {
                 dynamicContent.innerHTML = `
                     <div style="height: 100%; width: 100%; display: flex; flex-direction: column; justify-content: flex-start; align-items: center;">
@@ -451,12 +430,7 @@
                         <p>${currentContent[currentIndex].description}</p>
                     </div>
                 `;
-                
-                if (currentContent === productsContent) {
-                    dynamicContent.classList.add('products-view');
-                } else {
-                    dynamicContent.classList.remove('products-view');
-                }
+                dynamicContent.classList.toggle('products-view', currentContent === productsContent);
             } else {
                 dynamicContent.innerHTML = `
                     <h2>${currentContent[currentIndex].title}</h2>
@@ -465,85 +439,48 @@
                 dynamicContent.classList.remove('products-view');
             }
             dynamicContent.style.opacity = '1';
+            updateProgressBars(currentIndex);
+        }, FADE_DURATION);
+    }
 
-            timeoutId = setTimeout(() => {
-                fadeOutCurrentProgressBar();
-                setTimeout(() => {
-                    currentIndex = (currentIndex + 1) % currentContent.length;
-                    updateDynamicView();
-                }, 500);
-            }, SACRED_DURATION);
-        }, 500);
+    function cycleContent() {
+        const newIndex = (currentIndex + 1) % currentContent.length;
+        updateDynamicView(newIndex);
     }
 
     function startCycling() {
-        clearTimeout(timeoutId);
-        currentIndex = 0;
-        progressBarContainer.style.opacity = '1';
-        updateDynamicView();
+        clearInterval(cycleInterval);
+        updateDynamicView(0);
+        cycleInterval = setInterval(cycleContent, SACRED_DURATION);
+    }
+
+    function handleProgressBarClick(index) {
+        if (index === currentIndex) return;
+        clearInterval(cycleInterval);
+        updateDynamicView(index);
+        cycleInterval = setInterval(cycleContent, SACRED_DURATION);
     }
 
     function setActiveNavItem(item) {
-        document.querySelectorAll('.navbar a').forEach(link => {
-            link.classList.remove('active');
-        });
+        document.querySelectorAll('.navbar a').forEach(link => link.classList.remove('active'));
         item.classList.add('active');
     }
 
-    function showTalkToUs() {
-        const content = `
-            <div style="position: relative; min-height: 100%;">
-                <h2>Beta Customers</h2>
-                <p>We are seeking beta customers to test drive our solution, provide valuable feedback, and collaborate with us on developing cutting-edge features. We invite individuals, corporations, and law firms to join us in this exciting journey.</p>
-                <a href="mailto:info@legalforensics.ai" class="reach-us">Reach us
-                    <img src="images/right.png" alt="right arrow">
-                </a>
-            </div>
-        `;
-        updateCustomView(content);
-    }
-
-    function showJoinTeam() {
-        const content = `
-            <div style="position: relative; min-height: 100%;">
-                <h2>Join Our Vision</h2>
-                <p>Are you passionate about revolutionizing legal research with cutting-edge AI and analytics? Join us at legalforensics.ai, where we're pushing the boundaries of legal tech. We are a startup driven by innovation, and we're looking for legal domain experts and developers to join our team on an <b>equity basis</b>.</p>
-                <p>Why join us?</p>
-                <ul>
-                    <li><strong>• Innovation:</strong> Be at the forefront of legal tech innovation</li>
-                    <li><strong>• Growth:</strong> Grow with us and share in our success</li>
-                    <li><strong>• Flexibility:</strong> Enjoy the flexibility of working in a dynamic environment</li>
-                    <li><strong>• Impact:</strong> Your work will directly shape the future of legal research</li>
-                </ul>
-                <a href="mailto:info@legalforensics.ai" class="reach-us">Reach us
-                    <img src="images/right.png" alt="right arrow">
-                </a>
-            </div>
-        `;
-        updateCustomView(content);
-    }
-
-    function updateCustomView(content) {
-        clearTimeout(timeoutId);
+    function showCustomView(content) {
+        clearInterval(cycleInterval);
         dynamicContent.style.opacity = '0';
         progressBarContainer.style.opacity = '0';
         setTimeout(() => {
             dynamicContent.innerHTML = content;
             dynamicContent.style.opacity = '1';
-        }, 500);
-        document.querySelectorAll('.navbar a').forEach(link => {
-            link.classList.remove('active');
-        });
+        }, FADE_DURATION);
+        document.querySelectorAll('.navbar a').forEach(link => link.classList.remove('active'));
     }
 
     function selectCarousel(carouselType) {
-        if (carouselType === 'products') {
-            currentContent = productsContent;
-        } else if (carouselType === 'solutions') {
-            currentContent = solutionsContent;
-        } else if (carouselType === 'company') {
-            currentContent = companyContent;
-        }
+        currentContent = carouselType === 'products' ? productsContent :
+                         carouselType === 'solutions' ? solutionsContent :
+                         companyContent;
         createProgressBars();
         startCycling();
     }
@@ -568,12 +505,29 @@
 
     talkToUsBtn.addEventListener('click', (e) => {
         e.preventDefault();
-        showTalkToUs();
+        showCustomView(`
+            <div style="position: relative; min-height: 100%;">
+                <h2>Beta Customers</h2>
+                <p>We are seeking beta customers to test drive our solution, provide valuable feedback, and collaborate with us on developing cutting-edge features. We invite individuals, corporations, and law firms to join us in this exciting journey.</p>
+            </div>
+        `);
     });
 
     joinTeamBtn.addEventListener('click', (e) => {
         e.preventDefault();
-        showJoinTeam();
+        showCustomView(`
+            <div style="position: relative; min-height: 100%;">
+                <h2>Join Our Vision</h2>
+                <p>Are you passionate about revolutionizing legal research with cutting-edge AI and analytics? Join us at legalforensics.ai, where we're pushing the boundaries of legal tech. We are a startup driven by innovation, and we're looking for legal domain experts and developers to join our team on an <b>equity basis</b>.</p>
+                <p>Why join us?</p>
+                <ul>
+                    <li><strong>• Innovation:</strong> Be at the forefront of legal tech innovation</li>
+                    <li><strong>• Growth:</strong> Grow with us and share in our success</li>
+                    <li><strong>• Flexibility:</strong> Enjoy the flexibility of working in a dynamic environment</li>
+                    <li><strong>• Impact:</strong> Your work will directly shape the future of legal research</li>
+                </ul>
+            </div>
+        `);
     });
 
     setReachUsWidth();
