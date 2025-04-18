@@ -576,8 +576,8 @@
                     currentIndex = newIndex;
                     if (currentContent[currentIndex].image) {
                         dynamicContent.innerHTML = `
-                            <div style="height: 100%; width: 100%; display: flex; flex-direction: column; justify-content: flex-start; align-items: center;">
-                                <img src="${currentContent[currentIndex].image}" alt="Content Image" style="max-width: 100%; max-height: calc(100% - 3em); object-fit: contain;">
+                            <div style="height: 100%; width: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                                <img src="${currentContent[currentIndex].image}" alt="Content Image" style="max-width: 100%; max-height: 100%; object-fit: contain;">
                                 <p>${currentContent[currentIndex].description}</p>
                             </div>
                         `;
