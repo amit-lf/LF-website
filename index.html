@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -449,6 +450,7 @@
             <div class="nav-links">
                 <a href="#" id="products">Product <img src="images/right-sel.png" alt="arrow"></a>
                 <a href="#" id="solutions">Features <img src="images/right-sel.png" alt="arrow"></a>
+		<a href="#" id="industries">Industries <img src="images/right-sel.png" alt="arrow"></a>
                 <a href="#" id="company">Company <img src="images/right-sel.png" alt="arrow"></a>
             </div>
             <a href="mailto:info@legalforensics.ai" class="reach-us navbar-reach-us">Reach us
@@ -495,6 +497,37 @@
             const solutionsContent = [
                 { image: "images/What Can You Do with LegalForensics AI.png", description: "" },
             ];
+
+	    
+const industryContent = [
+    {
+        title: "Construction",
+        description: "Analyze <strong>subcontractor agreements</strong> to uncover risk clauses like pay-if-paid, scope creep, or indemnity traps. Legal Forensics helps construction firms and GCs identify cash flow risks, ambiguous obligations, and misaligned timelines. Ensure favorable terms before committing to complex projects.",
+        image: "images/industry-construction.png"
+    },
+    {
+    	title: "Technology",
+    	description: "Analyze <strong>Master Services Agreements (MSAs)</strong> to surface IP ownership traps, vague SLAs, and hidden indemnification risks. Legal Forensics empowers tech companies and SaaS providers to negotiate cleaner terms, reduce downstream liability, and scale with legal clarity.",
+    	image: "images/industry-technology.png"
+    },
+    {
+        title: "Real Estate",
+        description: "Review <strong>commercial lease agreements</strong> to detect hidden liabilities in repair clauses, termination rights, and rent escalations. Legal Forensics empowers property owners and managers to optimize lease negotiations and avoid costly misunderstandings. Focus on ROI, not legal surprises.",
+        image: "images/industry-realestate.png"
+    },
+    {
+        title: "Healthcare",
+        description: "Dissect <strong>Business Associate Agreements (BAAs)</strong> to ensure HIPAA compliance, clear data-sharing responsibilities, and risk allocation. Legal Forensics helps healthcare providers and vendors mitigate liability and protect patient data. Don't let legal gaps jeopardize regulatory standing.",
+        image: "images/industry-healthcare.png"
+    },
+    {
+        title: "Franchise",
+        description: "Examine <strong>Franchise Disclosure Documents (FDDs)</strong> and franchise agreements to clarify fee obligations, territory restrictions, and termination terms. Legal Forensics helps franchisors and franchisees evaluate alignment and long-term risk. Build growth on legally solid ground.",
+        image: "images/industry-franchise.png"
+    },
+    
+];
+
 
             const companyContent = [
                 {title: "About Us", description: "Legal Forensics is pioneering the future of contract analysis with AI-driven innovation. Our advanced technology transforms how businesses and professionals identify risks, obligations, and compliance gaps in contracts. By integrating cutting-edge AI and machine learning, we deliver precise, actionable insights—helping users navigate complex agreements with confidence and efficiency."},
@@ -566,33 +599,50 @@
             }
 
             function updateDynamicView(newIndex) {
-                dynamicContent.style.opacity = '0';
-                if (progressBarContainer.children[currentIndex]) {
-                    const currentProgressBar = progressBarContainer.children[currentIndex].querySelector('.progress');
-                    if (currentProgressBar) currentProgressBar.style.opacity = '0';
-                }
+    dynamicContent.style.opacity = '0';
+    if (progressBarContainer.children[currentIndex]) {
+        const currentProgressBar = progressBarContainer.children[currentIndex].querySelector('.progress');
+        if (currentProgressBar) currentProgressBar.style.opacity = '0';
+    }
 
-                setTimeout(() => {
-                    currentIndex = newIndex;
-                    if (currentContent[currentIndex].image) {
-                        dynamicContent.innerHTML = `
-                            <div style="height: 100%; width: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center;">
-                                <img src="${currentContent[currentIndex].image}" alt="Content Image" style="max-width: 100%; max-height: 100%; object-fit: contain;">
-                                <p>${currentContent[currentIndex].description}</p>
-                            </div>
-                        `;
-                        dynamicContent.classList.toggle('products-view', currentContent === productsContent);
-                    } else {
-                        dynamicContent.innerHTML = `
-                            <h2>${currentContent[currentIndex].title}</h2>
-                            <p>${currentContent[currentIndex].description}</p>
-                        `;
-                        dynamicContent.classList.remove('products-view');
-                    }
-                    dynamicContent.style.opacity = '1';
-                    updateProgressBars(currentIndex);
-                }, FADE_DURATION);
-            }
+    setTimeout(() => {
+        currentIndex = newIndex;
+
+        const content = currentContent[currentIndex];
+        const isIndustryView = currentContent === industryContent;
+
+        if (content.image && content.title && isIndustryView) {
+            // INDUSTRY ICON VIEW
+            dynamicContent.innerHTML = `
+                <div style="display: flex; flex-direction: column; align-items: center; text-align: center; padding: 1em;">
+                    <img src="${content.image}" alt="${content.title}" style="width: 100px; height: 100px; margin-bottom: 1em;">
+                    <h2>${content.title}</h2>
+                    <p>${content.description}</p>
+                </div>
+            `;
+            dynamicContent.classList.remove('products-view');
+        } else if (content.image) {
+            // PRODUCT IMAGE VIEW
+            dynamicContent.innerHTML = `
+                <div style="height: 100%; width: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                    <img src="${content.image}" alt="Content Image" style="max-width: 100%; max-height: 100%; object-fit: contain;">
+                    <p>${content.description}</p>
+                </div>
+            `;
+            dynamicContent.classList.toggle('products-view', currentContent === productsContent);
+        } else {
+            // TEXT ONLY VIEW (e.g., Company/About)
+            dynamicContent.innerHTML = `
+                <h2>${content.title}</h2>
+                <p>${content.description}</p>
+            `;
+            dynamicContent.classList.remove('products-view');
+        }
+
+        dynamicContent.style.opacity = '1';
+        updateProgressBars(currentIndex);
+    }, FADE_DURATION);
+}
 
             function cycleContent() {
                 const newIndex = (currentIndex + 1) % currentContent.length;
@@ -631,6 +681,7 @@
             function selectCarousel(carouselType) {
                 currentContent = carouselType === 'products' ? productsContent :
                                 carouselType === 'solutions' ? solutionsContent :
+				carouselType === 'industries' ? industryContent :
                                 companyContent;
                 createProgressBars();
                 startCycling();
@@ -653,6 +704,15 @@
                 selectCarousel('company');
                 setActiveNavItem(companyLink);
             });
+
+	   const industriesLink = document.getElementById('industries');
+
+		industriesLink.addEventListener('click', (e) => {
+    		e.preventDefault();
+    		selectCarousel('industries');
+    		setActiveNavItem(industriesLink);
+	   });
+
 
             joinTeamBtn.addEventListener('click', (e) => {
                 e.preventDefault();
