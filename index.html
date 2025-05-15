@@ -787,9 +787,17 @@ else {
                 `);
             });
 
-            createProgressBars();
-            startCycling();
-            setActiveNavItem(productsLink);
+            // Initialize the page based on productsContent length
+	    setActiveNavItem(productsLink);
+	    if (productsContent.length === 1) {
+		    progressBarContainer.style.opacity = '0';
+		    currentContent = productsContent;
+		    updateDynamicView(0);
+	   } else {
+		    currentContent = productsContent;
+		    createProgressBars();
+		    startCycling();
+	  }
 
             // Handle window resize
             window.addEventListener('resize', () => {
