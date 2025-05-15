@@ -646,21 +646,23 @@ const industryContent = [
 } else if (content.image) {
 // SPECIAL LAYOUT for the "What Can You Do with LegalForensics AI" image
     if (content.image === "images/What Can You Do with LegalForensics AI.png") {
-        dynamicContent.innerHTML = `
-            <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100%; width: 100%;">
-                <div style="
-                    width: 100%;
-                    height: 100%;
-                    background-image: url('${content.image}');
-                    background-size: cover;
-                    background-repeat: no-repeat;
-                    background-position: center;
-                    border-radius: 1em;
-                "></div>
-                <p style="padding: 1em; text-align: center; max-width: 90%;">${content.description}</p>
-            </div>
-        `;
-    } else {
+    dynamicContent.innerHTML = `
+        <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100%; width: 100%;">
+            <div style="
+                width: 100%;
+                height: 60vh;
+                min-height: 300px;
+                background-image: url('${content.image}');
+                background-size: cover;
+                background-repeat: no-repeat;
+                background-position: center;
+                border-radius: 1em;
+            "></div>
+            <p style="padding: 1em; text-align: center; max-width: 90%;">${content.description}</p>
+        </div>
+    `;
+}
+else {
     // PRODUCT IMAGE VIEW
     dynamicContent.innerHTML = `
         <div style="height: 100%; width: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center;">
