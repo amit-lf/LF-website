@@ -139,14 +139,16 @@
             transform: translateX(0.3em);
         }
         .content {
-            display: flex;
-            padding: 2em;
-            max-width: 1200px;
-            margin: 0 auto;
-            align-items: stretch;
-            justify-content: space-between;
-            flex-wrap: wrap;
-        }
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: calc(100vh - 120px); /* adjust based on navbar height */
+    padding: 2em;
+    max-width: 1200px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+}
+
         .main-content {
     	   flex: 1;
     	   display: flex;
