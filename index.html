@@ -695,13 +695,23 @@ const industryContent = [
             }
 
             function selectCarousel(carouselType) {
-                currentContent = carouselType === 'products' ? productsContent :
-                                carouselType === 'solutions' ? solutionsContent :
-				carouselType === 'industries' ? industryContent :
-                                companyContent;
-                createProgressBars();
-                startCycling();
-            }
+    		     currentContent = carouselType === 'products' ? productsContent :
+                     carouselType === 'solutions' ? solutionsContent :
+                     carouselType === 'industries' ? industryContent :
+                     companyContent;
+
+		    // If there's only one item, show it statically without progress bar or cycling
+		    if (currentContent.length === 1) {
+		        clearInterval(cycleInterval);
+		        progressBarContainer.style.opacity = '0';
+		        updateDynamicView(0);
+		        return;
+		    }
+		
+		    createProgressBars();
+		    startCycling();
+	}
+
 
             productsLink.addEventListener('click', (e) => {
                 e.preventDefault();
