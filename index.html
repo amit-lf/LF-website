@@ -208,24 +208,26 @@
         .button:hover {
             transform: scale(1.05);
         }
-        .dynamic-view {
-            flex: 2;
-            background-color: white;
-            border: 0.125em solid white;
-            border-radius: 2.5em;
-            padding: 1.5em;
-            margin-left: 2em;
-            position: relative;
-            overflow: auto;
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-            width: 55%;
-            min-width: 300px;
-            box-sizing: border-box;
-            overflow-y: auto;
-            max-height: 100%;
-        }
+	.dynamic-view {
+	    flex: 2;
+	    background-color: white;
+	    border: 0.125em solid white;
+	    border-radius: 2.5em;
+	    padding: 1.5em;
+	    margin-left: 2em;
+	    position: relative;
+	    display: flex;
+	    flex-direction: column;
+	    width: 55%;
+	    min-width: 300px;
+	    box-sizing: border-box;
+	
+	    /* ✅ These are the key changes */
+	    min-height: 600px;        /* prevents layout shrinking when switching tabs */
+	    height: auto;             /* allow growth beyond baseline */
+	    overflow: visible;        /* no scrollbars unless necessary */
+	}
+
         .progress-bar-container {
             position: absolute;
             top: 1em;
