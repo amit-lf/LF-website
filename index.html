@@ -138,16 +138,17 @@
         .reach-us:hover img {
             transform: translateX(0.3em);
         }
-        .content {
+       .content {
     display: flex;
-    align-items: center;
+    align-items: stretch; /* ensures equal height columns */
     justify-content: space-between;
     min-height: calc(100vh - 120px); /* adjust based on navbar height */
     padding: 2em;
     max-width: 1200px;
     margin: 0 auto;
-    flex-wrap: wrap;
+    flex-wrap: nowrap; /* no wrapping for desktop */
 }
+
 
         .main-content {
     	   flex: 1;
