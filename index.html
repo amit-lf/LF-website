@@ -450,7 +450,44 @@
         .overlay.active {
             display: block;
         }
+	.tooltip-trigger {
+           position: relative;
+        }
+
+        .tooltip {
+         position: absolute;
+         bottom: 100%;
+    	left: 50%;
+	    transform: translateX(-50%);
+	    background: #1e293b;
+	    color: white;
+	    padding: 8px 12px;
+	    border-radius: 6px;
+	    font-size: 13px;
+	    white-space: nowrap;
+	    opacity: 0;
+	    visibility: hidden;
+	    transition: opacity 0.3s, visibility 0.3s;
+	    z-index: 1000;
+	    margin-bottom: 5px;
+	}
+
+	.tooltip::after {
+	    content: '';
+	    position: absolute;
+	    top: 100%;
+	    left: 50%;
+	    transform: translateX(-50%);
+	    border: 5px solid transparent;
+	    border-top-color: #1e293b;
+	}
+	
+	.tooltip-trigger:hover .tooltip {
+	    opacity: 1;
+	    visibility: visible;
+	}
     </style>
+	
 </head>
 <body>
     <div class="overlay" id="overlay"></div>
@@ -466,7 +503,10 @@
                 <a href="#" id="products">Product <img src="images/right-sel.png" alt="arrow"></a>
                 <a href="#" id="solutions">Features <img src="images/right-sel.png" alt="arrow"></a>
 		<a href="#" id="industries">Industries <img src="images/right-sel.png" alt="arrow"></a>
-		<a href="#" id="bookmarklet">Instant <img src="images/right-sel.png" alt="arrow"></a>   <!-- bookmarklet href -->
+		<a href="#" id="bookmarklet" class="tooltip-trigger">Instant 
+    			<img src="images/right-sel.png" alt="arrow">
+    		<span class="tooltip">Analyze contracts on any website instantly</span>
+</a>   <!-- bookmarklet href -->
                 <a href="#" id="company">Company <img src="images/right-sel.png" alt="arrow"></a>
             </div>
             <a href="mailto:info@legalforensics.ai" class="reach-us navbar-reach-us">Reach us
