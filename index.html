@@ -953,6 +953,17 @@ else {
                 }
             });
         });
+
+	    const instantLink = document.getElementById('bookmarklet');
+
+		instantLink.addEventListener('click', (e) => {
+		    e.preventDefault();
+		    clearInterval(cycleInterval);
+		    progressBarContainer.style.opacity = '0';
+		    currentContent = bookmarkletContent;
+		    updateDynamicView(0);
+		    setActiveNavItem(instantLink);
+		});
     </script>
 </body>
 </html>
