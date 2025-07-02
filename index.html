@@ -466,6 +466,7 @@
                 <a href="#" id="products">Product <img src="images/right-sel.png" alt="arrow"></a>
                 <a href="#" id="solutions">Features <img src="images/right-sel.png" alt="arrow"></a>
 		<a href="#" id="industries">Industries <img src="images/right-sel.png" alt="arrow"></a>
+		<a href="#" id="bookmarklet">Bookmarklet <img src="images/right-sel.png" alt="arrow"></a>   <!-- bookmarklet href -->
                 <a href="#" id="company">Company <img src="images/right-sel.png" alt="arrow"></a>
             </div>
             <a href="mailto:info@legalforensics.ai" class="reach-us navbar-reach-us">Reach us
@@ -565,6 +566,94 @@ const industryContent = [
 		  }
 		];
 
+<!-- begin bookmarklet-->
+
+	const bookmarkletContent = [
+    {
+        title: "Contract Analyzer Bookmarklet",
+        description: `
+            <div style="text-align: center; margin-bottom: 2em;">
+                <div style="font-size: 3em; margin-bottom: 1em;">🔍</div>
+                <h3 style="margin-bottom: 1em;">Analyze contracts on any website with one click</h3>
+            </div>
+            
+            <div style="background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%); border-radius: 12px; padding: 2em; margin: 2em 0; text-align: center; border: 2px dashed #3b82f6;">
+                <h4 style="margin-bottom: 1em;">📌 Install the Bookmarklet</h4>
+                <p style="margin-bottom: 1.5em;">Drag this button to your bookmarks bar:</p>
+                
+                <a href="javascript:(function(){if(window.contractAnalyzer){window.contractAnalyzer.toggle();return;}var script=document.createElement('script');script.src='https://amit-lf.github.io/LF-website/js/bookmarklet.js';document.head.appendChild(script);})();" 
+                   style="
+                       display: inline-block;
+                       background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+                       color: white;
+                       padding: 16px 32px;
+                       border-radius: 12px;
+                       text-decoration: none;
+                       font-weight: 600;
+                       font-size: 18px;
+                       margin: 15px 0;
+                       transition: all 0.3s;
+                       box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
+                       cursor: grab;
+                   "
+                   onclick="return false;"
+                   onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 8px 25px rgba(59, 130, 246, 0.6)'"
+                   onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(59, 130, 246, 0.4)'">
+                    🔍 Analyze Contracts
+                </a>
+                
+                <p style="margin-top: 1em; font-size: 14px; color: #64748b;">
+                    <strong>Note:</strong> If dragging doesn't work, right-click and select "Bookmark this link"
+                </p>
+            </div>
+            
+            <div style="background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%); border: 2px solid #a7f3d0; border-radius: 12px; padding: 1.5em; margin: 1.5em 0;">
+                <h4 style="color: #059669; margin-bottom: 1em;">📋 How to Use</h4>
+                <div style="text-align: left;">
+                    <div style="margin-bottom: 1em; padding: 0.5em; background: white; border-radius: 6px;">
+                        <strong>1.</strong> Drag the button above to your bookmarks bar
+                    </div>
+                    <div style="margin-bottom: 1em; padding: 0.5em; background: white; border-radius: 6px;">
+                        <strong>2.</strong> Visit any website with contracts (Zillow, DocuSign, etc.)
+                    </div>
+                    <div style="margin-bottom: 1em; padding: 0.5em; background: white; border-radius: 6px;">
+                        <strong>3.</strong> Click the bookmarklet to analyze contracts on the page
+                    </div>
+                </div>
+            </div>
+            
+            <div style="background: #fef3c7; border: 2px solid #f59e0b; border-radius: 12px; padding: 1.5em; margin: 1.5em 0;">
+                <h4 style="color: #92400e; margin-bottom: 1em;">🧪 Test It Here</h4>
+                <p style="margin-bottom: 1em;">Try the bookmarklet on this sample contract text:</p>
+                <div style="background: white; padding: 1em; border-radius: 8px; text-align: left; font-size: 14px; border-left: 4px solid #3b82f6;">
+                    <strong>Sample Rental Agreement:</strong> This Agreement is entered into between Landlord and Tenant. 
+                    Monthly rent shall be $2,500 due on the first day of each month. Security deposit of $2,500 required. 
+                    Lease term is 12 months. Tenant agrees to maintain premises and shall not sublet without consent.
+                </div>
+            </div>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1em; margin: 2em 0;">
+                <div style="background: white; border-radius: 12px; padding: 1em; text-align: center; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
+                    <div style="font-size: 2em; margin-bottom: 0.5em;">📄</div>
+                    <strong>PDF Detection</strong>
+                    <p style="font-size: 12px; margin: 0.5em 0;">Finds PDF contracts automatically</p>
+                </div>
+                <div style="background: white; border-radius: 12px; padding: 1em; text-align: center; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
+                    <div style="font-size: 2em; margin-bottom: 0.5em;">📝</div>
+                    <strong>Text Analysis</strong>
+                    <p style="font-size: 12px; margin: 0.5em 0;">Scans page content for contracts</p>
+                </div>
+                <div style="background: white; border-radius: 12px; padding: 1em; text-align: center; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
+                    <div style="font-size: 2em; margin-bottom: 0.5em;">⚡</div>
+                    <strong>Instant Results</strong>
+                    <p style="font-size: 12px; margin: 0.5em 0;">Get summaries in seconds</p>
+                </div>
+            </div>
+        `
+    }
+];
+
+<!-- end bookmarklet-->
 
 
             let currentContent = productsContent;
