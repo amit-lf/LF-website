@@ -1,0 +1,17 @@
+# wrangler.toml (wrangler v3.88.0^)
+name = "legal-forensics-api-dev-vish"
+main = "cloudflare-worker.js"
+compatibility_date = "2024-01-15"
+
+# Enable logging for debugging
+[observability.logs]
+enabled = true
+
+# Environment variables
+[vars]
+HUNTER_API_KEY = "a98ee1567f24216741de31ce6aaa17c10f04813b"
+
+# KV namespace for user data
+[[kv_namespaces]]
+binding = "LF_USERS_DATA"
+id = "e8e677957ef7465daa8101b6c33a3378"
