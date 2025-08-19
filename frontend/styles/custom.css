@@ -1,0 +1,86 @@
+.btn-outline-primary { 
+
+
+  border-color: #000000; 
+  color:#000000;
+
+
+
+}
+
+
+.btn-outline-primary:hover, .btn-primary{
+    background-color: #000000; 
+    border-color: #000000;
+transition: background-color 0.5s;
+
+}
+
+
+.btn-primary:hover {
+
+  background-color: #1b1b1b;
+  border-color: #1b1b1b;
+}
+
+.carousel-indicators {
+  position: relative;
+}
+.carousel-indicators [data-bs-target] {
+  
+   background-color: #C9C9C9;
+   width: 10px;
+   height: 10px;
+   border-radius: 100%;
+   opacity: 1;
+
+}
+
+
+
+.carousel-control-next-icon, .carousel-control-prev-icon { 
+
+  
+   background-color: #C9C9C9;
+
+   opacity: 1;
+}
+
+.carousel-indicators .active{
+
+
+   background-color: #000000;
+
+
+  
+}
+
+
+.benefits-list {
+list-style-type: none!important;
+}
+
+.benefits-list li{
+  padding-top:5px;
+  padding-bottom:5px;
+}
+
+.benefits-list li:before {
+content: url("../assets/images/icons/check.png")!important;
+color: #2cba6c;
+font-family: 'ETMODULES'!important;
+margin-right: 10px;
+position: relative;
+top:6px;
+margin-left: -14px;
+
+}
+
+.carousel-item {
+  transition: transform 1s ease-in-out;
+}
+
+.carousel-fade .active.carousel-item-start,
+.carousel-fade .active.carousel-item-end {
+  transition: opacity 0s 2.6s;
+}

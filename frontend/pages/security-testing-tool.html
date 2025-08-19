@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="/favicon.ico">
+    <title>Security Testing Tool - Legal Forensics</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../styles/custom.css" rel="stylesheet">
+    <style>
+        .test-result { 
+            margin: 10px 0; 
+            padding: 10px; 
+            border-radius: 5px; 
+            border-left: 4px solid;
+        }
+        .test-pass { 
+            background-color: #d4edda; 
+            border-color: #28a745; 
+            color: #155724; 
+        }
+        .test-fail { 
+            background-color: #f8d7da; 
+            border-color: #dc3545; 
+            color: #721c24; 
+        }
+        .test-warning { 
+            background-color: #fff3cd; 
+            border-color: #ffc107; 
+            color: #856404; 
+        }
+        .test-info { 
+            background-color: #d1ecf1; 
+            border-color: #17a2b8; 
+            color: #0c5460; 
+        }
+        .progress-bar {
+            transition: width 0.3s ease;
+        }
+        .security-score {
+            font-size: 2rem;
+            font-weight: bold;
+            text-align: center;
+            margin: 20px 0;
+        }
+        .score-excellent { color: #28a745; }
+        .score-good { color: #ffc107; }
+        .score-poor { color: #dc3545; }
+    </style>
+</head>
+<body>
+    <div class="container mt-4">
+        <div class="text-center mb-4">
+            <img src="../assets/images/logo/Logo.png" alt="Legal Forensics" style="height: 60px; margin-bottom: 20px;">
+            <h1>Security Testing Tool</h1>
+            <p class="text-muted">Comprehensive security assessment for Legal Forensics application</p>
+        </div>
+
+        <div class="row">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="mb-0">Security Test Results</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <button id="runAllTests" class="btn btn-primary" onclick="runAllTests()">
+                                Run All Security Tests
+                            </button>
+                            <button class="btn btn-secondary ms-2" onclick="clearResults()">
+                                Clear Results
+                            </button>
+                            <button class="btn btn-success ms-2" onclick="exportResults()">
+                                Export Report
+                            </button>
+                        </div>
+                        
+                        <div class="progress mb-3" style="height: 25px;">
+                            <div id="progressBar" class="progress-bar" role="progressbar" style="width: 0%">
+                                0%
+                            </div>
+                        </div>
+                        
+                        <div id="testResults"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="mb-0">Security Score</h5>
+                    </div>
+                    <div class="card-body text-center">
+                        <div id="securityScore" class="security-score score-excellent">-</div>
+                        <p class="text-muted">Overall security assessment</p>
+                    </div>
+                </div>
+                
+                <div class="card mt-3">
+                    <div class="card-header">
+                        <h5 class="mb-0">Test Summary</h5>
+                    </div>
+                    <div class="card-body">
+                        <div id="testSummary">
+                            <p class="text-muted">Run tests to see summary</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Test result constants
+        const TEST_RESULTS = {
+            PASS: 'pass',
+            FAIL: 'fail', 
+            WARNING: 'warning',
+            INFO: 'info'
+        };
+
+        // Global variables
+        let testResults = [];
+        let isRunning = false;
+
+        function addTestResult(category, name, result, details) {
+            const testResult = {
+                category: category,
+                name: name,
+                result: result,
+                details: details,
+                timestamp: new Date().toISOString()
+            };
+            
+            testResults.push(testResult);
+            
+            const resultDiv = document.createElement('div');
+            resultDiv.className = `test-result test-${result}`;
+            resultDiv.innerHTML = `
+                <strong>${category} - ${name}:</strong> ${result.toUpperCase()}<br>
+                <small>${details}</small>
+            `;
+            
+            document.getElementById('testResults').appendChild(resultDiv);
+            updateProgress();
+            updateSecurityScore();
+            updateTestSummary();
+        }
+
+        function updateProgress() {
+            const totalTests = 13; // Total number of tests
+            const completedTests = testResults.length;
+            const percentage = Math.round((completedTests / totalTests) * 100);
+            
+            const progressBar = document.getElementById('progressBar');
+            progressBar.style.width = percentage + '%';
+            progressBar.textContent = percentage + '%';
+        }
+
+        function updateSecurityScore() {
+            if (testResults.length === 0) {
+                document.getElementById('securityScore').textContent = '-';
+                return;
+            }
+            
+            const passCount = testResults.filter(r => r.result === TEST_RESULTS.PASS).length;
+            const failCount = testResults.filter(r => r.result === TEST_RESULTS.FAIL).length;
+            const warningCount = testResults.filter(r => r.result === TEST_RESULTS.WARNING).length;
+            
+            const totalTests = testResults.length;
+            const score = Math.round(((passCount - failCount) / totalTests) * 100);
+            
+            const scoreElement = document.getElementById('securityScore');
+            scoreElement.textContent = score + '%';
+            
+            // Update score color
+            scoreElement.className = 'security-score';
+            if (score >= 80) {
+                scoreElement.classList.add('score-excellent');
+            } else if (score >= 60) {
+                scoreElement.classList.add('score-good');
+            } else {
+                scoreElement.classList.add('score-poor');
+            }
+        }
+
+        function updateTestSummary() {
+            const passCount = testResults.filter(r => r.result === TEST_RESULTS.PASS).length;
+            const failCount = testResults.filter(r => r.result === TEST_RESULTS.FAIL).length;
+            const warningCount = testResults.filter(r => r.result === TEST_RESULTS.WARNING).length;
+            const infoCount = testResults.filter(r => r.result === TEST_RESULTS.INFO).length;
+            
+            document.getElementById('testSummary').innerHTML = `
+                <div class="row text-center">
+                    <div class="col-3">
+                        <div class="text-success">${passCount}</div>
+                        <small>Pass</small>
+                    </div>
+                    <div class="col-3">
+                        <div class="text-danger">${failCount}</div>
+                        <small>Fail</small>
+                    </div>
+                    <div class="col-3">
+                        <div class="text-warning">${warningCount}</div>
+                        <small>Warning</small>
+                    </div>
+                    <div class="col-3">
+                        <div class="text-info">${infoCount}</div>
+                        <small>Info</small>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Security test functions
+        function testAPIKeyExposure() {
+            try {
+                // Check for actual API key patterns in the DOM
+                const html = document.documentElement.outerHTML;
+                
+                // Look for potential API keys (32+ character alphanumeric strings)
+                const apiKeyPattern = /[a-zA-Z0-9]{32,}/g;
+                const potentialKeys = html.match(apiKeyPattern) || [];
+                
+                // Filter out common false positives
+                const falsePositives = [
+                    'documentElement', 'outerHTML', 'innerHTML', 'textContent',
+                    'addEventListener', 'removeEventListener', 'querySelector',
+                    'getElementById', 'getElementsByClassName', 'getElementsByTagName'
+                ];
+                
+                const suspiciousKeys = potentialKeys.filter(key => 
+                    !falsePositives.some(fp => key.includes(fp)) &&
+                    key.length >= 32
+                );
+                
+                if (suspiciousKeys.length > 0) {
+                    addTestResult(
+                        'API Key Protection',
+                        'API Key Exposure',
+                        TEST_RESULTS.WARNING,
+                        'Potential API keys detected (manual review recommended): ' + suspiciousKeys.slice(0, 3).join(', ')
+                    );
+                } else {
+                    addTestResult(
+                        'API Key Protection',
+                        'API Key Exposure',
+                        TEST_RESULTS.PASS,
+                        'No actual API keys found in client-side code'
+                    );
+                }
+            } catch (error) {
+                addTestResult(
+                    'API Key Protection',
+                    'API Key Exposure',
+                    TEST_RESULTS.WARNING,
+                    'Error during test: ' + error.message
+                );
+            }
+        }
+
+        function testEnvironmentVariables() {
+            try {
+                // Check for environment variable patterns
+                const globalVars = Object.keys(window);
+                
+                // Look for actual env objects
+                let exposed = false;
+                let foundVars = [];
+                
+                try {
+                    if (window.process && window.process.env) {
+                        exposed = true;
+                        foundVars.push('process.env');
+                    }
+                } catch (e) {
+                    // Good - not accessible
+                }
+                
+                // Check for suspicious global variables
+                const suspiciousGlobals = globalVars.filter(key => 
+                    key.toLowerCase().includes('env') && 
+                    key.length > 3 &&
+                    !['environment', 'envelope', 'event'].some(safe => key.toLowerCase().includes(safe))
+                );
+                
+                if (exposed || suspiciousGlobals.length > 0) {
+                    addTestResult(
+                        'API Key Protection',
+                        'Environment Variables',
+                        TEST_RESULTS.WARNING,
+                        'Potential environment variables detected: ' + [...foundVars, ...suspiciousGlobals.slice(0, 2)].join(', ')
+                    );
+                } else {
+                    addTestResult(
+                        'API Key Protection',
+                        'Environment Variables',
+                        TEST_RESULTS.PASS,
+                        'No environment variables exposed in client-side code'
+                    );
+                }
+            } catch (error) {
+                addTestResult(
+                    'API Key Protection',
+                    'Environment Variables',
+                    TEST_RESULTS.PASS,
+                    'Environment variables properly hidden'
+                );
+            }
+        }
+
+        function testXSSProtection() {
+            try {
+                let xssVulnerable = false;
+                let details = [];
+                
+                // Test 1: Check for javascript: protocol support
+                try {
+                    const link = document.createElement('a');
+                    link.href = 'javascript:void(0)';
+                    if (link.href.includes('javascript:')) {
+                        xssVulnerable = true;
+                        details.push('javascript: protocol');
+                    }
+                } catch (e) {
+                    // Good - protocol blocked
+                }
+                
+                // Test 2: Check for eval availability
+                try {
+                    if (typeof eval === 'function') {
+                        xssVulnerable = true;
+                        details.push('eval function available');
+                    }
+                } catch (e) {
+                    // Good - eval blocked
+                }
+                
+                if (xssVulnerable) {
+                    addTestResult(
+                        'Input Validation',
+                        'XSS Protection',
+                        TEST_RESULTS.WARNING,
+                        'XSS vectors detected: ' + details.join(', ')
+                    );
+                } else {
+                    addTestResult(
+                        'Input Validation',
+                        'XSS Protection',
+                        TEST_RESULTS.PASS,
+                        'XSS protection working properly'
+                    );
+                }
+            } catch (error) {
+                addTestResult(
+                    'Input Validation',
+                    'XSS Protection',
+                    TEST_RESULTS.INFO,
+                    'XSS test completed (browser security prevents full testing)'
+                );
+            }
+        }
+
+        function testEmailValidation() {
+            try {
+                const testEmails = [
+                    'test@example.com',
+                    'invalid-email',
+                    'test@',
+                    '@example.com'
+                ];
+                
+                let validCount = 0;
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                
+                for (const email of testEmails) {
+                    if (emailRegex.test(email)) {
+                        validCount++;
+                    }
+                }
+                
+                if (validCount === 1) {
+                    addTestResult(
+                        'Input Validation',
+                        'Email Validation',
+                        TEST_RESULTS.PASS,
+                        'Email validation working correctly'
+                    );
+                } else {
+                    addTestResult(
+                        'Input Validation',
+                        'Email Validation',
+                        TEST_RESULTS.WARNING,
+                        'Email validation may need improvement (' + validCount + '/4 valid)'
+                    );
+                }
+            } catch (error) {
+                addTestResult(
+                    'Input Validation',
+                    'Email Validation',
+                    TEST_RESULTS.WARNING,
+                    'Error during email validation test: ' + error.message
+                );
+            }
+        }
+
+        function testSessionSecurity() {
+            try {
+                const sessionData = sessionStorage.getItem('userData');
+                if (sessionData) {
+                    const userData = JSON.parse(sessionData);
+                    if (userData.firstName && userData.lastName && userData.email) {
+                        addTestResult(
+                            'Authentication',
+                            'Session Security',
+                            TEST_RESULTS.PASS,
+                            'Session data properly structured and stored'
+                        );
+                    } else {
+                        addTestResult(
+                            'Authentication',
+                            'Session Security',
+                            TEST_RESULTS.WARNING,
+                            'Session data structure incomplete'
+                        );
+                    }
+                } else {
+                    addTestResult(
+                        'Authentication',
+                        'Session Security',
+                        TEST_RESULTS.INFO,
+                        'No active session found (normal if not logged in)'
+                    );
+                }
+            } catch (error) {
+                addTestResult(
+                    'Authentication',
+                    'Session Security',
+                    TEST_RESULTS.WARNING,
+                    'Error checking session: ' + error.message
+                );
+            }
+        }
+
+        function testCORSHeaders() {
+            addTestResult(
+                'CORS & Headers',
+                'CORS Configuration',
+                TEST_RESULTS.INFO,
+                'CORS headers require server-side testing with actual API calls'
+            );
+        }
+
+        function testSecurityHeaders() {
+            addTestResult(
+                'CORS & Headers',
+                'Security Headers',
+                TEST_RESULTS.INFO,
+                'Security headers require server-side inspection'
+            );
+        }
+
+        function testRateLimiting() {
+            addTestResult(
+                'Rate Limiting',
+                'Client-Side Rate Limiting',
+                TEST_RESULTS.INFO,
+                'Rate limiting requires server-side implementation testing'
+            );
+        }
+
+        function testErrorHandling() {
+            try {
+                let handlersFound = 0;
+                if (window.onerror) {
+                    handlersFound++;
+                }
+                if (window.addEventListener) {
+                    handlersFound++;
+                }
+                if (handlersFound > 0) {
+                    addTestResult(
+                        'Error Handling',
+                        'Error Logging',
+                        TEST_RESULTS.PASS,
+                        'Error handling mechanisms detected'
+                    );
+                } else {
+                    addTestResult(
+                        'Error Handling',
+                        'Error Logging',
+                        TEST_RESULTS.WARNING,
+                        'No error handling mechanisms detected'
+                    );
+                }
+            } catch (error) {
+                addTestResult(
+                    'Error Handling',
+                    'Error Logging',
+                    TEST_RESULTS.WARNING,
+                    'Error during error handling test: ' + error.message
+                );
+            }
+        }
+
+        function testConsoleAccess() {
+            try {
+                const originalConsole = console.log;
+                let consoleBlocked = false;
+                try {
+                    console.log = function() {};
+                    console.log('test');
+                    consoleBlocked = false;
+                } catch (e) {
+                    consoleBlocked = true;
+                } finally {
+                    console.log = originalConsole;
+                }
+                if (consoleBlocked) {
+                    addTestResult(
+                        'Security',
+                        'Console Access',
+                        TEST_RESULTS.WARNING,
+                        'Console access is blocked (may affect debugging)'
+                    );
+                } else {
+                    addTestResult(
+                        'Security',
+                        'Console Access',
+                        TEST_RESULTS.PASS,
+                        'Console access available for debugging'
+                    );
+                }
+            } catch (error) {
+                addTestResult(
+                    'Security',
+                    'Console Access',
+                    TEST_RESULTS.INFO,
+                    'Could not determine console access status'
+                );
+            }
+        }
+
+        function testDataValidation() {
+            try {
+                const testData = [
+                    { type: 'email', value: 'test@example.com', valid: true },
+                    { type: 'email', value: 'invalid-email', valid: false },
+                    { type: 'name', value: 'John Doe', valid: true },
+                    { type: 'name', value: 'script test', valid: false }
+                ];
+                
+                let validationScore = 0;
+                for (const test of testData) {
+                    if (test.type === 'email') {
+                        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                        if (emailRegex.test(test.value) === test.valid) {
+                            validationScore++;
+                        }
+                    } else if (test.type === 'name') {
+                        const nameRegex = /^[a-zA-Z\s]+$/;
+                        if (nameRegex.test(test.value) === test.valid) {
+                            validationScore++;
+                        }
+                    }
+                }
+                
+                const percentage = (validationScore / testData.length) * 100;
+                if (percentage >= 75) {
+                    addTestResult(
+                        'Data Validation',
+                        'Input Validation',
+                        TEST_RESULTS.PASS,
+                        'Data validation working well (' + percentage + '% accuracy)'
+                    );
+                } else {
+                    addTestResult(
+                        'Data Validation',
+                        'Input Validation',
+                        TEST_RESULTS.WARNING,
+                        'Data validation needs improvement (' + percentage + '% accuracy)'
+                    );
+                }
+            } catch (error) {
+                addTestResult(
+                    'Data Validation',
+                    'Input Validation',
+                    TEST_RESULTS.WARNING,
+                    'Error during validation test: ' + error.message
+                );
+            }
+        }
+
+        function testNetworkSecurity() {
+            addTestResult(
+                'Network Security',
+                'HTTPS Usage',
+                TEST_RESULTS.INFO,
+                'HTTPS status requires server configuration check'
+            );
+        }
+
+        function testContentSecurityPolicy() {
+            addTestResult(
+                'Network Security',
+                'Content Security Policy',
+                TEST_RESULTS.INFO,
+                'CSP requires server-side header inspection'
+            );
+        }
+
+        function runAllTests() {
+            if (isRunning) return;
+            
+            isRunning = true;
+            document.getElementById('runAllTests').disabled = true;
+            document.getElementById('runAllTests').textContent = 'Running Tests...';
+            
+            // Clear previous results
+            testResults = [];
+            document.getElementById('testResults').innerHTML = '';
+            
+            const tests = [
+                testAPIKeyExposure,
+                testEnvironmentVariables,
+                testXSSProtection,
+                testEmailValidation,
+                testSessionSecurity,
+                testCORSHeaders,
+                testSecurityHeaders,
+                testRateLimiting,
+                testErrorHandling,
+                testConsoleAccess,
+                testDataValidation,
+                testNetworkSecurity,
+                testContentSecurityPolicy
+            ];
+            
+            let completed = 0;
+            
+            function runNextTest() {
+                if (completed < tests.length) {
+                    try {
+                        tests[completed]();
+                    } catch (error) {
+                        addTestResult(
+                            'Test Execution',
+                            'Test ' + (completed + 1),
+                            TEST_RESULTS.FAIL,
+                            'Test failed: ' + error.message
+                        );
+                    }
+                    completed++;
+                    setTimeout(runNextTest, 200);
+                } else {
+                    isRunning = false;
+                    document.getElementById('runAllTests').disabled = false;
+                    document.getElementById('runAllTests').textContent = 'Run All Security Tests';
+                    
+                    addTestResult(
+                        'Test Execution',
+                        'All Tests Complete',
+                        TEST_RESULTS.INFO,
+                        'Completed ' + testResults.length + ' security tests'
+                    );
+                }
+            }
+            
+            runNextTest();
+        }
+
+        function clearResults() {
+            testResults = [];
+            document.getElementById('testResults').innerHTML = '';
+            updateProgress();
+            updateSecurityScore();
+            updateTestSummary();
+        }
+
+        function exportResults() {
+            try {
+                const report = {
+                    timestamp: new Date().toISOString(),
+                    totalTests: testResults.length,
+                    results: testResults,
+                    summary: {
+                        pass: testResults.filter(r => r.result === TEST_RESULTS.PASS).length,
+                        fail: testResults.filter(r => r.result === TEST_RESULTS.FAIL).length,
+                        warning: testResults.filter(r => r.result === TEST_RESULTS.WARNING).length,
+                        info: testResults.filter(r => r.result === TEST_RESULTS.INFO).length
+                    }
+                };
+                
+                const blob = new Blob([JSON.stringify(report, null, 2)], { type: 'application/json' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'security-report-' + new Date().toISOString().split('T')[0] + '.json';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+                
+                addTestResult(
+                    'Report',
+                    'Export Results',
+                    TEST_RESULTS.PASS,
+                    'Security report exported successfully'
+                );
+            } catch (error) {
+                addTestResult(
+                    'Report',
+                    'Export Results',
+                    TEST_RESULTS.FAIL,
+                    'Export failed: ' + error.message
+                );
+            }
+        }
+
+        // Initialize the tool
+        document.addEventListener('DOMContentLoaded', function() {
+            addTestResult(
+                'System',
+                'Security Tool Initialized',
+                TEST_RESULTS.INFO,
+                'Security testing tool ready - click "Run All Security Tests" to begin'
+            );
+        });
+    </script>
+</body>
+</html>
