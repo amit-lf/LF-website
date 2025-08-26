@@ -8,8 +8,8 @@ compatibility_date = "2024-01-15"
 enabled = true
 
 # Environment variables
-[vars]
-HUNTER_API_KEY = "a98ee1567f24216741de31ce6aaa17c10f04813b"
+# HUNTER_API_KEY should be set via Cloudflare Workers secrets
+# Run: wrangler secret put HUNTER_API_KEY
 
 # KV namespace for user data
 [[kv_namespaces]]
