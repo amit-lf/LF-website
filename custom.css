@@ -1,0 +1,513 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+/* ─── Base ─────────────────────────────────────────── */
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  color: #111;
+}
+
+/* ─── Navigation ────────────────────────────────────── */
+.site-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: #fff;
+  border-bottom: 1px solid #e8e8e8;
+}
+
+.nav-link-text {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #555;
+  transition: color 0.15s ease;
+}
+
+.nav-link-text:hover {
+  color: #111;
+}
+
+.nav-link-active {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #111;
+  text-decoration: none;
+  border-bottom: 2px solid #E3BB9B;
+  padding-bottom: 2px;
+}
+
+/* ─── Problem image frame (wooden blackboard) ───────── */
+.problem-image-frame {
+  border-radius: 3px;
+  overflow: hidden;
+  border: 18px solid #8B5E3C;
+  box-shadow:
+    inset 0 0 0 2px #6B4220,
+    inset 0 0 8px rgba(0,0,0,0.4),
+    0 8px 32px rgba(0,0,0,0.2);
+  background: #3A6B35;
+}
+
+/* ─── Verdict band text ─────────────────────────────── */
+.verdict-band-text {
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.45;
+}
+
+/* ─── Hero ───────────────────────────────────────────── */
+.hero-section {
+  background-color: #0f0f0f;
+  background-image: radial-gradient(ellipse at 65% 40%, rgba(227,187,155,0.09) 0%, transparent 65%);
+  padding: 110px 0 100px;
+  min-height: 82vh;
+  display: flex;
+  align-items: center;
+}
+
+.hero-badge {
+  display: inline-block;
+  background: rgba(227, 187, 155, 0.12);
+  color: #E3BB9B;
+  border: 1px solid rgba(227, 187, 155, 0.3);
+  border-radius: 20px;
+  padding: 5px 16px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  margin-bottom: 28px;
+}
+
+.hero-title {
+  font-size: clamp(2.6rem, 5vw, 4rem);
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  margin-bottom: 24px;
+}
+
+.hero-subtitle {
+  font-size: 1.125rem;
+  color: #888;
+  line-height: 1.75;
+  max-width: 500px;
+  margin-bottom: 40px;
+}
+
+/* ─── Industry panels (explore features page) ───────── */
+.industry-panel {
+  background: #1a1a1a;
+  border: 1px solid #2a2a2a;
+  border-radius: 14px;
+  padding: 32px;
+  height: 100%;
+  transition: border-color 0.2s ease;
+}
+
+.industry-panel:hover {
+  border-color: #E3BB9B;
+}
+
+.industry-panel-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  margin-bottom: 24px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #2a2a2a;
+}
+
+.industry-panel-icon {
+  color: #E3BB9B;
+  font-size: 1.4rem;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.industry-panel-title {
+  display: block;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 4px;
+}
+
+.industry-panel-perspective {
+  display: block;
+  font-size: 0.78rem;
+  color: #666;
+  line-height: 1.4;
+}
+
+.industry-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.industry-list li {
+  font-size: 0.9rem;
+  color: #bbb;
+  line-height: 1.5;
+  padding-left: 18px;
+  position: relative;
+}
+
+.industry-list li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: #E3BB9B;
+  font-weight: 700;
+}
+
+/* ─── Process steps (explore features page) ─────────── */
+.process-step {
+  padding: 28px 0;
+  border-top: 2px solid #E3BB9B;
+}
+
+.process-number {
+  display: block;
+  font-size: 2rem;
+  font-weight: 800;
+  color: #E3BB9B;
+  letter-spacing: -0.03em;
+  margin-bottom: 12px;
+}
+
+.process-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #111;
+  margin-bottom: 8px;
+}
+
+.process-body {
+  font-size: 0.9375rem;
+  color: #555;
+  line-height: 1.65;
+  margin: 0;
+}
+
+/* ─── Platform badge (why page) ─────────────────────── */
+.platform-badge {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: #111;
+  border-radius: 10px;
+  padding: 16px 20px;
+}
+
+.platform-badge-icon {
+  color: #E3BB9B;
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+
+.platform-badge-title {
+  display: block;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.platform-badge-sub {
+  display: block;
+  font-size: 0.8rem;
+  color: #888;
+  margin-top: 2px;
+}
+
+/* ─── Hero sector tags ──────────────────────────────── */
+.hero-sectors {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.hero-sector-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #555;
+}
+
+.hero-sector-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(227, 187, 155, 0.1);
+  border: 1px solid rgba(227, 187, 155, 0.25);
+  color: #E3BB9B;
+  border-radius: 20px;
+  padding: 4px 14px;
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+/* ─── Section headers ───────────────────────────────── */
+.section-label {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #E3BB9B;
+  margin-bottom: 10px;
+}
+
+.section-title {
+  font-size: clamp(1.75rem, 3vw, 2.25rem);
+  font-weight: 700;
+  color: #111;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  margin-bottom: 12px;
+}
+
+.section-subtitle {
+  font-size: 1.05rem;
+  color: #555;
+  line-height: 1.7;
+  max-width: 560px;
+}
+
+/* ─── Feature cards ─────────────────────────────────── */
+.feature-card {
+  background: #fff;
+  border: 1px solid #e8e8e8;
+  border-radius: 14px;
+  padding: 28px 28px 32px;
+  height: 100%;
+  transition: box-shadow 0.2s ease, border-color 0.2s ease, transform 0.18s ease;
+}
+
+.feature-card:hover {
+  box-shadow: 0 6px 28px rgba(0,0,0,0.07);
+  border-color: #E3BB9B;
+  transform: translateY(-2px);
+}
+
+.feature-card-title {
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: #111;
+  margin-bottom: 10px;
+}
+
+.feature-card-body {
+  font-size: 0.9375rem;
+  color: #555;
+  line-height: 1.65;
+  margin: 0;
+}
+
+/* ─── Verdict blocks ────────────────────────────────── */
+.verdict-block {
+  background: #111;
+  border-radius: 14px;
+  padding: 36px 28px;
+  height: 100%;
+  border: 1px solid #222;
+  transition: border-color 0.2s ease;
+}
+
+.verdict-block:hover {
+  border-color: #E3BB9B;
+}
+
+.verdict-icon {
+  color: #E3BB9B;
+  font-size: 1.4rem;
+  margin-bottom: 16px;
+  display: block;
+}
+
+.verdict-text {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #fff;
+  line-height: 1.4;
+  margin: 0;
+}
+
+/* ─── Why dConstructAI items ────────────────────────── */
+.why-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+  padding: 22px 0;
+  border-bottom: 1px solid rgba(0,0,0,0.07);
+}
+
+.why-item:last-child {
+  border-bottom: none;
+}
+
+.why-icon {
+  color: #E3BB9B;
+  font-size: 1.2rem;
+  flex-shrink: 0;
+  margin-top: 3px;
+}
+
+.why-text {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #222;
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* ─── Problem list (homepage left column) ───────────── */
+.problem-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.problem-item {
+  display: flex;
+  flex-direction: column;
+  padding: 12px 0;
+  border-bottom: 1px solid #ececec;
+}
+
+.problem-title {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #111;
+  margin-bottom: 3px;
+}
+
+.problem-desc {
+  font-size: 0.875rem;
+  color: #666;
+  line-height: 1.55;
+}
+
+.problem-closing {
+  font-size: 0.9rem;
+  font-style: italic;
+  color: #444;
+  line-height: 1.65;
+  border-left: 3px solid #E3BB9B;
+  padding-left: 14px;
+}
+
+/* ─── Product card ───────────────────────────────────── */
+.product-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 36px 40px;
+  border: 1px solid #e8e8e8;
+  box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+}
+
+.product-card h4 {
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+/* ─── Buttons ─────────────────────────────────────────── */
+.btn-primary {
+  background-color: #111;
+  border-color: #111;
+  font-weight: 600;
+}
+
+.btn-primary:hover {
+  background-color: #2a2a2a;
+  border-color: #2a2a2a;
+}
+
+.btn-outline-primary {
+  border-color: #111;
+  color: #111;
+  font-weight: 600;
+}
+
+.btn-outline-primary:hover {
+  background-color: #111;
+  border-color: #111;
+  color: #fff;
+}
+
+.btn-outline-light {
+  font-weight: 600;
+}
+
+/* ─── Brand color utilities ───────────────────────────── */
+.bg-light-brown { background-color: #FFF5EE; }
+.bg-brown       { background-color: #E3BB9B; }
+.bg-black       { background-color: #0f0f0f; }
+.brown          { color: #E3BB9B; }
+.bg-light-red   { background-color: #FFE8E8; }
+.bg-light       { background-color: #F5F5F5 !important; }
+
+/* ─── Rounded ──────────────────────────────────────────── */
+.rounded {
+  border-radius: 14px !important;
+}
+
+/* ─── Benefits list (Pro/Lite pages) ──────────────────── */
+.benefits-list {
+  list-style-type: none !important;
+}
+
+.benefits-list li {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.benefits-list li:before {
+  content: url("assets/check.png") !important;
+  color: #2cba6c;
+  font-family: 'ETMODULES' !important;
+  margin-right: 10px;
+  position: relative;
+  top: 6px;
+  margin-left: -14px;
+}
+
+/* ─── Carousel (Pro/Lite pages) ───────────────────────── */
+.carousel-indicators {
+  position: relative;
+}
+
+.carousel-indicators [data-bs-target] {
+  background-color: #C9C9C9;
+  width: 10px;
+  height: 10px;
+  border-radius: 100%;
+  opacity: 1;
+}
+
+.carousel-indicators .active {
+  background-color: #111;
+}
+
+.carousel-control-next-icon,
+.carousel-control-prev-icon {
+  background-color: #C9C9C9;
+  opacity: 1;
+}
+
+.carousel-item {
+  transition: transform 1s ease-in-out;
+}
+
+.carousel-fade .active.carousel-item-start,
+.carousel-fade .active.carousel-item-end {
+  transition: opacity 0s 2.6s;
+}
