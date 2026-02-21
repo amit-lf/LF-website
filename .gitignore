@@ -58,3 +58,6 @@ build/
 #Docs
 TECHNICAL_SPECIFICATION.md
 README.md
+
+#markdown
+*.md
