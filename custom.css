@@ -79,6 +79,19 @@ body {
   line-height: 1.55;
 }
 
+/* ─── Scope note ─────────────────────────────────────── */
+.scope-note {
+  background: #fff;
+  border-bottom: 1px solid #ede9e4;
+  padding: 14px 0;
+}
+
+.scope-note p {
+  margin: 0;
+  font-size: 0.875rem;
+  color: #888;
+}
+
 /* ─── Section backgrounds ────────────────────────────── */
 .section-light {
   background: #ffffff;
