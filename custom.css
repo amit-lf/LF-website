@@ -389,6 +389,101 @@ body {
   color: #111;
 }
 
+/* ─── Hero chip graphic ──────────────────────────────── */
+.chip-graphic {
+  opacity: 0.75;
+  width: 100%;
+  max-width: 340px;
+}
+
+/* ─── Research section ───────────────────────────────── */
+.research-section {
+  background: #0d0d0d;
+  padding: 90px 0;
+  border-top: 1px solid #1f1f1f;
+}
+
+.section-label-light {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #E3BB9B;
+  margin-bottom: 10px;
+}
+
+.section-title-light {
+  font-size: clamp(1.75rem, 3vw, 2.25rem);
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  margin-bottom: 0;
+}
+
+.section-subtitle-light {
+  font-size: 1.05rem;
+  color: #777;
+  line-height: 1.75;
+  max-width: 600px;
+}
+
+.research-stat {
+  border-top: 2px solid rgba(227,187,155,0.35);
+  padding-top: 20px;
+}
+
+.research-stat-num {
+  display: block;
+  font-size: 2.25rem;
+  font-weight: 800;
+  color: #E3BB9B;
+  letter-spacing: -0.03em;
+  margin-bottom: 12px;
+}
+
+.research-stat-label {
+  display: block;
+  font-size: 0.875rem;
+  color: #888;
+  line-height: 1.65;
+}
+
+.research-quote {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(227,187,155,0.18);
+  border-left: 3px solid #E3BB9B;
+  border-radius: 10px;
+  padding: 24px 26px;
+  height: 100%;
+}
+
+.research-quote-text {
+  font-size: 0.9375rem;
+  color: #ccc;
+  font-style: italic;
+  line-height: 1.7;
+  margin-bottom: 14px;
+}
+
+.research-quote-source {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #E3BB9B;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.research-quote-finding {
+  display: block;
+  font-size: 0.855rem;
+  color: #777;
+  line-height: 1.65;
+}
+
 /* ─── Responsive ─────────────────────────────────────── */
 @media (max-width: 768px) {
   .hero-section {
