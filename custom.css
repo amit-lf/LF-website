@@ -28,17 +28,20 @@ body {
 }
 
 .hero-badge {
-  display: inline-block;
-  background: rgba(227, 187, 155, 0.12);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(227, 187, 155, 0.18);
   color: #E3BB9B;
-  border: 1px solid rgba(227, 187, 155, 0.25);
+  border: 1px solid rgba(227, 187, 155, 0.45);
   border-radius: 20px;
-  padding: 5px 16px;
-  font-size: 0.78rem;
-  font-weight: 600;
-  letter-spacing: 0.06em;
+  padding: 7px 18px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.07em;
   text-transform: uppercase;
-  margin-bottom: 28px;
+  margin-bottom: 32px;
+  box-shadow: 0 0 18px rgba(227, 187, 155, 0.12);
 }
 
 .hero-title {
