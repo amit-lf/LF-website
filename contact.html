@@ -102,6 +102,16 @@
   </body>
 
   <script>
+  // Pre-fill reason from URL ?reason= param
+  window.addEventListener('DOMContentLoaded', function () {
+    var params = new URLSearchParams(window.location.search);
+    var reason = params.get('reason');
+    if (reason) {
+      var field = document.getElementById('validationReason');
+      if (field) field.value = reason;
+    }
+  });
+
   (() => {
     'use strict'
     const forms = document.querySelectorAll('.needs-validation')
