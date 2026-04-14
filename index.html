@@ -129,6 +129,28 @@
     margin-bottom: 16px;
   }
   .hero-sub strong { color: var(--white); font-weight: 500; }
+  .hero-layers {
+    display: flex; flex-direction: column; gap: 8px;
+    margin-bottom: 24px;
+  }
+  .hero-layer {
+    display: flex; align-items: baseline; gap: 12px;
+    font-size: 13px; color: var(--silver);
+  }
+  .layer-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px; font-weight: 500;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--ink);
+    background: var(--gold);
+    padding: 2px 7px; border-radius: 2px;
+    flex-shrink: 0;
+  }
+  .hero-layer:last-child .layer-tag {
+    background: var(--teal-lt);
+  }
+  .layer-desc { line-height: 1.5; }
+
   .hero-corpus {
     font-family: 'DM Mono', monospace;
     font-size: 10px; color: var(--gold-dim);
@@ -176,36 +198,22 @@
     flex-shrink: 0;
   }
   .ticker-item {
-    padding: 16px 20px 14px 17px;
+    padding: 18px 22px 16px 17px;
     border-bottom: 1px solid rgba(255,255,255,0.04);
     border-left: 3px solid transparent;
-    display: flex; align-items: center; gap: 14px;
   }
   .ticker-item:nth-child(2) { border-left-color: rgba(200,169,110,0.55); }
   .ticker-item:nth-child(3) { border-left-color: rgba(224,80,104,0.5); }
   .ticker-item:nth-child(4) { border-left-color: rgba(42,140,116,0.55); }
   .ticker-item:nth-child(5) { border-left-color: rgba(200,169,110,0.3); }
   .ticker-item:last-child { border-bottom: none; }
-  .ticker-text { flex: 1; min-width: 0; }
   .ticker-clause {
     font-family: 'Cormorant Garamond', Georgia, serif;
-    font-size: 15px; font-weight: 600; color: var(--white);
-    margin-bottom: 3px; line-height: 1.2;
+    font-size: 20px; font-weight: 600; color: var(--white);
+    margin-bottom: 5px; line-height: 1.15;
   }
   .ticker-body {
-    font-size: 11.5px; color: var(--white-dim); line-height: 1.5;
-  }
-  .ticker-fix {
-    flex-shrink: 0;
-    font-family: 'DM Mono', monospace;
-    font-size: 9px; color: var(--gold);
-    letter-spacing: 0.07em; text-transform: uppercase;
-    padding: 5px 10px;
-    background: rgba(200,169,110,0.1);
-    border: 1px solid rgba(200,169,110,0.25);
-    border-radius: 3px;
-    text-align: center; line-height: 1.5;
-    white-space: nowrap;
+    font-size: 13px; color: var(--white-dim); line-height: 1.6;
   }
 
   /* ── REPORT FINDER ── */
@@ -730,6 +738,16 @@
       <div class="hero-eyebrow">Supply Chain Forensic Engine · Built for Semiconductor</div>
       <h1>You Designed<br>the Chip.<br><em>We Designed<br>the Shield.</em></h1>
       <p class="hero-sub"><strong>Stop inheriting your vendor's risk.</strong> LegalForensics.ai is the industry's only Supply Chain Forensic Engine that maps your Strategic Risk Architecture — identifying the hidden $10M+ exposure gaps in your Foundry, OSAT, and IP agreements before they hit your balance sheet.</p>
+      <div class="hero-layers">
+        <div class="hero-layer">
+          <span class="layer-tag">Macro</span>
+          <span class="layer-desc">Market Intelligence — how your vendors behave across 145+ SEC filings, before you negotiate.</span>
+        </div>
+        <div class="hero-layer">
+          <span class="layer-tag">Micro</span>
+          <span class="layer-desc">Contract Intelligence — your specific agreement, read from your side of the table.</span>
+        </div>
+      </div>
       <p class="hero-corpus">Benchmarked against our proprietary corpus of 145+ Forensic Audits and S-1 Archaeology.</p>
     </div>
 
@@ -737,32 +755,20 @@
       <div class="pain-ticker">
         <div class="ticker-label">Supply Chain Realities</div>
         <div class="ticker-item">
-          <div class="ticker-text">
-            <div class="ticker-clause">Yield Floors</div>
-            <div class="ticker-body">Most fabless startups absorb 100% of process deviation.</div>
-          </div>
-          <div class="ticker-fix">We fix that.</div>
+          <div class="ticker-clause">Yield Floors</div>
+          <div class="ticker-body">Most fabless startups absorb 100% of process deviation — because their MSA never defined a floor.</div>
         </div>
         <div class="ticker-item">
-          <div class="ticker-text">
-            <div class="ticker-clause">Liability Caps</div>
-            <div class="ticker-body">Your vendor is protected. You are exposed.</div>
-          </div>
-          <div class="ticker-fix">We rebalance<br>the scale.</div>
+          <div class="ticker-clause">Liability Caps</div>
+          <div class="ticker-body">Your vendor is fully protected. You are fully exposed. The asymmetry is structural, not accidental.</div>
         </div>
         <div class="ticker-item">
-          <div class="ticker-text">
-            <div class="ticker-clause">Constraint Stacking</div>
-            <div class="ticker-body">When your OSAT fails, you're still paying the Foundry.</div>
-          </div>
-          <div class="ticker-fix">We align<br>the stack.</div>
+          <div class="ticker-clause">Constraint Stacking</div>
+          <div class="ticker-body">When your OSAT fails, you're still paying the Foundry. Two separate contracts. One invisible trap.</div>
         </div>
         <div class="ticker-item">
-          <div class="ticker-text">
-            <div class="ticker-clause">Before Your Next Tape-Out</div>
-            <div class="ticker-body">The point of no return. The checkpoint you're missing.</div>
-          </div>
-          <div class="ticker-fix">We audit<br>the perimeter.</div>
+          <div class="ticker-clause">Before Your Next Tape-Out</div>
+          <div class="ticker-body">The point of no return. Most founders reach it without ever reading the fine print on the other side.</div>
         </div>
       </div>
     </div>
