@@ -74,6 +74,8 @@
     position: absolute; bottom: -1px; left: 20px; right: 20px;
     height: 2px; background: var(--gold); border-radius: 1px;
   }
+  #tab-mi.active { color: var(--teal-lt); }
+  #tab-mi.active::after { background: var(--teal-lt); }
   .nav-divider { width: 1px; height: 20px; background: var(--rule2); margin: 0 8px; }
   .nav-cta {
     padding: 7px 18px;
@@ -488,6 +490,25 @@
   .footer-links a:hover { color: var(--gold); }
   .footer-copy { font-size: 11px; color: var(--gold-dim); letter-spacing: 0.04em; }
 
+  /* ── CI ACCESS BAR ── */
+  .ci-access-bar {
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 24px; flex-wrap: wrap;
+    padding: 20px 28px;
+    background: rgba(200,169,110,0.06);
+    border: 1px solid var(--gold-dim);
+    border-radius: 4px;
+    margin-bottom: 56px;
+  }
+  .ci-access-bar-text h3 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px; font-weight: 500;
+    color: var(--white); margin-bottom: 4px;
+  }
+  .ci-access-bar-text p {
+    font-size: 12.5px; color: var(--silver); margin: 0;
+  }
+
   /* ── ACTIVE GLOW on section-header ── */
   .product-section.visible .section-header { border-bottom-color: var(--rule2); }
 
@@ -521,14 +542,16 @@
 
 <!-- NAV -->
 <nav>
-  <a href="#" class="nav-logo">LEGALFORENSICS<span>.AI</span></a>
+  <a href="#" class="nav-logo">
+    <img src="assets/Logo.png" alt="LF" style="height:22px; filter:brightness(0) invert(1); opacity:0.9;">
+    LEGALFORENSICS<span>.AI</span>
+  </a>
   <div class="nav-tabs">
     <button class="nav-tab" id="tab-ci" onclick="showSection('ci')">Contract Intelligence</button>
     <button class="nav-tab" id="tab-mi" onclick="showSection('mi')">Market Intelligence</button>
     <div class="nav-divider"></div>
     <a href="https://legalforensics.substack.com/" class="nav-tab" target="_blank" style="text-decoration:none">Insights ↗</a>
   </div>
-  <a href="https://legalforensics.ai/contact.html" class="nav-cta">Request Access</a>
 </nav>
 
 <!-- HERO -->
@@ -573,6 +596,15 @@
   </div>
   <div class="content-wrap">
 
+    <!-- Access bar -->
+    <div class="ci-access-bar">
+      <div class="ci-access-bar-text">
+        <h3>Upload your first contract free</h3>
+        <p>Foundry agreement, IP license, customer pilot, or anything you're about to sign — analysis calibrated to your side of the table.</p>
+      </div>
+      <a href="https://legalforensics.ai/contact.html" class="cta-btn gold" style="white-space:nowrap; flex-shrink:0;">Request Access</a>
+    </div>
+
     <!-- The Problem -->
     <div class="section-label">The Problem</div>
     <h2>The counterparty's lawyers wrote it.<br><em>You're signing it anyway.</em></h2>
@@ -602,38 +634,37 @@
     <!-- Six Outputs -->
     <div class="section-label">What You Get</div>
     <h2>Six outputs. <em>One decision.</em></h2>
-    <p class="lead">Every analysis is specific to your agreement and your position — fabless buyer, IP licensee, defense contractor, or spinout founder.</p>
 
     <div class="outputs-grid">
       <div class="output-card">
         <div class="output-num">01</div>
         <h4>Risk-ranked clause summary</h4>
-        <p>Every clause with commercial consequence ranked by severity — important, review, or note. Perspective-calibrated to your side of the table.</p>
+        <p>Every clause with commercial consequence ranked by severity — important, review, or note.</p>
       </div>
       <div class="output-card">
         <div class="output-num">02</div>
         <h4>Perspective-aware analysis</h4>
-        <p>The same clause reads differently depending on which side you're on. LegalForensics identifies your role and calibrates accordingly.</p>
+        <p>Calibrated to your side of the table — fabless buyer, IP licensee, defense contractor, or spinout founder.</p>
       </div>
       <div class="output-card">
         <div class="output-num">03</div>
         <h4>A clear verdict</h4>
-        <p>Proceed, proceed with caution, pause, or renegotiate — with the specific asks to bring back to the other side before you sign.</p>
+        <p>Proceed, proceed with caution, pause, or renegotiate — with the specific asks to bring back before you sign.</p>
       </div>
       <div class="output-card">
         <div class="output-num">04</div>
         <h4>Foundry Model Risk Index (F-MRI)</h4>
-        <p>Five dimensions scored RED, AMBER, or GREEN based on your contract and company context — supply, yield, delivery, economics, exit.</p>
+        <p>Five dimensions scored RED, AMBER, or GREEN — supply, yield, delivery, economics, exit.</p>
       </div>
       <div class="output-card">
         <div class="output-num">05</div>
         <h4>Path to low risk</h4>
-        <p>For every critical finding: a specific contract fix to negotiate and a situation fix to address the underlying exposure.</p>
+        <p>For every critical finding: a specific contract fix to negotiate and a situation fix for the underlying exposure.</p>
       </div>
       <div class="output-card">
         <div class="output-num">06</div>
         <h4>Situation simulator</h4>
-        <p>Change your company context — single source, critical launch, tight margins — and see how your risk score shifts.</p>
+        <p>Single source, critical launch, tight margins — change your context and see how your risk score shifts.</p>
       </div>
     </div>
 
@@ -642,7 +673,7 @@
     <!-- F-MRI -->
     <div class="section-label">F-MRI</div>
     <h2>Foundry Model Risk Index</h2>
-    <p class="lead">The only scoring framework built specifically for fabless-to-foundry agreements. Five dimensions, each scored against your contract language and amplified by your company context.</p>
+    <p class="lead">Five dimensions scored against your contract language and amplified by your company context — the only framework built specifically for fabless-to-foundry agreements.</p>
 
     <div class="fmri-grid">
       <div class="fmri-card">
@@ -709,12 +740,9 @@
       <li>Does the force majeure clause give the foundry a broad exit while leaving your supply commitment intact?</li>
     </ul>
 
-    <div class="cta-pair" style="grid-template-columns: 1fr; max-width: 520px;">
-      <div class="cta-block ci">
-        <h3>Ready to review your agreement?</h3>
-        <p>Upload your first contract free — foundry agreement, IP license, customer pilot, or anything you're about to sign. Analysis calibrated to your side of the table.</p>
-        <a href="https://legalforensics.ai/contact.html" class="cta-btn gold">Request Access</a>
-      </div>
+    <div style="padding: 20px 24px; background: var(--panel2); border: 1px solid var(--gold-dim); border-radius: 4px; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap;">
+      <div style="font-size: 13px; color: var(--silver);">Ready to review your agreement? Upload your first contract free — calibrated to your side of the table.</div>
+      <a href="https://legalforensics.ai/contact.html" class="cta-btn gold" style="flex-shrink:0;">Request Access</a>
     </div>
 
   </div>
@@ -737,8 +765,7 @@
     <div class="perimeter-intro">
       <div>
         <p>When you sign with a Tier-1 Foundry or OSAT, you are not just signing a piece of paper. You are stepping into a pre-existing cage built by the industry's giants — <strong>inheriting their legal and operational boundaries.</strong></p>
-        <p>It is more than just "working under constraints." It is the difference between building your own house and moving into a rented apartment where the landlord has already locked half the doors.</p>
-        <p>Without Perimeter Intelligence, you are blind to where those boundaries are. You might think you have room to grow, only to hit a contractual wall — a field-of-use lock or an uncapped liability — just as you are trying to scale or go public.</p>
+        <p>Without Perimeter Intelligence, you are blind to where those walls are. You might think you have room to grow, only to hit a contractual wall — a field-of-use lock or an uncapped liability — just as you are trying to scale or go public.</p>
         <p style="padding: 14px 16px; background: var(--panel); border-left: 3px solid var(--gold); border-radius: 0 4px 4px 0; font-size: 13px; color: var(--white-dim); line-height: 1.7; margin-top: 8px;">
           <strong style="color: var(--gold); font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; display: block; margin-bottom: 6px;">Perimeter</strong>
           shows you exactly where those walls are — <em>before you walk into them.</em> We don't tell you if a clause is legal. We tell you if it's <em>market</em>, backed by forensic analysis of 145+ SEC filings your vendors don't want you to see.
@@ -788,7 +815,7 @@
     <!-- Intelligence Hierarchy -->
     <div class="section-label">The Intelligence Hierarchy</div>
     <h2>The Perimeter <em>Intelligence Portfolio</em></h2>
-    <p class="lead">Five intelligence assets. Each draws from the same forensic corpus of 145+ SEC filings — deployed at the cadence your decision requires.</p>
+    <p class="lead">Five assets, one corpus of 145+ SEC filings — deployed at the cadence your decision requires.</p>
 
     <table class="intel-table">
       <thead>
@@ -837,17 +864,17 @@
       <div class="pillar">
         <div class="pillar-sub">The Confession Delta · S-1 vs. 10-K</div>
         <h4>Where giants tell the truth</h4>
-        <p>Public companies sanitize risks in annual 10-Ks. We mine original S-1 prospectuses where disclosure rules force the raw truth. S-1 filings reveal 2× the material contracts compared to later annual filings — the only moment of documented vulnerability.</p>
+        <p>S-1 prospectuses reveal 2× the material contracts of later 10-K filings — the only moment of documented vulnerability before sanitization.</p>
       </div>
       <div class="pillar">
         <div class="pillar-sub">Constraint Stacking Recognition · Identifying Death Traps</div>
         <h4>Where siloed obligations converge</h4>
-        <p>If your substrate vendor fails but your foundry contract lacks suspension clauses, you pay for wafers you cannot use. An invisible kill switch buried in plain sight — triggered only when two separate perimeters weren't aligned at signing.</p>
+        <p>Substrate vendor fails + foundry contract lacks suspension = you pay for wafers you can't use. An invisible kill switch triggered only when two perimeters weren't aligned at signing.</p>
       </div>
       <div class="pillar">
         <div class="pillar-sub">The Signal Prevalence Engine · Five Silent Signals</div>
         <h4>What traditional legal review misses</h4>
-        <p>Tracking five signals across the full corpus: Export Control Exposure (50% prevalence), Liability Asymmetry, Yield Floor Absence, Capacity Discretion, and Sublicensing Constraints — quantified and benchmarked so you know what's normal and what's not.</p>
+        <p>Five signals tracked across the full corpus: Export Control Exposure (50%), Liability Asymmetry, Yield Floor Absence, Capacity Discretion, Sublicensing Constraints — benchmarked so you know what's market and what's not.</p>
       </div>
     </div>
 
