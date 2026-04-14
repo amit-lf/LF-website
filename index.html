@@ -92,9 +92,20 @@
 
   /* ── HERO ── */
   .hero {
-    padding: 100px 48px 80px;
-    max-width: 900px;
     position: relative;
+    padding: 100px 48px 80px;
+    overflow: hidden;
+    border-bottom: 1px solid var(--rule);
+  }
+  .hero-radar {
+    position: absolute; inset: 0;
+    pointer-events: none; overflow: hidden;
+  }
+  .hero-inner {
+    max-width: 1200px;
+    display: grid; grid-template-columns: 1fr 420px;
+    gap: 64px; align-items: center;
+    position: relative; z-index: 1;
   }
   .hero-eyebrow {
     font-family: 'DM Mono', monospace;
@@ -106,47 +117,134 @@
   .hero-eyebrow::before { content: ''; width: 28px; height: 1px; background: var(--gold); }
   h1 {
     font-family: 'Cormorant Garamond', Georgia, serif;
-    font-size: clamp(42px, 6vw, 72px); font-weight: 600;
-    line-height: 1.08; letter-spacing: -0.01em;
+    font-size: clamp(40px, 5vw, 66px); font-weight: 600;
+    line-height: 1.05; letter-spacing: -0.01em;
     color: var(--white);
     margin-bottom: 28px;
   }
   h1 em { color: var(--gold); font-style: italic; }
   .hero-sub {
-    font-size: 16px; color: var(--silver);
-    max-width: 580px; line-height: 1.75;
-    margin-bottom: 40px;
+    font-size: 15px; color: var(--silver);
+    max-width: 560px; line-height: 1.8;
+    margin-bottom: 16px;
   }
-  .hero-pills {
-    display: flex; flex-wrap: wrap; gap: 8px;
-    margin-bottom: 48px;
-  }
-  .pill {
+  .hero-sub strong { color: var(--white); font-weight: 500; }
+  .hero-corpus {
     font-family: 'DM Mono', monospace;
-    font-size: 10px; letter-spacing: 0.06em;
-    color: var(--silver);
-    padding: 4px 10px;
+    font-size: 10px; color: var(--gold-dim);
+    letter-spacing: 0.04em;
+    padding: 10px 14px;
+    border-left: 2px solid var(--gold-dim);
+    margin-bottom: 40px; max-width: 520px;
+    line-height: 1.7;
+  }
+  .hero-cta-box {
+    display: flex; align-items: center; gap: 28px;
+    flex-wrap: wrap;
+  }
+  .hero-secondary-cta {
+    font-size: 12px; color: var(--silver);
+    text-decoration: none; letter-spacing: 0.03em;
+    transition: color 0.2s;
+    border-bottom: 1px solid var(--rule2);
+    padding-bottom: 1px;
+  }
+  .hero-secondary-cta:hover { color: var(--gold); border-color: var(--gold); }
+
+  /* Pain Ticker */
+  .pain-ticker {
     border: 1px solid var(--rule2);
-    border-radius: 2px;
+    border-radius: 4px; overflow: hidden;
+    background: rgba(16,18,24,0.8);
   }
-  .hero-propositions {
-    display: grid; grid-template-columns: repeat(3, 1fr);
-    gap: 1px; background: var(--rule);
-    border: 1px solid var(--rule); border-radius: 4px;
-    overflow: hidden; max-width: 680px;
-    margin-bottom: 40px;
-  }
-  .prop {
-    background: var(--panel);
-    padding: 20px 22px;
-  }
-  .prop-label {
+  .ticker-label {
     font-family: 'DM Mono', monospace;
     font-size: 9px; color: var(--gold);
-    letter-spacing: 0.12em; text-transform: uppercase;
-    margin-bottom: 8px;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    padding: 10px 18px;
+    background: rgba(200,169,110,0.06);
+    border-bottom: 1px solid var(--rule2);
   }
-  .prop-text { font-size: 12.5px; color: var(--white-dim); line-height: 1.6; }
+  .ticker-item {
+    padding: 15px 18px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .ticker-item:last-child { border-bottom: none; }
+  .ticker-clause {
+    font-size: 12px; font-weight: 500; color: var(--white);
+    margin-bottom: 3px;
+  }
+  .ticker-body {
+    font-size: 12px; color: var(--silver); line-height: 1.55;
+    margin-bottom: 5px;
+  }
+  .ticker-fix {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px; color: var(--gold);
+    letter-spacing: 0.05em;
+  }
+
+  /* ── REPORT FINDER ── */
+  .report-finder {
+    background: var(--panel2);
+    border: 1px solid var(--rule2);
+    border-radius: 4px;
+    padding: 28px 28px 24px;
+    margin-bottom: 40px;
+  }
+  .finder-q {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px; color: var(--gold-dim);
+    letter-spacing: 0.12em; text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+  .finder-scenarios {
+    display: flex; flex-direction: column; gap: 6px;
+    margin-bottom: 20px;
+  }
+  .finder-btn {
+    background: var(--panel);
+    border: 1px solid var(--rule2);
+    border-radius: 3px;
+    padding: 11px 16px;
+    color: var(--silver);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px; text-align: left;
+    cursor: pointer; transition: all 0.15s;
+  }
+  .finder-btn:hover { border-color: var(--gold-dim); color: var(--white); }
+  .finder-btn.active { border-color: var(--gold); color: var(--white); background: rgba(200,169,110,0.06); }
+  .finder-result {
+    display: none;
+    flex-direction: column; gap: 4px;
+    padding: 16px 18px;
+    background: rgba(200,169,110,0.05);
+    border: 1px solid var(--gold-dim);
+    border-radius: 3px;
+  }
+  .finder-result-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px; color: var(--gold);
+    letter-spacing: 0.14em; text-transform: uppercase;
+    margin-bottom: 5px;
+  }
+  .finder-result-name {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 20px; font-weight: 600; color: var(--white);
+    margin-bottom: 2px;
+  }
+  .finder-result-also {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px; color: var(--silver);
+    letter-spacing: 0.04em; margin-bottom: 6px;
+  }
+  .finder-result-reason { font-size: 12.5px; color: var(--silver); line-height: 1.65; }
+  .report-card.highlighted {
+    border-color: var(--gold) !important;
+    box-shadow: 0 0 0 1px var(--gold-dim);
+    background: linear-gradient(160deg, rgba(200,169,110,0.09) 0%, var(--panel) 60%) !important;
+  }
+  .report-card.highlighted::before { content: 'RECOMMENDED FOR YOU'; }
 
   /* ── SECTION WRAPPERS ── */
   .product-section {
@@ -521,8 +619,9 @@
     nav { padding: 0 20px; }
     .nav-tab { padding: 8px 12px; font-size: 11px; }
     .hero { padding: 60px 20px 48px; }
+    .hero-inner { grid-template-columns: 1fr; gap: 40px; }
+    .hero-right { display: none; }
     .content-wrap { padding: 40px 20px; }
-    .hero-propositions { grid-template-columns: 1fr; }
     .problem-grid { grid-template-columns: 1fr; }
     .outputs-grid { grid-template-columns: 1fr 1fr; }
     .fmri-grid { grid-template-columns: repeat(3, 1fr); }
@@ -556,33 +655,59 @@
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-eyebrow">Built for Semiconductor Companies</div>
-  <h1>Know Your Contracts.<br><em>Know Your Risks.</em></h1>
-  <p class="hero-sub">From foundry and OSAT agreements to IP licenses and hyperscaler pilots — most of it is drafted by the other side and signed without legal support. LegalForensics reads it from your side.</p>
-  <div class="hero-propositions">
-    <div class="prop">
-      <div class="prop-label">Your exposure</div>
-      <div class="prop-text">Surface financial risk and hidden liability before you commit.</div>
-    </div>
-    <div class="prop">
-      <div class="prop-label">Your perspective</div>
-      <div class="prop-text">Analysis calibrated to your side of the table — not neutral, not generic.</div>
-    </div>
-    <div class="prop">
-      <div class="prop-label">Your outcome</div>
-      <div class="prop-text">A verdict and a plan — not a summary to interpret on your own.</div>
-    </div>
+  <div class="hero-radar" aria-hidden="true">
+    <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMaxYMid slice" style="position:absolute;inset:0;width:100%;height:100%">
+      <defs>
+        <pattern id="bp-grid" width="60" height="60" patternUnits="userSpaceOnUse">
+          <path d="M 60 0 L 0 0 0 60" fill="none" stroke="rgba(200,169,110,0.045)" stroke-width="0.5"/>
+        </pattern>
+      </defs>
+      <rect width="100%" height="100%" fill="url(#bp-grid)"/>
+      <circle cx="100%" cy="50%" r="200" fill="none" stroke="rgba(200,169,110,0.07)" stroke-width="1"/>
+      <circle cx="100%" cy="50%" r="360" fill="none" stroke="rgba(200,169,110,0.055)" stroke-width="1"/>
+      <circle cx="100%" cy="50%" r="530" fill="none" stroke="rgba(200,169,110,0.04)" stroke-width="1"/>
+      <circle cx="100%" cy="50%" r="720" fill="none" stroke="rgba(200,169,110,0.025)" stroke-width="1"/>
+      <line x1="0" y1="50%" x2="100%" y2="50%" stroke="rgba(200,169,110,0.05)" stroke-width="0.5" stroke-dasharray="6,14"/>
+    </svg>
   </div>
-  <div class="hero-pills">
-    <span class="pill">Foundry agreements</span>
-    <span class="pill">OSAT agreements</span>
-    <span class="pill">IP licensing</span>
-    <span class="pill">Hyperscaler pilots</span>
-    <span class="pill">DARPA / DoD OTAs</span>
-    <span class="pill">University spinout licenses</span>
-    <span class="pill">Automotive supply</span>
-    <span class="pill">EDA vendor agreements</span>
-    <span class="pill">NDAs · MSAs</span>
+
+  <div class="hero-inner">
+    <div class="hero-left">
+      <div class="hero-eyebrow">Supply Chain Forensic Engine · Built for Semiconductor</div>
+      <h1>You Designed<br>the Chip.<br><em>We Designed<br>the Shield.</em></h1>
+      <p class="hero-sub"><strong>Stop inheriting your vendor's risk.</strong> LegalForensics.ai is the industry's only Supply Chain Forensic Engine that maps your Strategic Risk Architecture — identifying the hidden $10M+ exposure gaps in your Foundry, OSAT, and IP agreements before they hit your balance sheet.</p>
+      <p class="hero-corpus">Benchmarked against our proprietary corpus of 145+ Forensic Audits and S-1 Archaeology.</p>
+      <div class="hero-cta-box">
+        <a href="contact.html?reason=Audit My Perimeter - Contract Intelligence" class="cta-btn gold">Audit My Perimeter</a>
+        <a href="contact.html?reason=Sample Counterparty Playbook Request" class="hero-secondary-cta">View a Sample Counterparty Playbook &#8594;</a>
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <div class="pain-ticker">
+        <div class="ticker-label">Foundry Realities</div>
+        <div class="ticker-item">
+          <div class="ticker-clause">Yield Floors</div>
+          <div class="ticker-body">Most fabless startups absorb 100% of process deviation.</div>
+          <div class="ticker-fix">We fix that.</div>
+        </div>
+        <div class="ticker-item">
+          <div class="ticker-clause">Liability Caps</div>
+          <div class="ticker-body">Your vendor is protected. You are exposed.</div>
+          <div class="ticker-fix">We rebalance the scale.</div>
+        </div>
+        <div class="ticker-item">
+          <div class="ticker-clause">Constraint Stacking</div>
+          <div class="ticker-body">When your OSAT fails, you're still paying the Foundry.</div>
+          <div class="ticker-fix">We align the stack.</div>
+        </div>
+        <div class="ticker-item">
+          <div class="ticker-clause">Before Your Next Tape-Out</div>
+          <div class="ticker-body">The point of no return. The mandatory checkpoint you're missing.</div>
+          <div class="ticker-fix">We audit the perimeter.</div>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -812,48 +937,6 @@
 
     <hr class="rule">
 
-    <!-- Intelligence Hierarchy -->
-    <div class="section-label">The Intelligence Hierarchy</div>
-    <h2>The Perimeter <em>Intelligence Portfolio</em></h2>
-    <p class="lead">Five assets, one corpus of 145+ SEC filings — deployed at the cadence your decision requires.</p>
-
-    <table class="intel-table">
-      <thead>
-        <tr>
-          <th style="width:200px">Asset</th>
-          <th style="width:120px">Cadence</th>
-          <th>Value Proposition</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td class="asset">The Quarterly Perimeter</td>
-          <td class="cadence">Quarterly</td>
-          <td class="vp">Board-level risk strategy audit. Trend monitoring across lead-times, export controls, and ASPs from 145+ filings.</td>
-        </tr>
-        <tr>
-          <td class="asset">The Corporate Profile</td>
-          <td class="cadence">On-Demand</td>
-          <td class="vp">Counterparty DNA. A 360° deep-dive into a specific giant's (e.g., LRCX, AMD) contractual moats and shield gaps.</td>
-        </tr>
-        <tr>
-          <td class="asset">The IPO Trail Audit</td>
-          <td class="cadence">Strategic</td>
-          <td class="vp">S-1 Archaeology. Benchmarking your terms against today's giants when they were vulnerable startups.</td>
-        </tr>
-        <tr>
-          <td class="asset">The Vertical Audit</td>
-          <td class="cadence">Specialized</td>
-          <td class="vp">Sector Defense. Aggregated peer-group analysis for Optics, OSAT, and Specialty Foundry niches.</td>
-        </tr>
-        <tr>
-          <td class="asset">The Custom Shield</td>
-          <td class="cadence">Transactional</td>
-          <td class="vp">The Final Audit. Direct redlining of your MSA against the forensic corpus before $10M+ tape-outs.</td>
-        </tr>
-      </tbody>
-    </table>
-
     <hr class="rule">
 
     <!-- Core Analytic Pillars -->
@@ -900,28 +983,27 @@
 
     <hr class="rule">
 
-    <!-- Secure Your Perimeter -->
-    <div class="section-label">Secure Your Perimeter</div>
-    <h2>Five intelligence assets.<br><em>One decision to make.</em></h2>
-    <p class="lead">Every report draws from the same forensic corpus of 145+ SEC filings. Contact us to request any asset — we will scope the engagement and deliver within the agreed timeline.</p>
+    <!-- Report Finder + Assets -->
+    <div class="section-label">The Intelligence Portfolio</div>
+    <h2>Five assets. <em>One corpus.</em> The right one for your situation.</h2>
 
-    <!-- Free preview banner -->
-    <div style="display:flex; align-items:center; gap:16px; padding:16px 20px; background:rgba(42,140,116,0.08); border:1px solid rgba(42,140,116,0.3); border-radius:4px; margin-bottom:32px;">
-      <div style="flex-shrink:0; width:36px; height:36px; background:rgba(42,140,116,0.15); border:1px solid var(--teal-lt); border-radius:50%; display:flex; align-items:center; justify-content:center;">
-        <span style="color:var(--teal-lt); font-size:16px; line-height:1;">↓</span>
+    <div class="report-finder">
+      <div class="finder-q">What's driving your request?</div>
+      <div class="finder-scenarios">
+        <button class="finder-btn" onclick="recommendReport(event,'custom-shield')">I am about to sign a Foundry or OSAT supply agreement</button>
+        <button class="finder-btn" onclick="recommendReport(event,'corporate-profile')">I am entering negotiations with a specific counterparty (TSMC, LRCX, AMD...)</button>
+        <button class="finder-btn" onclick="recommendReport(event,'quarterly')">I need a board-ready risk update this quarter</button>
+        <button class="finder-btn" onclick="recommendReport(event,'ipo-trail')">I want to know what terms comparable companies extracted before going public</button>
+        <button class="finder-btn" onclick="recommendReport(event,'vertical')">I need a sector-level view of how my niche (Optics, OSAT, Automotive) is being treated</button>
       </div>
-      <div>
-        <div style="font-size:12px; font-weight:500; color:var(--white); margin-bottom:3px;">Request a free preview excerpt</div>
-        <div style="font-size:12px; color:var(--silver);">Before committing to any report, ask for a sample finding from our corpus relevant to your counterparty or sector. No charge, no commitment.</div>
-      </div>
-      <a href="contact.html?reason=Market Intelligence - Free Preview Request" style="flex-shrink:0; padding:8px 18px; background:var(--teal-lt); color:var(--ink); font-size:11px; font-weight:500; letter-spacing:0.08em; text-transform:uppercase; text-decoration:none; border-radius:3px; white-space:nowrap;">Get Preview</a>
+      <div class="finder-result" id="finder-result"></div>
     </div>
 
     <!-- Report cards grid -->
     <div class="report-grid">
 
       <!-- 1. Quarterly Perimeter -->
-      <div class="report-card featured">
+      <div class="report-card featured" id="card-quarterly">
         <div class="report-card-top">
           <div class="report-cadence">Quarterly</div>
           <div class="report-name">The Quarterly Perimeter</div>
@@ -938,7 +1020,7 @@
       </div>
 
       <!-- 2. Corporate Profile -->
-      <div class="report-card">
+      <div class="report-card" id="card-corporate-profile">
         <div class="report-card-top">
           <div class="report-cadence">On-Demand</div>
           <div class="report-name">The Corporate Profile</div>
@@ -954,7 +1036,7 @@
       </div>
 
       <!-- 3. IPO Trail Audit -->
-      <div class="report-card">
+      <div class="report-card" id="card-ipo-trail">
         <div class="report-card-top">
           <div class="report-cadence">Strategic</div>
           <div class="report-name">The IPO Trail Audit</div>
@@ -970,7 +1052,7 @@
       </div>
 
       <!-- 4. Vertical Audit -->
-      <div class="report-card">
+      <div class="report-card" id="card-vertical">
         <div class="report-card-top">
           <div class="report-cadence">Specialized</div>
           <div class="report-name">The Vertical Audit</div>
@@ -986,7 +1068,7 @@
       </div>
 
       <!-- 5. Custom Shield -->
-      <div class="report-card report-card-wide">
+      <div class="report-card report-card-wide" id="card-custom-shield">
         <div class="report-card-top">
           <div class="report-cadence">Transactional · Pre-Signing</div>
           <div class="report-name">The Custom Shield</div>
@@ -1029,6 +1111,55 @@
 </footer>
 
 <script>
+  var FINDER_DATA = {
+    'custom-shield': {
+      name: 'The Custom Shield',
+      also: 'Also useful: The Corporate Profile',
+      reason: 'Direct redlining of your MSA against the full forensic corpus — clause by clause, against market precedent — before a $10M+ tape-out or supply agreement closes.'
+    },
+    'corporate-profile': {
+      name: 'The Corporate Profile',
+      also: 'Also useful: The IPO Trail Audit',
+      reason: "360° deep-dive into your specific counterparty's contractual moats and the exact terms they have conceded before. Know their playbook before you walk in."
+    },
+    'quarterly': {
+      name: 'The Quarterly Perimeter',
+      also: null,
+      reason: 'Board-level risk strategy audit. Trend monitoring across lead-times, export controls, and ASPs from 145+ filings — with running commentary on how the perimeter is shifting.'
+    },
+    'ipo-trail': {
+      name: 'The IPO Trail Audit',
+      also: 'Also useful: The Corporate Profile',
+      reason: 'S-1 archaeology. Benchmark your current terms against today\'s giants at the moment they were vulnerable startups — surfacing the exact concessions they extracted before going public.'
+    },
+    'vertical': {
+      name: 'The Vertical Audit',
+      also: null,
+      reason: 'Aggregated peer-group analysis for your specific niche. How are companies in your exact segment being treated, and where are they getting crushed?'
+    }
+  };
+
+  function recommendReport(event, key) {
+    var data = FINDER_DATA[key];
+    document.querySelectorAll('.finder-btn').forEach(function(b) { b.classList.remove('active'); });
+    event.currentTarget.classList.add('active');
+
+    var resultEl = document.getElementById('finder-result');
+    resultEl.innerHTML =
+      '<span class="finder-result-label">Recommended Asset</span>' +
+      '<span class="finder-result-name">' + data.name + '</span>' +
+      (data.also ? '<span class="finder-result-also">' + data.also + '</span>' : '') +
+      '<span class="finder-result-reason">' + data.reason + '</span>';
+    resultEl.style.display = 'flex';
+
+    document.querySelectorAll('.report-card').forEach(function(c) { c.classList.remove('highlighted'); });
+    var cardEl = document.getElementById('card-' + key);
+    if (cardEl) {
+      cardEl.classList.add('highlighted');
+      setTimeout(function() { cardEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); }, 120);
+    }
+  }
+
   function showSection(id) {
     document.querySelectorAll('.product-section').forEach(function(s) {
       s.classList.remove('visible');
