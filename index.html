@@ -66,6 +66,7 @@
     cursor: pointer; border-radius: 4px;
     transition: color 0.2s;
     font-family: 'DM Sans', sans-serif;
+    display: inline-flex; align-items: center; gap: 7px;
   }
   .nav-tab:hover { color: var(--white); }
   .nav-tab.active { color: var(--gold); }
@@ -317,6 +318,7 @@
     padding: 3px 10px 3px 8px;
     border-radius: 2px;
     margin-right: 16px;
+    display: inline-flex; align-items: center; gap: 6px;
   }
   .badge-ci { background: var(--gold); }
   .badge-mi { background: var(--teal-lt); }
@@ -728,8 +730,14 @@
     <img src="assets/Logo.png" alt="LegalForensics.AI" style="height:38px; filter:brightness(0) invert(1); opacity:0.9;">
   </a>
   <div class="nav-tabs">
-    <button class="nav-tab" id="tab-ci" onclick="showSection('ci')">Contract Intelligence</button>
-    <button class="nav-tab" id="tab-mi" onclick="showSection('mi')">Market Intelligence</button>
+    <button class="nav-tab" id="tab-ci" onclick="showSection('ci')">
+      <svg width="13" height="13" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 1L2 3.5V9C2 12 5 14.5 8 15C11 14.5 14 12 14 9V3.5L8 1Z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/><path d="M5.5 8L7.25 9.75L10.5 6" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Contract Intelligence
+    </button>
+    <button class="nav-tab" id="tab-mi" onclick="showSection('mi')">
+      <svg width="13" height="13" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="1.75" fill="currentColor"/><circle cx="8" cy="8" r="4.5" stroke="currentColor" stroke-width="1.2"/><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.2" opacity="0.5"/></svg>
+      Market Intelligence
+    </button>
   </div>
 </nav>
 
@@ -804,7 +812,7 @@
 ═══════════════════════════════════════════════════════ -->
 <div class="product-section" id="section-ci">
   <div class="section-header">
-    <span class="section-badge badge-ci">Contract Intelligence</span>
+    <span class="section-badge badge-ci"><svg width="11" height="11" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 1L2 3.5V9C2 12 5 14.5 8 15C11 14.5 14 12 14 9V3.5L8 1Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M5.5 8L7.25 9.75L10.5 6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Contract Intelligence</span>
     <span class="section-title-bar">Upload your agreement. Get a decision.</span>
   </div>
   <div class="content-wrap">
@@ -966,7 +974,7 @@
 ═══════════════════════════════════════════════════════ -->
 <div class="product-section" id="section-mi">
   <div class="section-header">
-    <span class="section-badge badge-mi">Market Intelligence</span>
+    <span class="section-badge badge-mi"><svg width="11" height="11" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="1.75" fill="currentColor"/><circle cx="8" cy="8" r="4.5" stroke="currentColor" stroke-width="1.4"/><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.4" opacity="0.5"/></svg>Market Intelligence</span>
     <span class="section-title-bar">Perimeter · Strategic Supply Chain Defense</span>
   </div>
   <div class="content-wrap">
@@ -1202,8 +1210,8 @@
     <div>
       <div class="footer-col-label">Products</div>
       <div class="footer-links">
-        <a href="#" onclick="showSection('ci'); return false;">Contract Intelligence</a>
-        <a href="#" onclick="showSection('mi'); return false;">Market Intelligence</a>
+        <a href="#" onclick="showSection('ci'); return false;" style="display:flex;align-items:center;gap:7px;"><svg width="12" height="12" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 1L2 3.5V9C2 12 5 14.5 8 15C11 14.5 14 12 14 9V3.5L8 1Z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/><path d="M5.5 8L7.25 9.75L10.5 6" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>Contract Intelligence</a>
+        <a href="#" onclick="showSection('mi'); return false;" style="display:flex;align-items:center;gap:7px;"><svg width="12" height="12" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="1.75" fill="currentColor"/><circle cx="8" cy="8" r="4.5" stroke="currentColor" stroke-width="1.3"/><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.3" opacity="0.5"/></svg>Market Intelligence</a>
         <a href="https://legalforensics.substack.com/" target="_blank">Insights &#8599;</a>
       </div>
     </div>
