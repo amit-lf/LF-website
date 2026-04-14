@@ -487,6 +487,291 @@ body {
   line-height: 1.65;
 }
 
+/* ─── Perimeter nav link ─────────────────────────────── */
+.perimeter-nav-link {
+  color: #C49A72 !important;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+.perimeter-nav-link:hover {
+  color: #E3BB9B !important;
+}
+
+/* ─── Perimeter section ──────────────────────────────── */
+.perimeter-section {
+  background-color: #0a0a0a;
+  background-image: radial-gradient(ellipse at 70% 30%, rgba(196,154,114,0.06) 0%, transparent 55%);
+  padding: 90px 0 80px;
+  color: #fff;
+  border-top: 1px solid #1a1a1a;
+}
+
+.perimeter-eyebrow {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #C49A72;
+  margin-bottom: 18px;
+}
+
+.perimeter-title {
+  font-size: clamp(2.2rem, 4.5vw, 3.6rem);
+  font-weight: 800;
+  color: #fff;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  margin-bottom: 20px;
+}
+
+.perimeter-subtitle {
+  font-size: 1.05rem;
+  color: #999;
+  line-height: 1.75;
+  max-width: 660px;
+  margin-bottom: 0;
+}
+
+.perimeter-subtitle strong {
+  color: #E3BB9B;
+  font-weight: 600;
+}
+
+/* Failure cards */
+.failure-card {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-left: 3px solid #C49A72;
+  border-radius: 8px;
+  padding: 20px 18px;
+  height: 100%;
+  transition: background 0.2s;
+}
+
+.failure-card:hover {
+  background: rgba(196,154,114,0.06);
+}
+
+.failure-title {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #E3BB9B;
+  margin-bottom: 8px;
+}
+
+.failure-desc {
+  font-size: 0.85rem;
+  color: #888;
+  line-height: 1.55;
+  margin: 0;
+}
+
+/* PERIMETER callout box */
+.perimeter-callout {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  background: rgba(196,154,114,0.07);
+  border: 1px solid rgba(196,154,114,0.25);
+  border-radius: 10px;
+  padding: 22px 26px;
+}
+
+.perimeter-callout-label {
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #C49A72;
+  white-space: nowrap;
+  flex-shrink: 0;
+  padding: 3px 10px;
+  border: 1px solid rgba(196,154,114,0.4);
+  border-radius: 4px;
+}
+
+.perimeter-callout-text {
+  font-size: 0.975rem;
+  color: #bbb;
+  line-height: 1.65;
+  margin: 0;
+}
+
+.perimeter-callout-text em {
+  color: #E3BB9B;
+  font-style: italic;
+}
+
+/* Section label inside perimeter */
+.perimeter-section-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #C49A72;
+  margin-bottom: 16px;
+}
+
+/* Intelligence Hierarchy table */
+.hierarchy-table {
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.hierarchy-header {
+  display: grid;
+  grid-template-columns: 200px 110px 1fr;
+  gap: 16px;
+  background: rgba(255,255,255,0.05);
+  padding: 10px 20px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #C49A72;
+}
+
+.hierarchy-row {
+  display: grid;
+  grid-template-columns: 200px 110px 1fr;
+  gap: 16px;
+  padding: 16px 20px;
+  border-top: 1px solid rgba(255,255,255,0.05);
+  align-items: start;
+  transition: background 0.15s;
+}
+
+.hierarchy-row:hover {
+  background: rgba(255,255,255,0.025);
+}
+
+.hierarchy-asset {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.hierarchy-cadence {
+  font-size: 0.85rem;
+  color: #C49A72;
+  font-weight: 500;
+}
+
+.hierarchy-value {
+  font-size: 0.855rem;
+  color: #888;
+  line-height: 1.55;
+}
+
+/* Signal stats */
+.signal-stat {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 10px;
+  padding: 30px 24px;
+  text-align: center;
+  height: 100%;
+  transition: background 0.2s;
+}
+
+.signal-stat:hover {
+  background: rgba(196,154,114,0.06);
+}
+
+.signal-stat-number {
+  font-size: clamp(2.4rem, 4vw, 3.2rem);
+  font-weight: 800;
+  color: #C49A72;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  margin-bottom: 12px;
+}
+
+.signal-stat-desc {
+  font-size: 0.875rem;
+  color: #777;
+  line-height: 1.55;
+  margin: 0;
+}
+
+/* Perimeter CTA button */
+.btn-perimeter {
+  background-color: #C49A72;
+  border-color: #C49A72;
+  color: #0a0a0a;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.btn-perimeter:hover {
+  background-color: #E3BB9B;
+  border-color: #E3BB9B;
+  color: #0a0a0a;
+}
+
+.perimeter-cta-sub {
+  font-size: 0.85rem;
+  color: #555;
+  margin: 0;
+}
+
+.perimeter-cta-link {
+  color: #C49A72;
+  text-decoration: none;
+}
+
+.perimeter-cta-link:hover {
+  color: #E3BB9B;
+}
+
+/* ─── Dual CTA cards ─────────────────────────────────── */
+.cta-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 14px;
+  padding: 36px 32px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.cta-card-perimeter {
+  border-color: rgba(196,154,114,0.3);
+  background: rgba(196,154,114,0.05);
+}
+
+.cta-card-eyebrow {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #777;
+  margin-bottom: 14px;
+}
+
+.cta-card-eyebrow-perimeter {
+  color: #C49A72;
+}
+
+.cta-card-title {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  margin-bottom: 12px;
+}
+
+.cta-card-body {
+  font-size: 0.925rem;
+  color: #888;
+  line-height: 1.7;
+  margin-bottom: 0;
+  flex: 1;
+}
+
 /* ─── Responsive ─────────────────────────────────────── */
 @media (max-width: 768px) {
   .hero-section {
@@ -509,5 +794,32 @@ body {
 
   .cta-section {
     padding: 60px 0;
+  }
+
+  .perimeter-section {
+    padding: 60px 0 50px;
+  }
+
+  .hierarchy-header,
+  .hierarchy-row {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+
+  .hierarchy-header span:not(:first-child) {
+    display: none;
+  }
+
+  .hierarchy-cadence {
+    font-size: 0.78rem;
+  }
+
+  .perimeter-callout {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .cta-card {
+    padding: 28px 22px;
   }
 }
