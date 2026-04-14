@@ -217,7 +217,14 @@
   .ticker-item:nth-child(3) { border-left-color: rgba(224,80,104,0.5); }
   .ticker-item:nth-child(4) { border-left-color: rgba(42,140,116,0.55); }
   .ticker-item:nth-child(5) { border-left-color: rgba(200,169,110,0.3); }
-  .ticker-item:last-child { border-bottom: none; }
+  .ticker-item:last-child { border-bottom: 1px solid rgba(255,255,255,0.04); }
+  .ticker-footer {
+    padding: 14px 20px 14px 17px;
+    font-size: 12.5px; color: var(--white-dim);
+    font-style: italic; line-height: 1.6;
+    border-left: 3px solid var(--gold);
+    background: rgba(200,169,110,0.04);
+  }
   .ticker-clause {
     font-family: 'Cormorant Garamond', Georgia, serif;
     font-size: 20px; font-weight: 600; color: var(--white);
@@ -783,6 +790,9 @@
         <div class="ticker-item">
           <div class="ticker-clause">Before Your Next Tape-Out</div>
           <div class="ticker-body">The point of no return. Most founders reach it without ever reading the fine print on the other side.</div>
+        </div>
+        <div class="ticker-footer">
+          LegalForensics surfaces these gaps before they surface on your balance sheet.
         </div>
       </div>
     </div>
