@@ -176,34 +176,36 @@
     flex-shrink: 0;
   }
   .ticker-item {
-    padding: 17px 20px 15px 17px;
+    padding: 16px 20px 14px 17px;
     border-bottom: 1px solid rgba(255,255,255,0.04);
     border-left: 3px solid transparent;
-    position: relative;
+    display: flex; align-items: center; gap: 14px;
   }
   .ticker-item:nth-child(2) { border-left-color: rgba(200,169,110,0.55); }
   .ticker-item:nth-child(3) { border-left-color: rgba(224,80,104,0.5); }
   .ticker-item:nth-child(4) { border-left-color: rgba(42,140,116,0.55); }
   .ticker-item:nth-child(5) { border-left-color: rgba(200,169,110,0.3); }
   .ticker-item:last-child { border-bottom: none; }
+  .ticker-text { flex: 1; min-width: 0; }
   .ticker-clause {
     font-family: 'Cormorant Garamond', Georgia, serif;
-    font-size: 16px; font-weight: 600; color: var(--white);
-    margin-bottom: 4px; line-height: 1.2;
+    font-size: 15px; font-weight: 600; color: var(--white);
+    margin-bottom: 3px; line-height: 1.2;
   }
   .ticker-body {
-    font-size: 12px; color: var(--white-dim); line-height: 1.55;
-    margin-bottom: 8px;
+    font-size: 11.5px; color: var(--white-dim); line-height: 1.5;
   }
   .ticker-fix {
-    display: inline-block;
+    flex-shrink: 0;
     font-family: 'DM Mono', monospace;
     font-size: 9px; color: var(--gold);
-    letter-spacing: 0.08em; text-transform: uppercase;
-    padding: 3px 8px;
+    letter-spacing: 0.07em; text-transform: uppercase;
+    padding: 5px 10px;
     background: rgba(200,169,110,0.1);
     border: 1px solid rgba(200,169,110,0.25);
-    border-radius: 2px;
+    border-radius: 3px;
+    text-align: center; line-height: 1.5;
+    white-space: nowrap;
   }
 
   /* ── REPORT FINDER ── */
@@ -591,24 +593,55 @@
   footer {
     border-top: 1px solid var(--rule);
     background: var(--panel2);
-    padding: 28px 48px;
-    display: flex; align-items: center; justify-content: space-between;
-    gap: 24px; flex-wrap: wrap;
+    padding: 48px 48px 28px;
   }
-  .footer-logo {
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr;
+    gap: 40px;
+    margin-bottom: 40px;
+  }
+  .footer-brand img {
+    height: 36px; filter: brightness(0) invert(1); opacity: 0.85;
+    margin-bottom: 14px; display: block;
+  }
+  .footer-brand p {
+    font-size: 12px; color: var(--silver); line-height: 1.7;
+    max-width: 280px; margin-bottom: 14px;
+  }
+  .footer-stat {
+    display: inline-flex; align-items: center; gap: 8px;
     font-family: 'DM Mono', monospace;
-    font-size: 12px; color: var(--silver);
-    text-decoration: none;
+    font-size: 10px; color: var(--gold-dim);
+    letter-spacing: 0.06em;
+    padding: 5px 10px;
+    border: 1px solid var(--rule2);
+    border-radius: 2px;
   }
-  .footer-logo span { color: var(--gold); }
-  .footer-links { display: flex; gap: 24px; }
+  .footer-stat strong { color: var(--gold); }
+  .footer-col-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px; color: var(--gold-dim);
+    letter-spacing: 0.14em; text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .footer-links { display: flex; flex-direction: column; gap: 10px; }
   .footer-links a {
-    font-size: 12px; color: var(--silver);
-    text-decoration: none; letter-spacing: 0.04em;
-    transition: color 0.2s;
+    font-size: 12.5px; color: var(--silver);
+    text-decoration: none; transition: color 0.2s;
   }
   .footer-links a:hover { color: var(--gold); }
+  .footer-bottom {
+    border-top: 1px solid var(--rule);
+    padding-top: 20px;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 16px; flex-wrap: wrap;
+  }
   .footer-copy { font-size: 11px; color: var(--gold-dim); letter-spacing: 0.04em; }
+  .footer-disclaimer {
+    font-size: 10.5px; color: var(--silver); opacity: 0.5;
+    letter-spacing: 0.02em;
+  }
 
   /* ── CI ACCESS BAR ── */
   .ci-access-bar {
@@ -654,7 +687,9 @@
     .report-card-wide { grid-template-columns: 1fr; }
     .report-card-wide .report-card-top,
     .report-card-wide ul { grid-column: 1; }
-    footer { flex-direction: column; align-items: flex-start; padding: 24px 20px; }
+    footer { padding: 36px 20px 24px; }
+    .footer-grid { grid-template-columns: 1fr; gap: 28px; }
+    .footer-bottom { flex-direction: column; align-items: flex-start; gap: 8px; }
     .section-header { padding: 0 20px; }
   }
 </style>
@@ -664,14 +699,11 @@
 <!-- NAV -->
 <nav>
   <a href="#" class="nav-logo">
-    <img src="assets/Logo.png" alt="LF" style="height:22px; filter:brightness(0) invert(1); opacity:0.9;">
-    LEGALFORENSICS<span>.AI</span>
+    <img src="assets/Logo.png" alt="LegalForensics.AI" style="height:38px; filter:brightness(0) invert(1); opacity:0.9;">
   </a>
   <div class="nav-tabs">
     <button class="nav-tab" id="tab-ci" onclick="showSection('ci')">Contract Intelligence</button>
     <button class="nav-tab" id="tab-mi" onclick="showSection('mi')">Market Intelligence</button>
-    <div class="nav-divider"></div>
-    <a href="https://legalforensics.substack.com/" class="nav-tab" target="_blank" style="text-decoration:none">Insights ↗</a>
   </div>
 </nav>
 
@@ -709,24 +741,32 @@
       <div class="pain-ticker">
         <div class="ticker-label">Supply Chain Realities</div>
         <div class="ticker-item">
-          <div class="ticker-clause">Yield Floors</div>
-          <div class="ticker-body">Most fabless startups absorb 100% of process deviation.</div>
+          <div class="ticker-text">
+            <div class="ticker-clause">Yield Floors</div>
+            <div class="ticker-body">Most fabless startups absorb 100% of process deviation.</div>
+          </div>
           <div class="ticker-fix">We fix that.</div>
         </div>
         <div class="ticker-item">
-          <div class="ticker-clause">Liability Caps</div>
-          <div class="ticker-body">Your vendor is protected. You are exposed.</div>
-          <div class="ticker-fix">We rebalance the scale.</div>
+          <div class="ticker-text">
+            <div class="ticker-clause">Liability Caps</div>
+            <div class="ticker-body">Your vendor is protected. You are exposed.</div>
+          </div>
+          <div class="ticker-fix">We rebalance<br>the scale.</div>
         </div>
         <div class="ticker-item">
-          <div class="ticker-clause">Constraint Stacking</div>
-          <div class="ticker-body">When your OSAT fails, you're still paying the Foundry.</div>
-          <div class="ticker-fix">We align the stack.</div>
+          <div class="ticker-text">
+            <div class="ticker-clause">Constraint Stacking</div>
+            <div class="ticker-body">When your OSAT fails, you're still paying the Foundry.</div>
+          </div>
+          <div class="ticker-fix">We align<br>the stack.</div>
         </div>
         <div class="ticker-item">
-          <div class="ticker-clause">Before Your Next Tape-Out</div>
-          <div class="ticker-body">The point of no return. The mandatory checkpoint you're missing.</div>
-          <div class="ticker-fix">We audit the perimeter.</div>
+          <div class="ticker-text">
+            <div class="ticker-clause">Before Your Next Tape-Out</div>
+            <div class="ticker-body">The point of no return. The checkpoint you're missing.</div>
+          </div>
+          <div class="ticker-fix">We audit<br>the perimeter.</div>
         </div>
       </div>
     </div>
@@ -1123,13 +1163,43 @@
 
 <!-- FOOTER -->
 <footer>
-  <a href="https://legalforensics.ai" class="footer-logo">LEGALFORENSICS<span>.AI</span></a>
-  <div class="footer-links">
-    <a href="https://legalforensics.substack.com/" target="_blank">Insights</a>
-    <a href="https://legalforensics.ai/contact.html">Contact</a>
-    <a href="mailto:amit@legalforensics.ai">amit@legalforensics.ai</a>
+  <div class="footer-grid">
+
+    <!-- Brand column -->
+    <div class="footer-brand">
+      <img src="assets/Logo.png" alt="LegalForensics.AI">
+      <p>The only Supply Chain Forensic Engine built for fabless semiconductor companies. We map your Strategic Risk Architecture so you stop inheriting your vendor's perimeter.</p>
+      <div class="footer-stat"><strong>145+</strong> Forensic Audits &amp; S-1 Filings Analyzed</div>
+    </div>
+
+    <!-- Products column -->
+    <div>
+      <div class="footer-col-label">Products</div>
+      <div class="footer-links">
+        <a href="#" onclick="showSection('ci'); return false;">Contract Intelligence</a>
+        <a href="#" onclick="showSection('mi'); return false;">Market Intelligence</a>
+        <a href="https://legalforensics.substack.com/" target="_blank">Insights &#8599;</a>
+        <a href="contact.html?reason=Free Preview Request">Request a Free Preview</a>
+      </div>
+    </div>
+
+    <!-- Contact column -->
+    <div>
+      <div class="footer-col-label">Contact &amp; Legal</div>
+      <div class="footer-links">
+        <a href="contact.html">Contact Us</a>
+        <a href="mailto:amit@legalforensics.ai">amit@legalforensics.ai</a>
+        <a href="contact.html?reason=Custom Shield - Pre-Signing Audit">Request a Custom Shield</a>
+        <a href="contact.html?reason=General Inquiry">General Inquiry</a>
+      </div>
+    </div>
+
   </div>
-  <div class="footer-copy">SEC EDGAR Sourced &nbsp;&middot;&nbsp; Not Legal Advice &nbsp;&middot;&nbsp; &copy; 2026 LegalForensics.AI</div>
+
+  <div class="footer-bottom">
+    <div class="footer-copy">&copy; 2026 LegalForensics.AI &nbsp;&middot;&nbsp; SEC EDGAR Sourced</div>
+    <div class="footer-disclaimer">Not legal advice. All analysis derived from public SEC filings. LegalForensics.AI is not a law firm.</div>
+  </div>
 </footer>
 
 <script>
