@@ -1,636 +1,1025 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LegalForensics.AI — Contract Intelligence &amp; Market Intelligence for Semiconductor Companies</title>
+<meta name="description" content="LegalForensics provides two products: Contract Intelligence that reads your agreements from your side, and The Perimeter — a strategic intelligence portfolio backed by forensic analysis of 145+ SEC filings your vendors don't want you to see.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink:       #09090C;
+    --panel:     #101218;
+    --panel2:    #141720;
+    --rule:      #1D2130;
+    --rule2:     #262C3D;
+    --gold:      #C8A96E;
+    --gold-dim:  #7A6540;
+    --silver:    #7E8FA8;
+    --white:     #EEF1F8;
+    --white-dim: #B0BCCC;
+    --crimson:   #8C2030;
+    --teal:      #1E6B5A;
+    --teal-lt:   #2A8C74;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--ink);
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    font-size: 15px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
 
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>LegalForensics — Contract Intelligence &amp; Perimeter Intelligence for Semiconductor Companies</title>
-    <meta name="description" content="LegalForensics provides two products: contract intelligence that reads your agreements from your side, and The Perimeter — a strategic intelligence portfolio backed by forensic analysis of 145+ SEC filings your vendors don't want you to see.">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
-    <link href="custom.css" rel="stylesheet">
-    <link rel="shortcut icon" href="assets/favicon.png" type="image/x-icon">
-  </head>
+  /* ── NAV ── */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(9,9,12,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--rule);
+    display: flex; align-items: center;
+    padding: 0 48px;
+    height: 60px;
+  }
+  .nav-logo {
+    font-family: 'DM Mono', monospace;
+    font-size: 13px; font-weight: 500;
+    color: var(--white); letter-spacing: 0.04em;
+    text-decoration: none;
+    margin-right: auto;
+    display: flex; align-items: center; gap: 4px;
+  }
+  .nav-logo img { height: 22px; }
+  .nav-logo span { color: var(--gold); }
+  .nav-tabs { display: flex; gap: 2px; align-items: center; }
+  .nav-tab {
+    position: relative;
+    padding: 8px 20px;
+    font-size: 12px; font-weight: 500; letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--silver);
+    background: none; border: none;
+    cursor: pointer; border-radius: 4px;
+    transition: color 0.2s;
+    font-family: 'DM Sans', sans-serif;
+  }
+  .nav-tab:hover { color: var(--white); }
+  .nav-tab.active { color: var(--gold); }
+  .nav-tab.active::after {
+    content: '';
+    position: absolute; bottom: -1px; left: 20px; right: 20px;
+    height: 2px; background: var(--gold); border-radius: 1px;
+  }
+  .nav-divider { width: 1px; height: 20px; background: var(--rule2); margin: 0 8px; }
+  .nav-cta {
+    padding: 7px 18px;
+    font-size: 11px; font-weight: 500; letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gold);
+    border: 1px solid var(--gold-dim);
+    border-radius: 3px;
+    text-decoration: none;
+    transition: background 0.2s, color 0.2s;
+    margin-left: 16px;
+  }
+  .nav-cta:hover { background: var(--gold); color: var(--ink); }
 
-  <body>
+  /* ── HERO ── */
+  .hero {
+    padding: 100px 48px 80px;
+    max-width: 900px;
+    position: relative;
+  }
+  .hero-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px; color: var(--gold);
+    letter-spacing: 0.15em; text-transform: uppercase;
+    margin-bottom: 24px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .hero-eyebrow::before { content: ''; width: 28px; height: 1px; background: var(--gold); }
+  h1 {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: clamp(42px, 6vw, 72px); font-weight: 600;
+    line-height: 1.08; letter-spacing: -0.01em;
+    color: var(--white);
+    margin-bottom: 28px;
+  }
+  h1 em { color: var(--gold); font-style: italic; }
+  .hero-sub {
+    font-size: 16px; color: var(--silver);
+    max-width: 580px; line-height: 1.75;
+    margin-bottom: 40px;
+  }
+  .hero-pills {
+    display: flex; flex-wrap: wrap; gap: 8px;
+    margin-bottom: 48px;
+  }
+  .pill {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px; letter-spacing: 0.06em;
+    color: var(--silver);
+    padding: 4px 10px;
+    border: 1px solid var(--rule2);
+    border-radius: 2px;
+  }
+  .hero-propositions {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 1px; background: var(--rule);
+    border: 1px solid var(--rule); border-radius: 4px;
+    overflow: hidden; max-width: 680px;
+    margin-bottom: 40px;
+  }
+  .prop {
+    background: var(--panel);
+    padding: 20px 22px;
+  }
+  .prop-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px; color: var(--gold);
+    letter-spacing: 0.12em; text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .prop-text { font-size: 12.5px; color: var(--white-dim); line-height: 1.6; }
 
-  <!-- ── Navigation ──────────────────────────────────────── -->
-  <nav class="site-nav">
-    <div class="container">
-      <div class="d-flex align-items-center justify-content-between py-3">
-        <a href="index.html" class="text-decoration-none">
-          <img src="assets/Logo.png" alt="LegalForensics" height="36">
-        </a>
-        <div class="d-flex align-items-center gap-4">
-          <a href="#perimeter" class="footer-link d-none d-md-inline perimeter-nav-link">
-            <i class="bi bi-shield-lock-fill me-1"></i>The Perimeter
-          </a>
-          <a href="https://legalforensics.substack.com/" class="footer-link d-none d-md-inline" target="_blank" rel="noopener">
-            <i class="bi bi-pen me-1"></i>Insights
-          </a>
-          <a href="contact.html" class="btn btn-primary px-4">Request Access</a>
-        </div>
-      </div>
+  /* ── SECTION WRAPPERS ── */
+  .product-section {
+    display: none;
+    border-top: 1px solid var(--rule);
+  }
+  .product-section.visible { display: block; }
+  .section-header {
+    display: flex; align-items: center;
+    padding: 0 48px;
+    height: 52px;
+    background: var(--panel2);
+    border-bottom: 1px solid var(--rule);
+  }
+  .section-badge {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px; font-weight: 500;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--ink);
+    padding: 3px 10px 3px 8px;
+    border-radius: 2px;
+    margin-right: 16px;
+  }
+  .badge-ci { background: var(--gold); }
+  .badge-mi { background: var(--teal-lt); }
+  .section-title-bar {
+    font-size: 12px; color: var(--silver);
+    letter-spacing: 0.04em;
+  }
+
+  /* ── INNER CONTENT ── */
+  .content-wrap {
+    max-width: 1100px; margin: 0 auto;
+    padding: 64px 48px;
+  }
+  h2 {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: clamp(28px, 4vw, 44px); font-weight: 600;
+    line-height: 1.15; color: var(--white);
+    margin-bottom: 16px;
+  }
+  h2 em { color: var(--gold); font-style: italic; }
+  h3 {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 24px; font-weight: 600;
+    color: var(--white); margin-bottom: 12px;
+  }
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px; color: var(--gold);
+    letter-spacing: 0.15em; text-transform: uppercase;
+    margin-bottom: 12px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .section-label::before { content: ''; width: 20px; height: 1px; background: var(--gold); }
+  .lead { font-size: 15px; color: var(--silver); max-width: 660px; line-height: 1.8; margin-bottom: 40px; }
+
+  /* RULE divider */
+  hr.rule { border: none; border-top: 1px solid var(--rule); margin: 48px 0; }
+
+  /* ── CONTRACT INTELLIGENCE ── */
+  .problem-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 1px; background: var(--rule);
+    border: 1px solid var(--rule); border-radius: 4px;
+    overflow: hidden; margin-bottom: 48px;
+  }
+  .problem-card {
+    background: var(--panel);
+    padding: 24px 26px;
+  }
+  .problem-card h4 {
+    font-size: 13px; font-weight: 500;
+    color: var(--white); margin-bottom: 8px;
+  }
+  .problem-card h4::before {
+    content: '—'; color: var(--crimson);
+    margin-right: 8px; font-weight: 300;
+  }
+  .problem-card p { font-size: 12.5px; color: var(--silver); line-height: 1.7; }
+
+  /* OUTPUTS grid */
+  .outputs-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 1px; background: var(--rule);
+    border: 1px solid var(--rule); border-radius: 4px;
+    overflow: hidden; margin-bottom: 48px;
+  }
+  .output-card {
+    background: var(--panel);
+    padding: 24px 22px;
+    position: relative;
+  }
+  .output-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px; color: var(--gold-dim);
+    margin-bottom: 10px;
+  }
+  .output-card h4 {
+    font-size: 13px; font-weight: 500;
+    color: var(--white); margin-bottom: 8px; line-height: 1.4;
+  }
+  .output-card p { font-size: 12px; color: var(--silver); line-height: 1.6; }
+
+  /* FMRI */
+  .fmri-grid {
+    display: grid; grid-template-columns: repeat(5, 1fr);
+    gap: 8px; margin-bottom: 48px;
+  }
+  .fmri-card {
+    background: var(--panel);
+    border: 1px solid var(--rule);
+    border-radius: 4px; padding: 18px 14px;
+    text-align: center;
+  }
+  .fmri-card h5 { font-size: 11px; font-weight: 500; color: var(--white-dim); margin-bottom: 10px; line-height: 1.4; }
+  .fmri-score {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px; font-weight: 500; letter-spacing: 0.08em;
+    padding: 3px 10px; border-radius: 2px;
+    display: inline-block;
+  }
+  .red   { background: rgba(140,32,48,0.25); color: #E05068; border: 1px solid rgba(140,32,48,0.5); }
+  .amber { background: rgba(160,110,30,0.25); color: #D4A040; border: 1px solid rgba(160,110,30,0.5); }
+  .green { background: rgba(30,107,90,0.25); color: #4ABFA0; border: 1px solid rgba(30,107,90,0.5); }
+
+  /* HOW IT WORKS */
+  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-bottom: 48px; }
+  .step { padding: 28px 26px; background: var(--panel); border: 1px solid var(--rule); border-radius: 4px; }
+  .step-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 28px; font-weight: 500; color: var(--rule2);
+    margin-bottom: 16px;
+  }
+  .step h4 { font-size: 13px; font-weight: 500; color: var(--white); margin-bottom: 8px; }
+  .step p { font-size: 12.5px; color: var(--silver); line-height: 1.65; }
+
+  /* FOUNDRY QS */
+  .foundry-qs { list-style: none; margin-bottom: 48px; }
+  .foundry-qs li {
+    padding: 14px 0 14px 20px;
+    border-bottom: 1px solid var(--rule);
+    font-size: 13.5px; color: var(--silver);
+    position: relative;
+  }
+  .foundry-qs li::before {
+    content: '?'; position: absolute; left: 0;
+    color: var(--gold-dim);
+    font-family: 'DM Mono', monospace; font-size: 11px;
+  }
+
+  /* ── MARKET INTELLIGENCE (PERIMETER) ── */
+  .perimeter-intro {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 32px; margin-bottom: 48px; align-items: start;
+  }
+  .perimeter-intro p { font-size: 14px; color: var(--silver); line-height: 1.8; margin-bottom: 16px; }
+  .perimeter-intro p strong { color: var(--white); font-weight: 500; }
+  .inherit-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .inherit-card {
+    background: var(--panel); border: 1px solid var(--rule);
+    border-left: 3px solid var(--crimson);
+    border-radius: 0 4px 4px 0; padding: 14px 16px;
+  }
+  .inherit-card h5 { font-size: 12px; font-weight: 500; color: var(--white); margin-bottom: 4px; }
+  .inherit-card p { font-size: 11.5px; color: var(--silver); line-height: 1.5; }
+
+  /* Intelligence table */
+  .intel-table { width: 100%; border-collapse: collapse; margin-bottom: 48px; }
+  .intel-table thead tr { border-bottom: 1px solid var(--rule2); }
+  .intel-table th {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--gold-dim); padding: 0 12px 12px 0;
+    text-align: left; font-weight: 500;
+  }
+  .intel-table tbody tr { border-bottom: 1px solid var(--rule); }
+  .intel-table tbody tr:hover td { background: rgba(255,255,255,0.015); }
+  .intel-table td { padding: 14px 12px 14px 0; vertical-align: top; }
+  .intel-table .asset { font-size: 13px; font-weight: 500; color: var(--white); white-space: nowrap; }
+  .intel-table .cadence {
+    font-family: 'DM Mono', monospace; font-size: 10px;
+    color: var(--gold); letter-spacing: 0.06em;
+    white-space: nowrap;
+  }
+  .intel-table .vp { font-size: 12.5px; color: var(--silver); }
+
+  /* Stats */
+  .stats-row { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; margin-bottom: 48px; }
+  .stat-card {
+    background: var(--panel); border: 1px solid var(--rule);
+    border-radius: 4px; padding: 28px 20px; text-align: center;
+  }
+  .stat-num {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 48px; font-weight: 600; color: var(--gold);
+    line-height: 1; margin-bottom: 10px;
+  }
+  .stat-desc { font-size: 11.5px; color: var(--silver); line-height: 1.6; }
+
+  /* Perimeter pillars */
+  .pillars { display: flex; flex-direction: column; gap: 1px; margin-bottom: 48px; background: var(--rule); border: 1px solid var(--rule); border-radius: 4px; overflow: hidden; }
+  .pillar {
+    background: var(--panel); padding: 22px 26px;
+    border-left: 3px solid var(--gold-dim);
+  }
+  .pillar h4 { font-size: 14px; font-weight: 500; color: var(--white); margin-bottom: 4px; }
+  .pillar-sub {
+    font-family: 'DM Mono', monospace; font-size: 9px;
+    color: var(--gold-dim); letter-spacing: 0.1em; text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .pillar p { font-size: 12.5px; color: var(--silver); line-height: 1.65; max-width: 680px; }
+
+  /* ── CTA BLOCKS ── */
+  .cta-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 56px; }
+  .cta-block {
+    padding: 32px 30px;
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    position: relative; overflow: hidden;
+  }
+  .cta-block.ci { border-color: var(--gold-dim); background: rgba(200,169,110,0.04); }
+  .cta-block.mi { border-color: var(--teal); background: rgba(30,107,90,0.06); }
+  .cta-block h3 { font-family: 'DM Sans', sans-serif; font-size: 15px; font-weight: 500; margin-bottom: 8px; }
+  .cta-block p { font-size: 12.5px; color: var(--silver); margin-bottom: 20px; line-height: 1.6; }
+  .cta-btn {
+    display: inline-block; padding: 8px 22px;
+    font-size: 11px; font-weight: 500; letter-spacing: 0.1em;
+    text-transform: uppercase; text-decoration: none;
+    border-radius: 3px; transition: all 0.2s;
+  }
+  .cta-btn.gold { background: var(--gold); color: var(--ink); }
+  .cta-btn.gold:hover { background: #DFC080; }
+  .cta-btn.teal { background: var(--teal-lt); color: var(--ink); }
+  .cta-btn.teal:hover { background: #36A88A; }
+
+  /* ── REPORT CARDS ── */
+  .report-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+  .report-card {
+    background: var(--panel);
+    border: 1px solid var(--rule2);
+    border-radius: 4px;
+    padding: 24px 24px 20px;
+    display: flex; flex-direction: column;
+    transition: border-color 0.2s;
+  }
+  .report-card:hover { border-color: var(--gold-dim); }
+  .report-card.featured {
+    border-color: var(--gold-dim);
+    background: linear-gradient(160deg, rgba(200,169,110,0.06) 0%, var(--panel) 60%);
+  }
+  .report-card.featured::before {
+    content: 'RECOMMENDED';
+    display: block;
+    font-family: 'DM Mono', monospace;
+    font-size: 9px; letter-spacing: 0.12em;
+    color: var(--gold); background: rgba(200,169,110,0.12);
+    border: 1px solid var(--gold-dim);
+    padding: 2px 8px; border-radius: 2px;
+    margin-bottom: 14px; width: fit-content;
+  }
+  .report-card-wide {
+    grid-column: 1 / -1;
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 0 32px; align-items: start;
+  }
+  .report-card-wide .report-card-top { grid-column: 1; }
+  .report-card-wide ul { grid-column: 2; align-self: start; margin-top: 8px; }
+  .report-card-wide .report-cta-wide { grid-column: 1 / -1; margin-top: 20px; }
+  .report-card-top { flex: 1; }
+  .report-cadence {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px; color: var(--teal-lt);
+    letter-spacing: 0.12em; text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .report-name {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 22px; font-weight: 600; color: var(--white);
+    margin-bottom: 10px; line-height: 1.2;
+  }
+  .report-desc { font-size: 12.5px; color: var(--silver); line-height: 1.65; margin-bottom: 16px; }
+  .report-includes {
+    list-style: none; margin-bottom: 20px; flex: 1;
+  }
+  .report-includes li {
+    font-size: 12px; color: var(--white-dim);
+    padding: 5px 0 5px 16px; position: relative;
+    border-bottom: 1px solid var(--rule);
+    line-height: 1.5;
+  }
+  .report-includes li:last-child { border-bottom: none; }
+  .report-includes li::before {
+    content: '·'; position: absolute; left: 0;
+    color: var(--teal-lt); font-weight: 700;
+  }
+  .report-cta {
+    display: block; text-align: center;
+    padding: 9px 16px;
+    background: transparent;
+    border: 1px solid var(--teal);
+    color: var(--teal-lt);
+    font-size: 11px; font-weight: 500; letter-spacing: 0.1em;
+    text-transform: uppercase; text-decoration: none;
+    border-radius: 3px;
+    transition: all 0.2s;
+    margin-top: auto;
+  }
+  .report-cta:hover { background: var(--teal-lt); color: var(--ink); border-color: var(--teal-lt); }
+  .report-card.featured .report-cta {
+    border-color: var(--gold-dim); color: var(--gold);
+  }
+  .report-card.featured .report-cta:hover { background: var(--gold); color: var(--ink); border-color: var(--gold); }
+  .report-cta-wide { display: block; width: fit-content; }
+
+  /* ── FOOTER ── */
+  footer {
+    border-top: 1px solid var(--rule);
+    background: var(--panel2);
+    padding: 28px 48px;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 24px; flex-wrap: wrap;
+  }
+  .footer-logo {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px; color: var(--silver);
+    text-decoration: none;
+  }
+  .footer-logo span { color: var(--gold); }
+  .footer-links { display: flex; gap: 24px; }
+  .footer-links a {
+    font-size: 12px; color: var(--silver);
+    text-decoration: none; letter-spacing: 0.04em;
+    transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--gold); }
+  .footer-copy { font-size: 11px; color: var(--gold-dim); letter-spacing: 0.04em; }
+
+  /* ── ACTIVE GLOW on section-header ── */
+  .product-section.visible .section-header { border-bottom-color: var(--rule2); }
+
+  /* ── SCROLL ANIMATION ── */
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+  .product-section.visible .content-wrap { animation: fadeUp 0.35s ease both; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    nav { padding: 0 20px; }
+    .nav-tab { padding: 8px 12px; font-size: 11px; }
+    .hero { padding: 60px 20px 48px; }
+    .content-wrap { padding: 40px 20px; }
+    .hero-propositions { grid-template-columns: 1fr; }
+    .problem-grid { grid-template-columns: 1fr; }
+    .outputs-grid { grid-template-columns: 1fr 1fr; }
+    .fmri-grid { grid-template-columns: repeat(3, 1fr); }
+    .steps { grid-template-columns: 1fr; }
+    .perimeter-intro { grid-template-columns: 1fr; }
+    .stats-row { grid-template-columns: 1fr; }
+    .report-grid { grid-template-columns: 1fr; }
+    .report-card-wide { grid-template-columns: 1fr; }
+    .report-card-wide .report-card-top,
+    .report-card-wide ul { grid-column: 1; }
+    footer { flex-direction: column; align-items: flex-start; padding: 24px 20px; }
+    .section-header { padding: 0 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">LEGALFORENSICS<span>.AI</span></a>
+  <div class="nav-tabs">
+    <button class="nav-tab" id="tab-ci" onclick="showSection('ci')">Contract Intelligence</button>
+    <button class="nav-tab" id="tab-mi" onclick="showSection('mi')">Market Intelligence</button>
+    <div class="nav-divider"></div>
+    <a href="https://legalforensics.substack.com/" class="nav-tab" target="_blank" style="text-decoration:none">Insights ↗</a>
+  </div>
+  <a href="https://legalforensics.ai/contact.html" class="nav-cta">Request Access</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-eyebrow">Built for Semiconductor Companies</div>
+  <h1>Know Your Contracts.<br><em>Know Your Risks.</em></h1>
+  <p class="hero-sub">From foundry and OSAT agreements to IP licenses and hyperscaler pilots — most of it is drafted by the other side and signed without legal support. LegalForensics reads it from your side.</p>
+  <div class="hero-propositions">
+    <div class="prop">
+      <div class="prop-label">Your exposure</div>
+      <div class="prop-text">Surface financial risk and hidden liability before you commit.</div>
     </div>
-  </nav>
-
-
-  <!-- ── Hero ────────────────────────────────────────────── -->
-  <section class="hero-section">
-    <div class="container">
-      <div class="row align-items-center">
-        <div class="col-lg-7 col-xl-6">
-          <span class="hero-badge"><i class="bi bi-cpu-fill me-1"></i> Built for Semiconductor Companies</span>
-          <h1 class="hero-title">Know Your<br>Contracts.<br>Know Your<br>Risks.</h1>
-          <p class="hero-subtitle">From foundry and OSAT agreements to IP licenses and hyperscaler pilots — most of it is drafted by the other side and signed without legal support. LegalForensics reads it from your side.</p>
-          <div class="d-flex gap-3 flex-wrap">
-            <a href="contact.html" class="btn btn-primary btn-lg px-4">Request a Demo</a>
-          </div>
-        </div>
-        <div class="col-lg-5 col-xl-6 d-none d-lg-flex justify-content-center">
-          <svg class="chip-graphic" viewBox="0 0 320 320" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <!-- Traces: Left -->
-            <line x1="0" y1="110" x2="80" y2="110" stroke="#E3BB9B" stroke-width="1" opacity="0.3"/>
-            <line x1="0" y1="130" x2="80" y2="130" stroke="#E3BB9B" stroke-width="1" opacity="0.3"/>
-            <line x1="0" y1="150" x2="80" y2="150" stroke="#E3BB9B" stroke-width="1" opacity="0.3"/>
-            <line x1="0" y1="170" x2="80" y2="170" stroke="#E3BB9B" stroke-width="1" opacity="0.3"/>
-            <line x1="0" y1="190" x2="80" y2="190" stroke="#E3BB9B" stroke-width="1" opacity="0.3"/>
-            <line x1="0" y1="210" x2="80" y2="210" stroke="#E3BB9B" stroke-width="1" opacity="0.3"/>
-            <!-- Traces: Right -->
-            <line x1="240" y1="110" x2="320" y2="110" stroke="#E3BB9B" stroke-width="1" opacity="0.3"/>
-            <line x1="240" y1="130" x2="320" y2="130" stroke="#E3BB9B" stroke-width="1" opacity="0.3"/>
-            <line x1="240" y1="150" x2="320" y2="150" stroke="#E3BB9B" stroke-width="1" opacity="0.3"/>
-            <line x1="240" y1="170" x2="320" y2="170" stroke="#E3BB9B" stroke-width="1" opacity="0.3"/>
-            <line x1="240" y1="190" x2="320" y2="190" stroke="#E3BB9B" stroke-width="1" opacity="0.3"/>
-            <line x1="240" y1="210" x2="320" y2="210" stroke="#E3BB9B" stroke-width="1" opacity="0.3"/>
-            <!-- Traces: Top -->
-            <line x1="110" y1="0" x2="110" y2="80" stroke="#E3BB9B" stroke-width="1" opacity="0.3"/>
-            <line x1="130" y1="0" x2="130" y2="80" stroke="#E3BB9B" stroke-width="1" opacity="0.3"/>
-            <line x1="150" y1="0" x2="150" y2="80" stroke="#E3BB9B" stroke-width="1" opacity="0.3"/>
-            <line x1="170" y1="0" x2="170" y2="80" stroke="#E3BB9B" stroke-width="1" opacity="0.3"/>
-            <line x1="190" y1="0" x2="190" y2="80" stroke="#E3BB9B" stroke-width="1" opacity="0.3"/>
-            <line x1="210" y1="0" x2="210" y2="80" stroke="#E3BB9B" stroke-width="1" opacity="0.3"/>
-            <!-- Traces: Bottom -->
-            <line x1="110" y1="240" x2="110" y2="320" stroke="#E3BB9B" stroke-width="1" opacity="0.3"/>
-            <line x1="130" y1="240" x2="130" y2="320" stroke="#E3BB9B" stroke-width="1" opacity="0.3"/>
-            <line x1="150" y1="240" x2="150" y2="320" stroke="#E3BB9B" stroke-width="1" opacity="0.3"/>
-            <line x1="170" y1="240" x2="170" y2="320" stroke="#E3BB9B" stroke-width="1" opacity="0.3"/>
-            <line x1="190" y1="240" x2="190" y2="320" stroke="#E3BB9B" stroke-width="1" opacity="0.3"/>
-            <line x1="210" y1="240" x2="210" y2="320" stroke="#E3BB9B" stroke-width="1" opacity="0.3"/>
-            <!-- Chip package body -->
-            <rect x="82" y="82" width="156" height="156" rx="10" fill="rgba(227,187,155,0.04)" stroke="#E3BB9B" stroke-width="1.5"/>
-            <!-- Pin 1 marker -->
-            <circle cx="96" cy="96" r="4" fill="none" stroke="#E3BB9B" stroke-width="1" opacity="0.5"/>
-            <!-- Inner die outline -->
-            <rect x="110" y="110" width="100" height="100" rx="5" fill="none" stroke="#E3BB9B" stroke-width="0.75" opacity="0.25"/>
-            <!-- Logic blocks -->
-            <rect x="118" y="118" width="38" height="38" rx="3" fill="none" stroke="#E3BB9B" stroke-width="0.5" opacity="0.2"/>
-            <rect x="164" y="118" width="38" height="38" rx="3" fill="none" stroke="#E3BB9B" stroke-width="0.5" opacity="0.2"/>
-            <rect x="118" y="164" width="38" height="38" rx="3" fill="none" stroke="#E3BB9B" stroke-width="0.5" opacity="0.2"/>
-            <rect x="164" y="164" width="38" height="38" rx="3" fill="none" stroke="#E3BB9B" stroke-width="0.5" opacity="0.2"/>
-            <!-- Internal routing -->
-            <line x1="156" y1="137" x2="164" y2="137" stroke="#E3BB9B" stroke-width="0.75" opacity="0.2"/>
-            <line x1="137" y1="156" x2="137" y2="164" stroke="#E3BB9B" stroke-width="0.75" opacity="0.2"/>
-            <line x1="183" y1="156" x2="183" y2="164" stroke="#E3BB9B" stroke-width="0.75" opacity="0.2"/>
-            <line x1="156" y1="183" x2="164" y2="183" stroke="#E3BB9B" stroke-width="0.75" opacity="0.2"/>
-            <!-- Pads: Left -->
-            <rect x="78" y="107" width="8" height="6" rx="1" fill="#E3BB9B" opacity="0.55"/>
-            <rect x="78" y="127" width="8" height="6" rx="1" fill="#E3BB9B" opacity="0.55"/>
-            <rect x="78" y="147" width="8" height="6" rx="1" fill="#E3BB9B" opacity="0.55"/>
-            <rect x="78" y="167" width="8" height="6" rx="1" fill="#E3BB9B" opacity="0.55"/>
-            <rect x="78" y="187" width="8" height="6" rx="1" fill="#E3BB9B" opacity="0.55"/>
-            <rect x="78" y="207" width="8" height="6" rx="1" fill="#E3BB9B" opacity="0.55"/>
-            <!-- Pads: Right -->
-            <rect x="234" y="107" width="8" height="6" rx="1" fill="#E3BB9B" opacity="0.55"/>
-            <rect x="234" y="127" width="8" height="6" rx="1" fill="#E3BB9B" opacity="0.55"/>
-            <rect x="234" y="147" width="8" height="6" rx="1" fill="#E3BB9B" opacity="0.55"/>
-            <rect x="234" y="167" width="8" height="6" rx="1" fill="#E3BB9B" opacity="0.55"/>
-            <rect x="234" y="187" width="8" height="6" rx="1" fill="#E3BB9B" opacity="0.55"/>
-            <rect x="234" y="207" width="8" height="6" rx="1" fill="#E3BB9B" opacity="0.55"/>
-            <!-- Pads: Top -->
-            <rect x="107" y="78" width="6" height="8" rx="1" fill="#E3BB9B" opacity="0.55"/>
-            <rect x="127" y="78" width="6" height="8" rx="1" fill="#E3BB9B" opacity="0.55"/>
-            <rect x="147" y="78" width="6" height="8" rx="1" fill="#E3BB9B" opacity="0.55"/>
-            <rect x="167" y="78" width="6" height="8" rx="1" fill="#E3BB9B" opacity="0.55"/>
-            <rect x="187" y="78" width="6" height="8" rx="1" fill="#E3BB9B" opacity="0.55"/>
-            <rect x="207" y="78" width="6" height="8" rx="1" fill="#E3BB9B" opacity="0.55"/>
-            <!-- Pads: Bottom -->
-            <rect x="107" y="234" width="6" height="8" rx="1" fill="#E3BB9B" opacity="0.55"/>
-            <rect x="127" y="234" width="6" height="8" rx="1" fill="#E3BB9B" opacity="0.55"/>
-            <rect x="147" y="234" width="6" height="8" rx="1" fill="#E3BB9B" opacity="0.55"/>
-            <rect x="167" y="234" width="6" height="8" rx="1" fill="#E3BB9B" opacity="0.55"/>
-            <rect x="187" y="234" width="6" height="8" rx="1" fill="#E3BB9B" opacity="0.55"/>
-            <rect x="207" y="234" width="6" height="8" rx="1" fill="#E3BB9B" opacity="0.55"/>
-          </svg>
-        </div>
-      </div>
+    <div class="prop">
+      <div class="prop-label">Your perspective</div>
+      <div class="prop-text">Analysis calibrated to your side of the table — not neutral, not generic.</div>
     </div>
-  </section>
-
-
-  <!-- ── Three truths band ─────────────────────────────────── -->
-  <section class="truths-band">
-    <div class="container">
-      <div class="row text-center g-4">
-
-        <div class="col-md-4">
-          <span class="section-label">Your exposure</span>
-          <p class="mb-0 truths-text">Surface financial risk and hidden liability before you commit.</p>
-        </div>
-
-        <div class="col-md-4 truths-divider">
-          <span class="section-label">Your perspective</span>
-          <p class="mb-0 truths-text">Analysis calibrated to your side of the table — not neutral, not generic.</p>
-        </div>
-
-        <div class="col-md-4">
-          <span class="section-label">Your outcome</span>
-          <p class="mb-0 truths-text">A verdict and a plan — not a summary to interpret on your own.</p>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-
-  <!-- ── Contract types band ───────────────────────────────── -->
-  <div class="scope-note">
-    <div class="container text-center">
-      <p>Foundry agreements &nbsp;·&nbsp; OSAT agreements (assembly &amp; test) &nbsp;·&nbsp; IP licensing &nbsp;·&nbsp; Hyperscaler pilots &nbsp;·&nbsp; DARPA / DoD OTAs &nbsp;·&nbsp; University spinout licenses &nbsp;·&nbsp; Automotive supply &nbsp;·&nbsp; EDA vendor agreements &nbsp;·&nbsp; NDAs &nbsp;·&nbsp; MSAs</p>
+    <div class="prop">
+      <div class="prop-label">Your outcome</div>
+      <div class="prop-text">A verdict and a plan — not a summary to interpret on your own.</div>
     </div>
   </div>
+  <div class="hero-pills">
+    <span class="pill">Foundry agreements</span>
+    <span class="pill">OSAT agreements</span>
+    <span class="pill">IP licensing</span>
+    <span class="pill">Hyperscaler pilots</span>
+    <span class="pill">DARPA / DoD OTAs</span>
+    <span class="pill">University spinout licenses</span>
+    <span class="pill">Automotive supply</span>
+    <span class="pill">EDA vendor agreements</span>
+    <span class="pill">NDAs · MSAs</span>
+  </div>
+</section>
 
+<!-- ═══════════════════════════════════════════════════════
+     CONTRACT INTELLIGENCE SECTION
+═══════════════════════════════════════════════════════ -->
+<div class="product-section" id="section-ci">
+  <div class="section-header">
+    <span class="section-badge badge-ci">Contract Intelligence</span>
+    <span class="section-title-bar">Upload your agreement. Get a decision.</span>
+  </div>
+  <div class="content-wrap">
 
-  <!-- ── The Perimeter ────────────────────────────────────── -->
-  <section class="perimeter-section" id="perimeter">
-    <div class="container">
+    <!-- The Problem -->
+    <div class="section-label">The Problem</div>
+    <h2>The counterparty's lawyers wrote it.<br><em>You're signing it anyway.</em></h2>
+    <p class="lead">Every high-stakes agreement a semiconductor startup signs in its first years was drafted by the other side — foundries, hyperscalers, defense primes, universities, automotive OEMs. The terms reflect their interests, not yours.</p>
 
-      <!-- Header -->
-      <div class="row mb-4">
-        <div class="col-lg-9">
-          <div class="perimeter-eyebrow">Perimeter &nbsp;·&nbsp; Intelligence Portfolio &nbsp;·&nbsp; Strategic Supply Chain Defense</div>
-          <h2 class="perimeter-title">Inheriting the Perimeter</h2>
-          <p class="perimeter-subtitle">When you sign with a Tier-1 Foundry or OSAT, you are not just signing a piece of paper. You are stepping into a pre-existing cage built by the industry's giants — <strong>inheriting their legal and operational boundaries.</strong> It is the difference between building your own house and moving into a rented apartment where the landlord has already locked half the doors.</p>
+    <div class="problem-grid">
+      <div class="problem-card">
+        <h4>Foundry agreements protect the foundry</h4>
+        <p>Supply allocation, yield thresholds, wafer bank penalties, mask ownership, and change-of-control clauses all default in the foundry's favour. The asymmetry is structural, not accidental.</p>
+      </div>
+      <div class="problem-card">
+        <h4>Hyperscaler and OEM pilots lock in exposure</h4>
+        <p>Customer-drafted pilot agreements contain IP ownership clauses, auto-renewal, and one-sided indemnification. What looks like a trial often becomes a binding commitment.</p>
+      </div>
+      <div class="problem-card">
+        <h4>University and DARPA licenses constrain your freedom</h4>
+        <p>Spinout IP licenses carry field-of-use restrictions, milestone-based rights, and government march-in provisions that limit what you can commercialize and with whom.</p>
+      </div>
+      <div class="problem-card">
+        <h4>No legal team to catch it in time</h4>
+        <p>Most semiconductor startups from seed through Series B have no general counsel. The exposure gets locked in before anyone reads the fine print carefully.</p>
+      </div>
+    </div>
+
+    <hr class="rule">
+
+    <!-- Six Outputs -->
+    <div class="section-label">What You Get</div>
+    <h2>Six outputs. <em>One decision.</em></h2>
+    <p class="lead">Every analysis is specific to your agreement and your position — fabless buyer, IP licensee, defense contractor, or spinout founder.</p>
+
+    <div class="outputs-grid">
+      <div class="output-card">
+        <div class="output-num">01</div>
+        <h4>Risk-ranked clause summary</h4>
+        <p>Every clause with commercial consequence ranked by severity — important, review, or note. Perspective-calibrated to your side of the table.</p>
+      </div>
+      <div class="output-card">
+        <div class="output-num">02</div>
+        <h4>Perspective-aware analysis</h4>
+        <p>The same clause reads differently depending on which side you're on. LegalForensics identifies your role and calibrates accordingly.</p>
+      </div>
+      <div class="output-card">
+        <div class="output-num">03</div>
+        <h4>A clear verdict</h4>
+        <p>Proceed, proceed with caution, pause, or renegotiate — with the specific asks to bring back to the other side before you sign.</p>
+      </div>
+      <div class="output-card">
+        <div class="output-num">04</div>
+        <h4>Foundry Model Risk Index (F-MRI)</h4>
+        <p>Five dimensions scored RED, AMBER, or GREEN based on your contract and company context — supply, yield, delivery, economics, exit.</p>
+      </div>
+      <div class="output-card">
+        <div class="output-num">05</div>
+        <h4>Path to low risk</h4>
+        <p>For every critical finding: a specific contract fix to negotiate and a situation fix to address the underlying exposure.</p>
+      </div>
+      <div class="output-card">
+        <div class="output-num">06</div>
+        <h4>Situation simulator</h4>
+        <p>Change your company context — single source, critical launch, tight margins — and see how your risk score shifts.</p>
+      </div>
+    </div>
+
+    <hr class="rule">
+
+    <!-- F-MRI -->
+    <div class="section-label">F-MRI</div>
+    <h2>Foundry Model Risk Index</h2>
+    <p class="lead">The only scoring framework built specifically for fabless-to-foundry agreements. Five dimensions, each scored against your contract language and amplified by your company context.</p>
+
+    <div class="fmri-grid">
+      <div class="fmri-card">
+        <h5>Supply Commitment</h5>
+        <span class="fmri-score red">RED</span>
+      </div>
+      <div class="fmri-card">
+        <h5>Yield Protection</h5>
+        <span class="fmri-score amber">AMBER</span>
+      </div>
+      <div class="fmri-card">
+        <h5>Delivery Enforcement</h5>
+        <span class="fmri-score amber">AMBER</span>
+      </div>
+      <div class="fmri-card">
+        <h5>Economic Protection</h5>
+        <span class="fmri-score green">GREEN</span>
+      </div>
+      <div class="fmri-card">
+        <h5>Exit Flexibility</h5>
+        <span class="fmri-score red">RED</span>
+      </div>
+    </div>
+
+    <hr class="rule">
+
+    <!-- How it works -->
+    <div class="section-label">How It Works</div>
+    <h2>Upload your agreement. <em>Get a decision.</em></h2>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">01</div>
+        <h4>Upload your agreement</h4>
+        <p>Upload any contract as PDF or Word — foundry agreement, IP license, customer pilot, DARPA OTA. The system identifies the parties and confirms which side you're on.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <h4>Set your company context</h4>
+        <p>Single-source or dual-source? Critical launch timeline or flexible? Tight margins or healthy buffer? Your context determines which risks are most dangerous for you specifically.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <h4>Get your risk analysis and verdict</h4>
+        <p>Receive a ranked list of clauses to negotiate, a clear verdict, and for foundry agreements — a scored F-MRI across five dimensions with specific language to push back on.</p>
+      </div>
+    </div>
+
+    <hr class="rule">
+
+    <!-- Foundry Questions -->
+    <div class="section-label">Foundry Agreements</div>
+    <h2>The questions that matter <em>before you sign.</em></h2>
+    <p class="lead">These are the real questions fabless teams should be asking — and usually aren't, until after execution.</p>
+
+    <ul class="foundry-qs">
+      <li>Is the foundry obligated to supply you — or can they reduce your allocation with 30 days notice?</li>
+      <li>Who owns the mask sets and reticles funded by your NRE payment — you, or the foundry?</li>
+      <li>If yield falls to 60% of qualified process yield, who absorbs the financial loss?</li>
+      <li>Can the foundry change the process node affecting your qualified product without your consent?</li>
+      <li>What is the maximum wafer bank liability you've committed to — and under what conditions is it triggered?</li>
+      <li>If your company is acquired, does this agreement require foundry consent before the deal closes?</li>
+      <li>Are price escalation clauses capped — or can the foundry increase wafer prices without limit?</li>
+      <li>Does the force majeure clause give the foundry a broad exit while leaving your supply commitment intact?</li>
+    </ul>
+
+    <div class="cta-pair" style="grid-template-columns: 1fr; max-width: 520px;">
+      <div class="cta-block ci">
+        <h3>Ready to review your agreement?</h3>
+        <p>Upload your first contract free — foundry agreement, IP license, customer pilot, or anything you're about to sign. Analysis calibrated to your side of the table.</p>
+        <a href="https://legalforensics.ai/contact.html" class="cta-btn gold">Request Access</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     MARKET INTELLIGENCE SECTION (PERIMETER)
+═══════════════════════════════════════════════════════ -->
+<div class="product-section" id="section-mi">
+  <div class="section-header">
+    <span class="section-badge badge-mi">Market Intelligence</span>
+    <span class="section-title-bar">Perimeter · Strategic Supply Chain Defense</span>
+  </div>
+  <div class="content-wrap">
+
+    <!-- Inheriting the Perimeter -->
+    <div class="section-label">Perimeter</div>
+    <h2>Inheriting the <em>Perimeter</em></h2>
+
+    <div class="perimeter-intro">
+      <div>
+        <p>When you sign with a Tier-1 Foundry or OSAT, you are not just signing a piece of paper. You are stepping into a pre-existing cage built by the industry's giants — <strong>inheriting their legal and operational boundaries.</strong></p>
+        <p>It is more than just "working under constraints." It is the difference between building your own house and moving into a rented apartment where the landlord has already locked half the doors.</p>
+        <p>Without Perimeter Intelligence, you are blind to where those boundaries are. You might think you have room to grow, only to hit a contractual wall — a field-of-use lock or an uncapped liability — just as you are trying to scale or go public.</p>
+        <p style="padding: 14px 16px; background: var(--panel); border-left: 3px solid var(--gold); border-radius: 0 4px 4px 0; font-size: 13px; color: var(--white-dim); line-height: 1.7; margin-top: 8px;">
+          <strong style="color: var(--gold); font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; display: block; margin-bottom: 6px;">Perimeter</strong>
+          shows you exactly where those walls are — <em>before you walk into them.</em> We don't tell you if a clause is legal. We tell you if it's <em>market</em>, backed by forensic analysis of 145+ SEC filings your vendors don't want you to see.
+        </p>
+      </div>
+      <div class="inherit-cards">
+        <div class="inherit-card">
+          <h5>Standard Failures</h5>
+          <p>Vendors define 'acceptable yield.' You inherit the loss for any gap below their threshold.</p>
+        </div>
+        <div class="inherit-card">
+          <h5>Historical Precedent</h5>
+          <p>They negotiated with companies 10× your size. You inherit those concessions as the baseline.</p>
+        </div>
+        <div class="inherit-card">
+          <h5>Constraint Stacking</h5>
+          <p>Foundry take-or-pay + OSAT disruption = you pay for wafers you can't use. A structural trap.</p>
+        </div>
+        <div class="inherit-card">
+          <h5>Field-of-Use Lock</h5>
+          <p>One facility, one geography — a geopolitical risk you didn't choose, locked in on signing.</p>
         </div>
       </div>
+    </div>
 
-      <!-- 4 Failure types -->
-      <div class="row g-3 mb-5">
-        <div class="col-sm-6 col-lg-3">
-          <div class="failure-card">
-            <div class="failure-title">Standard Failures</div>
-            <p class="failure-desc">Vendors define 'acceptable yield.' You inherit the loss for any gap.</p>
-          </div>
+    <hr class="rule">
+
+    <!-- Signal Snapshot -->
+    <div class="section-label">Signal Intelligence Snapshot</div>
+    <div class="stats-row">
+      <div class="stat-card">
+        <div class="stat-num">50%</div>
+        <div class="stat-desc">of analyzed filings contain specific EAR/ITAR exposures absent in 2021</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">2×</div>
+        <div class="stat-desc">more material contracts revealed in S-1s vs. sanitized 10-K filings</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">$10M+</div>
+        <div class="stat-desc">at risk per tape-out when MSA liability caps are absent</div>
+      </div>
+    </div>
+
+    <hr class="rule">
+
+    <!-- Intelligence Hierarchy -->
+    <div class="section-label">The Intelligence Hierarchy</div>
+    <h2>The Perimeter <em>Intelligence Portfolio</em></h2>
+    <p class="lead">Five intelligence assets. Each draws from the same forensic corpus of 145+ SEC filings — deployed at the cadence your decision requires.</p>
+
+    <table class="intel-table">
+      <thead>
+        <tr>
+          <th style="width:200px">Asset</th>
+          <th style="width:120px">Cadence</th>
+          <th>Value Proposition</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="asset">The Quarterly Perimeter</td>
+          <td class="cadence">Quarterly</td>
+          <td class="vp">Board-level risk strategy audit. Trend monitoring across lead-times, export controls, and ASPs from 145+ filings.</td>
+        </tr>
+        <tr>
+          <td class="asset">The Corporate Profile</td>
+          <td class="cadence">On-Demand</td>
+          <td class="vp">Counterparty DNA. A 360° deep-dive into a specific giant's (e.g., LRCX, AMD) contractual moats and shield gaps.</td>
+        </tr>
+        <tr>
+          <td class="asset">The IPO Trail Audit</td>
+          <td class="cadence">Strategic</td>
+          <td class="vp">S-1 Archaeology. Benchmarking your terms against today's giants when they were vulnerable startups.</td>
+        </tr>
+        <tr>
+          <td class="asset">The Vertical Audit</td>
+          <td class="cadence">Specialized</td>
+          <td class="vp">Sector Defense. Aggregated peer-group analysis for Optics, OSAT, and Specialty Foundry niches.</td>
+        </tr>
+        <tr>
+          <td class="asset">The Custom Shield</td>
+          <td class="cadence">Transactional</td>
+          <td class="vp">The Final Audit. Direct redlining of your MSA against the forensic corpus before $10M+ tape-outs.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <hr class="rule">
+
+    <!-- Core Analytic Pillars -->
+    <div class="section-label">Core Analytic Pillars</div>
+    <h2>How the corpus <em>becomes leverage</em></h2>
+
+    <div class="pillars">
+      <div class="pillar">
+        <div class="pillar-sub">The Confession Delta · S-1 vs. 10-K</div>
+        <h4>Where giants tell the truth</h4>
+        <p>Public companies sanitize risks in annual 10-Ks. We mine original S-1 prospectuses where disclosure rules force the raw truth. S-1 filings reveal 2× the material contracts compared to later annual filings — the only moment of documented vulnerability.</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-sub">Constraint Stacking Recognition · Identifying Death Traps</div>
+        <h4>Where siloed obligations converge</h4>
+        <p>If your substrate vendor fails but your foundry contract lacks suspension clauses, you pay for wafers you cannot use. An invisible kill switch buried in plain sight — triggered only when two separate perimeters weren't aligned at signing.</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-sub">The Signal Prevalence Engine · Five Silent Signals</div>
+        <h4>What traditional legal review misses</h4>
+        <p>Tracking five signals across the full corpus: Export Control Exposure (50% prevalence), Liability Asymmetry, Yield Floor Absence, Capacity Discretion, and Sublicensing Constraints — quantified and benchmarked so you know what's normal and what's not.</p>
+      </div>
+    </div>
+
+    <!-- Sample Forensic Insights -->
+    <div class="section-label">Sample Forensic Insights</div>
+    <div class="outputs-grid" style="grid-template-columns: repeat(3,1fr)">
+      <div class="output-card">
+        <div class="output-num" style="color: #E05068">AKTS FORENSIC</div>
+        <h4>Perpetual Revenue Share</h4>
+        <p>Revealed perpetual revenue shares without sublicensing rights — a permanent <em>success tax</em> that compounds with every customer win.</p>
+      </div>
+      <div class="output-card">
+        <div class="output-num" style="color: var(--gold)">LRCX FORENSIC</div>
+        <h4>Zero Liability Cap Prevalence</h4>
+        <p>Identified 0% prevalence of standard liability caps across analyzed agreements — a 'Simplified Deal' moat protecting Lam Research's negotiating position.</p>
+      </div>
+      <div class="output-card">
+        <div class="output-num" style="color: #4ABFA0">THE 2026 SIGNAL</div>
+        <h4>EAR/ITAR Exposure Surge</h4>
+        <p>50% of analyzed filings now include specific EAR/ITAR compliance exposure language entirely absent in pre-2021 foundry agreements.</p>
+      </div>
+    </div>
+
+    <hr class="rule">
+
+    <!-- Secure Your Perimeter -->
+    <div class="section-label">Secure Your Perimeter</div>
+    <h2>Five intelligence assets.<br><em>One decision to make.</em></h2>
+    <p class="lead">Every report draws from the same forensic corpus of 145+ SEC filings. Contact us to request any asset — we will scope the engagement and deliver within the agreed timeline.</p>
+
+    <!-- Free preview banner -->
+    <div style="display:flex; align-items:center; gap:16px; padding:16px 20px; background:rgba(42,140,116,0.08); border:1px solid rgba(42,140,116,0.3); border-radius:4px; margin-bottom:32px;">
+      <div style="flex-shrink:0; width:36px; height:36px; background:rgba(42,140,116,0.15); border:1px solid var(--teal-lt); border-radius:50%; display:flex; align-items:center; justify-content:center;">
+        <span style="color:var(--teal-lt); font-size:16px; line-height:1;">↓</span>
+      </div>
+      <div>
+        <div style="font-size:12px; font-weight:500; color:var(--white); margin-bottom:3px;">Request a free preview excerpt</div>
+        <div style="font-size:12px; color:var(--silver);">Before committing to any report, ask for a sample finding from our corpus relevant to your counterparty or sector. No charge, no commitment.</div>
+      </div>
+      <a href="https://legalforensics.ai/contact.html" style="flex-shrink:0; padding:8px 18px; background:var(--teal-lt); color:var(--ink); font-size:11px; font-weight:500; letter-spacing:0.08em; text-transform:uppercase; text-decoration:none; border-radius:3px; white-space:nowrap;">Get Preview</a>
+    </div>
+
+    <!-- Report cards grid -->
+    <div class="report-grid">
+
+      <!-- 1. Quarterly Perimeter -->
+      <div class="report-card featured">
+        <div class="report-card-top">
+          <div class="report-cadence">Quarterly</div>
+          <div class="report-name">The Quarterly Perimeter</div>
+          <p class="report-desc">Board-level risk strategy audit delivered every quarter. Trend monitoring across lead-times, export controls, and ASPs from 145+ filings — with a running commentary on how the perimeter is shifting.</p>
         </div>
-        <div class="col-sm-6 col-lg-3">
-          <div class="failure-card">
-            <div class="failure-title">Historical Precedent</div>
-            <p class="failure-desc">They negotiated with companies 10× your size. You inherit those concessions.</p>
-          </div>
-        </div>
-        <div class="col-sm-6 col-lg-3">
-          <div class="failure-card">
-            <div class="failure-title">Constraint Stacking</div>
-            <p class="failure-desc">Foundry take-or-pay + OSAT disruption = you pay for wafers you can't use.</p>
-          </div>
-        </div>
-        <div class="col-sm-6 col-lg-3">
-          <div class="failure-card">
-            <div class="failure-title">Field-of-Use Lock</div>
-            <p class="failure-desc">One facility, one geography — a geopolitical risk you didn't choose.</p>
-          </div>
-        </div>
+        <ul class="report-includes">
+          <li>Perimeter shift analysis vs. prior quarter</li>
+          <li>Export control exposure trend (EAR/ITAR)</li>
+          <li>ASP and lead-time movement signals</li>
+          <li>Three highest-priority clauses to watch</li>
+          <li>Board-ready executive summary</li>
+        </ul>
+        <a href="https://legalforensics.ai/contact.html" class="report-cta">Request Perimeter</a>
       </div>
 
-      <!-- PERIMETER callout -->
-      <div class="row mb-5">
-        <div class="col-12">
-          <div class="perimeter-callout">
-            <span class="perimeter-callout-label">PERIMETER</span>
-            <p class="perimeter-callout-text">shows you exactly where those walls are — <em>before you walk into them.</em> We don't tell you if a clause is legal. We tell you if it's <em>market</em>, backed by forensic analysis of 145+ SEC filings your vendors don't want you to see.</p>
-          </div>
+      <!-- 2. Corporate Profile -->
+      <div class="report-card">
+        <div class="report-card-top">
+          <div class="report-cadence">On-Demand</div>
+          <div class="report-name">The Corporate Profile</div>
+          <p class="report-desc">360° deep-dive into a specific counterparty — TSMC, LRCX, AMD, or any Tier-1 you are about to negotiate with. Contractual moats, shield gaps, and the exact terms they have conceded before.</p>
         </div>
+        <ul class="report-includes">
+          <li>S-1 vs. 10-K confession delta</li>
+          <li>Historical term concession map</li>
+          <li>Liability and yield clause prevalence</li>
+          <li>Negotiation leverage summary</li>
+        </ul>
+        <a href="https://legalforensics.ai/contact.html" class="report-cta">Request Profile</a>
       </div>
 
-      <!-- Intelligence Hierarchy -->
-      <div class="row mb-5">
-        <div class="col-12">
-          <div class="perimeter-section-label">I. The Perimeter Intelligence Hierarchy</div>
-          <div class="hierarchy-table">
-            <div class="hierarchy-header">
-              <span>Asset</span>
-              <span>Cadence</span>
-              <span>Value Proposition</span>
-            </div>
-            <div class="hierarchy-row">
-              <span class="hierarchy-asset">The Quarterly Perimeter</span>
-              <span class="hierarchy-cadence">Quarterly</span>
-              <span class="hierarchy-value">Board-level risk strategy audit. Trend monitoring across lead-times, export controls, and ASPs from 145+ filings.</span>
-            </div>
-            <div class="hierarchy-row">
-              <span class="hierarchy-asset">The Corporate Profile</span>
-              <span class="hierarchy-cadence">On-Demand</span>
-              <span class="hierarchy-value">Counterparty DNA. A 360° deep-dive into a specific giant's (e.g., LRCX, AMD) contractual moats and shield gaps.</span>
-            </div>
-            <div class="hierarchy-row">
-              <span class="hierarchy-asset">The IPO Trail Audit</span>
-              <span class="hierarchy-cadence">Strategic</span>
-              <span class="hierarchy-value">S-1 Archaeology. Benchmarking your terms against today's giants when they were vulnerable startups.</span>
-            </div>
-            <div class="hierarchy-row">
-              <span class="hierarchy-asset">The Vertical Audit</span>
-              <span class="hierarchy-cadence">Specialized</span>
-              <span class="hierarchy-value">Sector Defense. Aggregated peer-group analysis for Optics, OSAT, and Specialty Foundry niches.</span>
-            </div>
-            <div class="hierarchy-row">
-              <span class="hierarchy-asset">The Custom Shield</span>
-              <span class="hierarchy-cadence">Transactional</span>
-              <span class="hierarchy-value">The Final Audit. Direct redlining of your MSA against the forensic corpus before $10M+ tape-outs.</span>
-            </div>
-          </div>
+      <!-- 3. IPO Trail Audit -->
+      <div class="report-card">
+        <div class="report-card-top">
+          <div class="report-cadence">Strategic</div>
+          <div class="report-name">The IPO Trail Audit</div>
+          <p class="report-desc">S-1 archaeology. Benchmarks your current terms against today's giants at the moment they were vulnerable startups — surfacing the exact concessions they extracted before going public.</p>
         </div>
+        <ul class="report-includes">
+          <li>Pre-IPO term extraction for 5+ peers</li>
+          <li>Term evolution timeline (S-1 → 10-K)</li>
+          <li>Gap analysis vs. your current agreement</li>
+          <li>Specific language to request in negotiation</li>
+        </ul>
+        <a href="https://legalforensics.ai/contact.html" class="report-cta">Request Audit</a>
       </div>
 
-      <!-- Signal Intelligence Snapshot -->
-      <div class="row mb-5">
-        <div class="col-12">
-          <div class="perimeter-section-label">II. Signal Intelligence Snapshot</div>
+      <!-- 4. Vertical Audit -->
+      <div class="report-card">
+        <div class="report-card-top">
+          <div class="report-cadence">Specialized</div>
+          <div class="report-name">The Vertical Audit</div>
+          <p class="report-desc">Peer-group analysis for your specific niche — Optics, OSAT, Specialty Foundry, or Automotive. How are companies in your exact segment being treated, and where are they getting crushed?</p>
         </div>
-        <div class="col-md-4">
-          <div class="signal-stat">
-            <div class="signal-stat-number">50%</div>
-            <p class="signal-stat-desc">of analyzed filings contain specific EAR/ITAR exposures absent in 2021</p>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="signal-stat">
-            <div class="signal-stat-number">2×</div>
-            <p class="signal-stat-desc">more material contracts revealed in S-1s vs. sanitized 10-K filings</p>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="signal-stat">
-            <div class="signal-stat-number">$10M+</div>
-            <p class="signal-stat-desc">at risk per tape-out when MSA liability caps are absent</p>
-          </div>
-        </div>
+        <ul class="report-includes">
+          <li>Sector-specific term benchmarking</li>
+          <li>Vertical risk signal prevalence</li>
+          <li>Peer company exposure comparison</li>
+          <li>Sector-calibrated negotiation playbook</li>
+        </ul>
+        <a href="https://legalforensics.ai/contact.html" class="report-cta">Request Audit</a>
       </div>
 
-      <!-- CTA -->
-      <div class="row">
-        <div class="col-12 text-center">
-          <a href="contact.html" class="btn btn-perimeter btn-lg px-5">Secure Your Perimeter</a>
-          <p class="perimeter-cta-sub mt-3">Request a sample risk verdict or subscribe to the Quarterly Intelligence Brief &nbsp;·&nbsp; <a href="mailto:amit@legalforensics.ai" class="perimeter-cta-link">amit@legalforensics.ai</a></p>
+      <!-- 5. Custom Shield -->
+      <div class="report-card report-card-wide">
+        <div class="report-card-top">
+          <div class="report-cadence">Transactional · Pre-Signing</div>
+          <div class="report-name">The Custom Shield</div>
+          <p class="report-desc">The final audit before you commit. Direct redlining of your MSA against the full forensic corpus — clause by clause, against market precedent — before a $10M+ tape-out or supply agreement closes.</p>
         </div>
+        <ul class="report-includes">
+          <li>Clause-by-clause corpus comparison</li>
+          <li>Red / Amber / Green verdict per clause</li>
+          <li>Specific redline language to negotiate</li>
+          <li>Constraint stacking risk map</li>
+          <li>48-hour delivery on standard MSAs</li>
+          <li>One revision round included</li>
+        </ul>
+        <a href="https://legalforensics.ai/contact.html" class="report-cta report-cta-wide">Request Custom Shield</a>
       </div>
 
     </div>
-  </section>
 
-
-  <!-- ── The Problem ──────────────────────────────────────── -->
-  <section class="section-light">
-    <div class="container">
-      <div class="row align-items-start g-5">
-
-        <div class="col-lg-5">
-          <span class="section-label">The Problem</span>
-          <h2 class="section-title mt-1">The counterparty's lawyers wrote it. You're signing it anyway.</h2>
-          <p class="section-subtitle mt-3">Every high-stakes agreement a semiconductor startup signs in its first years of operation was drafted by the other side — foundries, hyperscalers, defense primes, universities, automotive OEMs. The terms reflect their interests, not yours. Most teams sign without a lawyer in the room.</p>
-        </div>
-
-        <div class="col-lg-6 offset-lg-1">
-          <div class="problem-list mt-lg-5">
-
-            <div class="problem-item">
-              <div class="problem-icon"><i class="bi bi-exclamation-circle"></i></div>
-              <div>
-                <span class="problem-title">Foundry agreements protect the foundry</span>
-                <span class="problem-desc">Supply allocation, yield thresholds, wafer bank penalties, mask ownership, and change-of-control clauses all default in the foundry's favour. The asymmetry is structural, not accidental.</span>
-              </div>
-            </div>
-
-            <div class="problem-item">
-              <div class="problem-icon"><i class="bi bi-exclamation-circle"></i></div>
-              <div>
-                <span class="problem-title">Hyperscaler and OEM pilots lock in exposure</span>
-                <span class="problem-desc">Customer-drafted pilot agreements contain IP ownership clauses, auto-renewal, and one-sided indemnification. What looks like a trial often becomes a binding commitment.</span>
-              </div>
-            </div>
-
-            <div class="problem-item">
-              <div class="problem-icon"><i class="bi bi-exclamation-circle"></i></div>
-              <div>
-                <span class="problem-title">University and DARPA licenses constrain your freedom</span>
-                <span class="problem-desc">Spinout IP licenses carry field-of-use restrictions, milestone-based rights, and government march-in provisions that limit what you can commercialize and with whom.</span>
-              </div>
-            </div>
-
-            <div class="problem-item" style="border-bottom: none;">
-              <div class="problem-icon"><i class="bi bi-exclamation-circle"></i></div>
-              <div>
-                <span class="problem-title">No legal team to catch it in time</span>
-                <span class="problem-desc">Most semiconductor startups from seed through Series B have no general counsel. The exposure gets locked in before anyone reads the fine print carefully.</span>
-              </div>
-            </div>
-
-          </div>
-        </div>
-
+    <!-- Bottom reassurance -->
+    <div style="margin-top:32px; padding:20px 24px; background:var(--panel2); border:1px solid var(--rule); border-radius:4px; display:flex; align-items:center; justify-content:space-between; gap:24px; flex-wrap:wrap;">
+      <div>
+        <div style="font-size:13px; font-weight:500; color:var(--white); margin-bottom:4px;">Not sure which report fits your situation?</div>
+        <div style="font-size:12px; color:var(--silver);">Email us with your counterparty name and the decision you are facing. We will recommend the right asset and send a relevant preview finding at no charge.</div>
       </div>
+      <a href="https://legalforensics.ai/contact.html" style="flex-shrink:0; padding:9px 22px; border:1px solid var(--gold-dim); color:var(--gold); font-size:11px; font-weight:500; letter-spacing:0.08em; text-transform:uppercase; text-decoration:none; border-radius:3px; white-space:nowrap; transition:all 0.2s;" onmouseover="this.style.background='var(--gold)';this.style.color='var(--ink)'" onmouseout="this.style.background='transparent';this.style.color='var(--gold)'">Ask Amit</a>
     </div>
-  </section>
 
+  </div>
+</div>
 
-  <!-- ── What you get ──────────────────────────────────────── -->
-  <section class="section-warm">
-    <div class="container">
-      <div class="row mb-5">
-        <div class="col-lg-7">
-          <span class="section-label">What You Get</span>
-          <h2 class="section-title mt-1">Six outputs. One decision.</h2>
-          <p class="section-subtitle mt-2">Every analysis is specific to your agreement and your position — fabless buyer, IP licensee, defense contractor, or spinout founder.</p>
-        </div>
-      </div>
+<!-- FOOTER -->
+<footer>
+  <a href="https://legalforensics.ai" class="footer-logo">LEGALFORENSICS<span>.AI</span></a>
+  <div class="footer-links">
+    <a href="https://legalforensics.substack.com/" target="_blank">Insights</a>
+    <a href="https://legalforensics.ai/contact.html">Contact</a>
+    <a href="mailto:amit@legalforensics.ai">amit@legalforensics.ai</a>
+  </div>
+  <div class="footer-copy">SEC EDGAR Sourced &nbsp;&middot;&nbsp; Not Legal Advice &nbsp;&middot;&nbsp; &copy; 2026 LegalForensics.AI</div>
+</footer>
 
-      <div class="row g-4">
+<script>
+  function showSection(id) {
+    document.querySelectorAll('.product-section').forEach(function(s) {
+      s.classList.remove('visible');
+    });
+    document.querySelectorAll('.nav-tab[id^="tab-"]').forEach(function(t) {
+      t.classList.remove('active');
+    });
+    var section = document.getElementById('section-' + id);
+    var tab = document.getElementById('tab-' + id);
+    if (section) section.classList.add('visible');
+    if (tab) tab.classList.add('active');
+    // Scroll to top of section smoothly
+    if (section) section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
 
-        <div class="col-md-6 col-lg-4">
-          <div class="feature-card">
-            <i class="bi bi-shield-exclamation feature-icon"></i>
-            <h4 class="feature-card-title">Risk-ranked clause summary</h4>
-            <p class="feature-card-body">Every clause with commercial consequence ranked by severity — important, review, or note. No noise, no filler. Perspective-calibrated to your side of the table.</p>
-          </div>
-        </div>
+  // Show Contract Intelligence by default on load
+  showSection('ci');
+</script>
 
-        <div class="col-md-6 col-lg-4">
-          <div class="feature-card">
-            <i class="bi bi-person-check feature-icon"></i>
-            <h4 class="feature-card-title">Perspective-aware analysis</h4>
-            <p class="feature-card-body">The same clause reads differently depending on which side you're on. LegalForensics identifies your role and calibrates the analysis accordingly — buyer, licensee, subcontractor, or spinout.</p>
-          </div>
-        </div>
-
-        <div class="col-md-6 col-lg-4">
-          <div class="feature-card">
-            <i class="bi bi-check2-circle feature-icon"></i>
-            <h4 class="feature-card-title">A clear verdict</h4>
-            <p class="feature-card-body">Proceed, proceed with caution, pause, or renegotiate — with the specific asks to bring back to the other side before you sign.</p>
-          </div>
-        </div>
-
-        <div class="col-md-6 col-lg-4">
-          <div class="feature-card">
-            <i class="bi bi-radar feature-icon"></i>
-            <h4 class="feature-card-title">Foundry Model Risk Index (F-MRI)</h4>
-            <p class="feature-card-body">For foundry agreements: five dimensions scored RED, AMBER, or GREEN based on your contract and company context — supply commitment, yield, delivery, economic protection, exit flexibility.</p>
-          </div>
-        </div>
-
-        <div class="col-md-6 col-lg-4">
-          <div class="feature-card">
-            <i class="bi bi-signpost-split feature-icon"></i>
-            <h4 class="feature-card-title">Path to low risk</h4>
-            <p class="feature-card-body">For every critical finding: a specific contract fix to negotiate and a situation fix to address the underlying exposure regardless of what the contract says.</p>
-          </div>
-        </div>
-
-        <div class="col-md-6 col-lg-4">
-          <div class="feature-card">
-            <i class="bi bi-sliders feature-icon"></i>
-            <h4 class="feature-card-title">Situation simulator</h4>
-            <p class="feature-card-body">Change your company context — single source, critical launch, tight margins — and see how your risk score shifts. Built for pre-negotiation scenario planning.</p>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-
-  <!-- ── F-MRI highlight ───────────────────────────────────── -->
-  <section class="section-light">
-    <div class="container">
-      <div class="row align-items-center g-5">
-
-        <div class="col-lg-5">
-          <span class="section-label">F-MRI</span>
-          <h2 class="section-title mt-1">Foundry Model Risk Index</h2>
-          <p class="section-subtitle mt-3">The only scoring framework built specifically for fabless-to-foundry agreements. Five dimensions, each scored against your contract language and amplified by your company context.</p>
-          <p class="section-subtitle mt-3">A single-source startup with a critical launch deadline faces different exposure from the same clause than an enterprise buyer with dual-source flexibility. F-MRI reflects that.</p>
-        </div>
-
-        <div class="col-lg-6 offset-lg-1">
-          <div class="fmri-grid">
-
-            <div class="fmri-dim red">
-              <div class="fmri-dim-header">
-                <span class="fmri-dim-name">Supply Commitment</span>
-                <span class="fmri-rag red">RED</span>
-              </div>
-              <p class="fmri-dim-desc">Is the foundry contractually obligated to supply you — or can they reduce allocation at their discretion?</p>
-            </div>
-
-            <div class="fmri-dim amber">
-              <div class="fmri-dim-header">
-                <span class="fmri-dim-name">Yield Protection</span>
-                <span class="fmri-rag amber">AMBER</span>
-              </div>
-              <p class="fmri-dim-desc">What happens when wafer yield falls below your product's requirements?</p>
-            </div>
-
-            <div class="fmri-dim amber">
-              <div class="fmri-dim-header">
-                <span class="fmri-dim-name">Delivery Enforcement</span>
-                <span class="fmri-rag amber">AMBER</span>
-              </div>
-              <p class="fmri-dim-desc">Can you hold the foundry to schedule commitments — or are delays at their discretion?</p>
-            </div>
-
-            <div class="fmri-dim green">
-              <div class="fmri-dim-header">
-                <span class="fmri-dim-name">Economic Protection</span>
-                <span class="fmri-rag green">GREEN</span>
-              </div>
-              <p class="fmri-dim-desc">Are you protected from price escalation, wafer bank penalties, and unexpected fees?</p>
-            </div>
-
-            <div class="fmri-dim red">
-              <div class="fmri-dim-header">
-                <span class="fmri-dim-name">Exit Flexibility</span>
-                <span class="fmri-rag red">RED</span>
-              </div>
-              <p class="fmri-dim-desc">Can you switch foundries, be acquired, or terminate without catastrophic consequences?</p>
-            </div>
-
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-
-  <!-- ── Concrete questions ────────────────────────────────── -->
-  <section class="section-warm">
-    <div class="container">
-      <div class="row mb-5">
-        <div class="col-lg-7">
-          <span class="section-label">Foundry Agreements</span>
-          <h2 class="section-title mt-1">The questions that matter before you sign.</h2>
-          <p class="section-subtitle mt-2">These are the real questions fabless teams should be asking — and usually aren't, until after the agreement is executed.</p>
-        </div>
-      </div>
-
-      <div class="row g-3">
-
-        <div class="col-md-6">
-          <div class="question-item">
-            <i class="bi bi-question-circle question-icon"></i>
-            <p>Is the foundry obligated to supply you — or can they reduce your allocation with 30 days notice?</p>
-          </div>
-        </div>
-
-        <div class="col-md-6">
-          <div class="question-item">
-            <i class="bi bi-question-circle question-icon"></i>
-            <p>Who owns the mask sets and reticles funded by your NRE payment — you, or the foundry?</p>
-          </div>
-        </div>
-
-        <div class="col-md-6">
-          <div class="question-item">
-            <i class="bi bi-question-circle question-icon"></i>
-            <p>If yield falls to 60% of qualified process yield, who absorbs the financial loss?</p>
-          </div>
-        </div>
-
-        <div class="col-md-6">
-          <div class="question-item">
-            <i class="bi bi-question-circle question-icon"></i>
-            <p>Can the foundry change the process node affecting your qualified product without your consent?</p>
-          </div>
-        </div>
-
-        <div class="col-md-6">
-          <div class="question-item">
-            <i class="bi bi-question-circle question-icon"></i>
-            <p>What is the maximum wafer bank liability you've committed to — and under what conditions is it triggered?</p>
-          </div>
-        </div>
-
-        <div class="col-md-6">
-          <div class="question-item">
-            <i class="bi bi-question-circle question-icon"></i>
-            <p>If your company is acquired, does this agreement require foundry consent before the deal closes?</p>
-          </div>
-        </div>
-
-        <div class="col-md-6">
-          <div class="question-item">
-            <i class="bi bi-question-circle question-icon"></i>
-            <p>Are price escalation clauses capped — or can the foundry increase wafer prices without limit?</p>
-          </div>
-        </div>
-
-        <div class="col-md-6">
-          <div class="question-item">
-            <i class="bi bi-question-circle question-icon"></i>
-            <p>Does the force majeure clause give the foundry a broad exit while leaving your supply commitment intact?</p>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-
-  <!-- ── How it works ──────────────────────────────────────── -->
-  <section class="section-light">
-    <div class="container">
-      <div class="row mb-5">
-        <div class="col-lg-6">
-          <span class="section-label">How It Works</span>
-          <h2 class="section-title mt-1">Upload your agreement. Get a decision.</h2>
-        </div>
-      </div>
-
-      <div class="row g-4">
-
-        <div class="col-md-4">
-          <div class="process-step">
-            <span class="process-number">01</span>
-            <h4 class="process-title">Upload your agreement</h4>
-            <p class="process-body">Upload any contract as a PDF or Word document — foundry agreement, IP license, customer pilot, DARPA OTA. The system identifies the parties and confirms which side you're on.</p>
-          </div>
-        </div>
-
-        <div class="col-md-4">
-          <div class="process-step">
-            <span class="process-number">02</span>
-            <h4 class="process-title">Set your company context</h4>
-            <p class="process-body">Single-source or dual-source? Critical launch timeline or flexible? Tight margins or healthy buffer? Your context determines which risks are most dangerous for you specifically.</p>
-          </div>
-        </div>
-
-        <div class="col-md-4">
-          <div class="process-step">
-            <span class="process-number">03</span>
-            <h4 class="process-title">Get your risk analysis and verdict</h4>
-            <p class="process-body">Receive a ranked list of clauses to negotiate, a clear verdict, and for foundry agreements — a scored F-MRI across five dimensions with specific language to push back on.</p>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-
-  <!-- ── CTA ───────────────────────────────────────────────── -->
-  <section class="cta-section">
-    <div class="container">
-      <div class="row g-4 g-lg-5 align-items-stretch justify-content-center">
-
-        <!-- Contract intelligence CTA -->
-        <div class="col-lg-5">
-          <div class="cta-card">
-            <div class="cta-card-eyebrow">Contract Intelligence</div>
-            <h3 class="cta-card-title">Ready to review your agreement?</h3>
-            <p class="cta-card-body">Upload your first contract free — foundry agreement, IP license, customer pilot, or anything you're about to sign. Analysis calibrated to your side of the table.</p>
-            <a href="contact.html" class="btn btn-light btn-lg px-5 mt-2">Request Access</a>
-          </div>
-        </div>
-
-        <!-- Perimeter CTA -->
-        <div class="col-lg-5">
-          <div class="cta-card cta-card-perimeter">
-            <div class="cta-card-eyebrow cta-card-eyebrow-perimeter">Perimeter Intelligence</div>
-            <h3 class="cta-card-title">Secure your supply chain perimeter.</h3>
-            <p class="cta-card-body">Subscribe to the Quarterly Perimeter or request a Corporate Profile on any counterparty — backed by forensic analysis of 145+ SEC filings.</p>
-            <a href="contact.html" class="btn btn-perimeter btn-lg px-5 mt-2">Secure Your Perimeter</a>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-
-  <!-- ── Footer ──────────────────────────────────────────── -->
-  <footer class="site-footer">
-    <div class="container">
-      <div class="d-flex flex-wrap align-items-center justify-content-between gap-3">
-        <img src="assets/Logo.png" alt="LegalForensics" height="28">
-        <div class="d-flex align-items-center gap-4">
-          <a href="contact.html" class="footer-link">Contact</a>
-          <a href="https://legalforensics.substack.com/" class="footer-link" target="_blank" rel="noopener"><i class="bi bi-pen me-1"></i>Insights</a>
-        </div>
-        <span class="footer-copy">&copy; 2026 LegalForensics. All Rights Reserved.</span>
-      </div>
-    </div>
-  </footer>
-
-
-  </body>
+</body>
 </html>
