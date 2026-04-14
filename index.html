@@ -109,13 +109,23 @@
     position: relative; z-index: 1;
   }
   .hero-eyebrow {
-    font-family: 'DM Mono', monospace;
-    font-size: 11px; color: var(--gold);
-    letter-spacing: 0.15em; text-transform: uppercase;
-    margin-bottom: 24px;
     display: flex; align-items: center; gap: 12px;
+    margin-bottom: 28px; flex-wrap: wrap;
   }
-  .hero-eyebrow::before { content: ''; width: 28px; height: 1px; background: var(--gold); }
+  .hero-eyebrow-chip {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px; font-weight: 500;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--ink);
+    background: var(--gold);
+    padding: 4px 10px; border-radius: 3px;
+    flex-shrink: 0;
+  }
+  .hero-eyebrow-text {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px; font-weight: 300;
+    color: var(--silver); letter-spacing: 0.02em;
+  }
   h1 {
     font-family: 'Cormorant Garamond', Georgia, serif;
     font-size: clamp(40px, 5vw, 66px); font-weight: 600;
@@ -736,7 +746,10 @@
 
   <div class="hero-inner">
     <div class="hero-left">
-      <div class="hero-eyebrow">Supply Chain Forensic Engine · Built for Semiconductor</div>
+      <div class="hero-eyebrow">
+        <span class="hero-eyebrow-chip">Forensic Engine</span>
+        <span class="hero-eyebrow-text">Built for Fabless Semiconductor</span>
+      </div>
       <h1>You Designed<br>the Chip.<br><em>We Designed<br>the Shield.</em></h1>
       <p class="hero-sub"><strong>Stop inheriting your vendor's risk.</strong> LegalForensics.ai is the industry's only Supply Chain Forensic Engine that maps your Strategic Risk Architecture — identifying the hidden $10M+ exposure gaps in your Foundry, OSAT, and IP agreements before they hit your balance sheet.</p>
       <div class="hero-layers">
