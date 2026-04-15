@@ -1010,7 +1010,7 @@
         <div class="stress-progress-track">
           <div class="stress-progress-fill" id="stress-progress-fill"></div>
         </div>
-        <div class="stress-progress-text">Question <span id="sq-num">1</span> of 5</div>
+        <div class="stress-progress-text">Question <span id="sq-num">1</span> of 6</div>
 
         <div class="stress-q active" id="sq-1">
           <div class="sq-category">Yield Trap</div>
@@ -1068,6 +1068,18 @@
           <div class="sq-hook">Your competitors' S-1 filings are a public record of every concession they extracted. Most founders never know to look.</div>
         </div>
 
+        <div class="stress-q" id="sq-6">
+          <div class="sq-category">Export Control &amp; Deemed Export</div>
+          <div class="sq-text">Does your agreement contain ITAR or EAR controls — and have you assessed what that means for every nationality on your team?</div>
+          <div class="sq-opts">
+            <button class="sq-opt" onclick="stressAnswer(5,2)"><span class="sq-opt-key">A</span>Yes — we've done a full assessment and are compliant</button>
+            <button class="sq-opt" onclick="stressAnswer(5,1)"><span class="sq-opt-key">B</span>Partially — we know it applies but haven't fully mapped team exposure</button>
+            <button class="sq-opt sq-opt-exposed" onclick="stressAnswer(5,0)"><span class="sq-opt-key">C</span>No — we haven't assessed the export control implications</button>
+            <button class="sq-opt sq-opt-exposed" onclick="stressAnswer(5,0)"><span class="sq-opt-key">D</span>I don't know if our agreement even contains ITAR or EAR clauses</button>
+          </div>
+          <div class="sq-hook">A European team member accessing ITAR-controlled data is a "deemed export" — a federal violation regardless of where they are sitting. Most distributed teams discover this during due diligence.</div>
+        </div>
+
         <!-- Email gate step -->
         <div class="stress-q" id="sq-email">
           <div class="sq-category">One Last Step</div>
@@ -1093,6 +1105,7 @@
             <div class="stress-dot" id="dot-2"><div class="stress-dot-circle"></div><span>Liability Moat</span></div>
             <div class="stress-dot" id="dot-3"><div class="stress-dot-circle"></div><span>Geopolitical Lock-In</span></div>
             <div class="stress-dot" id="dot-4"><div class="stress-dot-circle"></div><span>S-1 Archaeology</span></div>
+            <div class="stress-dot" id="dot-5"><div class="stress-dot-circle"></div><span>Export Control</span></div>
           </div>
         </div>
 
@@ -1111,7 +1124,7 @@
               font-family="Cormorant Garamond, serif" font-size="46" font-weight="600"
               id="stress-score-num">0</text>
             <text x="100" y="112" text-anchor="middle" fill="#7E8FA8"
-              font-family="DM Mono, monospace" font-size="9" letter-spacing="2">/10</text>
+              font-family="DM Mono, monospace" font-size="9" letter-spacing="2">/12</text>
             <text x="100" y="128" text-anchor="middle" fill="#7E8FA8"
               font-family="DM Mono, monospace" font-size="8" letter-spacing="1.5"
               id="stress-score-label">PERIMETER SCORE</text>
@@ -1635,6 +1648,7 @@
     document.getElementById('stress-result').style.display = 'none';
     document.getElementById('stress-gauge-ring').style.strokeDashoffset = '490';
     document.getElementById('stress-score-num').textContent = '0';
+    document.querySelector('.stress-progress-text').style.display = 'block';
     document.getElementById('stress-email-input').value = '';
     document.getElementById('stress-modal-overlay').classList.add('open');
     document.body.style.overflow = 'hidden';
@@ -1676,17 +1690,16 @@
     var dot = document.getElementById('dot-' + qIndex);
     dot.classList.add(score > 0 ? 'answered' : 'exposed');
 
-    if (qIndex < 4) {
+    if (qIndex < 5) {
       document.getElementById('sq-' + (qIndex + 1)).classList.remove('active');
       document.getElementById('sq-' + (qIndex + 2)).classList.add('active');
-      document.getElementById('stress-progress-fill').style.width = ((qIndex + 1) / 5 * 100) + '%';
+      document.getElementById('stress-progress-fill').style.width = ((qIndex + 1) / 6 * 100) + '%';
       document.getElementById('sq-num').textContent = qIndex + 2;
     } else {
-      // Show email gate
       document.getElementById('stress-progress-fill').style.width = '100%';
       document.querySelector('.stress-progress-text').style.display = 'none';
       setTimeout(function() {
-        document.getElementById('sq-5').classList.remove('active');
+        document.getElementById('sq-6').classList.remove('active');
         document.getElementById('sq-email').classList.add('active');
       }, 200);
     }
@@ -1695,16 +1708,16 @@
   function showStressResult() {
     var total = stressScores.reduce(function(a, b) { return a + b; }, 0);
     var circumference = 490;
-    var offset = circumference * (1 - total / 10);
+    var offset = circumference * (1 - total / 12);
     var color, verdict, rec, ctaText, ctaReason;
 
-    if (total >= 8) {
+    if (total >= 10) {
       color = '#4ABFA0';
       verdict = 'Tier-1 Perimeter';
       rec = 'Your foundational protections are strong. Use our Quarterly Perimeter to stay ahead as market terms shift.';
       ctaText = 'Request Quarterly Perimeter';
       ctaReason = 'Stress Test — Secure Result';
-    } else if (total >= 5) {
+    } else if (total >= 6) {
       color = '#D4A040';
       verdict = 'Porous Perimeter';
       rec = 'Standard terms that favor the counterparty. A Corporate Profile will surface the exact leverage points you are missing.';
