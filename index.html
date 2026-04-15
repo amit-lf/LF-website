@@ -694,6 +694,105 @@
     font-size: 12.5px; color: var(--silver); margin: 0;
   }
 
+  /* ── PACK BUILDER ── */
+  .pack-builder {
+    display: grid; grid-template-columns: 1fr 300px;
+    gap: 40px; align-items: start;
+  }
+  .pack-step {
+    display: flex; gap: 20px;
+    padding-bottom: 28px; margin-bottom: 28px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .pack-step:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+  .pack-step-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 22px; font-weight: 500;
+    color: var(--rule2); flex-shrink: 0; width: 36px; padding-top: 2px;
+  }
+  .pack-step-label {
+    font-size: 14px; font-weight: 500;
+    color: var(--white); margin-bottom: 12px;
+  }
+  .pack-input {
+    width: 100%; max-width: 440px;
+    padding: 11px 14px;
+    background: var(--panel2); border: 1px solid var(--rule2);
+    border-radius: 3px; color: var(--white);
+    font-family: 'DM Sans', sans-serif; font-size: 13px;
+    outline: none; transition: border-color 0.2s;
+  }
+  .pack-input:focus { border-color: var(--gold-dim); }
+  .pack-input::placeholder { color: var(--silver); opacity: 0.5; }
+  .pack-decisions { display: flex; flex-direction: column; gap: 6px; }
+  .pack-decision {
+    padding: 11px 16px; max-width: 440px;
+    background: var(--panel2); border: 1px solid var(--rule2);
+    border-radius: 3px; color: var(--silver);
+    font-family: 'DM Sans', sans-serif; font-size: 13px;
+    text-align: left; cursor: pointer; transition: all 0.15s;
+  }
+  .pack-decision:hover { border-color: var(--gold-dim); color: var(--white); }
+  .pack-decision.active { border-color: var(--gold); color: var(--white); background: rgba(200,169,110,0.06); }
+  .pack-lenses { display: flex; flex-direction: column; gap: 6px; }
+  .pack-lens {
+    display: flex; align-items: center; gap: 14px;
+    padding: 12px 16px; max-width: 440px;
+    background: var(--panel2); border: 1px solid var(--rule2);
+    border-radius: 3px; cursor: pointer; transition: all 0.15s;
+  }
+  .pack-lens:hover { border-color: var(--teal); }
+  .pack-lens:has(input:checked) { border-color: var(--teal); background: rgba(42,140,116,0.06); }
+  .pack-lens input[type="checkbox"] {
+    accent-color: var(--teal-lt);
+    width: 14px; height: 14px; flex-shrink: 0; cursor: pointer;
+  }
+  .pack-lens-name { font-size: 13px; font-weight: 500; color: var(--white); margin-bottom: 2px; }
+  .pack-lens-desc { font-size: 11.5px; color: var(--silver); }
+  /* Result panel */
+  .pack-result {
+    position: sticky; top: 80px;
+    background: var(--panel2); border: 1px solid var(--rule2);
+    border-radius: 4px; padding: 24px;
+    min-height: 220px; display: flex;
+    align-items: center; justify-content: center;
+  }
+  .pack-result-empty {
+    font-size: 12px; color: var(--silver);
+    text-align: center; line-height: 1.7; opacity: 0.5;
+  }
+  .pack-result-content { width: 100%; }
+  .pack-result-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px; color: var(--teal-lt);
+    letter-spacing: 0.14em; text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .pack-result-name {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 21px; font-weight: 600; color: var(--white);
+    margin-bottom: 6px; line-height: 1.2;
+  }
+  .pack-result-counterparty {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px; color: var(--gold);
+    letter-spacing: 0.08em; margin-bottom: 14px;
+  }
+  .pack-result-lens-item {
+    font-size: 12px; color: var(--white-dim);
+    padding: 5px 0 5px 14px; position: relative;
+    border-bottom: 1px solid var(--rule); line-height: 1.5;
+  }
+  .pack-result-lens-item::before {
+    content: '·'; position: absolute; left: 0;
+    color: var(--teal-lt); font-weight: 700;
+  }
+  .pack-result-lens-item:last-child { border-bottom: none; }
+  .pack-result-delivery {
+    font-size: 11px; color: var(--silver);
+    font-style: italic; margin-top: 14px; line-height: 1.6;
+  }
+
   /* ── STRESS TEST TRIGGER ── */
   .stress-trigger {
     display: flex; align-items: center; justify-content: space-between;
@@ -889,6 +988,8 @@
     .report-card-wide { grid-template-columns: 1fr; }
     .report-card-wide .report-card-top,
     .report-card-wide ul { grid-column: 1; }
+    .pack-builder { grid-template-columns: 1fr; }
+    .pack-result { display: none; }
     .stress-modal { padding: 28px 20px; }
     .stress-body { grid-template-columns: 1fr; }
     .stress-visual { display: none; }
@@ -1515,6 +1616,84 @@
 
     </div>
 
+    <hr class="rule">
+
+    <!-- Pack Builder -->
+    <div class="section-label">Compose Your Pack</div>
+    <h2>Build your own <em>Intelligence Pack.</em></h2>
+    <p class="lead">Select your counterparty, the decision you're facing, and the analytical lenses you want applied. We deliver it as one unified forensic brief.</p>
+
+    <div class="pack-builder">
+
+      <div class="pack-steps">
+
+        <div class="pack-step">
+          <div class="pack-step-num">01</div>
+          <div class="pack-step-body">
+            <div class="pack-step-label">Who is your counterparty?</div>
+            <input type="text" id="pack-counterparty" class="pack-input" placeholder="e.g. TSMC, LRCX, GlobalFoundries..." oninput="updatePack()">
+          </div>
+        </div>
+
+        <div class="pack-step">
+          <div class="pack-step-num">02</div>
+          <div class="pack-step-body">
+            <div class="pack-step-label">What decision are you facing?</div>
+            <div class="pack-decisions">
+              <button class="pack-decision" onclick="selectDecision(this,'negotiation')">Entering foundry or OSAT negotiations</button>
+              <button class="pack-decision" onclick="selectDecision(this,'ipo')">Preparing for Series B or IPO</button>
+              <button class="pack-decision" onclick="selectDecision(this,'ma')">Evaluating an M&amp;A or acquisition</button>
+              <button class="pack-decision" onclick="selectDecision(this,'signing')">Reviewing an agreement before signing</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="pack-step">
+          <div class="pack-step-num">03</div>
+          <div class="pack-step-body">
+            <div class="pack-step-label">Which lenses do you want applied?</div>
+            <div class="pack-lenses">
+              <label class="pack-lens">
+                <input type="checkbox" value="corporate" onchange="updatePack()">
+                <div><div class="pack-lens-name">Corporate Profile</div><div class="pack-lens-desc">Counterparty DNA — moats, gaps, historical concessions</div></div>
+              </label>
+              <label class="pack-lens">
+                <input type="checkbox" value="ipo-trail" onchange="updatePack()">
+                <div><div class="pack-lens-name">IPO Trail Audit</div><div class="pack-lens-desc">S-1 archaeology — terms extracted at your revenue stage</div></div>
+              </label>
+              <label class="pack-lens">
+                <input type="checkbox" value="vertical" onchange="updatePack()">
+                <div><div class="pack-lens-name">Vertical Audit</div><div class="pack-lens-desc">Sector benchmarking — how your niche is being treated</div></div>
+              </label>
+              <label class="pack-lens">
+                <input type="checkbox" value="quarterly" onchange="updatePack()">
+                <div><div class="pack-lens-name">Quarterly Perimeter</div><div class="pack-lens-desc">Macro trend context — perimeter shifts and export signals</div></div>
+              </label>
+              <label class="pack-lens">
+                <input type="checkbox" value="shield" onchange="updatePack()">
+                <div><div class="pack-lens-name">Custom Shield</div><div class="pack-lens-desc">Contract redlining — clause by clause against the corpus</div></div>
+              </label>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Live result panel -->
+      <div class="pack-result" id="pack-result">
+        <div class="pack-result-empty" id="pack-result-empty">Select a counterparty, decision, and at least one lens to compose your pack.</div>
+        <div class="pack-result-content" id="pack-result-content" style="display:none">
+          <div class="pack-result-eyebrow">Your Intelligence Pack</div>
+          <div class="pack-result-name" id="pack-result-name"></div>
+          <div class="pack-result-counterparty" id="pack-result-counterparty"></div>
+          <div class="pack-result-lenses" id="pack-result-lenses"></div>
+          <div class="pack-result-delivery">Delivered as one unified forensic brief — scoped and priced on engagement.</div>
+          <a href="#" id="pack-result-cta" class="report-cta" style="display:block; margin-top:20px; text-align:center;">Request This Pack</a>
+        </div>
+      </div>
+
+    </div>
+
     <!-- Bottom reassurance -->
     <div style="margin-top:32px; padding:20px 24px; background:var(--panel2); border:1px solid var(--rule); border-radius:4px; display:flex; align-items:center; justify-content:space-between; gap:24px; flex-wrap:wrap;">
       <div>
@@ -1631,6 +1810,61 @@
     if (tab) tab.classList.add('active');
     // Scroll to top of section smoothly
     if (section) section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  // ── PACK BUILDER ──
+  var packDecision = null;
+  var PACK_NAMES = {
+    'negotiation': 'Pre-Negotiation Intelligence Pack',
+    'ipo':         'Pre-IPO Intelligence Pack',
+    'ma':          'Deal-Readiness Pack',
+    'signing':     'Pre-Signing Shield Pack'
+  };
+  var LENS_NAMES = {
+    'corporate':  'Corporate Profile',
+    'ipo-trail':  'IPO Trail Audit',
+    'vertical':   'Vertical Audit',
+    'quarterly':  'Quarterly Perimeter',
+    'shield':     'Custom Shield'
+  };
+
+  function selectDecision(btn, decision) {
+    document.querySelectorAll('.pack-decision').forEach(function(b) { b.classList.remove('active'); });
+    btn.classList.add('active');
+    packDecision = decision;
+    updatePack();
+  }
+
+  function updatePack() {
+    var counterparty = document.getElementById('pack-counterparty').value.trim();
+    var lenses = [];
+    document.querySelectorAll('.pack-lens input:checked').forEach(function(cb) { lenses.push(cb.value); });
+    var hasContent = packDecision || lenses.length > 0 || counterparty;
+
+    if (!hasContent) {
+      document.getElementById('pack-result-empty').style.display = 'block';
+      document.getElementById('pack-result-content').style.display = 'none';
+      return;
+    }
+    document.getElementById('pack-result-empty').style.display = 'none';
+    document.getElementById('pack-result-content').style.display = 'block';
+
+    document.getElementById('pack-result-name').textContent = packDecision ? PACK_NAMES[packDecision] : 'Custom Intelligence Pack';
+
+    var cpEl = document.getElementById('pack-result-counterparty');
+    if (counterparty) { cpEl.textContent = 'Counterparty: ' + counterparty.toUpperCase(); cpEl.style.display = 'block'; }
+    else { cpEl.style.display = 'none'; }
+
+    var lensesEl = document.getElementById('pack-result-lenses');
+    lensesEl.innerHTML = lenses.length > 0
+      ? lenses.map(function(l) { return '<div class="pack-result-lens-item">' + LENS_NAMES[l] + '</div>'; }).join('')
+      : '';
+
+    var reason = 'Intelligence Pack';
+    if (packDecision) reason += ' — ' + PACK_NAMES[packDecision];
+    if (counterparty) reason += ' — ' + counterparty;
+    if (lenses.length) reason += ' — ' + lenses.map(function(l){ return LENS_NAMES[l]; }).join(', ');
+    document.getElementById('pack-result-cta').href = 'contact.html?reason=' + encodeURIComponent(reason);
   }
 
   // ── STRESS TEST ──
