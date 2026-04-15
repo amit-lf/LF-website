@@ -714,8 +714,9 @@
     font-size: 14px; font-weight: 500;
     color: var(--white); margin-bottom: 12px;
   }
+  .pack-autocomplete { position: relative; max-width: 440px; }
   .pack-input {
-    width: 100%; max-width: 440px;
+    width: 100%;
     padding: 11px 14px;
     background: var(--panel2); border: 1px solid var(--rule2);
     border-radius: 3px; color: var(--white);
@@ -724,6 +725,32 @@
   }
   .pack-input:focus { border-color: var(--gold-dim); }
   .pack-input::placeholder { color: var(--silver); opacity: 0.5; }
+  .pack-ac-dropdown {
+    display: none; position: absolute; top: 100%; left: 0; right: 0; z-index: 20;
+    background: var(--panel2); border: 1px solid var(--gold-dim);
+    border-top: none; border-radius: 0 0 3px 3px;
+    max-height: 220px; overflow-y: auto;
+  }
+  .pack-ac-item {
+    padding: 10px 14px; cursor: pointer;
+    display: flex; align-items: center; justify-content: space-between;
+    font-size: 13px; color: var(--white-dim);
+    border-bottom: 1px solid var(--rule); transition: background 0.1s;
+  }
+  .pack-ac-item:last-child { border-bottom: none; }
+  .pack-ac-item:hover { background: rgba(200,169,110,0.08); color: var(--white); }
+  .pack-ac-ticker {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px; color: var(--gold-dim); letter-spacing: 0.06em;
+  }
+  .pack-ac-none {
+    padding: 12px 14px; font-size: 12px;
+    color: var(--silver); font-style: italic;
+  }
+  .pack-not-covered {
+    margin-top: 8px; font-size: 11.5px; color: #E05068;
+    display: none;
+  }
   .pack-decisions { display: flex; flex-direction: column; gap: 6px; }
   .pack-decision {
     padding: 11px 16px; max-width: 440px;
@@ -1631,7 +1658,11 @@
           <div class="pack-step-num">01</div>
           <div class="pack-step-body">
             <div class="pack-step-label">Who is your counterparty?</div>
-            <input type="text" id="pack-counterparty" class="pack-input" placeholder="e.g. TSMC, LRCX, GlobalFoundries..." oninput="updatePack()">
+            <div class="pack-autocomplete">
+              <input type="text" id="pack-counterparty" class="pack-input" placeholder="Search by company or ticker..." autocomplete="off">
+              <div id="pack-ac-dropdown" class="pack-ac-dropdown"></div>
+            </div>
+            <div class="pack-not-covered" id="pack-not-covered">This company is not in our current corpus. <a href="contact.html?reason=Corpus+Coverage+Request" style="color:var(--gold)">Request coverage →</a></div>
           </div>
         </div>
 
@@ -1835,6 +1866,93 @@
     updatePack();
   }
 
+  var CORPUS = [
+    {ticker:'AEHR',name:'Aehr Test Systems'},{ticker:'ALGM',name:'Allegro MicroSystems'},
+    {ticker:'AMAT',name:'Applied Materials'},{ticker:'AMD',name:'Advanced Micro Devices'},
+    {ticker:'AMKR',name:'Amkor Technology'},{ticker:'AOSL',name:'Alpha and Omega Semiconductor'},
+    {ticker:'ARM',name:'Arm Holdings'},{ticker:'AMBA',name:'Ambarella'},
+    {ticker:'ACLS',name:'Axcelis Technologies'},{ticker:'BRKS',name:'Brooks Automation'},
+    {ticker:'CDNS',name:'Cadence Design Systems'},{ticker:'CEVA',name:'CEVA Inc'},
+    {ticker:'COHU',name:'Cohu Inc'},{ticker:'CRUS',name:'Cirrus Logic'},
+    {ticker:'CY',name:'Cypress Semiconductor'},{ticker:'DIOD',name:'Diodes Inc'},
+    {ticker:'ENTG',name:'Entegris'},{ticker:'FORM',name:'FormFactor'},
+    {ticker:'GWRE',name:'Guidewire'},{ticker:'HIMX',name:'Himax Technologies'},
+    {ticker:'IDCC',name:'InterDigital'},{ticker:'INTC',name:'Intel'},
+    {ticker:'IOSP',name:'Innospec'},{ticker:'IPGP',name:'IPG Photonics'},
+    {ticker:'IXYS',name:'IXYS Corporation'},{ticker:'KLAC',name:'KLA Corporation'},
+    {ticker:'LRCX',name:'Lam Research'},{ticker:'LSCC',name:'Lattice Semiconductor'},
+    {ticker:'MCHP',name:'Microchip Technology'},{ticker:'MKSI',name:'MKS Instruments'},
+    {ticker:'MPWR',name:'Monolithic Power Systems'},{ticker:'MRVL',name:'Marvell Technology'},
+    {ticker:'MTSI',name:'MACOM Technology'},{ticker:'MU',name:'Micron Technology'},
+    {ticker:'MXIM',name:'Maxim Integrated'},{ticker:'NOVT',name:'Novanta'},
+    {ticker:'NRDS',name:'Nerdio'},{ticker:'NVDA',name:'NVIDIA'},
+    {ticker:'NXPI',name:'NXP Semiconductors'},{ticker:'ON',name:'ON Semiconductor'},
+    {ticker:'ONTO',name:'Onto Innovation'},{ticker:'OUST',name:'Ouster'},
+    {ticker:'POWI',name:'Power Integrations'},{ticker:'QCOM',name:'Qualcomm'},
+    {ticker:'QRVO',name:'Qorvo'},{ticker:'RMBS',name:'Rambus'},
+    {ticker:'SITM',name:'SiTime Corporation'},{ticker:'SMTC',name:'Semtech'},
+    {ticker:'SNPS',name:'Synopsys'},{ticker:'SYNA',name:'Synaptics'},
+    {ticker:'SWKS',name:'Skyworks Solutions'},{ticker:'TER',name:'Teradyne'},
+    {ticker:'TXN',name:'Texas Instruments'},{ticker:'UMC',name:'United Microelectronics'},
+    {ticker:'WOLF',name:'Wolfspeed'},{ticker:'XLNX',name:'Xilinx'}
+  ];
+
+  var packSelectedTicker = '';
+
+  function initPackAutocomplete() {
+    var input = document.getElementById('pack-counterparty');
+    var dropdown = document.getElementById('pack-ac-dropdown');
+    var notCovered = document.getElementById('pack-not-covered');
+
+    input.addEventListener('input', function() {
+      var q = input.value.trim().toLowerCase();
+      packSelectedTicker = '';
+      notCovered.style.display = 'none';
+
+      if (!q) {
+        dropdown.style.display = 'none';
+        updatePack();
+        return;
+      }
+
+      var matches = CORPUS.filter(function(c) {
+        return c.ticker.toLowerCase().indexOf(q) === 0 ||
+               c.name.toLowerCase().indexOf(q) !== -1 ||
+               c.ticker.toLowerCase() === q;
+      });
+
+      if (matches.length === 0) {
+        dropdown.innerHTML = '<div class="pack-ac-none">No results in our corpus</div>';
+        dropdown.style.display = 'block';
+        notCovered.style.display = 'block';
+      } else {
+        dropdown.innerHTML = matches.slice(0, 8).map(function(c) {
+          return '<div class="pack-ac-item" data-ticker="' + c.ticker + '" data-name="' + c.name + '">' +
+                 '<span>' + c.name + '</span>' +
+                 '<span class="pack-ac-ticker">' + c.ticker + '</span></div>';
+        }).join('');
+        dropdown.style.display = 'block';
+        notCovered.style.display = 'none';
+
+        dropdown.querySelectorAll('.pack-ac-item').forEach(function(item) {
+          item.addEventListener('mousedown', function(e) {
+            e.preventDefault();
+            packSelectedTicker = item.dataset.ticker;
+            input.value = item.dataset.name + ' (' + item.dataset.ticker + ')';
+            dropdown.style.display = 'none';
+            notCovered.style.display = 'none';
+            updatePack();
+          });
+        });
+      }
+      updatePack();
+    });
+
+    input.addEventListener('blur', function() {
+      setTimeout(function() { dropdown.style.display = 'none'; }, 150);
+    });
+  }
+
   function updatePack() {
     var counterparty = document.getElementById('pack-counterparty').value.trim();
     var lenses = [];
@@ -1852,8 +1970,11 @@
     document.getElementById('pack-result-name').textContent = packDecision ? PACK_NAMES[packDecision] : 'Custom Intelligence Pack';
 
     var cpEl = document.getElementById('pack-result-counterparty');
-    if (counterparty) { cpEl.textContent = 'Counterparty: ' + counterparty.toUpperCase(); cpEl.style.display = 'block'; }
-    else { cpEl.style.display = 'none'; }
+    if (counterparty) {
+      var displayLabel = packSelectedTicker ? packSelectedTicker : counterparty.toUpperCase();
+      cpEl.textContent = 'Counterparty: ' + displayLabel;
+      cpEl.style.display = 'block';
+    } else { cpEl.style.display = 'none'; }
 
     var lensesEl = document.getElementById('pack-result-lenses');
     lensesEl.innerHTML = lenses.length > 0
@@ -1862,7 +1983,8 @@
 
     var reason = 'Intelligence Pack';
     if (packDecision) reason += ' — ' + PACK_NAMES[packDecision];
-    if (counterparty) reason += ' — ' + counterparty;
+    if (packSelectedTicker) reason += ' — ' + packSelectedTicker;
+    else if (counterparty) reason += ' — ' + counterparty;
     if (lenses.length) reason += ' — ' + lenses.map(function(l){ return LENS_NAMES[l]; }).join(', ');
     document.getElementById('pack-result-cta').href = 'contact.html?reason=' + encodeURIComponent(reason);
   }
@@ -1992,6 +2114,9 @@
   }
 
   // No section shown by default — user chooses from nav
+  document.addEventListener('DOMContentLoaded', function() {
+    initPackAutocomplete();
+  });
 </script>
 
 </body>
