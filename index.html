@@ -1019,8 +1019,9 @@
             <button class="sq-opt" onclick="stressAnswer(0,2)"><span class="sq-opt-key">A</span>The Vendor — we have a Guaranteed Yield Floor</button>
             <button class="sq-opt" onclick="stressAnswer(0,1)"><span class="sq-opt-key">B</span>We split it — shared risk arrangement</button>
             <button class="sq-opt sq-opt-exposed" onclick="stressAnswer(0,0)"><span class="sq-opt-key">C</span>We pay full price for every wafer started</button>
+            <button class="sq-opt sq-opt-exposed" onclick="stressAnswer(0,0)"><span class="sq-opt-key">D</span>I don't know — this was never discussed</button>
           </div>
-          <div class="sq-hook">82% of startups unknowingly select C until a forensic audit reveals the B clauses hidden in competitor S-1s.</div>
+          <div class="sq-hook">82% of startups unknowingly select C or D until a forensic audit reveals the B clauses hidden in competitor S-1s.</div>
         </div>
 
         <div class="stress-q" id="sq-2">
@@ -1028,10 +1029,10 @@
           <div class="sq-text">If your OSAT partner shuts down for 90 days, are you legally obligated to continue paying for wafers from your Foundry?</div>
           <div class="sq-opts">
             <button class="sq-opt" onclick="stressAnswer(1,2)"><span class="sq-opt-key">A</span>No — my contracts are linked and suspend together</button>
-            <button class="sq-opt sq-opt-exposed" onclick="stressAnswer(1,0)"><span class="sq-opt-key">B</span>I'm not sure</button>
-            <button class="sq-opt sq-opt-exposed" onclick="stressAnswer(1,0)"><span class="sq-opt-key">C</span>Yes — the contracts are siloed</button>
+            <button class="sq-opt sq-opt-exposed" onclick="stressAnswer(1,0)"><span class="sq-opt-key">B</span>Yes — the contracts are siloed</button>
+            <button class="sq-opt sq-opt-exposed" onclick="stressAnswer(1,0)"><span class="sq-opt-key">C</span>I don't know — the contracts were never cross-referenced</button>
           </div>
-          <div class="sq-hook">Constraint Stacking is the #1 cause of cash-burn during supply chain shocks. Uncertainty is the same as exposure.</div>
+          <div class="sq-hook">Constraint Stacking is the #1 cause of cash-burn during supply chain shocks. Not knowing is the same as exposure.</div>
         </div>
 
         <div class="stress-q" id="sq-3">
@@ -1040,8 +1041,9 @@
           <div class="sq-opts">
             <button class="sq-opt" onclick="stressAnswer(2,2)"><span class="sq-opt-key">A</span>Balanced — a mutual cap applies to both sides</button>
             <button class="sq-opt sq-opt-exposed" onclick="stressAnswer(2,0)"><span class="sq-opt-key">B</span>They are capped. We are not.</button>
+            <button class="sq-opt sq-opt-exposed" onclick="stressAnswer(2,0)"><span class="sq-opt-key">C</span>I don't know — I haven't reviewed that section</button>
           </div>
-          <div class="sq-hook">Uncapped liability is a silent signal that can kill an acquisition or IPO during due diligence.</div>
+          <div class="sq-hook">Uncapped liability is a silent signal that can kill an acquisition or IPO during due diligence. Most founders discover it too late.</div>
         </div>
 
         <div class="stress-q" id="sq-4">
@@ -1050,8 +1052,9 @@
           <div class="sq-opts">
             <button class="sq-opt" onclick="stressAnswer(3,2)"><span class="sq-opt-key">A</span>Yes — relocation flexibility is written in</button>
             <button class="sq-opt sq-opt-exposed" onclick="stressAnswer(3,0)"><span class="sq-opt-key">B</span>No — we are locked to a specific facility</button>
+            <button class="sq-opt sq-opt-exposed" onclick="stressAnswer(3,0)"><span class="sq-opt-key">C</span>I don't know — this was not on our radar</button>
           </div>
-          <div class="sq-hook">50% of recent filings now include relocation flexibility clauses that were entirely absent in pre-2021 agreements.</div>
+          <div class="sq-hook">50% of recent filings include relocation flexibility clauses entirely absent in pre-2021 agreements. The market has shifted.</div>
         </div>
 
         <div class="stress-q" id="sq-5">
@@ -1060,8 +1063,23 @@
           <div class="sq-opts">
             <button class="sq-opt" onclick="stressAnswer(4,2)"><span class="sq-opt-key">A</span>Yes — we have the benchmark data</button>
             <button class="sq-opt sq-opt-exposed" onclick="stressAnswer(4,0)"><span class="sq-opt-key">B</span>No — we are negotiating in the dark</button>
+            <button class="sq-opt sq-opt-exposed" onclick="stressAnswer(4,0)"><span class="sq-opt-key">C</span>I don't know that this data even exists</button>
           </div>
-          <div class="sq-hook">Your competitors' S-1 filings are a public record of every concession they extracted. Most founders never read them.</div>
+          <div class="sq-hook">Your competitors' S-1 filings are a public record of every concession they extracted. Most founders never know to look.</div>
+        </div>
+
+        <!-- Email gate step -->
+        <div class="stress-q" id="sq-email">
+          <div class="sq-category">One Last Step</div>
+          <div class="sq-text">Your Perimeter Score is ready.</div>
+          <p style="font-size:13px; color:var(--silver); margin-bottom:24px; line-height:1.7;">Enter your email and we'll reveal your score — and send you the one report that addresses your highest-risk gap.</p>
+          <div style="display:flex; flex-direction:column; gap:10px; max-width:420px;">
+            <input type="email" id="stress-email-input" placeholder="your@email.com"
+              style="padding:12px 16px; background:var(--panel2); border:1px solid var(--rule2); border-radius:3px; color:var(--white); font-family:'DM Sans',sans-serif; font-size:13px; outline:none; transition:border-color 0.2s;"
+              onfocus="this.style.borderColor='var(--gold-dim)'" onblur="this.style.borderColor='var(--rule2)'">
+            <button onclick="submitStressEmail()" class="cta-btn gold" style="width:fit-content;">Reveal My Score &#8594;</button>
+          </div>
+          <p style="font-size:11px; color:var(--silver); opacity:0.6; margin-top:12px;">No spam. One email with your analysis and recommended next step.</p>
         </div>
       </div>
 
@@ -1607,16 +1625,17 @@
 
   function openStressTest() {
     stressScores = [];
-    // Reset quiz state
     document.querySelectorAll('.stress-q').forEach(function(q) { q.classList.remove('active'); });
     document.getElementById('sq-1').classList.add('active');
     document.getElementById('stress-progress-fill').style.width = '0%';
     document.getElementById('sq-num').textContent = '1';
+    document.getElementById('stress-progress-text') && (document.querySelector('.stress-progress-text').style.display = 'block');
     document.querySelectorAll('.stress-dot').forEach(function(d) { d.classList.remove('answered','exposed'); });
     document.getElementById('stress-dots').style.display = 'block';
     document.getElementById('stress-result').style.display = 'none';
     document.getElementById('stress-gauge-ring').style.strokeDashoffset = '490';
     document.getElementById('stress-score-num').textContent = '0';
+    document.getElementById('stress-email-input').value = '';
     document.getElementById('stress-modal-overlay').classList.add('open');
     document.body.style.overflow = 'hidden';
   }
@@ -1630,6 +1649,26 @@
     if (e.target === document.getElementById('stress-modal-overlay')) closeStressTest();
   }
 
+  function submitStressEmail() {
+    var email = document.getElementById('stress-email-input').value.trim();
+    if (!email || !email.includes('@')) {
+      document.getElementById('stress-email-input').style.borderColor = '#E05068';
+      return;
+    }
+    // Post to Formspree async
+    fetch('https://formspree.io/f/xbdakppb', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({
+        email: email,
+        source: 'Silicon Perimeter Stress Test',
+        scores: stressScores.join(','),
+        total: stressScores.reduce(function(a,b){return a+b;},0) + '/10'
+      })
+    }).catch(function(){});
+    showStressResult();
+  }
+
   function stressAnswer(qIndex, score) {
     stressScores[qIndex] = score;
 
@@ -1638,14 +1677,18 @@
     dot.classList.add(score > 0 ? 'answered' : 'exposed');
 
     if (qIndex < 4) {
-      // Advance to next question
       document.getElementById('sq-' + (qIndex + 1)).classList.remove('active');
       document.getElementById('sq-' + (qIndex + 2)).classList.add('active');
       document.getElementById('stress-progress-fill').style.width = ((qIndex + 1) / 5 * 100) + '%';
       document.getElementById('sq-num').textContent = qIndex + 2;
     } else {
+      // Show email gate
       document.getElementById('stress-progress-fill').style.width = '100%';
-      setTimeout(showStressResult, 300);
+      document.querySelector('.stress-progress-text').style.display = 'none';
+      setTimeout(function() {
+        document.getElementById('sq-5').classList.remove('active');
+        document.getElementById('sq-email').classList.add('active');
+      }, 200);
     }
   }
 
