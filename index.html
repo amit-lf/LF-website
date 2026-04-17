@@ -48,19 +48,25 @@
   .nav-logo {
     text-decoration: none;
     margin-right: auto;
-    display: flex; flex-direction: column; align-items: flex-start; gap: 2px;
+    display: flex; flex-direction: column; align-items: flex-start; gap: 3px;
   }
-  .nav-logo img { height: 30px; filter: invert(1); }
+  .nav-logo-main {
+    display: flex; align-items: center; gap: 7px;
+  }
+  .nav-logo-chip { color: #5B9FE8; flex-shrink: 0; }
+  .nav-logo-name {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 19px; font-weight: 500; letter-spacing: -0.01em;
+    color: var(--white); line-height: 1;
+  }
   .nav-logo-sub {
     font-family: 'DM Mono', monospace;
-    font-size: 9px; font-weight: 500; letter-spacing: 0.1em;
+    font-size: 9px; font-weight: 500; letter-spacing: 0.12em;
+    color: rgba(255,255,255,0.38);
+    padding-left: 23px;
     line-height: 1;
-    color: rgba(255,255,255,0.5);
   }
-  .nav-logo-sub em {
-    font-style: normal;
-    color: var(--gold);
-  }
+  .nav-logo-sub em { font-style: normal; color: var(--gold); }
   .nav-tabs { display: flex; gap: 2px; align-items: center; }
   .nav-tab {
     position: relative;
@@ -814,20 +820,24 @@
     gap: 40px;
     margin-bottom: 40px;
   }
-  .footer-brand img {
-    height: 44px; filter: invert(1); opacity: 0.9;
-    margin-bottom: 6px; display: block;
+  .footer-logo {
+    display: flex; align-items: center; gap: 9px;
+    margin-bottom: 6px;
+  }
+  .footer-logo-chip { color: #5B9FE8; flex-shrink: 0; }
+  .footer-logo-name {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 24px; font-weight: 500; letter-spacing: -0.01em;
+    color: var(--white); line-height: 1;
   }
   .footer-brand-sub {
     font-family: 'DM Mono', monospace;
-    font-size: 12px; letter-spacing: 0.1em; font-weight: 500;
-    color: rgba(255,255,255,0.4);
-    margin-bottom: 16px;
+    font-size: 11px; letter-spacing: 0.12em; font-weight: 500;
+    color: rgba(255,255,255,0.35);
+    margin-bottom: 18px;
+    padding-left: 33px;
   }
-  .footer-brand-sub em {
-    font-style: normal;
-    color: var(--gold);
-  }
+  .footer-brand-sub em { font-style: normal; color: var(--gold); }
   .footer-brand p {
     font-size: 14px; color: var(--silver); line-height: 1.7;
     max-width: 280px; margin-bottom: 14px;
@@ -1223,7 +1233,16 @@
 <!-- NAV -->
 <nav>
   <a href="#" class="nav-logo">
-    <img src="assets/semiply_logo.png" alt="Semiply">
+    <div class="nav-logo-main">
+      <svg class="nav-logo-chip" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <rect x="7" y="7" width="10" height="10" rx="1.5"/>
+        <path d="M9 7V4M12 7V4M15 7V4"/>
+        <path d="M9 20v-3M12 20v-3M15 20v-3"/>
+        <path d="M7 9H4M7 12H4M7 15H4"/>
+        <path d="M20 9h-3M20 12h-3M20 15h-3"/>
+      </svg>
+      <span class="nav-logo-name">Semiply</span>
+    </div>
     <span class="nav-logo-sub">A PRODUCT OF <em>LEGALFORENSICS.AI</em></span>
   </a>
   <div class="nav-tabs">
@@ -1835,7 +1854,16 @@
 
     <!-- Brand column -->
     <div class="footer-brand">
-      <img src="assets/semiply_logo.png" alt="Semiply">
+      <div class="footer-logo">
+        <svg class="footer-logo-chip" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <rect x="7" y="7" width="10" height="10" rx="1.5"/>
+          <path d="M9 7V4M12 7V4M15 7V4"/>
+          <path d="M9 20v-3M12 20v-3M15 20v-3"/>
+          <path d="M7 9H4M7 12H4M7 15H4"/>
+          <path d="M20 9h-3M20 12h-3M20 15h-3"/>
+        </svg>
+        <span class="footer-logo-name">Semiply</span>
+      </div>
       <p class="footer-brand-sub">A PRODUCT OF <em>LEGALFORENSICS.AI</em></p>
       <p>The only <span style="color:var(--gold)">Supply Chain Forensic Engine</span> built for fabless semiconductor companies. We deliver procurement intelligence — the gaps to close, the clauses to negotiate, and the playbook to use — so you stop inheriting your vendor's risk.</p>
       <div class="footer-stat"><strong>Ever-Growing</strong> Forensic Corpus &amp; S-1 Archive</div>
