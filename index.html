@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LegalForensics.AI — Contract Intelligence &amp; Market Intelligence for Semiconductor Companies</title>
+<title>LegalForensics.AI — Contract Intelligence &amp; Supply Chain Intelligence for Semiconductor Companies</title>
 <meta name="description" content="LegalForensics provides two products: Contract Intelligence that reads your agreements from your side, and The Perimeter — a strategic intelligence portfolio backed by an ever-growing forensic corpus of SEC filings your vendors don't want you to see.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
@@ -446,6 +446,181 @@
     content: '?'; position: absolute; left: 0;
     color: var(--gold-dim);
     font-family: 'DM Mono', monospace; font-size: 11px;
+  }
+
+  /* ── COMING SOON REPORT BLOCK ── */
+  .cs-wrap {
+    margin-top: 8px;
+    background: linear-gradient(135deg, #0C1220 0%, #0F172A 60%, #12102A 100%);
+    border: 1px solid #2D3A5A;
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+  }
+  .cs-wrap::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, #6366F1, #C8A96E, #6366F1);
+  }
+  .cs-inner { padding: 40px 44px 44px; }
+  .cs-badge {
+    display: inline-flex; align-items: center; gap: 7px;
+    font-family: 'DM Mono', monospace; font-size: 10px;
+    font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase;
+    color: #6366F1; background: rgba(99,102,241,0.12);
+    border: 1px solid rgba(99,102,241,0.3);
+    padding: 5px 12px; border-radius: 20px; margin-bottom: 18px;
+  }
+  .cs-badge-dot {
+    width: 6px; height: 6px; border-radius: 50%; background: #6366F1;
+    animation: cs-pulse 2s infinite;
+  }
+  @keyframes cs-pulse {
+    0%,100% { opacity: 1; } 50% { opacity: 0.3; }
+  }
+  .cs-title {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 34px; font-weight: 600; color: #EEF1F8;
+    line-height: 1.2; margin-bottom: 6px;
+  }
+  .cs-title em { color: var(--gold); font-style: italic; }
+  .cs-edition {
+    font-family: 'DM Mono', monospace; font-size: 11px;
+    color: #7E8FA8; letter-spacing: 0.08em; margin-bottom: 28px;
+  }
+  .cs-meta-row {
+    display: flex; gap: 24px; flex-wrap: wrap; margin-bottom: 28px;
+  }
+  .cs-meta-item {
+    display: flex; flex-direction: column; gap: 2px;
+  }
+  .cs-meta-num {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 28px; font-weight: 600; color: var(--gold); line-height: 1;
+  }
+  .cs-meta-label { font-size: 10.5px; color: #7E8FA8; letter-spacing: 0.04em; }
+  .cs-divider { border: none; border-top: 1px solid #1D2130; margin: 20px 0 24px; }
+  .cs-pillars {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 8px; margin-bottom: 28px;
+  }
+  .cs-pillar {
+    background: rgba(255,255,255,0.03); border: 1px solid #1D2130;
+    border-radius: 5px; padding: 11px 14px;
+    display: flex; align-items: center; justify-content: space-between; gap: 8px;
+  }
+  .cs-pillar-name { font-size: 11.5px; color: #B0BCCC; }
+  .cs-risk {
+    font-family: 'DM Mono', monospace; font-size: 9px;
+    font-weight: 500; letter-spacing: 0.06em; white-space: nowrap;
+    padding: 2px 7px; border-radius: 3px;
+  }
+  .cs-risk-high { color: #E05068; background: rgba(224,80,104,0.12); border: 1px solid rgba(224,80,104,0.2); }
+  .cs-risk-mod  { color: #C8A96E; background: rgba(200,169,110,0.10); border: 1px solid rgba(200,169,110,0.2); }
+  .cs-findings {
+    display: grid; grid-template-columns: repeat(3,1fr);
+    gap: 10px; margin-bottom: 28px;
+  }
+  .cs-finding {
+    background: rgba(255,255,255,0.025); border: 1px solid #1D2130;
+    border-radius: 5px; padding: 14px 16px;
+  }
+  .cs-finding-stat {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 26px; font-weight: 600; color: #6366F1; line-height: 1;
+    margin-bottom: 6px;
+  }
+  .cs-finding-text { font-size: 11px; color: #7E8FA8; line-height: 1.5; }
+  .cs-form-label {
+    font-size: 13px; font-weight: 500; color: #EEF1F8; margin-bottom: 6px;
+  }
+  .cs-form-sub { font-size: 11.5px; color: #7E8FA8; margin-bottom: 14px; }
+  .cs-form-row { display: flex; gap: 10px; max-width: 520px; }
+  .cs-email-input {
+    flex: 1; background: rgba(255,255,255,0.06); border: 1px solid #2D3A5A;
+    color: #EEF1F8; font-size: 13px; padding: 10px 16px;
+    border-radius: 5px; outline: none; transition: border-color 0.2s;
+    font-family: 'DM Sans', sans-serif;
+  }
+  .cs-email-input::placeholder { color: #4A5568; }
+  .cs-email-input:focus { border-color: #6366F1; }
+  .cs-submit {
+    background: #6366F1; color: #fff; border: none; cursor: pointer;
+    font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 500;
+    letter-spacing: 0.06em; text-transform: uppercase;
+    padding: 10px 22px; border-radius: 5px; white-space: nowrap;
+    transition: background 0.2s;
+  }
+  .cs-submit:hover { background: #4F52D6; }
+  .cs-submit:disabled { background: #2D3A5A; cursor: default; }
+  .cs-success {
+    display: none; font-size: 12.5px; color: #4ABFA0;
+    margin-top: 10px; align-items: center; gap: 6px;
+  }
+  .cs-success.visible { display: flex; }
+  /* Mini teaser on main page */
+  .mini-cs {
+    margin: 0 auto 0; max-width: 1020px;
+    padding: 0 48px 40px;
+  }
+  .mini-cs-inner {
+    background: linear-gradient(90deg, #0C1220 0%, #0F172A 100%);
+    border: 1px solid #2D3A5A; border-radius: 6px;
+    padding: 18px 24px; display: flex; align-items: center;
+    gap: 20px; flex-wrap: wrap; cursor: pointer;
+    transition: border-color 0.2s;
+    position: relative; overflow: hidden;
+  }
+  .mini-cs-inner::before {
+    content: ''; position: absolute; left: 0; top: 0; bottom: 0;
+    width: 3px; background: linear-gradient(180deg, #6366F1, #C8A96E);
+  }
+  .mini-cs-inner:hover { border-color: #6366F1; }
+  .mini-cs-badge {
+    font-family: 'DM Mono', monospace; font-size: 9px;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: #6366F1; background: rgba(99,102,241,0.12);
+    border: 1px solid rgba(99,102,241,0.25);
+    padding: 3px 9px; border-radius: 20px; flex-shrink: 0;
+    display: flex; align-items: center; gap: 5px;
+  }
+  .mini-cs-dot {
+    width: 5px; height: 5px; border-radius: 50%; background: #6366F1;
+    animation: cs-pulse 2s infinite;
+  }
+  .mini-cs-text { flex: 1; min-width: 0; }
+  .mini-cs-title {
+    font-size: 13.5px; font-weight: 500; color: #EEF1F8;
+    margin-bottom: 2px;
+  }
+  .mini-cs-sub { font-size: 11.5px; color: #7E8FA8; }
+  .mini-cs-form { display: flex; gap: 8px; flex-shrink: 0; }
+  .mini-cs-form input {
+    background: rgba(255,255,255,0.06); border: 1px solid #2D3A5A;
+    color: #EEF1F8; font-size: 12px; padding: 7px 13px;
+    border-radius: 4px; outline: none; width: 200px;
+    font-family: 'DM Sans', sans-serif; transition: border-color 0.2s;
+  }
+  .mini-cs-form input::placeholder { color: #4A5568; }
+  .mini-cs-form input:focus { border-color: #6366F1; }
+  .mini-cs-form button {
+    background: #6366F1; color: #fff; border: none; cursor: pointer;
+    font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 500;
+    letter-spacing: 0.06em; text-transform: uppercase;
+    padding: 7px 16px; border-radius: 4px; transition: background 0.2s;
+    white-space: nowrap;
+  }
+  .mini-cs-form button:hover { background: #4F52D6; }
+  .mini-cs-form button:disabled { background: #2D3A5A; cursor: default; }
+  .mini-cs-ok { font-size: 11.5px; color: #4ABFA0; display: none; align-items: center; gap: 5px; }
+  .mini-cs-ok.visible { display: flex; }
+  @media (max-width: 768px) {
+    .cs-pillars { grid-template-columns: 1fr 1fr; }
+    .cs-findings { grid-template-columns: 1fr 1fr; }
+    .cs-inner { padding: 28px 20px 32px; }
+    .cs-title { font-size: 26px; }
+    .mini-cs { padding: 0 16px 28px; }
+    .mini-cs-form { display: none; }
   }
 
   /* ── MARKET INTELLIGENCE (PERIMETER) ── */
@@ -1041,7 +1216,7 @@
     </button>
     <button class="nav-tab" id="tab-mi" onclick="showSection('mi')">
       <svg width="13" height="13" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="1.75" fill="currentColor"/><circle cx="8" cy="8" r="4.5" stroke="currentColor" stroke-width="1.2"/><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.2" opacity="0.5"/></svg>
-      Market Intelligence
+      Supply Chain Intelligence
     </button>
   </div>
 </nav>
@@ -1075,7 +1250,7 @@
       <div class="hero-layers">
         <div class="hero-layer">
           <span class="layer-tag">Macro</span>
-          <span class="layer-desc">Market Intelligence — what your vendors have conceded before, across an ever-growing forensic corpus. Delivered as your negotiation brief.</span>
+          <span class="layer-desc">Supply Chain Intelligence — what your vendors have conceded before, across an ever-growing forensic corpus. Delivered as your negotiation brief.</span>
         </div>
         <div class="hero-layer">
           <span class="layer-tag">Micro</span>
@@ -1118,6 +1293,25 @@
     </div>
   </div>
 </section>
+
+<!-- ── Mini Report Teaser (main page) ── -->
+<div class="mini-cs">
+  <div class="mini-cs-inner" onclick="showSection('mi'); window.scrollTo({top:document.getElementById('section-mi').offsetTop-80,behavior:'smooth'})">
+    <span class="mini-cs-badge"><span class="mini-cs-dot"></span>New Report</span>
+    <div class="mini-cs-text">
+      <div class="mini-cs-title">Semiconductor Supply Chain Forensics — Q1 2026 &nbsp;&#8599;</div>
+      <div class="mini-cs-sub">154 SEC filings · 6 supply chain pillars · Foundry &amp; Materials at High Risk · Complimentary copy available</div>
+    </div>
+    <div class="mini-cs-form" onclick="event.stopPropagation()">
+      <input type="email" id="mini-cs-email" placeholder="your@company.com" autocomplete="email">
+      <button id="mini-cs-btn" onclick="submitMiniReportEmail()">Get Report</button>
+    </div>
+    <div class="mini-cs-ok" id="mini-cs-ok">
+      <svg width="12" height="12" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="#4ABFA0" stroke-width="1.4"/><path d="M5 8l2 2 4-4" stroke="#4ABFA0" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      You're on the list.
+    </div>
+  </div>
+</div>
 
 <!-- ═══════════════════════════════════════════════════════
      SILICON PERIMETER STRESS TEST — MODAL
@@ -1434,7 +1628,7 @@
 ═══════════════════════════════════════════════════════ -->
 <div class="product-section" id="section-mi">
   <div class="section-header">
-    <span class="section-badge badge-mi"><svg width="11" height="11" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="1.75" fill="currentColor"/><circle cx="8" cy="8" r="4.5" stroke="currentColor" stroke-width="1.4"/><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.4" opacity="0.5"/></svg>Market Intelligence</span>
+    <span class="section-badge badge-mi"><svg width="11" height="11" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="1.75" fill="currentColor"/><circle cx="8" cy="8" r="4.5" stroke="currentColor" stroke-width="1.4"/><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.4" opacity="0.5"/></svg>Supply Chain Intelligence</span>
     <span class="section-title-bar">Perimeter · Strategic Supply Chain Defense</span>
   </div>
   <div class="content-wrap">
@@ -1539,117 +1733,79 @@
 
     <hr class="rule">
 
-    <!-- Report Finder + Assets -->
-    <div class="section-label">The Intelligence Portfolio</div>
-    <h2>Five assets. <em>One corpus.</em> The right one for your situation.</h2>
+    <!-- Coming Soon Report -->
+    <div class="section-label">New Report</div>
+    <div class="cs-wrap">
+      <div class="cs-inner">
 
-    <div class="report-finder">
-      <div class="finder-q">What's driving your request?</div>
-      <div class="finder-scenarios">
-        <button class="finder-btn" onclick="recommendReport(event,'custom-shield')">I am about to sign a Foundry or OSAT supply agreement</button>
-        <button class="finder-btn" onclick="recommendReport(event,'corporate-profile')">I am entering negotiations with a specific counterparty (TSMC, LRCX, AMD...)</button>
-        <button class="finder-btn" onclick="recommendReport(event,'quarterly')">I need a board-ready risk update this quarter</button>
-        <button class="finder-btn" onclick="recommendReport(event,'ipo-trail')">I want to know what terms comparable companies extracted before going public</button>
-        <button class="finder-btn" onclick="recommendReport(event,'vertical')">I need a sector-level view of how my niche (Optics, OSAT, Automotive) is being treated</button>
-      </div>
-      <div class="finder-result" id="finder-result"></div>
-    </div>
+        <div class="cs-badge"><span class="cs-badge-dot"></span>Coming Soon — Q1 2026 Edition</div>
 
-    <!-- Report cards grid -->
-    <div class="report-grid">
+        <h2 class="cs-title">Semiconductor Supply Chain<br><em>Forensics</em></h2>
+        <div class="cs-edition">Q1 2026 · Prepared by LegalForensics.AI · Being finalized now</div>
 
-      <!-- 1. Quarterly Perimeter -->
-      <div class="report-card featured" id="card-quarterly">
-        <div class="report-card-top">
-          <div class="report-cadence">Quarterly</div>
-          <div class="report-name">The Quarterly Perimeter</div>
-          <p class="report-desc">Board-level risk strategy audit delivered every quarter. Trend monitoring across lead-times, export controls, and ASPs from an ever-growing forensic corpus — with a running commentary on how the perimeter is shifting.</p>
+        <div class="cs-meta-row">
+          <div class="cs-meta-item">
+            <div class="cs-meta-num">154</div>
+            <div class="cs-meta-label">SEC Filings Analyzed</div>
+          </div>
+          <div class="cs-meta-item">
+            <div class="cs-meta-num">6</div>
+            <div class="cs-meta-label">Supply Chain Pillars</div>
+          </div>
+          <div class="cs-meta-item">
+            <div class="cs-meta-num">2</div>
+            <div class="cs-meta-label">High-Risk Categories</div>
+          </div>
+          <div class="cs-meta-item">
+            <div class="cs-meta-num">33%</div>
+            <div class="cs-meta-label">Disclose Dual-Source Strategy</div>
+          </div>
         </div>
-        <ul class="report-includes">
-          <li>Perimeter shift analysis vs. prior quarter</li>
-          <li>Export control exposure trend (EAR/ITAR)</li>
-          <li>ASP and lead-time movement signals</li>
-          <li>Three highest-priority clauses to watch</li>
-          <li>Board-ready executive summary</li>
-        </ul>
-        <a href="contact.html?reason=Market Intelligence - Quarterly Perimeter" class="report-cta">Request Perimeter</a>
-      </div>
 
-      <!-- 2. Corporate Profile -->
-      <div class="report-card" id="card-corporate-profile">
-        <div class="report-card-top">
-          <div class="report-cadence">On-Demand</div>
-          <div class="report-name">The Corporate Profile</div>
-          <p class="report-desc">360° deep-dive into a specific counterparty — TSMC, LRCX, AMD, or any Tier-1 you are about to negotiate with. Contractual moats, shield gaps, and the exact terms they have conceded before.</p>
+        <hr class="cs-divider">
+
+        <!-- Pillar risk dashboard -->
+        <div style="font-size:11px; font-family:'DM Mono',monospace; letter-spacing:0.1em; text-transform:uppercase; color:var(--gold-dim); margin-bottom:12px;">Negotiation Risk by Counterparty</div>
+        <div class="cs-pillars">
+          <div class="cs-pillar"><span class="cs-pillar-name">Foundry Supply</span><span class="cs-risk cs-risk-high">High Risk</span></div>
+          <div class="cs-pillar"><span class="cs-pillar-name">Advanced Materials</span><span class="cs-risk cs-risk-high">High Risk</span></div>
+          <div class="cs-pillar"><span class="cs-pillar-name">OSAT / Assembly</span><span class="cs-risk cs-risk-mod">Moderate</span></div>
+          <div class="cs-pillar"><span class="cs-pillar-name">IP Licensing</span><span class="cs-risk cs-risk-mod">Moderate</span></div>
+          <div class="cs-pillar"><span class="cs-pillar-name">EDA Tools</span><span class="cs-risk cs-risk-mod">Moderate</span></div>
+          <div class="cs-pillar"><span class="cs-pillar-name">Capital Equipment</span><span class="cs-risk cs-risk-mod">Moderate</span></div>
         </div>
-        <ul class="report-includes">
-          <li>S-1 vs. 10-K confession delta</li>
-          <li>Historical term concession map</li>
-          <li>Liability and yield clause prevalence</li>
-          <li>Negotiation leverage summary</li>
-        </ul>
-        <a href="contact.html?reason=Market Intelligence - Corporate Profile" class="report-cta">Request Profile</a>
-      </div>
 
-      <!-- 3. IPO Trail Audit -->
-      <div class="report-card" id="card-ipo-trail">
-        <div class="report-card-top">
-          <div class="report-cadence">Strategic</div>
-          <div class="report-name">The IPO Trail Audit</div>
-          <p class="report-desc">S-1 archaeology. Benchmarks your current terms against today's giants at the moment they were vulnerable startups — surfacing the exact concessions they extracted before going public.</p>
+        <!-- Key findings teaser -->
+        <div class="cs-findings">
+          <div class="cs-finding">
+            <div class="cs-finding-stat">&lt;2%</div>
+            <div class="cs-finding-text">of foundry agreements in the corpus define an enforceable yield floor</div>
+          </div>
+          <div class="cs-finding">
+            <div class="cs-finding-stat">3yr</div>
+            <div class="cs-finding-text">exit notice required in analyzed foundry supply agreements — before your next product tapes out</div>
+          </div>
+          <div class="cs-finding">
+            <div class="cs-finding-stat">0%</div>
+            <div class="cs-finding-text">of EDA agreements include defined AI data usage rights for customer design data</div>
+          </div>
         </div>
-        <ul class="report-includes">
-          <li>Pre-IPO term extraction for 5+ peers</li>
-          <li>Term evolution timeline (S-1 → 10-K)</li>
-          <li>Gap analysis vs. your current agreement</li>
-          <li>Specific language to request in negotiation</li>
-        </ul>
-        <a href="contact.html?reason=Market Intelligence - IPO Trail Audit" class="report-cta">Request Audit</a>
-      </div>
 
-      <!-- 4. Vertical Audit -->
-      <div class="report-card" id="card-vertical">
-        <div class="report-card-top">
-          <div class="report-cadence">Specialized</div>
-          <div class="report-name">The Vertical Audit</div>
-          <p class="report-desc">Peer-group analysis for your specific niche — Optics, OSAT, Specialty Foundry, or Automotive. How are companies in your exact segment being treated, and where are they getting crushed?</p>
+        <hr class="cs-divider">
+
+        <!-- Email capture -->
+        <div class="cs-form-label">Request a complimentary copy</div>
+        <div class="cs-form-sub">The report is being finalized. Leave your email and we will send it to you as soon as it is ready — no charge.</div>
+        <div class="cs-form-row">
+          <input class="cs-email-input" id="cs-email" type="email" placeholder="your@company.com" autocomplete="email">
+          <button class="cs-submit" id="cs-btn" onclick="submitReportEmail()">Get Report</button>
         </div>
-        <ul class="report-includes">
-          <li>Sector-specific term benchmarking</li>
-          <li>Vertical risk signal prevalence</li>
-          <li>Peer company exposure comparison</li>
-          <li>Sector-calibrated negotiation playbook</li>
-        </ul>
-        <a href="contact.html?reason=Market Intelligence - Vertical Audit" class="report-cta">Request Audit</a>
-      </div>
-
-      <!-- 5. Custom Shield -->
-      <div class="report-card report-card-wide" id="card-custom-shield">
-        <div class="report-card-top">
-          <div class="report-cadence">Transactional · Pre-Signing</div>
-          <div class="report-name">The Custom Shield</div>
-          <p class="report-desc">The final audit before you commit. Direct redlining of your MSA against the full forensic corpus — clause by clause, against market precedent — before a $10M+ tape-out or supply agreement closes.</p>
+        <div class="cs-success" id="cs-success">
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="#4ABFA0" stroke-width="1.4"/><path d="M5 8l2 2 4-4" stroke="#4ABFA0" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          You're on the list. We'll send the report as soon as it's ready.
         </div>
-        <ul class="report-includes">
-          <li>Clause-by-clause corpus comparison</li>
-          <li>Red / Amber / Green verdict per clause</li>
-          <li>Specific redline language to negotiate</li>
-          <li>Constraint stacking risk map</li>
-          <li>48-hour delivery on standard MSAs</li>
-          <li>One revision round included</li>
-        </ul>
-        <a href="contact.html?reason=Market Intelligence - Custom Shield" class="report-cta report-cta-wide">Request Custom Shield</a>
-      </div>
 
-    </div>
-
-    <!-- Bottom reassurance -->
-    <div style="margin-top:32px; padding:20px 24px; background:var(--panel2); border:1px solid var(--rule); border-radius:4px; display:flex; align-items:center; justify-content:space-between; gap:24px; flex-wrap:wrap;">
-      <div>
-        <div style="font-size:13px; font-weight:500; color:var(--white); margin-bottom:4px;">Not sure which report fits your situation?</div>
-        <div style="font-size:12px; color:var(--silver);">Email us with your counterparty name and the decision you are facing. We will recommend the right asset and send a relevant preview finding at no charge.</div>
       </div>
-      <a href="contact.html?reason=Market Intelligence - Recommendation Request" style="flex-shrink:0; padding:9px 22px; border:1px solid var(--gold-dim); color:var(--gold); font-size:11px; font-weight:500; letter-spacing:0.08em; text-transform:uppercase; text-decoration:none; border-radius:3px; white-space:nowrap; transition:all 0.2s;" onmouseover="this.style.background='var(--gold)';this.style.color='var(--ink)'" onmouseout="this.style.background='transparent';this.style.color='var(--gold)'">Ask Amit</a>
     </div>
 
   </div>
@@ -1672,7 +1828,7 @@
       <div class="footer-col-label">Products</div>
       <div class="footer-links">
         <a href="#" onclick="showSection('ci'); return false;" style="display:flex;align-items:center;gap:7px;"><svg width="12" height="12" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 1L2 3.5V9C2 12 5 14.5 8 15C11 14.5 14 12 14 9V3.5L8 1Z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/><path d="M5.5 8L7.25 9.75L10.5 6" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>Contract Intelligence</a>
-        <a href="#" onclick="showSection('mi'); return false;" style="display:flex;align-items:center;gap:7px;"><svg width="12" height="12" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="1.75" fill="currentColor"/><circle cx="8" cy="8" r="4.5" stroke="currentColor" stroke-width="1.3"/><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.3" opacity="0.5"/></svg>Market Intelligence</a>
+        <a href="#" onclick="showSection('mi'); return false;" style="display:flex;align-items:center;gap:7px;"><svg width="12" height="12" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="1.75" fill="currentColor"/><circle cx="8" cy="8" r="4.5" stroke="currentColor" stroke-width="1.3"/><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.3" opacity="0.5"/></svg>Supply Chain Intelligence</a>
         <a href="https://legalforensics.substack.com/" target="_blank">Insights &#8599;</a>
       </div>
     </div>
@@ -2035,6 +2191,46 @@
   document.addEventListener('DOMContentLoaded', function() {
     initPackAutocomplete();
   });
+
+  // ── Report email capture (MI page coming-soon block) ──
+  function submitReportEmail() {
+    var email = document.getElementById('cs-email').value.trim();
+    if (!email || !email.includes('@')) {
+      document.getElementById('cs-email').style.borderColor = '#E05068';
+      return;
+    }
+    var btn = document.getElementById('cs-btn');
+    btn.disabled = true; btn.textContent = 'Sending…';
+    fetch('https://formspree.io/f/xbdakppb', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({ email: email, source: 'Q1 2026 Report — MI Page' })
+    }).catch(function(){}).finally(function() {
+      document.getElementById('cs-success').classList.add('visible');
+      document.getElementById('cs-email').style.display = 'none';
+      btn.style.display = 'none';
+    });
+  }
+
+  // ── Report email capture (mini teaser on main page) ──
+  function submitMiniReportEmail() {
+    var email = document.getElementById('mini-cs-email').value.trim();
+    if (!email || !email.includes('@')) {
+      document.getElementById('mini-cs-email').style.borderColor = '#E05068';
+      return;
+    }
+    var btn = document.getElementById('mini-cs-btn');
+    btn.disabled = true; btn.textContent = '…';
+    fetch('https://formspree.io/f/xbdakppb', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({ email: email, source: 'Q1 2026 Report — Main Page Teaser' })
+    }).catch(function(){}).finally(function() {
+      document.getElementById('mini-cs-form') && (document.getElementById('mini-cs-email').style.display='none');
+      btn.style.display = 'none';
+      document.getElementById('mini-cs-ok').classList.add('visible');
+    });
+  }
 </script>
 
 </body>
