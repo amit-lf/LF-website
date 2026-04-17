@@ -2192,6 +2192,20 @@
     initPackAutocomplete();
   });
 
+  // ── Shared: dual-store email (Formspree + LF DB) ──
+  function _captureEmail(email, source) {
+    fetch('https://formspree.io/f/xbdakppb', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({ email: email, source: source })
+    }).catch(function(){});
+    fetch('https://app.legalforensics.ai/api/market-intel/capture-email', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email: email, source: source })
+    }).catch(function(){});
+  }
+
   // ── Report email capture (MI page coming-soon block) ──
   function submitReportEmail() {
     var email = document.getElementById('cs-email').value.trim();
@@ -2201,15 +2215,10 @@
     }
     var btn = document.getElementById('cs-btn');
     btn.disabled = true; btn.textContent = 'Sending…';
-    fetch('https://formspree.io/f/xbdakppb', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-      body: JSON.stringify({ email: email, source: 'Q1 2026 Report — MI Page' })
-    }).catch(function(){}).finally(function() {
-      document.getElementById('cs-success').classList.add('visible');
-      document.getElementById('cs-email').style.display = 'none';
-      btn.style.display = 'none';
-    });
+    _captureEmail(email, 'Q1 2026 Report — MI Page');
+    document.getElementById('cs-success').classList.add('visible');
+    document.getElementById('cs-email').style.display = 'none';
+    btn.style.display = 'none';
   }
 
   // ── Report email capture (mini teaser on main page) ──
@@ -2221,15 +2230,10 @@
     }
     var btn = document.getElementById('mini-cs-btn');
     btn.disabled = true; btn.textContent = '…';
-    fetch('https://formspree.io/f/xbdakppb', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-      body: JSON.stringify({ email: email, source: 'Q1 2026 Report — Main Page Teaser' })
-    }).catch(function(){}).finally(function() {
-      document.getElementById('mini-cs-form') && (document.getElementById('mini-cs-email').style.display='none');
-      btn.style.display = 'none';
-      document.getElementById('mini-cs-ok').classList.add('visible');
-    });
+    _captureEmail(email, 'Q1 2026 Report — Main Page Teaser');
+    document.getElementById('mini-cs-email').style.display = 'none';
+    btn.style.display = 'none';
+    document.getElementById('mini-cs-ok').classList.add('visible');
   }
 </script>
 
