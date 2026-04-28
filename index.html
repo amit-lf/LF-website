@@ -30,8 +30,8 @@
     color: var(--white);
     font-family: 'DM Sans', sans-serif;
     font-weight: 300;
-    font-size: 17px;
-    line-height: 1.7;
+    font-size: 18px;
+    line-height: 1.75;
     overflow-x: hidden;
   }
 
@@ -364,7 +364,7 @@
     display: flex; align-items: center; gap: 10px;
   }
   .section-label::before { content: ''; width: 20px; height: 1px; background: var(--gold); }
-  .lead { font-size: 17px; color: var(--silver); max-width: 660px; line-height: 1.8; margin-bottom: 40px; }
+  .lead { font-size: 18px; color: var(--silver); max-width: 660px; line-height: 1.8; margin-bottom: 40px; }
 
   /* RULE divider */
   hr.rule { border: none; border-top: 1px solid var(--rule); margin: 48px 0; }
@@ -748,7 +748,7 @@
     color: var(--gold-dim); letter-spacing: 0.1em; text-transform: uppercase;
     margin-bottom: 8px;
   }
-  .pillar p { font-size: 12.5px; color: var(--silver); line-height: 1.65; max-width: 680px; }
+  .pillar p { font-size: 14px; color: var(--silver); line-height: 1.7; max-width: 680px; }
 
   /* ── CTA BLOCKS ── */
   .cta-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 56px; }
@@ -1383,29 +1383,6 @@
   </div>
 </section>
 
-<!-- ── Mini Report Teaser (main page) ── -->
-<div class="mini-cs">
-  <div class="mini-cs-inner" onclick="showSection('mi'); window.scrollTo({top:document.getElementById('section-mi').offsetTop-80,behavior:'smooth'})">
-    <span class="mini-cs-badge"><span class="mini-cs-dot"></span>Live Now</span>
-    <div class="mini-cs-text">
-      <div class="mini-cs-title">Semiconductor IPO Contract Intelligence &nbsp;&#8599;</div>
-      <div class="mini-cs-sub">100+ supply agreements · S-1, F-1 &amp; pre-IPO confidential filings · Unredacted by law · Updated quarterly · By invitation</div>
-    </div>
-    <div class="mini-cs-form" onclick="event.stopPropagation()">
-      <a href="https://intelligence.legalforensics.ai/agent" target="_blank" id="mini-cs-btn" style="text-decoration:none; display:inline-flex; align-items:center; gap:6px; padding:8px 18px; background:var(--gold); color:#0C0E14; font-size:12px; font-weight:600; border-radius:3px; white-space:nowrap;">Ask a Question &#8599;</a>
-    </div>
-    <div class="mini-cs-ok" id="mini-cs-ok" style="flex-direction:column;align-items:flex-start;gap:8px;">
-      <div style="display:flex;align-items:center;gap:6px;font-size:13px;color:#4ABFA0;">
-        <svg width="12" height="12" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="#4ABFA0" stroke-width="1.4"/><path d="M5 8l2 2 4-4" stroke="#4ABFA0" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        Your sample excerpt is ready
-      </div>
-      <a class="cs-dl-btn" href="assets/semipply-sample-excerpt.pdf" download style="font-size:12px;padding:8px 16px;">
-        <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M8 2v8M5 7l3 3 3-3"/><path d="M3 13h10"/></svg>
-        Download Sample Excerpt
-      </a>
-    </div>
-  </div>
-</div>
 
 <!-- ═══════════════════════════════════════════════════════
      SILICON PERIMETER STRESS TEST — MODAL
