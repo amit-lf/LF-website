@@ -71,7 +71,7 @@ y -= 14
 
 c.setFillColor(HexColor('#7E8FA8'))
 c.setFont('Helvetica', 8)
-c.drawString(MARGIN, y, 'SEMICONDUCTOR SUPPLY CHAIN FORENSICS  \u00b7  154 FILINGS ANALYZED  \u00b7  6 PILLARS  \u00b7  APR 2026')
+c.drawString(MARGIN, y, 'SEMICONDUCTOR SUPPLY CHAIN INTELLIGENCE  \u00b7  154 FILINGS ANALYZED  \u00b7  6 PILLARS  \u00b7  APR 2026')
 y -= 16
 
 c.setFillColor(HexColor('#EEF1F8'))
