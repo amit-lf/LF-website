@@ -226,29 +226,28 @@
   .hero-product--mi .hero-product-cta { color: var(--gold); }
   .hero-product--ci .hero-product-cta { color: #3CB89A; }
   .hero-dataset {
-    flex-shrink: 0;
-    display: flex; align-items: center; gap: 40px;
-    padding: 26px 32px;
+    padding: 24px 32px;
     border: 1px solid rgba(200,169,110,0.55);
     border-left: 5px solid var(--gold);
     border-radius: 8px;
     background: rgba(200,169,110,0.09);
+    display: flex; flex-direction: column; gap: 14px;
   }
-  .hero-dataset-header { flex: 1; min-width: 0; }
+  .hero-dataset-header { }
   .hero-dataset-name {
     font-family: 'Cormorant Garamond', Georgia, serif;
-    font-size: 30px; font-weight: 600; font-style: italic;
+    font-size: 28px; font-weight: 600; font-style: italic;
     color: var(--gold);
-    display: block; margin-bottom: 8px;
+    display: block; margin-bottom: 6px;
     letter-spacing: 0.01em;
   }
   .hero-dataset-tagline {
-    font-size: 15px; color: var(--white-dim);
+    font-size: 14px; color: var(--white-dim);
     line-height: 1.6; margin: 0;
   }
   .hero-dataset-sources {
-    display: flex; flex-direction: column; gap: 7px;
-    flex-shrink: 0;
+    display: flex; flex-direction: row;
+    flex-wrap: wrap; gap: 8px;
   }
   .dataset-source {
     font-family: 'DM Mono', monospace;
@@ -1350,8 +1349,6 @@
     h1 { font-size: clamp(34px, 9vw, 48px); margin-bottom: 14px; }
     .hero-sub { font-size: 15px; }
     .hero-products { grid-template-columns: 1fr; }
-    .hero-dataset { flex-direction: column; gap: 12px; }
-    .hero-dataset-sources { flex-direction: row; flex-wrap: wrap; gap: 6px; }
     .content-wrap { padding: 40px 20px; }
     .problem-grid { grid-template-columns: 1fr; }
     .outputs-grid { grid-template-columns: 1fr 1fr; }
@@ -1390,10 +1387,9 @@
     .hero-product-name { font-size: 14px; margin-bottom: 5px; }
     .hero-product-desc { font-size: 12px; line-height: 1.45; margin-bottom: 8px; }
     .hero-product-cta { font-size: 10px; }
-    .hero-dataset { flex-direction: row; padding: 12px 16px; gap: 16px; }
-    .hero-dataset-name { font-size: 16px; margin-bottom: 4px; }
+    .hero-dataset { padding: 12px 16px; gap: 10px; }
+    .hero-dataset-name { font-size: 18px; }
     .hero-dataset-tagline { font-size: 11px; line-height: 1.4; }
-    .hero-dataset-sources { flex-direction: row; flex-wrap: wrap; gap: 5px; }
     .dataset-source { font-size: 10px; padding: 3px 8px; }
   }
 </style>
