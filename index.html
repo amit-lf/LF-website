@@ -147,7 +147,9 @@
     display: flex; flex-direction: column; justify-content: center;
   }
   .hero-right {
-    display: flex; flex-direction: column; gap: 10px;
+    display: flex; flex-direction: column;
+    justify-content: space-between;
+    gap: 10px;
   }
   .hero-eyebrow {
     display: flex; align-items: center; gap: 12px;
@@ -183,12 +185,10 @@
   .hero-sub strong { color: var(--white); font-weight: 500; }
   /* ── Hero product cards (right column) ── */
   .hero-products {
-    flex: 1;
     display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
-    align-items: stretch;
+    align-items: start;
   }
   .hero-product {
-    display: flex; flex-direction: column;
     padding: 18px 22px;
     border-radius: 8px;
     border: 1px solid;
@@ -210,7 +210,6 @@
   .hero-product--mi .hero-product-name { color: var(--gold); }
   .hero-product--ci .hero-product-name { color: #3CB89A; }
   .hero-product-desc {
-    flex: 1;
     font-size: 15px; color: var(--white-dim);
     line-height: 1.6; margin-bottom: 14px;
   }
