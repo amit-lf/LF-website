@@ -1339,10 +1339,26 @@
   /* ── RESPONSIVE ── */
   @media (max-width: 768px) {
     nav { padding: 0 20px; }
-    .nav-tab { padding: 8px 12px; font-size: 13px; }
-    .hero { padding: 60px 20px 48px; }
-    .hero-inner { grid-template-columns: 1fr; gap: 40px; }
-    .hero-right { display: none; }
+    .hero {
+      height: auto;
+      min-height: calc(100vh - 60px);
+      padding: 40px 20px 48px;
+      display: block;
+    }
+    .hero-inner {
+      grid-template-columns: 1fr;
+      gap: 36px;
+    }
+    .hero-left { justify-content: flex-start; }
+    h1 { font-size: clamp(36px, 9vw, 52px); margin-bottom: 16px; }
+    .hero-sub { font-size: 16px; }
+    .hero-right {
+      display: flex;
+      justify-content: flex-start;
+    }
+    .hero-products { grid-template-columns: 1fr; }
+    .hero-dataset { flex-direction: column; gap: 16px; }
+    .hero-dataset-sources { flex-direction: row; flex-wrap: wrap; }
     .content-wrap { padding: 40px 20px; }
     .problem-grid { grid-template-columns: 1fr; }
     .outputs-grid { grid-template-columns: 1fr 1fr; }
