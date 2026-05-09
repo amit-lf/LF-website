@@ -1338,7 +1338,8 @@
 
   /* ── RESPONSIVE ── */
 
-  @media (max-width: 768px) {
+  /* Portrait mobile */
+  @media (max-width: 768px) and (orientation: portrait) {
     nav { padding: 0 20px; }
     .hero {
       height: auto;
@@ -1346,20 +1347,14 @@
       padding: 40px 20px 48px;
       display: block;
     }
-    .hero-inner {
-      grid-template-columns: 1fr;
-      gap: 36px;
-    }
+    .hero-inner { grid-template-columns: 1fr; gap: 36px; }
     .hero-left { justify-content: flex-start; }
     h1 { font-size: clamp(36px, 9vw, 52px); margin-bottom: 16px; }
     .hero-sub { font-size: 16px; }
-    .hero-right {
-      display: flex;
-      justify-content: flex-start;
-    }
+    .hero-right { display: flex; justify-content: flex-start; }
     .hero-products { grid-template-columns: 1fr; }
-    .hero-dataset { flex-direction: column; gap: 16px; }
-    .hero-dataset-sources { flex-direction: row; flex-wrap: wrap; }
+    .hero-dataset { flex-direction: column; gap: 12px; }
+    .hero-dataset-sources { flex-direction: row; flex-wrap: wrap; gap: 6px; }
     .content-wrap { padding: 40px 20px; }
     .problem-grid { grid-template-columns: 1fr; }
     .outputs-grid { grid-template-columns: 1fr 1fr; }
@@ -1382,12 +1377,13 @@
     .section-header { padding: 0 20px; }
   }
 
-  /* Mobile landscape — overrides portrait single-col back to 2 columns */
-  @media (max-height: 500px) and (orientation: landscape) {
+  /* Landscape mobile — all phones in landscape regardless of width */
+  @media (orientation: landscape) and (max-height: 550px) {
+    nav { padding: 0 24px; }
     .hero {
       height: auto;
       min-height: 100vh;
-      padding: 28px 32px;
+      padding: 24px 32px;
       display: block;
     }
     .hero-inner {
@@ -1396,18 +1392,22 @@
       align-items: start;
     }
     .hero-left { justify-content: flex-start; }
-    h1 { font-size: clamp(28px, 4vw, 40px); margin-bottom: 12px; }
-    .hero-sub { font-size: 13px; line-height: 1.55; }
+    h1 { font-size: clamp(26px, 4vw, 38px); margin-bottom: 10px; }
+    .hero-sub { font-size: 13px; line-height: 1.5; }
     .hero-right { justify-content: flex-start; gap: 8px; }
     .hero-products { grid-template-columns: 1fr 1fr; gap: 8px; }
     .hero-product { padding: 12px 14px; }
     .hero-product-name { font-size: 15px; margin-bottom: 6px; }
-    .hero-product-desc { font-size: 12px; line-height: 1.5; margin-bottom: 8px; }
+    .hero-product-desc { font-size: 12px; line-height: 1.45; margin-bottom: 8px; }
     .hero-product-cta { font-size: 10px; }
-    .hero-dataset { padding: 14px 18px; gap: 20px; flex-direction: row; }
-    .hero-dataset-name { font-size: 20px; }
-    .hero-dataset-tagline { font-size: 12px; }
-    .hero-dataset-sources { flex-direction: row; flex-wrap: wrap; gap: 6px; }
+    .hero-dataset {
+      flex-direction: column;
+      padding: 12px 16px;
+      gap: 10px;
+    }
+    .hero-dataset-name { font-size: 18px; margin-bottom: 4px; }
+    .hero-dataset-tagline { font-size: 11px; line-height: 1.4; }
+    .hero-dataset-sources { flex-direction: row; flex-wrap: wrap; gap: 5px; }
     .dataset-source { font-size: 10px; padding: 3px 8px; }
   }
 </style>
