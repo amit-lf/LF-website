@@ -148,7 +148,7 @@
   }
   .hero-right {
     display: flex; flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
     gap: 10px;
   }
   .hero-eyebrow {
@@ -186,9 +186,10 @@
   /* ── Hero product cards (right column) ── */
   .hero-products {
     display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
-    align-items: start;
+    align-items: stretch;
   }
   .hero-product {
+    display: flex; flex-direction: column;
     padding: 18px 22px;
     border-radius: 8px;
     border: 1px solid;
@@ -210,6 +211,7 @@
   .hero-product--mi .hero-product-name { color: var(--gold); }
   .hero-product--ci .hero-product-name { color: #3CB89A; }
   .hero-product-desc {
+    flex: 1;
     font-size: 15px; color: var(--white-dim);
     line-height: 1.6; margin-bottom: 14px;
   }
