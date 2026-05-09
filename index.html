@@ -1338,35 +1338,6 @@
 
   /* ── RESPONSIVE ── */
 
-  /* Mobile landscape — short viewport, wide enough for 2 columns */
-  @media (max-height: 500px) and (orientation: landscape) {
-    .hero {
-      height: auto;
-      min-height: 100vh;
-      padding: 28px 32px 28px;
-      display: block;
-    }
-    .hero-inner {
-      grid-template-columns: 42% 1fr;
-      gap: 0 40px;
-      align-items: start;
-    }
-    .hero-left { justify-content: flex-start; }
-    h1 { font-size: clamp(28px, 4vw, 40px); margin-bottom: 12px; }
-    .hero-sub { font-size: 13px; line-height: 1.55; }
-    .hero-right { justify-content: flex-start; gap: 8px; }
-    .hero-products { grid-template-columns: 1fr 1fr; gap: 8px; }
-    .hero-product { padding: 12px 14px; }
-    .hero-product-name { font-size: 15px; margin-bottom: 6px; }
-    .hero-product-desc { font-size: 12px; line-height: 1.5; margin-bottom: 8px; }
-    .hero-product-cta { font-size: 10px; }
-    .hero-dataset { padding: 14px 18px; gap: 20px; }
-    .hero-dataset-name { font-size: 20px; }
-    .hero-dataset-tagline { font-size: 12px; }
-    .hero-dataset-sources { flex-direction: row; flex-wrap: wrap; gap: 6px; }
-    .dataset-source { font-size: 10px; padding: 3px 8px; }
-  }
-
   @media (max-width: 768px) {
     nav { padding: 0 20px; }
     .hero {
@@ -1409,6 +1380,35 @@
     .footer-grid { grid-template-columns: 1fr; gap: 28px; }
     .footer-bottom { flex-direction: column; align-items: flex-start; gap: 8px; }
     .section-header { padding: 0 20px; }
+  }
+
+  /* Mobile landscape — overrides portrait single-col back to 2 columns */
+  @media (max-height: 500px) and (orientation: landscape) {
+    .hero {
+      height: auto;
+      min-height: 100vh;
+      padding: 28px 32px;
+      display: block;
+    }
+    .hero-inner {
+      grid-template-columns: 42% 1fr;
+      gap: 0 40px;
+      align-items: start;
+    }
+    .hero-left { justify-content: flex-start; }
+    h1 { font-size: clamp(28px, 4vw, 40px); margin-bottom: 12px; }
+    .hero-sub { font-size: 13px; line-height: 1.55; }
+    .hero-right { justify-content: flex-start; gap: 8px; }
+    .hero-products { grid-template-columns: 1fr 1fr; gap: 8px; }
+    .hero-product { padding: 12px 14px; }
+    .hero-product-name { font-size: 15px; margin-bottom: 6px; }
+    .hero-product-desc { font-size: 12px; line-height: 1.5; margin-bottom: 8px; }
+    .hero-product-cta { font-size: 10px; }
+    .hero-dataset { padding: 14px 18px; gap: 20px; flex-direction: row; }
+    .hero-dataset-name { font-size: 20px; }
+    .hero-dataset-tagline { font-size: 12px; }
+    .hero-dataset-sources { flex-direction: row; flex-wrap: wrap; gap: 6px; }
+    .dataset-source { font-size: 10px; padding: 3px 8px; }
   }
 </style>
 </head>
