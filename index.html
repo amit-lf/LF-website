@@ -125,6 +125,7 @@
   /* ── HERO ── */
   .hero {
     position: relative;
+    min-height: calc(100vh - 60px);
     padding: 100px 48px 80px;
     overflow: hidden;
     border-bottom: 1px solid var(--rule);
@@ -137,7 +138,7 @@
     max-width: 1200px;
     margin: 0 auto;
     display: grid; grid-template-columns: 1fr 420px;
-    gap: 64px; align-items: center;
+    gap: 64px; align-items: start;
     position: relative; z-index: 1;
   }
   .hero-eyebrow {
@@ -172,28 +173,64 @@
     margin-bottom: 16px;
   }
   .hero-sub strong { color: var(--white); font-weight: 500; }
-  .hero-layers {
-    display: flex; flex-direction: column; gap: 8px;
-    margin-bottom: 24px;
+  /* ── Hero product cards (right column) ── */
+  .hero-products {
+    display: flex; flex-direction: column; gap: 14px;
   }
-  .hero-layer {
-    display: flex; align-items: baseline; gap: 12px;
-    font-size: 15px; color: var(--silver);
+  .hero-product {
+    padding: 22px 24px;
+    border-radius: 6px;
+    border: 1px solid;
   }
-  .layer-tag {
+  .hero-product--mi {
+    border-color: rgba(200,169,110,0.35);
+    background: rgba(200,169,110,0.06);
+  }
+  .hero-product--ci {
+    border-color: rgba(42,140,116,0.35);
+    background: rgba(42,140,116,0.06);
+  }
+  .hero-product-name {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 17px; font-weight: 500;
+    letter-spacing: 0.01em;
+    margin-bottom: 10px;
+  }
+  .hero-product--mi .hero-product-name { color: var(--gold); }
+  .hero-product--ci .hero-product-name { color: #3CB89A; }
+  .hero-product-desc {
+    font-size: 14px; color: var(--silver);
+    line-height: 1.65; margin-bottom: 14px;
+  }
+  .hero-product-cta {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px; font-weight: 500;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    text-decoration: none;
+    display: inline-flex; align-items: center; gap: 6px;
+    transition: opacity 0.15s;
+  }
+  .hero-product-cta:hover { opacity: 0.75; }
+  .hero-product--mi .hero-product-cta { color: var(--gold); }
+  .hero-product--ci .hero-product-cta { color: #3CB89A; }
+  .hero-dataset {
+    padding: 14px 18px;
+    border: 1px solid var(--rule2);
+    border-radius: 4px;
+    background: rgba(255,255,255,0.015);
+  }
+  .hero-dataset-label {
     font-family: 'DM Mono', monospace;
     font-size: 9px; font-weight: 500;
-    letter-spacing: 0.06em; text-transform: uppercase;
-    color: var(--ink);
-    background: var(--gold);
-    padding: 3px 9px; border-radius: 2px;
-    flex-shrink: 0;
-    white-space: nowrap;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--silver); display: block;
+    margin-bottom: 8px;
   }
-  .hero-layer:last-child .layer-tag {
-    background: var(--teal-lt);
+  .hero-dataset-desc {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px; color: var(--gold-dim);
+    line-height: 1.65;
   }
-  .layer-desc { line-height: 1.5; }
 
   .hero-corpus {
     font-family: 'DM Mono', monospace;
@@ -1355,18 +1392,32 @@
       </div>
       <h1>Know Your Contracts.<br><em>Know Your Risks.</em></h1>
       <p class="hero-sub"><strong>Stop inheriting your vendor's risk.</strong> Most semiconductor startups commit to million-dollar supply agreements — with foundries, OSATs, and component vendors — with minimal visibility into what they're actually signing. Semipply surfaces the gaps to close, the clauses to negotiate, and the playbook to use, BEFORE you sign.</p>
-      <div class="hero-layers">
-        <div class="hero-layer">
-          <span class="layer-tag">Market Intelligence</span>
-          <span class="layer-desc">What terms semiconductor companies are actually signing, extracted from S-1 and F-1 IPO filings where supply agreements are disclosed unredacted. Delivered as your negotiation brief.</span>
-        </div>
-        <div class="hero-layer">
-          <span class="layer-tag">Contract Intelligence</span>
-          <span class="layer-desc">Your specific agreement, read from your side. Delivered as a verdict and a redline.</span>
-        </div>
-      </div>
-      <p class="hero-corpus">Not a research tool. A supply chain intelligence engine — benchmarked against an ever-growing corpus of S-1, F-1, and confidential pre-IPO filings, the only SEC documents where supply agreements are disclosed unredacted.</p>
+      <p class="hero-corpus">Not a research tool. A supply chain intelligence platform — powered by the Semipply proprietary dataset, built and continuously updated from public documents.</p>
     </div>
+
+    <div class="hero-right">
+      <div class="hero-products">
+
+        <div class="hero-product hero-product--mi">
+          <div class="hero-product-name">Market Intelligence</div>
+          <p class="hero-product-desc">What semiconductor companies are actually agreeing to — clause prevalence, benchmark terms, and counterparty profiles. Know what the market looks like before you walk into a negotiation.</p>
+          <a href="#" class="hero-product-cta" onclick="showSection('mi'); return false;">Explore the market &#8594;</a>
+        </div>
+
+        <div class="hero-product hero-product--ci">
+          <div class="hero-product-name">Contract Intelligence</div>
+          <p class="hero-product-desc">Your specific agreement, read from your side. Scored against the dataset, flagged for risk, and delivered as a verdict, a redline, and a negotiation brief.</p>
+          <a href="#" class="hero-product-cta" onclick="showSection('ci'); return false;">Analyze your contract &#8594;</a>
+        </div>
+
+        <div class="hero-dataset">
+          <span class="hero-dataset-label">Semipply Proprietary Dataset</span>
+          <p class="hero-dataset-desc">Built from public documents ingested and structured by Semipply — S-1 &amp; F-1 filings, amendments, SEC comment letters (CORRESP), 10-K, 10-Q, 8-K filings, and export control regulations.</p>
+        </div>
+
+      </div>
+    </div>
+
   </div>
 </section>
 
