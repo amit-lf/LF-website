@@ -126,10 +126,10 @@
   .hero {
     position: relative;
     height: calc(100vh - 60px);
-    padding: 48px 48px 40px;
+    padding: 48px 56px;
     overflow: hidden;
     border-bottom: 1px solid var(--rule);
-    display: flex; align-items: center;
+    display: flex; align-items: stretch;
   }
   .hero-radar {
     position: absolute; inset: 0;
@@ -137,20 +137,21 @@
   }
   .hero-inner {
     width: 100%;
-    max-width: 1280px;
-    margin: 0 auto;
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 28px 56px;
-    align-items: start;
+    grid-template-columns: 44% 1fr;
+    gap: 0 60px;
+    align-items: stretch;
     position: relative; z-index: 1;
   }
+  .hero-left {
+    display: flex; flex-direction: column; justify-content: center;
+  }
   .hero-right {
-    display: flex; flex-direction: column; gap: 12px;
+    display: flex; flex-direction: column; gap: 10px;
   }
   .hero-eyebrow {
     display: flex; align-items: center; gap: 12px;
-    margin-bottom: 14px; flex-wrap: wrap;
+    margin-bottom: 20px; flex-wrap: wrap;
   }
   .hero-eyebrow-chip {
     font-family: 'DM Mono', monospace;
@@ -168,51 +169,55 @@
   }
   h1 {
     font-family: 'Cormorant Garamond', Georgia, serif;
-    font-size: clamp(32px, 3.6vw, 52px); font-weight: 600;
-    line-height: 1.05; letter-spacing: -0.01em;
+    font-size: clamp(52px, 6vw, 84px); font-weight: 600;
+    line-height: 1.04; letter-spacing: -0.01em;
     color: var(--white);
-    margin-bottom: 16px;
+    margin-bottom: 24px;
   }
   h1 em { color: var(--gold); font-style: italic; }
   .hero-sub {
-    font-size: 15px; color: var(--silver);
-    max-width: 520px; line-height: 1.7;
-    margin-bottom: 10px;
+    font-size: 18px; color: var(--white-dim);
+    max-width: 540px; line-height: 1.7;
+    margin-bottom: 0;
   }
   .hero-sub strong { color: var(--white); font-weight: 500; }
   /* ── Hero product cards (right column) ── */
   .hero-products {
-    display: grid; grid-template-columns: 1fr 1fr; gap: 12px;
+    flex: 1;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
+    align-items: stretch;
   }
   .hero-product {
-    padding: 20px 22px;
-    border-radius: 6px;
+    display: flex; flex-direction: column;
+    padding: 28px 30px;
+    border-radius: 8px;
     border: 1px solid;
   }
   .hero-product--mi {
-    border-color: rgba(200,169,110,0.35);
-    background: rgba(200,169,110,0.06);
+    border-color: rgba(200,169,110,0.5);
+    background: rgba(200,169,110,0.08);
   }
   .hero-product--ci {
-    border-color: rgba(42,140,116,0.35);
-    background: rgba(42,140,116,0.06);
+    border-color: rgba(42,140,116,0.5);
+    background: rgba(42,140,116,0.08);
   }
   .hero-product-name {
     font-family: 'DM Sans', sans-serif;
-    font-size: 17px; font-weight: 500;
+    font-size: 22px; font-weight: 500;
     letter-spacing: 0.01em;
-    margin-bottom: 10px;
+    margin-bottom: 14px;
   }
   .hero-product--mi .hero-product-name { color: var(--gold); }
   .hero-product--ci .hero-product-name { color: #3CB89A; }
   .hero-product-desc {
-    font-size: 13px; color: var(--silver);
-    line-height: 1.6; margin-bottom: 14px;
+    flex: 1;
+    font-size: 15px; color: var(--white-dim);
+    line-height: 1.7; margin-bottom: 20px;
   }
   .hero-product-cta {
     font-family: 'DM Mono', monospace;
-    font-size: 11px; font-weight: 500;
-    letter-spacing: 0.06em; text-transform: uppercase;
+    font-size: 12px; font-weight: 500;
+    letter-spacing: 0.08em; text-transform: uppercase;
     text-decoration: none;
     display: inline-flex; align-items: center; gap: 6px;
     transition: opacity 0.15s;
@@ -221,36 +226,37 @@
   .hero-product--mi .hero-product-cta { color: var(--gold); }
   .hero-product--ci .hero-product-cta { color: #3CB89A; }
   .hero-dataset {
+    flex-shrink: 0;
     display: flex; align-items: center; gap: 40px;
-    padding: 22px 28px;
-    border: 1px solid rgba(200,169,110,0.5);
-    border-left: 4px solid var(--gold);
-    border-radius: 6px;
-    background: rgba(200,169,110,0.07);
+    padding: 26px 32px;
+    border: 1px solid rgba(200,169,110,0.55);
+    border-left: 5px solid var(--gold);
+    border-radius: 8px;
+    background: rgba(200,169,110,0.09);
   }
   .hero-dataset-header { flex: 1; min-width: 0; }
   .hero-dataset-name {
     font-family: 'Cormorant Garamond', Georgia, serif;
-    font-size: 22px; font-weight: 600; font-style: italic;
+    font-size: 30px; font-weight: 600; font-style: italic;
     color: var(--gold);
-    display: block; margin-bottom: 6px;
+    display: block; margin-bottom: 8px;
     letter-spacing: 0.01em;
   }
   .hero-dataset-tagline {
-    font-size: 13px; color: var(--white-dim);
-    line-height: 1.55; margin: 0;
+    font-size: 15px; color: var(--white-dim);
+    line-height: 1.6; margin: 0;
   }
   .hero-dataset-sources {
-    display: flex; flex-direction: column; gap: 6px;
+    display: flex; flex-direction: column; gap: 7px;
     flex-shrink: 0;
   }
   .dataset-source {
     font-family: 'DM Mono', monospace;
-    font-size: 11px; color: var(--silver);
+    font-size: 12px; color: var(--silver);
     border: 1px solid var(--rule2);
-    padding: 4px 12px; border-radius: 3px;
+    padding: 5px 14px; border-radius: 3px;
     white-space: nowrap;
-    background: rgba(255,255,255,0.03);
+    background: rgba(255,255,255,0.04);
   }
 
   .hero-corpus {
@@ -1376,16 +1382,6 @@
     </div>
     <span class="nav-logo-sub">A PRODUCT OF <em>LEGALFORENSICS.AI</em></span>
   </a>
-  <div class="nav-tabs">
-    <button class="nav-tab" id="tab-ci" onclick="showSection('ci')">
-      <svg width="13" height="13" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 1L2 3.5V9C2 12 5 14.5 8 15C11 14.5 14 12 14 9V3.5L8 1Z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/><path d="M5.5 8L7.25 9.75L10.5 6" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      Contract Intelligence
-    </button>
-    <button class="nav-tab" id="tab-mi" onclick="showSection('mi')">
-      <svg width="13" height="13" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="1.75" fill="currentColor"/><circle cx="8" cy="8" r="4.5" stroke="currentColor" stroke-width="1.2"/><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.2" opacity="0.5"/></svg>
-      Market Intelligence
-    </button>
-  </div>
 </nav>
 
 <!-- HERO -->
@@ -1413,7 +1409,6 @@
       </div>
       <h1>Know Your Contracts.<br><em>Know Your Risks.</em></h1>
       <p class="hero-sub"><strong>Stop inheriting your vendor's risk.</strong> Most semiconductor startups commit to million-dollar supply agreements — with foundries, OSATs, and component vendors — with minimal visibility into what they're actually signing. Semipply surfaces the gaps to close, the clauses to negotiate, and the playbook to use, BEFORE you sign.</p>
-      <p class="hero-corpus">Not a research tool. A supply chain intelligence platform — powered by The Semipply Corpus.</p>
     </div>
 
     <div class="hero-right">
