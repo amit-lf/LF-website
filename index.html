@@ -218,33 +218,36 @@
   .hero-product--ci .hero-product-cta { color: #3CB89A; }
   .hero-dataset {
     grid-column: 1 / -1;
-    display: flex; align-items: center; gap: 48px;
-    padding: 28px 36px;
-    border: 1px solid rgba(200,169,110,0.4);
+    display: flex; align-items: center; gap: 56px;
+    padding: 32px 40px;
+    border: 1px solid rgba(200,169,110,0.5);
+    border-left: 4px solid var(--gold);
     border-radius: 6px;
-    background: rgba(200,169,110,0.05);
+    background: rgba(200,169,110,0.07);
   }
   .hero-dataset-header { flex: 1; min-width: 0; }
-  .hero-dataset-eyebrow {
-    font-family: 'DM Mono', monospace;
-    font-size: 11px; font-weight: 500;
-    letter-spacing: 0.1em; text-transform: uppercase;
-    color: var(--gold); display: block; margin-bottom: 10px;
+  .hero-dataset-name {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 26px; font-weight: 600; font-style: italic;
+    color: var(--gold);
+    display: block; margin-bottom: 8px;
+    letter-spacing: 0.01em;
   }
   .hero-dataset-tagline {
-    font-size: 16px; color: var(--white-dim);
-    line-height: 1.55; margin: 0;
+    font-size: 15px; color: var(--white-dim);
+    line-height: 1.6; margin: 0; max-width: 480px;
   }
   .hero-dataset-sources {
-    display: flex; flex-wrap: wrap; gap: 8px;
-    align-items: center; flex-shrink: 0;
+    display: flex; flex-direction: column; gap: 8px;
+    flex-shrink: 0;
   }
   .dataset-source {
     font-family: 'DM Mono', monospace;
-    font-size: 12px; color: var(--gold-dim);
-    border: 1px solid var(--gold-dim);
-    padding: 5px 12px; border-radius: 3px;
+    font-size: 12px; color: var(--silver);
+    border: 1px solid var(--rule2);
+    padding: 5px 14px; border-radius: 3px;
     white-space: nowrap;
+    background: rgba(255,255,255,0.03);
   }
 
   .hero-corpus {
@@ -1407,7 +1410,7 @@
       </div>
       <h1>Know Your Contracts.<br><em>Know Your Risks.</em></h1>
       <p class="hero-sub"><strong>Stop inheriting your vendor's risk.</strong> Most semiconductor startups commit to million-dollar supply agreements — with foundries, OSATs, and component vendors — with minimal visibility into what they're actually signing. Semipply surfaces the gaps to close, the clauses to negotiate, and the playbook to use, BEFORE you sign.</p>
-      <p class="hero-corpus">Not a research tool. A supply chain intelligence platform — powered by the Semipply proprietary dataset, built and continuously updated from public documents.</p>
+      <p class="hero-corpus">Not a research tool. A supply chain intelligence platform — powered by The Semipply Corpus.</p>
     </div>
 
     <div class="hero-right">
@@ -1430,15 +1433,14 @@
 
     <div class="hero-dataset">
       <div class="hero-dataset-header">
-        <span class="hero-dataset-eyebrow">Semipply Proprietary Dataset</span>
-        <p class="hero-dataset-tagline">The only structured dataset of semiconductor supply agreements — built from public filings, ingested and indexed by Semipply.</p>
+        <span class="hero-dataset-name">The Semipply Corpus</span>
+        <p class="hero-dataset-tagline">The only structured intelligence corpus built from the complete public record of what semiconductor companies actually agreed to — ingested, classified, and maintained by Semipply.</p>
       </div>
       <div class="hero-dataset-sources">
-        <span class="dataset-source">S-1 &amp; F-1 Filings</span>
-        <span class="dataset-source">Amendments</span>
-        <span class="dataset-source">SEC Comment Letters</span>
-        <span class="dataset-source">10-K / 10-Q / 8-K</span>
-        <span class="dataset-source">Export Control Regulations</span>
+        <span class="dataset-source">IPO &amp; Capital Markets Filings</span>
+        <span class="dataset-source">Ongoing Public Disclosure Record</span>
+        <span class="dataset-source">Regulatory Correspondence</span>
+        <span class="dataset-source">Trade &amp; Export Compliance</span>
       </div>
     </div>
 
