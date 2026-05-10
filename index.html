@@ -184,7 +184,7 @@
   }
   /* ── Hero product cards (right column) ── */
   .hero-products {
-    display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
+    display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px;
     align-items: stretch;
   }
   .hero-product {
@@ -201,6 +201,10 @@
     border-color: rgba(42,140,116,0.5);
     background: rgba(42,140,116,0.08);
   }
+  .hero-product--ec {
+    border-color: rgba(91,159,232,0.5);
+    background: rgba(91,159,232,0.08);
+  }
   .hero-product-name {
     font-family: 'DM Sans', sans-serif;
     font-size: 22px; font-weight: 500;
@@ -208,6 +212,7 @@
     margin-bottom: 8px;
   }
   .hero-product--mi .hero-product-name { color: var(--gold); }
+  .hero-product--ec .hero-product-name { color: #5B9FE8; }
   .hero-product--ci .hero-product-name { color: #3CB89A; }
   .hero-product-desc {
     flex: 1;
@@ -224,6 +229,7 @@
   }
   .hero-product-cta:hover { opacity: 0.75; }
   .hero-product--mi .hero-product-cta { color: var(--gold); }
+  .hero-product--ec .hero-product-cta { color: #5B9FE8; }
   .hero-product--ci .hero-product-cta { color: #3CB89A; }
   .hero-dataset {
     padding: 24px 32px;
@@ -416,6 +422,7 @@
     display: inline-flex; align-items: center; gap: 6px;
   }
   .badge-ci { background: var(--gold); }
+  .badge-ec { background: #5B9FE8; }
   .badge-mi { background: var(--teal-lt); }
   .section-title-bar {
     font-size: 15px; color: var(--white-dim);
@@ -1382,7 +1389,7 @@
     .hero-inner { gap: 20px; max-width: 100%; }
     h1 { font-size: clamp(24px, 4vw, 36px); margin-bottom: 8px; }
     .hero-sub { font-size: 13px; line-height: 1.5; max-width: 100%; }
-    .hero-products { grid-template-columns: 1fr 1fr; gap: 8px; }
+    .hero-products { grid-template-columns: 1fr 1fr 1fr; gap: 8px; }
     .hero-product { padding: 12px 14px; }
     .hero-product-name { font-size: 14px; margin-bottom: 5px; }
     .hero-product-desc { font-size: 12px; line-height: 1.45; margin-bottom: 8px; }
@@ -1447,6 +1454,11 @@
           <div class="hero-product-name">Market Intelligence</div>
           <p class="hero-product-desc">An agentic AI searches the Corpus, reasons across filings, and delivers benchmarks — clause by clause, company by company. Know what the market actually signed before you walk into a negotiation.</p>
           <a href="#" class="hero-product-cta" onclick="showSection('mi'); return false;">Explore the market &#8594;</a>
+        </div>
+        <div class="hero-product hero-product--ec">
+          <div class="hero-product-name">Export Control</div>
+          <p class="hero-product-desc">Screen counterparties against live sanctions and Entity Lists. Assess ITAR / EAR applicability for any product or technology. Grounded in the full e-CFR regulatory corpus.</p>
+          <a href="#" class="hero-product-cta" onclick="showSection('ec'); return false;">Screen &amp; assess &#8594;</a>
         </div>
         <div class="hero-product hero-product--ci">
           <div class="hero-product-name">Contract Intelligence</div>
@@ -1621,6 +1633,131 @@
     </div>
   </div>
 </div>
+
+<!-- ═══════════════════════════════════════════════════════
+     EXPORT CONTROL SECTION
+═══════════════════════════════════════════════════════ -->
+<div class="product-section" id="section-ec">
+  <div class="section-header">
+    <span class="section-badge badge-ec"><svg width="11" height="11" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 1L2 4V9C2 12.5 5 14.5 8 15C11 14.5 14 12.5 14 9V4L8 1Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><circle cx="8" cy="9" r="2" stroke="currentColor" stroke-width="1.3"/><line x1="8" y1="6" x2="8" y2="7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>Export Control</span>
+    <span class="section-title-bar">Screen counterparties. Classify your technology.</span>
+  </div>
+  <div class="content-wrap">
+
+    <!-- Access bar -->
+    <div class="ci-access-bar">
+      <div class="ci-access-bar-text">
+        <h3>Export compliance, grounded in regulation</h3>
+        <p>Run live sanctions screens and ITAR / EAR assessments directly from the regulatory corpus — no guesswork, full citation trail.</p>
+      </div>
+      <a href="https://intelligence.legalforensics.ai/export-control" class="cta-btn gold" style="white-space:nowrap; flex-shrink:0;" target="_blank" rel="noopener">Try the Hub &#8599;</a>
+    </div>
+
+    <!-- The Problem -->
+    <div class="section-label">The Problem</div>
+    <h2>Semiconductor supply chains cross every<br><em>high-risk jurisdiction on earth.</em></h2>
+    <p class="lead">From TSMC to ASML to SK Hynix, the critical nodes of your supply chain sit in countries subject to EAR, ITAR, or both. One missed classification or a sanctioned counterparty can trigger criminal liability — yet most startups still manage compliance manually, in spreadsheets.</p>
+
+    <div class="problem-grid">
+      <div class="problem-card">
+        <h4>Entity List and SDN exposure</h4>
+        <p>The BIS Entity List and OFAC SDN List are updated weekly. Counterparties clear today may be designated tomorrow. Manual spot-checks are not a compliance program.</p>
+      </div>
+      <div class="problem-card">
+        <h4>EAR / ITAR classification is not obvious</h4>
+        <p>Whether a product falls under EAR99, an ECCN, or the USML depends on performance thresholds and end-use context — not just what it is called. Getting it wrong voids your license exceptions.</p>
+      </div>
+      <div class="problem-card">
+        <h4>CFR text is dense and constantly updated</h4>
+        <p>The EAR and ITAR together span hundreds of pages of 15 CFR and 22 CFR. Export control counsel is expensive. Fast, grounded answers to routine questions shouldn't require a billable hour.</p>
+      </div>
+      <div class="problem-card">
+        <h4>Diligence gaps surface at the worst moment</h4>
+        <p>Acquirers, investors, and government customers all conduct export-control diligence. Gaps discovered during a deal or audit are far more costly than proactive screening.</p>
+      </div>
+    </div>
+
+    <!-- What it does -->
+    <div class="section-label" style="margin-top:56px;">What It Does</div>
+    <h2>Three tools. One compliance workflow.</h2>
+
+    <div class="outputs-grid" style="margin-top:32px;">
+      <div class="output-card">
+        <div class="output-card-icon" style="color:#5B9FE8;">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        </div>
+        <h4>Counterparty Screen</h4>
+        <p>Search any company name against the live BIS Entity List, OFAC SDN List, and consolidated screening list. Results show match reason, program, and effective date — in seconds.</p>
+      </div>
+      <div class="output-card">
+        <div class="output-card-icon" style="color:#5B9FE8;">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h4>ITAR Applicability Assessment</h4>
+        <p>Describe your product, end-use, and destination. The tool reasons over 1,500+ EAR and ITAR regulatory chunks to return an ECCN estimate, license requirement, red flags, and CFR citations.</p>
+      </div>
+      <div class="output-card">
+        <div class="output-card-icon" style="color:#5B9FE8;">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+        </div>
+        <h4>Regulatory Q&amp;A</h4>
+        <p>Ask plain-English questions about EAR, ITAR, OFAC, or specific CCL categories. The agent cites the exact CFR section — not a law firm memo, but the actual regulatory text.</p>
+      </div>
+      <div class="output-card">
+        <div class="output-card-icon" style="color:#5B9FE8;">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        </div>
+        <h4>Audit-Ready Citation Trail</h4>
+        <p>Every assessment cites the exact CFR passages used, shows similarity scores, and flags confidence level. You get a defensible record, not an opinion without basis.</p>
+      </div>
+    </div>
+
+    <!-- Data sources -->
+    <div class="section-label" style="margin-top:56px;">Data Sources</div>
+    <h2>Live regulatory feeds.<br><em>Not last quarter's PDF.</em></h2>
+    <p class="lead" style="max-width:680px;">The Export Control Hub is grounded in authoritative, continuously updated sources — not static summaries.</p>
+
+    <div class="fmri-grid" style="margin-top:28px;">
+      <div class="fmri-card">
+        <div class="fmri-label">BIS Entity List</div>
+        <div class="fmri-value" style="font-size:13px; color:#5B9FE8;">Live</div>
+        <p class="fmri-desc">OpenSanctions consolidated screening list — updated daily from the official U.S. Commerce Department feed.</p>
+      </div>
+      <div class="fmri-card">
+        <div class="fmri-label">OFAC SDN List</div>
+        <div class="fmri-value" style="font-size:13px; color:#5B9FE8;">Live</div>
+        <p class="fmri-desc">Specially Designated Nationals and Blocked Persons List — Treasury OFAC, ingested via OpenSanctions.</p>
+      </div>
+      <div class="fmri-card">
+        <div class="fmri-label">EAR Corpus</div>
+        <div class="fmri-value" style="font-size:13px; color:#5B9FE8;">1,509 chunks</div>
+        <p class="fmri-desc">15 CFR Parts 730–774 including the Commerce Control List (CCL), Oct 2022 advanced chip rules, and Part 744 end-user controls.</p>
+      </div>
+      <div class="fmri-card">
+        <div class="fmri-label">ITAR Corpus</div>
+        <div class="fmri-value" style="font-size:13px; color:#5B9FE8;">184 chunks</div>
+        <p class="fmri-desc">22 CFR Parts 120–130 covering USML Categories XI (military electronics) and XV (spacecraft &amp; satellites).</p>
+      </div>
+      <div class="fmri-card">
+        <div class="fmri-label">Federal Register</div>
+        <div class="fmri-value" style="font-size:13px; color:#5B9FE8;">Live</div>
+        <p class="fmri-desc">Recent rule amendments and interim final rules — ensuring the corpus reflects current controls, not prior-year text.</p>
+      </div>
+      <div class="fmri-card">
+        <div class="fmri-label">e-CFR</div>
+        <div class="fmri-value" style="font-size:13px; color:#5B9FE8;">Weekly sync</div>
+        <p class="fmri-desc">Electronic Code of Federal Regulations — the authoritative, continuously updated version of the CFR used by compliance professionals.</p>
+      </div>
+    </div>
+
+    <!-- Disclaimer -->
+    <p style="margin-top:48px; font-size:13px; color:var(--silver); line-height:1.6; max-width:680px;">
+      Export Control Hub provides preliminary guidance grounded in the EAR and ITAR regulatory corpus. It is not legal advice. All export control decisions must be reviewed by qualified export control counsel.
+    </p>
+
+  </div>
+</div>
+
 
 <!-- ═══════════════════════════════════════════════════════
      CONTRACT INTELLIGENCE SECTION
