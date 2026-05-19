@@ -224,7 +224,7 @@
   }
   /* ── Hero product cards (right column) ── */
   .hero-products {
-    display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
     align-items: stretch;
   }
   .hero-product {
@@ -271,6 +271,12 @@
   .hero-product--mi .hero-product-cta { color: var(--gold); }
   .hero-product--ec .hero-product-cta { color: #5B9FE8; }
   .hero-product--ci .hero-product-cta { color: #3CB89A; }
+  .hero-product--sce {
+    border-color: rgba(167,139,250,0.5);
+    background: rgba(167,139,250,0.08);
+  }
+  .hero-product--sce .hero-product-name { color: #a78bfa; }
+  .hero-product--sce .hero-product-cta { color: #a78bfa; }
   .hero-dataset {
     padding: 24px 32px;
     border: 1px solid rgba(200,169,110,0.55);
@@ -1429,7 +1435,7 @@
     .hero-inner { gap: 20px; max-width: 100%; }
     h1 { font-size: clamp(24px, 4vw, 36px); margin-bottom: 8px; }
     .hero-sub { font-size: 13px; line-height: 1.5; max-width: 100%; }
-    .hero-products { grid-template-columns: 1fr 1fr 1fr; gap: 8px; }
+    .hero-products { grid-template-columns: 1fr 1fr; gap: 8px; }
     .hero-product { padding: 12px 14px; }
     .hero-product-name { font-size: 14px; margin-bottom: 5px; }
     .hero-product-desc { font-size: 12px; line-height: 1.45; margin-bottom: 8px; }
@@ -1505,18 +1511,23 @@
           <p class="hero-product-desc">Your specific agreement, read from your side. Agentic AI scores it against the Semi<span class="logo-box">pply</span> Corpus, flags every risk, and delivers a verdict, a redline, and a negotiation brief.</p>
           <a href="#" class="hero-product-cta" onclick="showSection('ci'); return false;">Analyze your contract &#8594;</a>
         </div>
+        <div class="hero-product hero-product--sce">
+          <div class="hero-product-name">Supply Chain Economics</div>
+          <p class="hero-product-desc">Foundry commitment exposure, wafer economics, and capacity obligations — benchmarked across IPO-stage semiconductor companies. See what peer companies actually committed to before you negotiate.</p>
+          <a href="#" class="hero-product-cta" onclick="showSection('sce'); return false;">Benchmark your exposure &#8594;</a>
+        </div>
       </div>
 
       <div class="hero-dataset">
         <div class="hero-dataset-header">
           <span class="hero-dataset-name">The Semi<span class="logo-box">pply</span> Corpus</span>
-          <p class="hero-dataset-tagline">Contracts, filings, and regulation — ingested, classified, and maintained by Semi<span class="logo-box">pply</span>. The complete intelligence layer behind every Market, Export Control, and Contract analysis.</p>
+          <p class="hero-dataset-tagline">Contracts, filings, and regulation — ingested, classified, and maintained by Semi<span class="logo-box">pply</span>. The complete intelligence layer behind every Market, Export Control, Contract, and Economics analysis.</p>
         </div>
         <div class="hero-dataset-sources">
           <span class="dataset-source">Supply Contracts</span>
+          <span class="dataset-source">10-K Commitment Tables</span>
           <span class="dataset-source">Regulatory Coverage</span>
           <span class="dataset-source">Sanctions &amp; Entity Screens</span>
-          <span class="dataset-source">Market Signals</span>
         </div>
       </div>
 
@@ -2025,6 +2036,76 @@
   </div>
 </div>
 
+<!-- ═══════════════════════════════════════════════════════
+     SUPPLY CHAIN ECONOMICS SECTION
+═══════════════════════════════════════════════════════ -->
+<div class="product-section" id="section-sce">
+  <div class="section-header">
+    <span class="section-badge" style="color:#a78bfa; background:rgba(167,139,250,0.12); border:1px solid rgba(167,139,250,0.25); padding:5px 12px; border-radius:4px; font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.1em; text-transform:uppercase;">Supply Chain Economics</span>
+    <span class="section-title-bar">What foundry commitments actually look like — across companies at your stage.</span>
+  </div>
+  <div class="content-wrap">
+
+    <!-- Opening -->
+    <h2>Your take-or-pay exposure.<br><em>Benchmarked.</em></h2>
+    <p class="lead" style="max-width:580px; margin-bottom: 40px;">Wafer costs, take-or-pay obligations, and capacity fees are the financial terms most startups sign without knowing what's normal. Semipply surfaces the economics — year-by-year commitment data, yield floor distributions, and OSAT exposure — benchmarked across IPO-stage semiconductor companies.</p>
+
+    <!-- Four module cards -->
+    <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin-bottom: 40px;">
+
+      <div style="border: 1px solid rgba(167,139,250,0.2); background: rgba(167,139,250,0.05); border-radius: 8px; padding: 24px;">
+        <div style="font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.1em; text-transform:uppercase; color:#a78bfa; margin-bottom:10px;">Take-or-Pay Exposure</div>
+        <h4 style="font-size:15px; font-weight:600; color:var(--white); margin-bottom:8px;">Year-1 obligations. Who has them. How much.</h4>
+        <p style="font-size:13px; color:var(--silver); line-height:1.6;">Disclosure rates, median year-1 obligations, commitment front-loading, and the % of peer companies with wafer take-or-pay in their contracts — across both IPO-stage and large-company filings.</p>
+      </div>
+
+      <div style="border: 1px solid rgba(167,139,250,0.2); background: rgba(167,139,250,0.05); border-radius: 8px; padding: 24px;">
+        <div style="font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.1em; text-transform:uppercase; color:#a78bfa; margin-bottom:10px;">Wafer Economics</div>
+        <h4 style="font-size:15px; font-weight:600; color:var(--white); margin-bottom:8px;">Yield floors and remedy structures.</h4>
+        <p style="font-size:13px; color:var(--silver); line-height:1.6;">How common yield floors are, what thresholds IPO companies negotiated, and what happens when yield falls short — respins, credits, or nothing. Extracted from EX-10 exhibits across the IPO corpus.</p>
+      </div>
+
+      <div style="border: 1px solid rgba(167,139,250,0.2); background: rgba(167,139,250,0.05); border-radius: 8px; padding: 24px;">
+        <div style="font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.1em; text-transform:uppercase; color:#a78bfa; margin-bottom:10px;">Capacity Economics</div>
+        <h4 style="font-size:15px; font-weight:600; color:var(--white); margin-bottom:8px;">Who commits to what — and who carries the risk.</h4>
+        <p style="font-size:13px; color:var(--silver); line-height:1.6;">What % of foundry agreements contain a formal supplier capacity commitment versus an allocation-only arrangement. The gap between these two is the operational risk most startups don't price.</p>
+      </div>
+
+      <div style="border: 1px solid rgba(167,139,250,0.2); background: rgba(167,139,250,0.05); border-radius: 8px; padding: 24px;">
+        <div style="font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.1em; text-transform:uppercase; color:#a78bfa; margin-bottom:10px;">OSAT &amp; Packaging</div>
+        <h4 style="font-size:15px; font-weight:600; color:var(--white); margin-bottom:8px;">NCNR exposure and advanced packaging terms.</h4>
+        <p style="font-size:13px; color:var(--silver); line-height:1.6;">Non-cancellable, non-returnable commitments to assembly and test vendors — disclosed in 10-K filings and OSAT agreements. Includes HBM allocation terms from the most recent filings.</p>
+      </div>
+
+    </div>
+
+    <!-- Stats -->
+    <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1px; background: var(--rule); border: 1px solid var(--rule); border-radius:6px; overflow:hidden; margin-bottom: 40px;">
+      <div style="background:var(--panel2); padding: 28px 24px;">
+        <div style="font-family:'Cormorant Garamond',serif; font-size:48px; font-weight:600; color:#a78bfa; line-height:1; margin-bottom:10px;">49</div>
+        <div style="font-size:12px; color:var(--silver); line-height:1.6;">semiconductor companies with year-by-year purchase commitment data extracted from 10-K filings.</div>
+      </div>
+      <div style="background:var(--panel2); padding: 28px 24px;">
+        <div style="font-family:'Cormorant Garamond',serif; font-size:48px; font-weight:600; color:#a78bfa; line-height:1; margin-bottom:10px;">2-tier</div>
+        <div style="font-size:12px; color:var(--silver); line-height:1.6;">separation of peer benchmarks (IPO-stage) from ecosystem reference (NVDA, AMD, MRVL-scale) — so your benchmarks reflect your stage.</div>
+      </div>
+      <div style="background:var(--panel2); padding: 28px 24px;">
+        <div style="font-family:'Cormorant Garamond',serif; font-size:48px; font-weight:600; color:#a78bfa; line-height:1; margin-bottom:10px;">4</div>
+        <div style="font-size:12px; color:var(--silver); line-height:1.6;">module sections — take-or-pay, wafer economics, capacity, and OSAT — each grounded in real extracted financial and contract data.</div>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div style="display:flex; flex-direction:column; align-items:center; text-align:center; padding: 40px 24px; background:var(--panel); border:1px solid rgba(167,139,250,0.2); border-radius:8px;">
+      <div style="font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.12em; text-transform:uppercase; color:#a78bfa; opacity:0.7; margin-bottom:14px;">By Invitation Only</div>
+      <h3 style="font-size:20px; color:var(--white); font-weight:600; margin-bottom:8px;">Know your exposure before you commit.</h3>
+      <p style="font-size:13px; color:var(--silver); max-width:420px; line-height:1.7; margin-bottom:24px;">Access the Supply Chain Economics module — benchmark your take-or-pay risk, wafer commitment exposure, and capacity obligations against companies at your stage.</p>
+      <a href="contact.html?reason=Supply Chain Economics - Request Access" class="cta-btn" style="font-size:14px; padding:14px 32px; background:rgba(167,139,250,0.15); color:#a78bfa; border:1px solid rgba(167,139,250,0.35); border-radius:6px; font-family:'DM Mono',monospace; text-decoration:none; transition:opacity 0.15s;">Request Access &#8599;</a>
+    </div>
+
+  </div>
+</div>
+
 <!-- FOOTER -->
 <footer>
   <div class="footer-inner">
@@ -2053,6 +2134,7 @@
       <div class="footer-links">
         <a href="#" onclick="showSection('ci'); return false;" style="display:flex;align-items:center;gap:7px;"><svg width="12" height="12" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 1L2 3.5V9C2 12 5 14.5 8 15C11 14.5 14 12 14 9V3.5L8 1Z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/><path d="M5.5 8L7.25 9.75L10.5 6" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>Contract Intelligence</a>
         <a href="#" onclick="showSection('mi'); return false;" style="display:flex;align-items:center;gap:7px;"><svg width="12" height="12" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="1.75" fill="currentColor"/><circle cx="8" cy="8" r="4.5" stroke="currentColor" stroke-width="1.3"/><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.3" opacity="0.5"/></svg>Market Intelligence</a>
+        <a href="#" onclick="showSection('sce'); return false;" style="display:flex;align-items:center;gap:7px;"><svg width="12" height="12" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 12 L5 8 L8 10 L11 5 L14 7" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>Supply Chain Economics</a>
         <a href="https://legalforensics.substack.com/" target="_blank" style="display:flex;align-items:center;gap:7px;"><svg width="12" height="12" viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="2" y="1" width="12" height="14" rx="1.5" stroke="currentColor" stroke-width="1.3"/><path d="M5 5H11M5 8H11M5 11H9" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>Insights &#8599;</a>
       </div>
     </div>
