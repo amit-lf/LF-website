@@ -228,6 +228,10 @@
     display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
     align-items: stretch;
   }
+  .hero-products-lead {
+    font-size: 12px; color: var(--silver); line-height: 1.5; margin-bottom: 12px;
+  }
+  .hero-products-lead strong { color: var(--white-dim); font-weight: 600; }
   .hero-product {
     display: flex; flex-direction: column;
     padding: 18px 22px;
@@ -1496,26 +1500,27 @@
 
     <div class="hero-right">
 
+      <p class="hero-products-lead">One corpus — <strong>273 unredacted contracts</strong> and the full e-CFR archive. Four ways to use it:</p>
       <div class="hero-products">
-        <div class="hero-product hero-product--ec">
-          <div class="hero-product-name">Export Control</div>
-          <p class="hero-product-desc">Screen counterparties against live sanctions and Entity Lists. Assess ITAR / EAR applicability for any product or technology. Grounded in the Semi<span class="logo-box">pply</span> Corpus — including the full e-CFR regulatory archive.</p>
-          <a href="#" class="hero-product-cta" onclick="showSection('ec'); return false;">Screen &amp; assess &#8594;</a>
-        </div>
         <div class="hero-product hero-product--mi">
           <div class="hero-product-name">Market Intelligence</div>
-          <p class="hero-product-desc">An agentic AI searches the Semi<span class="logo-box">pply</span> Corpus, reasons across filings, and delivers benchmarks — clause by clause, company by company. Know what the market actually signed before you walk into a negotiation.</p>
+          <p class="hero-product-desc">What the market actually signed. An agentic AI searches the Semi<span class="logo-box">pply</span> Corpus and reasons across filings to benchmark any clause — company by company — so you know the norm before you negotiate.</p>
           <a href="#" class="hero-product-cta" onclick="showSection('mi'); return false;">Explore the market &#8594;</a>
         </div>
         <div class="hero-product hero-product--ci">
           <div class="hero-product-name">Contract Intelligence</div>
-          <p class="hero-product-desc">Your specific agreement, read from your side. Agentic AI scores it against the Semi<span class="logo-box">pply</span> Corpus, flags every risk, and delivers a verdict, a redline, and a negotiation brief.</p>
+          <p class="hero-product-desc">Your specific agreement, read from your side. The same AI scores it against the Corpus, flags every risk, and delivers a verdict, a redline, and a negotiation brief.</p>
           <a href="#" class="hero-product-cta" onclick="showSection('ci'); return false;">Analyze your contract &#8594;</a>
         </div>
         <div class="hero-product hero-product--sce">
           <div class="hero-product-name">Supply Chain Economics</div>
-          <p class="hero-product-desc">Foundry commitment exposure, wafer economics, and capacity obligations — benchmarked across IPO-stage semiconductor companies. See what peer companies actually committed to before you negotiate.</p>
+          <p class="hero-product-desc">Your commitment exposure — foundry take-or-pay, wafer economics, and capacity obligations — benchmarked against what peer companies in the Corpus actually committed to.</p>
           <a href="#" class="hero-product-cta" onclick="showSection('sce'); return false;">Benchmark your exposure &#8594;</a>
+        </div>
+        <div class="hero-product hero-product--ec">
+          <div class="hero-product-name">Export Control</div>
+          <p class="hero-product-desc">Your counterparties, screened — live sanctions and Entity-List checks, plus ITAR / EAR applicability for any product, grounded in the Corpus's full e-CFR regulatory archive.</p>
+          <a href="#" class="hero-product-cta" onclick="showSection('ec'); return false;">Screen &amp; assess &#8594;</a>
         </div>
       </div>
 
