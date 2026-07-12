@@ -11,24 +11,24 @@
   gtag('js', new Date());
   gtag('config', 'G-LVQT8R8B5K');
 </script>
-<title>Semipply — Semiconductor Supply Chain Intelligence & Contract Advisor</title>
-<meta name="description" content="Semipply gives semiconductor companies supply chain intelligence — export control screening against the Entity List and CSL, AI-powered fab contract analysis, and market benchmarks built from a proprietary semiconductor contract corpus.">
-<meta name="keywords" content="semiconductor supply chain intelligence, fab contract analysis, TSMC contract benchmarking, ITAR EAR compliance, Entity List screening, export control semiconductor, supply agreement analysis, semiconductor market intelligence, semiconductor vendor due diligence">
+<title>Semipply — Semiconductor Supply Intelligence & Contract Advisor</title>
+<meta name="description" content="Semipply gives semiconductor companies supply intelligence — export control screening against the Entity List and CSL, AI-powered fab contract analysis, and market benchmarks built from a proprietary semiconductor contract corpus.">
+<meta name="keywords" content="semiconductor supply intelligence, fab contract analysis, TSMC contract benchmarking, ITAR EAR compliance, Entity List screening, export control semiconductor, supply agreement analysis, semiconductor market intelligence, semiconductor vendor due diligence">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://intelligence.legalforensics.ai/">
 
 <!-- Open Graph -->
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://intelligence.legalforensics.ai/">
-<meta property="og:title" content="Semipply — Semiconductor Supply Chain Intelligence & Contract Advisor">
-<meta property="og:description" content="Supply chain intelligence, export control screening, and AI-powered contract analysis purpose-built for semiconductor companies. Benchmarked against a 273-contract semiconductor corpus — unredacted supply agreements from SEC filings.">
+<meta property="og:title" content="Semipply — Semiconductor Supply Intelligence & Contract Advisor">
+<meta property="og:description" content="Supply intelligence, export control screening, and AI-powered contract analysis purpose-built for semiconductor companies. Grounded in real, unredacted supply agreements from SEC filings.">
 <meta property="og:image" content="https://intelligence.legalforensics.ai/og-image.png">
 <meta property="og:site_name" content="Semipply">
 
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Semipply — Semiconductor Supply Chain Intelligence">
-<meta name="twitter:description" content="Export control screening, fab contract benchmarking, and supply chain intelligence purpose-built for semiconductor companies.">
+<meta name="twitter:title" content="Semipply — Semiconductor Supply Intelligence">
+<meta name="twitter:description" content="Export control screening, fab contract benchmarking, and supply intelligence purpose-built for semiconductor companies.">
 <meta name="twitter:image" content="https://intelligence.legalforensics.ai/og-image.png">
 
 <!-- JSON-LD: Organization -->
@@ -39,16 +39,16 @@
   "name": "Semipply",
   "url": "https://intelligence.legalforensics.ai",
   "logo": "https://intelligence.legalforensics.ai/favicon.ico",
-  "description": "Semiconductor supply chain intelligence platform providing export control screening, fab contract analysis, and market intelligence for semiconductor companies.",
+  "description": "Semiconductor supply intelligence platform providing export control screening, fab contract analysis, and market intelligence for semiconductor companies.",
   "sameAs": ["https://legalforensics.substack.com"],
   "areaServed": "Worldwide",
   "knowsAbout": [
-    "Semiconductor supply chain",
+    "Semiconductor supply",
     "Export control compliance",
     "ITAR EAR regulations",
     "Fab supply agreements",
     "Entity List screening",
-    "Supply chain due diligence"
+    "Supply agreement due diligence"
   ]
 }
 </script>
@@ -165,12 +165,15 @@
   /* ── HERO ── */
   .hero {
     position: relative;
-    min-height: calc(100vh - 60px);
-    padding: 48px 56px;
+    padding: 88px 56px 76px;
     overflow: hidden;
     border-bottom: 1px solid var(--rule);
-    display: flex; align-items: flex-start; justify-content: center;
+    display: flex; align-items: center; justify-content: center;
   }
+  .hero-btn{display:inline-flex;align-items:center;gap:8px;font-family:'DM Sans',sans-serif;font-weight:500;font-size:15px;padding:12px 22px;border-radius:8px;background:var(--gold);color:#09090C;text-decoration:none;transition:.15s}
+  .hero-btn:hover{filter:brightness(1.08);transform:translateY(-1px)}
+  .hero-btn.ghost{background:transparent;color:var(--white);border:1px solid var(--rule2)}
+  .hero-btn.ghost:hover{border-color:var(--gold);filter:none;transform:none}
   .hero-radar {
     position: absolute; inset: 0;
     pointer-events: none; overflow: hidden;
@@ -1399,9 +1402,8 @@
     nav { padding: 0 20px; }
     .hero {
       height: auto;
-      min-height: calc(100vh - 60px);
-      padding: 40px 20px 48px;
-      align-items: flex-start;
+      padding: 56px 20px 52px;
+      align-items: center;
     }
     .hero-inner { gap: 28px; }
     h1 { font-size: clamp(34px, 9vw, 48px); margin-bottom: 14px; }
@@ -1433,9 +1435,8 @@
   @media (orientation: landscape) and (max-height: 550px) {
     .hero {
       height: auto;
-      min-height: 100vh;
-      padding: 20px 32px;
-      align-items: flex-start;
+      padding: 40px 32px;
+      align-items: center;
     }
     .hero-inner { gap: 20px; max-width: 100%; }
     h1 { font-size: clamp(24px, 4vw, 36px); margin-bottom: 8px; }
@@ -1450,6 +1451,97 @@
     .hero-dataset-tagline { font-size: 11px; line-height: 1.4; }
     .dataset-source { font-size: 10px; padding: 3px 8px; }
   }
+
+/* ===== new homepage body (scoped .lf2) ===== */
+.lf2 section{padding:62px 0;border-top:1px solid var(--rule)}
+.lf2 .wrap{max-width:1080px;margin:0 auto;padding:0 48px}
+@media(max-width:700px){.lf2 .wrap{padding:0 24px}}
+.lf2 .eyebrow{font-family:'DM Mono',monospace;font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin:0 0 14px}
+.lf2 h2{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:clamp(30px,4vw,44px);line-height:1.08;color:var(--white);margin:0;letter-spacing:.005em}
+.lf2 h3{font-family:'DM Sans',sans-serif;font-weight:500;font-size:20px;color:var(--white);margin:0 0 8px}
+.lf2 p{color:var(--white-dim);margin:0;font-weight:300}
+.lf2 .lede{font-size:18px;line-height:1.65;color:var(--white-dim)}
+.lf2 b,.lf2 strong{font-weight:500}
+.lf2 .btn{display:inline-flex;align-items:center;gap:8px;font-family:'DM Sans',sans-serif;font-weight:500;font-size:15px;padding:13px 24px;border-radius:8px;background:var(--gold);color:#09090C;border:1px solid transparent;cursor:pointer;text-decoration:none;transition:.15s}
+.lf2 .btn:hover{filter:brightness(1.08);transform:translateY(-1px)}
+.lf2 .btn.ghost{background:transparent;color:var(--white);border-color:var(--rule2)}
+.lf2 .btn.ghost:hover{border-color:var(--gold);filter:none;transform:none}
+.lf2 a{color:inherit}
+.lf2 :focus-visible{outline:2px solid var(--gold);outline-offset:2px;border-radius:5px}
+.lf2 .co{background:linear-gradient(120deg,rgba(200,169,110,.26),rgba(200,169,110,.13));color:var(--white);font-weight:500;padding:.03em .32em;border-radius:4px;white-space:nowrap}
+.lf2 .kw{border-bottom:1.5px dotted rgba(200,169,110,.6);color:var(--white);font-weight:400}
+/* urgency */
+.lf2 .urgency{background:var(--panel)}
+.lf2 .urgency .kick{font-family:'DM Mono',monospace;color:var(--gold);font-size:12px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:12px}
+.lf2 .myth-lab{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--silver);margin-bottom:8px}
+.lf2 .myth-txt{font-family:'Cormorant Garamond',serif;font-weight:400;font-style:italic;font-size:clamp(22px,2.8vw,28px);line-height:1.2;color:var(--silver);max-width:32ch}
+.lf2 .reality-block{margin-top:30px}
+.lf2 .reality-lab{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+/* seat selector */
+.lf2 .seatpick{display:inline-flex;background:var(--panel2);border:1px solid var(--rule);border-radius:12px;padding:5px;gap:4px;margin:22px 0 26px;flex-wrap:wrap}
+.lf2 .seatpick button{font-family:'DM Sans',sans-serif;font-weight:500;font-size:14.5px;border:0;cursor:pointer;background:transparent;color:var(--white-dim);padding:11px 18px;border-radius:8px;transition:.15s}
+.lf2 .seatpick button .sub{display:block;font-family:'DM Mono',monospace;font-size:10.5px;font-weight:400;letter-spacing:.04em;color:var(--silver);margin-top:2px;text-transform:uppercase}
+.lf2 .seatpick button[aria-selected="true"]{background:var(--gold);color:#09090C}
+.lf2 .seatpick button[aria-selected="true"] .sub{color:rgba(0,0,0,.6)}
+.lf2 .seatpanel{display:none}
+.lf2 .seatpanel.on{display:block}
+.lf2 .seatgrid{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:start}
+@media(max-width:820px){.lf2 .seatgrid{grid-template-columns:1fr;gap:20px}}
+.lf2 .who{font-family:'DM Mono',monospace;font-size:12px;color:var(--silver);letter-spacing:.05em;margin-bottom:8px;text-transform:uppercase}
+.lf2 .chk{list-style:none;padding:0;margin:14px 0 0;display:grid;gap:11px}
+.lf2 .chk li{display:flex;gap:11px;font-size:15px;color:var(--white);font-weight:300}
+.lf2 .chk li::before{content:"\2192";color:var(--gold);font-weight:600}
+/* two-pillar */
+.lf2 .cards2{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:26px}
+@media(max-width:760px){.lf2 .cards2{grid-template-columns:1fr}}
+.lf2 .card{background:var(--panel);border:1px solid var(--rule);border-radius:14px;padding:26px}
+.lf2 .card .lab{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+.lf2 .card p{font-size:15px}
+/* proof / corpus / readers */
+.lf2 .corpus{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 16px;margin-top:22px;padding:16px 0;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+.lf2 .corpus-lab{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.12em;color:var(--silver);text-transform:uppercase}
+.lf2 .corpus-names{font-family:'DM Mono',monospace;font-size:13.5px;color:var(--white-dim);letter-spacing:.02em}
+.lf2 .corpus-note{font-family:'DM Mono',monospace;font-size:10.5px;color:var(--silver);width:100%;margin-top:2px}
+.lf2 .readers{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:26px}
+@media(max-width:820px){.lf2 .readers{grid-template-columns:1fr}}
+.lf2 .reader{background:var(--panel);border:1px solid var(--rule);border-radius:12px;padding:20px;display:flex;flex-direction:column;gap:8px;transition:.15s;text-align:left;width:100%;font:inherit;color:inherit;cursor:pointer}
+.lf2 .reader:hover{border-color:var(--gold);transform:translateY(-2px)}
+.lf2 .reader .n{font-family:'DM Mono',monospace;font-size:11px;color:var(--silver);letter-spacing:.1em}
+.lf2 .reader b{font-size:16.5px;line-height:1.25;color:var(--white);font-weight:500}
+.lf2 .reader span.d{font-size:13.5px;color:var(--white-dim);font-weight:300}
+.lf2 .reader .rtag{margin-top:auto;padding-top:8px;font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.03em}
+.lf2 .reader .rtag.a{color:var(--gold)} .lf2 .reader .rtag.l{color:var(--silver)} .lf2 .reader .rtag.d{color:var(--teal-lt)}
+.lf2 .reader.is-locked{opacity:.5;cursor:not-allowed}
+.lf2 .reader.is-locked:hover{transform:none;border-color:var(--rule)}
+.lf2 .reader.is-done{border-color:var(--gold-dim)}
+.lf2 .grounded{margin-top:24px;font-family:'DM Mono',monospace;font-size:13px;color:var(--white-dim);display:flex;align-items:center;gap:10px}
+.lf2 .grounded b{color:var(--white)}
+/* offer */
+.lf2 .offer{background:linear-gradient(180deg,var(--panel),var(--ink));border:1px solid var(--rule);border-radius:18px;padding:44px;text-align:center}
+.lf2 .offer h2{max-width:22ch;margin:0 auto}
+.lf2 .offer p{max-width:56ch;margin:14px auto 24px;font-size:16px}
+/* faq */
+.lf2 .faq{margin-top:22px;border:1px solid var(--rule);border-radius:12px;overflow:hidden}
+.lf2 details{background:var(--panel);border-top:1px solid var(--rule)}
+.lf2 details:first-child{border-top:0}
+.lf2 summary{cursor:pointer;padding:18px 22px;font-weight:400;font-size:16px;color:var(--white);list-style:none;display:flex;justify-content:space-between;gap:16px}
+.lf2 summary::-webkit-details-marker{display:none}
+.lf2 summary::after{content:"+";color:var(--gold);font-weight:600}
+.lf2 details[open] summary::after{content:"\2013"}
+.lf2 details p{padding:0 22px 20px;font-size:15px;max-width:72ch}
+/* gate modal */
+.lf2.modal{position:fixed;inset:0;z-index:200;display:grid;place-items:center;padding:20px;background:rgba(4,4,6,.72);backdrop-filter:blur(3px)}
+.lf2.modal[hidden]{display:none}
+.lf2 .modal-card{position:relative;background:var(--panel);border:1px solid var(--rule2);border-radius:16px;padding:28px;max-width:420px;width:100%}
+.lf2 .modal-x{position:absolute;top:12px;right:14px;background:transparent;border:0;color:var(--silver);font-size:22px;cursor:pointer;line-height:1}
+.lf2 .modal-x:hover{color:var(--white)}
+.lf2 .flab{display:block;font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--white-dim);margin-bottom:6px}
+.lf2 .finput{width:100%;background:var(--ink);border:1px solid var(--rule);border-radius:9px;padding:12px 13px;color:var(--white);font:inherit;font-size:15px}
+.lf2 .finput:focus{border-color:var(--gold);outline:none}
+.lf2 .seatmini{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.lf2 .seatmini button{font:inherit;font-size:13px;padding:10px;border-radius:9px;border:1px solid var(--rule);background:transparent;color:var(--white-dim);cursor:pointer}
+.lf2 .seatmini button[aria-pressed="true"]{border-color:var(--gold);color:var(--white);background:rgba(200,169,110,.12)}
+
 </style>
 </head>
 <body>
@@ -1492,646 +1584,179 @@
   <div class="hero-inner">
     <div class="hero-left">
       <div class="hero-eyebrow">
-        <span class="hero-eyebrow-chip">Semiconductor Supply Chain Intelligence</span>
+        <span class="hero-eyebrow-chip">Semiconductor Supply Intelligence</span>
       </div>
       <h1>Know your contracts.<br><em>Know your risks.</em></h1>
       <p class="hero-sub">Your counterparty has signed this agreement hundreds of times. You're signing it once. For the first time, you know what everyone else signed — before you commit.</p>
-    </div>
-
-    <div class="hero-right">
-
-      <p class="hero-products-lead">One corpus — <strong>273 unredacted contracts</strong> and the full e-CFR archive. Four ways to use it:</p>
-      <div class="hero-products">
-        <div class="hero-product hero-product--mi">
-          <div class="hero-product-name">Market Intelligence</div>
-          <p class="hero-product-desc">What the market actually signed. An agentic AI searches the Semi<span class="logo-box">pply</span> Corpus and reasons across filings to benchmark any clause — company by company — so you know the norm before you negotiate.</p>
-          <a href="#" class="hero-product-cta" onclick="showSection('mi'); return false;">Explore the market &#8594;</a>
-        </div>
-        <div class="hero-product hero-product--ci">
-          <div class="hero-product-name">Contract Intelligence</div>
-          <p class="hero-product-desc">Your specific agreement, read from your side. The same AI scores it against the Corpus, flags every risk, and delivers a verdict, a redline, and a negotiation brief.</p>
-          <a href="#" class="hero-product-cta" onclick="showSection('ci'); return false;">Analyze your contract &#8594;</a>
-        </div>
-        <div class="hero-product hero-product--sce">
-          <div class="hero-product-name">Supply Chain Economics</div>
-          <p class="hero-product-desc">Your commitment exposure — foundry take-or-pay, wafer economics, and capacity obligations — benchmarked against what peer companies in the Corpus actually committed to.</p>
-          <a href="#" class="hero-product-cta" onclick="showSection('sce'); return false;">Benchmark your exposure &#8594;</a>
-        </div>
-        <div class="hero-product hero-product--ec">
-          <div class="hero-product-name">Export Control</div>
-          <p class="hero-product-desc">Your counterparties, screened — live sanctions and Entity-List checks, plus ITAR / EAR applicability for any product, grounded in the Corpus's full e-CFR regulatory archive.</p>
-          <a href="#" class="hero-product-cta" onclick="showSection('ec'); return false;">Screen &amp; assess &#8594;</a>
-        </div>
+      <div style="display:flex;gap:12px;margin-top:30px;flex-wrap:wrap;justify-content:center">
+        <a class="hero-btn" href="#proof">See real examples</a>
+        <a class="hero-btn ghost" href="#seats">Which side are you on?</a>
       </div>
-
-      <div class="hero-dataset">
-        <div class="hero-dataset-header">
-          <span class="hero-dataset-name">The Semi<span class="logo-box">pply</span> Corpus</span>
-          <p class="hero-dataset-tagline">Contracts, filings, and regulation — ingested, classified, and maintained by Semi<span class="logo-box">pply</span>. The complete intelligence layer behind every Market, Export Control, Contract, and Economics analysis.</p>
-        </div>
-        <div class="hero-dataset-sources">
-          <span class="dataset-source">Supply Contracts</span>
-          <span class="dataset-source">10-K Commitment Tables</span>
-          <span class="dataset-source">Regulatory Coverage</span>
-          <span class="dataset-source">Sanctions &amp; Entity Screens</span>
-        </div>
-      </div>
-
     </div>
-
   </div>
 </section>
 
+<main class="lf2">
 
-<!-- ═══════════════════════════════════════════════════════
-     SILICON PERIMETER STRESS TEST — MODAL
-═══════════════════════════════════════════════════════ -->
-<div class="stress-modal-overlay" id="stress-modal-overlay" onclick="closeStressOnOverlay(event)">
-  <div class="stress-modal">
-    <button class="stress-modal-close" onclick="closeStressTest()" aria-label="Close">&times;</button>
-
-    <div class="stress-modal-header">
-      <span class="stress-chip">Silicon Perimeter Stress Test</span>
-      <span class="stress-modal-sub">A 2-minute diagnostic to quantify your contractual exposure before your next tape-out.</span>
+  <section class="urgency">
+    <div class="wrap">
+      <p class="myth-lab">Myth</p>
+      <p class="myth-txt">Contract hygiene is a vitamin &mdash; nice to have, never urgent.</p>
+      <div class="reality-block">
+        <p class="reality-lab">Reality</p>
+        <h2>Until you raise, sell, or defend a margin &mdash; then it's the first thing diligence reads.</h2>
+        <p class="lede" style="margin-top:16px;max-width:62ch">The terms you signed sit quietly only while nothing's happening. File an S-1, entertain a buyer, or push on a margin, and those clauses become the first thing an investor's counsel or an acquirer's diligence team opens. They don't improve while they sit &mdash; they get <b>discovered</b>.</p>
+      </div>
     </div>
+  </section>
 
-    <div class="stress-body">
-
-      <!-- Quiz -->
-      <div class="stress-quiz">
-        <div class="stress-progress-track">
-          <div class="stress-progress-fill" id="stress-progress-fill"></div>
-        </div>
-        <div class="stress-progress-text">Question <span id="sq-num">1</span> of 6</div>
-
-        <div class="stress-q active" id="sq-1">
-          <div class="sq-category">Yield Trap</div>
-          <div class="sq-text">In your current Foundry agreement, who carries the financial loss if wafer yield drops 15% below the target?</div>
-          <div class="sq-opts">
-            <button class="sq-opt" onclick="stressAnswer(0,2)"><span class="sq-opt-key">A</span>The Vendor — we have a Guaranteed Yield Floor</button>
-            <button class="sq-opt" onclick="stressAnswer(0,1)"><span class="sq-opt-key">B</span>We split it — shared risk arrangement</button>
-            <button class="sq-opt sq-opt-exposed" onclick="stressAnswer(0,0)"><span class="sq-opt-key">C</span>We pay full price for every wafer started</button>
-            <button class="sq-opt sq-opt-exposed" onclick="stressAnswer(0,0)"><span class="sq-opt-key">D</span>I don't know — this was never discussed</button>
+  <section id="seats">
+    <div class="wrap">
+      <p class="eyebrow">Who it's for</p>
+      <h2>Which side of the table are you on?</h2>
+      <div class="seatpick" role="tablist" aria-label="Choose your seat">
+        <button role="tab" id="tab-buy" aria-selected="true" aria-controls="p-buy">I buy chips &amp; capacity<span class="sub">fabless &middot; auto Tier-1 / OEM</span></button>
+        <button role="tab" id="tab-sell" aria-selected="false" aria-controls="p-sell">I sell it<span class="sub">OSAT &middot; contract manufacturers</span></button>
+      </div>
+      <div class="seatpanel on" id="p-buy" role="tabpanel" aria-labelledby="tab-buy">
+        <div class="seatgrid">
+          <div>
+            <p class="who">Fabless (startup &rarr; SMB) &middot; auto Tier-1 / OEM</p>
+            <h3>Know if your foundry &amp; supply terms beat the market.</h3>
+            <p>You sign a foundry, wafer-supply, or OSAT agreement once. Your supplier has signed it hundreds of times &mdash; and you've never seen what your peers actually agreed to. We read yours from the buyer's side and benchmark it against <b>dozens of real, unredacted supply agreements</b> from <b>15+ semiconductor companies</b>' SEC filings.</p>
           </div>
-          <div class="sq-hook">82% of startups unknowingly select C or D until a forensic audit reveals what peer companies have actually secured.</div>
-        </div>
-
-        <div class="stress-q" id="sq-2">
-          <div class="sq-category">Constraint Stacking</div>
-          <div class="sq-text">If your OSAT partner shuts down for 90 days, are you legally obligated to continue paying for wafers from your Foundry?</div>
-          <div class="sq-opts">
-            <button class="sq-opt" onclick="stressAnswer(1,2)"><span class="sq-opt-key">A</span>No — my contracts are linked and suspend together</button>
-            <button class="sq-opt sq-opt-exposed" onclick="stressAnswer(1,0)"><span class="sq-opt-key">B</span>Yes — the contracts are siloed</button>
-            <button class="sq-opt sq-opt-exposed" onclick="stressAnswer(1,0)"><span class="sq-opt-key">C</span>I don't know — the contracts were never cross-referenced</button>
-          </div>
-          <div class="sq-hook">Constraint Stacking is the #1 cause of cash-burn during supply chain shocks. Not knowing is the same as exposure.</div>
-        </div>
-
-        <div class="stress-q" id="sq-3">
-          <div class="sq-category">Liability Moat</div>
-          <div class="sq-text">Is your vendor's liability capped at a fraction of spend while your liability to them remains uncapped for IP or incidental damages?</div>
-          <div class="sq-opts">
-            <button class="sq-opt" onclick="stressAnswer(2,2)"><span class="sq-opt-key">A</span>Balanced — a mutual cap applies to both sides</button>
-            <button class="sq-opt sq-opt-exposed" onclick="stressAnswer(2,0)"><span class="sq-opt-key">B</span>They are capped. We are not.</button>
-            <button class="sq-opt sq-opt-exposed" onclick="stressAnswer(2,0)"><span class="sq-opt-key">C</span>I don't know — I haven't reviewed that section</button>
-          </div>
-          <div class="sq-hook">Uncapped liability is a silent signal that can kill an acquisition or IPO during due diligence. Most founders discover it too late.</div>
-        </div>
-
-        <div class="stress-q" id="sq-4">
-          <div class="sq-category">Geopolitical Lock-In</div>
-          <div class="sq-text">Does your contract include a Right to Relocate if export controls change in your vendor's primary manufacturing region?</div>
-          <div class="sq-opts">
-            <button class="sq-opt" onclick="stressAnswer(3,2)"><span class="sq-opt-key">A</span>Yes — relocation flexibility is written in</button>
-            <button class="sq-opt sq-opt-exposed" onclick="stressAnswer(3,0)"><span class="sq-opt-key">B</span>No — we are locked to a specific facility</button>
-            <button class="sq-opt sq-opt-exposed" onclick="stressAnswer(3,0)"><span class="sq-opt-key">C</span>I don't know — this was not on our radar</button>
-          </div>
-          <div class="sq-hook">50% of recent filings include relocation flexibility clauses entirely absent in pre-2021 agreements. The market has shifted.</div>
-        </div>
-
-        <div class="stress-q" id="sq-5">
-          <div class="sq-category">Competitive Intelligence</div>
-          <div class="sq-text">Do you know the exact terms your primary competitor negotiated with this same vendor when they were at your current revenue stage?</div>
-          <div class="sq-opts">
-            <button class="sq-opt" onclick="stressAnswer(4,2)"><span class="sq-opt-key">A</span>Yes — we have the benchmark data</button>
-            <button class="sq-opt sq-opt-exposed" onclick="stressAnswer(4,0)"><span class="sq-opt-key">B</span>No — we are negotiating in the dark</button>
-            <button class="sq-opt sq-opt-exposed" onclick="stressAnswer(4,0)"><span class="sq-opt-key">C</span>I don't know that this data even exists</button>
-          </div>
-          <div class="sq-hook">Your competitors have a negotiation history. Most founders never know to look for it — Semipply surfaces it.</div>
-        </div>
-
-        <div class="stress-q" id="sq-6">
-          <div class="sq-category">Export Control &amp; Deemed Export</div>
-          <div class="sq-text">Does your agreement contain ITAR or EAR controls — and have you assessed what that means for every nationality on your team?</div>
-          <div class="sq-opts">
-            <button class="sq-opt" onclick="stressAnswer(5,2)"><span class="sq-opt-key">A</span>Yes — we've done a full assessment and are compliant</button>
-            <button class="sq-opt" onclick="stressAnswer(5,1)"><span class="sq-opt-key">B</span>Partially — we know it applies but haven't fully mapped team exposure</button>
-            <button class="sq-opt sq-opt-exposed" onclick="stressAnswer(5,0)"><span class="sq-opt-key">C</span>No — we haven't assessed the export control implications</button>
-            <button class="sq-opt sq-opt-exposed" onclick="stressAnswer(5,0)"><span class="sq-opt-key">D</span>I don't know if our agreement even contains ITAR or EAR clauses</button>
-          </div>
-          <div class="sq-hook">A European team member accessing ITAR-controlled data is a "deemed export" — a federal violation regardless of where they are sitting. Most distributed teams discover this during due diligence.</div>
-        </div>
-
-        <!-- Email gate step -->
-        <div class="stress-q" id="sq-email">
-          <div class="sq-category">One Last Step</div>
-          <div class="sq-text">Your Perimeter Score is ready.</div>
-          <p style="font-size:13px; color:var(--silver); margin-bottom:24px; line-height:1.7;">Enter your email and we'll reveal your score — and send you the one report that addresses your highest-risk gap.</p>
-          <div style="display:flex; flex-direction:column; gap:10px; max-width:420px;">
-            <input type="email" id="stress-email-input" placeholder="your@email.com"
-              style="padding:12px 16px; background:var(--panel2); border:1px solid var(--rule2); border-radius:3px; color:var(--white); font-family:'DM Sans',sans-serif; font-size:13px; outline:none; transition:border-color 0.2s;"
-              onfocus="this.style.borderColor='var(--gold-dim)'" onblur="this.style.borderColor='var(--rule2)'">
-            <button onclick="submitStressEmail()" class="cta-btn gold" style="width:fit-content;">Reveal My Score &#8594;</button>
-          </div>
-          <p style="font-size:11px; color:var(--silver); opacity:0.6; margin-top:12px;">No spam. One email with your analysis and recommended next step.</p>
+          <ul class="chk">
+            <li><span class="kw">Take-or-pay</span> &amp; binding-forecast exposure &mdash; before it hits your balance sheet</li>
+            <li><span class="kw">Single-source</span> &amp; capacity-allocation gaps; missing yield floor</li>
+            <li>Liability caps &amp; price-escalation vs. what peers signed</li>
+            <li>Export / <span class="kw">CFIUS</span> exposure on your foundry and customers</li>
+            <li>The diligence questions a funder will ask &mdash; answered on your schedule</li>
+          </ul>
         </div>
       </div>
-
-      <!-- Visual panel -->
-      <div class="stress-visual">
-        <div id="stress-dots">
-          <div class="stress-dots-label">Pressure Points Assessed</div>
-          <div class="stress-dots-grid">
-            <div class="stress-dot" id="dot-0"><div class="stress-dot-circle"></div><span>Yield Trap</span></div>
-            <div class="stress-dot" id="dot-1"><div class="stress-dot-circle"></div><span>Constraint Stacking</span></div>
-            <div class="stress-dot" id="dot-2"><div class="stress-dot-circle"></div><span>Liability Moat</span></div>
-            <div class="stress-dot" id="dot-3"><div class="stress-dot-circle"></div><span>Geopolitical Lock-In</span></div>
-            <div class="stress-dot" id="dot-4"><div class="stress-dot-circle"></div><span>Competitive Intel</span></div>
-            <div class="stress-dot" id="dot-5"><div class="stress-dot-circle"></div><span>Export Control</span></div>
+      <div class="seatpanel" id="p-sell" role="tabpanel" aria-labelledby="tab-sell">
+        <div class="seatgrid">
+          <div>
+            <p class="who">OSAT &middot; contract manufacturers</p>
+            <h3>Read your customer contracts from your side &mdash; before you sign.</h3>
+            <p>Your customers' procurement teams draft from a position of strength. We read the master supply and manufacturing agreements from the <b>supplier's</b> seat &mdash; where you're conceding, what carries risk, and what's worth pushing back on &mdash; grounded in comparable filed agreements.</p>
           </div>
-        </div>
-
-        <div id="stress-result" class="stress-result" style="display:none">
-          <svg viewBox="0 0 200 200" class="stress-gauge-svg">
-            <circle cx="100" cy="100" r="78" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="14"/>
-            <circle cx="100" cy="100" r="78" fill="none"
-              id="stress-gauge-ring"
-              stroke="#4ABFA0" stroke-width="14"
-              stroke-linecap="round"
-              stroke-dasharray="490"
-              stroke-dashoffset="490"
-              transform="rotate(-90 100 100)"
-              style="transition: stroke-dashoffset 1.2s ease, stroke 0.4s ease"/>
-            <text x="100" y="90" text-anchor="middle" fill="#EEF1F8"
-              font-family="Cormorant Garamond, serif" font-size="46" font-weight="600"
-              id="stress-score-num">0</text>
-            <text x="100" y="112" text-anchor="middle" fill="#7E8FA8"
-              font-family="DM Mono, monospace" font-size="9" letter-spacing="2">/12</text>
-            <text x="100" y="128" text-anchor="middle" fill="#7E8FA8"
-              font-family="DM Mono, monospace" font-size="8" letter-spacing="1.5"
-              id="stress-score-label">PERIMETER SCORE</text>
-          </svg>
-          <div class="stress-verdict" id="stress-verdict"></div>
-          <div class="stress-rec" id="stress-rec"></div>
-          <a href="#" id="stress-cta" class="stress-result-cta"></a>
+          <ul class="chk">
+            <li>Where the liability, warranty &amp; yield risk actually lands on you</li>
+            <li>Capacity commitments, NCNR and change-order exposure</li>
+            <li>IP, tooling &amp; mask-ownership terms read from your side</li>
+            <li>Termination &amp; forecast asymmetry you're accepting</li>
+            <li>A from-your-side read on one agreement, under NDA, before you sign</li>
+          </ul>
         </div>
       </div>
+    </div>
+  </section>
 
+  <section>
+    <div class="wrap">
+      <p class="eyebrow">What we do</p>
+      <h2>Two things a sourcing team can act on.</h2>
+      <div class="cards2">
+        <div class="card">
+          <div class="lab">Leverage</div>
+          <h3>Negotiate from evidence.</h3>
+          <p>How your terms compare to what your peers actually signed &mdash; benchmarked against <b>dozens of real, unredacted supply agreements</b> from <b>15+ semiconductor companies</b> including <span class="co">Cerebras</span>, <span class="co">Mobileye</span>, <span class="co">Allegro</span>, <span class="co">SiTime</span> and <span class="co">GlobalFoundries</span>. Clause by clause. Know if you're overpaying or over-committing before you sign.</p>
+        </div>
+        <div class="card">
+          <div class="lab">Foresight</div>
+          <h3>See what diligence will find &mdash; first.</h3>
+          <p>The terms you've already signed reveal where you're exposed &mdash; <span class="kw">take-or-pay</span>, <span class="kw">single-source</span>, a <span class="kw">change-of-control</span> tripwire &mdash; before it reaches the numbers. We surface it from the contract, and screen counterparties for <span class="kw">Entity-List</span>, sanctions and <span class="kw">CFIUS</span> exposure. Classification, not prediction; every finding traces to a source.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="proof">
+    <div class="wrap">
+      <p class="eyebrow">Proof, not promises</p>
+      <h2>We read the actual filings. Here's what that looks like.</h2>
+      <p class="lede" style="margin-top:14px;max-width:62ch">A short series, built entirely from real, unredacted SEC contract filings &mdash; quoted verbatim. Start with the first; the next one unlocks once it's on its way.</p>
+      <div class="corpus">
+        <span class="corpus-lab">Drawn from public SEC filings by</span>
+        <span class="corpus-names">Cerebras &middot; Mobileye &middot; GlobalFoundries &middot; Allegro &middot; SiTime &middot; SkyWater &middot; Everspin</span>
+        <span class="corpus-note">Public filings we've analyzed &mdash; not customers or endorsements.</span>
+      </div>
+      <div class="readers">
+        <button class="reader" data-index="1" data-reader="The Independence Illusion">
+          <span class="n">READER 01 &middot; START HERE</span><b>The Independence Illusion</b>
+          <span class="d">Nine semiconductor companies, read from their filed contracts. "Independent" on the cap table, captive in the terms.</span>
+          <span class="rtag"></span>
+        </button>
+        <button class="reader" data-index="2" data-reader="How the Nine Aged">
+          <span class="n">READER 02</span><b>How the Nine Aged</b>
+          <span class="d">Where the fragility we flagged showed up since &mdash; <span class="co">Allegro</span>, <span class="co">Cerebras</span>, <span class="co">Mobileye</span>. Correlation, not causation.</span>
+          <span class="rtag"></span>
+        </button>
+        <button class="reader" data-index="3" data-reader="The Questions Your Contracts Force">
+          <span class="n">READER 03</span><b>The Questions Your Contracts Force</b>
+          <span class="d">The same read, turned on your own book &mdash; the diligence questions a funder will ask.</span>
+          <span class="rtag"></span>
+        </button>
+      </div>
+      <p class="grounded"><span><b>Every finding traces to a clause.</b> No black box, no predictions we can't defend.</span></p>
+    </div>
+  </section>
+
+  <section id="offer">
+    <div class="wrap">
+      <div class="offer">
+        <p class="eyebrow">A no-obligation first look</p>
+        <h2>Send us one representative agreement.</h2>
+        <p>Under mutual NDA, we'll return a from-your-side read &mdash; plus a peer benchmark if you're on the buyer side. Before you sign, renew, or raise. One agreement, no commitment.</p>
+        <a class="btn" href="contact.html">Request a first look &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq">
+    <div class="wrap">
+      <p class="eyebrow">Straight answers</p>
+      <h2>Questions we get.</h2>
+      <div class="faq">
+        <details open><summary>Isn't this just contract review?</summary><p>No. A lawyer reads one contract in isolation, for legal correctness. We read it from your commercial side &mdash; take-or-pay, single-source, yield, exclusivity &mdash; and benchmark it against what your peers actually signed. That external comparison is something your own history can't give you.</p></details>
+        <details><summary>Who is this for &mdash; and is it legal advice?</summary><p>It's for the <b>business side</b> &mdash; procurement, operations, finance, and the founders who sign and live with these agreements &mdash; not a replacement for your legal counsel. We read a contract from your commercial position: leverage, exposure, and what your peers actually signed. Every finding is grounded and cited &mdash; but it is <b>not legal advice</b>. Take our read into your negotiation and to your lawyer; we don't do your lawyer's job.</p></details>
+        <details><summary>Why does semiconductor-specific matter?</summary><p>Because the risks are specific: foundry capacity allocation, wafer-bank liability, yield floors, mask ownership, take-or-pay, plus export control (EAR/ITAR) and CFIUS. A generalist contract tool doesn't know a binding forecast from a warranty. We built for this lane.</p></details>
+        <details><summary>What do you need from me to start?</summary><p>One representative agreement, under mutual NDA. You get back a from-your-side read and a peer benchmark &mdash; no platform rollout, no long commitment.</p></details>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<div class="lf2 modal" id="gate" hidden>
+  <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="gate-title">
+    <button class="modal-x" id="gate-x" aria-label="Close">&times;</button>
+    <div id="gate-form-wrap">
+      <p class="eyebrow" style="margin-bottom:8px">Get the full Reader</p>
+      <h3 id="gate-title" style="margin-bottom:6px">The Independence Illusion</h3>
+      <p style="font-size:14px;margin-bottom:18px">We'll email you the PDF, and the short follow-up when it's ready. No spam.</p>
+      <form id="gate-form">
+        <label class="flab" for="gate-email">Work email</label>
+        <input class="finput" id="gate-email" name="email" type="email" required placeholder="you@company.com" autocomplete="email">
+        <label class="flab" style="margin-top:14px">Which side of the table? <span style="color:var(--silver);text-transform:none;letter-spacing:0">(optional)</span></label>
+        <div class="seatmini" role="group" aria-label="Your seat">
+          <button type="button" data-seat="buyer" aria-pressed="false">I buy chips &amp; capacity</button>
+          <button type="button" data-seat="supplier" aria-pressed="false">I sell it</button>
+        </div>
+        <button class="btn" type="submit" style="width:100%;justify-content:center;margin-top:18px">Email me the PDF &rarr;</button>
+      </form>
+    </div>
+    <div id="gate-done" hidden style="text-align:center;padding:10px 0 4px">
+      <div style="font-size:34px;color:var(--teal-lt)">&#10003;</div>
+      <p style="color:var(--white);font-weight:500;margin:6px 0 4px">Check your inbox.</p>
+      <p style="font-size:14px">We've sent <b id="gate-done-title" style="color:var(--white)">the Reader</b> to <b id="gate-done-email" style="color:var(--white)">you</b>.</p>
+      <p id="gate-next" style="color:var(--gold);font-size:13px;margin-top:8px"></p>
+      <button class="btn ghost" id="gate-close2" style="margin-top:16px">Done</button>
     </div>
   </div>
 </div>
 
-<!-- ═══════════════════════════════════════════════════════
-     EXPORT CONTROL SECTION
-═══════════════════════════════════════════════════════ -->
-<div class="product-section" id="section-ec">
-  <div class="section-header">
-    <span class="section-badge badge-ec"><svg width="11" height="11" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 1L2 4V9C2 12.5 5 14.5 8 15C11 14.5 14 12.5 14 9V4L8 1Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><circle cx="8" cy="9" r="2" stroke="currentColor" stroke-width="1.3"/><line x1="8" y1="6" x2="8" y2="7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>Export Control</span>
-    <span class="section-title-bar">Screen counterparties. Classify your technology.</span>
-  </div>
-  <div class="content-wrap">
-
-    <!-- Access bar -->
-    <div class="ci-access-bar">
-      <div class="ci-access-bar-text">
-        <h3>Export compliance, grounded in regulation</h3>
-        <p>Run live sanctions screens, ITAR / EAR and CFIUS assessments, and generate a counsel-ready exposure brief — straight from the regulatory corpus, with a full citation trail.</p>
-      </div>
-      <a href="https://intelligence.legalforensics.ai/export-control" class="cta-btn gold" style="white-space:nowrap; flex-shrink:0;" target="_blank" rel="noopener">Try the Hub &#8599;</a>
-    </div>
-
-    <!-- The Problem -->
-    <div class="section-label">The Problem</div>
-    <h2>Semiconductor supply chains cross every<br><em>high-risk jurisdiction on earth.</em></h2>
-    <p class="lead">From TSMC to ASML to SK Hynix, the critical nodes of your supply chain sit in countries subject to EAR, ITAR, or both. One missed classification or a sanctioned counterparty can trigger criminal liability — yet most startups still manage compliance manually, in spreadsheets.</p>
-
-    <div class="problem-grid">
-      <div class="problem-card">
-        <h4>Entity List and SDN exposure</h4>
-        <p>The BIS Entity List and OFAC SDN List are updated weekly. Counterparties clear today may be designated tomorrow. Manual spot-checks are not a compliance program.</p>
-      </div>
-      <div class="problem-card">
-        <h4>EAR / ITAR classification is not obvious</h4>
-        <p>Whether a product falls under EAR99, an ECCN, or the USML depends on performance thresholds and end-use context — not just what it is called. Getting it wrong voids your license exceptions.</p>
-      </div>
-      <div class="problem-card">
-        <h4>CFR text is dense and constantly updated</h4>
-        <p>The EAR and ITAR together span hundreds of pages of 15 CFR and 22 CFR. Export control counsel is expensive. Fast, grounded answers to routine questions shouldn't require a billable hour.</p>
-      </div>
-      <div class="problem-card">
-        <h4>Diligence gaps surface at the worst moment</h4>
-        <p>Acquirers, investors, and government customers all conduct export-control diligence. Gaps discovered during a deal or audit are far more costly than proactive screening.</p>
-      </div>
-    </div>
-
-    <!-- What it does -->
-    <div class="section-label" style="margin-top:56px;">What It Does</div>
-    <h2>Screen, classify, and synthesize.<br><em>One workflow.</em></h2>
-
-    <!-- Featured: Export Exposure Brief -->
-    <div style="margin-top:32px; padding:28px 32px; border:1px solid rgba(91,159,232,0.3); border-radius:8px; background:rgba(91,159,232,0.05);">
-      <div style="font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; color:#5B9FE8; margin-bottom:10px;">New · The integrative output</div>
-      <h3 style="font-size:22px; margin-bottom:10px;">The Export Exposure Brief</h3>
-      <p style="color:var(--silver); line-height:1.7; max-width:720px;">Answer a short questionnaire and get one grounded, downloadable page — jurisdiction reach (FDPR), restricted-party screening, investment review (CFIUS), what you ship, and workforce / IP exposure. Every finding traces to a specific screen and a CFR citation, assembled deterministically with no AI guessing. A counsel-ready picture in minutes, not weeks.</p>
-    </div>
-
-    <div class="outputs-grid" style="margin-top:24px;">
-      <div class="output-card">
-        <div class="output-card-icon" style="color:#5B9FE8;">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-        </div>
-        <h4>Counterparty Screen</h4>
-        <p>Search any company name against the live BIS Entity List, OFAC SDN List, and consolidated screening list. Results show match reason, program, and effective date — in seconds.</p>
-      </div>
-      <div class="output-card">
-        <div class="output-card-icon" style="color:#5B9FE8;">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-        </div>
-        <h4>ITAR Applicability Assessment</h4>
-        <p>Describe your product, end-use, and destination. The tool reasons over 1,800+ EAR, ITAR, and CFIUS regulatory sections to return an ECCN estimate, license requirement, red flags, and CFR citations.</p>
-      </div>
-      <div class="output-card">
-        <div class="output-card-icon" style="color:#5B9FE8;">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
-        </div>
-        <h4>Regulatory Q&amp;A</h4>
-        <p>Ask plain-English questions about EAR, ITAR, OFAC, or specific CCL categories. The agent cites the exact CFR section — not a law firm memo, but the actual regulatory text.</p>
-      </div>
-      <div class="output-card">
-        <div class="output-card-icon" style="color:#5B9FE8;">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V8l7-4 7 4v13"/><path d="M9 21v-6h6v6"/></svg>
-        </div>
-        <h4>CFIUS Investor Screen</h4>
-        <p>Taking foreign or sovereign capital? Enter an investor and the tool resolves its true country and government-control status from a vetted registry — driving the mandatory-vs-voluntary FIRRMA determination. It corrects a wrong country, and refuses to guess when it can't.</p>
-      </div>
-      <div class="output-card">
-        <div class="output-card-icon" style="color:#5B9FE8;">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-        </div>
-        <h4>Audit-Ready Citation Trail</h4>
-        <p>Every assessment cites the exact CFR passages used, shows similarity scores, and flags confidence level. You get a defensible record, not an opinion without basis.</p>
-      </div>
-    </div>
-
-    <!-- Data sources -->
-    <div class="section-label" style="margin-top:56px;">Data Sources</div>
-    <h2>Live regulatory feeds.<br><em>Not last quarter's PDF.</em></h2>
-    <p class="lead" style="max-width:680px;">The Export Control Hub is grounded in authoritative, continuously updated sources — not static summaries.</p>
-
-    <div class="fmri-grid" style="margin-top:28px;">
-      <div class="fmri-card">
-        <div class="fmri-label">BIS Entity List</div>
-        <div class="fmri-value" style="font-size:13px; color:#5B9FE8;">Live</div>
-        <p class="fmri-desc">Consolidated screening list — updated daily from the official U.S. Commerce Department feed.</p>
-      </div>
-      <div class="fmri-card">
-        <div class="fmri-label">OFAC SDN List</div>
-        <div class="fmri-value" style="font-size:13px; color:#5B9FE8;">Live</div>
-        <p class="fmri-desc">Specially Designated Nationals and Blocked Persons List — Treasury OFAC, updated continuously.</p>
-      </div>
-      <div class="fmri-card">
-        <div class="fmri-label">EAR Corpus</div>
-        <div class="fmri-value" style="font-size:13px; color:#5B9FE8;">Current</div>
-        <p class="fmri-desc">15 CFR Parts 730–774 including the Commerce Control List (CCL), Oct 2022 advanced chip rules, and Part 744 end-user controls.</p>
-      </div>
-      <div class="fmri-card">
-        <div class="fmri-label">ITAR Corpus</div>
-        <div class="fmri-value" style="font-size:13px; color:#5B9FE8;">Current</div>
-        <p class="fmri-desc">22 CFR Parts 120–130 covering USML Categories XI (military electronics) and XV (spacecraft &amp; satellites).</p>
-      </div>
-      <div class="fmri-card">
-        <div class="fmri-label">CFIUS / FIRRMA</div>
-        <div class="fmri-value" style="font-size:13px; color:#5B9FE8;">Current</div>
-        <p class="fmri-desc">31 CFR Part 800 (FIRRMA), plus a vetted registry of sovereign funds and state-owned investors — for foreign-investment review of TID U.S. businesses.</p>
-      </div>
-      <div class="fmri-card">
-        <div class="fmri-label">Federal Register</div>
-        <div class="fmri-value" style="font-size:13px; color:#5B9FE8;">Live</div>
-        <p class="fmri-desc">Recent rule amendments and interim final rules — ensuring the corpus reflects current controls, not prior-year text.</p>
-      </div>
-      <div class="fmri-card">
-        <div class="fmri-label">e-CFR</div>
-        <div class="fmri-value" style="font-size:13px; color:#5B9FE8;">Weekly sync</div>
-        <p class="fmri-desc">Electronic Code of Federal Regulations — the authoritative, continuously updated version of the CFR used by compliance professionals.</p>
-      </div>
-    </div>
-
-    <!-- Disclaimer -->
-    <p style="margin-top:48px; font-size:13px; color:var(--silver); line-height:1.6; max-width:680px;">
-      Export Control Hub provides preliminary guidance grounded in the EAR and ITAR regulatory corpus. It is not legal advice. All export control decisions must be reviewed by qualified export control counsel.
-    </p>
-
-  </div>
-</div>
-
-
-<!-- ═══════════════════════════════════════════════════════
-     CONTRACT INTELLIGENCE SECTION
-═══════════════════════════════════════════════════════ -->
-<div class="product-section" id="section-ci">
-  <div class="section-header">
-    <span class="section-badge badge-ci"><svg width="11" height="11" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 1L2 3.5V9C2 12 5 14.5 8 15C11 14.5 14 12 14 9V3.5L8 1Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M5.5 8L7.25 9.75L10.5 6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Contract Intelligence</span>
-    <span class="section-title-bar">Upload your agreement. Get a decision.</span>
-  </div>
-  <div class="content-wrap">
-
-    <!-- Access bar -->
-    <div class="ci-access-bar">
-      <div class="ci-access-bar-text">
-        <h3>Upload your first contract free</h3>
-        <p>Foundry agreement, IP license, customer pilot, or anything you're about to sign — analysis calibrated to your side of the table.</p>
-      </div>
-      <a href="contact.html?reason=Contract Intelligence - Request Access" class="cta-btn gold" style="white-space:nowrap; flex-shrink:0;">Request Access</a>
-    </div>
-
-    <!-- The Problem -->
-    <div class="section-label">The Problem</div>
-    <h2>The counterparty's lawyers wrote it.<br><em>You're signing it anyway.</em></h2>
-    <p class="lead">Every high-stakes agreement a semiconductor startup signs in its first years was drafted by the other side — foundries, hyperscalers, defense primes, universities, automotive OEMs. The terms reflect their interests, not yours.</p>
-
-    <div class="problem-grid">
-      <div class="problem-card">
-        <h4>Foundry agreements protect the foundry</h4>
-        <p>Supply allocation, yield thresholds, wafer bank penalties, mask ownership, and change-of-control clauses all default in the foundry's favour. The asymmetry is structural, not accidental.</p>
-      </div>
-      <div class="problem-card">
-        <h4>Hyperscaler and OEM pilots lock in exposure</h4>
-        <p>Customer-drafted pilot agreements contain IP ownership clauses, auto-renewal, and one-sided indemnification. What looks like a trial often becomes a binding commitment.</p>
-      </div>
-      <div class="problem-card">
-        <h4>University and DARPA licenses constrain your freedom</h4>
-        <p>Spinout IP licenses carry field-of-use restrictions, milestone-based rights, and government march-in provisions that limit what you can commercialize and with whom.</p>
-      </div>
-      <div class="problem-card">
-        <h4>No legal team to catch it in time</h4>
-        <p>Most semiconductor startups from seed through Series B have no general counsel. The exposure gets locked in before anyone reads the fine print carefully.</p>
-      </div>
-    </div>
-
-    <hr class="rule">
-
-    <!-- Six Outputs -->
-    <div class="section-label">What You Get</div>
-    <h2>Six outputs. <em>One decision.</em></h2>
-
-    <div class="outputs-grid">
-      <div class="output-card">
-        <div class="output-num">01</div>
-        <h4>Risk-ranked clause summary</h4>
-        <p>Every clause with commercial consequence ranked by severity — important, review, or note.</p>
-      </div>
-      <div class="output-card">
-        <div class="output-num">02</div>
-        <h4>Perspective-aware analysis</h4>
-        <p>Calibrated to your side of the table — semiconductor buyer, IP licensee, defense contractor, or spinout founder.</p>
-      </div>
-      <div class="output-card">
-        <div class="output-num">03</div>
-        <h4>A clear verdict</h4>
-        <p>Proceed, proceed with caution, pause, or renegotiate — with the specific asks to bring back before you sign.</p>
-      </div>
-      <div class="output-card">
-        <div class="output-num">04</div>
-        <h4>Foundry Model Risk Index (F-MRI)</h4>
-        <p>Five dimensions scored RED, AMBER, or GREEN — supply, yield, delivery, economics, exit.</p>
-      </div>
-      <div class="output-card">
-        <div class="output-num">05</div>
-        <h4>Path to low risk</h4>
-        <p>For every critical finding: a specific contract fix to negotiate and a situation fix for the underlying exposure.</p>
-      </div>
-      <div class="output-card">
-        <div class="output-num">06</div>
-        <h4>Situation simulator</h4>
-        <p>Single source, critical launch, tight margins — change your context and see how your risk score shifts.</p>
-      </div>
-    </div>
-
-    <hr class="rule">
-
-    <!-- F-MRI -->
-    <div class="section-label">F-MRI</div>
-    <h2>Foundry Model Risk Index</h2>
-    <p class="lead">Five dimensions scored against your contract language and amplified by your company context — the only framework built specifically for semiconductor supply agreements.</p>
-
-    <div class="fmri-grid">
-      <div class="fmri-card">
-        <h5>Supply Commitment</h5>
-        <span class="fmri-score red">RED</span>
-      </div>
-      <div class="fmri-card">
-        <h5>Yield Protection</h5>
-        <span class="fmri-score amber">AMBER</span>
-      </div>
-      <div class="fmri-card">
-        <h5>Delivery Enforcement</h5>
-        <span class="fmri-score amber">AMBER</span>
-      </div>
-      <div class="fmri-card">
-        <h5>Economic Protection</h5>
-        <span class="fmri-score green">GREEN</span>
-      </div>
-      <div class="fmri-card">
-        <h5>Exit Flexibility</h5>
-        <span class="fmri-score red">RED</span>
-      </div>
-    </div>
-
-    <hr class="rule">
-
-    <!-- How it works -->
-    <div class="section-label">How It Works</div>
-    <h2>Upload your agreement. <em>Get a decision.</em></h2>
-
-    <div class="steps">
-      <div class="step">
-        <div class="step-num">01</div>
-        <h4>Upload your agreement</h4>
-        <p>Upload any contract as PDF or Word — foundry agreement, IP license, customer pilot, DARPA OTA. The system identifies the parties and confirms which side you're on.</p>
-      </div>
-      <div class="step">
-        <div class="step-num">02</div>
-        <h4>Set your company context</h4>
-        <p>Single-source or dual-source? Critical launch timeline or flexible? Tight margins or healthy buffer? Your context determines which risks are most dangerous for you specifically.</p>
-      </div>
-      <div class="step">
-        <div class="step-num">03</div>
-        <h4>Get your risk analysis and verdict</h4>
-        <p>Receive a ranked list of clauses to negotiate, a clear verdict, and for foundry agreements — a scored F-MRI across five dimensions with specific language to push back on.</p>
-      </div>
-    </div>
-
-    <hr class="rule">
-
-    <!-- Foundry Questions -->
-    <div class="section-label">Foundry Agreements</div>
-    <h2>The questions that matter <em>before you sign.</em></h2>
-    <p class="lead">These are the real questions semiconductor teams should be asking — and usually aren't, until after execution.</p>
-
-    <ul class="foundry-qs">
-      <li>Is the foundry obligated to supply you — or can they reduce your allocation with 30 days notice?</li>
-      <li>Who owns the mask sets and reticles funded by your NRE payment — you, or the foundry?</li>
-      <li>If yield falls to 60% of qualified process yield, who absorbs the financial loss?</li>
-      <li>Can the foundry change the process node affecting your qualified product without your consent?</li>
-      <li>What is the maximum wafer bank liability you've committed to — and under what conditions is it triggered?</li>
-      <li>If your company is acquired, does this agreement require foundry consent before the deal closes?</li>
-      <li>Are price escalation clauses capped — or can the foundry increase wafer prices without limit?</li>
-      <li>Does the force majeure clause give the foundry a broad exit while leaving your supply commitment intact?</li>
-    </ul>
-
-    <div style="padding: 20px 24px; background: var(--panel2); border: 1px solid var(--gold-dim); border-radius: 4px; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap;">
-      <div style="font-size: 13px; color: var(--silver);">Ready to review your agreement? Upload your first contract free — calibrated to your side of the table.</div>
-      <a href="contact.html?reason=Contract Intelligence - Request Access" class="cta-btn gold" style="flex-shrink:0;">Request Access</a>
-    </div>
-
-  </div>
-</div>
-
-<!-- ═══════════════════════════════════════════════════════
-     IPO INTELLIGENCE SECTION
-═══════════════════════════════════════════════════════ -->
-<div class="product-section" id="section-mi">
-  <div class="section-header">
-    <span class="section-badge badge-mi"><svg width="11" height="11" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="1.75" fill="currentColor"/><circle cx="8" cy="8" r="4.5" stroke="currentColor" stroke-width="1.4"/><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.4" opacity="0.5"/></svg>Market Intelligence</span>
-    <span class="section-title-bar">What semiconductor companies are actually signing — and what they've conceded.</span>
-  </div>
-  <div class="content-wrap">
-
-    <!-- Opening -->
-    <h2>What your vendors conceded<br><em>before they had leverage.</em></h2>
-    <p class="lead" style="max-width:560px; margin-bottom: 40px;">Semiconductor supply negotiations are asymmetric — your counterparty has been at this table many times before. Semipply closes that gap: benchmark your contract clause by clause against what peer companies have signed, so you negotiate with evidence, not intuition.</p>
-
-    <!-- Audience cards -->
-    <div class="pillars" style="margin-bottom: 40px;">
-
-      <div class="pillar" style="border: 1px solid rgba(139,92,246,0.15); background: rgba(139,92,246,0.04); border-radius: 8px; padding: 24px;">
-        <div class="pillar-sub" style="color: #a78bfa;">Semiconductor Founders</div>
-        <h4>Your foundry wrote that contract.<br>You can rewrite it.</h4>
-        <p>Yield floors, force majeure carve-outs, dual-source rights — the data shows what other semiconductor companies have secured and with which counterparties. Walk in with precedent, not a guess.</p>
-      </div>
-
-      <div class="pillar" style="border: 1px solid rgba(99,102,241,0.15); background: rgba(99,102,241,0.04); border-radius: 8px; padding: 24px;">
-        <div class="pillar-sub" style="color: #818cf8;">Investors &amp; VCs</div>
-        <h4>See the supply chain risk<br>before the term sheet.</h4>
-        <p>Foundry lock-in, uncapped liability, and take-or-pay exposure are existential for a semiconductor startup. We surface these flags — scored and sourced — before you sign a term sheet.</p>
-      </div>
-
-      <div class="pillar" style="border: 1px solid rgba(16,185,129,0.15); background: rgba(16,185,129,0.04); border-radius: 8px; padding: 24px;">
-        <div class="pillar-sub" style="color: #34d399;">Incubators &amp; Accelerators</div>
-        <h4>Give your cohort an unfair<br>advantage at the table.</h4>
-        <p>One corpus access covers your entire portfolio. Every company walks into foundry negotiations knowing what peers have signed and what terms are achievable.</p>
-      </div>
-
-    </div>
-
-    <!-- Stats -->
-    <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1px; background: var(--rule); border: 1px solid var(--rule); border-radius:6px; overflow:hidden; margin-bottom: 40px;">
-      <div style="background:var(--panel2); padding: 28px 24px;">
-        <div style="font-family:'Cormorant Garamond',serif; font-size:48px; font-weight:600; color:#f87171; line-height:1; margin-bottom:10px;">&lt;2%</div>
-        <div style="font-size:12px; color:var(--silver); line-height:1.6;">of foundry agreements define an enforceable yield floor. Most semiconductor companies absorb 100% of process deviation risk.</div>
-      </div>
-      <div style="background:var(--panel2); padding: 28px 24px;">
-        <div style="font-family:'Cormorant Garamond',serif; font-size:48px; font-weight:600; color:var(--gold); line-height:1; margin-bottom:10px;">33%</div>
-        <div style="font-size:12px; color:var(--silver); line-height:1.6;">of semiconductor supply agreements include dual-source protection — a negotiating outcome most startups don't know to ask for.</div>
-      </div>
-      <div style="background:var(--panel2); padding: 28px 24px;">
-        <div style="font-family:'Cormorant Garamond',serif; font-size:48px; font-weight:600; color:#4ABFA0; line-height:1; margin-bottom:10px;">∞</div>
-        <div style="font-size:12px; color:var(--silver); line-height:1.6;">Proprietary semiconductor contract corpus — continuously maintained and updated.</div>
-      </div>
-    </div>
-
-    <!-- CTA -->
-    <div style="display:flex; flex-direction:column; align-items:center; text-align:center; padding: 40px 24px; background:var(--panel); border:1px solid var(--rule2); border-radius:8px;">
-      <div style="font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.12em; text-transform:uppercase; color:var(--gold-dim); margin-bottom:14px;">By Invitation Only</div>
-      <h3 style="font-size:20px; color:var(--white); font-weight:600; margin-bottom:8px;">Ask the corpus what's market.</h3>
-      <p style="font-size:13px; color:var(--silver); max-width:400px; line-height:1.7; margin-bottom:24px;">Query the Semipply Corpus — get answers grounded in real semiconductor supply contract clause text, company, and date.</p>
-      <a href="contact.html?reason=Market Intelligence - Request Access" class="cta-btn gold" style="font-size:14px; padding:14px 32px;">Request Access &#8599;</a>
-    </div>
-
-  </div>
-</div>
-
-<!-- ═══════════════════════════════════════════════════════
-     SUPPLY CHAIN ECONOMICS SECTION
-═══════════════════════════════════════════════════════ -->
-<div class="product-section" id="section-sce">
-  <div class="section-header">
-    <span class="section-badge" style="color:#a78bfa; background:rgba(167,139,250,0.12); border:1px solid rgba(167,139,250,0.25); padding:5px 12px; border-radius:4px; font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.1em; text-transform:uppercase;">Supply Chain Economics</span>
-    <span class="section-title-bar">What foundry commitments actually look like — across companies at your stage.</span>
-  </div>
-  <div class="content-wrap">
-
-    <!-- Opening -->
-    <h2>Your take-or-pay exposure.<br><em>Benchmarked.</em></h2>
-    <p class="lead" style="max-width:580px; margin-bottom: 40px;">Wafer costs, take-or-pay obligations, and capacity fees are the financial terms most startups sign without knowing what's normal. Semipply surfaces the economics — year-by-year commitment data, yield floor distributions, and OSAT exposure — benchmarked across IPO-stage semiconductor companies.</p>
-
-    <!-- Four module cards -->
-    <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin-bottom: 40px;">
-
-      <div style="border: 1px solid rgba(167,139,250,0.2); background: rgba(167,139,250,0.05); border-radius: 8px; padding: 24px;">
-        <div style="font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.1em; text-transform:uppercase; color:#a78bfa; margin-bottom:10px;">Take-or-Pay Exposure</div>
-        <h4 style="font-size:15px; font-weight:600; color:var(--white); margin-bottom:8px;">Year-1 obligations. Who has them. How much.</h4>
-        <p style="font-size:13px; color:var(--silver); line-height:1.6;">Disclosure rates, median year-1 obligations, commitment front-loading, and the % of peer companies with wafer take-or-pay in their contracts — across both IPO-stage and large-company filings.</p>
-      </div>
-
-      <div style="border: 1px solid rgba(167,139,250,0.2); background: rgba(167,139,250,0.05); border-radius: 8px; padding: 24px;">
-        <div style="font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.1em; text-transform:uppercase; color:#a78bfa; margin-bottom:10px;">Wafer Economics</div>
-        <h4 style="font-size:15px; font-weight:600; color:var(--white); margin-bottom:8px;">Yield floors and remedy structures.</h4>
-        <p style="font-size:13px; color:var(--silver); line-height:1.6;">How common yield floors are, what thresholds IPO companies negotiated, and what happens when yield falls short — respins, credits, or nothing. Extracted from EX-10 exhibits across the IPO corpus.</p>
-      </div>
-
-      <div style="border: 1px solid rgba(167,139,250,0.2); background: rgba(167,139,250,0.05); border-radius: 8px; padding: 24px;">
-        <div style="font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.1em; text-transform:uppercase; color:#a78bfa; margin-bottom:10px;">Capacity Economics</div>
-        <h4 style="font-size:15px; font-weight:600; color:var(--white); margin-bottom:8px;">Who commits to what — and who carries the risk.</h4>
-        <p style="font-size:13px; color:var(--silver); line-height:1.6;">What % of foundry agreements contain a formal supplier capacity commitment versus an allocation-only arrangement. The gap between these two is the operational risk most startups don't price.</p>
-      </div>
-
-      <div style="border: 1px solid rgba(167,139,250,0.2); background: rgba(167,139,250,0.05); border-radius: 8px; padding: 24px;">
-        <div style="font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.1em; text-transform:uppercase; color:#a78bfa; margin-bottom:10px;">OSAT &amp; Packaging</div>
-        <h4 style="font-size:15px; font-weight:600; color:var(--white); margin-bottom:8px;">NCNR exposure and advanced packaging terms.</h4>
-        <p style="font-size:13px; color:var(--silver); line-height:1.6;">Non-cancellable, non-returnable commitments to assembly and test vendors — disclosed in 10-K filings and OSAT agreements. Includes HBM allocation terms from the most recent filings.</p>
-      </div>
-
-    </div>
-
-    <!-- Stats -->
-    <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1px; background: var(--rule); border: 1px solid var(--rule); border-radius:6px; overflow:hidden; margin-bottom: 40px;">
-      <div style="background:var(--panel2); padding: 28px 24px;">
-        <div style="font-family:'Cormorant Garamond',serif; font-size:48px; font-weight:600; color:#a78bfa; line-height:1; margin-bottom:10px;">49</div>
-        <div style="font-size:12px; color:var(--silver); line-height:1.6;">semiconductor companies with year-by-year purchase commitment data extracted from 10-K filings.</div>
-      </div>
-      <div style="background:var(--panel2); padding: 28px 24px;">
-        <div style="font-family:'Cormorant Garamond',serif; font-size:48px; font-weight:600; color:#a78bfa; line-height:1; margin-bottom:10px;">2-tier</div>
-        <div style="font-size:12px; color:var(--silver); line-height:1.6;">separation of peer benchmarks (IPO-stage) from ecosystem reference (NVDA, AMD, MRVL-scale) — so your benchmarks reflect your stage.</div>
-      </div>
-      <div style="background:var(--panel2); padding: 28px 24px;">
-        <div style="font-family:'Cormorant Garamond',serif; font-size:48px; font-weight:600; color:#a78bfa; line-height:1; margin-bottom:10px;">4</div>
-        <div style="font-size:12px; color:var(--silver); line-height:1.6;">module sections — take-or-pay, wafer economics, capacity, and OSAT — each grounded in real extracted financial and contract data.</div>
-      </div>
-    </div>
-
-    <!-- CTA -->
-    <div style="display:flex; flex-direction:column; align-items:center; text-align:center; padding: 40px 24px; background:var(--panel); border:1px solid rgba(167,139,250,0.2); border-radius:8px;">
-      <div style="font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.12em; text-transform:uppercase; color:#a78bfa; opacity:0.7; margin-bottom:14px;">By Invitation Only</div>
-      <h3 style="font-size:20px; color:var(--white); font-weight:600; margin-bottom:8px;">Know your exposure before you commit.</h3>
-      <p style="font-size:13px; color:var(--silver); max-width:420px; line-height:1.7; margin-bottom:24px;">Access the Supply Chain Economics module — benchmark your take-or-pay risk, wafer commitment exposure, and capacity obligations against companies at your stage.</p>
-      <a href="contact.html?reason=Supply Chain Economics - Request Access" class="cta-btn" style="font-size:14px; padding:14px 32px; background:rgba(167,139,250,0.15); color:#a78bfa; border:1px solid rgba(167,139,250,0.35); border-radius:6px; font-family:'DM Mono',monospace; text-decoration:none; transition:opacity 0.15s;">Request Access &#8599;</a>
-    </div>
-
-  </div>
-</div>
-
-<!-- FOOTER -->
 <footer>
   <div class="footer-inner">
   <div class="footer-grid">
@@ -2149,7 +1774,7 @@
         <span class="footer-logo-name">Semi<span class="logo-box">pply</span></span>
       </div>
       <p class="footer-brand-sub">A PRODUCT OF <em>LEGALFORENSICS.AI</em></p>
-      <p>The only <span style="color:var(--gold)">Supply Chain Intelligence</span> platform built for semiconductor companies.</p>
+      <p>The only <span style="color:var(--gold)">Supply Intelligence</span> platform built for semiconductor companies.</p>
       <div class="footer-stat"><strong>Ever-Growing</strong> Semi<span class="logo-box">pply</span> Corpus</div>
     </div>
 
@@ -2157,9 +1782,9 @@
     <div>
       <div class="footer-col-label">Products</div>
       <div class="footer-links">
-        <a href="#" onclick="showSection('ci'); return false;" style="display:flex;align-items:center;gap:7px;"><svg width="12" height="12" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 1L2 3.5V9C2 12 5 14.5 8 15C11 14.5 14 12 14 9V3.5L8 1Z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/><path d="M5.5 8L7.25 9.75L10.5 6" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>Contract Intelligence</a>
-        <a href="#" onclick="showSection('mi'); return false;" style="display:flex;align-items:center;gap:7px;"><svg width="12" height="12" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="1.75" fill="currentColor"/><circle cx="8" cy="8" r="4.5" stroke="currentColor" stroke-width="1.3"/><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.3" opacity="0.5"/></svg>Market Intelligence</a>
-        <a href="#" onclick="showSection('sce'); return false;" style="display:flex;align-items:center;gap:7px;"><svg width="12" height="12" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 12 L5 8 L8 10 L11 5 L14 7" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>Supply Chain Economics</a>
+        <a href="#seats" style="display:flex;align-items:center;gap:7px;"><svg width="12" height="12" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 1L2 3.5V9C2 12 5 14.5 8 15C11 14.5 14 12 14 9V3.5L8 1Z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/><path d="M5.5 8L7.25 9.75L10.5 6" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>Who it's for</a>
+        <a href="#proof" style="display:flex;align-items:center;gap:7px;"><svg width="12" height="12" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="1.75" fill="currentColor"/><circle cx="8" cy="8" r="4.5" stroke="currentColor" stroke-width="1.3"/><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.3" opacity="0.5"/></svg>Real examples</a>
+        <a href="#offer" style="display:flex;align-items:center;gap:7px;"><svg width="12" height="12" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 12 L5 8 L8 10 L11 5 L14 7" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>Get a first look</a>
         <a href="https://legalforensics.substack.com/" target="_blank" style="display:flex;align-items:center;gap:7px;"><svg width="12" height="12" viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="2" y="1" width="12" height="14" rx="1.5" stroke="currentColor" stroke-width="1.3"/><path d="M5 5H11M5 8H11M5 11H9" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>Insights &#8599;</a>
       </div>
     </div>
@@ -2182,389 +1807,68 @@
 </footer>
 
 <script>
-  var FINDER_DATA = {
-    'custom-shield': {
-      name: 'The Custom Shield',
-      also: 'Also useful: The Corporate Profile',
-      reason: 'Direct redlining of your MSA against the full forensic corpus — clause by clause, against market precedent — before a $10M+ tape-out or supply agreement closes.'
-    },
-    'corporate-profile': {
-      name: 'The Corporate Profile',
-      also: 'Also useful: The IPO Trail Audit',
-      reason: "360° deep-dive into your specific counterparty's contractual moats and the exact terms they have conceded before. Know their playbook before you walk in."
-    },
-    'quarterly': {
-      name: 'The Quarterly Perimeter',
-      also: null,
-      reason: 'Board-level risk strategy audit. Trend monitoring across lead-times, export controls, and ASPs from an ever-growing forensic corpus — with running commentary on how the perimeter is shifting.'
-    },
-    'ipo-trail': {
-      name: 'The IPO Trail Audit',
-      also: 'Also useful: The Corporate Profile',
-      reason: 'S-1 archaeology. Benchmark your current terms against today\'s giants at the moment they were vulnerable startups — surfacing the exact concessions they extracted before going public.'
-    },
-    'vertical': {
-      name: 'The Vertical Audit',
-      also: null,
-      reason: 'Aggregated peer-group analysis for your specific niche. How are companies in your exact segment being treated, and where are they getting crushed?'
-    }
-  };
-
-  function recommendReport(event, key) {
-    var data = FINDER_DATA[key];
-    document.querySelectorAll('.finder-btn').forEach(function(b) { b.classList.remove('active'); });
-    event.currentTarget.classList.add('active');
-
-    var resultEl = document.getElementById('finder-result');
-    resultEl.innerHTML =
-      '<span class="finder-result-label">Recommended Asset</span>' +
-      '<span class="finder-result-name">' + data.name + '</span>' +
-      (data.also ? '<span class="finder-result-also">' + data.also + '</span>' : '') +
-      '<span class="finder-result-reason">' + data.reason + '</span>';
-    resultEl.style.display = 'flex';
-
-    document.querySelectorAll('.report-card').forEach(function(c) { c.classList.remove('highlighted'); });
-    var cardEl = document.getElementById('card-' + key);
-    if (cardEl) {
-      cardEl.classList.add('highlighted');
-      setTimeout(function() { cardEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); }, 120);
-    }
-  }
-
-  function showSection(id) {
-    document.querySelectorAll('.product-section').forEach(function(s) {
-      s.classList.remove('visible');
-    });
-    document.querySelectorAll('.nav-tab[id^="tab-"]').forEach(function(t) {
-      t.classList.remove('active');
-    });
-    var section = document.getElementById('section-' + id);
-    var tab = document.getElementById('tab-' + id);
-    if (section) section.classList.add('visible');
-    if (tab) tab.classList.add('active');
-    // Scroll to top of section smoothly
-    if (section) section.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  }
-
-  // ── PACK BUILDER ──
-  var packDecision = null;
-  var PACK_NAMES = {
-    'negotiation': 'Pre-Negotiation Intelligence Pack',
-    'ipo':         'Pre-IPO Intelligence Pack',
-    'ma':          'Deal-Readiness Pack',
-    'signing':     'Pre-Signing Shield Pack'
-  };
-  var LENS_NAMES = {
-    'corporate':  'Corporate Profile',
-    'ipo-trail':  'IPO Trail Audit',
-    'vertical':   'Vertical Audit',
-    'quarterly':  'Quarterly Perimeter',
-    'shield':     'Custom Shield'
-  };
-
-  function selectDecision(btn, decision) {
-    document.querySelectorAll('.pack-decision').forEach(function(b) { b.classList.remove('active'); });
-    btn.classList.add('active');
-    packDecision = decision;
-    updatePack();
-  }
-
-  var CORPUS = [
-    {ticker:'AEHR',name:'Aehr Test Systems'},{ticker:'ALGM',name:'Allegro MicroSystems'},
-    {ticker:'AMAT',name:'Applied Materials'},{ticker:'AMD',name:'Advanced Micro Devices'},
-    {ticker:'AMKR',name:'Amkor Technology'},{ticker:'AOSL',name:'Alpha and Omega Semiconductor'},
-    {ticker:'ARM',name:'Arm Holdings'},{ticker:'AMBA',name:'Ambarella'},
-    {ticker:'ACLS',name:'Axcelis Technologies'},{ticker:'BRKS',name:'Brooks Automation'},
-    {ticker:'CDNS',name:'Cadence Design Systems'},{ticker:'CEVA',name:'CEVA Inc'},
-    {ticker:'COHU',name:'Cohu Inc'},{ticker:'CRUS',name:'Cirrus Logic'},
-    {ticker:'CY',name:'Cypress Semiconductor'},{ticker:'DIOD',name:'Diodes Inc'},
-    {ticker:'ENTG',name:'Entegris'},{ticker:'FORM',name:'FormFactor'},
-    {ticker:'GWRE',name:'Guidewire'},{ticker:'HIMX',name:'Himax Technologies'},
-    {ticker:'IDCC',name:'InterDigital'},{ticker:'INTC',name:'Intel'},
-    {ticker:'IOSP',name:'Innospec'},{ticker:'IPGP',name:'IPG Photonics'},
-    {ticker:'IXYS',name:'IXYS Corporation'},{ticker:'KLAC',name:'KLA Corporation'},
-    {ticker:'LRCX',name:'Lam Research'},{ticker:'LSCC',name:'Lattice Semiconductor'},
-    {ticker:'MCHP',name:'Microchip Technology'},{ticker:'MKSI',name:'MKS Instruments'},
-    {ticker:'MPWR',name:'Monolithic Power Systems'},{ticker:'MRVL',name:'Marvell Technology'},
-    {ticker:'MTSI',name:'MACOM Technology'},{ticker:'MU',name:'Micron Technology'},
-    {ticker:'MXIM',name:'Maxim Integrated'},{ticker:'NOVT',name:'Novanta'},
-    {ticker:'NRDS',name:'Nerdio'},{ticker:'NVDA',name:'NVIDIA'},
-    {ticker:'NXPI',name:'NXP Semiconductors'},{ticker:'ON',name:'ON Semiconductor'},
-    {ticker:'ONTO',name:'Onto Innovation'},{ticker:'OUST',name:'Ouster'},
-    {ticker:'POWI',name:'Power Integrations'},{ticker:'QCOM',name:'Qualcomm'},
-    {ticker:'QRVO',name:'Qorvo'},{ticker:'RMBS',name:'Rambus'},
-    {ticker:'SITM',name:'SiTime Corporation'},{ticker:'SMTC',name:'Semtech'},
-    {ticker:'SNPS',name:'Synopsys'},{ticker:'SYNA',name:'Synaptics'},
-    {ticker:'SWKS',name:'Skyworks Solutions'},{ticker:'TER',name:'Teradyne'},
-    {ticker:'TXN',name:'Texas Instruments'},{ticker:'UMC',name:'United Microelectronics'},
-    {ticker:'WOLF',name:'Wolfspeed'},{ticker:'XLNX',name:'Xilinx'}
-  ];
-
-  var packSelectedTicker = '';
-
-  function initPackAutocomplete() {
-    var input = document.getElementById('pack-counterparty');
-    var dropdown = document.getElementById('pack-ac-dropdown');
-    var notCovered = document.getElementById('pack-not-covered');
-
-    input.addEventListener('input', function() {
-      var q = input.value.trim().toLowerCase();
-      packSelectedTicker = '';
-      notCovered.style.display = 'none';
-
-      if (!q) {
-        dropdown.style.display = 'none';
-        updatePack();
-        return;
-      }
-
-      var matches = CORPUS.filter(function(c) {
-        return c.ticker.toLowerCase().indexOf(q) === 0 ||
-               c.name.toLowerCase().indexOf(q) !== -1 ||
-               c.ticker.toLowerCase() === q;
-      });
-
-      if (matches.length === 0) {
-        dropdown.innerHTML = '<div class="pack-ac-none">No results in our corpus</div>';
-        dropdown.style.display = 'block';
-        notCovered.style.display = 'block';
-      } else {
-        dropdown.innerHTML = matches.slice(0, 8).map(function(c) {
-          return '<div class="pack-ac-item" data-ticker="' + c.ticker + '" data-name="' + c.name + '">' +
-                 '<span>' + c.name + '</span>' +
-                 '<span class="pack-ac-ticker">' + c.ticker + '</span></div>';
-        }).join('');
-        dropdown.style.display = 'block';
-        notCovered.style.display = 'none';
-
-        dropdown.querySelectorAll('.pack-ac-item').forEach(function(item) {
-          item.addEventListener('mousedown', function(e) {
-            e.preventDefault();
-            packSelectedTicker = item.dataset.ticker;
-            input.value = item.dataset.name + ' (' + item.dataset.ticker + ')';
-            dropdown.style.display = 'none';
-            notCovered.style.display = 'none';
-            updatePack();
-          });
-        });
-      }
-      updatePack();
-    });
-
-    input.addEventListener('blur', function() {
-      setTimeout(function() { dropdown.style.display = 'none'; }, 150);
+  // seat selector
+  function seatSel(id){
+    [["tab-buy","p-buy"],["tab-sell","p-sell"]].forEach(function(pair){
+      var on = pair[0]===id;
+      document.getElementById(pair[0]).setAttribute("aria-selected", on);
+      document.getElementById(pair[1]).classList.toggle("on", on);
     });
   }
+  document.getElementById("tab-buy").onclick=function(){seatSel("tab-buy");};
+  document.getElementById("tab-sell").onclick=function(){seatSel("tab-sell");};
 
-  function updatePack() {
-    var counterparty = document.getElementById('pack-counterparty').value.trim();
-    var lenses = [];
-    document.querySelectorAll('.pack-lens input:checked').forEach(function(cb) { lenses.push(cb.value); });
-    var hasContent = packDecision || lenses.length > 0 || counterparty;
-
-    if (!hasContent) {
-      document.getElementById('pack-result-empty').style.display = 'block';
-      document.getElementById('pack-result-content').style.display = 'none';
-      return;
-    }
-    document.getElementById('pack-result-empty').style.display = 'none';
-    document.getElementById('pack-result-content').style.display = 'block';
-
-    document.getElementById('pack-result-name').textContent = packDecision ? PACK_NAMES[packDecision] : 'Custom Intelligence Pack';
-
-    var cpEl = document.getElementById('pack-result-counterparty');
-    if (counterparty) {
-      var displayLabel = packSelectedTicker ? packSelectedTicker : counterparty.toUpperCase();
-      cpEl.textContent = 'Counterparty: ' + displayLabel;
-      cpEl.style.display = 'block';
-    } else { cpEl.style.display = 'none'; }
-
-    var lensesEl = document.getElementById('pack-result-lenses');
-    lensesEl.innerHTML = lenses.length > 0
-      ? lenses.map(function(l) { return '<div class="pack-result-lens-item">' + LENS_NAMES[l] + '</div>'; }).join('')
-      : '';
-
-    var reason = 'Intelligence Pack';
-    if (packDecision) reason += ' — ' + PACK_NAMES[packDecision];
-    if (packSelectedTicker) reason += ' — ' + packSelectedTicker;
-    else if (counterparty) reason += ' — ' + counterparty;
-    if (lenses.length) reason += ' — ' + lenses.map(function(l){ return LENS_NAMES[l]; }).join(', ');
-    document.getElementById('pack-result-cta').href = 'contact.html?reason=' + encodeURIComponent(reason);
+  // Readers: progressive email gate (request 01 -> unlocks 02 -> 03), captured via Formspree
+  var FORMSPREE = "https://formspree.io/f/xbdakppb";
+  var requested = {}, curIndex = 1, chosenSeat = null;
+  function pad(n){ return (n<10?"0":"")+n; }
+  function renderReaders(){
+    document.querySelectorAll(".lf2 .reader").forEach(function(r){
+      var i = +r.dataset.index, done = !!requested[i], avail = !done && (i===1 || requested[i-1]);
+      r.classList.toggle("is-locked", !done && !avail);
+      r.classList.toggle("is-done", done);
+      var tag = r.querySelector(".rtag");
+      if(done){ tag.className="rtag d"; tag.textContent="✓ Requested — check your inbox"; }
+      else if(avail){ tag.className="rtag a"; tag.textContent="↓ Request the report"; }
+      else { tag.className="rtag l"; tag.textContent="\u{1F512} Unlocks after Report "+pad(i-1); }
+    });
   }
-
-  // ── STRESS TEST ──
-  var stressScores = [];
-
-  function openStressTest() {
-    stressScores = [];
-    document.querySelectorAll('.stress-q').forEach(function(q) { q.classList.remove('active'); });
-    document.getElementById('sq-1').classList.add('active');
-    document.getElementById('stress-progress-fill').style.width = '0%';
-    document.getElementById('sq-num').textContent = '1';
-    document.getElementById('stress-progress-text') && (document.querySelector('.stress-progress-text').style.display = 'block');
-    document.querySelectorAll('.stress-dot').forEach(function(d) { d.classList.remove('answered','exposed'); });
-    document.getElementById('stress-dots').style.display = 'block';
-    document.getElementById('stress-result').style.display = 'none';
-    document.getElementById('stress-gauge-ring').style.strokeDashoffset = '490';
-    document.getElementById('stress-score-num').textContent = '0';
-    document.querySelector('.stress-progress-text').style.display = 'block';
-    document.getElementById('stress-email-input').value = '';
-    document.getElementById('stress-modal-overlay').classList.add('open');
-    document.body.style.overflow = 'hidden';
-  }
-
-  function closeStressTest() {
-    document.getElementById('stress-modal-overlay').classList.remove('open');
-    document.body.style.overflow = '';
-  }
-
-  function closeStressOnOverlay(e) {
-    if (e.target === document.getElementById('stress-modal-overlay')) closeStressTest();
-  }
-
-  function submitStressEmail() {
-    var email = document.getElementById('stress-email-input').value.trim();
-    if (!email || !email.includes('@')) {
-      document.getElementById('stress-email-input').style.borderColor = '#E05068';
-      return;
-    }
-    // Post to Formspree async
-    fetch('https://formspree.io/f/xbdakppb', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-      body: JSON.stringify({
-        email: email,
-        source: 'Silicon Perimeter Stress Test',
-        scores: stressScores.join(','),
-        total: stressScores.reduce(function(a,b){return a+b;},0) + '/10'
-      })
-    }).catch(function(){});
-    showStressResult();
-  }
-
-  function stressAnswer(qIndex, score) {
-    stressScores[qIndex] = score;
-
-    // Update dot indicator
-    var dot = document.getElementById('dot-' + qIndex);
-    dot.classList.add(score > 0 ? 'answered' : 'exposed');
-
-    if (qIndex < 5) {
-      document.getElementById('sq-' + (qIndex + 1)).classList.remove('active');
-      document.getElementById('sq-' + (qIndex + 2)).classList.add('active');
-      document.getElementById('stress-progress-fill').style.width = ((qIndex + 1) / 6 * 100) + '%';
-      document.getElementById('sq-num').textContent = qIndex + 2;
-    } else {
-      document.getElementById('stress-progress-fill').style.width = '100%';
-      document.querySelector('.stress-progress-text').style.display = 'none';
-      setTimeout(function() {
-        document.getElementById('sq-6').classList.remove('active');
-        document.getElementById('sq-email').classList.add('active');
-      }, 200);
-    }
-  }
-
-  function showStressResult() {
-    var total = stressScores.reduce(function(a, b) { return a + b; }, 0);
-    var circumference = 490;
-    var offset = circumference * (1 - total / 12);
-    var color, verdict, rec, ctaText, ctaReason;
-
-    if (total >= 10) {
-      color = '#4ABFA0';
-      verdict = 'Tier-1 Perimeter';
-      rec = 'Your foundational protections are strong. Use our Quarterly Perimeter to stay ahead as market terms shift.';
-      ctaText = 'Request Quarterly Perimeter';
-      ctaReason = 'Stress Test — Secure Result';
-    } else if (total >= 6) {
-      color = '#D4A040';
-      verdict = 'Porous Perimeter';
-      rec = 'Standard terms that favor the counterparty. A Corporate Profile will surface the exact leverage points you are missing.';
-      ctaText = 'Request Corporate Profile';
-      ctaReason = 'Stress Test — Porous Result';
-    } else {
-      color = '#E05068';
-      verdict = 'Critical Exposure';
-      rec = 'You are at risk of a $10M+ loss at your next tape-out. A Custom Shield audit is your mandatory next step before you sign.';
-      ctaText = 'Request Custom Shield';
-      ctaReason = 'Stress Test — Critical Exposure Result';
-    }
-
-    document.getElementById('stress-dots').style.display = 'none';
-    var resultEl = document.getElementById('stress-result');
-    resultEl.style.display = 'block';
-
-    var ring = document.getElementById('stress-gauge-ring');
-    ring.style.stroke = color;
-    setTimeout(function() { ring.style.strokeDashoffset = offset; }, 80);
-
-    var scoreEl = document.getElementById('stress-score-num');
-    var count = 0;
-    var interval = setInterval(function() {
-      count++;
-      scoreEl.textContent = count;
-      if (count >= total) clearInterval(interval);
-    }, 130);
-
-    document.getElementById('stress-verdict').textContent = verdict;
-    document.getElementById('stress-verdict').style.color = color;
-    document.getElementById('stress-rec').textContent = rec;
-
-    var ctaEl = document.getElementById('stress-cta');
-    ctaEl.textContent = ctaText;
-    ctaEl.href = 'contact.html?reason=' + encodeURIComponent(ctaReason);
-    ctaEl.style.background = color;
-  }
-
-  // No section shown by default — user chooses from nav
-  document.addEventListener('DOMContentLoaded', function() {
-    initPackAutocomplete();
+  var gate=document.getElementById("gate"), gTitle=document.getElementById("gate-title"),
+      gForm=document.getElementById("gate-form"), gWrap=document.getElementById("gate-form-wrap"),
+      gDone=document.getElementById("gate-done"), gEmail=document.getElementById("gate-email");
+  function openGate(title,i){ curIndex=i; gTitle.textContent=title; gWrap.hidden=false; gDone.hidden=true;
+    gForm.reset(); chosenSeat=null;
+    document.querySelectorAll(".seatmini button").forEach(function(b){b.setAttribute("aria-pressed","false");});
+    gate.hidden=false; setTimeout(function(){gEmail.focus();},40); }
+  function closeGate(){ gate.hidden=true; }
+  document.querySelectorAll(".lf2 .reader").forEach(function(r){
+    r.addEventListener("click",function(){
+      var i=+r.dataset.index, done=!!requested[i], avail=!done && (i===1 || requested[i-1]);
+      if(avail) openGate(r.dataset.reader,i);
+    });
   });
-
-  // ── Shared: dual-store email (Formspree + LF DB) ──
-  function _captureEmail(email, source) {
-    fetch('https://formspree.io/f/xbdakppb', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-      body: JSON.stringify({ email: email, source: source })
-    }).catch(function(){});
-    fetch('https://app.legalforensics.ai/api/market-intel/capture-email', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email: email, source: source })
-    }).catch(function(){});
-  }
-
-  // ── Report email capture (MI page coming-soon block) ──
-  function submitReportEmail() {
-    var email = document.getElementById('cs-email').value.trim();
-    if (!email || !email.includes('@')) {
-      document.getElementById('cs-email').style.borderColor = '#E05068';
-      return;
-    }
-    var btn = document.getElementById('cs-btn');
-    btn.disabled = true; btn.textContent = 'Sending…';
-    _captureEmail(email, 'Q1 2026 Report — MI Page');
-    document.getElementById('cs-success').classList.add('visible');
-    document.getElementById('cs-email').style.display = 'none';
-    btn.style.display = 'none';
-  }
-
-  // ── Report email capture (mini teaser on main page) ──
-  function submitMiniReportEmail() {
-    var email = document.getElementById('mini-cs-email').value.trim();
-    if (!email || !email.includes('@')) {
-      document.getElementById('mini-cs-email').style.borderColor = '#E05068';
-      return;
-    }
-    var btn = document.getElementById('mini-cs-btn');
-    btn.disabled = true; btn.textContent = '…';
-    _captureEmail(email, 'Q1 2026 Report — Main Page Teaser');
-    document.getElementById('mini-cs-email').style.display = 'none';
-    btn.style.display = 'none';
-    document.getElementById('mini-cs-ok').classList.add('visible');
-  }
+  document.querySelectorAll(".seatmini button").forEach(function(b){
+    b.onclick=function(){ chosenSeat=b.dataset.seat;
+      document.querySelectorAll(".seatmini button").forEach(function(x){x.setAttribute("aria-pressed", String(x===b));}); };
+  });
+  document.getElementById("gate-x").onclick=closeGate;
+  document.getElementById("gate-close2").onclick=closeGate;
+  gate.addEventListener("click",function(e){ if(e.target===gate) closeGate(); });
+  document.addEventListener("keydown",function(e){ if(e.key==="Escape" && !gate.hidden) closeGate(); });
+  gForm.addEventListener("submit",function(e){
+    e.preventDefault();
+    var data=new FormData(); data.append("email", gEmail.value);
+    data.append("report", gTitle.textContent); if(chosenSeat) data.append("seat", chosenSeat);
+    data.append("_subject", "Reader request: "+gTitle.textContent);
+    fetch(FORMSPREE,{method:"POST",body:data,headers:{"Accept":"application/json"}}).catch(function(){});
+    requested[curIndex]=true; renderReaders();
+    document.getElementById("gate-done-title").textContent=gTitle.textContent;
+    document.getElementById("gate-done-email").textContent=gEmail.value;
+    var next=document.querySelector('.lf2 .reader[data-index="'+(curIndex+1)+'"]');
+    document.getElementById("gate-next").textContent = next ? "Report "+pad(curIndex+1)+" is now unlocked below." : "That completes the series — thank you.";
+    gWrap.hidden=true; gDone.hidden=false;
+  });
+  renderReaders();
 </script>
-
 </body>
 </html>

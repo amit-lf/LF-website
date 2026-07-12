@@ -1,130 +1,239 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Google Analytics GA4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LVQT8R8B5K"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-LVQT8R8B5K');
+</script>
+<title>Send one agreement — Semipply</title>
+<meta name="description" content="Send Semipply one representative semiconductor agreement under mutual NDA and get a from-your-side read — plus a peer benchmark if you're on the buyer side.">
+<meta name="robots" content="index, follow">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#09090C; --panel:#101218; --panel2:#141720; --rule:#1D2130; --rule2:#262C3D;
+    --gold:#C8A96E; --gold-dim:#7A6540; --silver:#7E8FA8; --white:#EEF1F8; --white-dim:#B0BCCC; --teal-lt:#2A8C74;
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--ink);color:var(--white);font-family:'DM Sans',sans-serif;font-weight:300;font-size:17px;line-height:1.7;-webkit-font-smoothing:antialiased}
+  a{color:inherit;text-decoration:none}
+  .radar{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+  nav{position:relative;z-index:2;border-bottom:1px solid var(--rule);display:flex;align-items:center;padding:0 48px;height:60px}
+  .nav-logo{display:flex;flex-direction:column;gap:3px}
+  .nav-logo-main{display:flex;align-items:center;gap:9px}
+  .nav-logo-chip{color:#5B9FE8}
+  .nav-logo-name{font-size:26px;font-weight:500;letter-spacing:-.01em;color:var(--white);line-height:1}
+  .logo-box{display:inline-block;background:#5B9FE8;color:#fff;font-weight:600;padding:1px 5px 2px;border-radius:4px;margin-left:1px}
+  .nav-logo-sub{font-family:'DM Mono',monospace;font-size:10px;font-weight:500;letter-spacing:.12em;color:rgba(255,255,255,.38);padding-left:29px;line-height:1}
+  .nav-logo-sub em{font-style:normal;color:var(--gold)}
+  @media(max-width:640px){nav{padding:0 24px}}
 
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Legal Forensics - Contact Us</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
-    <link href="custom.css" rel="stylesheet">
-    <link rel="shortcut icon" href="assets/favicon.png" type="image/x-icon">
-  </head>
+  main{position:relative;z-index:1;max-width:640px;margin:0 auto;padding:56px 24px 80px}
+  .eyebrow{font-family:'DM Mono',monospace;font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
+  h1{font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;font-size:clamp(34px,5vw,50px);line-height:1.05;color:var(--white);margin-bottom:14px}
+  .lede{color:var(--white-dim);font-size:17px;line-height:1.6;margin-bottom:6px}
+  .lede b{color:var(--white);font-weight:500}
 
-  <body>
+  /* step 1 — seat choice, the first decision */
+  .q{font-family:'DM Sans',sans-serif;font-size:15px;color:var(--white);margin:30px 0 12px;font-weight:400}
+  .q .n{font-family:'DM Mono',monospace;color:var(--gold);font-size:12px;letter-spacing:.1em;margin-right:8px}
+  .seatpick{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  @media(max-width:520px){.seatpick{grid-template-columns:1fr}}
+  .seatpick button{text-align:left;font:inherit;cursor:pointer;background:var(--panel);border:1px solid var(--rule);border-radius:12px;padding:16px 18px;color:var(--white-dim);transition:.15s}
+  .seatpick button:hover{border-color:var(--rule2)}
+  .seatpick button[aria-pressed="true"]{border-color:var(--gold);background:rgba(200,169,110,.09);color:var(--white)}
+  .seatpick .st{display:block;font-size:16px;font-weight:500;color:var(--white)}
+  .seatpick .ss{display:block;font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:var(--silver);margin-top:4px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px}
+  .chips button{font:inherit;font-size:13px;padding:8px 14px;border-radius:999px;border:1px solid var(--rule);background:transparent;color:var(--white-dim);cursor:pointer;transition:.15s}
+  .chips button:hover{border-color:var(--rule2)}
+  .chips button[aria-pressed="true"]{border-color:var(--gold);color:var(--white);background:rgba(200,169,110,.12)}
 
-<nav class="site-nav">
-  <div class="container">
-    <div class="d-flex align-items-center justify-content-between py-3">
-      <a href="index.html" class="text-decoration-none">
-        <img src="assets/Logo.png" alt="Legal Forensics" height="36">
-      </a>
-      <div class="d-flex align-items-center gap-4">
-      </div>
-    </div>
-  </div>
+  /* dynamic offer, revealed after a seat is chosen */
+  .offer{margin-top:22px;padding:18px 20px;border-radius:12px;background:var(--panel);border:1px solid var(--rule);border-left:3px solid var(--gold);display:none}
+  .offer.on{display:block}
+  .offer p{color:var(--white-dim);font-size:15.5px}
+  .offer b{color:var(--white);font-weight:500}
+
+  /* how it works */
+  .how{margin-top:26px;display:grid;gap:2px}
+  .how-h{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--silver);margin-bottom:8px}
+  .step{display:flex;gap:12px;align-items:flex-start;padding:9px 0}
+  .step .num{flex-shrink:0;width:22px;height:22px;border-radius:50%;border:1px solid var(--gold);color:var(--gold);font-family:'DM Mono',monospace;font-size:12px;display:flex;align-items:center;justify-content:center;margin-top:1px}
+  .step p{font-size:14.5px;color:var(--white-dim)}
+  .step b{color:var(--white);font-weight:500}
+
+  form{margin-top:30px;display:grid;gap:18px}
+  .row2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  @media(max-width:520px){.row2{grid-template-columns:1fr}}
+  label{display:block;font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--white-dim);margin-bottom:7px}
+  label .opt{text-transform:none;letter-spacing:0;color:var(--silver)}
+  input,textarea{width:100%;background:var(--panel);border:1px solid var(--rule);border-radius:9px;padding:12px 14px;color:var(--white);font:inherit;font-size:15px}
+  input:focus,textarea:focus{border-color:var(--gold);outline:none}
+  textarea{resize:vertical;min-height:88px}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-family:'DM Sans',sans-serif;font-weight:500;font-size:15px;padding:14px 24px;border-radius:9px;background:var(--gold);color:#09090C;border:1px solid transparent;cursor:pointer;transition:.15s}
+  .btn:hover{filter:brightness(1.08)}
+  .btn:disabled{opacity:.4;cursor:not-allowed;filter:none}
+  .fineprint{font-family:'DM Mono',monospace;font-size:11px;color:var(--silver);margin-top:6px;line-height:1.6}
+  .err{color:#E0857A;font-size:13px;display:none}
+  .err.on{display:block}
+  :focus-visible{outline:2px solid var(--gold);outline-offset:2px;border-radius:5px}
+
+  .done{display:none;text-align:center;padding:24px 0}
+  .done.on{display:block}
+  .done .tick{font-size:40px;color:var(--teal-lt)}
+  .done h2{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:30px;color:var(--white);margin:8px 0 6px}
+  .done p{color:var(--white-dim)}
+
+  footer{position:relative;z-index:1;border-top:1px solid var(--rule);padding:26px 24px;text-align:center;color:var(--silver);font-size:13px}
+  footer .mono{font-family:'DM Mono',monospace}
+</style>
+</head>
+<body>
+
+<div class="radar" aria-hidden="true">
+  <svg width="100%" height="100%" preserveAspectRatio="xMaxYMid slice" style="position:absolute;inset:0;width:100%;height:100%">
+    <circle cx="100%" cy="26%" r="240" fill="none" stroke="rgba(200,169,110,0.055)" stroke-width="1"/>
+    <circle cx="100%" cy="26%" r="440" fill="none" stroke="rgba(200,169,110,0.04)" stroke-width="1"/>
+    <circle cx="100%" cy="26%" r="660" fill="none" stroke="rgba(200,169,110,0.025)" stroke-width="1"/>
+  </svg>
+</div>
+
+<nav>
+  <a href="index.html" class="nav-logo">
+    <span class="nav-logo-main">
+      <svg class="nav-logo-chip" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <rect x="7" y="7" width="10" height="10" rx="1.5"/><path d="M9 7V4M12 7V4M15 7V4"/><path d="M9 20v-3M12 20v-3M15 20v-3"/><path d="M7 9H4M7 12H4M7 15H4"/><path d="M20 9h-3M20 12h-3M20 15h-3"/>
+      </svg>
+      <span class="nav-logo-name">Semi<span class="logo-box">pply</span></span>
+    </span>
+    <span class="nav-logo-sub">A PRODUCT OF <em>LEGALFORENSICS.AI</em></span>
+  </a>
 </nav>
 
-<div class="container">
+<main>
+  <div id="form-wrap">
+    <p class="eyebrow">A no-obligation first look</p>
+    <h1>Send us one representative agreement.</h1>
+    <p class="lede">One agreement, read from your side of the table — before you sign, renew, or raise. No commitment.</p>
 
-  <div class="px-4 text-center mt-6">
-    <h2>Contact Us</h2>
-  </div>
+    <!-- Step 1: the seat decides what we return -->
+    <p class="q"><span class="n">01</span>First — which side of the table are you on?</p>
+    <div class="seatpick" role="group" aria-label="Your side">
+      <button type="button" data-seat="buyer" aria-pressed="false">
+        <span class="st">I buy chips &amp; capacity</span><span class="ss">fabless &middot; Tier-1 / OEM</span>
+      </button>
+      <button type="button" data-seat="supplier" aria-pressed="false">
+        <span class="st">I sell it</span><span class="ss">OSAT &middot; contract manufacturer</span>
+      </button>
+    </div>
 
-  <div class="row d-flex justify-content-md-between">
+    <div class="offer" id="offer">
+      <p id="offer-text"></p>
+    </div>
 
-    <div class="col-lg-6 col-sm-12 mx-auto">
-      <div class="px-4 pt-5 my-5 border">
-        <div class="container px-5">
-          <form action="https://formspree.io/f/xbdakppb" method="POST" class="needs-validation" novalidate>
-            <input type="hidden" name="_next" value="https://legalforensics.ai/contact_sent.html">
+    <div class="how">
+      <div class="how-h">How you get us the agreement</div>
+      <div class="step"><span class="num">1</span><p>Tell us a little below &mdash; no document yet.</p></div>
+      <div class="step"><span class="num">2</span><p>We reply with a <b>mutual NDA</b> (usually same day).</p></div>
+      <div class="step"><span class="num">3</span><p>Once it's signed, you share the agreement &mdash; <b>reply with it attached</b>, or use the <b>secure upload link</b> we send. Your document stays yours; we never post or share it.</p></div>
+    </div>
 
-            <div class="form-group">
-              <label for="validationFname" class="form-label">First Name</label>
-              <input type="text" class="form-control" id="validationFname" name="first_name" placeholder="Enter your First Name" required>
-              <div class="invalid-feedback">First Name is required.</div>
-            </div>
-            <br/>
-
-            <div class="form-group">
-              <label for="validationLname" class="form-label">Last Name</label>
-              <input type="text" class="form-control" id="validationLname" name="last_name" placeholder="Enter your Last Name" required>
-              <div class="invalid-feedback">Last Name is required.</div>
-            </div>
-            <br/>
-
-            <div class="form-group">
-              <label for="validationEmail">Email Address</label>
-              <input type="email" class="form-control" id="validationEmail" name="email" placeholder="Enter your email" required>
-              <div class="invalid-feedback">Invalid Email address.</div>
-            </div>
-            <br/>
-
-            <div class="form-group">
-              <label for="validationPhone">Phone Number</label>
-              <input type="text" class="form-control" id="validationPhone" name="phone" placeholder="Enter your Phone" required>
-              <div class="invalid-feedback">Phone is required.</div>
-            </div>
-            <br/>
-
-            <div class="form-group">
-              <label for="validationReason">Reason for Contact</label>
-              <input type="text" class="form-control" id="validationReason" name="reason" placeholder="">
-            </div>
-            <br/>
-
-            <div class="d-grid gap-2">
-              <button type="submit" class="btn btn-primary">Submit</button>
-            </div>
-
-          </form>
-          <br/><br/>
-        </div>
+    <form id="cform">
+      <input type="hidden" name="seat" id="seatField" value="">
+      <div class="row2">
+        <div><label for="name">Name</label><input id="name" name="name" type="text" required placeholder="Your name"></div>
+        <div><label for="company">Company</label><input id="company" name="company" type="text" placeholder="Company"></div>
       </div>
-    </div>
-
-    <div class="col-lg-6 col-sm-12 mx-auto align-items-center d-flex p-5">
-      <img src="assets/Contact.png" width="500"/>
-    </div>
-
+      <div><label for="email">Work email</label><input id="email" name="email" type="email" required placeholder="you@company.com" autocomplete="email"></div>
+      <div>
+        <label>What kind of agreement? <span class="opt">(optional)</span></label>
+        <div class="chips" role="group" aria-label="Agreement type">
+          <button type="button" data-v="Foundry / wafer-supply">Foundry / wafer-supply</button>
+          <button type="button" data-v="OSAT / assembly">OSAT / assembly</button>
+          <button type="button" data-v="IP license">IP license</button>
+          <button type="button" data-v="Distribution">Distribution</button>
+          <button type="button" data-v="Other">Other</button>
+        </div>
+        <input type="hidden" name="agreement_type" value="">
+      </div>
+      <div>
+        <label>What's prompting the review? <span class="opt">(optional)</span></label>
+        <div class="chips" role="group" aria-label="Trigger">
+          <button type="button" data-v="New signing">New signing</button>
+          <button type="button" data-v="Renewal">Renewal</button>
+          <button type="button" data-v="Fundraise / IPO">Fundraise / IPO</button>
+          <button type="button" data-v="M&amp;A / diligence">M&amp;A / diligence</button>
+          <button type="button" data-v="Just exploring">Just exploring</button>
+        </div>
+        <input type="hidden" name="trigger" value="">
+      </div>
+      <div><label for="about">Anything else? <span class="opt">(just the gist &mdash; no confidential terms yet)</span></label>
+        <textarea id="about" name="about" placeholder="Optional — a sentence is plenty"></textarea></div>
+      <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+      <p class="err" id="err">Pick your side of the table above so we know what to send back.</p>
+      <button class="btn" type="submit" id="submitBtn">Request a first look &rarr;</button>
+      <p class="fineprint">We reply from a real person &middot; under mutual NDA &middot; not legal advice.</p>
+    </form>
   </div>
 
-</div>
+  <div class="done" id="done">
+    <div class="tick">&#10003;</div>
+    <h2>Thanks — we'll be in touch.</h2>
+    <p>We've got your request and will reply shortly with a mutual NDA. Once it's signed, you can send the agreement and we'll get to work.</p>
+  </div>
+</main>
 
+<footer>
+  <span class="mono">Grounded in public SEC filings · classification, not prediction</span> &nbsp;·&nbsp; &copy; 2026 LegalForensics.AI
+</footer>
 
-<div class="px-4 pt-5 my-5 text-center">
-  <span>&copy; 2026 Legal Forensics. All Rights Reserved</span>
-</div>
-
-
-  </body>
-
-  <script>
-  // Pre-fill reason from URL ?reason= param
-  window.addEventListener('DOMContentLoaded', function () {
-    var params = new URLSearchParams(window.location.search);
-    var reason = params.get('reason');
-    if (reason) {
-      var field = document.getElementById('validationReason');
-      if (field) field.value = reason;
-    }
+<script>
+  var OFFER = {
+    buyer: "Under mutual NDA, we'll return a <b>from-your-side read</b> plus a <b>peer benchmark</b> — how your foundry and supply terms compare to what your peers actually signed, clause by clause.",
+    supplier: "Under mutual NDA, we'll return a <b>from-your-side read</b> — where the liability, warranty, and commitment risk actually lands on you, and what's worth pushing back on before you sign."
+  };
+  var seat = null;
+  var offer = document.getElementById('offer'), offerText = document.getElementById('offer-text'),
+      seatField = document.getElementById('seatField'), err = document.getElementById('err');
+  document.querySelectorAll('.seatpick button').forEach(function(b){
+    b.onclick = function(){
+      seat = b.dataset.seat; seatField.value = seat;
+      document.querySelectorAll('.seatpick button').forEach(function(x){ x.setAttribute('aria-pressed', String(x===b)); });
+      offerText.innerHTML = OFFER[seat];
+      offer.classList.add('on');
+      err.classList.remove('on');
+    };
   });
-
-  (() => {
-    'use strict'
-    const forms = document.querySelectorAll('.needs-validation')
-    Array.from(forms).forEach(form => {
-      form.addEventListener('submit', event => {
-        if (!form.checkValidity()) {
-          event.preventDefault()
-          event.stopPropagation()
-        }
-        form.classList.add('was-validated')
-      }, false)
-    })
-  })()
-  </script>
-
+  // single-select qualifier chips -> hidden field (tap again to clear)
+  document.querySelectorAll('.chips').forEach(function(group){
+    var hidden = group.parentElement.querySelector('input[type="hidden"]');
+    group.querySelectorAll('button').forEach(function(b){
+      b.onclick = function(){
+        var was = b.getAttribute('aria-pressed') === 'true';
+        group.querySelectorAll('button').forEach(function(x){ x.setAttribute('aria-pressed','false'); });
+        if(was){ hidden.value=''; } else { b.setAttribute('aria-pressed','true'); hidden.value = b.dataset.v; }
+      };
+    });
+  });
+  document.getElementById('cform').addEventListener('submit', function(e){
+    e.preventDefault();
+    if(!seat){ err.classList.add('on'); document.querySelector('.seatpick').scrollIntoView({behavior:'smooth',block:'center'}); return; }
+    var data = new FormData(e.target);
+    data.append('_subject', 'Semipply first-look request (' + seat + ')');
+    fetch('https://formspree.io/f/xbdakppb', {method:'POST', body:data, headers:{'Accept':'application/json'}}).catch(function(){});
+    document.getElementById('form-wrap').style.display = 'none';
+    document.getElementById('done').classList.add('on');
+    window.scrollTo({top:0, behavior:'smooth'});
+  });
+</script>
+</body>
 </html>
