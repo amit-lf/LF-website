@@ -1730,7 +1730,7 @@
     <div id="gate-form-wrap">
       <p class="eyebrow" style="margin-bottom:8px">Get the note</p>
       <h3 id="gate-title" style="margin-bottom:6px">Market Intelligence &mdash; the note</h3>
-      <p style="font-size:14px;margin-bottom:18px">We'll email you the 1-page note. No spam.</p>
+      <p style="font-size:14px;margin-bottom:18px">Enter your email and the 1-page note opens right here. No spam.</p>
       <form id="gate-form">
         <label class="flab" for="gate-email">Work email</label>
         <input class="finput" id="gate-email" name="email" type="email" required placeholder="you@company.com" autocomplete="email">
@@ -1744,10 +1744,11 @@
     </div>
     <div id="gate-done" hidden style="text-align:center;padding:10px 0 4px">
       <div style="font-size:34px;color:var(--teal-lt)">&#10003;</div>
-      <p style="color:var(--white);font-weight:500;margin:6px 0 4px">Check your inbox.</p>
-      <p style="font-size:14px">We've sent <b id="gate-done-title" style="color:var(--white)">the note</b> to <b id="gate-done-email" style="color:var(--white)">you</b>.</p>
-      <p id="gate-next" style="color:var(--gold);font-size:13px;margin-top:8px"></p>
-      <button class="btn ghost" id="gate-close2" style="margin-top:16px">Done</button>
+      <p style="color:var(--white);font-weight:500;margin:6px 0 4px">Your copy is ready.</p>
+      <p style="font-size:14px">The Market Intelligence note is yours to read and share.</p>
+      <a class="hero-btn" href="/research/Market-Intelligence-Semipply.pdf" target="_blank" rel="noopener" style="margin-top:16px">Download the note (PDF) &rarr;</a>
+      <p style="font-size:12px;color:var(--silver);margin-top:14px">We saved <b id="gate-done-email" style="color:var(--white-dim)">your email</b> and may follow up &mdash; no spam.</p>
+      <button class="btn ghost" id="gate-close2" style="margin-top:12px">Done</button>
     </div>
   </div>
 </div>
@@ -1852,10 +1853,7 @@
     data.append("doc", "Market Intelligence note"); if(chosenSeat) data.append("seat", chosenSeat);
     data.append("_subject", "Market Intelligence note request");
     fetch(FORMSPREE,{method:"POST",body:data,headers:{"Accept":"application/json"}}).catch(function(){});
-    requested[curIndex]=true; renderReaders();
-    document.getElementById("gate-done-title").textContent=gTitle.textContent;
     document.getElementById("gate-done-email").textContent=gEmail.value;
-    document.getElementById("gate-next").textContent = "";
     gWrap.hidden=true; gDone.hidden=false;
   });
   renderReaders();
