@@ -1677,30 +1677,22 @@
 
   <section id="proof">
     <div class="wrap">
-      <p class="eyebrow">Proof, not promises</p>
-      <h2>We read the actual filings. Here's what that looks like.</h2>
-      <p class="lede" style="margin-top:14px;max-width:62ch">A short series, built entirely from real, unredacted SEC contract filings &mdash; quoted verbatim. This is the read a <b>VC, private-equity firm, or acquirer</b> runs in diligence &mdash; where the <b>liabilities and concessions buried in your contracts</b> surface. Next time, those contracts are yours &mdash; better to read them first. Start with the first; the next unlocks once it's on its way.</p>
+      <p class="eyebrow">Market intelligence</p>
+      <h2>What semiconductor companies actually signed.</h2>
+      <p class="lede" style="margin-top:14px;max-width:64ch">Every chip company signs the same three deals &mdash; a <b>foundry</b> to make its chips, a <b>customer</b> to buy them, a <b>licensor</b> for the IP underneath. The terms are filed as public SEC exhibits, and almost never read. A few, verbatim:</p>
+      <ul class="chk" style="max-width:64ch;margin-top:14px">
+        <li><b>Take-or-pay:</b> SkyWater's customer committed to 95%/90% of forecast; Aquantia's buyer, Intel, committed to nothing.</li>
+        <li><b>IP:</b> MetaOptics licenses its entire technology base &mdash; non-exclusive, revocable &mdash; from a state agency that also holds its equity.</li>
+        <li><b>Liability:</b> SiTime's foundry caps its own exposure at $5M with a three-year exit, while the buyer's commitment runs open-ended.</li>
+      </ul>
+      <div style="margin-top:22px;display:flex;gap:12px;align-items:center;flex-wrap:wrap">
+        <button class="hero-btn" id="note-gate-btn">Read the full note &rarr;</button>
+        <span style="font-family:'DM Mono',monospace;font-size:12px;color:var(--silver)">2-page note &middot; email to open</span>
+      </div>
       <div class="corpus">
         <span class="corpus-lab">Drawn from public SEC filings by</span>
         <span class="corpus-names">Cerebras &middot; Mobileye &middot; GlobalFoundries &middot; Allegro &middot; SiTime &middot; SkyWater &middot; Everspin</span>
         <span class="corpus-note">Public filings we've analyzed &mdash; not customers or endorsements.</span>
-      </div>
-      <div class="readers">
-        <button class="reader" data-index="1" data-reader="The Independence Illusion">
-          <span class="n">READER 01 &middot; START HERE</span><b>The Independence Illusion</b>
-          <span class="d">Nine semiconductor companies, read from their filed contracts. "Independent" on the cap table, captive in the terms.</span>
-          <span class="rtag"></span>
-        </button>
-        <button class="reader" data-index="2" data-reader="How the Nine Aged">
-          <span class="n">READER 02</span><b>How the Nine Aged</b>
-          <span class="d">Where the fragility we flagged showed up since &mdash; <span class="co">Allegro</span>, <span class="co">Cerebras</span>, <span class="co">Mobileye</span>. Correlation, not causation.</span>
-          <span class="rtag"></span>
-        </button>
-        <button class="reader" data-index="3" data-reader="The Questions Your Contracts Force">
-          <span class="n">READER 03</span><b>The Questions Your Contracts Force</b>
-          <span class="d">The same read, turned on your own book &mdash; the diligence questions a funder will ask.</span>
-          <span class="rtag"></span>
-        </button>
       </div>
       <p class="grounded"><span><b>Every finding traces to a clause.</b> No black box, no predictions we can't defend.</span></p>
     </div>
@@ -1736,9 +1728,9 @@
   <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="gate-title">
     <button class="modal-x" id="gate-x" aria-label="Close">&times;</button>
     <div id="gate-form-wrap">
-      <p class="eyebrow" style="margin-bottom:8px">Get the full Reader</p>
-      <h3 id="gate-title" style="margin-bottom:6px">The Independence Illusion</h3>
-      <p style="font-size:14px;margin-bottom:18px">We'll email you the PDF, and the short follow-up when it's ready. No spam.</p>
+      <p class="eyebrow" style="margin-bottom:8px">Get the note</p>
+      <h3 id="gate-title" style="margin-bottom:6px">Market Intelligence &mdash; the note</h3>
+      <p style="font-size:14px;margin-bottom:18px">We'll email you the 2-page note. No spam.</p>
       <form id="gate-form">
         <label class="flab" for="gate-email">Work email</label>
         <input class="finput" id="gate-email" name="email" type="email" required placeholder="you@company.com" autocomplete="email">
@@ -1753,7 +1745,7 @@
     <div id="gate-done" hidden style="text-align:center;padding:10px 0 4px">
       <div style="font-size:34px;color:var(--teal-lt)">&#10003;</div>
       <p style="color:var(--white);font-weight:500;margin:6px 0 4px">Check your inbox.</p>
-      <p style="font-size:14px">We've sent <b id="gate-done-title" style="color:var(--white)">the Reader</b> to <b id="gate-done-email" style="color:var(--white)">you</b>.</p>
+      <p style="font-size:14px">We've sent <b id="gate-done-title" style="color:var(--white)">the note</b> to <b id="gate-done-email" style="color:var(--white)">you</b>.</p>
       <p id="gate-next" style="color:var(--gold);font-size:13px;margin-top:8px"></p>
       <button class="btn ghost" id="gate-close2" style="margin-top:16px">Done</button>
     </div>
@@ -1844,12 +1836,8 @@
     document.querySelectorAll(".seatmini button").forEach(function(b){b.setAttribute("aria-pressed","false");});
     gate.hidden=false; setTimeout(function(){gEmail.focus();},40); }
   function closeGate(){ gate.hidden=true; }
-  document.querySelectorAll(".lf2 .reader").forEach(function(r){
-    r.addEventListener("click",function(){
-      var i=+r.dataset.index, done=!!requested[i], avail=!done && (i===1 || requested[i-1]);
-      if(avail) openGate(r.dataset.reader,i);
-    });
-  });
+  var nb=document.getElementById("note-gate-btn");
+  if(nb) nb.onclick=function(){ openGate("Market Intelligence — the note", 1); };
   document.querySelectorAll(".seatmini button").forEach(function(b){
     b.onclick=function(){ chosenSeat=b.dataset.seat;
       document.querySelectorAll(".seatmini button").forEach(function(x){x.setAttribute("aria-pressed", String(x===b));}); };
@@ -1861,14 +1849,13 @@
   gForm.addEventListener("submit",function(e){
     e.preventDefault();
     var data=new FormData(); data.append("email", gEmail.value);
-    data.append("report", gTitle.textContent); if(chosenSeat) data.append("seat", chosenSeat);
-    data.append("_subject", "Reader request: "+gTitle.textContent);
+    data.append("doc", "Market Intelligence note"); if(chosenSeat) data.append("seat", chosenSeat);
+    data.append("_subject", "Market Intelligence note request");
     fetch(FORMSPREE,{method:"POST",body:data,headers:{"Accept":"application/json"}}).catch(function(){});
     requested[curIndex]=true; renderReaders();
     document.getElementById("gate-done-title").textContent=gTitle.textContent;
     document.getElementById("gate-done-email").textContent=gEmail.value;
-    var next=document.querySelector('.lf2 .reader[data-index="'+(curIndex+1)+'"]');
-    document.getElementById("gate-next").textContent = next ? "Report "+pad(curIndex+1)+" is now unlocked below." : "That completes the series — thank you.";
+    document.getElementById("gate-next").textContent = "";
     gWrap.hidden=true; gDone.hidden=false;
   });
   renderReaders();
