@@ -1,0 +1,82 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What the SEC Asked — Semipply Research</title><meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=DM+Sans:wght@400;500;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#09090C;--panel:#111116;--line:#26262e;--gold:#C8A96E;--text:#e8e6e1;--mute:#9a978f;--strong:#ffffff;}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--ink);color:var(--text);font-family:"DM Sans",system-ui,sans-serif;line-height:1.62;-webkit-font-smoothing:antialiased;}
+.wrap{max-width:760px;margin:0 auto;padding:44px 22px 120px;}
+.brandlogo{height:26px;width:auto;display:block;margin-bottom:26px;}
+.hero{border-bottom:1px solid var(--line);padding-bottom:22px;margin-bottom:26px;}
+.kicker{font-family:"DM Mono",monospace;font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);}
+h1{font-family:"Cormorant Garamond",serif;font-weight:600;font-size:clamp(32px,5.5vw,46px);line-height:1.05;margin:10px 0 8px;}
+.hero .sub{color:var(--mute);font-style:italic;font-size:17px;}
+.howto{font-size:13px;color:var(--mute);border:1px solid var(--line);border-left:3px solid var(--gold);border-radius:8px;padding:10px 14px;margin:0 0 8px;}
+.howto b{color:var(--text);font-weight:500;}
+h2{font-family:"Cormorant Garamond",serif;font-weight:600;font-size:25px;color:var(--gold);margin:38px 0 8px;scroll-margin-top:16px;}
+p{margin:0 0 13px;font-size:16px;} p.dek{color:var(--mute);font-style:italic;margin:0 0 12px;}
+li{margin:0 0 8px 20px;font-size:16px;}
+strong{color:var(--strong);font-weight:600;} em{font-style:italic;color:var(--text);}
+em.clause{color:var(--text);background:rgba(200,169,110,.10);border-left:2px solid var(--gold);padding:1px 6px;border-radius:3px;font-style:italic;}
+hr{border:0;border-top:1px solid var(--line);margin:30px 0;}
+.term{border-bottom:1px dashed var(--gold);cursor:help;position:relative;}
+.term .tip{visibility:hidden;opacity:0;position:absolute;left:0;bottom:calc(100% + 8px);z-index:20;width:min(300px,80vw);background:#1b1b22;color:var(--text);border:1px solid var(--gold);border-radius:8px;padding:10px 12px;font-size:13.5px;font-style:normal;font-weight:400;line-height:1.5;box-shadow:0 8px 24px rgba(0,0,0,.5);transition:opacity .12s;}
+.term:hover .tip,.term:focus .tip,.term.open .tip{visibility:visible;opacity:1;}
+.cta{margin-top:40px;border:1px solid var(--line);border-radius:12px;padding:18px 20px;background:var(--panel);}
+.cta b{font-family:"Cormorant Garamond",serif;font-size:19px;} .cta p{color:var(--mute);font-size:14px;margin:5px 0 0;} .cta a{color:var(--gold);text-decoration:none;font-weight:500;}
+footer{margin-top:40px;padding-top:20px;border-top:1px solid var(--line);color:var(--mute);font-size:12.5px;}
+footer .brand{color:var(--text);font-weight:500;} footer a{color:var(--gold);text-decoration:none;}
+.sidenav{position:fixed;top:0;left:24px;width:210px;height:100vh;overflow-y:auto;padding:52px 4px 40px;display:none;}
+@media(min-width:1220px){.sidenav{display:block;}}
+.sidenav .sn-h{font-family:"DM Mono",monospace;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin:0 0 10px 10px;}
+.sidenav a{display:block;font-size:12.5px;color:var(--mute);text-decoration:none;padding:5px 10px;border-left:2px solid transparent;line-height:1.3;}
+.sidenav a:hover{color:var(--text);} .sidenav a.active{color:var(--text);border-left-color:var(--gold);background:rgba(200,169,110,.09);}
+.navbtn{position:fixed;bottom:18px;right:18px;z-index:60;background:var(--gold);color:#09090C;border:0;border-radius:24px;padding:11px 17px;font-family:"DM Sans",sans-serif;font-weight:700;font-size:13px;cursor:pointer;box-shadow:0 6px 20px rgba(0,0,0,.45);}
+@media(min-width:1220px){.navbtn{display:none;}}
+.sidenav.open{display:block;inset:0 auto 0 0;left:0;width:min(330px,86vw);background:var(--panel);z-index:65;border-right:1px solid var(--line);box-shadow:0 0 50px rgba(0,0,0,.6);padding:56px 8px 40px;}
+.navbackdrop{position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:64;display:none;} .navbackdrop.open{display:block;}
+@media(prefers-color-scheme:light){:root{--ink:#faf9f6;--panel:#fff;--line:#e3e0d8;--gold:#9c7c3c;--text:#1a1a1e;--mute:#6b6862;--strong:#111111;} .term .tip{background:#fff;} em.clause{background:rgba(156,124,60,.10);} .brandlogo{filter:invert(1);}}
+</style></head><body><button class="navbtn" type="button" aria-label="Contents">&#9776;&nbsp;Contents</button><div class="navbackdrop"></div><nav class="sidenav" aria-label="Sections"><div class="sn-h">Contents</div><a href="#s1">How far does China reach?</a><a href="#s2">Who really controls it?</a><a href="#s3">Who is the revenue, really?</a><a href="#s4">Is the revenue even real?</a><a href="#s5">Where does the money actually go?</a><a href="#s6">The point</a></nav>
+<main class="wrap">
+<img class="brandlogo" src="/assets/semipply-research-logo.png" alt="Semipply Research">
+<div class="hero"><div class="kicker">Semipply Research · a Reader</div><h1>What the SEC Asked</h1><div class="sub">The questions the regulator forces — and what they reveal</div></div>
+
+<p>Every public semiconductor company has a reader it never sees: the SEC. Before a filing clears, the regulator writes back — comment letters demanding the company explain, quantify, or disclose what it would rather leave in a footnote. The company answers in writing, and all of it goes on the public record.</p>
+<p>That correspondence is the closest thing to free diligence the market ever gets — and almost nobody opens it. Across <strong>nineteen semiconductor companies</strong> in our corpus and <strong>539 separate challenges</strong>, the same five questions keep coming. They are, nearly one for one, the dependencies we read from the contracts. The difference is that the SEC can make the company answer.</p>
+<h2 id="s1">How far does China reach?</h2>
+<p><strong>The question the SEC asks most is not on the balance sheet. It is the map of who can reach the company.</strong></p>
+<p>It made <strong>indie Semiconductor</strong> account for a 50%-owned Chinese subsidiary, for the revenue sourced through China, for an ownership chart redrawn to show the entities domiciled there — and for whether its accounting workpapers would sit in the PRC, beyond the reach of US inspection. It pressed <strong>ACM Research</strong> on how China's Cyberspace Administration oversees its business. It made <strong>Credo</strong> list every permission it needs from Chinese authorities merely to sell shares to foreign investors.</p>
+<p>Strip the politics and it is a control question: <em>who ultimately holds this company, and can a foreign state reach it?</em> That is exactly what the ownership of a contract asks — and the SEC asks it first.</p>
+<h2 id="s2">Who really controls it?</h2>
+<p><strong>An "independent" company usually has a parent, and the SEC makes it say so.</strong></p>
+<p>It forced <strong>Mobileye</strong> to name Intel as the affiliate holding the note repaid with IPO proceeds, to chart the post-IPO ownership, and to identify the directors who would also answer to Intel. It made <strong>GlobalFoundries</strong> admit its "controlled company" status under an Abu Dhabi owner, and <strong>Allegro</strong> name Sanken as the affiliate in control. The corporate-opportunity waiver — a company's pre-consent to its owner's conflicts — drew a required risk factor every time.</p>
+<p>The parent behind the logo, dragged onto the cover page.</p>
+<h2 id="s3">Who is the revenue, really?</h2>
+<p><strong>Customer concentration stays hidden until the SEC refuses to let it.</strong></p>
+<p>It told <strong>ARM</strong> to name its largest customers — Qualcomm among them — and to quantify what each was worth, rather than leave it vague. It made <strong>Mobileye</strong> disclose that its top three customers were 35%, 19%, and 17% of revenue, with no long-term agreements — a concentration Mobileye had first argued was immaterial.</p>
+<p>A customer that can walk tomorrow, made visible today.</p>
+<h2 id="s4">Is the revenue even real?</h2>
+<p><strong>When a company leans on an adjusted number, the SEC asks to see the unadjusted one.</strong></p>
+<p>It made <strong>Credo</strong> strip warrant contra-revenue out of its non-GAAP measures. It questioned <strong>SkyWater</strong>'s bill-and-hold timing and an inventory adjustment it viewed as an ordinary cost. It made <strong>GlobalFoundries</strong> quantify the real reasons behind large period-to-period swings instead of describing them in generalities.</p>
+<h2 id="s5">Where does the money actually go?</h2>
+<p><strong>Related-party flows are where a parent's grip shows.</strong></p>
+<p>The SEC surfaced Mobileye's roughly $900 million payable to Intel, Allegro's $9.5 million from Sanken used to soften the cash impact of an IRS settlement, and the Japanese loan and CEO guarantee behind SiTime that its exhibits had blurred. When a parent funds you into an IPO or covers your tax bill, the line between the two is thin — and the SEC makes you draw it.</p>
+<h2 id="s6">The point</h2>
+<p>Read the letters back to back and the SEC is doing our job with a subpoena. A foreign owner your screens cannot see; a parent that sets the terms; a customer that could leave; a number that needs an asterisk — the regulator already asked, the company already answered, and it is all on EDGAR, unread.</p>
+<p>So before you invest in, lend to, acquire, or sign with a semiconductor company, read what the SEC already made it admit — and ask what it would ask about a filing like this one. It is a sharper diligence list than a blank page, and it is already written.</p>
+<hr>
+<p class="dek">A Semipply Research reading, based on public SEC comment-letter correspondence for nineteen semiconductor companies (EDGAR). The regulator's challenges are summarized from that correspondence; specific figures and quoted terms are from the filings and letters. This describes disclosure the SEC required — it is not a view on any company, and it is not legal or investment advice.</p>
+<div class="cta"><b>Have a question — or want this read on your own contract?</b><p><a href="https://intelligence.legalforensics.ai/analyze">Run it on your own contract &rarr;</a></p></div>
+<footer><span class="brand">Semipply Research</span> &middot; Semiconductor Supply Intelligence. Built from public filings; quotations verbatim. Not legal or investment advice. &middot; <a href="/research/">All Readers</a> &middot; <a href="What-the-SEC-Asked-Semipply.pdf">Download PDF</a></footer>
+</main><script>
+document.addEventListener('click',function(e){var t=e.target.closest('.term');document.querySelectorAll('.term.open').forEach(function(el){if(el!==t)el.classList.remove('open');});if(t){t.classList.toggle('open');e.preventDefault();}
+var n=document.querySelector('.sidenav.open');if(n&&!e.target.closest('.sidenav')&&!e.target.closest('.navbtn')){n.classList.remove('open');document.querySelector('.navbackdrop').classList.remove('open');}});
+(function(){var links=[].slice.call(document.querySelectorAll('.sidenav a'));if(!links.length)return;var map={};links.forEach(function(a){map[a.getAttribute('href').slice(1)]=a;});
+var obs=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){links.forEach(function(l){l.classList.remove('active');});var a=map[e.target.id];if(a)a.classList.add('active');}});},{rootMargin:'0px 0px -78% 0px',threshold:0});
+document.querySelectorAll('h2[id]').forEach(function(h){if(h.id)obs.observe(h);});
+var btn=document.querySelector('.navbtn'),nav=document.querySelector('.sidenav'),bd=document.querySelector('.navbackdrop');function cl(){nav.classList.remove('open');bd.classList.remove('open');}
+if(btn){btn.addEventListener('click',function(){nav.classList.toggle('open');bd.classList.toggle('open');});bd.addEventListener('click',cl);links.forEach(function(a){a.addEventListener('click',cl);});}})();
+</script></body></html>

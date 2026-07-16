@@ -1,0 +1,74 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Questions Your Contracts Force — Semipply Research</title><meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=DM+Sans:wght@400;500;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#09090C;--panel:#111116;--line:#26262e;--gold:#C8A96E;--text:#e8e6e1;--mute:#9a978f;--strong:#ffffff;}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--ink);color:var(--text);font-family:"DM Sans",system-ui,sans-serif;line-height:1.62;-webkit-font-smoothing:antialiased;}
+.wrap{max-width:760px;margin:0 auto;padding:44px 22px 120px;}
+.brandlogo{height:26px;width:auto;display:block;margin-bottom:26px;}
+.hero{border-bottom:1px solid var(--line);padding-bottom:22px;margin-bottom:26px;}
+.kicker{font-family:"DM Mono",monospace;font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);}
+h1{font-family:"Cormorant Garamond",serif;font-weight:600;font-size:clamp(32px,5.5vw,46px);line-height:1.05;margin:10px 0 8px;}
+.hero .sub{color:var(--mute);font-style:italic;font-size:17px;}
+.howto{font-size:13px;color:var(--mute);border:1px solid var(--line);border-left:3px solid var(--gold);border-radius:8px;padding:10px 14px;margin:0 0 8px;}
+.howto b{color:var(--text);font-weight:500;}
+h2{font-family:"Cormorant Garamond",serif;font-weight:600;font-size:25px;color:var(--gold);margin:38px 0 8px;scroll-margin-top:16px;}
+p{margin:0 0 13px;font-size:16px;} p.dek{color:var(--mute);font-style:italic;margin:0 0 12px;}
+li{margin:0 0 8px 20px;font-size:16px;}
+strong{color:var(--strong);font-weight:600;} em{font-style:italic;color:var(--text);}
+em.clause{color:var(--text);background:rgba(200,169,110,.10);border-left:2px solid var(--gold);padding:1px 6px;border-radius:3px;font-style:italic;}
+hr{border:0;border-top:1px solid var(--line);margin:30px 0;}
+.term{border-bottom:1px dashed var(--gold);cursor:help;position:relative;}
+.term .tip{visibility:hidden;opacity:0;position:absolute;left:0;bottom:calc(100% + 8px);z-index:20;width:min(300px,80vw);background:#1b1b22;color:var(--text);border:1px solid var(--gold);border-radius:8px;padding:10px 12px;font-size:13.5px;font-style:normal;font-weight:400;line-height:1.5;box-shadow:0 8px 24px rgba(0,0,0,.5);transition:opacity .12s;}
+.term:hover .tip,.term:focus .tip,.term.open .tip{visibility:visible;opacity:1;}
+.cta{margin-top:40px;border:1px solid var(--line);border-radius:12px;padding:18px 20px;background:var(--panel);}
+.cta b{font-family:"Cormorant Garamond",serif;font-size:19px;} .cta p{color:var(--mute);font-size:14px;margin:5px 0 0;} .cta a{color:var(--gold);text-decoration:none;font-weight:500;}
+footer{margin-top:40px;padding-top:20px;border-top:1px solid var(--line);color:var(--mute);font-size:12.5px;}
+footer .brand{color:var(--text);font-weight:500;} footer a{color:var(--gold);text-decoration:none;}
+.sidenav{position:fixed;top:0;left:24px;width:210px;height:100vh;overflow-y:auto;padding:52px 4px 40px;display:none;}
+@media(min-width:1220px){.sidenav{display:block;}}
+.sidenav .sn-h{font-family:"DM Mono",monospace;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin:0 0 10px 10px;}
+.sidenav a{display:block;font-size:12.5px;color:var(--mute);text-decoration:none;padding:5px 10px;border-left:2px solid transparent;line-height:1.3;}
+.sidenav a:hover{color:var(--text);} .sidenav a.active{color:var(--text);border-left-color:var(--gold);background:rgba(200,169,110,.09);}
+.navbtn{position:fixed;bottom:18px;right:18px;z-index:60;background:var(--gold);color:#09090C;border:0;border-radius:24px;padding:11px 17px;font-family:"DM Sans",sans-serif;font-weight:700;font-size:13px;cursor:pointer;box-shadow:0 6px 20px rgba(0,0,0,.45);}
+@media(min-width:1220px){.navbtn{display:none;}}
+.sidenav.open{display:block;inset:0 auto 0 0;left:0;width:min(330px,86vw);background:var(--panel);z-index:65;border-right:1px solid var(--line);box-shadow:0 0 50px rgba(0,0,0,.6);padding:56px 8px 40px;}
+.navbackdrop{position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:64;display:none;} .navbackdrop.open{display:block;}
+@media(prefers-color-scheme:light){:root{--ink:#faf9f6;--panel:#fff;--line:#e3e0d8;--gold:#9c7c3c;--text:#1a1a1e;--mute:#6b6862;--strong:#111111;} .term .tip{background:#fff;} em.clause{background:rgba(156,124,60,.10);} .brandlogo{filter:invert(1);}}
+</style></head><body><button class="navbtn" type="button" aria-label="Contents">&#9776;&nbsp;Contents</button><div class="navbackdrop"></div><nav class="sidenav" aria-label="Sections"><div class="sn-h">Contents</div><a href="#s1">The method, in brief</a><a href="#s2">A worked example: Allegro MicroSystems</a><a href="#s3">The point — and the offer</a></nav>
+<main class="wrap">
+<img class="brandlogo" src="/assets/semipply-research-logo.png" alt="Semipply Research">
+<div class="hero"><div class="kicker">Semipply Research · a Reader</div><h1>The Questions Your Contracts Force</h1><div class="sub">The same read, applied to your own book of contracts</div></div>
+<div class="howto">Tap or hover any <span style="border-bottom:1px dashed var(--gold)">underlined term</span> for a plain-English definition.</div>
+<p>The first two Readers looked outward — nine semiconductor companies, read from their own filed contracts, and then a check on how those reads aged. This one turns the lens around. The method doesn't depend on those nine; it works on <strong>any book of contracts</strong> — yours, or a company you are about to fund or buy. And its output isn't a verdict or a score. It's a set of <strong>questions</strong> — the ones a company's own agreements force it, and its funders, to answer.</p>
+<p>Why that matters now: a company with no plans to raise, sell, or grow can leave these questions closed — for them, contract hygiene really is a vitamin. But the moment you plan to <strong>raise a round, go public, get acquired, or defend a margin</strong>, someone else will ask these questions — an investor's counsel, an acquirer's diligence team, a lender. The terms that sat dormant become <strong>the clauses used against you at the table.</strong> Far better to hold the answers before they are demanded.</p>
+<h2 id="s1">The method, in brief</h2>
+<p>Read the actual agreements — not the pitch — and resolve five things: <strong>who controls the company; whether it owns or rents its core technology; whether its supply is single-threaded; whether its revenue is committed or at-will; and what unwinds on a <span class="term" tabindex="0" role="button" aria-label="A change in who ultimately owns a company (e.g. an acquisition), which can trigger contract rights.">change of control<span class="tip">A change in who ultimately owns a company (e.g. an acquisition), which can trigger contract rights.</span></span>.</strong> Each answer traces to a specific clause. Where the contracts alone can't settle it, that gap <em>becomes</em> a question to put to management. The result is a diligence agenda, grounded in the company's own paper.</p>
+<h2 id="s2">A worked example: Allegro MicroSystems</h2>
+<p>Allegro went public as a US sensor-chip company. Read its filed agreements and the questions write themselves — and, tellingly, several of them came due in real life within a few years.</p>
+<p><strong>Control — and what happens when the parent leaves.</strong> Allegro's key rights are tied to its Japanese parent, Sanken: the <span class="term" tabindex="0" role="button" aria-label="A factory that manufactures chips designed by others (e.g. TSMC, GlobalFoundries).">foundry<span class="tip">A factory that manufactures chips designed by others (e.g. TSMC, GlobalFoundries).</span></span> collaboration can't be terminated or materially altered "without consultation with and concurrence of Sanken," and a royalty-sharing agreement "shall terminate in the event that Sanken ceases to own, directly or indirectly, more than fifty percent." <em>The question a funder must ask: what is the plan the day Sanken falls below 50%?</em> This was not hypothetical — in July 2024 Sanken repurchased down from 50.8% to 32.5%, and within months Allegro was the target of a roughly $6.9 billion acquisition bid from onsemi. The question the contract raised became the company's defining event. <em>(Correlation, not causation — but the contract told you where to look.)</em></p>
+<p><strong>Own or rent the technology.</strong> The IP is split: magnetic-sensor IP is "solely owned by Allegro," while "all other IP will be jointly owned by Sanken and Allegro." <em>Question: what can Allegro actually license, spin out, or sell on its own — and what needs the (now former-majority) parent's sign-off?</em></p>
+<p><strong>Single-threaded supply.</strong> Wafers come from Polar under a foundry agreement with a "six month binding forecast" and a <span class="term" tabindex="0" role="button" aria-label="A ceiling on how much a party can be made to pay if things go wrong.">liability cap<span class="tip">A ceiling on how much a party can be made to pay if things go wrong.</span></span> that protects the supplier. <em>Question: is Polar an arm's-length foundry, or a captive whose pricing and capacity the parent influences — and where is the <span class="term" tabindex="0" role="button" aria-label="A qualified alternative supplier for the same part.">second source<span class="tip">A qualified alternative supplier for the same part.</span></span>?</em></p>
+<p><strong>Committed or at-will revenue.</strong> That binding forecast is a <span class="term" tabindex="0" role="button" aria-label="A promise to pay for a set volume whether or not you actually order it.">take-or-pay<span class="tip">A promise to pay for a set volume whether or not you actually order it.</span></span> commitment — Allegro must pay for the forecasted wafers whether or not it needs them. <em>Question: how much inventory risk does it carry in a downturn, and does that exposure sit on Allegro's balance sheet?</em></p>
+<p><strong>Change of control.</strong> With parent-linked termination triggers embedded in key agreements, <em>question: which contracts reprice, terminate, or require consent in an acquisition — i.e., what would an acquirer's diligence team find that changes the price?</em> This is precisely the terrain a bidder walks.</p>
+<h2 id="s3">The point — and the offer</h2>
+<p>None of these is a gotcha. Each is a question a serious investor or acquirer <em>will</em> ask, and each is answerable — from the contracts for some, from management for the rest. That is the deliverable: not a verdict on Allegro, but the <strong>agenda its own paper sets.</strong> We can produce the same agenda for any book of contracts — a company's own, or a target's — grounded clause by clause, from real filings.</p>
+<p>For a company heading into a raise, an IPO, or a sale, the choice is simple: answer these questions on your own schedule, or on the other side's.</p>
+<p><strong>Read the exhibits — before someone else does.</strong></p>
+<hr>
+<p class="dek">The third in a Semipply series, following "The Independence Illusion" and "How the Nine Aged." Contract quotations are verbatim from Allegro's SEC filings; bracketed marks denote issuer redactions. The Allegro events are public and are cited as correlation, not causation — nothing here asserts that a contract caused an outcome, and nothing here is investment advice.</p>
+<div class="cta"><b>Have a question — or want this read on your own contract?</b><p><a href="https://intelligence.legalforensics.ai/analyze">Run it on your own contract &rarr;</a></p></div>
+<footer><span class="brand">Semipply Research</span> &middot; Semiconductor Supply Intelligence. Built from public filings; quotations verbatim. Not legal or investment advice. &middot; <a href="/research/">All Readers</a> &middot; <a href="The-Questions-Your-Contracts-Force-Semipply.pdf">Download PDF</a></footer>
+</main><script>
+document.addEventListener('click',function(e){var t=e.target.closest('.term');document.querySelectorAll('.term.open').forEach(function(el){if(el!==t)el.classList.remove('open');});if(t){t.classList.toggle('open');e.preventDefault();}
+var n=document.querySelector('.sidenav.open');if(n&&!e.target.closest('.sidenav')&&!e.target.closest('.navbtn')){n.classList.remove('open');document.querySelector('.navbackdrop').classList.remove('open');}});
+(function(){var links=[].slice.call(document.querySelectorAll('.sidenav a'));if(!links.length)return;var map={};links.forEach(function(a){map[a.getAttribute('href').slice(1)]=a;});
+var obs=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){links.forEach(function(l){l.classList.remove('active');});var a=map[e.target.id];if(a)a.classList.add('active');}});},{rootMargin:'0px 0px -78% 0px',threshold:0});
+document.querySelectorAll('h2[id]').forEach(function(h){if(h.id)obs.observe(h);});
+var btn=document.querySelector('.navbtn'),nav=document.querySelector('.sidenav'),bd=document.querySelector('.navbackdrop');function cl(){nav.classList.remove('open');bd.classList.remove('open');}
+if(btn){btn.addEventListener('click',function(){nav.classList.toggle('open');bd.classList.toggle('open');});bd.addEventListener('click',cl);links.forEach(function(a){a.addEventListener('click',cl);});}})();
+</script></body></html>

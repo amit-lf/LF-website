@@ -1,0 +1,74 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How the Nine Aged — Semipply Research</title><meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=DM+Sans:wght@400;500;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#09090C;--panel:#111116;--line:#26262e;--gold:#C8A96E;--text:#e8e6e1;--mute:#9a978f;--strong:#ffffff;}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--ink);color:var(--text);font-family:"DM Sans",system-ui,sans-serif;line-height:1.62;-webkit-font-smoothing:antialiased;}
+.wrap{max-width:760px;margin:0 auto;padding:44px 22px 120px;}
+.brandlogo{height:26px;width:auto;display:block;margin-bottom:26px;}
+.hero{border-bottom:1px solid var(--line);padding-bottom:22px;margin-bottom:26px;}
+.kicker{font-family:"DM Mono",monospace;font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);}
+h1{font-family:"Cormorant Garamond",serif;font-weight:600;font-size:clamp(32px,5.5vw,46px);line-height:1.05;margin:10px 0 8px;}
+.hero .sub{color:var(--mute);font-style:italic;font-size:17px;}
+.howto{font-size:13px;color:var(--mute);border:1px solid var(--line);border-left:3px solid var(--gold);border-radius:8px;padding:10px 14px;margin:0 0 8px;}
+.howto b{color:var(--text);font-weight:500;}
+h2{font-family:"Cormorant Garamond",serif;font-weight:600;font-size:25px;color:var(--gold);margin:38px 0 8px;scroll-margin-top:16px;}
+p{margin:0 0 13px;font-size:16px;} p.dek{color:var(--mute);font-style:italic;margin:0 0 12px;}
+li{margin:0 0 8px 20px;font-size:16px;}
+strong{color:var(--strong);font-weight:600;} em{font-style:italic;color:var(--text);}
+em.clause{color:var(--text);background:rgba(200,169,110,.10);border-left:2px solid var(--gold);padding:1px 6px;border-radius:3px;font-style:italic;}
+hr{border:0;border-top:1px solid var(--line);margin:30px 0;}
+.term{border-bottom:1px dashed var(--gold);cursor:help;position:relative;}
+.term .tip{visibility:hidden;opacity:0;position:absolute;left:0;bottom:calc(100% + 8px);z-index:20;width:min(300px,80vw);background:#1b1b22;color:var(--text);border:1px solid var(--gold);border-radius:8px;padding:10px 12px;font-size:13.5px;font-style:normal;font-weight:400;line-height:1.5;box-shadow:0 8px 24px rgba(0,0,0,.5);transition:opacity .12s;}
+.term:hover .tip,.term:focus .tip,.term.open .tip{visibility:visible;opacity:1;}
+.cta{margin-top:40px;border:1px solid var(--line);border-radius:12px;padding:18px 20px;background:var(--panel);}
+.cta b{font-family:"Cormorant Garamond",serif;font-size:19px;} .cta p{color:var(--mute);font-size:14px;margin:5px 0 0;} .cta a{color:var(--gold);text-decoration:none;font-weight:500;}
+footer{margin-top:40px;padding-top:20px;border-top:1px solid var(--line);color:var(--mute);font-size:12.5px;}
+footer .brand{color:var(--text);font-weight:500;} footer a{color:var(--gold);text-decoration:none;}
+.sidenav{position:fixed;top:0;left:24px;width:210px;height:100vh;overflow-y:auto;padding:52px 4px 40px;display:none;}
+@media(min-width:1220px){.sidenav{display:block;}}
+.sidenav .sn-h{font-family:"DM Mono",monospace;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin:0 0 10px 10px;}
+.sidenav a{display:block;font-size:12.5px;color:var(--mute);text-decoration:none;padding:5px 10px;border-left:2px solid transparent;line-height:1.3;}
+.sidenav a:hover{color:var(--text);} .sidenav a.active{color:var(--text);border-left-color:var(--gold);background:rgba(200,169,110,.09);}
+.navbtn{position:fixed;bottom:18px;right:18px;z-index:60;background:var(--gold);color:#09090C;border:0;border-radius:24px;padding:11px 17px;font-family:"DM Sans",sans-serif;font-weight:700;font-size:13px;cursor:pointer;box-shadow:0 6px 20px rgba(0,0,0,.45);}
+@media(min-width:1220px){.navbtn{display:none;}}
+.sidenav.open{display:block;inset:0 auto 0 0;left:0;width:min(330px,86vw);background:var(--panel);z-index:65;border-right:1px solid var(--line);box-shadow:0 0 50px rgba(0,0,0,.6);padding:56px 8px 40px;}
+.navbackdrop{position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:64;display:none;} .navbackdrop.open{display:block;}
+@media(prefers-color-scheme:light){:root{--ink:#faf9f6;--panel:#fff;--line:#e3e0d8;--gold:#9c7c3c;--text:#1a1a1e;--mute:#6b6862;--strong:#111111;} .term .tip{background:#fff;} em.clause{background:rgba(156,124,60,.10);} .brandlogo{filter:invert(1);}}
+</style></head><body><button class="navbtn" type="button" aria-label="Contents">&#9776;&nbsp;Contents</button><div class="navbackdrop"></div><nav class="sidenav" aria-label="Sections"><div class="sn-h">Contents</div><a href="#s1">Where the tripwire tripped</a><a href="#s2">Confirmed, live, not blown up</a><a href="#s3">The honest read</a></nav>
+<main class="wrap">
+<img class="brandlogo" src="/assets/semipply-research-logo.png" alt="Semipply Research">
+<div class="hero"><div class="kicker">Semipply Research · a Reader</div><h1>How the Nine Aged</h1><div class="sub">Where the fragility we flagged has shown up since</div></div>
+<div class="howto">Tap or hover any <span style="border-bottom:1px dashed var(--gold)">underlined term</span> for a plain-English definition.</div>
+<p><em>The Independence Illusion</em> read nine semiconductor companies' filed contracts and named, for each, the single dependency most likely to become a problem — a controlling parent, a single <span class="term" tabindex="0" role="button" aria-label="A factory that manufactures chips designed by others (e.g. TSMC, GlobalFoundries).">foundry<span class="tip">A factory that manufactures chips designed by others (e.g. TSMC, GlobalFoundries).</span></span>, a foreign strategic investor, a <span class="term" tabindex="0" role="button" aria-label="A change in who ultimately owns a company (e.g. an acquisition), which can trigger contract rights.">change-of-control<span class="tip">A change in who ultimately owns a company (e.g. an acquisition), which can trigger contract rights.</span></span> tripwire. This is a short check on what has happened since.</p>
+<p><strong>One caution up front, and it matters: this is correlation, not causation.</strong> We did not predict these events, and the contracts did not <em>cause</em> them — Intel and Mubadala are selling for their own reasons; onsemi bid for its own reasons. The claim is narrower, and we think more useful: <strong>fragility is where stress lands.</strong> We flagged where each company was structurally exposed; here is where the stress showed up.</p>
+<h2 id="s1">Where the tripwire tripped</h2>
+<p><strong>Allegro — the clause we quoted, triggered.</strong> The chapter flagged the exact term: Allegro's key rights unwound if its Japanese parent, Sanken, fell below 50%. In July 2024 Sanken repurchased down from <strong>50.8% to 32.5%</strong> — across that precise line. Decontrol is what put Allegro in play: months later <strong>onsemi bid roughly $6.9 billion</strong> ($35.10 a share, a 57% premium); the board rejected it and onsemi withdrew in April 2025. The change-of-control vulnerability we named did not merely persist — it produced the event.</p>
+<p><strong>Mobileye — the parent's distress became the overhang.</strong> We flagged Intel's ~80% control as the dependency that mattered. In 2025, Intel — in its own cash crisis — <strong>sold Mobileye stock into the market</strong> (about $900 million, then roughly $1 billion in July 2025), and the shares fell on the news. That is what "captive to a parent" means in practice: the parent's problems arrive on your cap table, mechanically, whether or not your own quarter was fine.</p>
+<p><strong>Cerebras — the exposure we named cost about eighteen months.</strong> The chapter flagged G42, the Abu Dhabi group that was both Cerebras's largest customer and an investor, as a national-security exposure. Cerebras's IPO was <strong>postponed from October 2024 pending a CFIUS review of G42's stake</strong>, cleared only in March 2025 after G42 divested its Chinese holdings; the original filing went stale and was withdrawn, and Cerebras <strong>refiled in December 2025 — with G42 no longer listed as an investor</strong> — now targeting a 2026 listing. The precise foreign-strategic-investor exposure, playing out close to script.</p>
+<h2 id="s2">Confirmed, live, not blown up</h2>
+<li><strong>GlobalFoundries</strong> — the single-substrate dependency we flagged is now quantified in the open: <strong>about 71% of its SOI wafer spend runs through one supplier, Soitec</strong> — most of its specialty-wafer supply, from one vendor it can't easily replace. Its 81% owner, Mubadala, keeps exercising control — consent rights over large deals, and selling GF down through secondary offerings, the same "sovereign owner as a liquidity source" pattern visible at Mobileye.</li>
+<li><strong>Everspin — the most telling of all, because the company acted on the exact risk.</strong> Against the single-GlobalFoundries captivity we described, Everspin signed a <strong>ten-year manufacturing agreement with Microchip</strong> to add US capacity. When the subject of the analysis moves to fix the dependency you flagged, the flag was real.</li>
+<li><strong>SiTime</strong> — its current annual report still describes the Bosch <span class="term" tabindex="0" role="button" aria-label="Buying a part from only one supplier, with no qualified alternative.">single-source<span class="tip">Buying a part from only one supplier, with no qualified alternative.</span></span> dependency in the same terms we did, and the <strong>initial Bosch term expires in February 2027</strong> — the exit-and-renewal leverage moment the chapter pointed to is now months away.</li>
+<li><strong>SkyWater</strong> — doubled down on the model we flagged: it bought a fab funded by a <strong>$350 million debt facility</strong> and signed a <strong>new multi-year anchor supply agreement</strong> with the seller's affiliate — capacity on leverage plus an anchor commitment, intensified.</li>
+<li><strong>MetaOptics</strong> — the A*STAR dependency is intact, and the company listed <em>small</em> (about S$6 million in Singapore) while <strong>trimming its US offering by roughly a quarter</strong> — consistent with the "small, everything-licensed" profile the chapter drew. (Aquantia, the ninth, had already been absorbed into Marvell.)</li>
+<h2 id="s3">The honest read</h2>
+<p>On the narrow test of <em>did stress appear where we said the company was weak</em> — it did. Three of the nine saw a concrete event on the exact axis we named; the rest are confirmed live, and one, Everspin, is actively repairing the vulnerability. None of this proves a contract caused an outcome, and we are not claiming a forecast. It shows something simpler and more durable: reading the exhibits tells you <strong>where a company will feel pressure</strong> — and pressure, when it comes, tends to arrive exactly there.</p>
+<p>Read the exhibits.</p>
+<hr>
+<p class="dek">Companion to "The Independence Illusion." Events verified against public reporting as of July 2026; every item is public and checkable. Correlation, not causation — nothing here asserts that a contract caused an outcome, and nothing here is investment advice. Sources include company filings and releases (Allegro/GlobeNewswire, onsemi IR, Intel/Mobileye via Times of Israel), SiliconANGLE and Tech Startups (Cerebras/CFIUS), TipRanks (GlobalFoundries/Mubadala), MRAM-Info (Everspin/Microchip), and Renaissance Capital (MetaOptics).</p>
+<div class="cta"><b>Have a question — or want this read on your own contract?</b><p><a href="https://intelligence.legalforensics.ai/analyze">Run it on your own contract &rarr;</a></p></div>
+<footer><span class="brand">Semipply Research</span> &middot; Semiconductor Supply Intelligence. Built from public filings; quotations verbatim. Not legal or investment advice. &middot; <a href="/research/">All Readers</a> &middot; <a href="How-the-Nine-Aged-Semipply.pdf">Download PDF</a></footer>
+</main><script>
+document.addEventListener('click',function(e){var t=e.target.closest('.term');document.querySelectorAll('.term.open').forEach(function(el){if(el!==t)el.classList.remove('open');});if(t){t.classList.toggle('open');e.preventDefault();}
+var n=document.querySelector('.sidenav.open');if(n&&!e.target.closest('.sidenav')&&!e.target.closest('.navbtn')){n.classList.remove('open');document.querySelector('.navbackdrop').classList.remove('open');}});
+(function(){var links=[].slice.call(document.querySelectorAll('.sidenav a'));if(!links.length)return;var map={};links.forEach(function(a){map[a.getAttribute('href').slice(1)]=a;});
+var obs=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){links.forEach(function(l){l.classList.remove('active');});var a=map[e.target.id];if(a)a.classList.add('active');}});},{rootMargin:'0px 0px -78% 0px',threshold:0});
+document.querySelectorAll('h2[id]').forEach(function(h){if(h.id)obs.observe(h);});
+var btn=document.querySelector('.navbtn'),nav=document.querySelector('.sidenav'),bd=document.querySelector('.navbackdrop');function cl(){nav.classList.remove('open');bd.classList.remove('open');}
+if(btn){btn.addEventListener('click',function(){nav.classList.toggle('open');bd.classList.toggle('open');});bd.addEventListener('click',cl);links.forEach(function(a){a.addEventListener('click',cl);});}})();
+</script></body></html>

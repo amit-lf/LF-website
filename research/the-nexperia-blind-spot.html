@@ -1,0 +1,90 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Nexperia Blind Spot — Semipply Research</title><meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=DM+Sans:wght@400;500;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#09090C;--panel:#111116;--line:#26262e;--gold:#C8A96E;--text:#e8e6e1;--mute:#9a978f;--strong:#ffffff;}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--ink);color:var(--text);font-family:"DM Sans",system-ui,sans-serif;line-height:1.62;-webkit-font-smoothing:antialiased;}
+.wrap{max-width:760px;margin:0 auto;padding:44px 22px 120px;}
+.brandlogo{height:26px;width:auto;display:block;margin-bottom:26px;}
+.hero{border-bottom:1px solid var(--line);padding-bottom:22px;margin-bottom:26px;}
+.kicker{font-family:"DM Mono",monospace;font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);}
+h1{font-family:"Cormorant Garamond",serif;font-weight:600;font-size:clamp(32px,5.5vw,46px);line-height:1.05;margin:10px 0 8px;}
+.hero .sub{color:var(--mute);font-style:italic;font-size:17px;}
+.howto{font-size:13px;color:var(--mute);border:1px solid var(--line);border-left:3px solid var(--gold);border-radius:8px;padding:10px 14px;margin:0 0 8px;}
+.howto b{color:var(--text);font-weight:500;}
+h2{font-family:"Cormorant Garamond",serif;font-weight:600;font-size:25px;color:var(--gold);margin:38px 0 8px;scroll-margin-top:16px;}
+p{margin:0 0 13px;font-size:16px;} p.dek{color:var(--mute);font-style:italic;margin:0 0 12px;}
+li{margin:0 0 8px 20px;font-size:16px;}
+strong{color:var(--strong);font-weight:600;} em{font-style:italic;color:var(--text);}
+em.clause{color:var(--text);background:rgba(200,169,110,.10);border-left:2px solid var(--gold);padding:1px 6px;border-radius:3px;font-style:italic;}
+hr{border:0;border-top:1px solid var(--line);margin:30px 0;}
+.term{border-bottom:1px dashed var(--gold);cursor:help;position:relative;}
+.term .tip{visibility:hidden;opacity:0;position:absolute;left:0;bottom:calc(100% + 8px);z-index:20;width:min(300px,80vw);background:#1b1b22;color:var(--text);border:1px solid var(--gold);border-radius:8px;padding:10px 12px;font-size:13.5px;font-style:normal;font-weight:400;line-height:1.5;box-shadow:0 8px 24px rgba(0,0,0,.5);transition:opacity .12s;}
+.term:hover .tip,.term:focus .tip,.term.open .tip{visibility:visible;opacity:1;}
+.cta{margin-top:40px;border:1px solid var(--line);border-radius:12px;padding:18px 20px;background:var(--panel);}
+.cta b{font-family:"Cormorant Garamond",serif;font-size:19px;} .cta p{color:var(--mute);font-size:14px;margin:5px 0 0;} .cta a{color:var(--gold);text-decoration:none;font-weight:500;}
+footer{margin-top:40px;padding-top:20px;border-top:1px solid var(--line);color:var(--mute);font-size:12.5px;}
+footer .brand{color:var(--text);font-weight:500;} footer a{color:var(--gold);text-decoration:none;}
+.sidenav{position:fixed;top:0;left:24px;width:210px;height:100vh;overflow-y:auto;padding:52px 4px 40px;display:none;}
+@media(min-width:1220px){.sidenav{display:block;}}
+.sidenav .sn-h{font-family:"DM Mono",monospace;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin:0 0 10px 10px;}
+.sidenav a{display:block;font-size:12.5px;color:var(--mute);text-decoration:none;padding:5px 10px;border-left:2px solid transparent;line-height:1.3;}
+.sidenav a:hover{color:var(--text);} .sidenav a.active{color:var(--text);border-left-color:var(--gold);background:rgba(200,169,110,.09);}
+.navbtn{position:fixed;bottom:18px;right:18px;z-index:60;background:var(--gold);color:#09090C;border:0;border-radius:24px;padding:11px 17px;font-family:"DM Sans",sans-serif;font-weight:700;font-size:13px;cursor:pointer;box-shadow:0 6px 20px rgba(0,0,0,.45);}
+@media(min-width:1220px){.navbtn{display:none;}}
+.sidenav.open{display:block;inset:0 auto 0 0;left:0;width:min(330px,86vw);background:var(--panel);z-index:65;border-right:1px solid var(--line);box-shadow:0 0 50px rgba(0,0,0,.6);padding:56px 8px 40px;}
+.navbackdrop{position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:64;display:none;} .navbackdrop.open{display:block;}
+@media(prefers-color-scheme:light){:root{--ink:#faf9f6;--panel:#fff;--line:#e3e0d8;--gold:#9c7c3c;--text:#1a1a1e;--mute:#6b6862;--strong:#111111;} .term .tip{background:#fff;} em.clause{background:rgba(156,124,60,.10);} .brandlogo{filter:invert(1);}}
+</style></head><body><button class="navbtn" type="button" aria-label="Contents">&#9776;&nbsp;Contents</button><div class="navbackdrop"></div><nav class="sidenav" aria-label="Sections"><div class="sn-h">Contents</div><a href="#s1">Two clocks</a><a href="#s2">The exposure, dated and public</a><a href="#s3">The geometry: one plant, one unseen owner</a><a href="#s4">The event ended. The exposure did not.</a><a href="#s5">What can — and cannot — be read</a><a href="#s6">Why this is a product, not an anecdote</a></nav>
+<main class="wrap">
+<img class="brandlogo" src="/assets/semipply-research-logo.png" alt="Semipply Research">
+<div class="hero"><div class="kicker">Semipply Research · a Reader</div><h1>The Nexperia Blind Spot</h1><div class="sub">How the cheapest parts on the board stopped car factories</div></div>
+<div class="howto">Tap or hover any <span style="border-bottom:1px dashed var(--gold)">underlined term</span> for a plain-English definition.</div>
+<p>In late 2025, carmakers began warning of production stoppages. The cause was not a fab fire or a demand spike. It was a dispute over the ownership of a company called <strong>Nexperia</strong> — a maker of diodes and transistors, among the cheapest components on any circuit board, and among the last a buyer would think to worry about. A single plant going quiet was enough to put assembly lines at risk within about a month.</p>
+<p>The instructive part of the story is not the event. It is that the exposure behind it had been sitting in public view — dated and documented — for years.</p>
+<h2 id="s1">Two clocks</h2>
+<p>It helps to separate two things that move at very different speeds.</p>
+<p>The <strong>event</strong> — the export dispute, the plant stoppage, the parts not arriving — took roughly a month from the first headline to the shortage. Nobody forecasts a thing like that; it turns on a ministerial decision in a capital far from the assembly line. On this clock, prediction is hopeless.</p>
+<p>The <strong>exposure</strong> — being <span class="term" tabindex="0" role="button" aria-label="Buying a part from only one supplier, with no qualified alternative.">single-sourced<span class="tip">Buying a part from only one supplier, with no qualified alternative.</span></span> on a supplier whose ultimate owner you could not see, under contracts that carried no obligation to disclose that owner and no right to act if it changed — had been in place for years. On this clock, nothing was hidden.</p>
+<p class="dek">Nobody forecasts the lightning. Anybody can notice they have been standing in dry brush.</p>
+<h2 id="s2">The exposure, dated and public</h2>
+<p>Every link in the chain was a matter of public record, and each carried a date:</p>
+<li><strong>2019</strong> — Nexperia, a long-established European chipmaker, came under the control of <strong>Wingtech</strong>, a company based in China. The parent had no machine-readable ownership record in the standard entity registries — so an automated screen of "Nexperia" returned the subsidiary and stopped there.</li>
+<li><strong>December 2024</strong> — the United States added <strong>Wingtech</strong>, the parent, to its Entity List. Nexperia itself still screened clean.</li>
+<li><strong>September 2025</strong> — a US rule extended those restrictions to reach majority-owned subsidiaries of listed parents — reaching <em>through</em> the clean-looking name to the company underneath.</li>
+<li><strong>Late 2025</strong> — Dutch authorities took control of Nexperia under an emergency law; China then restricted exports from Nexperia's main finishing plant in <strong>Dongguan</strong>, which completes the majority of the company's output. With that plant restricted, the parts stopped, and carmakers faced line-down risk.</li>
+<li><strong>November 2025</strong> — the two governments stepped back; the flow resumed and lines restarted.</li>
+<p>There was an even earlier signal. Three years before the stoppage — in <strong>November 2022</strong> — the United Kingdom had ordered Nexperia to divest its Newport wafer plant, on ownership-based national-security grounds. A government had already acted, publicly, on this exact exposure, in a different jurisdiction, years ahead.</p>
+<h2 id="s3">The geometry: one plant, one unseen owner</h2>
+<p>Two ordinary features of a supply relationship combined into a single point of failure.</p>
+<p>The <strong>first</strong> was concentration. The majority of Nexperia's parts were finished at one plant. Qualifying an alternative source for an automotive-grade component takes months, so single-sourcing is common — and here it meant one facility, in one country, sat astride the supply.</p>
+<p>The <strong>second</strong> was ownership you could not see. The party on the contract was a clean European name; the party that ultimately controlled it was not visible to an automated screen. A publicly filed Nexperia agreement says nothing about who owns the company — no obligation to disclose the ultimate owner, and no right to act if control changes. <em>The silence is the finding.</em></p>
+<p>Put together: a cheap, single-sourced part, made in one plant, controlled by an owner the buyer's systems could not resolve, under a contract that neither disclosed that owner nor gave the buyer a way out.</p>
+<h2 id="s4">The event ended. The exposure did not.</h2>
+<p>It is tempting to file the episode as history — the parts flowed again, the lines restarted. But November 2025 was a diplomatic pause, not a structural repair. As of this writing the ownership is unchanged, the parent remains on the Entity List, the automated screen still cannot resolve the parent, the finishing concentration still sits at one plant, and the contracts that lacked disclosure and <span class="term" tabindex="0" role="button" aria-label="A change in who ultimately owns a company (e.g. an acquisition), which can trigger contract rights.">change-of-control<span class="tip">A change in who ultimately owns a company (e.g. an acquisition), which can trigger contract rights.</span></span> rights still lack them. The exposure is not something that happened. It is something that is still open.</p>
+<h2 id="s5">What can — and cannot — be read</h2>
+<p>None of this is a prediction. The point is the opposite: because the <em>event</em> was unforecastable, the only defensible work is on the <em>exposure</em> — and the exposure was documentary the whole time. What a buyer can read, on any supplier, from public records and its own contracts:</p>
+<li><strong>Who ultimately owns the counterparty</strong> — and, just as important, <strong>where that ownership cannot be resolved.</strong> A screen that says "we cannot see the owner here — look closer" is worth more than a false all-clear.</li>
+<li><strong>Where the supply is single-threaded</strong> — one plant, one region, no qualified <span class="term" tabindex="0" role="button" aria-label="A qualified alternative supplier for the same part.">second source<span class="tip">A qualified alternative supplier for the same part.</span></span>.</li>
+<li><strong>What the contract does not say</strong> — no disclosure obligation, no change-of-control right, no allocation priority in a shortage.</li>
+<p>None of these requires forecasting anything. They require reading what is already written down.</p>
+<h2 id="s6">Why this is a product, not an anecdote</h2>
+<p>The obvious objection is that anyone could have looked up Nexperia's owner in five minutes. True — for one supplier. A carmaker or a Tier-1 has thousands. The manual version is not hard; it is impossible by volume. The value is not in researching every supplier — it is in knowing <strong>which forty of your two thousand suppliers you cannot resolve an owner for</strong>, so a person can spend five minutes each on the forty that matter. That is a shorter list, not more information.</p>
+<p>The paper trail is not the limitation. It is the whole opportunity: <em>the exposures that are written down are precisely the ones nobody reads.</em></p>
+<hr>
+<p class="dek">A Semipply Research automotive reading. Events are public and are cited as correlation, not causation — nothing here asserts that a contract caused an outcome, and nothing here is legal or investment advice. The publicly filed Nexperia agreement referenced is a technology-license exhibit, not an automotive-supply contract; a carmaker's exposure runs through its own, unfiled Nexperia agreements. Verified against public reporting; readers should confirm each fact against the underlying source.</p>
+<div class="cta"><b>Have a question — or want this read on your own contract?</b><p><a href="https://intelligence.legalforensics.ai/analyze">Run it on your own contract &rarr;</a></p></div>
+<footer><span class="brand">Semipply Research</span> &middot; Semiconductor Supply Intelligence. Built from public filings; quotations verbatim. Not legal or investment advice. &middot; <a href="/research/">All Readers</a> &middot; <a href="The-Nexperia-Blind-Spot-Semipply.pdf">Download PDF</a></footer>
+</main><script>
+document.addEventListener('click',function(e){var t=e.target.closest('.term');document.querySelectorAll('.term.open').forEach(function(el){if(el!==t)el.classList.remove('open');});if(t){t.classList.toggle('open');e.preventDefault();}
+var n=document.querySelector('.sidenav.open');if(n&&!e.target.closest('.sidenav')&&!e.target.closest('.navbtn')){n.classList.remove('open');document.querySelector('.navbackdrop').classList.remove('open');}});
+(function(){var links=[].slice.call(document.querySelectorAll('.sidenav a'));if(!links.length)return;var map={};links.forEach(function(a){map[a.getAttribute('href').slice(1)]=a;});
+var obs=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){links.forEach(function(l){l.classList.remove('active');});var a=map[e.target.id];if(a)a.classList.add('active');}});},{rootMargin:'0px 0px -78% 0px',threshold:0});
+document.querySelectorAll('h2[id]').forEach(function(h){if(h.id)obs.observe(h);});
+var btn=document.querySelector('.navbtn'),nav=document.querySelector('.sidenav'),bd=document.querySelector('.navbackdrop');function cl(){nav.classList.remove('open');bd.classList.remove('open');}
+if(btn){btn.addEventListener('click',function(){nav.classList.toggle('open');bd.classList.toggle('open');});bd.addEventListener('click',cl);links.forEach(function(a){a.addEventListener('click',cl);});}})();
+</script></body></html>
