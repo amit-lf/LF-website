@@ -27,6 +27,11 @@
   .card h2{ font-family:"Cormorant Garamond",serif; font-weight:600; font-size:25px; line-height:1.15; margin:8px 0 6px; color:var(--text); }
   .card p{ color:var(--mute); font-size:15px; max-width:64ch; }
   .card .open{ display:inline-block; margin-top:12px; font-size:13px; color:var(--gold); font-weight:500; }
+  .grp{ margin-top:6px; }
+  .grp-h{ margin:42px 0 2px; }
+  .grp-h .gk{ font-family:"DM Mono",monospace; font-size:12px; letter-spacing:.2em; text-transform:uppercase; color:var(--gold); }
+  .grp-h .gs{ display:block; color:var(--mute); font-size:14.5px; margin-top:5px; max-width:60ch; }
+  section.grp ul.readers{ border-left:1px solid var(--line); margin-left:2px; padding-left:16px; }
   footer{ margin-top:56px; padding-top:22px; border-top:1px solid var(--line); color:var(--mute); font-size:13px; }
   footer .brand{ color:var(--text); font-weight:500; }
   footer a{ color:var(--gold); text-decoration:none; }
@@ -43,35 +48,55 @@
 
     <div class="rule"></div>
 
-    <ul class="readers">
-      <li><a class="card" href="field-guide.html">
-        <span class="tag">Field guide · interactive</span>
-        <h2>The Idiosyncrasies of Semiconductor Contracts</h2>
-        <p>Twelve dimensions of risk and who carries each — take-or-pay, single-source allocation, one-sided caps, the change-of-control exposure nobody signs — with plain-English advice, grounded in real clauses. Tap any term for a definition.</p>
-        <span class="open">Read online →</span>
-      </a></li>
+    <section class="grp">
+      <div class="grp-h"><span class="gk">Start here</span><span class="gs">The plain-English reference — the terms, and who carries the risk on each.</span></div>
+      <ul class="readers">
+        <li><a class="card" href="field-guide.html">
+          <span class="tag">Field guide · interactive</span>
+          <h2>The Idiosyncrasies of Semiconductor Contracts</h2>
+          <p>Twelve dimensions of risk and who carries each — take-or-pay, single-source allocation, one-sided caps, the change-of-control exposure nobody signs — with plain-English advice, grounded in real clauses. Tap any term for a definition.</p>
+          <span class="open">Read online →</span>
+        </a></li>
+      </ul>
+    </section>
 
-      <li><a class="card" href="The-Independence-Illusion-Semipply.pdf">
-        <span class="tag">The book · nine companies</span>
-        <h2>The Independence Illusion</h2>
-        <p>What semiconductor companies file — and hope you won't read. Nine IPOs read from the exhibits up, each contractually captive to a parent, customer, foundry, or licensor.</p>
-        <span class="open">Read →</span>
-      </a></li>
+    <section class="grp">
+      <div class="grp-h"><span class="gk">The Independence Illusion — a collection</span><span class="gs">A three-part reading: the thesis, how it aged, and the method turned on your own contracts.</span></div>
+      <ul class="readers">
+        <li><a class="card" href="The-Independence-Illusion-Semipply.pdf">
+          <span class="tag">Part one · the book · nine companies</span>
+          <h2>The Independence Illusion</h2>
+          <p>What semiconductor companies file — and hope you won't read. Nine IPOs read from the exhibits up, each contractually captive to a parent, customer, foundry, or licensor.</p>
+          <span class="open">Read →</span>
+        </a></li>
 
-      <li><a class="card" href="How-the-Nine-Aged-Semipply.pdf">
-        <span class="tag">Companion</span>
-        <h2>How the Nine Aged</h2>
-        <p>A check on where the fragility we flagged has since shown up — Allegro, Mobileye, Cerebras and the rest. Correlation, not causation: stress tends to land where the paper said it would.</p>
-        <span class="open">Read →</span>
-      </a></li>
+        <li><a class="card" href="How-the-Nine-Aged-Semipply.pdf">
+          <span class="tag">Part two · the validation</span>
+          <h2>How the Nine Aged</h2>
+          <p>A check on where the fragility we flagged has since shown up — Allegro, Mobileye, Cerebras and the rest. Correlation, not causation: stress tends to land where the paper said it would.</p>
+          <span class="open">Read →</span>
+        </a></li>
 
-      <li><a class="card" href="The-Questions-Your-Contracts-Force-Semipply.pdf">
-        <span class="tag">Do this on your own contracts</span>
-        <h2>The Questions Your Contracts Force</h2>
-        <p>The method turned on you: the diligence questions your own agreements force you — and your funders — to answer, before someone else asks them at a raise, a sale, or a review. Allegro is the worked example; the point is your book of contracts.</p>
-        <span class="open">Read →</span>
-      </a></li>
-    </ul>
+        <li><a class="card" href="The-Questions-Your-Contracts-Force-Semipply.pdf">
+          <span class="tag">Part three · your turn</span>
+          <h2>The Questions Your Contracts Force</h2>
+          <p>The method turned on you: the diligence questions your own agreements force you — and your funders — to answer, before someone else asks them at a raise, a sale, or a review. Allegro is the worked example; the point is your book of contracts.</p>
+          <span class="open">Read →</span>
+        </a></li>
+      </ul>
+    </section>
+
+    <section class="grp">
+      <div class="grp-h"><span class="gk">Automotive</span><span class="gs">Vertical readings for automotive semiconductor supply.</span></div>
+      <ul class="readers">
+        <li><a class="card" href="The-Nexperia-Blind-Spot-Semipply.pdf">
+          <span class="tag">Auto · a supply blind spot</span>
+          <h2>The Nexperia Blind Spot</h2>
+          <p>How the cheapest parts on the board — diodes and transistors — stopped car factories in 2025, and why the ownership exposure behind it had been public and dated for years. The event was unforecastable; the exposure was readable all along.</p>
+          <span class="open">Read →</span>
+        </a></li>
+      </ul>
+    </section>
 
     <footer>
       <span class="brand">Semipply Research</span> · Semiconductor Supply Intelligence.
