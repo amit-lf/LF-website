@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Semipply Research — Semiconductor Supply Intelligence</title>
+<meta name="description" content="Grounded reads of real, SEC-filed semiconductor contracts — the research arm of LegalForensics / Semipply.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=DM+Sans:wght@400;500;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{ --ink:#09090C; --panel:#111116; --line:#26262e; --gold:#C8A96E; --text:#e8e6e1; --mute:#9a978f; }
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  body{ background:var(--ink); color:var(--text); font-family:"DM Sans",system-ui,sans-serif; line-height:1.55; -webkit-font-smoothing:antialiased; }
+  .wrap{ max-width:820px; margin:0 auto; padding:72px 24px 96px; }
+  .kicker{ font-family:"DM Mono",monospace; font-size:12px; letter-spacing:.22em; text-transform:uppercase; color:var(--gold); }
+  h1{ font-family:"Cormorant Garamond",serif; font-weight:600; font-size:clamp(34px,6vw,52px); line-height:1.05; margin:14px 0 18px; letter-spacing:.5px; }
+  .lede{ color:var(--mute); font-size:18px; max-width:62ch; }
+  .lede strong{ color:var(--text); font-weight:500; }
+  .rule{ height:1px; background:var(--line); margin:44px 0 8px; }
+  ul.readers{ list-style:none; }
+  a.card{ display:block; text-decoration:none; color:inherit; border:1px solid var(--line); border-radius:12px; padding:22px 24px; margin-top:18px; background:var(--panel); transition:border-color .18s ease, transform .18s ease; }
+  a.card:hover{ border-color:var(--gold); transform:translateY(-2px); }
+  a.card:focus-visible{ outline:2px solid var(--gold); outline-offset:3px; }
+  .tag{ font-family:"DM Mono",monospace; font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--gold); }
+  .card h2{ font-family:"Cormorant Garamond",serif; font-weight:600; font-size:25px; line-height:1.15; margin:8px 0 6px; color:var(--text); }
+  .card p{ color:var(--mute); font-size:15px; max-width:64ch; }
+  .card .open{ display:inline-block; margin-top:12px; font-size:13px; color:var(--gold); font-weight:500; }
+  footer{ margin-top:56px; padding-top:22px; border-top:1px solid var(--line); color:var(--mute); font-size:13px; }
+  footer .brand{ color:var(--text); font-weight:500; }
+  footer a{ color:var(--gold); text-decoration:none; }
+  @media (prefers-color-scheme: light){
+    :root{ --ink:#faf9f6; --panel:#ffffff; --line:#e3e0d8; --gold:#9c7c3c; --text:#1a1a1e; --mute:#6b6862; }
+  }
+</style>
+</head>
+<body>
+  <main class="wrap">
+    <div class="kicker">Semipply Research</div>
+    <h1>The contracts that matter, read closely.</h1>
+    <p class="lede">Grounded reads of real, <strong>SEC-filed semiconductor contracts</strong> — foundry, customer, and IP-license agreements the market signs and almost never reads. Depth over size; every figure and quotation traced to the public filing. Written to be understood, not decoded.</p>
+
+    <div class="rule"></div>
+
+    <ul class="readers">
+      <li><a class="card" href="Field-Guide-Semiconductor-Contracts-Semipply.pdf">
+        <span class="tag">Field guide</span>
+        <h2>The Idiosyncrasies of Semiconductor Contracts</h2>
+        <p>Twelve dimensions of risk and who carries each — take-or-pay, single-source allocation, one-sided caps, the change-of-control exposure nobody signs — with plain-English advice, grounded in real clauses.</p>
+        <span class="open">Read →</span>
+      </a></li>
+
+      <li><a class="card" href="The-Independence-Illusion-Semipply.pdf">
+        <span class="tag">The book · nine companies</span>
+        <h2>The Independence Illusion</h2>
+        <p>What semiconductor companies file — and hope you won't read. Nine IPOs read from the exhibits up, each contractually captive to a parent, customer, foundry, or licensor.</p>
+        <span class="open">Read →</span>
+      </a></li>
+
+      <li><a class="card" href="How-the-Nine-Aged-Semipply.pdf">
+        <span class="tag">Companion</span>
+        <h2>How the Nine Aged</h2>
+        <p>A check on where the fragility we flagged has since shown up — Allegro, Mobileye, Cerebras and the rest. Correlation, not causation: stress tends to land where the paper said it would.</p>
+        <span class="open">Read →</span>
+      </a></li>
+
+      <li><a class="card" href="The-Questions-Your-Contracts-Force-Semipply.pdf">
+        <span class="tag">The method, turned around</span>
+        <h2>The Questions Your Contracts Force</h2>
+        <p>The diligence agenda your own paper sets — the questions an investor or acquirer will ask, answerable clause by clause. A worked example on Allegro MicroSystems.</p>
+        <span class="open">Read →</span>
+      </a></li>
+
+      <li><a class="card" href="Market-Intelligence-Semipply.pdf">
+        <span class="tag">Benchmark by term</span>
+        <h2>Market Intelligence: What Semiconductor Companies Actually Signed</h2>
+        <p>The corpus re-cut by the term you negotiate — foundry, customer, and IP-license clauses across real filings. A benchmark, not a rating.</p>
+        <span class="open">Read →</span>
+      </a></li>
+    </ul>
+
+    <footer>
+      <span class="brand">Semipply Research</span> · Semiconductor Supply Intelligence.
+      Built from public SEC filings; quotations verbatim. A benchmark, not investment advice.
+      <a href="/">legalforensics.ai</a>
+    </footer>
+  </main>
+</body>
+</html>
