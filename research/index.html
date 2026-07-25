@@ -16,10 +16,12 @@
   .wrap{ max-width:820px; margin:0 auto; padding:72px 24px 96px; }
   .kicker{ font-family:"DM Mono",monospace; font-size:12px; letter-spacing:.22em; text-transform:uppercase; color:var(--gold); }
   .brandlogo{ height:30px; width:auto; display:block; margin-bottom:22px; }
-  h1{ font-family:"Cormorant Garamond",serif; font-weight:600; font-size:clamp(34px,6vw,52px); line-height:1.05; margin:14px 0 18px; letter-spacing:.5px; }
+  h1{ font-family:"Cormorant Garamond",serif; font-weight:600; font-size:clamp(38px,7vw,60px); line-height:1.02; margin:14px 0 6px; letter-spacing:.5px; }
+  .subtitle{ font-family:"Cormorant Garamond",serif; font-style:italic; font-size:clamp(19px,3vw,24px); color:var(--mute); margin-bottom:20px; }
   .lede{ color:var(--mute); font-size:18px; max-width:62ch; }
   .lede strong{ color:var(--text); font-weight:500; }
-  .rule{ height:1px; background:var(--line); margin:44px 0 8px; }
+  .imprint{ font-family:"DM Mono",monospace; font-size:11.5px; letter-spacing:.16em; text-transform:uppercase; color:var(--mute); margin-top:20px; }
+  .rule{ height:1px; background:var(--line); margin:40px 0 4px; }
   ul.readers{ list-style:none; }
   a.card{ display:block; text-decoration:none; color:inherit; border:1px solid var(--line); border-radius:12px; padding:22px 24px; margin-top:18px; background:var(--panel); transition:border-color .18s ease, transform .18s ease; }
   a.card:hover{ border-color:var(--gold); transform:translateY(-2px); }
@@ -29,7 +31,7 @@
   .card p{ color:var(--mute); font-size:15px; max-width:64ch; }
   .card .open{ display:inline-block; margin-top:12px; font-size:13px; color:var(--gold); font-weight:500; }
   .grp{ margin-top:6px; }
-  .grp-h{ margin:42px 0 2px; }
+  .grp-h{ margin:40px 0 2px; }
   .grp-h .gk{ font-family:"DM Mono",monospace; font-size:12px; letter-spacing:.2em; text-transform:uppercase; color:var(--gold); }
   .grp-h .gs{ display:block; color:var(--mute); font-size:14.5px; margin-top:5px; max-width:60ch; }
   section.grp ul.readers{ border-left:1px solid var(--line); margin-left:2px; padding-left:16px; }
@@ -47,12 +49,25 @@
     <img class="brandlogo" src="/assets/semipply-research-logo.png" alt="Semipply Research">
     <div class="kicker">Research · Semiconductor Supply Intelligence</div>
     <h1>Signed Once</h1>
-    <p class="lede"><strong>The asymmetry in semiconductor supply contracts.</strong> Every chip company signs a version of the same few deals — with a foundry to make its parts, a customer to buy them, a licensor for the IP underneath. In almost every one, the risk is allocated to a single side — and it usually isn't yours. The party across the table has signed this many times; <strong>you are signing it once.</strong> A field guide to that asymmetry, read from real, <strong>SEC-filed agreements</strong> — depth over size, every figure and quotation traced to the public filing.</p>
+    <div class="subtitle">The asymmetry in semiconductor supply contracts</div>
+    <p class="lede">Every chip company signs a version of the same few deals — with a foundry to make its parts, a customer to buy them, a licensor for the IP underneath. In almost every one, the risk is allocated to a single side — and it usually isn't yours. The party across the table has signed this many times; <strong>you are signing it once.</strong> A field guide to that asymmetry, read from real, <strong>SEC-filed agreements</strong> — depth over size, every figure and quotation traced to the public filing.</p>
+    <div class="imprint">A Semipply Research book · First edition · Built from public SEC filings</div>
 
     <div class="rule"></div>
 
     <section class="grp">
-      <div class="grp-h"><span class="gk">The book · seven chapters</span><span class="gs">Read in order, or start anywhere — each chapter stands alone. Together they make one argument: the weaker party signs the risk it never priced.</span></div>
+      <ul class="readers">
+        <li><a class="card" href="foreword.html">
+          <span class="tag">Foreword · begin here</span>
+          <h2>Read the Exhibits</h2>
+          <p>Why the document a company files and hopes you won't open is the one that tells the truth — and the method this book turns on it.</p>
+          <span class="open">Read →</span>
+        </a></li>
+      </ul>
+    </section>
+
+    <section class="grp">
+      <div class="grp-h"><span class="gk">The book · five chapters</span><span class="gs">Read in order, or start anywhere — each stands alone. Together they make one argument: the weaker party signs the risk it never priced.</span></div>
       <ul class="readers">
         <li><a class="card" href="The-Independence-Illusion-Semipply.pdf">
           <span class="tag">Chapter one · the thesis · nine companies</span>
@@ -75,31 +90,47 @@
           <span class="open">Read →</span>
         </a></li>
 
-        <li><a class="card" href="the-nexperia-blind-spot.html">
-          <span class="tag">Chapter four · the case</span>
-          <h2>The Nexperia Blind Spot</h2>
-          <p>How the cheapest parts on the board — diodes and transistors — stopped car factories in 2025, and why the ownership exposure behind it had been public and dated for years. The event was unforecastable; the exposure was readable all along.</p>
-          <span class="open">Read →</span>
-        </a></li>
-
-        <li><a class="card" href="when-the-chip-goes-in-a-car.html">
-          <span class="tag">Chapter five · the automotive read</span>
-          <h2>When the Chip Goes in a Car</h2>
-          <p>The automotive-specific contract terms generic review misses — qualification lock-in (AEC-Q100/PPAP), PCN notice gaps, longevity and last-time-buy, and the OEM directed-buy squeeze. A companion to the Field Guide.</p>
-          <span class="open">Read →</span>
-        </a></li>
-
         <li><a class="card" href="what-the-sec-asked.html">
-          <span class="tag">Chapter six · the regulator's read</span>
+          <span class="tag">Chapter four · the regulator's read</span>
           <h2>What the SEC Asked</h2>
           <p>The questions the regulator forced these companies to answer — China exposure, who really controls them, customer concentration, whether the revenue is real. Across 19 companies' comment letters: the diligence the SEC already did, sitting on EDGAR unread.</p>
           <span class="open">Read →</span>
         </a></li>
 
         <li><a class="card" href="the-questions-your-contracts-force.html">
-          <span class="tag">Chapter seven · your turn</span>
+          <span class="tag">Chapter five · your turn</span>
           <h2>The Questions Your Contracts Force</h2>
           <p>The method turned on you: the diligence questions your own agreements force you — and your funders — to answer, before someone else asks them at a raise, a sale, or a review. Allegro is the worked example; the point is your own book of contracts.</p>
+          <span class="open">Read →</span>
+        </a></li>
+      </ul>
+    </section>
+
+    <section class="grp">
+      <div class="grp-h"><span class="gk">Automotive · a worked vertical</span><span class="gs">The same method applied to one industry — where the cheapest part on the board, and the owner behind it, stopped car factories.</span></div>
+      <ul class="readers">
+        <li><a class="card" href="the-nexperia-blind-spot.html">
+          <span class="tag">Companion · the case</span>
+          <h2>The Nexperia Blind Spot</h2>
+          <p>How the cheapest parts on the board — diodes and transistors — stopped car factories in 2025, and why the ownership exposure behind it had been public and dated for years. The event was unforecastable; the exposure was readable all along.</p>
+          <span class="open">Read →</span>
+        </a></li>
+
+        <li><a class="card" href="when-the-chip-goes-in-a-car.html">
+          <span class="tag">Companion · the automotive reference</span>
+          <h2>When the Chip Goes in a Car</h2>
+          <p>The automotive-specific contract terms generic review misses — qualification lock-in (AEC-Q100/PPAP), PCN notice gaps, longevity and last-time-buy, and the OEM directed-buy squeeze. A companion to the Field Guide.</p>
+          <span class="open">Read →</span>
+        </a></li>
+      </ul>
+    </section>
+
+    <section class="grp">
+      <ul class="readers">
+        <li><a class="card" href="the-through-line.html">
+          <span class="tag">Afterword</span>
+          <h2>The Through-Line</h2>
+          <p>What the agreements have in common, and why the gap between the story a company tells and the contract it signed is the whole opportunity.</p>
           <span class="open">Read →</span>
         </a></li>
       </ul>
