@@ -23,6 +23,15 @@
   .forbox{ border:1px solid var(--line); border-left:3px solid var(--gold); border-radius:10px; background:var(--panel); padding:16px 20px; margin-top:26px; max-width:64ch; }
   .forbox .fw{ display:block; color:var(--gold); font-family:"DM Mono",monospace; font-size:11px; letter-spacing:.18em; text-transform:uppercase; margin-bottom:7px; }
   .forbox p{ color:var(--text); font-size:15px; line-height:1.55; }
+  .getbook{ border:1px solid var(--line); border-left:3px solid var(--gold); border-radius:12px; background:var(--panel); padding:18px 22px; margin-top:18px; max-width:64ch; }
+  .getbook .gk{ display:block; color:var(--gold); font-family:"DM Mono",monospace; font-size:11px; letter-spacing:.18em; text-transform:uppercase; margin-bottom:6px; }
+  .getbook p{ color:var(--mute); font-size:14.5px; margin-bottom:12px; }
+  .getbook form{ display:flex; gap:8px; flex-wrap:wrap; }
+  .getbook input{ flex:1; min-width:220px; background:transparent; border:1px solid var(--line); border-radius:8px; padding:10px 12px; color:var(--text); font-size:14px; font-family:"DM Sans",sans-serif; }
+  .getbook input:focus{ outline:none; border-color:var(--gold); }
+  .getbook button{ background:var(--gold); color:#0a0a0f; border:none; border-radius:8px; padding:10px 16px; font-weight:600; font-size:14px; cursor:pointer; font-family:"DM Sans",sans-serif; }
+  .getbook .done{ display:none; color:var(--gold); font-size:14px; margin-bottom:0; }
+  .getbook .done a{ color:var(--gold); }
   .rule{ height:1px; background:var(--line); margin:40px 0 4px; }
   ul.readers{ list-style:none; }
   a.card{ display:block; text-decoration:none; color:inherit; border:1px solid var(--line); border-radius:12px; padding:22px 24px; margin-top:18px; background:var(--panel); transition:border-color .18s ease, transform .18s ease; }
@@ -57,6 +66,16 @@
     <div class="forbox">
       <span class="fw">Who this book is for</span>
       <p>The founders, operators, and procurement teams who sign these contracts, and their boards — and the investors, acquirers, and lenders who need to read the risk before they back them.</p>
+    </div>
+
+    <div class="getbook">
+      <span class="gk">Get the book</span>
+      <p>Every chapter is free to read on this page. Want the full book as a single PDF to keep or share? Enter your email and it's yours.</p>
+      <form id="bookform">
+        <input type="email" id="bookemail" required placeholder="you@company.com" aria-label="Email">
+        <button type="submit">Email me the PDF →</button>
+      </form>
+      <p class="done" id="bookdone">Thanks — your download should begin. <a href="The-Independence-Illusion-Semipply.pdf">Or download it here →</a></p>
     </div>
     <div class="imprint">A Semipply Research book · First edition · Built from public SEC filings</div>
 
@@ -151,5 +170,23 @@
       <a href="/">legalforensics.ai</a>
     </footer>
   </main>
+  <script>
+    (function(){
+      var f = document.getElementById('bookform');
+      if(!f) return;
+      f.addEventListener('submit', function(e){
+        e.preventDefault();
+        var email = document.getElementById('bookemail').value;
+        var data = new FormData();
+        data.append('email', email);
+        data.append('doc', 'Signed Once — the book (PDF)');
+        data.append('_subject', 'Book download — Signed Once');
+        fetch('https://formspree.io/f/xbdakppb', {method:'POST', body:data, headers:{'Accept':'application/json'}}).catch(function(){});
+        f.style.display = 'none';
+        document.getElementById('bookdone').style.display = 'block';
+        window.location.href = 'The-Independence-Illusion-Semipply.pdf';
+      });
+    })();
+  </script>
 </body>
 </html>
