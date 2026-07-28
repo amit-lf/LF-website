@@ -1,0 +1,94 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Every Domain, a Different Leash · Semipply Research</title>
+<meta name="description" content="The kind of chip you build predicts the kind of capture you sign — customer, parent, foundry, licensor, upstream. Read by domain, from real SEC filings.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=DM+Sans:wght@400;500;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#09090C;--panel:#111116;--line:#26262e;--gold:#C8A96E;--text:#e8e6e1;--mute:#9a978f;--strong:#ffffff;}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--ink);color:var(--text);font-family:"DM Sans",system-ui,sans-serif;line-height:1.62;-webkit-font-smoothing:antialiased;}
+.wrap{max-width:760px;margin:0 auto;padding:44px 22px 120px;}
+.brandlogo{height:26px;width:auto;display:block;margin-bottom:26px;}
+.hero{border-bottom:1px solid var(--line);padding-bottom:22px;margin-bottom:26px;}
+.kicker{font-family:"DM Mono",monospace;font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);}
+h1{font-family:"Cormorant Garamond",serif;font-weight:600;font-size:clamp(32px,5.5vw,46px);line-height:1.05;margin:10px 0 8px;}
+.hero .sub{color:var(--mute);font-style:italic;font-size:17px;}
+h2{font-family:"Cormorant Garamond",serif;font-weight:600;font-size:25px;color:var(--gold);margin:38px 0 8px;scroll-margin-top:16px;}
+p{margin:0 0 13px;font-size:16px;} p.dek{color:var(--mute);font-style:italic;margin:0 0 12px;}
+li{margin:0 0 8px 20px;font-size:16px;}
+strong{color:var(--strong);font-weight:600;} em{font-style:italic;color:var(--text);}
+em.clause{color:var(--text);background:rgba(200,169,110,.10);border-left:2px solid var(--gold);padding:1px 6px;border-radius:3px;font-style:italic;}
+.leash-wrap{overflow-x:auto;margin:24px 0;border:1px solid var(--line);border-radius:12px;}
+table.leash{width:100%;border-collapse:collapse;min-width:520px;font-size:14.5px;}
+table.leash th,table.leash td{text-align:left;padding:10px 14px;border-bottom:1px solid var(--line);}
+table.leash tbody tr:last-child td{border-bottom:0;}
+table.leash thead th{font-family:"DM Mono",monospace;font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--gold);}
+table.leash td:first-child,table.leash th:first-child{font-weight:600;color:var(--strong);}
+hr{border:0;border-top:1px solid var(--line);margin:30px 0;}
+.term{border-bottom:1px dashed var(--gold);cursor:help;position:relative;}
+.term .tip{visibility:hidden;opacity:0;position:absolute;left:0;bottom:calc(100% + 8px);z-index:20;width:min(300px,80vw);background:#1b1b22;color:var(--text);border:1px solid var(--gold);border-radius:8px;padding:10px 12px;font-size:13.5px;font-style:normal;font-weight:400;line-height:1.5;box-shadow:0 8px 24px rgba(0,0,0,.5);transition:opacity .12s;}
+.term:hover .tip,.term:focus .tip,.term.open .tip{visibility:visible;opacity:1;}
+.cta{margin-top:40px;border:1px solid var(--line);border-radius:12px;padding:18px 20px;background:var(--panel);}
+.cta b{font-family:"Cormorant Garamond",serif;font-size:19px;} .cta p{color:var(--mute);font-size:14px;margin:5px 0 0;} .cta a{color:var(--gold);text-decoration:none;font-weight:500;}
+footer{margin-top:40px;padding-top:20px;border-top:1px solid var(--line);color:var(--mute);font-size:12.5px;}
+footer .brand{color:var(--text);font-weight:500;} footer a{color:var(--gold);text-decoration:none;}
+.sidenav{position:fixed;top:0;left:24px;width:210px;height:100vh;overflow-y:auto;padding:52px 4px 40px;display:none;}
+@media(min-width:1220px){.sidenav{display:block;}}
+.sidenav .sn-h{font-family:"DM Mono",monospace;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin:0 0 10px 10px;}
+.sidenav a{display:block;font-size:12.5px;color:var(--mute);text-decoration:none;padding:5px 10px;border-left:2px solid transparent;line-height:1.3;}
+.sidenav a:hover{color:var(--text);} .sidenav a.active{color:var(--text);border-left-color:var(--gold);background:rgba(200,169,110,.09);}
+.navbtn{position:fixed;bottom:18px;right:18px;z-index:60;background:var(--gold);color:#09090C;border:0;border-radius:24px;padding:11px 17px;font-family:"DM Sans",sans-serif;font-weight:700;font-size:13px;cursor:pointer;box-shadow:0 6px 20px rgba(0,0,0,.45);}
+@media(min-width:1220px){.navbtn{display:none;}}
+.sidenav.open{display:block;inset:0 auto 0 0;left:0;width:min(330px,86vw);background:var(--panel);z-index:65;border-right:1px solid var(--line);box-shadow:0 0 50px rgba(0,0,0,.6);padding:56px 8px 40px;}
+.navbackdrop{position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:64;display:none;} .navbackdrop.open{display:block;}
+@media(prefers-color-scheme:light){:root{--ink:#faf9f6;--panel:#fff;--line:#e3e0d8;--gold:#9c7c3c;--text:#1a1a1e;--mute:#6b6862;--strong:#111111;} .term .tip{background:#fff;} em.clause{background:rgba(156,124,60,.10);} .brandlogo{filter:invert(1);}}
+</style></head><body><button class="navbtn" type="button" aria-label="Contents">&#9776;&nbsp;Contents</button><div class="navbackdrop"></div><nav class="sidenav" aria-label="Sections"><div class="sn-h">Contents</div><a href="#d1">Customer — AI compute &amp; networking</a><a href="#d2">Parent — analog &amp; automotive</a><a href="#d3">Foundry — MEMS &amp; memory</a><a href="#d4">Licensor — optics</a><a href="#d5">Upstream — the foundries</a><a href="#why">Why it's like this</a><a href="#point">The point</a></nav>
+<main class="wrap">
+<img class="brandlogo" src="/assets/semipply-research-logo.png" alt="Semipply Research">
+<div class="hero"><div class="kicker">Semipply Research · a Reader</div><h1>Every Domain, a Different Leash</h1><div class="sub">How the terms shift across AI compute, analog, memory, optics — and the foundries themselves</div></div>
+<p>Every chip company signs a version of the same few deals — a <span class="term" tabindex="0" role="button" aria-label="A factory that manufactures chips designed by others (e.g. TSMC, GlobalFoundries).">foundry<span class="tip">A factory that manufactures chips designed by others (e.g. TSMC, GlobalFoundries).</span></span> to make its parts, a customer to buy them, a licensor for the IP underneath. We read the filed agreements behind nine recent chip IPOs. Read one at a time, they're nine stories. Read them <strong>by domain</strong>, and a sharper pattern shows up: <strong>the kind of chip you build predicts the kind of capture you sign.</strong></p>
+<div class="leash-wrap"><table class="leash">
+<thead><tr><th>Company</th><th>Domain</th><th>Whose leash</th></tr></thead>
+<tbody>
+<tr><td>Cerebras</td><td>AI compute (wafer-scale)</td><td>the <strong>customer</strong> (G42)</td></tr>
+<tr><td>Aquantia</td><td>Networking / connectivity</td><td>the <strong>customer</strong> (Intel)</td></tr>
+<tr><td>Allegro</td><td>Analog · sensors · power</td><td>the <strong>parent</strong> (Sanken)</td></tr>
+<tr><td>Mobileye</td><td>Automotive AI vision</td><td>the <strong>parent</strong> (Intel)</td></tr>
+<tr><td>SiTime</td><td>MEMS timing</td><td>the <strong>foundry</strong> (Bosch)</td></tr>
+<tr><td>Everspin</td><td>Memory (MRAM)</td><td>the <strong>foundry</strong> (GlobalFoundries)</td></tr>
+<tr><td>MetaOptics</td><td>Optics / photonics</td><td>the <strong>licensor</strong> (A*STAR)</td></tr>
+<tr><td>GlobalFoundries</td><td>Foundry</td><td><strong>upstream</strong> (Soitec + Mubadala)</td></tr>
+<tr><td>SkyWater</td><td>Foundry</td><td><strong>upstream</strong> (Cypress process)</td></tr>
+</tbody></table></div>
+<p>Different leash every time — but always a leash, and always readable in the exhibit.</p>
+<h2 id="d1">Build AI compute or networking — your leash is your customer</h2>
+<p>When your buyer is also your investor and your lender, the paper stops being a supply agreement and becomes a claim. Cerebras filed eleven supply agreements — every one with G42 or its orbit. A $300M prepayment came with a catch: <em class="clause">"any of Cerebras's rights (including ownership rights) in respect of the HPC infrastructure [***] will transfer to G42 US automatically"</em> if the order slips. Aquantia sat in the mirror seat, selling to Intel: <em class="clause">"Intel may terminate this Project Statement for convenience at any time … Aquantia may not terminate."</em> One party holds the exit, the volume, and — via embedded mask works — the IP. In this domain, the counterparty across the table is the one writing your revenue.</p>
+<h2 id="d2">Build analog, sensors or automotive silicon — your leash is your parent</h2>
+<p>These companies trade as independent and run through a controlling shareholder who owns the foundry, the IP, and a <span class="term" tabindex="0" role="button" aria-label="A change in who ultimately owns a company (e.g. a parent dropping below a threshold), which can trigger contract rights.">change-of-control<span class="tip">A change in who ultimately owns a company (e.g. a parent dropping below a threshold), which can trigger contract rights.</span></span> tripwire. Allegro's royalty rights <em class="clause">"shall terminate in the event that Sanken ceases to own … more than fifty percent."</em> That clause sat in the exhibit for years; in 2024 the parent crossed the line and Allegro drew a ~$6.9B bid. Mobileye disclosed Intel's right <em class="clause">"to maintain 80.1% ownership,"</em> and <em class="clause">"Intel solely owns all Project IPR to Intel Core Technology."</em> The parent isn't on the cap table — it's on every axis of the contract.</p>
+<h2 id="d3">Build MEMS or memory — your leash is your foundry, because your foundry owns your IP</h2>
+<p>Here the fab and the patent holder are the same company, and you can't leave. SiTime single-sources MEMS wafers from Bosch, which also licenses it the underlying MEMS technology — and the agreement unwinds only <em class="clause">"upon providing three (3) years advance written notice,"</em> with Bosch's liability capped at $5M. Everspin invented MRAM and then agreed it <em class="clause">"shall not disclose, dispose of or license any Foreground IP to any foundry during the Exclusivity Period"</em> — no second source, by contract, on the line it funded and can be terminated from for a missed payment. The party that makes your chips also holds the technology that makes them possible.</p>
+<h2 id="d4">Build optics — your leash is your licensor, because you don't own your "proprietary" technology at all</h2>
+<p>MetaOptics filed five agreements; all five are inbound licenses from one Singapore government agency, each <em class="clause">"non-exclusive, non-sublicensable, non-transferable, revocable for cause."</em> The agency took a ~5–6% equity stake as the license fee, collects royalties, audits the books, can license the same metalens IP to a rival, and disclaims any warranty that the technology is <em class="clause">"free from infringement."</em> "Proprietary" turns out to be a rented word.</p>
+<h2 id="d5">And the foundries everyone else leans on? They're captive upstream</h2>
+<p>The supplier at the bottom of a dozen supply chains has its own single point of failure. GlobalFoundries buys its SOI substrate from one French supplier on a <em class="clause">"Rolling Frozen Delivery Plan"</em> with a <em class="clause">"minimum of [***] per calendar year,"</em> and is itself a <em class="clause">"controlled company"</em> of an Abu Dhabi sovereign fund. SkyWater — America's "trusted" foundry — licenses its core process from its former parent and hands its own improvements back: <em class="clause">"Licensee hereby irrevocably transfers, conveys, and assigns to Licensor … all … Licensor Improvements."</em> Concentration doesn't stop at the fab. It just gets harder to see.</p>
+<h2 id="why">Why it's like this</h2>
+<p>None of this is a negotiating failure — it's structural. A specialty-chip company usually can't build its own fab (the capability is scarce and capital-intensive), often didn't originate its core IP (it's inherited from a parent or licensed from a lab), and needs an anchor customer or parent to get funded in the first place. At the moment of signing, the counterparty is the <em>only one who has what the company needs</em> — the process, the IP, the capital, or the demand. So the leash gets signed. It's priced in at birth, and it's why the shape is so predictable by domain.</p>
+<h2 id="point">The point — and what you can do about it</h2>
+<p>The leash changes shape — customer, parent, foundry, licensor, upstream — but it's always there, and it's <em>readable</em>. You don't have to read a contract cold to know where to look: AI compute, check whether your customer is also your investor; analog or automotive, find the change-of-control tripwire and the parent's IP; MEMS or memory, ask whether your foundry also owns your process and how long the exit takes; optics, ask what you actually <em>own</em> versus license; and whoever your foundry is, ask who owns <em>them</em>.</p>
+<p>You can't always escape the leash — a MEMS startup still needs its foundry. But two of the three forces behind it, information and experience, <em>are</em> fixable. The counterparty's whole edge is that it has signed its version a hundred times and you've signed once. Reading a hundred real deals hands you that experience — so you sign knowingly, and you find the buried liability <strong>first</strong>, on your timeline, not when an acquirer finds it at your next round.</p>
+<p>Most companies sign once. Knowing your domain's characteristic leash is how you read the exhibit before someone else reads it for you.</p>
+<hr>
+<p class="dek">Read by domain across nine recent chip IPOs. Every quotation is verbatim from the company's public SEC filings; bracketed marks such as [***] denote the issuer's own redactions. Companion to <em>The Independence Illusion</em>. Analysis of public documents — not legal or investment advice.</p>
+<div class="cta"><b>Want this read on your own contract?</b><p>Send us one representative agreement under NDA and we'll run this exact read on it, clause by clause. <a href="https://legalforensics.ai/contact">Send one agreement &rarr;</a></p></div>
+<footer><span class="brand">Semipply Research</span> &middot; Semiconductor Supply Intelligence. Built from public SEC filings; quotations verbatim. Not legal or investment advice. &middot; <a href="/research/">All Readers</a></footer>
+</main><script>
+document.addEventListener('click',function(e){var t=e.target.closest('.term');document.querySelectorAll('.term.open').forEach(function(el){if(el!==t)el.classList.remove('open');});if(t){t.classList.toggle('open');e.preventDefault();}
+var n=document.querySelector('.sidenav.open');if(n&&!e.target.closest('.sidenav')&&!e.target.closest('.navbtn')){n.classList.remove('open');document.querySelector('.navbackdrop').classList.remove('open');}});
+(function(){var links=[].slice.call(document.querySelectorAll('.sidenav a'));if(!links.length)return;var map={};links.forEach(function(a){map[a.getAttribute('href').slice(1)]=a;});
+var obs=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){links.forEach(function(l){l.classList.remove('active');});var a=map[e.target.id];if(a)a.classList.add('active');}});},{rootMargin:'0px 0px -78% 0px',threshold:0});
+document.querySelectorAll('h2[id]').forEach(function(h){if(h.id)obs.observe(h);});
+var btn=document.querySelector('.navbtn'),nav=document.querySelector('.sidenav'),bd=document.querySelector('.navbackdrop');function cl(){nav.classList.remove('open');bd.classList.remove('open');}
+if(btn){btn.addEventListener('click',function(){nav.classList.toggle('open');bd.classList.toggle('open');});bd.addEventListener('click',cl);links.forEach(function(a){a.addEventListener('click',cl);});}})();
+</script></body></html>
