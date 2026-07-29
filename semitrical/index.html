@@ -72,7 +72,7 @@ footer b{color:var(--text);font-weight:600;} footer a{color:var(--accent);text-d
 .navbackdrop{position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:64;display:none;} .navbackdrop.open{display:block;}
 @media(prefers-color-scheme:light){:root{--ink:#f7f9fc;--panel:#fff;--line:#e2e6ee;--accent:#2f6fdb;--text:#1a1d24;--mute:#5b6470;--strong:#0b0e14;} .tag.mem{color:#0f766e;} .tag.ana{color:#2f6fdb;}}
 </style></head><body><button class="navbtn" type="button" aria-label="Contents">&#9776;&nbsp;Contents</button><div class="navbackdrop"></div>
-<nav class="sidenav" aria-label="Sections"><div class="sn-h">Contents</div><a href="#f">Contract fundamentals</a><a href="#s1">In-cabin display &amp; infotainment</a><a href="#s2">ADAS &amp; automated driving</a><a href="#s3">Powertrain &amp; EV body</a><a href="#ma">Memory vs. analog</a><a href="#g">Glossary</a></nav>
+<nav class="sidenav" aria-label="Sections"><div class="sn-h">Contents</div><a href="#f">Contract fundamentals</a><a href="#auto">Automotive-specific risks</a><a href="#subs">Subsystem sourcing map</a><a href="#ma">Memory vs. analog</a><a href="#g">Glossary</a></nav>
 <main class="wrap">
 <div class="brand">
 <svg width="34" height="34" viewBox="0 0 24 24" fill="none" aria-hidden="true">
@@ -97,7 +97,16 @@ footer b{color:var(--text);font-weight:600;} footer a{color:var(--accent);text-d
 <li><span class="ft">Product change notices (PCN) &amp; end-of-life (EOL)</span> — <span class="fr">the supplier's right to change or discontinue a part. <b>The risk:</b> obsolescence on a part designed into a 7–10 year vehicle, forcing a last-time-buy (LTB) and a costly re-qualification.</span></li>
 </ul>
 
-<h2 id="s2"><span class="sec">2</span>Subsystem sourcing map</h2>
+<h2 id="auto"><span class="sec">2</span>Automotive-specific contract risks</h2>
+<p class="lede">The terms above apply on any chip contract — but automotive adds its own grammar. Parts are safety-critical, programs run 15+ years, and every part clears a months-long qualification cycle. That turns ordinary terms into multi-year locks and adds clauses a generic review misses.</p>
+<ul class="fund">
+<li><span class="ft">Qualification lock-in — AEC-Q100 / IATF 16949 / PPAP</span> — <span class="fr">A qualified part is a locked-in part: switching sources means re-running the reliability, site-quality, and part-approval gates — and a supplier's own fab move or process change can force that re-qualification on <em>you</em> (roughly 6–18 months). <b>Who carries it:</b> usually the buyer, by default. <b>Negotiate:</b> who pays for and schedules re-qualification on a <em>supplier-initiated</em> change — a clause barring unilateral process changes without re-qual at the supplier's cost is worth far more than it reads.</span></li>
+<li><span class="ft">The PCN notice gap</span> — <span class="fr">A Product Change Notice is the advance warning before a part changes or is discontinued. The trap: the PCN notice window in the contract is often <em>shorter</em> than the re-qualification the change forces — so you can get perfectly compliant notice and still be caught with no qualified part. <b>Who carries it:</b> the buyer, sitting in the gap. <b>Negotiate:</b> measure the two against each other; if notice is shorter than your device's re-qual time, that difference <em>is</em> your exposure — widen the window, or secure a bridge-supply obligation to cover it.</span></li>
+<li><span class="ft">Longevity, EOL &amp; last-time-buy</span> — <span class="fr">Cars are built for years and serviced for a decade more; a chip's commercial life is shorter. The end-of-life and last-time-buy (LTB) terms decide whether you can supply the whole program and its service tail. <b>Who carries it:</b> the buyer left with an un-serviceable platform. <b>Negotiate:</b> a longevity commitment matched to program life, plus an LTB window long enough to bridge a redesign — and check the LTB quantity covers production <em>and</em> the service tail, not just the next model year.</span></li>
+<li><span class="ft">The OEM directed-buy squeeze</span> — <span class="fr">Since the 2021–22 shortage, carmakers increasingly go direct to chipmakers and direct the Tier-1 on whom to buy from (e.g. GM–Wolfspeed/Qualcomm, Ford–GlobalFoundries). The Tier-1 keeps the purchasing obligation and the risk but loses the leverage — bound to a source it didn't choose. <b>Who carries it:</b> the Tier-1, squeezed on both sides. <b>Negotiate:</b> separate OE-directed parts from what you control (your leverage lives in the non-directed parts); where a part is directed, flow the OEM's volume commitment back-to-back onto the supplier — so you're not carrying a take-or-pay to a source the OEM chose without the OEM standing behind the volume.</span></li>
+</ul>
+
+<h2 id="subs"><span class="sec">3</span>Subsystem sourcing map</h2>
 <p class="lede">Buyers don't source "analog" or "memory" in the abstract — they source components into a subsystem. Each subsystem carries its own supplier concentration, contract behavior, and leverage. These are the highest-complexity, highest-leverage domains; commoditized parts (chassis switches, passives) are left out on purpose.</p>
 <div class="cards">
 <div class="card">
@@ -120,7 +129,7 @@ footer b{color:var(--text);font-weight:600;} footer a{color:var(--accent);text-d
 </div>
 </div>
 
-<h2 id="ma"><span class="sec">3</span>Memory vs. analog — two different animals</h2>
+<h2 id="ma"><span class="sec">4</span>Memory vs. analog — two different animals</h2>
 <p class="lede">The single most useful thing a buyer can internalize: memory and analog suppliers behave in opposite ways at the table, so the same contract term protects you differently in each.</p>
 <div class="split">
 <div class="b"><div class="k">Memory · commodity volatility</div><h4>The rollercoaster</h4>
@@ -131,15 +140,19 @@ footer b{color:var(--text);font-weight:600;} footer a{color:var(--accent);text-d
 <p>That lock-in is the leverage: suppliers use it to push <b>take-or-pay</b> commitments, and prices are stable but sticky — hard to negotiate down over time. The place to win is <b>at design-in</b>, before the door closes.</p></div>
 </div>
 
-<h2 id="g"><span class="sec">4</span>Glossary</h2>
+<h2 id="g"><span class="sec">5</span>Glossary</h2>
 <p class="lede">A plain-English, commercial translation of the terminology chip suppliers use — with the contract implication, not just the definition.</p>
 <dl class="gloss">
 <dt>AEC-Q100</dt><dd>The automotive stress-test qualification for integrated circuits, graded 0 (harshest environment) to 3. <b>Why it matters:</b> moving a design to a stricter grade adds price premium and lead-time risk, and re-grading is not free.</dd>
 <dt>ASIL-D (ISO 26262)</dt><dd>The highest automotive functional-safety level, for systems like steering and braking. <b>Why it matters:</b> the diagnostic requirements are so specific that qualified parts are effectively single-source — which becomes the supplier's leverage in negotiation.</dd>
+<dt>IATF 16949</dt><dd>The automotive quality-management standard a supplier's manufacturing site must run. <b>Why it matters:</b> it's a <em>site-level</em> gate — a supplier moving production to a non-certified site can trigger re-qualification.</dd>
+<dt>PPAP</dt><dd>Production Part Approval Process — the sign-off that a specific part, from a specific line, is production-ready. <b>Why it matters:</b> it's part- and line-specific, so a fab or process change voids it and restarts the clock.</dd>
+<dt>Re-qualification</dt><dd>Re-running the qualification gates after a change of source, fab, or process. <b>Why it matters:</b> it costs months and money, and the contract decides whether the supplier or you bears it when the change is supplier-initiated.</dd>
 <dt>Take-or-pay</dt><dd>A commitment to buy (or pay for) a set volume regardless of actual demand. <b>Why it matters:</b> your downside on a cancelled or slowed vehicle program — negotiate carve-outs for it.</dd>
 <dt>NCNR (non-cancellable, non-returnable)</dt><dd>A firm-order window inside which you can't cancel or return. <b>Why it matters:</b> it's raw liability you carry before production; the length of the window is the negotiation.</dd>
 <dt>Capacity reservation</dt><dd>Paying up front to hold future fab/line capacity. <b>Why it matters:</b> in a shortage it's how you guarantee supply — but it's capital committed on the supplier's terms.</dd>
-<dt>PCN / EOL / LTB</dt><dd>Product change notice, end-of-life, last-time-buy. <b>Why it matters:</b> a supplier can change or discontinue a part on a vehicle you'll build for a decade, forcing a bulk final purchase and a re-qualification.</dd>
+<dt>PCN / EOL</dt><dd>Product change notice and end-of-life. <b>Why it matters:</b> a supplier can change or discontinue a part on a vehicle you'll build for a decade — and the PCN notice window is often shorter than the re-qualification the change forces.</dd>
+<dt>Last-time-buy (LTB)</dt><dd>The final order window before a part is discontinued. <b>Why it matters:</b> for a 15-year vehicle the LTB quantity must cover production <b>and</b> the service tail — not just the next model year — or you can't repair fielded cars.</dd>
 <dt>Foundry vs. IDM</dt><dd>An IDM (TI, Infineon, ST) owns its own fabs; a fabless supplier depends on a third-party foundry (TSMC, GlobalFoundries). <b>Why it matters:</b> IDMs control their own pricing and capacity; fabless suppliers are exposed to their foundry's allocation, which becomes your exposure too.</dd>
 <dt>Node migration</dt><dd>Shifting production to a smaller (newer) process node. <b>Why it matters:</b> when a supplier moves to a new node, older nodes get price hikes or EOL notices — pressuring buyers into expensive re-validation.</dd>
 <dt>Wafer allocation</dt><dd>How a fab splits its output across product lines. <b>Why it matters:</b> in a shortage, higher-margin consumer/datacenter wafers get priority over automotive — so allocation is worth carving out explicitly in the contract.</dd>
