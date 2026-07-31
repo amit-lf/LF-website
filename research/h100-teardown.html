@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Contractual Teardown of the H100</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#12151A;
+    --panel:#191D24;
+    --panel-2:#1F242C;
+    --line:#2A313B;
+    --line-soft:#232A33;
+    --ink:#E8EAED;
+    --ink-dim:#9AA3AD;
+    --ink-faint:#697079;
+    --copper:#C58A4E;      /* foundry / silicon interconnect */
+    --copper-bright:#E1A75F;
+    --amber:#E4B24C;       /* cowos — bottleneck */
+    --cyan:#63B2B6;        /* hbm */
+    --iris:#9A8CC4;        /* ip */
+    --substrate:#3A4A3E;   /* pcb/substrate context only */
+    --maxw:1080px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;background:var(--bg);color:var(--ink);
+    font-family:"IBM Plex Sans",system-ui,sans-serif;
+    line-height:1.6;-webkit-font-smoothing:antialiased;
+    background-image:
+      radial-gradient(900px 500px at 80% -10%, rgba(197,138,78,.10), transparent 60%),
+      radial-gradient(700px 500px at 0% 20%, rgba(99,178,182,.06), transparent 55%);
+  }
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+  .mono{font-family:"IBM Plex Mono",ui-monospace,monospace}
+
+  /* ---- top rule ---- */
+  .topbar{border-bottom:1px solid var(--line);}
+  .topbar .wrap{display:flex;justify-content:space-between;align-items:center;padding-top:16px;padding-bottom:16px}
+  .brand{font-family:"Archivo";font-weight:800;letter-spacing:-.02em;font-size:15px}
+  .brand span{color:var(--copper)}
+  .topbar .meta{font-family:"IBM Plex Mono";font-size:11px;color:var(--ink-faint);letter-spacing:.14em}
+
+  /* ---- hero ---- */
+  .hero{padding:72px 0 40px}
+  .eyebrow{
+    font-family:"IBM Plex Mono";font-size:11.5px;letter-spacing:.28em;
+    color:var(--copper);text-transform:uppercase;margin-bottom:22px;
+    display:flex;align-items:center;gap:12px;
+  }
+  .eyebrow::before{content:"";width:26px;height:1px;background:var(--copper);display:inline-block}
+  h1{
+    font-family:"Archivo";font-weight:800;letter-spacing:-.035em;
+    font-size:clamp(38px,6.6vw,74px);line-height:.98;margin:0 0 26px;
+  }
+  h1 .thin{font-weight:500;color:var(--ink-dim)}
+  .deck{font-size:clamp(16px,2.2vw,19px);color:var(--ink-dim);max-width:60ch;line-height:1.55}
+  .deck b{color:var(--ink);font-weight:600}
+
+  /* ---- teardown figure ---- */
+  .figure{margin:44px 0 8px}
+  .figcap{
+    font-family:"IBM Plex Mono";font-size:11px;letter-spacing:.14em;color:var(--ink-faint);
+    text-transform:uppercase;margin-bottom:14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center
+  }
+  .figcap .hint{color:var(--copper);text-transform:none;letter-spacing:.02em}
+  .stage{
+    background:linear-gradient(180deg,var(--panel),#14181E);
+    border:1px solid var(--line);border-radius:14px;padding:8px;overflow:hidden;
+  }
+  svg.teardown{display:block;width:100%;height:auto}
+  .zone{cursor:pointer;transition:opacity .25s ease}
+  .zone .body{transition:filter .25s ease, opacity .25s ease}
+  .zone .tag{transition:opacity .2s ease}
+  .teardown.has-active .zone:not(.active){opacity:.32}
+  .zone.active .glow{opacity:1}
+  .glow{opacity:0;transition:opacity .25s ease}
+  .lyr-label{font-family:"IBM Plex Mono";font-size:12px;font-weight:500;fill:var(--ink-dim)}
+  .lyr-label.k{fill:var(--ink)}
+  .lead{stroke:var(--line);stroke-width:1;stroke-dasharray:2 3}
+  .ctx-label{font-family:"IBM Plex Mono";font-size:10.5px;fill:var(--ink-faint);letter-spacing:.06em}
+
+  /* ---- mapping cards ---- */
+  section.map{padding:34px 0 8px}
+  .map-intro{font-size:16px;color:var(--ink-dim);max-width:58ch;margin:0 0 30px}
+  .map-intro b{color:var(--ink)}
+  .cards{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+  .card{
+    background:var(--panel);border:1px solid var(--line);border-radius:12px;
+    padding:22px 22px 20px;position:relative;cursor:pointer;
+    transition:border-color .2s ease, background .2s ease, transform .2s ease;
+  }
+  .card:hover,.card.active{border-color:var(--c);background:var(--panel-2);transform:translateY(-2px)}
+  .card .rail{position:absolute;left:0;top:16px;bottom:16px;width:3px;border-radius:3px;background:var(--c)}
+  .card .ktag{
+    font-family:"IBM Plex Mono";font-size:11px;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--c);margin-bottom:14px;display:flex;justify-content:space-between;align-items:center
+  }
+  .exposure{font-size:10px;letter-spacing:.1em;padding:2px 7px;border:1px solid var(--c);border-radius:20px;color:var(--c);opacity:.9}
+  .exposure.hi{background:var(--c);color:#12151A;font-weight:600;opacity:1}
+  .card h3{font-family:"Archivo";font-weight:700;letter-spacing:-.02em;font-size:20px;margin:0 0 3px}
+  .card .part{font-family:"IBM Plex Mono";font-size:12px;color:var(--ink-faint);margin-bottom:16px}
+  .card .row{display:flex;gap:10px;padding:9px 0;border-top:1px solid var(--line-soft)}
+  .card .row .lab{font-family:"IBM Plex Mono";font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-faint);width:96px;flex:none;padding-top:1px}
+  .card .row .val{font-size:14px;color:var(--ink);line-height:1.45}
+  .card .row .val em{color:var(--ink-dim);font-style:normal}
+
+  /* ---- limit panel ---- */
+  .limit{margin:40px 0 8px;border:1px solid var(--line);border-radius:12px;
+    background:
+      repeating-linear-gradient(135deg, rgba(228,178,76,.05) 0 8px, transparent 8px 16px),
+      var(--panel);
+    padding:30px 30px 28px}
+  .limit .k{font-family:"IBM Plex Mono";font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--amber);margin-bottom:16px}
+  .limit h2{font-family:"Archivo";font-weight:700;letter-spacing:-.025em;font-size:clamp(22px,3vw,28px);margin:0 0 14px;line-height:1.1}
+  .limit p{font-size:15.5px;color:var(--ink-dim);max-width:70ch;margin:0 0 12px}
+  .limit p b{color:var(--ink);font-weight:600}
+  .limit .stamp{font-family:"IBM Plex Mono";font-size:12px;color:var(--amber);margin-top:6px}
+
+  /* ---- bottleneck spotlight ---- */
+  .spot{padding:44px 0 10px;display:grid;grid-template-columns:1.3fr 1fr;gap:34px;align-items:center}
+  .spot .k{font-family:"IBM Plex Mono";font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--cyan);margin-bottom:16px}
+  .spot h2{font-family:"Archivo";font-weight:800;letter-spacing:-.03em;font-size:clamp(26px,3.6vw,38px);line-height:1.02;margin:0 0 16px}
+  .spot h2 em{font-style:normal;color:var(--cyan)}
+  .spot p{color:var(--ink-dim);font-size:16px;max-width:52ch}
+  .spot p b{color:var(--ink)}
+  .statbox{border:1px solid var(--line);border-radius:12px;background:var(--panel);overflow:hidden}
+  .stat{padding:20px 22px;border-bottom:1px solid var(--line-soft)}
+  .stat:last-child{border-bottom:none}
+  .stat .n{font-family:"Archivo";font-weight:800;font-size:30px;letter-spacing:-.02em;color:var(--cyan)}
+  .stat .l{font-family:"IBM Plex Mono";font-size:11.5px;color:var(--ink-dim);margin-top:4px;line-height:1.4}
+
+  /* ---- cta ---- */
+  .cta{margin:52px 0 40px;border:1px solid var(--copper);border-radius:14px;
+    background:linear-gradient(180deg, rgba(197,138,78,.10), rgba(197,138,78,.03));
+    padding:44px 36px;text-align:center}
+  .cta h2{font-family:"Archivo";font-weight:800;letter-spacing:-.03em;font-size:clamp(26px,4vw,40px);margin:0 0 14px;line-height:1.02}
+  .cta p{color:var(--ink-dim);font-size:16.5px;max-width:56ch;margin:0 auto 26px}
+  .cta p b{color:var(--ink)}
+  .btn{
+    display:inline-block;font-family:"IBM Plex Mono";font-weight:600;font-size:14px;letter-spacing:.02em;
+    background:var(--copper);color:#12151A;border:none;border-radius:8px;padding:15px 30px;text-decoration:none;
+    transition:background .2s ease, transform .15s ease;cursor:pointer
+  }
+  .btn:hover{background:var(--copper-bright);transform:translateY(-1px)}
+  .cta .sub{font-family:"IBM Plex Mono";font-size:11.5px;color:var(--ink-faint);margin-top:18px;letter-spacing:.06em}
+
+  footer{border-top:1px solid var(--line);padding:30px 0 60px;margin-top:20px}
+  footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+  footer .b{font-family:"Archivo";font-weight:800;letter-spacing:-.02em;font-size:14px}
+  footer .b span{color:var(--copper)}
+  footer .fine{font-family:"IBM Plex Mono";font-size:10.5px;color:var(--ink-faint);max-width:52ch;line-height:1.6;text-align:right}
+
+  /* reveal */
+  @media (prefers-reduced-motion:no-preference){
+    .zone{animation:rise .7s cubic-bezier(.2,.7,.2,1) both}
+    .zone[data-layer="cowos"]{animation-delay:.05s}
+    .zone[data-layer="hbm"]{animation-delay:.18s}
+    .zone[data-layer="foundry"]{animation-delay:.30s}
+    .zone[data-layer="ip"]{animation-delay:.42s}
+    @keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+  }
+
+  @media (max-width:880px){
+    .cards{grid-template-columns:1fr}
+    .spot{grid-template-columns:1fr;gap:24px}
+    .hero{padding:54px 0 30px}
+  }
+  @media (max-width:560px){
+    .card .row{flex-direction:column;gap:2px}
+    .card .row .lab{width:auto}
+    footer .fine{text-align:left}
+    .limit,.cta{padding-left:22px;padding-right:22px}
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar"><div class="wrap">
+  <div class="brand">The contracts behind <span>a chip</span></div>
+  <div class="meta">SEMICONDUCTOR SUPPLY CHAIN · TEARDOWN</div>
+</div></div>
+
+<div class="wrap">
+
+  <header class="hero">
+    <div class="eyebrow">Anatomy of a dependency</div>
+    <h1>The contractual<br>teardown of <span class="thin">the</span> H100.</h1>
+    <p class="deck">The H100's bill of materials is public. Its bill of <b>contracts</b> is not — but its shape is. Here's the chip that defined the AI boom, disassembled into the agreements that govern each layer, and the clauses where the exposure actually sits.</p>
+  </header>
+
+  <!-- ===================== SIGNATURE FIGURE ===================== -->
+  <div class="figure">
+    <div class="figcap">
+      <span>Fig. 1 — H100 SXM5 package, side elevation</span>
+      <span class="hint">↳ tap a layer</span>
+    </div>
+    <div class="stage">
+      <svg class="teardown" id="td" viewBox="0 0 760 430" role="img" aria-label="Cross-section of the H100 package mapped to contract layers">
+        <defs>
+          <filter id="soft" x="-30%" y="-30%" width="160%" height="160%">
+            <feGaussianBlur stdDeviation="6"/>
+          </filter>
+        </defs>
+
+        <!-- context: substrate (not a card, just grounding) -->
+        <g>
+          <rect x="180" y="336" width="400" height="24" rx="3" fill="#242C26" stroke="#3A4A3E" stroke-width="1"/>
+          <text x="380" y="378" text-anchor="middle" class="ctx-label">ORGANIC SUBSTRATE / BGA</text>
+        </g>
+
+        <!-- ZONE: CoWoS interposer  (callout → LEFT) -->
+        <g class="zone" data-layer="cowos" tabindex="0" role="button" aria-label="CoWoS advanced packaging layer">
+          <rect class="glow" x="190" y="300" width="380" height="38" rx="4" fill="var(--amber)" filter="url(#soft)"/>
+          <rect class="body" x="196" y="306" width="368" height="26" rx="3" fill="#2A2620" stroke="var(--amber)" stroke-width="1.4"/>
+          <text x="380" y="323" text-anchor="middle" class="lyr-label" style="fill:var(--amber)">CoWoS-S SILICON INTERPOSER</text>
+          <line class="lead" x1="196" y1="319" x2="112" y2="319"/>
+          <text x="104" y="315" text-anchor="end" class="lyr-label k">CoWoS</text>
+          <text x="104" y="330" text-anchor="end" class="ctx-label">packaging</text>
+        </g>
+
+        <!-- ZONE: HBM stacks (left + right)  (callout → RIGHT) -->
+        <g class="zone" data-layer="hbm" tabindex="0" role="button" aria-label="HBM memory layer">
+          <g class="glow" filter="url(#soft)" fill="var(--cyan)">
+            <rect x="204" y="220" width="50" height="90" rx="3"/>
+            <rect x="252" y="220" width="50" height="90" rx="3"/>
+            <rect x="454" y="220" width="50" height="90" rx="3"/>
+            <rect x="502" y="220" width="50" height="90" rx="3"/>
+          </g>
+          <g class="body">
+            <!-- left stacks -->
+            <g>
+              <rect x="210" y="226" width="42" height="80" rx="2" fill="#1B262A" stroke="var(--cyan)" stroke-width="1.3"/>
+              <line x1="210" y1="242" x2="252" y2="242" stroke="var(--cyan)" stroke-width=".6" opacity=".5"/>
+              <line x1="210" y1="258" x2="252" y2="258" stroke="var(--cyan)" stroke-width=".6" opacity=".5"/>
+              <line x1="210" y1="274" x2="252" y2="274" stroke="var(--cyan)" stroke-width=".6" opacity=".5"/>
+              <line x1="210" y1="290" x2="252" y2="290" stroke="var(--cyan)" stroke-width=".6" opacity=".5"/>
+            </g>
+            <g>
+              <rect x="258" y="226" width="42" height="80" rx="2" fill="#1B262A" stroke="var(--cyan)" stroke-width="1.3"/>
+              <line x1="258" y1="242" x2="300" y2="242" stroke="var(--cyan)" stroke-width=".6" opacity=".5"/>
+              <line x1="258" y1="258" x2="300" y2="258" stroke="var(--cyan)" stroke-width=".6" opacity=".5"/>
+              <line x1="258" y1="274" x2="300" y2="274" stroke="var(--cyan)" stroke-width=".6" opacity=".5"/>
+              <line x1="258" y1="290" x2="300" y2="290" stroke="var(--cyan)" stroke-width=".6" opacity=".5"/>
+            </g>
+            <!-- right stacks -->
+            <g>
+              <rect x="460" y="226" width="42" height="80" rx="2" fill="#1B262A" stroke="var(--cyan)" stroke-width="1.3"/>
+              <line x1="460" y1="242" x2="502" y2="242" stroke="var(--cyan)" stroke-width=".6" opacity=".5"/>
+              <line x1="460" y1="258" x2="502" y2="258" stroke="var(--cyan)" stroke-width=".6" opacity=".5"/>
+              <line x1="460" y1="274" x2="502" y2="274" stroke="var(--cyan)" stroke-width=".6" opacity=".5"/>
+              <line x1="460" y1="290" x2="502" y2="290" stroke="var(--cyan)" stroke-width=".6" opacity=".5"/>
+            </g>
+            <g>
+              <rect x="508" y="226" width="42" height="80" rx="2" fill="#1B262A" stroke="var(--cyan)" stroke-width="1.3"/>
+              <line x1="508" y1="242" x2="550" y2="242" stroke="var(--cyan)" stroke-width=".6" opacity=".5"/>
+              <line x1="508" y1="258" x2="550" y2="258" stroke="var(--cyan)" stroke-width=".6" opacity=".5"/>
+              <line x1="508" y1="274" x2="550" y2="274" stroke="var(--cyan)" stroke-width=".6" opacity=".5"/>
+              <line x1="508" y1="290" x2="550" y2="290" stroke="var(--cyan)" stroke-width=".6" opacity=".5"/>
+            </g>
+          </g>
+          <line class="lead" x1="550" y1="266" x2="646" y2="266"/>
+          <text x="654" y="262" class="lyr-label k">HBM</text>
+          <text x="654" y="277" class="ctx-label">memory</text>
+          <text x="654" y="291" class="ctx-label" style="fill:var(--cyan);opacity:.85">HBM3 · ×5 active</text>
+        </g>
+
+        <!-- ZONE: GPU die (foundry)  (callout → TOP-LEFT) -->
+        <g class="zone" data-layer="foundry" tabindex="0" role="button" aria-label="Foundry / GPU die layer">
+          <rect class="glow" x="320" y="200" width="120" height="112" rx="4" fill="var(--copper)" filter="url(#soft)"/>
+          <rect class="body" x="326" y="206" width="108" height="100" rx="3" fill="#2A2318" stroke="var(--copper)" stroke-width="1.6"/>
+          <text x="380" y="279" text-anchor="middle" class="lyr-label k" style="fill:var(--copper-bright)">GPU DIE</text>
+          <text x="380" y="295" text-anchor="middle" class="ctx-label" style="fill:var(--copper)">TSMC 4N</text>
+          <line class="lead" x1="350" y1="206" x2="296" y2="152"/>
+          <text x="292" y="144" text-anchor="middle" class="lyr-label k">Foundry</text>
+          <text x="292" y="130" text-anchor="middle" class="ctx-label">wafer · die</text>
+        </g>
+
+        <!-- ZONE: IP core (inside die)  (callout → TOP-RIGHT) -->
+        <g class="zone" data-layer="ip" tabindex="0" role="button" aria-label="IP licensing layer inside the die">
+          <rect class="glow" x="338" y="214" width="84" height="42" rx="3" fill="var(--iris)" filter="url(#soft)"/>
+          <rect class="body" x="344" y="220" width="72" height="30" rx="2" fill="#221F2B" stroke="var(--iris)" stroke-width="1.3"/>
+          <text x="380" y="239" text-anchor="middle" class="ctx-label" style="fill:var(--iris)">IP CORES</text>
+          <line class="lead" x1="404" y1="220" x2="466" y2="152"/>
+          <text x="470" y="144" text-anchor="middle" class="lyr-label k">IP</text>
+          <text x="470" y="130" text-anchor="middle" class="ctx-label">licensing</text>
+        </g>
+
+      </svg>
+    </div>
+  </div>
+
+  <!-- ===================== MAPPING CARDS ===================== -->
+  <section class="map">
+    <p class="map-intro">Strip the package down and every physical layer answers to a different agreement — <b>a different counterparty, a different failure mode.</b> Four layers, four contracts, one chip. And the same four-contract stack governs Blackwell and GB200 too — only tighter.</p>
+
+    <div class="cards" id="cards">
+
+      <article class="card" data-layer="foundry" style="--c:var(--copper)">
+        <span class="rail"></span>
+        <div class="ktag"><span>Foundry</span><span class="exposure">EXPOSURE · ELEVATED</span></div>
+        <h3>The die</h3>
+        <div class="part mono">~80B transistors · TSMC 4N</div>
+        <div class="row"><span class="lab">Agreement</span><span class="val">Foundry wafer supply &amp; capacity agreement</span></div>
+        <div class="row"><span class="lab">Where it bites</span><span class="val">Wafer allocation and capacity reservation — <em>take-or-pay commitments, priority tiers, and price-adjustment mechanics that trigger under shortage.</em></span></div>
+        <div class="row"><span class="lab">Signed with</span><span class="val">The foundry — TSMC, which fabricates the die on its 4N line.</span></div>
+      </article>
+
+      <article class="card" data-layer="cowos" style="--c:var(--amber)">
+        <span class="rail"></span>
+        <div class="ktag"><span>Advanced Packaging</span><span class="exposure hi">EXPOSURE · HIGH</span></div>
+        <h3>The interposer</h3>
+        <div class="part mono">CoWoS-S · 2.5D silicon interposer</div>
+        <div class="row"><span class="lab">Agreement</span><span class="val">Advanced-packaging / OSAT capacity agreement</span></div>
+        <div class="row"><span class="lab">Where it bites</span><span class="val">Packaging capacity allocation — <em>the single tightest link in the chain. TSMC's CoWoS is sold out through 2026 and largely booked into 2027.</em></span></div>
+        <div class="row"><span class="lab">Signed with</span><span class="val">The packaging house — TSMC's CoWoS line: the same vendor as the die.</span></div>
+      </article>
+
+      <article class="card" data-layer="hbm" style="--c:var(--cyan)">
+        <span class="rail"></span>
+        <div class="ktag"><span>Memory</span><span class="exposure hi">EXPOSURE · HIGH</span></div>
+        <h3>The stacks</h3>
+        <div class="part mono">HBM3 · SK Hynix primary; Micron / Samsung 2nd source</div>
+        <div class="row"><span class="lab">Agreement</span><span class="val">Long-term memory supply agreement (LTA)</span></div>
+        <div class="row"><span class="lab">Where it bites</span><span class="val">Allocation-under-shortage, prepay / capacity deposits, and qualification lock-in that makes second-sourcing slow. <em>The gating supply for the whole part.</em></span></div>
+        <div class="row"><span class="lab">Signed with</span><span class="val">The memory makers — SK Hynix, with Micron and Samsung as second sources.</span></div>
+      </article>
+
+      <article class="card" data-layer="ip" style="--c:var(--iris)">
+        <span class="rail"></span>
+        <div class="ktag"><span>Design IP</span><span class="exposure">EXPOSURE · ELEVATED</span></div>
+        <h3>Inside the die</h3>
+        <div class="part mono">Interconnect · PHY · memory controller · licensed cores</div>
+        <div class="row"><span class="lab">Agreement</span><span class="val">IP licensing agreement</span></div>
+        <div class="row"><span class="lab">Where it bites</span><span class="val">Indemnification asymmetry, field-of-use limits, and royalty stacking — <em>the exposure that survives even when supply is fine.</em></span></div>
+        <div class="row"><span class="lab">Signed with</span><span class="val">The IP vendors — interconnect, PHY, and controller licensors behind the logic.</span></div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ===================== HONEST LIMIT ===================== -->
+  <div class="limit">
+    <div class="k">What a teardown can — and can't — see</div>
+    <h2>You can't just pull the actual contract.</h2>
+    <p>A physical teardown X-rays the package. The contractual one hits a harder wall: the real NVIDIA–TSMC and NVIDIA–SK Hynix agreements are crown jewels — unfiled, or redacted past the point of use. Nobody outside the parties reads the specific deal.</p>
+    <p>But the <b>shape</b> is knowable. Dozens of comparable wafer-supply and IP-licensing agreements sit unredacted in SEC filings — read enough and you learn what a contract of that kind <b>typically stipulates</b>, and where the risk concentrates. The memory and packaging chokepoints show up another way: in public capacity disclosure.</p>
+    <p class="stamp">// Opaque one contract at a time. Legible in aggregate.</p>
+  </div>
+
+  <!-- ===================== BOTTLENECK SPOTLIGHT ===================== -->
+  <section class="spot">
+    <div>
+      <div class="k">The tightest link</div>
+      <h2>The chokepoint isn't the die. It's <em>memory and packaging.</em></h2>
+      <p>The logic die is hard to make — but the binding constraints sit in the two layers around it: <b>HBM memory</b> and <b>CoWoS packaging.</b> Both run on allocation, prepay, and qualification lock-in, and both are booked out well ahead of demand. A contract problem in either layer strands an otherwise-finished chip.</p>
+    </div>
+    <div class="statbox">
+      <div class="stat"><div class="n">~60%</div><div class="l">of TSMC's CoWoS packaging is NVIDIA's; the die-to-memory layer, sold out through 2026 and booked into 2027.</div></div>
+      <div class="stat"><div class="n">5 of 6</div><div class="l">HBM3 stack sites populated on an H100 SXM5 (80 GB) — each on an allocation clause.</div></div>
+      <div class="stat"><div class="n">4 layers</div><div class="l">to the package, each answering to a separate agreement and a separate counterparty.</div></div>
+    </div>
+  </section>
+
+  <!-- ===================== CLOSING THESIS ===================== -->
+  <div class="cta">
+    <h2>One chip. A stack of contracts.</h2>
+    <p>Every H100 is silicon — and underneath the silicon sits a foundry agreement, a packaging agreement, a memory supply agreement, and a web of IP licenses, each with its own counterparty and its own way to fail. The bill of materials is only half the story. <b>The bill of contracts is the other half.</b></p>
+    <a class="btn" href="/">Reading one of these is what we built &rarr;</a>
+    <div class="sub">Semipply · Semiconductor Supply Intelligence, grounded in real SEC filings · legalforensics.ai</div>
+  </div>
+
+</div>
+
+<footer><div class="wrap">
+  <div>
+    <div class="b">The contracts behind <span>a chip</span></div>
+    <div class="mono" style="font-size:11px;color:var(--ink-faint);margin-top:6px;letter-spacing:.06em">A teardown of the H100 supply chain</div>
+  </div>
+  <div class="fine">Illustrative teardown built on public, SEC-filed comparable agreements. Not affiliated with, endorsed by, or representing any proprietary NVIDIA, TSMC, or SK Hynix agreement. Layer mapping is directional, for explanation. Capacity and allocation figures reflect public reporting as of mid-2026.</div>
+</div></footer>
+
+<script>
+(function(){
+  var td = document.getElementById('td');
+  var zones = Array.prototype.slice.call(td.querySelectorAll('.zone'));
+  var cards = Array.prototype.slice.call(document.querySelectorAll('.card'));
+  var byLayer = {};
+  cards.forEach(function(c){ byLayer[c.dataset.layer] = c; });
+
+  function setActive(layer){
+    zones.forEach(function(z){ z.classList.toggle('active', z.dataset.layer===layer); });
+    cards.forEach(function(c){ c.classList.toggle('active', c.dataset.layer===layer); });
+    td.classList.toggle('has-active', !!layer);
+  }
+  function clear(){ setActive(null); }
+
+  zones.forEach(function(z){
+    var L = z.dataset.layer;
+    z.addEventListener('mouseenter', function(){ setActive(L); });
+    z.addEventListener('mouseleave', clear);
+    z.addEventListener('click', function(){
+      setActive(L);
+      var c = byLayer[L];
+      if(c && window.matchMedia('(max-width:880px)').matches){
+        c.scrollIntoView({behavior:'smooth', block:'center'});
+      }
+    });
+    z.addEventListener('focus', function(){ setActive(L); });
+    z.addEventListener('blur', clear);
+    z.addEventListener('keydown', function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); z.click(); } });
+  });
+
+  cards.forEach(function(c){
+    var L = c.dataset.layer;
+    c.addEventListener('mouseenter', function(){ setActive(L); });
+    c.addEventListener('mouseleave', clear);
+  });
+})();
+</script>
+
+</body>
+</html>
