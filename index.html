@@ -1703,13 +1703,13 @@
       <p class="eyebrow">Research</p>
       <h2>Read the work behind the tool.</h2>
       <p class="lede" style="margin-top:14px;max-width:64ch">Field guides and teardowns built from real, SEC-filed agreements &mdash; the same corpus the product runs on. Depth over size; every figure traced to the filing.</p>
+      <a class="rfeature" href="/research/h100-teardown.html">
+        <span class="rtag">Featured &middot; interactive teardown</span>
+        <h3>The Contractual Teardown of the H100</h3>
+        <p>The chip that defined the AI boom, disassembled into four agreements &mdash; foundry, packaging, HBM memory, IP licensing &mdash; each with its own counterparty and its own way to fail. Tap any layer; the same stack governs Blackwell and GB200, only tighter.</p>
+        <span class="rlink">Open the teardown &rarr;</span>
+      </a>
       <div class="rgrid">
-        <a class="rcard" href="/research/h100-teardown.html">
-          <span class="rtag">Teardown &middot; interactive</span>
-          <h3>The Contractual Teardown of the H100</h3>
-          <p>The chip that defined the AI boom, disassembled into four agreements &mdash; foundry, packaging, HBM memory, IP licensing &mdash; each with its own counterparty and its own way to fail.</p>
-          <span class="rlink">Open the teardown &rarr;</span>
-        </a>
         <a class="rcard" href="/research/signed-once.html">
           <span class="rtag">Field guide &middot; the book</span>
           <h3>Signed Once</h3>
@@ -1722,12 +1722,23 @@
           <p>How the cheapest parts on the board stopped car factories in 2025 &mdash; and why the ownership exposure behind it had been public and dated for years.</p>
           <span class="rlink">Read the case &rarr;</span>
         </a>
+        <a class="rcard" href="/semitrical/">
+          <span class="rtag">Handbook &middot; for procurement</span>
+          <h3>The Automotive Chip Buyer's Handbook</h3>
+          <p>The commercial-intelligence framework for Tier-1 procurement &mdash; supplier leverage, qualification lock-in, and lifecycle risk, in plain English.</p>
+          <span class="rlink">Open the handbook &rarr;</span>
+        </a>
       </div>
       <div style="margin-top:24px"><a class="hero-btn ghost" href="/research/">All research &rarr;</a></div>
     </div>
   </section>
   <style>
-    #research .rgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px;margin-top:26px}
+    #research .rgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px;margin-top:16px}
+    #research .rfeature{display:block;text-decoration:none;color:inherit;background:linear-gradient(135deg,var(--panel2),var(--panel));border:1px solid var(--rule2);border-left:3px solid var(--gold);border-radius:14px;padding:30px 32px;margin-top:26px;transition:border-color .18s ease, transform .18s ease}
+    #research .rfeature:hover{border-color:var(--gold);transform:translateY(-3px)}
+    #research .rfeature:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+    #research .rfeature h3{margin:10px 0 8px;font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;font-size:clamp(24px,3vw,32px);color:var(--white);line-height:1.08}
+    #research .rfeature p{color:var(--silver);font-size:15.5px;line-height:1.6;max-width:72ch}
     #research .rcard{display:block;text-decoration:none;color:inherit;background:var(--panel);border:1px solid var(--rule2);border-radius:12px;padding:22px 24px;transition:border-color .18s ease, transform .18s ease}
     #research .rcard:hover{border-color:var(--gold);transform:translateY(-3px)}
     #research .rtag{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
