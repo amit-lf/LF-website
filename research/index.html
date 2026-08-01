@@ -9,182 +9,254 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=DM+Sans:wght@400;500;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-  :root{ --ink:#09090C; --panel:#111116; --line:#26262e; --gold:#C8A96E; --text:#e8e6e1; --mute:#9a978f; }
+  :root{ --ink:#09090C; --panel:#111116; --panel2:#15151b; --line:#26262e; --gold:#C8A96E; --text:#e8e6e1; --mute:#9a978f; }
   *{ box-sizing:border-box; margin:0; padding:0; }
   body{ background:var(--ink); color:var(--text); font-family:"DM Sans",system-ui,sans-serif; line-height:1.55; -webkit-font-smoothing:antialiased; }
-  .wrap{ max-width:820px; margin:0 auto; padding:72px 24px 96px; }
+  a{ color:inherit; }
+  .wrap{ max-width:980px; margin:0 auto; padding:64px 24px 96px; }
+  .textw{ max-width:66ch; }
   .kicker{ font-family:"DM Mono",monospace; font-size:12px; letter-spacing:.22em; text-transform:uppercase; color:var(--gold); }
   .brandlogo{ height:30px; width:auto; display:block; margin-bottom:22px; }
   h1{ font-family:"Cormorant Garamond",serif; font-weight:600; font-size:clamp(38px,7vw,60px); line-height:1.02; margin:14px 0 6px; letter-spacing:.5px; }
   .subtitle{ font-family:"Cormorant Garamond",serif; font-style:italic; font-size:clamp(19px,3vw,24px); color:var(--mute); margin-bottom:20px; }
-  .lede{ color:var(--mute); font-size:18px; max-width:62ch; }
+  .lede{ color:var(--mute); font-size:18px; }
   .lede strong{ color:var(--text); font-weight:500; }
-  .imprint{ font-family:"DM Mono",monospace; font-size:11.5px; letter-spacing:.16em; text-transform:uppercase; color:var(--mute); margin-top:20px; }
+  .lede a{ color:var(--gold); }
+  .imprint{ font-family:"DM Mono",monospace; font-size:11.5px; letter-spacing:.16em; text-transform:uppercase; color:var(--mute); margin-top:22px; }
   .forbox{ border:1px solid var(--line); border-left:3px solid var(--gold); border-radius:10px; background:var(--panel); padding:16px 20px; margin-top:26px; max-width:64ch; }
   .forbox .fw{ display:block; color:var(--gold); font-family:"DM Mono",monospace; font-size:11px; letter-spacing:.18em; text-transform:uppercase; margin-bottom:7px; }
   .forbox p{ color:var(--text); font-size:15px; line-height:1.55; }
-  .getbook{ border:1px solid var(--line); border-left:3px solid var(--gold); border-radius:12px; background:var(--panel); padding:18px 22px; margin-top:18px; max-width:64ch; }
-  .getbook .gk{ display:block; color:var(--gold); font-family:"DM Mono",monospace; font-size:11px; letter-spacing:.18em; text-transform:uppercase; margin-bottom:6px; }
-  .getbook p{ color:var(--mute); font-size:14.5px; margin-bottom:12px; }
-  .getbook form{ display:flex; gap:8px; flex-wrap:wrap; }
-  .getbook input{ flex:1; min-width:220px; background:transparent; border:1px solid var(--line); border-radius:8px; padding:10px 12px; color:var(--text); font-size:14px; font-family:"DM Sans",sans-serif; }
-  .getbook input:focus{ outline:none; border-color:var(--gold); }
-  .getbook button{ background:var(--gold); color:#0a0a0f; border:none; border-radius:8px; padding:10px 16px; font-weight:600; font-size:14px; cursor:pointer; font-family:"DM Sans",sans-serif; }
-  .getbook .done{ display:none; color:var(--gold); font-size:14px; margin-bottom:0; }
-  .getbook .done a{ color:var(--gold); }
-  .rule{ height:1px; background:var(--line); margin:40px 0 4px; }
+
+  /* Sticky browse-by nav */
+  .subnav{ position:sticky; top:0; z-index:20; margin:30px -24px 0; padding:12px 24px; background:rgba(9,9,12,.82); backdrop-filter:blur(10px); border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+  .subnav .inner{ max-width:980px; margin:0 auto; display:flex; gap:9px; overflow-x:auto; scrollbar-width:none; }
+  .subnav .inner::-webkit-scrollbar{ display:none; }
+  .subnav a{ flex:0 0 auto; text-decoration:none; font-family:"DM Mono",monospace; font-size:11.5px; letter-spacing:.12em; text-transform:uppercase; color:var(--mute); border:1px solid var(--line); border-radius:999px; padding:7px 14px; white-space:nowrap; transition:color .16s ease, border-color .16s ease; }
+  .subnav a:hover{ color:var(--gold); border-color:var(--gold); }
+
+  section[id]{ scroll-margin-top:64px; }
+  .grp{ margin-top:44px; }
+  .grp-h{ margin:0 0 4px; }
+  .grp-h .gk{ font-family:"DM Mono",monospace; font-size:12px; letter-spacing:.2em; text-transform:uppercase; color:var(--gold); }
+  .grp-h h2.gt{ font-family:"Cormorant Garamond",serif; font-weight:600; font-size:30px; line-height:1.1; margin:6px 0 4px; color:var(--text); }
+  .grp-h .gs{ display:block; color:var(--mute); font-size:14.5px; margin-top:2px; max-width:64ch; }
+
+  /* Featured hero */
+  a.feature{ display:block; text-decoration:none; border:1px solid var(--line); border-left:3px solid var(--gold); border-radius:16px; padding:34px 34px 30px; margin-top:16px; background:linear-gradient(135deg,var(--panel2),var(--panel)); transition:border-color .18s ease, transform .18s ease; }
+  a.feature:hover{ border-color:var(--gold); transform:translateY(-2px); }
+  a.feature:focus-visible{ outline:2px solid var(--gold); outline-offset:3px; }
+  a.feature .tag{ color:var(--gold); }
+  a.feature h3{ font-family:"Cormorant Garamond",serif; font-weight:600; font-size:clamp(28px,4.5vw,40px); line-height:1.06; margin:10px 0 10px; color:var(--text); }
+  a.feature p{ color:var(--mute); font-size:16.5px; max-width:70ch; }
+  a.feature .open{ display:inline-block; margin-top:16px; font-size:14px; color:var(--gold); font-weight:600; }
+
+  /* Reader paths */
+  .paths{ display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:16px; }
+  a.path{ display:flex; flex-direction:column; text-decoration:none; border:1px solid var(--line); border-radius:12px; padding:20px; background:var(--panel); transition:border-color .18s ease, transform .18s ease; }
+  a.path:hover{ border-color:var(--gold); transform:translateY(-2px); }
+  a.path:focus-visible{ outline:2px solid var(--gold); outline-offset:3px; }
+  a.path .who{ font-family:"DM Mono",monospace; font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--gold); }
+  a.path h3{ font-family:"Cormorant Garamond",serif; font-weight:600; font-size:22px; line-height:1.14; margin:9px 0 6px; color:var(--text); }
+  a.path p{ color:var(--mute); font-size:13.5px; }
+  a.path .open{ margin-top:auto; padding-top:12px; font-size:13px; color:var(--gold); font-weight:500; }
+
+  /* Card grid */
   ul.readers{ list-style:none; }
-  a.card{ display:block; text-decoration:none; color:inherit; border:1px solid var(--line); border-radius:12px; padding:22px 24px; margin-top:18px; background:var(--panel); transition:border-color .18s ease, transform .18s ease; }
+  .cardgrid{ display:grid; grid-template-columns:repeat(2,1fr); gap:14px; margin-top:16px; }
+  .cardgrid li{ list-style:none; }
+  a.card{ display:flex; flex-direction:column; height:100%; text-decoration:none; color:inherit; border:1px solid var(--line); border-radius:12px; padding:22px 24px; background:var(--panel); transition:border-color .18s ease, transform .18s ease; }
   a.card:hover{ border-color:var(--gold); transform:translateY(-2px); }
   a.card:focus-visible{ outline:2px solid var(--gold); outline-offset:3px; }
+  .single{ margin-top:16px; }
   .tag{ font-family:"DM Mono",monospace; font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--gold); }
-  .card h2{ font-family:"Cormorant Garamond",serif; font-weight:600; font-size:25px; line-height:1.15; margin:8px 0 6px; color:var(--text); }
-  .card p{ color:var(--mute); font-size:15px; max-width:64ch; }
-  .card .open{ display:inline-block; margin-top:12px; font-size:13px; color:var(--gold); font-weight:500; }
-  .grp{ margin-top:6px; }
-  .grp-h{ margin:40px 0 2px; }
-  .grp-h .gk{ font-family:"DM Mono",monospace; font-size:12px; letter-spacing:.2em; text-transform:uppercase; color:var(--gold); }
-  .grp-h .gs{ display:block; color:var(--mute); font-size:14.5px; margin-top:5px; max-width:60ch; }
-  section.grp ul.readers{ border-left:1px solid var(--line); margin-left:2px; padding-left:16px; }
+  a.card h3{ font-family:"Cormorant Garamond",serif; font-weight:600; font-size:23px; line-height:1.14; margin:8px 0 6px; color:var(--text); }
+  a.card p{ color:var(--mute); font-size:14.5px; }
+  a.card .open{ margin-top:auto; padding-top:12px; font-size:13px; color:var(--gold); font-weight:500; }
+
+  .rule{ height:1px; background:var(--line); margin:40px 0 0; }
   footer{ margin-top:56px; padding-top:22px; border-top:1px solid var(--line); color:var(--mute); font-size:13px; }
   footer .brand{ color:var(--text); font-weight:500; }
   footer a{ color:var(--gold); text-decoration:none; }
+
+  @media (max-width:720px){
+    .paths{ grid-template-columns:1fr; }
+    .cardgrid{ grid-template-columns:1fr; }
+  }
   @media (prefers-color-scheme: light){
-    :root{ --ink:#faf9f6; --panel:#ffffff; --line:#e3e0d8; --gold:#9c7c3c; --text:#1a1a1e; --mute:#6b6862; }
+    :root{ --ink:#faf9f6; --panel:#ffffff; --panel2:#f4f2ec; --line:#e3e0d8; --gold:#9c7c3c; --text:#1a1a1e; --mute:#6b6862; }
     .brandlogo{ filter:invert(1); }
+    .subnav{ background:rgba(250,249,246,.85); }
   }
 </style>
 </head>
 <body>
-  <main class="wrap">
+  <header class="wrap" style="padding-bottom:0;">
     <img class="brandlogo" src="/assets/semipply-research-logo.png" alt="Semipply Research">
     <div class="kicker">Research · Semiconductor Supply Intelligence</div>
     <h1>Semipply Research</h1>
     <div class="subtitle">Semiconductor supply contracts, read from real filings.</div>
-    <p class="lede">Field guides, case studies, and interactive teardowns on the agreements that govern the chip supply chain — <strong>foundry, packaging, memory, and IP</strong>. Built from real, <strong>SEC-filed</strong> contracts: depth over size, every figure and quotation traced to the public filing — the same corpus the <a href="/" style="color:var(--gold)">Semipply</a> product runs on.</p>
+    <p class="lede textw">Field guides, case studies, and interactive teardowns on the agreements that govern the chip supply chain — <strong>foundry, packaging, memory, and IP</strong>. Built from real, <strong>SEC-filed</strong> contracts: depth over size, every figure and quotation traced to the public filing — the same corpus the <a href="/">Semipply</a> product runs on.</p>
     <div class="forbox">
       <span class="fw">Who it's for</span>
       <p>The founders, operators, and procurement teams who sign these contracts, and their boards — and the investors, acquirers, and lenders who read the risk before they back them.</p>
     </div>
+  </header>
 
-    <section class="grp">
-      <div class="grp-h"><span class="gk">Teardowns · the contracts behind a chip</span><span class="gs">A physical part, disassembled into the agreements that govern each layer — and the clauses where the exposure sits. Interactive.</span></div>
-      <ul class="readers">
-        <li><a class="card" href="h100-teardown.html">
-          <span class="tag">Teardown · interactive</span>
-          <h2>The Contractual Teardown of the H100</h2>
-          <p>The chip that defined the AI boom, disassembled into four agreements — foundry, advanced packaging, HBM memory, and IP licensing — each with a different counterparty and a different way to fail. Tap any layer. The same stack governs Blackwell and GB200, only tighter.</p>
-          <span class="open">Open the teardown →</span>
-        </a></li>
-      </ul>
+  <nav class="subnav" aria-label="Browse research">
+    <div class="inner">
+      <a href="#teardowns">Teardowns</a>
+      <a href="#start">Start here</a>
+      <a href="#fieldguide">The Field Guide</a>
+      <a href="#automotive">Automotive</a>
+    </div>
+  </nav>
+
+  <main class="wrap" style="padding-top:8px;">
+
+    <!-- FEATURED TEARDOWN -->
+    <section id="teardowns" class="grp">
+      <div class="grp-h">
+        <span class="gk">Teardowns · the contracts behind a chip</span>
+        <h2 class="gt">Start with one chip.</h2>
+        <span class="gs">A physical part, disassembled into the agreements that govern each layer — and the clauses where the exposure sits. Interactive.</span>
+      </div>
+      <a class="feature" href="h100-teardown.html">
+        <span class="tag">Featured · interactive teardown</span>
+        <h3>The Contractual Teardown of the H100</h3>
+        <p>The chip that defined the AI boom, disassembled into four agreements — foundry, advanced packaging, HBM memory, and IP licensing — each with a different counterparty and a different way to fail. Tap any layer. The same stack governs Blackwell and GB200, only tighter.</p>
+        <span class="open">Open the teardown →</span>
+      </a>
     </section>
 
-    <section class="grp">
-      <div class="grp-h"><span class="gk">The field guide — read cover to cover</span><span class="gs">Two continuous reads. Each has a PDF download inside (email to grab it). Everything below can also be read or shared a piece at a time.</span></div>
-      <ul class="readers">
+    <!-- START HERE — READER PATHS -->
+    <section id="start" class="grp">
+      <div class="grp-h">
+        <span class="gk">Start here · three ways in</span>
+        <h2 class="gt">Where do you sit?</h2>
+        <span class="gs">Pick the seat closest to yours — each opens the one piece written for it.</span>
+      </div>
+      <div class="paths">
+        <a class="path" href="The-Independence-Illusion-Semipply.pdf">
+          <span class="who">You sign these contracts</span>
+          <h3>The Independence Illusion</h3>
+          <p>Nine "independent" IPOs, read from the exhibits up — each captive to a parent, customer, foundry, or licensor.</p>
+          <span class="open">Read the thesis →</span>
+        </a>
+        <a class="path" href="when-the-chip-goes-in-a-car.html">
+          <span class="who">You buy the chips</span>
+          <h3>When the Chip Goes in a Car</h3>
+          <p>The automotive terms generic review misses — qualification lock-in, PCN gaps, longevity, and the directed-buy squeeze.</p>
+          <span class="open">Read the automotive cut →</span>
+        </a>
+        <a class="path" href="what-the-sec-asked.html">
+          <span class="who">You diligence the risk</span>
+          <h3>What the SEC Asked</h3>
+          <p>The questions the regulator already forced — China exposure, control, concentration, whether the revenue is real — across 19 comment letters.</p>
+          <span class="open">Read the regulator's read →</span>
+        </a>
+      </div>
+    </section>
+
+    <div class="rule"></div>
+
+    <!-- THE FIELD GUIDE -->
+    <section id="fieldguide" class="grp">
+      <div class="grp-h">
+        <span class="gk">The field guide — Signed Once</span>
+        <h2 class="gt">The book, cover to cover — or a piece at a time.</h2>
+        <span class="gs">The full field guide to supply-contract asymmetry. Read it as one continuous piece, or send whichever single part fits the conversation. Every piece stands alone.</span>
+      </div>
+
+      <!-- Continuous reads -->
+      <ul class="readers cardgrid">
         <li><a class="card" href="signed-once.html">
           <span class="tag">The book · one continuous read</span>
-          <h2>Signed Once</h2>
-          <p>The full field guide to supply-contract asymmetry — foreword, the nine companies, the method, and the through-line, in one read.</p>
+          <h3>Signed Once</h3>
+          <p>The full field guide — foreword, the nine companies, the method, and the through-line, in one read.</p>
           <span class="open">Read the book →</span>
         </a></li>
         <li><a class="card" href="auto.html">
           <span class="tag">Automotive companion · one continuous read</span>
-          <h2>When the Chip Goes in a Car</h2>
-          <p>The automotive cut — the Nexperia blind spot and the contract terms generic review misses, read from the automotive seat.</p>
+          <h3>When the Chip Goes in a Car</h3>
+          <p>The automotive cut — the Nexperia blind spot and the terms generic review misses, read from the automotive seat.</p>
           <span class="open">Read the companion →</span>
         </a></li>
       </ul>
-    </section>
-    <div class="imprint">A Semipply Research book · First edition · Built from public SEC filings</div>
 
-    <div class="rule"></div>
-
-    <section>
-      <ul class="readers">
+      <!-- Chapter by chapter -->
+      <ul class="readers cardgrid">
         <li><a class="card" href="foreword.html">
           <span class="tag">Foreword · begin here</span>
-          <h2>Read the Exhibits</h2>
+          <h3>Read the Exhibits</h3>
           <p>Why the document a company files and hopes you won't open is the one that tells the truth — and the method this book turns on it.</p>
           <span class="open">Read →</span>
         </a></li>
-      </ul>
-    </section>
-
-    <section class="grp">
-      <div class="grp-h"><span class="gk">Or read &amp; share a single part</span><span class="gs">Every piece stands alone — send whichever one fits the conversation.</span></div>
-      <ul class="readers">
         <li><a class="card" href="The-Independence-Illusion-Semipply.pdf">
-          <span class="tag">Chapter one · the thesis · nine companies</span>
-          <h2>The Independence Illusion</h2>
-          <p>What semiconductor companies file — and hope you won't read. Nine IPOs read from the exhibits up, each contractually captive to a parent, customer, foundry, or licensor. "Independent" turns out to be a balance-sheet word, not a contract one.</p>
+          <span class="tag">Chapter one · the thesis</span>
+          <h3>The Independence Illusion</h3>
+          <p>Nine IPOs read from the exhibits up, each contractually captive to a parent, customer, foundry, or licensor. "Independent" turns out to be a balance-sheet word, not a contract one.</p>
           <span class="open">Read →</span>
         </a></li>
-
         <li><a class="card" href="field-guide.html">
           <span class="tag">Chapter two · the field guide · interactive</span>
-          <h2>The Idiosyncrasies of Semiconductor Contracts</h2>
-          <p>The grammar of the asymmetry: twelve dimensions of risk and who carries each — take-or-pay, single-source allocation, one-sided caps, the change-of-control exposure nobody signs — with plain-English advice, grounded in real clauses. Tap any term for a definition.</p>
+          <h3>The Idiosyncrasies of Semiconductor Contracts</h3>
+          <p>The grammar of the asymmetry: twelve dimensions of risk and who carries each — take-or-pay, single-source allocation, one-sided caps, the change-of-control exposure nobody signs. Tap any term for a definition.</p>
           <span class="open">Read online →</span>
         </a></li>
-
         <li><a class="card" href="how-the-nine-aged.html">
           <span class="tag">Chapter three · the validation</span>
-          <h2>How the Nine Aged</h2>
+          <h3>How the Nine Aged</h3>
           <p>A check on where the fragility we flagged has since shown up — Allegro, Mobileye, Cerebras and the rest. Correlation, not causation: stress tends to land where the paper said it would.</p>
           <span class="open">Read →</span>
         </a></li>
-
         <li><a class="card" href="what-the-sec-asked.html">
           <span class="tag">Chapter four · the regulator's read</span>
-          <h2>What the SEC Asked</h2>
-          <p>The questions the regulator forced these companies to answer — China exposure, who really controls them, customer concentration, whether the revenue is real. Across 19 companies' comment letters: the diligence the SEC already did, sitting on EDGAR unread.</p>
+          <h3>What the SEC Asked</h3>
+          <p>The questions the regulator forced these companies to answer — China exposure, who really controls them, customer concentration, whether the revenue is real. The diligence the SEC already did, sitting on EDGAR unread.</p>
           <span class="open">Read →</span>
         </a></li>
-
         <li><a class="card" href="the-questions-your-contracts-force.html">
           <span class="tag">Chapter five · your turn</span>
-          <h2>The Questions Your Contracts Force</h2>
-          <p>The method turned on you: the diligence questions your own agreements force you — and your funders — to answer, before someone else asks them at a raise, a sale, or a review. Allegro is the worked example; the point is your own book of contracts.</p>
+          <h3>The Questions Your Contracts Force</h3>
+          <p>The method turned on you: the diligence questions your own agreements force you — and your funders — to answer, before someone else asks them at a raise, a sale, or a review. Allegro is the worked example.</p>
           <span class="open">Read →</span>
         </a></li>
-
         <li><a class="card" href="captive-by-domain.html">
           <span class="tag">Companion · read by domain</span>
-          <h2>Captive by Domain</h2>
-          <p>The same nine companies, re-cut by domain: the kind of chip you build predicts the kind of capture you sign — customer, parent, foundry, licensor, or captive upstream. Different leash every time, always readable in the exhibit.</p>
+          <h3>Captive by Domain</h3>
+          <p>The same nine companies, re-cut by domain: the kind of chip you build predicts the kind of capture you sign — customer, parent, foundry, licensor, or captive upstream. Different leash every time.</p>
+          <span class="open">Read →</span>
+        </a></li>
+        <li><a class="card" href="the-through-line.html">
+          <span class="tag">Afterword · the through-line</span>
+          <h3>The Through-Line</h3>
+          <p>What the agreements have in common, and why the gap between the story a company tells and the contract it signed is the whole opportunity.</p>
           <span class="open">Read →</span>
         </a></li>
       </ul>
-    </section>
-
-    <section class="grp">
-      <div class="grp-h"><span class="gk">Automotive · a worked vertical</span><span class="gs">The same method applied to one industry — where the cheapest part on the board, and the owner behind it, stopped car factories.</span></div>
-      <ul class="readers">
-        <li><a class="card" href="the-nexperia-blind-spot.html">
-          <span class="tag">Companion · the case</span>
-          <h2>The Nexperia Blind Spot</h2>
-          <p>How the cheapest parts on the board — diodes and transistors — stopped car factories in 2025, and why the ownership exposure behind it had been public and dated for years. The event was unforecastable; the exposure was readable all along.</p>
-          <span class="open">Read →</span>
-        </a></li>
-
-        <li><a class="card" href="when-the-chip-goes-in-a-car.html">
-          <span class="tag">Companion · the automotive reference</span>
-          <h2>When the Chip Goes in a Car</h2>
-          <p>The automotive-specific contract terms generic review misses — qualification lock-in (AEC-Q100/PPAP), PCN notice gaps, longevity and last-time-buy, and the OEM directed-buy squeeze. A companion to the Field Guide.</p>
-          <span class="open">Read →</span>
-        </a></li>
-      </ul>
+      <div class="imprint">A Semipply Research book · First edition · Built from public SEC filings; quotations verbatim.</div>
     </section>
 
     <div class="rule"></div>
 
-    <section>
-      <ul class="readers">
-        <li><a class="card" href="the-through-line.html">
-          <span class="tag">Afterword</span>
-          <h2>The Through-Line</h2>
-          <p>What the agreements have in common, and why the gap between the story a company tells and the contract it signed is the whole opportunity.</p>
+    <!-- AUTOMOTIVE -->
+    <section id="automotive" class="grp">
+      <div class="grp-h">
+        <span class="gk">Automotive · a worked vertical</span>
+        <h2 class="gt">When the cheapest part stops the line.</h2>
+        <span class="gs">The same method applied to one industry — where the cheapest part on the board, and the owner behind it, stopped car factories.</span>
+      </div>
+      <ul class="readers cardgrid">
+        <li><a class="card" href="the-nexperia-blind-spot.html">
+          <span class="tag">Companion · the case</span>
+          <h3>The Nexperia Blind Spot</h3>
+          <p>How the cheapest parts on the board — diodes and transistors — stopped car factories in 2025, and why the ownership exposure behind it had been public and dated for years. The event was unforecastable; the exposure was readable all along.</p>
+          <span class="open">Read →</span>
+        </a></li>
+        <li><a class="card" href="when-the-chip-goes-in-a-car.html">
+          <span class="tag">Companion · the automotive reference</span>
+          <h3>When the Chip Goes in a Car</h3>
+          <p>The automotive-specific contract terms generic review misses — qualification lock-in (AEC-Q100/PPAP), PCN notice gaps, longevity and last-time-buy, and the OEM directed-buy squeeze. A companion to the Field Guide.</p>
           <span class="open">Read →</span>
         </a></li>
       </ul>
@@ -196,23 +268,5 @@
       <a href="/">legalforensics.ai</a>
     </footer>
   </main>
-  <script>
-    (function(){
-      var f = document.getElementById('bookform');
-      if(!f) return;
-      f.addEventListener('submit', function(e){
-        e.preventDefault();
-        var email = document.getElementById('bookemail').value;
-        var data = new FormData();
-        data.append('email', email);
-        data.append('doc', 'Signed Once — the book (PDF)');
-        data.append('_subject', 'Book download — Signed Once');
-        fetch('https://formspree.io/f/xbdakppb', {method:'POST', body:data, headers:{'Accept':'application/json'}}).catch(function(){});
-        f.style.display = 'none';
-        document.getElementById('bookdone').style.display = 'block';
-        window.location.href = 'The-Independence-Illusion-Semipply.pdf';
-      });
-    })();
-  </script>
 </body>
 </html>
