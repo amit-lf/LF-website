@@ -258,3 +258,13 @@ a.plain:hover { border-color: var(--ink-3); }
 .logo img { display: block; height: 34px; width: auto; }
 footer .logo img { height: 26px; }
 @media (max-width: 720px) { .logo img { height: 28px; } }
+
+/* ── Nav as tabs. Each top-level section is its own page, so the "selected tab" is simply
+   the page you are on. Real URLs mean the evidence can be SENT to a sceptic, which is the
+   whole point of having it. ─────────────────────────────────────────────────────────────── */
+.nav-links a { position: relative; padding: 6px 0; }
+.nav-links a.is-current { color: var(--ink); font-weight: 600; }
+.nav-links a.is-current::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: -17px;
+  height: 2px; background: var(--gold);
+}
