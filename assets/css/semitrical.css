@@ -319,19 +319,3 @@ footer > div {
   :root { --gutter: 20px; }
   .hero h1 { max-width: none; }
 }
-
-/* ── Founder photos. Square with a small radius, not circles — a circle crops the top of the
-   head and reads as a social avatar, which is the wrong register for the page that answers
-   "who is receiving my supplier list".
-
-   Sized at 88px because the source images are 200px and 100px; displaying larger would
-   upscale one of them into visible softness. Replace with proper headshots and this can grow. */
-.founder-head { display: flex; align-items: center; gap: 14px; margin-bottom: 14px; }
-.founder-photo {
-  width: 88px; height: 88px; flex: 0 0 88px;
-  object-fit: cover; object-position: center top;
-  border-radius: 8px; border: 1px solid var(--rule);
-  background: var(--surface);
-}
-.founder-head h3 { margin: 0; }
-.founder-head .role { margin: 2px 0 0; }
