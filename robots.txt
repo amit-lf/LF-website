@@ -1,2 +1,4 @@
 User-agent: *
-Disallow: /research/
+Allow: /
+
+Sitemap: https://semitrical.ai/sitemap.xml
