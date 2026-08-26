@@ -463,3 +463,28 @@ footer          { font-size: 13.5px; }
 @media (max-width: 420px) {
   .nav-cta { font-size: 13px; padding: 8px 14px; }
 }
+
+/* ── DISPLAY TYPE ──────────────────────────────────────────────────────────────────────
+   The wordmark in the logo is a serif, and so is the LinkedIn banner. The site was sans
+   throughout, so anyone arriving from either crossed a seam without being able to say why.
+
+   Headings move to a serif; everything else stays DM Sans. Labels, buttons, nav and body
+   copy keep the sans deliberately — a page set entirely in serif reads as a journal rather
+   than a product, and the contrast between the two is what makes the headings feel chosen. */
+
+:root { --display: 'Playfair Display', Georgia, 'Times New Roman', serif; }
+
+.hero h1,
+.section h2,
+.signal-section h2 {
+  font-family: var(--display);
+  font-weight: 700;
+}
+
+/* A serif at these sizes carries its own weight, so the tight tracking that suited the sans
+   now closes the letters up. Ease it back. */
+.hero h1 { letter-spacing: -0.012em; line-height: 1.08; }
+.section h2, .signal-section h2 { letter-spacing: -0.005em; line-height: 1.18; }
+
+/* Card and founder headings stay sans: at 17–18px a serif reads as decoration rather than
+   hierarchy, and these sit in dense groups where legibility beats character. */
