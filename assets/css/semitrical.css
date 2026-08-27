@@ -488,3 +488,23 @@ footer          { font-size: 13.5px; }
 
 /* Card and founder headings stay sans: at 17–18px a serif reads as decoration rather than
    hierarchy, and these sit in dense groups where legibility beats character. */
+
+/* ── LOGO SIZE ─────────────────────────────────────────────────────────────────────────
+   The lockup is a wordmark with the tagline set beneath it, so its stated height is shared
+   between the two. At 34px the brand name itself was only about 20px tall — legible, but
+   apologetic, and the tagline was effectively decoration.
+
+   48px gives the wordmark roughly 29px and makes the tagline readable, which is the point of
+   having it in the lockup at all. Nav padding grows with it so the bar does not feel packed. */
+
+nav { padding-top: 20px; padding-bottom: 20px; }
+.logo img { height: 48px; }
+footer .logo img { height: 34px; }
+
+@media (max-width: 820px) {
+  nav { padding-top: 14px; padding-bottom: 14px; }
+  .logo img { height: 40px; }
+}
+@media (max-width: 420px) {
+  .logo img { height: 34px; }
+}
