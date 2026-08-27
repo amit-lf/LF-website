@@ -508,3 +508,19 @@ footer .logo img { height: 34px; }
 @media (max-width: 420px) {
   .logo img { height: 34px; }
 }
+
+/* Larger still. The source is 907x168, so even at 60px it renders at 3x native — resolution
+   was never the limit here. The NAV HEIGHT is: this bar is sticky, so every pixel it takes is
+   taken off every screen for the whole visit. Pulling the padding back from 20px to 15px pays
+   for a 25% bigger logo with 2px of extra bar. Past ~64px the trade stops being worth it. */
+nav { padding-top: 15px; padding-bottom: 15px; }
+.logo img { height: 60px; }
+footer .logo img { height: 40px; }
+
+@media (max-width: 820px) {
+  nav { padding-top: 12px; padding-bottom: 12px; }
+  .logo img { height: 46px; }
+}
+@media (max-width: 420px) {
+  .logo img { height: 38px; }
+}
