@@ -11,7 +11,7 @@
 :root {
   --ink: #0f1117; --ink-2: #2d3142; --ink-3: #5c6078; --ink-4: #9098b0;
   --surface: #f7f8fc; --white: #fff; --rule: #e2e4ea;
-  --gold: #DAA520; --gold-soft: #f5e6b8;
+  --gold: #D97706; --gold-soft: #f6ddb8;
   --font: 'DM Sans', sans-serif; --mono: 'DM Mono', monospace;
 }
 * { box-sizing: border-box; margin: 0; padding: 0; }
