@@ -374,7 +374,7 @@ document.querySelectorAll('section.chapter[id]').forEach(function(s){obs.observe
 (function(){document.querySelectorAll('.bookform').forEach(function(f){
 f.addEventListener('submit',function(e){e.preventDefault();
 var email=f.querySelector('input').value,pdf=f.dataset.pdf,doc=f.dataset.doc;
-var d=new FormData();d.append('email',email);d.append('doc',doc);d.append('_subject','Book download — '+doc);
+var d=new FormData();d.append('email',email);d.append('doc',doc);d.append('_subject','Research download — '+doc+' — '+email);
 window.semitricalSend(d,{source:'research-download'}).catch(function(){});
 f.style.display='none';var done=f.parentNode.querySelector('.done');if(done)done.style.display='block';
 window.location.href=pdf;});});})();
