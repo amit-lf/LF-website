@@ -43,10 +43,13 @@
 
 <header class="hero">
   <span class="hero-badge">GET IN TOUCH</span>
-  <h1>Send a list of <em>your suppliers.</em></h1>
+  <!-- Both halves of the trade are in the headline on purpose. "Send a list of your suppliers"
+       never said who sends and who receives, so it inverted the moment it left the page — read
+       in our own inbox it looked like someone asking US for a list. "Get back" fixes that. -->
+  <h1>Send names. Get back <em>what their filings say.</em></h1>
   <p class="hero-sub">
-    No contract and no NDA required to start. Names are enough — we load them, read what their
-    own filings say, and send it back.
+    No contract and no NDA required to start. Nothing confidential — just the names of the
+    companies you buy from.
   </p>
 </header>
 
@@ -165,7 +168,11 @@
     send.textContent = 'Sending…';
 
     var data = new FormData(f);
-    data.append('_subject', 'Semitrical — ' + f.purpose.value);
+    // The company goes in the SUBJECT so the inbox is sortable by who is asking. Every
+    // enquiry used to arrive under the same line, so none of them could be told apart
+    // without opening it.
+    var co = (f.company.value || '').trim();
+    data.append('_subject', 'Semitrical enquiry — ' + f.purpose.value + (co ? ' — ' + co : ''));
     window.semitricalSend(data, { source: 'contact' })
       .then(function () {
         f.hidden = true;
