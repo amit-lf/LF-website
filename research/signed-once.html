@@ -355,7 +355,9 @@ footer .brand{color:var(--text);font-weight:500;} footer a{color:var(--gold);tex
 <div class="fgnote">Buying chips for a car? The automotive companion reads these same contracts from the automotive seat. <a href="auto.html">When the Chip Goes in a Car &rarr;</a></div>
 <div class="cta"><b>Want this read on your own contract?</b><p>Send us one representative agreement under NDA and we'll run this exact read on it, clause by clause. <a href="https://legalforensics.ai/contact">Send one agreement &rarr;</a></p></div>
 <footer><span class="brand">Semipply Research</span> &middot; Semiconductor Supply Intelligence. Built from public SEC filings; quotations verbatim. Not legal or investment advice. &middot; <a href="/research/">All research</a></footer>
-</main><script>
+</main>
+<script src="../assets/js/forms.js"></script>
+<script>
 document.addEventListener('click',function(e){var t=e.target.closest('.term');document.querySelectorAll('.term.open').forEach(function(el){if(el!==t)el.classList.remove('open');});if(t){t.classList.toggle('open');e.preventDefault();}
 var n=document.querySelector('.sidenav.open');if(n&&!e.target.closest('.sidenav')&&!e.target.closest('.navbtn')){n.classList.remove('open');document.querySelector('.navbackdrop').classList.remove('open');}});
 (function(){var links=[].slice.call(document.querySelectorAll('.sidenav a'));if(!links.length)return;var map={};links.forEach(function(a){map[a.getAttribute('href').slice(1)]=a;});
@@ -373,7 +375,7 @@ document.querySelectorAll('section.chapter[id]').forEach(function(s){obs.observe
 f.addEventListener('submit',function(e){e.preventDefault();
 var email=f.querySelector('input').value,pdf=f.dataset.pdf,doc=f.dataset.doc;
 var d=new FormData();d.append('email',email);d.append('doc',doc);d.append('_subject','Book download — '+doc);
-fetch('https://formspree.io/f/xbdakppb',{method:'POST',body:d,headers:{'Accept':'application/json'}}).catch(function(){});
+window.semitricalSend(d,{source:'research-download'}).catch(function(){});
 f.style.display='none';var done=f.parentNode.querySelector('.done');if(done)done.style.display='block';
 window.location.href=pdf;});});})();
 </script></body></html>
