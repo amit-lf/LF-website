@@ -82,6 +82,13 @@
         <p class="form-note" id="form-error" hidden>
           Please add a name and an email address so we can reply.
         </p>
+        <!-- Shown only when the send actually failed. Someone who is told "thank you" when
+             nothing arrived does not follow up, because they believe they already have. -->
+        <p class="form-note" id="form-failed" hidden>
+          That did not send. Please write to
+          <a class="plain" href="mailto:contact@semitrical.ai">contact@semitrical.ai</a>
+          and we will pick it up from there.
+        </p>
         <p class="form-note">
           We reply from a person, not a sequence. Your details are not sold, shared or added to
           any list.
@@ -132,13 +139,19 @@
   </div>
 </footer>
 
+<script src="assets/js/forms.js"></script>
 <script>
-// Posted to Formspree over fetch so the page never navigates away to their branded thank-you.
-// The confirmation is shown even if the request fails — a lost message is better than telling
-// someone who just typed their details that something went wrong with no way to retry.
+// Posted over fetch so the page never navigates away to Formspree's branded thank-you.
+//
+// The confirmation is shown ONLY on success. It used to be shown either way, on the reasoning
+// that a lost message beat alarming someone who had just typed their details. That is the
+// wrong way round: a person who sees an error can write to the address printed beside the
+// form, and a person who sees "thank you" does nothing further, because they believe they
+// have already reached us. The second one costs the enquiry AND hides that it happened.
 (function () {
   var f = document.getElementById('contact-form');
   var err = document.getElementById('form-error');
+  var failed = document.getElementById('form-failed');
   var done = document.getElementById('form-done');
   var send = document.getElementById('send');
 
@@ -147,18 +160,22 @@
     var name = f.name.value.trim(), email = f.email.value.trim();
     if (!name || !email || email.indexOf('@') < 1) { err.hidden = false; return; }
     err.hidden = true;
+    failed.hidden = true;
     send.disabled = true;
     send.textContent = 'Sending…';
 
     var data = new FormData(f);
     data.append('_subject', 'Semitrical — ' + f.purpose.value);
-    fetch('https://formspree.io/f/xbdakppb', {
-      method: 'POST', body: data, headers: { Accept: 'application/json' }
-    }).catch(function () { /* shown as sent either way — see note above */ })
-      .finally(function () {
+    window.semitricalSend(data, { source: 'contact' })
+      .then(function () {
         f.hidden = true;
         done.hidden = false;
         window.scrollTo({ top: 0, behavior: 'smooth' });
+      })
+      .catch(function () {
+        failed.hidden = false;
+        send.disabled = false;
+        send.textContent = 'Send';
       });
   });
 })();

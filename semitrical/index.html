@@ -173,7 +173,9 @@ footer b{color:var(--text);font-weight:600;} footer a{color:var(--accent);text-d
 
 <hr>
 <footer><b>Semitrical</b> — a commercial-intelligence framework for the chip buyer's side. Built from public SEC filings and procurement practice; a working draft under review with procurement partners. Not legal or investment advice.<br>Reading your own supply contract, clause by clause &rarr; <a href="https://legalforensics.ai">legalforensics.ai</a></footer>
-</main><script>
+</main>
+<script src="../assets/js/forms.js"></script>
+<script>
 document.addEventListener('click',function(e){var n=document.querySelector('.sidenav.open');if(n&&!e.target.closest('.sidenav')&&!e.target.closest('.navbtn')){n.classList.remove('open');document.querySelector('.navbackdrop').classList.remove('open');}});
 (function(){var links=[].slice.call(document.querySelectorAll('.sidenav a'));if(!links.length)return;var map={};links.forEach(function(a){map[a.getAttribute('href').slice(1)]=a;});
 var obs=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){links.forEach(function(l){l.classList.remove('active');});var a=map[e.target.id];if(a)a.classList.add('active');}});},{rootMargin:'0px 0px -78% 0px',threshold:0});
@@ -182,6 +184,6 @@ var btn=document.querySelector('.navbtn'),nav=document.querySelector('.sidenav')
 if(btn){btn.addEventListener('click',function(){nav.classList.toggle('open');bd.classList.toggle('open');});bd.addEventListener('click',cl);links.forEach(function(a){a.addEventListener('click',cl);});}})();
 (function(){var f=document.getElementById('fbform');if(!f)return;f.addEventListener('submit',function(e){e.preventDefault();
 var d=new FormData(f);d.append('_subject','Semitrical wiki feedback');d.append('doc','Semitrical auto wiki');
-fetch('https://formspree.io/f/xbdakppb',{method:'POST',body:d,headers:{'Accept':'application/json'}}).catch(function(){});
+window.semitricalSend(d,{source:'wiki-feedback'}).catch(function(){});
 f.style.display='none';document.getElementById('fbdone').style.display='block';});})();
 </script></body></html>
