@@ -89,23 +89,11 @@
           <option>Not buying — researching the market</option>
         </select>
 
-        <!-- No "demo of the platform" option. We do not run product tours, and it was the
-             line that attracted people who wanted to look at the software rather than at
-             their own suppliers. The options now ask WHO is writing, so anyone who is not
-             a buyer says so in one click and neither side wastes a call. -->
-        <label for="purpose">What are you after</label>
-        <select id="purpose" name="purpose">
-          <option>A read on your suppliers</option>
-          <option>Partnership, press or research</option>
-          <option>Something else</option>
-        </select>
-
-        <!-- Naming a supplier is the single strongest qualifier we have. Someone who cannot
-             name one is not sourcing. Required when they picked the buyer option; see the
-             submit handler below. -->
-        <label for="message">Which suppliers, and what are you negotiating
-          <span class="req" aria-hidden="true">*</span>
-          <span class="opt">if you want a read on them</span></label>
+        <!-- Optional on purpose. The buying-motion answer already separates a buyer from a
+             researcher, so this field no longer has to carry qualification. Someone early who
+             will not name their base to a stranger is still worth a reply. -->
+        <label for="message">Which suppliers, and what is coming up with them
+          <span class="opt">optional</span></label>
         <textarea id="message" name="message" rows="5"
           placeholder="e.g. Infineon, NXP, Renesas — and what is coming up with them"></textarea>
 
@@ -116,9 +104,6 @@
         <button class="btn-primary" type="submit" id="send">Send</button>
         <p class="form-note" id="form-error" hidden>
           Please add a name, an email address, your company, and how you buy chips.
-        </p>
-        <p class="form-note" id="form-suppliers" hidden>
-          Please name at least one supplier, so we can tell you whether we cover them.
         </p>
         <!-- Shown only when the send actually failed. Someone who is told "thank you" when
              nothing arrived does not follow up, because they believe they already have. -->
@@ -189,7 +174,6 @@
 (function () {
   var f = document.getElementById('contact-form');
   var err = document.getElementById('form-error');
-  var needSuppliers = document.getElementById('form-suppliers');
   var failed = document.getElementById('form-failed');
   var done = document.getElementById('form-done');
   var send = document.getElementById('send');
@@ -203,13 +187,7 @@
       err.hidden = false; return;
     }
 
-    // If they say they want a read on suppliers, they have to name one. Without this a
-    // researcher can pick the buyer option and name nothing, which is exactly what happened.
-    var wantsRead = f.purpose.value.indexOf('suppliers') > -1;
-    if (wantsRead && !f.message.value.trim()) { needSuppliers.hidden = false; return; }
-
     err.hidden = true;
-    needSuppliers.hidden = true;
     failed.hidden = true;
     send.disabled = true;
     send.textContent = 'Sending…';
@@ -219,8 +197,9 @@
     // enquiry used to arrive under the same line, so none of them could be told apart
     // without opening it.
     var co = (f.company.value || '').trim();
-    // Motion goes in the subject too, so a "not buying" enquiry is visible without opening it.
-    data.append('_subject', 'Semitrical enquiry — ' + f.purpose.value
+    // Company and buying motion in the subject, so a non-buyer is visible in the inbox
+    // without opening the message.
+    data.append('_subject', 'Semitrical enquiry'
                 + (co ? ' — ' + co : '') + (motion ? ' — ' + motion : ''));
     window.semitricalSend(data, { source: 'contact' })
       .then(function () {
