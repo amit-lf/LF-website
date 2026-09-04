@@ -57,19 +57,21 @@
   <div class="form-grid">
     <div>
       <form id="contact-form" novalidate>
-        <label for="name">Name</label>
+        <p class="form-required-note">Fields marked <span class="req">*</span> are required.</p>
+
+        <label for="name">Name <span class="req" aria-hidden="true">*</span></label>
         <input id="name" name="name" type="text" autocomplete="name" required>
 
-        <label for="email">Work email</label>
+        <label for="email">Work email <span class="req" aria-hidden="true">*</span></label>
         <input id="email" name="email" type="email" autocomplete="email" required>
 
         <!-- Company is REQUIRED. It was optional, and an enquiry arrived from someone with no
              company at all; it took two emails and four days to find that out. One required
              field surfaces it before a reply is spent on it. -->
-        <label for="company">Company</label>
+        <label for="company">Company <span class="req" aria-hidden="true">*</span></label>
         <input id="company" name="company" type="text" autocomplete="organization" required>
 
-        <label for="role">Your role</label>
+        <label for="role">Your role <span class="opt">optional</span></label>
         <input id="role" name="role" type="text" autocomplete="organization-title"
                placeholder="e.g. commodity manager, sourcing lead, CFO">
 
@@ -77,7 +79,7 @@
              asked - and it decides whether any of this applies to them. "Not buying" is a real
              option on purpose: someone researching says so in one click and neither side spends
              a call finding out. -->
-        <label for="motion">How do you buy chips</label>
+        <label for="motion">How do you buy chips <span class="req" aria-hidden="true">*</span></label>
         <select id="motion" name="motion" required>
           <option value="">Please choose…</option>
           <option>Direct from the manufacturer</option>
@@ -101,7 +103,9 @@
         <!-- Naming a supplier is the single strongest qualifier we have. Someone who cannot
              name one is not sourcing. Required when they picked the buyer option; see the
              submit handler below. -->
-        <label for="message">Which suppliers, and what are you negotiating</label>
+        <label for="message">Which suppliers, and what are you negotiating
+          <span class="req" aria-hidden="true">*</span>
+          <span class="opt">if you want a read on them</span></label>
         <textarea id="message" name="message" rows="5"
           placeholder="e.g. Infineon, NXP, Renesas — and what is coming up with them"></textarea>
 
