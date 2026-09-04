@@ -63,8 +63,29 @@
         <label for="email">Work email</label>
         <input id="email" name="email" type="email" autocomplete="email" required>
 
+        <!-- Company is REQUIRED. It was optional, and an enquiry arrived from someone with no
+             company at all; it took two emails and four days to find that out. One required
+             field surfaces it before a reply is spent on it. -->
         <label for="company">Company</label>
-        <input id="company" name="company" type="text" autocomplete="organization">
+        <input id="company" name="company" type="text" autocomplete="organization" required>
+
+        <label for="role">Your role</label>
+        <input id="role" name="role" type="text" autocomplete="organization-title"
+               placeholder="e.g. commodity manager, sourcing lead, CFO">
+
+        <!-- The buying-motion question. It cannot be screened from the outside - it has to be
+             asked - and it decides whether any of this applies to them. "Not buying" is a real
+             option on purpose: someone researching says so in one click and neither side spends
+             a call finding out. -->
+        <label for="motion">How do you buy chips</label>
+        <select id="motion" name="motion" required>
+          <option value="">Please choose…</option>
+          <option>Direct from the manufacturer</option>
+          <option>Through a distributor</option>
+          <option>Through a Tier-1 or EMS</option>
+          <option>A mix of these</option>
+          <option>Not buying — researching the market</option>
+        </select>
 
         <!-- No "demo of the platform" option. We do not run product tours, and it was the
              line that attracted people who wanted to look at the software rather than at
@@ -77,9 +98,12 @@
           <option>Something else</option>
         </select>
 
-        <label for="message">Suppliers, or anything else worth knowing</label>
+        <!-- Naming a supplier is the single strongest qualifier we have. Someone who cannot
+             name one is not sourcing. Required when they picked the buyer option; see the
+             submit handler below. -->
+        <label for="message">Which suppliers, and what are you negotiating</label>
         <textarea id="message" name="message" rows="5"
-          placeholder="e.g. Infineon, NXP, Renesas — and what you are negotiating"></textarea>
+          placeholder="e.g. Infineon, NXP, Renesas — and what is coming up with them"></textarea>
 
         <!-- Bots fill hidden fields; people do not. Cheaper and less annoying than a captcha. -->
         <input type="text" name="_gotcha" tabindex="-1" autocomplete="off"
@@ -87,7 +111,10 @@
 
         <button class="btn-primary" type="submit" id="send">Send</button>
         <p class="form-note" id="form-error" hidden>
-          Please add a name and an email address so we can reply.
+          Please add a name, an email address, your company, and how you buy chips.
+        </p>
+        <p class="form-note" id="form-suppliers" hidden>
+          Please name at least one supplier, so we can tell you whether we cover them.
         </p>
         <!-- Shown only when the send actually failed. Someone who is told "thank you" when
              nothing arrived does not follow up, because they believe they already have. -->
@@ -158,6 +185,7 @@
 (function () {
   var f = document.getElementById('contact-form');
   var err = document.getElementById('form-error');
+  var needSuppliers = document.getElementById('form-suppliers');
   var failed = document.getElementById('form-failed');
   var done = document.getElementById('form-done');
   var send = document.getElementById('send');
@@ -165,8 +193,19 @@
   f.addEventListener('submit', function (e) {
     e.preventDefault();
     var name = f.name.value.trim(), email = f.email.value.trim();
-    if (!name || !email || email.indexOf('@') < 1) { err.hidden = false; return; }
+    var company = f.company.value.trim();
+    var motion = f.motion.value.trim();
+    if (!name || !email || email.indexOf('@') < 1 || !company || !motion) {
+      err.hidden = false; return;
+    }
+
+    // If they say they want a read on suppliers, they have to name one. Without this a
+    // researcher can pick the buyer option and name nothing, which is exactly what happened.
+    var wantsRead = f.purpose.value.indexOf('suppliers') > -1;
+    if (wantsRead && !f.message.value.trim()) { needSuppliers.hidden = false; return; }
+
     err.hidden = true;
+    needSuppliers.hidden = true;
     failed.hidden = true;
     send.disabled = true;
     send.textContent = 'Sending…';
@@ -176,7 +215,9 @@
     // enquiry used to arrive under the same line, so none of them could be told apart
     // without opening it.
     var co = (f.company.value || '').trim();
-    data.append('_subject', 'Semitrical enquiry — ' + f.purpose.value + (co ? ' — ' + co : ''));
+    // Motion goes in the subject too, so a "not buying" enquiry is visible without opening it.
+    data.append('_subject', 'Semitrical enquiry — ' + f.purpose.value
+                + (co ? ' — ' + co : '') + (motion ? ' — ' + motion : ''));
     window.semitricalSend(data, { source: 'contact' })
       .then(function () {
         f.hidden = true;
