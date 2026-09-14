@@ -1,156 +1,793 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>What the Roadmap Leaves Out — Semitrical</title>
-<meta name="description" content="What eleven memory and analog suppliers' own filings say about capacity, investment and staying power.">
-
-<!-- Unlisted by design. Reached by scanning the cover of a printed copy, or by being sent the
-     link. Deliberately not in the nav, not in sitemap.xml, and not indexed. -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="What semiconductor suppliers disclose in their own filings, read for procurement leverage and design-in risk.">
+<!-- Unlisted: reachable by link and by the QR code on the printed handout, but not indexed,
+     not in the sitemap and not in the nav. Same treatment as the previous version. -->
 <meta name="robots" content="noindex, nofollow">
-
 <link rel="icon" href="/favicon-semitrical.ico">
 <link rel="apple-touch-icon" href="/assets/img/semitrical-mark.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/css/semitrical.css">
+
+<title>Semitrical — JEDEC Automotive Electronics Forum 2026</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=DM+Mono:wght@400;500&display=swap');
+:root {
+  --ink:#0f0f0e; --ink2:#2e2e2c; --ink3:#5a5a56; --ink4:#9a9a96;
+  --bg:#f8f7f4; --surface:#fff; --border:#e4e2dc;
+  --orange:#e05c1a; --orange-light:#fdf1eb;
+  --red:#b91c1c; --red-bg:#fef2f2;
+  --amber:#92400e; --amber-bg:#fffbeb;
+  --green:#166534; --green-bg:#f0fdf4;
+  --mem:#1a5276; --mem-bg:#eaf2f8;
+  --ana:#4a235a; --ana-bg:#f5eef8;
+  --ifx:#0057a8; --stm-g:#1a7a4a; --on:#00758f;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'DM Sans',sans-serif;background:#ccc;color:var(--ink);font-size:13px;line-height:1.6;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+.page{width:210mm;background:var(--surface);margin:6mm auto;position:relative;overflow:hidden;page-break-after:always;}
+.inner{padding:10mm 12mm 8mm;min-height:297mm;display:flex;flex-direction:column;}
+.page-header{display:flex;justify-content:space-between;align-items:flex-start;border-bottom:1.5px solid var(--ink);padding-bottom:6px;margin-bottom:12px;}
+.ph-logo{display:flex;align-items:center;gap:7px;}
+.ph-mark{width:18px;height:18px;border:1.5px solid var(--orange);border-radius:3px;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;color:var(--orange);font-family:'DM Mono',monospace;}
+.ph-brand{font-size:11px;font-weight:600;color:var(--ink);}
+.ph-sub{font-size:9px;color:var(--ink3);font-family:'DM Mono',monospace;display:block;}
+.ph-right{text-align:right;font-size:9px;color:var(--ink4);font-family:'DM Mono',monospace;line-height:1.8;}
+.pg-title{font-size:19px;font-weight:700;letter-spacing:-.5px;line-height:1.1;margin-bottom:3px;}
+.pg-title span{color:var(--orange);}
+.pg-intro{font-size:11.5px;color:var(--ink3);line-height:1.55;margin-bottom:11px;max-width:170mm;}
+.sec{font-size:9px;font-family:'DM Mono',monospace;letter-spacing:.1em;color:var(--ink4);text-transform:uppercase;margin-bottom:7px;padding-bottom:3px;border-bottom:1px solid var(--border);}
+.page-footer{margin-top:auto;padding-top:7px;border-top:1px solid var(--border);display:flex;justify-content:space-between;font-size:9px;color:var(--ink4);font-family:'DM Mono',monospace;}
+.src{display:inline;font-size:8.5px;font-family:'DM Mono',monospace;background:var(--bg);color:var(--ink4);padding:1px 4px;border-radius:2px;border:1px solid var(--border);}
+.src-m{background:var(--mem-bg);color:var(--mem);border-color:#aed6f1;}
+.src-a{background:var(--ana-bg);color:var(--ana);border-color:#d2b4de;}
+.src-est{background:#fdf3e0;color:#7a5a1a;border-color:#f0d9a0;}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+
+/* ── PAGE 1: COVER ── */
+.cover{height:297mm;display:flex;flex-direction:column;background:var(--ink);}
+.cov-top{padding:14mm 14mm 0;flex:1;display:flex;flex-direction:column;}
+.cov-logo{display:flex;align-items:center;gap:10px;margin-bottom:auto;}
+.cov-mark{width:28px;height:28px;border:2px solid var(--orange);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:var(--orange);font-family:'DM Mono',monospace;}
+.cov-brand-text{font-size:16px;font-weight:600;color:#fff;}
+.cov-brand-sub{font-size:9px;font-family:'DM Mono',monospace;color:#555;letter-spacing:.08em;text-transform:uppercase;display:block;margin-top:1px;}
+.cov-headline{margin-bottom:14mm;}
+.cov-eyebrow{font-size:11px;font-family:'DM Mono',monospace;color:var(--orange);letter-spacing:.08em;text-transform:uppercase;margin-bottom:10px;}
+.cov-h1{font-size:46px;font-weight:700;letter-spacing:-2px;line-height:1.0;color:#fff;margin-bottom:14px;}
+.cov-h1 span{color:var(--orange);}
+.cov-roadmap{font-size:14px;color:#777;line-height:1.55;max-width:130mm;border-left:2px solid #333;padding-left:14px;}
+.cov-bottom{background:#0a0a09;padding:8mm 14mm;display:flex;justify-content:space-between;align-items:center;}
+.cov-bl{font-size:11px;color:#555;line-height:1.8;}
+.cov-bl strong{color:#888;}
+.cov-br{text-align:right;font-size:10px;color:#444;font-family:'DM Mono',monospace;line-height:1.8;}
+.cov-br span{color:var(--orange);}
+
+/* ── PAGE 2: INTRO ── */
+.intro-lead{background:var(--ink);border-radius:6px;padding:12px 16px;margin-bottom:12px;}
+.il-label{font-size:9px;font-family:'DM Mono',monospace;color:var(--orange);letter-spacing:.08em;text-transform:uppercase;margin-bottom:5px;}
+.il-text{font-size:13px;color:#e0ddd8;line-height:1.65;}
+.il-text strong{color:#fff;}
+
+.sample-strip{background:var(--orange-light);border:1px solid #f0c8a0;border-left:3px solid var(--orange);border-radius:0 6px 6px 0;padding:8px 12px;margin-bottom:12px;}
+.ss-label{font-size:9px;font-family:'DM Mono',monospace;color:var(--orange);letter-spacing:.06em;text-transform:uppercase;margin-bottom:3px;}
+.ss-text{font-size:11.5px;color:var(--ink2);line-height:1.55;}
+
+.pagemap{border:1px solid var(--border);border-radius:6px;overflow:hidden;margin-bottom:12px;}
+.pm-header{background:var(--ink);padding:8px 14px;font-size:9px;font-family:'DM Mono',monospace;color:var(--orange);letter-spacing:.08em;text-transform:uppercase;}
+.pm-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;}
+.pm-item{padding:10px 12px;border-right:1px solid var(--border);border-bottom:1px solid var(--border);}
+.pm-item:nth-child(3n){border-right:none;}
+.pm-item:nth-last-child(-n+3){border-bottom:none;}
+.pm-num{font-size:9px;font-family:'DM Mono',monospace;color:var(--orange);font-weight:500;margin-bottom:3px;}
+.pm-output-type{font-size:8.5px;font-family:'DM Mono',monospace;color:var(--ink4);text-transform:uppercase;letter-spacing:.05em;margin-bottom:3px;}
+.pm-title{font-size:12px;font-weight:600;color:var(--ink);line-height:1.25;margin-bottom:3px;}
+.pm-desc{font-size:10px;color:var(--ink3);line-height:1.45;}
+
+.audience-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.aud-card{border:1px solid var(--border);border-radius:6px;padding:10px 12px;}
+.aud-who{font-size:9px;font-family:'DM Mono',monospace;font-weight:500;color:var(--orange);text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px;}
+.aud-title{font-size:12px;font-weight:600;color:var(--ink);margin-bottom:4px;line-height:1.25;}
+.aud-text{font-size:11px;color:var(--ink2);line-height:1.5;}
+
+/* ── PAGE 3: THE ARGUMENT ── */
+.arg-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px;}
+.arg-card{border:1px solid var(--border);border-radius:6px;padding:10px 12px;}
+.arg-icon{font-size:18px;margin-bottom:6px;}
+.arg-card h3{font-size:13px;font-weight:600;margin-bottom:4px;}
+.arg-card p{font-size:11.5px;color:var(--ink2);line-height:1.55;}
+.capex-vis{border:1px solid var(--border);border-radius:6px;padding:10px 12px;margin-bottom:10px;}
+.capex-vis h3{font-size:12px;font-weight:600;margin-bottom:4px;}
+.capex-explain{font-size:11px;color:var(--ink2);line-height:1.55;margin-bottom:10px;background:var(--bg);border-radius:4px;padding:7px 10px;border-left:3px solid var(--orange);}
+.cx-row{display:flex;align-items:center;gap:8px;margin-bottom:5px;}
+.cx-name{font-size:10px;font-family:'DM Mono',monospace;width:56px;min-width:56px;color:var(--ink2);}
+.cx-track{flex:1;height:9px;background:var(--bg);border-radius:4px;}
+.cx-bar{height:9px;border-radius:4px;}
+.cx-val{font-size:10px;font-family:'DM Mono',monospace;font-weight:500;width:30px;text-align:right;}
+.cx-note{font-size:9.5px;color:var(--ink3);width:95px;line-height:1.3;}
+.cx-divider{height:1px;background:var(--border);margin:6px 0;}
+.cx-group{font-size:9px;font-family:'DM Mono',monospace;color:var(--ink4);letter-spacing:.05em;margin-bottom:4px;}
+.insight-strip{background:var(--ink);color:#fff;border-radius:6px;padding:10px 14px;}
+.insight-strip p{font-size:12px;color:#ccc;line-height:1.6;}
+.insight-strip strong{color:#fff;}
+
+/* ── PAGE 4: MEMORY ── */
+.mem-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:10px;}
+.sc{border:1px solid var(--border);border-radius:6px;overflow:hidden;}
+.sc-head{padding:7px 10px 6px;}
+.sc-head.mem{background:var(--mem);}
+.sc-head.warn{background:#7b241c;}
+.sc-name{font-size:12px;font-weight:600;color:#fff;}
+.sc-type{font-size:9px;color:rgba(255,255,255,.65);font-family:'DM Mono',monospace;}
+.sc-body{padding:8px 10px;}
+.sc-row{display:flex;justify-content:space-between;margin-bottom:3px;font-size:10.5px;}
+.sc-lbl{color:var(--ink3);}
+.sc-val{font-family:'DM Mono',monospace;font-weight:500;}
+.sc-val.up{color:var(--green);}
+.sc-val.dn{color:var(--red);}
+.sc-hr{height:1px;background:var(--border);margin:5px 0;}
+.sc-sig{font-size:10.5px;color:var(--ink2);line-height:1.5;}
+.mem-quote{background:var(--mem-bg);border:1px solid #aed6f1;border-radius:6px;padding:9px 12px;margin-bottom:10px;}
+.mq-label{font-size:9px;font-family:'DM Mono',monospace;color:var(--mem);letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px;}
+.mq-q{font-size:12px;color:var(--ink2);line-height:1.55;font-style:italic;border-left:3px solid var(--mem);padding-left:10px;}
+.mq-attr{font-size:10px;color:var(--ink3);margin-top:4px;font-family:'DM Mono',monospace;}
+.dram-vis{border:1px solid var(--border);border-radius:6px;padding:10px 12px;margin-bottom:10px;}
+.dram-vis h3{font-size:11px;font-weight:600;margin-bottom:7px;}
+.dv-row{display:flex;align-items:center;gap:8px;margin-bottom:5px;}
+.dv-lbl{font-size:10px;color:var(--ink2);width:55mm;}
+.dv-track{flex:1;height:10px;background:var(--bg);border-radius:3px;}
+.dv-bar{height:10px;border-radius:3px;background:var(--mem);}
+.dv-val{font-size:10px;font-family:'DM Mono',monospace;font-weight:500;color:var(--mem);width:30px;text-align:right;}
+
+/* ── PAGE 5: ANALOG ── */
+.ana-sig{border-left:3px solid var(--ana);background:var(--ana-bg);border-radius:0 6px 6px 0;padding:9px 11px;margin-bottom:8px;}
+.as-lbl{font-size:9px;font-family:'DM Mono',monospace;color:var(--ana);letter-spacing:.06em;text-transform:uppercase;margin-bottom:3px;}
+.as-text{font-size:11.5px;color:var(--ink2);line-height:1.5;}
+.bom-vis{border:1px solid var(--border);border-radius:6px;padding:10px 12px;margin-bottom:10px;}
+.bom-vis h3{font-size:11px;font-weight:600;margin-bottom:7px;}
+.bom-row{display:flex;align-items:center;gap:10px;margin-bottom:6px;}
+.bom-lbl{font-size:10px;color:var(--ink2);width:40mm;line-height:1.3;}
+.bom-track{flex:1;height:18px;background:var(--bg);border-radius:3px;}
+.bom-bar{height:18px;border-radius:3px;display:flex;align-items:center;padding-left:7px;}
+.bom-bar-lbl{font-size:10px;font-family:'DM Mono',monospace;font-weight:600;color:#fff;}
+.tt-box{border:1px solid var(--border);border-radius:6px;padding:10px 12px;margin-bottom:10px;}
+.tt-lbl{font-size:9px;font-family:'DM Mono',monospace;color:var(--ink4);letter-spacing:.06em;text-transform:uppercase;margin-bottom:7px;}
+.tt-row{display:flex;align-items:center;margin-bottom:5px;}
+.tt-from{font-size:10px;padding:3px 8px;border-radius:3px 0 0 3px;font-weight:500;}
+.tt-arrow{font-size:12px;color:var(--ink4);padding:0 5px;}
+.tt-to{font-size:10px;padding:3px 8px;border-radius:0 3px 3px 0;font-weight:500;}
+.tt-note{font-size:10.5px;color:var(--ink2);margin-left:8px;line-height:1.4;flex:1;}
+.warn-flag{background:var(--amber-bg);border:1px solid #f0c060;border-left:3px solid #d97706;border-radius:0 6px 6px 0;padding:8px 11px;}
+.wf-lbl{font-size:9px;font-family:'DM Mono',monospace;color:var(--amber);letter-spacing:.06em;text-transform:uppercase;margin-bottom:3px;}
+.wf-text{font-size:11.5px;color:var(--ink2);line-height:1.5;}
+
+/* ── PAGE 6: POWER SEMI ── */
+.sup-hdr{display:grid;grid-template-columns:52mm 1fr 1fr 1fr;gap:0;margin-bottom:0;}
+.sh-sp{padding:8px 0;}
+.sh-cell{padding:8px 10px;text-align:center;border-radius:5px 5px 0 0;}
+.sh-cell.ifx{background:var(--ifx);}
+.sh-cell.stm{background:var(--stm-g);}
+.sh-cell.on{background:var(--on);}
+.sh-name{font-size:13px;font-weight:600;color:#fff;display:block;}
+.sh-sub{font-size:9px;color:rgba(255,255,255,.7);font-family:'DM Mono',monospace;display:block;margin-top:1px;}
+.met-table{width:100%;border-collapse:collapse;margin-bottom:10px;}
+.met-table td{padding:6px 10px;border:1px solid var(--border);font-size:11.5px;vertical-align:top;}
+.met-table td:first-child{width:52mm;font-size:11px;font-weight:500;color:var(--ink2);background:var(--bg);}
+.met-table td.ci{border-top:2px solid var(--ifx);}
+.met-table td.cs{border-top:2px solid var(--stm-g);}
+.met-table td.co{border-top:2px solid var(--on);}
+.mv{font-family:'DM Mono',monospace;font-size:13px;font-weight:600;display:block;line-height:1.2;}
+.mn{font-size:9.5px;color:var(--ink3);display:block;margin-top:1px;line-height:1.4;}
+.lev-grid{display:grid;grid-template-columns:52mm 1fr 1fr 1fr;gap:0;margin-bottom:10px;border:1px solid var(--border);border-radius:6px;overflow:hidden;}
+.lg-hsp{background:#f0ede8;padding:6px 10px;border-bottom:1px solid var(--border);border-right:1px solid var(--border);font-size:10px;font-weight:500;color:var(--ink3);}
+.lg-hsup{padding:6px 10px;background:#f0ede8;border-bottom:1px solid var(--border);border-right:1px solid var(--border);font-size:10px;font-weight:600;font-family:'DM Mono',monospace;text-align:center;}
+.lg-hsup:last-child{border-right:none;}
+.lg-cat{padding:8px 10px;background:var(--bg);border-bottom:1px solid var(--border);border-right:1px solid var(--border);}
+.lg-cat.last{border-bottom:none;}
+.lg-cat-name{font-size:11.5px;font-weight:600;color:var(--ink);display:block;}
+.lg-cat-sub{font-size:9.5px;color:var(--ink3);display:block;margin-top:1px;line-height:1.4;}
+.lg-cell{padding:8px 10px;border-bottom:1px solid var(--border);border-right:1px solid var(--border);}
+.lg-cell:last-child{border-right:none;}
+.lg-cell.last{border-bottom:none;}
+.lev-badge{display:inline-flex;align-items:center;gap:4px;font-size:10px;font-weight:600;padding:3px 8px;border-radius:3px;font-family:'DM Mono',monospace;margin-bottom:4px;}
+.lev-h{background:var(--green-bg);color:var(--green);}
+.lev-m{background:var(--amber-bg);color:var(--amber);}
+.lev-l{background:var(--red-bg);color:var(--red);}
+.lev-note{font-size:10px;color:var(--ink2);line-height:1.45;}
+.quote-strip{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:10px;}
+.qs{border-radius:5px;padding:8px 10px;}
+.qs.ifx{background:#eff6ff;border:1px solid #bfdbfe;}
+.qs.stm{background:var(--green-bg);border:1px solid #bbf7d0;}
+.qs.on{background:#ecfeff;border:1px solid #a5f3fc;}
+.qs-lbl{font-size:8.5px;font-family:'DM Mono',monospace;font-weight:500;letter-spacing:.05em;text-transform:uppercase;margin-bottom:4px;}
+.qs.ifx .qs-lbl{color:var(--ifx);}
+.qs.stm .qs-lbl{color:var(--stm-g);}
+.qs.on .qs-lbl{color:var(--on);}
+.qs-q{font-size:10.5px;color:var(--ink2);line-height:1.5;font-style:italic;border-left:2px solid;padding-left:7px;}
+.qs.ifx .qs-q{border-left-color:var(--ifx);}
+.qs.stm .qs-q{border-left-color:var(--stm-g);}
+.qs.on .qs-q{border-left-color:var(--on);}
+.qs-attr{font-size:9px;color:var(--ink4);font-family:'DM Mono',monospace;margin-top:4px;}
+.proc-read{background:var(--ink);border-radius:6px;padding:10px 14px;}
+.pr-lbl{font-size:9px;font-family:'DM Mono',monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--orange);margin-bottom:5px;}
+.pr-text{font-size:12px;color:#d4d4d0;line-height:1.6;}
+.pr-text strong{color:#fff;}
+.pr-src{font-size:8.5px;font-family:'DM Mono',monospace;background:rgba(255,255,255,.08);color:#777;padding:1px 4px;border-radius:2px;}
+
+/* ── PAGE 7: SAMPLE OUTPUT ── */
+.sample-label{background:var(--ink);color:var(--orange);font-size:9px;font-family:'DM Mono',monospace;letter-spacing:.1em;text-transform:uppercase;display:inline-block;padding:2px 8px;border-radius:3px;margin-bottom:8px;}
+.lev-strip{display:flex;gap:8px;margin-bottom:10px;}
+.lc{flex:1;border:1px solid var(--border);border-radius:6px;padding:8px 10px;text-align:center;}
+.lc-name{font-size:10px;font-weight:600;color:var(--ink3);margin-bottom:4px;}
+.lc-score{font-size:22px;font-weight:700;font-family:'DM Mono',monospace;letter-spacing:-.5px;}
+.lc-track{height:3px;background:var(--border);border-radius:2px;margin:4px 0;}
+.lc-fill{height:3px;border-radius:2px;}
+.lc-note{font-size:9px;color:var(--ink4);font-family:'DM Mono',monospace;}
+.part-table{width:100%;border-collapse:collapse;margin-bottom:8px;font-size:11px;}
+.part-table th{font-size:8.5px;font-family:'DM Mono',monospace;letter-spacing:.05em;text-align:left;padding:5px 7px;background:var(--bg);border-bottom:1px solid var(--border);color:var(--ink3);font-weight:500;}
+.part-table td{padding:5px 7px;border-bottom:1px solid var(--border);vertical-align:middle;}
+.part-table tr:last-child td{border-bottom:none;}
+.pid{font-family:'DM Mono',monospace;font-size:10px;color:var(--ink3);display:block;}
+.pos{font-size:9px;font-weight:500;padding:2px 6px;border-radius:2px;white-space:nowrap;font-family:'DM Mono',monospace;}
+.pos-push{background:var(--green-bg);color:var(--green);}
+.pos-hold{background:var(--amber-bg);color:var(--amber);}
+.pos-resist{background:var(--red-bg);color:var(--red);}
+.spend-note{font-size:10px;color:var(--ink3);font-family:'DM Mono',monospace;margin-bottom:7px;padding:5px 8px;background:var(--bg);border-radius:4px;border:1px solid var(--border);}
+.rec-box{background:var(--bg);border:1px solid var(--border);border-radius:6px;padding:9px 12px;}
+.rb-lbl{font-size:9px;font-family:'DM Mono',monospace;color:var(--ink4);letter-spacing:.06em;text-transform:uppercase;margin-bottom:5px;}
+.rb-text{font-size:11px;color:var(--ink2);line-height:1.55;}
+.watch-tag{display:inline-block;background:#fef9c3;color:#854d0e;border:1px solid #fde68a;padding:2px 6px;border-radius:2px;font-size:9px;font-family:'DM Mono',monospace;margin-top:5px;}
+
+/* ── PAGE 8: BACK COVER ── */
+.bc{height:297mm;background:var(--ink);display:flex;flex-direction:column;padding:14mm;}
+.bc-logo{display:flex;align-items:center;gap:10px;margin-bottom:auto;}
+.bc-mark{width:32px;height:32px;border:2px solid var(--orange);border-radius:5px;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;color:var(--orange);font-family:'DM Mono',monospace;}
+.bc-brand{font-size:18px;font-weight:600;color:#fff;}
+.bc-brand-sub{font-size:10px;font-family:'DM Mono',monospace;color:#555;letter-spacing:.06em;text-transform:uppercase;display:block;}
+.bc-h1{font-size:32px;font-weight:700;letter-spacing:-1px;color:#fff;line-height:1.1;margin-bottom:10px;}
+.bc-h1 span{color:var(--orange);}
+.bc-body{font-size:13px;color:#777;line-height:1.6;max-width:140mm;margin-bottom:14mm;}
+.bc-offer{background:#1a1a18;border:1px solid #2a2a28;border-radius:8px;padding:12px 16px;margin-bottom:14mm;}
+.bc-offer-lbl{font-size:9px;font-family:'DM Mono',monospace;color:var(--orange);letter-spacing:.08em;text-transform:uppercase;margin-bottom:6px;}
+.bc-offer h3{font-size:16px;font-weight:600;color:#fff;margin-bottom:5px;}
+.bc-offer p{font-size:12px;color:#777;line-height:1.55;}
+.bc-contact{display:flex;gap:20px;padding-top:14mm;border-top:1px solid #222;}
+.bcc-lbl{font-size:9px;font-family:'DM Mono',monospace;color:#444;letter-spacing:.06em;text-transform:uppercase;margin-bottom:2px;}
+.bcc-val{font-size:11px;color:#888;}
+.bcc-val a{color:var(--orange);text-decoration:none;}
+.bc-disc{font-size:9px;color:#333;font-family:'DM Mono',monospace;line-height:1.5;margin-top:auto;padding-top:8mm;border-top:1px solid #1a1a18;}
+
+/* ── Web-only download bar ───────────────────────────────────────────────────────────────
+   The document is the page now, so someone arriving from the QR code reads it in the
+   browser. This gives them the print-ready file without a separate landing page whose copy
+   would go stale the moment the document is revised again. Hidden in print, because a
+   "download" control on paper is nonsense. */
+.dlbar { position: fixed; right: 16px; bottom: 16px; z-index: 50; display: flex; gap: 8px;
+         align-items: center; font-family: "DM Sans", system-ui, sans-serif; }
+.dlbar a { display: inline-flex; align-items: center; gap: 7px; text-decoration: none;
+           font-size: 13px; font-weight: 500; letter-spacing: .01em; padding: 10px 15px;
+           border-radius: 999px; border: 1px solid var(--border, #e4e2dc);
+           background: var(--surface, #fff); color: var(--ink, #0f0f0e);
+           box-shadow: 0 2px 4px rgba(0,0,0,.06), 0 12px 28px -14px rgba(0,0,0,.35); }
+.dlbar a:hover { border-color: #b9b6ad; }
+.dlbar a.alt { background: var(--ink, #0f0f0e); color: #fff; border-color: var(--ink, #0f0f0e); }
+@media print { .dlbar { display: none !important; } }
+@media (max-width: 640px) { .dlbar { right: 10px; bottom: 10px; }
+                            .dlbar a { font-size: 12px; padding: 9px 12px; } }
+</style>
 </head>
 <body>
 
-<nav>
-  <a class="logo" href="/" aria-label="Semitrical home"><img src="/assets/img/semitrical-logo.png" alt="Semitrical — removing asymmetry from chip deals" height="34"></a>
-  <div class="nav-links" id="nav-links">
-    <a href="/">Platform</a>
-    <a href="/markets.html">Markets</a>
-    <a href="/evidence.html">Evidence</a>
-    <a href="/about.html">About</a>
-  </div>
-  <a class="nav-cta" href="/contact.html" style="text-decoration:none;display:inline-block">Contact us</a>
-  <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Menu"><span></span><span></span><span></span></button>
-</nav>
-
-<header class="hero">
-  <span class="hero-badge">SUPPLIER ANALYSIS · MEMORY AND ANALOG</span>
-  <h1>What the Roadmap <em>Leaves Out</em></h1>
-  <p class="hero-sub">
-    A roadmap says what a supplier intends to build. The filings say whether it can. This is the
-    second half, for the eleven memory and analog suppliers behind a vehicle programme &mdash;
-    capacity, investment and staying power, taken from documents each company published itself.
-  </p>
-  <div class="hero-actions">
-    <a class="btn-primary" href="/assets/docs/Semitrical-What-the-Roadmap-Leaves-Out.pdf"
-       style="text-decoration:none;display:inline-block">Download the analysis (PDF, 17 pages)</a>
-    <a class="btn-secondary" href="/contact.html"
-       style="text-decoration:none;display:inline-block">Ask for your own supplier list</a>
-  </div>
-</header>
-
-<section class="section alt">
-  <div class="inner">
-    <p class="section-label">What is in it</p>
-    <h2>Six findings, all from filed figures.</h2>
-
-    <div class="cases">
-      <article class="case">
-        <p class="case-kind">01</p>
-        <h3>A price cycle is running, and it is visible</h3>
-        <p>Six memory makers moved gross margin up together across four quarters, one reaching 84.6%.
-          All five analog suppliers did not move &mdash; which is what shows the cycle is
-          memory-specific rather than an economy.</p>
-      </article>
-      <article class="case">
-        <p class="case-kind">02</p>
-        <h3>Memory&rsquo;s implied price rose between &times;1.5 and &times;4</h3>
-        <p>On unchanged unit costs, that is what the margin move implies about price. Over the same
-          quarters analog moved between &times;1.02 and &times;1.13.</p>
-      </article>
-      <article class="case">
-        <p class="case-kind">03</p>
-        <h3>The eleven are in very different positions</h3>
-        <p>Three memory suppliers are at their six-year revenue peak. A fourth sits 30% below its
-          own, in the same quarter. The largest fall from peak anywhere in the set is analog.</p>
-      </article>
-      <article class="case">
-        <p class="case-kind">04</p>
-        <h3>One number on the page points forward</h3>
-        <p>Capital spending against depreciation. Above 1.0&times; the plant base is growing;
-          below it, what wears out is not being replaced.</p>
-      </article>
-      <article class="case">
-        <p class="case-kind">05</p>
-        <h3>Some capacity is funded by the cycle, some by the business</h3>
-        <p>SK hynix is building at 2.17&times; depreciation on a price that rose &times;2.54. Texas
-          Instruments spends more, at 2.37&times;, on a price that moved &times;1.10 &mdash; and did it
-          through the downturn. For a fifteen-year part that distinction is the one that matters.</p>
-      </article>
-      <article class="case">
-        <p class="case-kind">06</p>
-        <h3>The scale of the capital problem</h3>
-        <p>One supplier turned $158bn of revenue into $1.3bn of free cash over six years, while
-          spending $62bn on plant. It explains more supplier behaviour than any roadmap slide.</p>
-      </article>
+<!-- ══ PAGE 1: COVER ══ -->
+<div class="page">
+<div class="cover">
+  <div class="cov-top">
+    <div class="cov-logo">
+      <div class="cov-mark">S</div>
+      <div>
+        <div class="cov-brand-text">Semitrical</div>
+        <span class="cov-brand-sub">Removing asymmetry from chip deals</span>
+      </div>
+    </div>
+    <div class="cov-headline">
+      <div class="cov-eyebrow">Procurement intelligence · Design-in visibility</div>
+      <div class="cov-h1">Know your supplier's<br>financial and<br><span>competitive position.</span></div>
+      <div class="cov-roadmap">Before you design in or negotiate.<br>Grounded in what suppliers disclose in their own filings — not what they present in their roadmaps.</div>
     </div>
   </div>
-</section>
-
-<section class="section">
-  <div class="inner">
-    <p class="section-label">A snapshot of something that moves</p>
-    <h2>Every figure in it has an expiry date, and the analysis names them.</h2>
-    <p class="section-sub">
-      The position is as at September 2026. Each supplier restates where it stands when it next
-      files, and the eleven do not report on the same calendar, so the set is never entirely
-      current at one moment. The analysis names the specific conditions that would make each reading
-      wrong &mdash; so a reader can check them against the next set of filings rather than take
-      the document on trust.
-    </p>
-    <div class="note">
-      A printed page can say where a supplier stands. Only a set that is maintained can say when
-      that stopped being true.
+  <div class="cov-bottom">
+    <div class="cov-bl">
+      <strong>Semitrical</strong><br>
+      Supplier intelligence for semiconductor procurement<br>
+      contact@semitrical.ai · semitrical.ai
+    </div>
+    <div class="cov-br">
+      JEDEC Automotive Electronics Forum<br>
+      Santa Clara · September 17, 2026<br>
+      <span>semitrical.ai/suppliers</span>
     </div>
   </div>
-</section>
+</div>
+</div>
 
-<section class="section alt">
-  <div class="inner">
-    <p class="section-label">If it is useful</p>
-    <h2>Send a list of suppliers.</h2>
-    <p class="section-sub">
-      Names only. No contract and no NDA required to start &mdash; we will load them and send back
-      what their own filings say.
-    </p>
-    <p class="section-sub">
-      Corrections are just as welcome. A correction from someone who knows a supplier better than
-      a filing does is worth more than the page it changes &mdash;
-      <a class="plain" href="mailto:contact@semitrical.ai">contact@semitrical.ai</a>.
-    </p>
-    <div class="hero-actions">
-      <a class="btn-primary" href="/contact.html"
-         style="text-decoration:none;display:inline-block">Request a supplier read</a>
+<!-- ══ PAGE 2: INTRO ══ -->
+<div class="page">
+<div class="inner">
+  <div class="page-header">
+    <div class="ph-logo"><div class="ph-mark">S</div><div><div class="ph-brand">Semitrical</div><span class="ph-sub">Supplier Intelligence</span></div></div>
+    <div class="ph-right">JEDEC AEF · Santa Clara · Sep 2026<br>2 of 8</div>
+  </div>
+
+  <div class="pg-title">Procurement intelligence <span>with design-in visibility.</span></div>
+  <div class="pg-intro">Semitrical surfaces what semiconductor suppliers disclose in their own filings — so procurement teams negotiate with the same depth the supplier's commercial team already has, and engineering teams make design-in decisions with visibility into whether that supplier is still investing in the technology their programme depends on.</div>
+
+  <div class="intro-lead">
+    <div class="il-label">What Semitrical does</div>
+    <div class="il-text">We read every filing, earnings transcript, and investor presentation across our supplier corpus and translate it into <strong>negotiation intelligence, supply resilience signals, and technology investment visibility</strong> — for the people who design components in and the people who then have to buy them. Engineering and procurement are making the same decision from opposite ends of the timeline. Semitrical gives both teams the same picture.</div>
+  </div>
+
+  <div class="sample-strip">
+    <div class="ss-label">About this document</div>
+    <div class="ss-text">Every page that follows is a sample of platform output — what Semitrical produces from supplier filings, earnings transcripts, and investor presentations, combined where relevant with a buyer's own spend data. The intelligence shown is real, drawn from the corpus as at September 2026. The spend figures on page 7 are illustrative.</div>
+  </div>
+
+  <div class="sec" style="margin-bottom:8px">Sample outputs — pages 3 to 7</div>
+  <div class="pagemap" style="margin-bottom:12px">
+    <div class="pm-header">What the platform surfaces — five output types shown in this document</div>
+    <div class="pm-grid">
+      <div class="pm-item">
+        <div class="pm-num">pg 3</div>
+        <div class="pm-output-type">Capital investment signal</div>
+        <div class="pm-title">Supplier plant investment vs. depreciation</div>
+        <div class="pm-desc">Which suppliers are growing their plant base and which are letting it shrink — the single ratio that points forward on part availability.</div>
+      </div>
+      <div class="pm-item">
+        <div class="pm-num">pg 4</div>
+        <div class="pm-output-type">Technology investment signal · Memory</div>
+        <div class="pm-title">Memory: who is funding the next node</div>
+        <div class="pm-desc">LPDDR6, UFS, HBM. Which suppliers are investing at scale for automotive-grade supply — and which are harvesting current capacity.</div>
+      </div>
+      <div class="pm-item">
+        <div class="pm-num">pg 5</div>
+        <div class="pm-output-type">Technology investment signal · Analog</div>
+        <div class="pm-title">Analog &amp; Power: technology shifts in the filings</div>
+        <div class="pm-desc">SiC, GaN, SDV/zonal. What supplier filings and transcripts say about technology priorities — and where capacity is being redirected.</div>
+      </div>
+      <div class="pm-item">
+        <div class="pm-num">pg 6</div>
+        <div class="pm-output-type">Negotiation intelligence</div>
+        <div class="pm-title">Power semiconductor leverage by product</div>
+        <div class="pm-desc">SiC vs IGBT. Three suppliers, three financial positions, three very different negotiating conversations — grounded in last quarter's filings.</div>
+      </div>
+      <div class="pm-item">
+        <div class="pm-num">pg 7</div>
+        <div class="pm-output-type">Spend + corpus output</div>
+        <div class="pm-title">Supplier leverage scores and part-level posture</div>
+        <div class="pm-desc">What the platform produces when corpus intelligence meets a buyer's actual spend data — leverage scores, negotiation posture, and watch triggers per part.</div>
+      </div>
+      <div class="pm-item" style="background:var(--bg)">
+        <div class="pm-num" style="color:var(--ink4)">pg 8</div>
+        <div class="pm-output-type">Get started</div>
+        <div class="pm-title">Supplier diagnostic</div>
+        <div class="pm-desc">Names only. No contract. No NDA. We run your shortlisted suppliers through the corpus and deliver a structured report the same week.</div>
+      </div>
     </div>
   </div>
-</section>
 
-<footer style="padding:36px 48px;border-top:1px solid var(--rule);font-size:12px;color:var(--ink-3)">
-  <div style="max-width:1100px;margin:0 auto">
-    <a class="logo" href="/" aria-label="Semitrical home"><img src="/assets/img/semitrical-logo.png" alt="Semitrical" height="26" style="opacity:.9"></a>
-    <p style="margin-top:10px;line-height:1.7">
-      Semiconductor procurement intelligence · © 2026 Semitrical<br>
-      Built from public filings. First-pass analysis to support your own review — not legal,
-      investment or professional advice.
-    </p>
-    <p style="margin-top:10px">
-      <a class="plain" href="/">Platform</a> ·
-      <a class="plain" href="/markets.html">Markets</a> ·
-      <a class="plain" href="/evidence.html">Evidence</a> ·
-      <a class="plain" href="/about.html">About</a> ·
-      <a class="plain" href="mailto:contact@semitrical.ai">contact@semitrical.ai</a>
-    </p>
+  <div class="sec" style="margin-bottom:8px">Who uses it</div>
+  <div class="audience-grid">
+    <div class="aud-card">
+      <div class="aud-who">Engineering teams</div>
+      <div class="aud-title">Is this supplier still investing in the technology my programme depends on?</div>
+      <div class="aud-text">Before a design-in is finalised, know whether the supplier is funding the next node, maintaining capacity for this product line, and whether their strategic roadmap still treats this technology as a priority — or is quietly moving capital elsewhere.</div>
+    </div>
+    <div class="aud-card">
+      <div class="aud-who">Procurement teams</div>
+      <div class="aud-title">What does their financial position say about my negotiating leverage — right now?</div>
+      <div class="aud-text">When a supplier sends a price increase letter, their last two earnings calls already say whether to accept it, push back, or use it to secure supply commitments. Semitrical reads the filings so your team walks in with the same depth the supplier's commercial team already has.</div>
+    </div>
   </div>
-</footer>
 
-<script src="/assets/js/nav.js" defer></script>
+  <div class="page-footer">
+    <span>Semitrical · semitrical.ai</span>
+    <span>Grounded in public company filings, earnings transcripts, and investor presentations. Leverage scores and capacity signals derived from financial data in the corpus.</span>
+  </div>
+</div>
+</div>
+
+<!-- ══ PAGE 3: THE ARGUMENT ══ -->
+<div class="page">
+<div class="inner">
+  <div class="page-header">
+    <div class="ph-logo"><div class="ph-mark">S</div><div><div class="ph-brand">Semitrical</div><span class="ph-sub">Supplier Intelligence</span></div></div>
+    <div class="ph-right">JEDEC AEF · Santa Clara · Sep 2026<br>3 of 8</div>
+  </div>
+
+  <div style="display:inline-block;background:var(--bg);border:1px solid var(--border);border-radius:3px;padding:2px 8px;font-size:9px;font-family:'DM Mono',monospace;color:var(--ink4);letter-spacing:.06em;text-transform:uppercase;margin-bottom:8px">Sample output · Capital investment signal</div>
+
+  <div class="pg-title">The design-in <span>is</span> the procurement decision.</div>
+  <div class="pg-intro">When engineering commits to a part, procurement inherits the supplier behind it — their financial health, their technology priorities, and their ability to supply that part for 10 to 15 years. The roadmap describes what a supplier intends to build. The filing tells you whether the capital is there to build it, and whether this technology is still where they are putting it.</div>
+
+  <div class="sec">Two documents. One supplier. Very different information.</div>
+  <div class="arg-grid">
+    <div class="arg-card" style="border-top:3px solid var(--border)">
+      <div class="arg-icon">📋</div>
+      <h3>The roadmap</h3>
+      <p>Nodes, densities, capacity plans, product generations. Presented at every supplier review. Describes what they intend to build. Does not say whether the investment is funded — or whether this product line is still a strategic priority.</p>
+    </div>
+    <div class="arg-card" style="border-top:3px solid var(--orange)">
+      <div class="arg-icon">📂</div>
+      <h3>The filing</h3>
+      <p>Capital spending relative to what the existing plant costs to maintain. Free cash flow. Management commentary on which segments and technologies they are prioritising. Filed with regulators every quarter. Rarely opened by engineering or procurement.</p>
+    </div>
+  </div>
+
+  <div class="sec">Capital spending vs. plant depreciation — one ratio that points forward</div>
+  <div class="capex-vis">
+    <h3>What each supplier is doing with their plant base — FY2025</h3>
+    <div class="capex-explain">Think of this as a maintenance dial. At 1.0× a supplier is spending exactly enough to replace what wears out — their factory stays the same size. Above 1.0× they are adding capacity or upgrading to a newer process. Below 1.0× their factory is gradually shrinking. A supplier spending below replacement for several consecutive years is signalling something about the long-term availability of parts from that plant.</div>
+
+    <div class="cx-group">MEMORY SUPPLIERS</div>
+    <div class="cx-row"><div class="cx-name">SK Hynix</div><div class="cx-track"><div class="cx-bar" style="width:72%;background:var(--mem)"></div></div><div class="cx-val" style="color:var(--mem)">2.17×</div><div class="cx-note">Building hard. Largest single-year capex in the group.</div></div>
+    <div class="cx-row"><div class="cx-name">Micron</div><div class="cx-track"><div class="cx-bar" style="width:64%;background:var(--mem)"></div></div><div class="cx-val" style="color:var(--mem)">1.92×</div><div class="cx-note">Heavy investment. ~$8.3B plant depreciation base.</div></div>
+    <div class="cx-row"><div class="cx-name">Nanya</div><div class="cx-track"><div class="cx-bar" style="width:32%;background:#aaa"></div></div><div class="cx-val" style="color:var(--ink3)">0.96×</div><div class="cx-note">Replacement only. Revenue 30% below own peak.</div></div>
+    <div class="cx-row"><div class="cx-name">Kioxia</div><div class="cx-track"><div class="cx-bar" style="width:27%;background:#aaa"></div></div><div class="cx-val" style="color:var(--ink3)">~0.8×</div><div class="cx-note">Capex 12% of revenue vs 40% in 2022.</div></div>
+    <div class="cx-row"><div class="cx-name">Winbond</div><div class="cx-track"><div class="cx-bar" style="width:18%;background:var(--red)"></div></div><div class="cx-val" style="color:var(--red)">0.53×</div><div class="cx-note">Half of replacement. Prior build complete.</div></div>
+
+    <div class="cx-divider"></div>
+    <div class="cx-group">ANALOG / POWER SUPPLIERS</div>
+    <div class="cx-row"><div class="cx-name">Texas Instr.</div><div class="cx-track"><div class="cx-bar" style="width:79%;background:var(--ana)"></div></div><div class="cx-val" style="color:var(--ana)">2.37×</div><div class="cx-note">5 years above 2×, through the downturn. Business-funded.</div></div>
+    <div class="cx-row"><div class="cx-name">ADI</div><div class="cx-track"><div class="cx-bar" style="width:44%;background:var(--ana)"></div></div><div class="cx-val" style="color:var(--ana)">1.31×</div><div class="cx-note">Above replacement. FCF 38.8% — most comfortable.</div></div>
+    <div class="cx-row"><div class="cx-name">Infineon</div><div class="cx-track"><div class="cx-bar" style="width:40%;background:var(--ana)"></div></div><div class="cx-val" style="color:var(--ana)">1.19×</div><div class="cx-note">Dresden M4 opened July 2026. Growing plant base.</div></div>
+    <div class="cx-row"><div class="cx-name">STM</div><div class="cx-track"><div class="cx-bar" style="width:35%;background:#aaa"></div></div><div class="cx-val" style="color:var(--ink3)">1.05×</div><div class="cx-note">Big build 2022 at 3.17×. Now at replacement. Rev 31.7% below peak.</div></div>
+    <div class="cx-row"><div class="cx-name">NXP</div><div class="cx-track"><div class="cx-bar" style="width:24%;background:var(--red)"></div></div><div class="cx-val" style="color:var(--red)">0.71×</div><div class="cx-note">Lowest in six years. Plant base shrinking.</div></div>
+    <div style="font-size:9px;color:var(--ink4);margin-top:6px">Source: company annual filings FY2025. Each company at its own latest fiscal year-end. Samsung excluded — semiconductor division capex not separately reported. Kioxia: D&A used as proxy.</div>
+  </div>
+
+  <div class="insight-strip">
+    <p><strong>Below 1.0× is the clearer signal.</strong> A plant base shrinking faster than it is replaced has no positive interpretation for a buyer with a 15-year programme. <strong>Above 1.0× is more nuanced</strong> — it can be new capacity, a process upgrade, or the same plant rebuilt on a newer node. The ratio shows direction. The transcript tells you which.</p>
+  </div>
+
+  <div class="page-footer">
+    <span>Semitrical · semitrical.ai</span>
+    <span>Sources: company annual filings FY2025. Kioxia D&A used as proxy for plant depreciation.</span>
+  </div>
+</div>
+</div>
+
+<!-- ══ PAGE 4: MEMORY ══ -->
+<div class="page">
+<div class="inner">
+  <div class="page-header">
+    <div class="ph-logo"><div class="ph-mark">S</div><div><div class="ph-brand">Semitrical</div><span class="ph-sub">Supplier Intelligence</span></div></div>
+    <div class="ph-right">JEDEC AEF · Santa Clara · Sep 2026<br>4 of 8</div>
+  </div>
+
+  <div style="display:inline-block;background:var(--bg);border:1px solid var(--border);border-radius:3px;padding:2px 8px;font-size:9px;font-family:'DM Mono',monospace;color:var(--ink4);letter-spacing:.06em;text-transform:uppercase;margin-bottom:8px">Sample output · Technology investment signal · Memory</div>
+
+  <div class="pg-title">Memory: <span>which suppliers are funding the next node</span></div>
+  <div class="pg-intro">LPDDR6 is in sampling. LPDDR5X is in automotive qualification. UFS 4.1 is ramping. The engineering question is not which technology is next — it is which suppliers are investing to build it at automotive grade, at scale, for the decade your programme needs. The filings separate the two groups clearly.</div>
+
+  <div class="sec">DRAM content — what the autonomy transition means in volume terms</div>
+  <div class="dram-vis">
+    <h3>DRAM requirement by vehicle autonomy level</h3>
+    <div class="dv-row"><div class="dv-lbl">Average car today (&lt;L2 ADAS)</div><div class="dv-track"><div class="dv-bar" style="width:5%"></div></div><div class="dv-val">~16GB</div></div>
+    <div class="dv-row"><div class="dv-lbl">L4 autonomous vehicle</div><div class="dv-track"><div class="dv-bar" style="width:100%"></div></div><div class="dv-val">&gt;300GB</div></div>
+    <div style="font-size:9px;color:var(--ink4);margin-top:4px">Source: Micron Q2 FY26 investor presentation, Mar 18 2026. <span class="src src-m">Micron Q2 FY26</span></div>
+  </div>
+
+  <div class="sec">Supplier signals — filings and transcripts Q3 FY25–Q2 FY26</div>
+  <div class="mem-grid">
+    <div class="sc">
+      <div class="sc-head mem"><div class="sc-name">Micron</div><div class="sc-type">LPDDR · UFS · HBM · Auto DRAM</div></div>
+      <div class="sc-body">
+        <div class="sc-row"><span class="sc-lbl">Capex ÷ plant dep</span><span class="sc-val up">1.92×</span></div>
+        <div class="sc-row"><span class="sc-lbl">Auto revenue</span><span class="sc-val up">Record Q2 FY26</span></div>
+        <div class="sc-hr"></div>
+        <div class="sc-sig">Sampling 1γ LPDDR6 to OEM and ecosystem partners. First automotive-grade 1γ LPDDR5 DRAM shipped. ASIL-rated LPDDR5X and UFS 4.1 have secured "billions of dollars in design wins." Investing in Manassas VA fab for long-lifecycle supply. <span class="src src-m">Micron Q1/Q2 FY26</span></div>
+      </div>
+    </div>
+    <div class="sc">
+      <div class="sc-head mem"><div class="sc-name">SK Hynix</div><div class="sc-type">LPDDR · HBM · NAND</div></div>
+      <div class="sc-body">
+        <div class="sc-row"><span class="sc-lbl">Capex ÷ plant dep</span><span class="sc-val up">2.17×</span></div>
+        <div class="sc-row"><span class="sc-lbl">FCF margin FY25</span><span class="sc-val up">26.6%</span></div>
+        <div class="sc-hr"></div>
+        <div class="sc-sig">Completed development of industry's first 1c-nm LPDDR6 in Q1 FY26. 33% faster data processing and &gt;20% better power efficiency vs LPDDR5X. Full-scale supply planned H2 2026. CapEx increasing significantly in 2026 vs 2025. <span class="src src-m">Hynix Q1 FY26</span></div>
+      </div>
+    </div>
+    <div class="sc">
+      <div class="sc-head mem"><div class="sc-name">Kioxia</div><div class="sc-type">NAND · UFS · SSD</div></div>
+      <div class="sc-body">
+        <div class="sc-row"><span class="sc-lbl">Capex % of revenue</span><span class="sc-val">12.1% (FY25)</span></div>
+        <div class="sc-row"><span class="sc-lbl">vs. FY22 peak</span><span class="sc-val dn">Was 39.8%</span></div>
+        <div class="sc-hr"></div>
+        <div class="sc-sig">Revenue at record high FY25 but capital spending at its lowest share in six years. 8th-gen BiCS FLASH in high-volume production. 10th-gen in development. UFS for automotive a stated strategic focus. FY26 gross capex guided 450 billion yen. <span class="src src-m">Kioxia Q3/Q4 FY25 · Q1 FY26</span></div>
+      </div>
+    </div>
+    <div class="sc">
+      <div class="sc-head warn"><div class="sc-name">Nanya</div><div class="sc-type">Specialty DRAM · DDR4</div></div>
+      <div class="sc-body">
+        <div class="sc-row"><span class="sc-lbl">Capex ÷ plant dep</span><span class="sc-val">0.96×</span></div>
+        <div class="sc-row"><span class="sc-lbl">Revenue vs own peak</span><span class="sc-val dn">−30.3%</span></div>
+        <div class="sc-hr"></div>
+        <div class="sc-sig">Revenue 30.3% below its own six-year peak in the same quarters three other memory makers set records. Spending at replacement level only. FCF margin reached −64.7% in 2023. Same country exposure as Winbond — both Taiwan-based. <span class="src src-m">Nanya filings FY25</span></div>
+      </div>
+    </div>
+    <div class="sc">
+      <div class="sc-head warn"><div class="sc-name">Winbond</div><div class="sc-type">NOR Flash · SLC NAND · DRAM</div></div>
+      <div class="sc-body">
+        <div class="sc-row"><span class="sc-lbl">Capex ÷ plant dep</span><span class="sc-val dn">0.53×</span></div>
+        <div class="sc-row"><span class="sc-lbl">Revenue vs own peak</span><span class="sc-val dn">−19.5%</span></div>
+        <div class="sc-hr"></div>
+        <div class="sc-sig">Capital spending hit 4.59× depreciation in 2022 then fell to 0.53× — about half of replacement. Three consecutive negative FCF years. R&D at six-year high — reads as a completed build. Holds #1 NOR Flash, #3 SLC NAND position. <span class="src src-m">Winbond filings FY25</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mem-quote">
+    <div class="mq-label">Key signal — Micron Q3 FY26 investor transcript</div>
+    <div class="mq-q">"Many projects and platforms and several customers are going to just end up using one or two HBM suppliers… HBM we see is going to become a two-supplier market, and oftentimes, just a single-sourced opportunity. It is not just true for HBM."</div>
+    <div class="mq-attr">Sumit Sadana, EVP and Chief Business Officer, Micron · Q3 FY26 investor transcript <span class="src src-m">Micron Q3 FY26</span></div>
+  </div>
+
+  <div style="font-size:11px;color:var(--ink2);line-height:1.55">The co-engineering required for next-generation LPDDR6 and advanced memory at automotive grade means supplier selection increasingly becomes a single or dual-source commitment for the programme's life. The filing tells you whether the supplier you are co-engineering with is still funding the node you need.</div>
+
+  <div class="page-footer">
+    <span>Semitrical · semitrical.ai</span>
+    <span>Sources: company filings and earnings transcripts Q3 FY25–Q2 FY26.</span>
+  </div>
+</div>
+</div>
+
+<!-- ══ PAGE 5: ANALOG / POWER ══ -->
+<div class="page">
+<div class="inner">
+  <div class="page-header">
+    <div class="ph-logo"><div class="ph-mark">S</div><div><div class="ph-brand">Semitrical</div><span class="ph-sub">Supplier Intelligence</span></div></div>
+    <div class="ph-right">JEDEC AEF · Santa Clara · Sep 2026<br>5 of 8</div>
+  </div>
+
+  <div style="display:inline-block;background:var(--bg);border:1px solid var(--border);border-radius:3px;padding:2px 8px;font-size:9px;font-family:'DM Mono',monospace;color:var(--ink4);letter-spacing:.06em;text-transform:uppercase;margin-bottom:8px">Sample output · Technology investment signal · Analog &amp; Power</div>
+
+  <div class="pg-title">Analog &amp; Power: <span>technology shifts already in the filings</span></div>
+  <div class="pg-intro">SiC is replacing IGBT in traction inverters. GaN is entering automotive for the first time. The SDV/zonal architecture is rewriting the MCU BOM. These are not roadmap statements — they are production and design-win disclosures in filings from the last two quarters, with capital spending and management commentary that shows which suppliers are still behind the technology and which are redirecting investment elsewhere.</div>
+
+  <div class="sec">Semiconductor content per car — the shift already under way</div>
+  <div class="bom-vis">
+    <h3>IFX estimate: semiconductor BOM per vehicle by powertrain type <span class="src src-est">Management estimate</span></h3>
+    <div class="bom-row"><div class="bom-lbl">ICE vehicle · 2025</div><div class="bom-track"><div class="bom-bar" style="width:47%;background:#888"><span class="bom-bar-lbl">~$750</span></div></div></div>
+    <div class="bom-row"><div class="bom-lbl">BEV today · 2025</div><div class="bom-track"><div class="bom-bar" style="width:88%;background:var(--ana)"><span class="bom-bar-lbl">~$1,400</span></div></div></div>
+    <div class="bom-row"><div class="bom-lbl">BEV 2030 · estimate</div><div class="bom-track"><div class="bom-bar" style="width:100%;background:var(--orange)"><span class="bom-bar-lbl">~$1,600 (up to $2,500 high-end)</span></div></div></div>
+    <div style="font-size:9px;color:var(--ink4);margin-top:5px">Infineon estimate based on S&P E/E &amp; Semiconductor Service dataset. <span class="src src-a">IFX Q1 FY26 ppt</span></div>
+  </div>
+
+  <div class="sec">Technology transitions — production and qualification disclosures, last two quarters</div>
+  <div class="tt-box">
+    <div class="tt-lbl">What is shipping or in qualification — sourced from filings and transcripts</div>
+    <div class="tt-row"><div class="tt-from" style="background:#f0ebe0;color:#5a4a30">Si IGBT</div><div class="tt-arrow">→</div><div class="tt-to" style="background:var(--ana-bg);color:var(--ana)">SiC MOSFET</div><div class="tt-note">IFX SiC trench gives 30% more die per wafer vs planar. CoolSiC Gen2 rated 175°C. Design wins confirmed in traction inverter, OBC, DC-DC. <span class="src src-a">IFX Q1/Q2 FY26</span></div></div>
+    <div style="height:1px;background:var(--border);margin:5px 0"></div>
+    <div class="tt-row"><div class="tt-from" style="background:#f0ebe0;color:#5a4a30">Si MOSFET</div><div class="tt-arrow">→</div><div class="tt-to" style="background:var(--ana-bg);color:var(--ana)">GaN (auto)</div><div class="tt-note">IFX launched first AEC-Q101-qualified GaN: CoolGaN 100V G1. Targets 48V/12V DC-DC, zone control, OBC, Class D audio. <span class="src src-a">IFX Q1 FY26</span></div></div>
+    <div style="height:1px;background:var(--border);margin:5px 0"></div>
+    <div class="tt-row"><div class="tt-from" style="background:#f0ebe0;color:#5a4a30">Domain ECU</div><div class="tt-arrow">→</div><div class="tt-to" style="background:var(--ana-bg);color:var(--ana)">Zonal / Central</div><div class="tt-note">IFX design win for zone controller combining AURIX MCU, PMICs, CoolFET with a leading carmaker. BoM potential ~$500 per E/E architecture. <span class="src src-a">IFX Q3 FY26</span></div></div>
+    <div style="height:1px;background:var(--border);margin:5px 0"></div>
+    <div class="tt-row"><div class="tt-from" style="background:#f0ebe0;color:#5a4a30">SiC (auto)</div><div class="tt-arrow">→</div><div class="tt-to" style="background:#fff0e8;color:#7a3a0a">AI datacenter</div><div class="tt-note">STM raised FY26 datacenter guidance to "well above $2 billion." AWS multi-year engagement covers SiC power. Catania SiC capacity being allocated. <span class="src src-a">STM Q2 FY26 · July ppt</span></div></div>
+  </div>
+
+  <div class="two-col">
+    <div>
+      <div class="ana-sig">
+        <div class="as-lbl">IFX — AI power supply-limited</div>
+        <div class="as-text">IFX stated its €1.5B AI power revenue target for FY26 is "supply-limited, not capped by demand." Dresden M4 — largest intelligent power fab globally — opened July 2026 but AI programmes are filling capacity. Automotive buyers should initiate LTA discussions now. <span class="src src-a">IFX Q1 FY26</span></div>
+      </div>
+      <div class="ana-sig" style="margin-top:8px">
+        <div class="as-lbl">STM — dual supply chain now operating</div>
+        <div class="as-text">First STM32 wafers produced at Huahong (China) delivered to Chinese customers in Q1 FY26. STM is operating parallel China-for-China and global supply chains. Verify which supply chain your part numbers are on. <span class="src src-a">STM Q1 FY26</span></div>
+      </div>
+    </div>
+    <div>
+      <div class="warn-flag">
+        <div class="wf-lbl">⚠ Design-in risk: SiC for automotive 2027+</div>
+        <div class="wf-text">Both IFX and STM — the two largest automotive SiC suppliers — are allocating fab capacity to AI datacenter programmes simultaneously with automotive ramps. STM's Catania SiC capacity is partially committed to its AWS engagement. IFX's Kulim 3 fills first with AI-related programmes. Engineers designing SiC into OBC, DC-DC, or traction inverter platforms targeting 2027+ production should confirm allocation status with procurement now — not at SOP minus 12 months. <span class="src src-a">STM Q2 FY26 · IFX Q1 FY26</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>Semitrical · semitrical.ai</span>
+    <span>Sources: IFX Q1/Q2/Q3 FY26 · STM Q1/Q2 FY26 · July 2026 investor ppt</span>
+  </div>
+</div>
+</div>
+
+<!-- ══ PAGE 6: POWER SEMI NEGOTIATION ══ -->
+<div class="page">
+<div class="inner">
+  <div class="page-header">
+    <div class="ph-logo"><div class="ph-mark">S</div><div><div class="ph-brand">Semitrical</div><span class="ph-sub">Supplier Intelligence</span></div></div>
+    <div class="ph-right">JEDEC AEF · Santa Clara · Sep 2026<br>6 of 8</div>
+  </div>
+
+  <div style="display:inline-block;background:var(--bg);border:1px solid var(--border);border-radius:3px;padding:2px 8px;font-size:9px;font-family:'DM Mono',monospace;color:var(--ink4);letter-spacing:.06em;text-transform:uppercase;margin-bottom:8px">Sample output · Negotiation intelligence</div>
+
+  <div class="pg-title">Power semiconductors: <span>your leverage depends on which product</span> you are buying from which supplier.</div>
+  <div class="pg-intro">All three suppliers sent price increase letters in 2026. The financial justification behind each letter is very different — and so is the right response. SiC and IGBT are structurally bifurcated markets sitting inside the same supplier relationship.</div>
+
+  <div class="sec">Financial position — Q2 2026 · sourced from company filings and earnings transcripts</div>
+  <div class="sup-hdr">
+    <div class="sh-sp"></div>
+    <div class="sh-cell ifx"><span class="sh-name">Infineon</span><span class="sh-sub">Broadest portfolio · Kulim SiC ramping</span></div>
+    <div class="sh-cell stm"><span class="sh-name">STMicro</span><span class="sh-sub">P&D loss-making · Catania SiC ramp</span></div>
+    <div class="sh-cell on"><span class="sh-name">onsemi</span><span class="sh-sub">Exited commodity · Differentiation focus</span></div>
+  </div>
+  <table class="met-table">
+    <tr>
+      <td>Operating margin</td>
+      <td class="ci"><span class="mv" style="color:var(--ifx)">~20%</span><span class="mn">Segment result target · recovering</span></td>
+      <td class="cs"><span class="mv" style="color:var(--red)">−21.4%</span><span class="mn">P&D segment · loss-making Q2 FY26</span></td>
+      <td class="co"><span class="mv" style="color:var(--green)">20.8%</span><span class="mn">Non-GAAP · expanding +170bps Q/Q</span></td>
+    </tr>
+    <tr>
+      <td>LTM free cash flow margin</td>
+      <td class="ci"><span class="mv" style="color:var(--ifx)">~9–10%</span><span class="mn">Solid · Dresden M4 capex normalising</span></td>
+      <td class="cs"><span class="mv" style="color:var(--red)">~2–3%</span><span class="mn">Minimal · factory underloaded</span></td>
+      <td class="co"><span class="mv" style="color:var(--green)">24.2%</span><span class="mn">Strongest of the three · 100% returned to shareholders</span></td>
+    </tr>
+    <tr>
+      <td>CapEx intensity</td>
+      <td class="ci"><span class="mv" style="color:var(--ifx)">~12%</span><span class="mn">Kulim 3 + Dresden M4 investment</span></td>
+      <td class="cs"><span class="mv" style="color:#d97706">~17%</span><span class="mn">Declining toward replacement · build complete</span></td>
+      <td class="co"><span class="mv" style="color:var(--green)">5.7%</span><span class="mn">Sharply reduced · no new fabs · brownfield only</span></td>
+    </tr>
+    <tr>
+      <td>Price increase status</td>
+      <td class="ci"><span class="mv" style="color:var(--ifx);font-size:11px">July 2026 announced</span><span class="mn">Broad portfolio · AI power fully allocated</span></td>
+      <td class="cs"><span class="mv" style="color:#d97706;font-size:11px">Implementing</span><span class="mn">Margin recovery driven · P&D needs volume</span></td>
+      <td class="co"><span class="mv" style="color:var(--red);font-size:11px">Second round</span><span class="mn">"Surgical" where allocation exists · cost pass-through</span></td>
+    </tr>
+  </table>
+
+  <div class="sec">Buyer leverage by product category — higher score = higher buyer leverage</div>
+  <div class="lev-grid">
+    <div class="lg-hsp">Product category</div>
+    <div class="lg-hsup" style="color:var(--ifx)">INFINEON</div>
+    <div class="lg-hsup" style="color:var(--stm-g)">STMICRO</div>
+    <div class="lg-hsup" style="color:var(--on);border-right:none">ONSEMI</div>
+    <div class="lg-cat"><span class="lg-cat-name">SiC MOSFET</span><span class="lg-cat-sub">Traction inverter · OBC · DC-DC · AI datacenter</span></div>
+    <div class="lg-cell"><div class="lev-badge lev-l">● Low leverage</div><div class="lev-note">Supply-limited. AI power absorbing Kulim 3 capacity. Initiate LTA now.</div></div>
+    <div class="lg-cell"><div class="lev-badge lev-m">◆ Medium — declining</div><div class="lev-note">AWS engagement absorbing Catania SiC. Get written 2027 allocation commitments now.</div></div>
+    <div class="lg-cell" style="border-right:none"><div class="lev-badge lev-l">● Low leverage</div><div class="lev-note">CEO: "we exit commodity." China SiC +60–70% YoY. Lead times extending.</div></div>
+    <div class="lg-cat last"><span class="lg-cat-name">IGBT / Si Power</span><span class="lg-cat-sub">Legacy drivetrain · Industrial drives · General power</span></div>
+    <div class="lg-cell last"><div class="lev-badge lev-m">◆ Moderate leverage</div><div class="lev-note">IFX deprioritising Si drivetrain as SiC displaces. Use in pricing renewal.</div></div>
+    <div class="lg-cell last"><div class="lev-badge lev-h">▲ Highest leverage</div><div class="lev-note">P&D loss-making. Factory needs volume. Best window across all three.</div></div>
+    <div class="lg-cell last" style="border-right:none"><div class="lev-badge lev-m">◆ Some leverage</div><div class="lev-note">Not exiting IGBT. Pricing actions are cost pass-through, not margin-driven.</div></div>
+  </div>
+
+  <div class="sec">What management said — verbatim from earnings transcripts</div>
+  <div class="quote-strip">
+    <div class="qs ifx">
+      <div class="qs-lbl">Infineon · Q1 FY26 earnings call</div>
+      <div class="qs-q">"Our AI power target of €1.5 billion is supply-limited — it is not capped by demand."</div>
+      <div class="qs-attr">IFX management · Q1 FY26 transcript</div>
+    </div>
+    <div class="qs stm">
+      <div class="qs-lbl">STMicro · July 2026 investor ppt</div>
+      <div class="qs-q">"Data center revenues are now expected well above $2 billion in 2026" — raised from $1B+ guided in Q1 FY26.</div>
+      <div class="qs-attr">STM management · July 2026 investor ppt</div>
+    </div>
+    <div class="qs on">
+      <div class="qs-lbl">onsemi · Deutsche Bank conf. Q2 FY26</div>
+      <div class="qs-q">"If it's a multi-source product, the margin is not exciting — that's the business we actually exited. We win where our products provide differentiation."</div>
+      <div class="qs-attr">Hassane El-Khoury, CEO · Deutsche Bank conf. Q2 FY26</div>
+    </div>
+  </div>
+
+  <div class="proc-read">
+    <div class="pr-lbl">The procurement read</div>
+    <div class="pr-text">The power semiconductor market is structurally bifurcated. <strong>SiC is supply-constrained across all three suppliers</strong> — limited buyer leverage, price increases being implemented, lead times extending at onsemi. <strong>Legacy IGBT and Si power has genuine negotiation room</strong> — particularly at STM where P&D is loss-making and the factory needs volume. All three are implementing price increases but the financial justification varies dramatically. <strong>Knowing which story you are negotiating against changes the conversation entirely.</strong> <span class="pr-src">IFX Q1/Q2 FY26 · STM Q2 FY26 · July ppt · onsemi Q2 FY26 transcript · Deutsche Bank conf.</span></div>
+  </div>
+
+  <div class="page-footer">
+    <span>Semitrical · semitrical.ai</span>
+    <span>Sources: company IR filings and earnings transcripts Q4 FY25–Q2 FY26 · T1 primary sources only</span>
+  </div>
+</div>
+</div>
+
+<!-- ══ PAGE 7: SAMPLE OUTPUT ══ -->
+<div class="page">
+<div class="inner">
+  <div class="page-header">
+    <div class="ph-logo"><div class="ph-mark">S</div><div><div class="ph-brand">Semitrical</div><span class="ph-sub">Supplier Intelligence</span></div></div>
+    <div class="ph-right">JEDEC AEF · Santa Clara · Sep 2026<br>7 of 8</div>
+  </div>
+
+  <div style="display:inline-block;background:var(--bg);border:1px solid var(--border);border-radius:3px;padding:2px 8px;font-size:9px;font-family:'DM Mono',monospace;color:var(--ink4);letter-spacing:.06em;text-transform:uppercase;margin-bottom:8px">Sample output · Spend + corpus combined</div>
+
+  <div class="pg-title">When engineering commits, <span>here is what procurement sees.</span></div>
+  <div class="pg-intro">Semitrical combines the supplier corpus with a buyer's own spend data. The output connects design-in decisions to negotiation posture, pricing signals, and supplier financial health in one place.</div>
+
+  <div class="sec">Supplier leverage index — derived from financial signals and management commentary in the corpus · higher score = higher buyer leverage</div>
+  <div class="lev-strip">
+    <div class="lc"><div class="lc-name" style="color:var(--stm-g)">STM</div><div class="lc-score" style="color:var(--red)">4.5<span style="font-size:11px;color:var(--ink4)">/5</span></div><div class="lc-track"><div class="lc-fill" style="width:90%;background:var(--red)"></div></div><div class="lc-note">P&D OPM −21.4% · FCF 2.2%</div></div>
+    <div class="lc"><div class="lc-name" style="color:#c1121f">TI</div><div class="lc-score" style="color:#d97706">3.5<span style="font-size:11px;color:var(--ink4)">/5</span></div><div class="lc-track"><div class="lc-fill" style="width:70%;background:#d97706"></div></div><div class="lc-note">Inventory 209d · CapEx peak done</div></div>
+    <div class="lc"><div class="lc-name" style="color:var(--ifx)">IFX</div><div class="lc-score" style="color:var(--green)">2.5<span style="font-size:11px;color:var(--ink4)">/5</span></div><div class="lc-track"><div class="lc-fill" style="width:50%;background:var(--green)"></div></div><div class="lc-note">AI supply-limited · Dresden M4</div></div>
+    <div class="lc"><div class="lc-name" style="color:#b8860b">NXP</div><div class="lc-score" style="color:var(--green)">1.9<span style="font-size:11px;color:var(--ink4)">/5</span></div><div class="lc-track"><div class="lc-fill" style="width:38%;background:var(--green)"></div></div><div class="lc-note">Recovering · CapEx 0.71× dep</div></div>
+    <div class="lc"><div class="lc-name" style="color:var(--ana)">ADI</div><div class="lc-score" style="color:var(--green)">1.8<span style="font-size:11px;color:var(--ink4)">/5</span></div><div class="lc-track"><div class="lc-fill" style="width:36%;background:var(--green)"></div></div><div class="lc-note">FCF 38.8% · pricing up</div></div>
+  </div>
+
+  <div class="spend-note">↓ Part numbers, spend figures, and ASP changes below are illustrative sample data. Leverage scores and supplier signals above are sourced directly from the corpus.</div>
+
+  <div class="sec">Part-level view — corpus intelligence combined with buyer spend data</div>
+  <table class="part-table">
+    <thead>
+      <tr><th>Part / Application</th><th>Supplier</th><th>FY26 Spend</th><th>Contracted Δ ASP</th><th>Alt Supplier</th><th>Posture</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>STPMIC25</strong><span class="pid">MPU Power · Industrial</span></td><td style="color:var(--stm-g);font-weight:600">STM</td><td style="font-family:'DM Mono',monospace">$2.80M</td><td style="color:var(--green);font-family:'DM Mono',monospace">−7.9%</td><td style="font-size:10px">TI TPS6594 ✓</td><td><span class="pos pos-push">Push further</span></td></tr>
+      <tr><td><strong>STM32H7</strong><span class="pid">Instrument Cluster · Auto</span></td><td style="color:var(--stm-g);font-weight:600">STM</td><td style="font-family:'DM Mono',monospace">$3.35M</td><td style="color:var(--green);font-family:'DM Mono',monospace">−8.0%</td><td style="font-size:10px">NXP S32K3 (in prog)</td><td><span class="pos pos-push">Lock in + volume</span></td></tr>
+      <tr><td><strong>TPS62913</strong><span class="pid">Buck Converter · Auto</span></td><td style="color:#c1121f;font-weight:600">TI</td><td style="font-family:'DM Mono',monospace">$4.51M</td><td style="color:var(--green);font-family:'DM Mono',monospace">−3.5%</td><td style="font-size:10px">STM ST1S12 ✓</td><td><span class="pos pos-push">Multi-year LTA now</span></td></tr>
+      <tr><td><strong>SCTW100N65</strong><span class="pid">OBC / DC-DC SiC · Auto</span></td><td style="color:var(--stm-g);font-weight:600">STM</td><td style="font-family:'DM Mono',monospace">$3.51M</td><td style="color:var(--green);font-family:'DM Mono',monospace">−7.1%</td><td style="font-size:10px">IFX IMBG65R ✓</td><td><span class="pos pos-push">Secure 2027 allocation</span></td></tr>
+      <tr><td><strong>TC375 AURIX</strong><span class="pid">Powertrain ECU · Auto</span></td><td style="color:var(--ifx);font-weight:600">IFX</td><td style="font-family:'DM Mono',monospace">$4.29M</td><td style="font-family:'DM Mono',monospace">Flat</td><td style="font-size:10px">NXP S32K3 (not started)</td><td><span class="pos pos-resist">Resist increases</span></td></tr>
+      <tr><td><strong>IPT015N10N5</strong><span class="pid">Motor Drive MOSFET · Auto</span></td><td style="color:var(--ifx);font-weight:600">IFX</td><td style="font-family:'DM Mono',monospace">$8.78M</td><td style="color:var(--green);font-family:'DM Mono',monospace">−3.6%</td><td style="font-size:10px">STM STL160N ✓</td><td><span class="pos pos-hold">Hold — IFX deprioritising Si</span></td></tr>
+    </tbody>
+  </table>
+
+  <div class="sec">Sample recommendation — STM Power &amp; Discrete</div>
+  <div class="rec-box">
+    <div class="rb-lbl">Pricing &amp; terms · grounded in financial signals and management commentary from the corpus</div>
+    <div class="rb-text">STM's Power &amp; Discrete segment operated at −21.4% operating margin in Q2 FY26 <span class="src">STM Q2 FY26 results</span> and free cash margin was approximately 2.2%. The segment needs volume. STM has already moved −8% on MCU lines to retain volume. Use the NXP S32K3 qualification in progress as a credible walk-away signal. On SiC, request written 2027 allocation commitments before STM's datacenter revenue guidance rises further — at that point their Catania capacity posture changes. <span class="src">STM July 2026 investor ppt</span></div>
+    <div class="watch-tag">⏱ Watch trigger: STM gross margin above 37% GAAP removes the leverage — guided ~34.8% GAAP in Q2 FY26</div>
+  </div>
+
+  <div class="page-footer">
+    <span>Semitrical · semitrical.ai</span>
+    <span>Leverage scores from corpus · spend figures illustrative · intelligence grounded in T1 IR filings and transcripts</span>
+  </div>
+</div>
+</div>
+
+<!-- ══ PAGE 8: BACK COVER ══ -->
+<div class="page">
+<div class="bc">
+  <div class="bc-logo">
+    <div class="bc-mark">S</div>
+    <div><div class="bc-brand">Semitrical</div><span class="bc-brand-sub">Removing asymmetry from chip deals</span></div>
+  </div>
+  <div>
+    <div class="bc-h1">Before your next<br>design-in review,<br><span>ask us for a read.</span></div>
+    <div class="bc-body">Supplier names only. No contract. No NDA.<br><br>We read every filing, every earnings transcript, and every investor presentation across our supplier corpus — and translate it for the people who design components in, and the people who then have to buy them.</div>
+    <div class="bc-offer">
+      <div class="bc-offer-lbl">What you get</div>
+      <h3>Supplier Portfolio Diagnostic</h3>
+      <p>Your shortlisted or current suppliers. Their last two quarters of filings. What it means for technology longevity, supply continuity, and pricing posture — combined with your spend data if you share it. Delivered as a structured report your engineering and procurement teams can use the same week.</p>
+    </div>
+    <div style="display:flex;gap:24px;flex-wrap:wrap;">
+      <div>
+        <div style="font-size:9px;font-family:'DM Mono',monospace;color:#444;letter-spacing:.06em;text-transform:uppercase;margin-bottom:3px">Sources</div>
+        <div style="color:#666;font-size:11px;line-height:1.7">10-K · 10-Q · 8-K · earnings transcripts<br>investor presentations · company IR filings<br>Public documents only.</div>
+      </div>
+      <div>
+        <div style="font-size:9px;font-family:'DM Mono',monospace;color:#444;letter-spacing:.06em;text-transform:uppercase;margin-bottom:3px">Coverage</div>
+        <div style="color:#666;font-size:11px;line-height:1.7">Semiconductor suppliers tracked across all filings<br>Memory · Analog · Power · Discrete<br>Updated each quarter as suppliers file</div>
+      </div>
+    </div>
+  </div>
+  <div class="bc-contact">
+    <div><div class="bcc-lbl">Email</div><div class="bcc-val"><a href="mailto:contact@semitrical.ai">contact@semitrical.ai</a></div></div>
+    <div><div class="bcc-lbl">Web</div><div class="bcc-val"><a href="https://semitrical.ai/suppliers">semitrical.ai/suppliers</a></div></div>
+    <div><div class="bcc-lbl">Digital copy</div><div class="bcc-val" style="color:#555">semitrical.ai/suppliers</div></div>
+  </div>
+  <div class="bc-disc">Position as at September 2026. Each supplier's figures change when it next files. Sources: public company filings — SEC 10-K/10-Q/8-K, company IR press releases, earnings transcripts, investor presentations. Management estimates labelled throughout. May be forwarded and shared freely.</div>
+</div>
+</div>
+
+
+<!-- Not inside .page, so it never lands in the printed output. -->
+<div class="dlbar">
+  <a href="/assets/docs/Semitrical-Supplier-Intelligence-JEDEC-2026.pdf" download>&#8595;&nbsp; PDF</a>
+  <a class="alt" href="mailto:contact@semitrical.ai?subject=Supplier%20read">Ask for a read</a>
+</div>
+
 </body>
 </html>
