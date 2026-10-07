@@ -63,3 +63,7 @@ README.md
 *.md
 # VC-personalized outreach PDFs — never publish to the public site
 research/independence-illusion-*.pdf
+
+# Working copies. These were published by accident once; keep them off the site.
+*_backup_*.html
+index_new.html
