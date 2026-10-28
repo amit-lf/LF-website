@@ -346,7 +346,7 @@ body { font-size: 15.5px; line-height: 1.7; }
 .case p         { font-size: 15px; line-height: 1.65; }
 .case .case-kind { font-size: 10.5px; }
 
-.founder h3     { font-size: 26px; letter-spacing: -0.015em; line-height: 1.2; }
+.founder h3     { font-size: 18px; }
 .founder p      { font-size: 15.5px; line-height: 1.72; }
 .founder .role  { font-size: 11.5px; }
 
