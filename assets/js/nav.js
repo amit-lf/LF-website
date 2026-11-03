@@ -32,3 +32,32 @@
     if (e.target.tagName === 'A') set(false);
   });
 })();
+
+// The Product submenu. Click, not hover — see the CSS note. Closes on outside click and on
+// Escape, because a menu that only closes by clicking the same button again is a trap on a
+// touch screen.
+(function () {
+  var group = document.querySelector('.nav-group');
+  if (!group) return;
+  var toggle = group.querySelector('.nav-sub-toggle');
+  if (!toggle) return;
+
+  function set(open) {
+    group.classList.toggle('is-open', open);
+    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+  }
+  // Starts closed on every page. A page inside Product marks its toggle current instead —
+  // an auto-opened menu covers the page the reader just arrived at.
+  set(false);
+
+  toggle.addEventListener('click', function (e) {
+    e.stopPropagation();
+    set(!group.classList.contains('is-open'));
+  });
+  document.addEventListener('click', function (e) {
+    if (!group.contains(e.target)) set(false);
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') set(false);
+  });
+})();
