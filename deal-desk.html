@@ -31,7 +31,8 @@
 <nav>
   <a class="logo" href="/" aria-label="Semitrical home"><img src="assets/img/semitrical-logo.png" alt="Semitrical &mdash; removing asymmetry from chip deals" height="34"></a>
   <div class="nav-links" id="nav-links">
-    <div class="nav-group is-open">
+    <a href="/">Platform</a>
+    <div class="nav-group">
       <button type="button" class="nav-sub-toggle is-current" aria-expanded="false" aria-controls="nav-product">Product <span class="caret" aria-hidden="true"></span></button>
       <div class="nav-sub" id="nav-product">
         <a href="supplier-intelligence.html">Supplier Intelligence</a>
@@ -39,7 +40,6 @@
         <a href="reports.html">Reports</a>
       </div>
     </div>
-    <a href="/">Platform</a>
     <a href="markets.html">Markets</a>
     <a href="about.html">About</a>
   </div>
@@ -114,6 +114,57 @@
     </article>
   </div>
 </section>
+
+<!-- ── DRAM brief, behind a code ──────────────────────────────────────────────────────
+     A CODE CHECKED HERE IS LEAD CAPTURE, NOT A LOCK. It is readable in view-source and the
+     brief's URL is guessable, so it keeps nobody out. What it does is give someone a reason
+     to ask, which is how we get the email address. Treat the brief as public either way and
+     never put anything in it we would not publish. -->
+<section class="section">
+  <p class="section-label">The DRAM brief</p>
+  <h2>Read the whole thing</h2>
+  <p class="section-sub">
+    The full desk &mdash; the questions, the supplier-by-supplier read, the forecast track record
+    and a scenario check you can run with your own number. Ask us for a code and we will send one.
+  </p>
+  <form id="dram-gate" style="display:flex;flex-wrap:wrap;gap:10px;align-items:flex-start;max-width:520px">
+    <label for="dram-code" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Access code</label>
+    <input id="dram-code" name="code" type="text" autocomplete="off" placeholder="Access code"
+           style="flex:1 1 200px;min-width:0;font:inherit;font-size:15px;padding:11px 14px;border:1px solid var(--rule);border-radius:6px">
+    <button class="btn-primary" type="submit" style="border:0;cursor:pointer;font:inherit;font-size:15px;font-weight:600">Open the brief</button>
+    <p id="dram-err" hidden style="flex-basis:100%;margin:2px 0 0;font-size:13.5px;color:#9B2C2C">
+      That code is not recognised. <a href="contact.html">Ask us for one</a>.
+    </p>
+  </form>
+  <p class="note" style="margin-top:14px">
+    No code? <a href="contact.html">Tell us the device and the date you need an answer by</a> &mdash;
+    we will say plainly whether the filings can carry it before anyone pays anything.
+  </p>
+</section>
+
+<script>
+(function () {
+  var form = document.getElementById('dram-gate');
+  if (!form) return;
+  var input = document.getElementById('dram-code');
+  var err = document.getElementById('dram-err');
+  var CODES = ['DRAM-2026'];
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var v = (input.value || '').trim().toUpperCase();
+    if (CODES.indexOf(v) !== -1) {
+      // Straight there. An "accepted" state with a second button to press is one click of
+      // nothing, and the reader has already told us what they want.
+      window.location.href = 'dram-brief.html';
+      return;
+    }
+    err.hidden = false;
+    input.focus();
+    input.select();
+  });
+  input.addEventListener('input', function () { err.hidden = true; });
+})();
+</script>
 
 <section class="section">
   <p class="section-label">Getting it</p>

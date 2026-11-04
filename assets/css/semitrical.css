@@ -25,7 +25,7 @@ nav {
 }
 .logo { font-size: 18px; font-weight: 700; letter-spacing: -0.02em; }
 .logo span { color: var(--gold); }
-.nav-links { display: flex; gap: 28px; margin-left: 48px; }
+.nav-links { display: flex; align-items: center; gap: 28px; margin-left: 48px; }
 .nav-links a { font-size: 13px; color: var(--ink-3); text-decoration: none; font-weight: 500; }
 .nav-links a:hover { color: var(--ink); }
 /* ── Product submenu ──────────────────────────────────────────────────────────────
@@ -40,11 +40,15 @@ nav {
 }
 .nav-sub-toggle:hover, .nav-sub-toggle[aria-expanded="true"] { color: var(--ink); }
 .nav-sub-toggle.is-current { color: var(--ink); font-weight: 600; }
+/* A chevron, not a filled triangle. At 14px a solid block reads as a bullet or a stray glyph;
+   two hairlines read as the control everyone already knows. Drawn with borders so it inherits
+   the text colour and needs no image. */
 .nav-sub-toggle .caret {
-  width: 0; height: 0; border-left: 4px solid transparent; border-right: 4px solid transparent;
-  border-top: 5px solid currentColor; transition: transform .15s;
+  width: 6px; height: 6px; margin-top: -3px;
+  border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor;
+  transform: rotate(45deg); transition: transform .15s, margin-top .15s;
 }
-.nav-sub-toggle[aria-expanded="true"] .caret { transform: rotate(180deg); }
+.nav-sub-toggle[aria-expanded="true"] .caret { transform: rotate(225deg); margin-top: 2px; }
 .nav-sub {
   display: none; position: absolute; top: 100%; left: -14px; min-width: 212px; z-index: 40;
   background: #fff; border: 1px solid var(--rule); border-radius: 8px; padding: 6px;
@@ -54,7 +58,7 @@ nav {
 .nav-sub a { display: block; padding: 9px 12px; border-radius: 6px; font-size: 13.5px; }
 .nav-sub a:hover { background: var(--surface, #f7f8fc); color: var(--ink); }
 .nav-sub a.is-current { color: var(--ink); font-weight: 600; }
-.nav-sub a.is-current::after { content: none; }
+.nav-links .nav-sub a.is-current::after { content: none; }
 
 @media (max-width: 720px) {
   /* No room to float a panel over a phone menu, so the submenu simply sits in the list,
@@ -305,6 +309,12 @@ footer .logo img { height: 26px; }
   height: 2px; background: var(--gold);
 }
 
+/* The current-page underline belongs to the TOP row only. Inside the dropdown it drew a bar
+   straight through the word, which reads as a strikethrough -- the current item looked
+   disabled. Placed after the rule it cancels, and one class more specific, so neither order
+   nor a later edit can flip it back. */
+.nav-links .nav-sub a.is-current::after { content: none; }
+
 /* ── LAYOUT: centre the page and use the width ─────────────────────────────────────────
    Sreeram's draft was authored as a single left column with a fixed 48px gutter, so on a
    wide monitor every section hugged the left edge with a void to the right. One width token
@@ -391,6 +401,7 @@ body { font-size: 15.5px; line-height: 1.7; }
 .shot-caption   { font-size: 12.5px; }
 
 .nav-links a    { font-size: 14px; }
+.nav-links .nav-sub-toggle { font-size: 14px; }   /* the bump above is anchors-only; Product is a button */
 .nav-cta        { font-size: 14px; padding: 9px 22px; }
 .btn-primary,
 .btn-secondary  { font-size: 15px; padding: 13px 26px; }
@@ -497,9 +508,10 @@ footer          { font-size: 13.5px; }
 
   .has-js-nav .nav-links {
     order: 4; flex-basis: 100%;
-    display: none; flex-direction: column; gap: 0;
+    display: none; flex-direction: column; align-items: stretch; gap: 0;
     margin: 0; padding: 6px 0 10px;
   }
+  .nav-links .nav-sub-toggle { font-size: 15.5px; padding: 12px 2px; }
   .has-js-nav .nav-links.is-open { display: flex; }
   .nav-links a {
     padding: 12px 2px; font-size: 15.5px; border-bottom: 1px solid var(--rule);
