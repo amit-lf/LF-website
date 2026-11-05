@@ -95,6 +95,10 @@
 .pdf-done h2 { font-size:21px; font-weight:700; margin:0 0 6px; color:var(--ink); }
 .pdf-done p { font-size:14.5px; line-height:1.7; color:var(--muted); margin:0; max-width:62ch; }
 @media print { .pdf-offer, .pdf-done { display:none !important; } }
+
+.pdf-hint { font-family:var(--f-body); font-size:13px; color:var(--muted); margin:10px 0 0; }
+.pdf-hint a { color:var(--accent); font-weight:600; text-decoration:none; border-bottom:1px solid currentColor; }
+@media print { .pdf-hint { display:none !important; } }
 </style></head><body>
 <section class="pdf-cover" aria-hidden="true">
   <div class="pdf-cover-top">
@@ -332,6 +336,8 @@ table.cmp thead .sam{color:var(--accent)}
       <div class="eyebrow"><span class="hex" aria-hidden="true"></span>Semitrical · DRAM negotiation brief</div>
       <h1>Samsung DRAM: 1Q27 pricing</h1>
       <p class="byline">DDR5 server modules · evidence to 3 Nov 2026</p>
+      <p class="pdf-hint">Prefer a PDF you can forward? <a href="#pdf-offer">We can email it &rarr;</a></p>
+
       <div class="supbar-row">
         <label class="asked" for="askedPct"><b>Samsung</b> is asking for 1Q27 <input type="number" id="askedPct" min="0" max="200" step="1" placeholder="none"> %</label>
         <span class="small muted" id="askNote"></span>
