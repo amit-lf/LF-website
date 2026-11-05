@@ -727,11 +727,22 @@ footer .logo img { height: 40px; }
 /* What management said. The border carries the verdict, so the card is readable before the
    words are. */
 .said { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
-.said-card { border: 1px solid #e8c9c9; border-radius: 12px; padding: 26px; background: var(--white); }
+.said-card { border: 1px solid var(--rule); border-radius: 12px; padding: 26px; background: var(--white); }
 .said-card h4 { font-size: 21px; font-weight: 700; }
+/* The border and the chip carry the verdict, which comes from the API per supplier -- tight
+   capacity is bad for the buyer and spare capacity is good, so neither colour is the default. */
+.said-card.is-against { border-color: #e8c9c9; }
+.said-card.is-favour { border-color: #c6e3d2; }
 .said-verdict {
   display: inline-block; margin-top: 10px; font-size: 16px; font-weight: 600;
-  color: #9B2C2C; background: #FBECEC; border-radius: 999px; padding: 5px 13px;
+  border-radius: 999px; padding: 5px 13px;
+}
+.is-against .said-verdict { color: #9B2C2C; background: #FBECEC; }
+.is-favour .said-verdict { color: #1B6B4A; background: #E6F4EC; }
+.said.is-empty { display: block; }
+.said-absent {
+  font-size: 14px; line-height: 1.75; color: var(--ink-3); max-width: 76ch;
+  border-left: 3px solid var(--rule); padding-left: 16px;
 }
 .said-meta { font-family: var(--mono); font-size: 11.5px; color: var(--ink-3); margin-top: 8px; }
 .said-means { font-size: 14px; line-height: 1.7; color: var(--ink-2); margin-top: 14px; }
@@ -795,3 +806,83 @@ footer .logo img { height: 40px; }
 .cmp-table th[scope="row"] { text-align: left; font-weight: 400; color: var(--ink-2); padding: 12px 20px; border-top: 1px solid var(--rule); line-height: 1.5; }
 .cmp-mark { text-align: center; padding: 12px; border-top: 1px solid var(--rule); border-left: 1px solid var(--rule); font-size: 16px; color: var(--ink-2); }
 .cmp-text { text-align: center; padding: 12px; border-top: 1px solid var(--rule); border-left: 1px solid var(--rule); font-size: 12.5px; color: var(--ink-3); }
+
+/* The trailing bar is the same measurement over a different window, so it is marked rather
+   than drawn as a seventh year. */
+.bar.is-trailing { opacity: 0.55; }
+.bar-growth { display: block; color: var(--ink-4); font-size: 9.5px; margin-top: 2px; }
+
+/* Line charts are drawn here, not by a library: ten points and two runs do not need one.
+   Annual is solid, the trailing quarters dashed, because they are different bases and one
+   continuous line would say they are the same measurement. */
+.linechart { width: 100%; height: auto; margin-top: 14px; display: block; }
+.ln-annual { stroke: var(--gold); stroke-width: 2; }
+.ln-trailing { stroke: var(--gold); stroke-width: 2; stroke-dasharray: 4 3; opacity: 0.75; }
+.pt { fill: var(--gold); }
+.pt.is-quarter { fill: var(--white); stroke: var(--gold); stroke-width: 1.5; }
+.pt.is-covered { fill: var(--white); stroke: var(--ink-4); stroke-width: 1.5; }
+.ln-mid { font-family: var(--mono); color: var(--ink-2) !important; font-weight: 500; }
+
+/* ── The Pro picker ─────────────────────────────────────────────────────────────────── */
+.pick-group { margin-bottom: 26px; }
+.pick-group h3 { font-size: 19px; font-weight: 700; letter-spacing: -0.01em; margin-bottom: 14px; }
+.pick-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 10px; }
+.pick-item {
+  position: relative; display: flex; gap: 12px; align-items: flex-start; padding: 15px 17px;
+  border: 1px solid var(--rule); border-radius: 10px; background: var(--white); cursor: pointer;
+}
+.pick-item.is-on { border-color: var(--gold); background: rgba(217,119,6,0.06); }
+/* The real checkbox stays, one pixel and invisible, so the label, the keyboard and a screen
+   reader all keep working -- the browser's own box never matched the card it sat on. */
+.pick-cb { position: absolute; opacity: 0; width: 1px; height: 1px; }
+.pick-tick {
+  flex: 0 0 auto; width: 20px; height: 20px; border-radius: 6px; margin-top: 1px;
+  border: 1px solid #c9cedb; background: var(--white);
+}
+.pick-item.is-on .pick-tick { border-color: var(--gold); background: var(--gold); }
+.pick-item.is-on .pick-tick::after {
+  content: "¹3"; color: #fff; font-size: 13px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; height: 100%;
+}
+.pick-cb:focus-visible + .pick-tick { outline: 2px solid var(--gold); outline-offset: 2px; }
+.pick-text { flex: 1 1 auto; min-width: 0; }
+.pick-name { display: block; font-size: 15.5px; font-weight: 600; }
+.pick-ticker { display: block; font-family: var(--mono); font-size: 11.5px; margin-top: 3px; color: var(--ink-3); }
+.pick-total { font-weight: 700; letter-spacing: -0.02em; font-size: 38px; margin-top: 12px; }
+.pick-total.is-empty { font-size: 23px; color: var(--ink-3); }
+.pick-chips { margin-top: 18px; border-top: 1px solid var(--rule); padding-top: 16px; display: flex; flex-wrap: wrap; gap: 7px; }
+.pick-chip { font-family: var(--mono); font-size: 12px; background: var(--white); border: 1px solid var(--rule); border-radius: 999px; padding: 5px 11px; }
+.pick-cta { width: 100%; margin-top: 12px; }
+.pick-cta:disabled { background: var(--rule); color: var(--ink-4); cursor: not-allowed; }
+
+/* The picker's layout: the list takes the width it needs and the panel follows it down, then
+   stacks under it on a phone. Sticky only where there is room to be sticky. */
+.pick-layout { display: flex; flex-wrap: wrap; gap: 28px; align-items: flex-start; }
+.pick-main { flex: 999 1 560px; min-width: 0; }
+.pick-side { flex: 1 1 320px; min-width: 0; }
+@media (min-width: 960px) { .pick-side { position: sticky; top: 90px; } }
+.pick-panel { border: 1px solid var(--rule); border-radius: 12px; padding: 26px; background: var(--surface); }
+.pick-label { font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-3); }
+.pick-count { font-size: 13.5px; color: var(--ink-3); margin-top: 4px; }
+.pick-ask { margin-top: 20px; border-top: 1px solid var(--rule); padding-top: 18px; }
+.pick-ask label { display: block; font-size: 13.5px; font-weight: 600; margin-bottom: 7px; }
+.pick-ask input[type="email"] {
+  width: 100%; font-family: inherit; font-size: 14.5px; padding: 11px 13px;
+  border: 1px solid var(--rule); border-radius: 6px; background: var(--white);
+}
+.pick-note { font-size: 12px; line-height: 1.6; color: var(--ink-4); margin-top: 12px; }
+.pick-err { font-size: 13px; line-height: 1.6; color: #9B2C2C; margin-top: 10px; }
+/* A honeypot, not a hidden field: `display:none` is what a bot checks for. */
+.pick-gotcha { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+.pick-first { font-family: var(--mono); font-size: 11.5px; color: var(--ink-4); margin-top: 16px; }
+.pick-missing { border: 1px dashed var(--rule); border-radius: 10px; padding: 20px; }
+.pick-missing label { display: block; font-size: 14.5px; font-weight: 600; margin-bottom: 6px; }
+.pick-missing p { font-size: 13px; line-height: 1.65; color: var(--ink-3); margin-bottom: 12px; max-width: 62ch; }
+.pick-missing input {
+  width: 100%; max-width: 380px; font-family: inherit; font-size: 14.5px; padding: 11px 14px;
+  border: 1px solid var(--rule); border-radius: 6px;
+}
+.pick-done { border: 1px solid var(--rule); border-radius: 12px; padding: 30px; background: var(--surface); }
+.pick-done h2 { font-size: 24px; font-weight: 700; margin-bottom: 10px; }
+.pick-done p { font-size: 14.5px; line-height: 1.75; color: var(--ink-2); max-width: 66ch; }
+.pick-coverage { font-size: 12.5px; line-height: 1.7; color: var(--ink-4); margin-top: 24px; max-width: 80ch; }

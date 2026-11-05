@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Choose your suppliers &mdash; Semitrical</title>
+<meta name="description" content="Pick the semiconductor suppliers you buy from and we will send you the price. One report on each, four times a year as they file.">
+<link rel="canonical" href="https://semitrical.ai/choose-suppliers.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Semitrical">
+<meta property="og:title" content="Choose your suppliers — Semitrical">
+<meta property="og:description" content="Pick the suppliers you buy from and we will send you the price.">
+<meta property="og:url" content="https://semitrical.ai/choose-suppliers.html">
+<meta property="og:image" content="https://semitrical.ai/assets/img/og-semitrical.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Semitrical — see what your suppliers hope you miss">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Choose your suppliers — Semitrical">
+<meta name="twitter:description" content="Pick the suppliers you buy from and we will send you the price.">
+<meta name="twitter:image" content="https://semitrical.ai/assets/img/og-semitrical.png">
+<link rel="icon" href="favicon-semitrical.ico">
+<link rel="apple-touch-icon" href="assets/img/semitrical-mark.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/semitrical.css">
+</head>
+<body>
+
+<nav>
+  <a class="logo" href="/" aria-label="Semitrical home"><img src="assets/img/semitrical-logo.png" alt="Semitrical &mdash; removing asymmetry from chip deals" height="34"></a>
+  <div class="nav-links" id="nav-links">
+    <a href="/">Platform</a>
+    <a href="supplier-intelligence.html">Supplier Intelligence</a>
+    <a href="deal-desk.html">Deal Desk</a>
+    <a href="reports.html">Leverage Reports</a>
+  </div>
+  <a class="nav-cta" href="contact.html" style="text-decoration:none;display:inline-block">Contact us</a>
+  <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+
+<header class="hero">
+  <span class="hero-badge">PRO</span>
+  <h1>Which suppliers should we read?</h1>
+  <p class="hero-sub">
+    One report on each, four times a year. You pay per supplier, and it costs the same whether
+    one person reads it or ten. Select your suppliers, leave your email, and we will send you
+    the price.
+  </p>
+</header>
+
+<!-- The list is the roster from the API, never a list typed in here: a supplier we have added
+     has to appear without anyone remembering to edit this page. -->
+<section class="section">
+  <form id="pick-form" class="pick-layout" novalidate>
+    <div class="pick-main">
+      <div id="picker"><p class="said-absent">Loading the suppliers we hold&hellip;</p></div>
+
+      <div class="pick-missing">
+        <label for="missing">A supplier you buy from that is not here?</label>
+        <p>
+          Tell us which one. We add names as buyers ask for them, so a supplier missing from
+          this list is a gap in our coverage &mdash; not a finding about that supplier. Building
+          a new one means pulling its filings and calls from scratch, so it costs more than a
+          supplier we already hold, and we tell you how much before you commit.
+        </p>
+        <input id="missing" name="missing" type="text" placeholder="Renesas, Nexperia, Rohm&hellip;">
+      </div>
+    </div>
+
+    <div class="pick-side">
+      <div class="pick-panel">
+        <p class="pick-label">Your selection</p>
+        <p class="pick-total is-empty" id="pick-total">Nothing picked yet</p>
+        <p class="pick-count" id="pick-count">Tick the suppliers you buy from</p>
+        <div class="pick-chips" id="pick-chips" hidden></div>
+
+        <div class="pick-ask">
+          <label for="email">Where should we reply?</label>
+          <input id="email" name="email" type="email" placeholder="you@company.com" required>
+          <input type="hidden" name="suppliers" id="pick-field">
+          <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" class="pick-gotcha">
+          <button class="btn-primary pick-cta" id="pick-cta" type="submit" disabled>Pick at least one supplier</button>
+          <p class="pick-note">
+            Nothing is charged here and this is not an order. We reply with what we hold on
+            those suppliers, what the report covers and what it costs, and you decide after
+            that.
+          </p>
+          <p class="pick-err" id="pick-err" hidden>
+            That did not send. Email <a href="mailto:contact@semitrical.ai">contact@semitrical.ai</a>
+            and we will pick it up.
+          </p>
+        </div>
+      </div>
+
+      <p class="pick-first">
+        Not sure yet? <a href="supplier-intelligence.html">Read this week&rsquo;s supplier focus, free</a> first.
+      </p>
+    </div>
+  </form>
+
+  <div class="pick-done" id="pick-done" hidden>
+    <h2>Thank you &mdash; that is with us.</h2>
+    <p>
+      A reply comes from one of the two founders, not a queue. In the meantime,
+      <a href="supplier-intelligence.html">this week&rsquo;s supplier focus</a> is free to read.
+    </p>
+  </div>
+
+  <p class="pick-coverage" id="coverage-note"></p>
+</section>
+
+<footer style="padding:36px 48px;border-top:1px solid var(--rule);font-size:12px;color:var(--ink-3)">
+  <div style="max-width:1100px;margin:0 auto">
+    <a class="logo" href="/" aria-label="Semitrical home"><img src="assets/img/semitrical-logo.png" alt="Semitrical" height="26" style="opacity:.9"></a>
+    <p style="margin-top:10px;line-height:1.7">
+      Semiconductor procurement intelligence · © 2026 Semitrical<br>
+      Built from public filings. First-pass analysis to support your own review — not legal,
+      investment or professional advice.
+    </p>
+    <p style="margin-top:10px">
+      <a class="plain" href="/">Platform</a> &middot;
+      <a class="plain" href="supplier-intelligence.html">Supplier Intelligence</a> &middot;
+      <a class="plain" href="deal-desk.html">Deal Desk</a> &middot;
+      <a class="plain" href="reports.html">Leverage Reports</a>
+    </p>
+    <p style="margin-top:8px">
+      <a class="plain" href="about.html">About</a> &middot;
+      <a class="plain" href="/privacy.html">Privacy</a> &middot;
+      <a class="plain" href="mailto:contact@semitrical.ai">contact@semitrical.ai</a> &middot;
+      <a class="plain" href="https://www.linkedin.com/company/semitrical-ai" style="display:inline-flex;align-items:center;gap:5px"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="vertical-align:-2px"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.63-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zm1.78 13.02H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg> LinkedIn</a>
+    </p>
+  </div>
+</footer>
+
+<script src="assets/js/nav.js" defer></script>
+<script src="assets/js/forms.js" defer></script>
+<script src="assets/js/hub.js" defer></script>
+<script src="assets/js/choose.js" defer></script>
+<script src="https://app.semitrical.ai/t.js?v=5" data-anon data-page="/choose-suppliers.html"></script>
+</body>
+</html>

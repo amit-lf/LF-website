@@ -50,18 +50,11 @@
   </p>
 </header>
 
-<!-- The rotation as a line, not a band. A gold block the width of the page pulled the eye off
-     the report below it and said the supplier's name a second time; the report's own header
-     already does that. What this line is for is NEXT week. -->
+<!-- The rotation, the report and the charts are all filled by assets/js/hub.js from
+     api.semitrical.ai. NOTHING here is typed in: the supplier changes every week and a line
+     that says "this week" above a hardcoded name is a page that lies on a schedule. -->
 <section class="section" style="padding-bottom:0">
-  <p class="rotation">
-    <span class="rot-now">&#9679; This week</span>
-    <span class="rot-name">STMicroelectronics</span>
-    <span class="rot-sep">|</span>
-    <span>Next week</span>
-    <span class="rot-next">NXP Semiconductors</span>
-    <span class="rot-note">&middot; thirteen suppliers, so yours comes round every few months</span>
-  </p>
+  <p class="rotation" id="rotation">Loading this week&rsquo;s supplier&hellip;</p>
 </section>
 
 <section class="section">
@@ -69,9 +62,9 @@
 
     <div class="report-head">
       <span class="report-kind">Supplier focus</span>
-      <span class="report-name">STMicroelectronics</span>
-      <span class="report-ticker">STM</span>
-      <span class="report-asat">As at Q2-26 &middot; FY2025 accounts &middot; free this week</span>
+      <span class="report-name" id="rep-name">&nbsp;</span>
+      <span class="report-ticker" id="rep-ticker"></span>
+      <span class="report-asat" id="rep-asat"></span>
     </div>
 
     <div class="report-part">
@@ -81,206 +74,27 @@
         We read it your way, not theirs. Only the last two quarters are read &mdash; a position,
         not a trend.
       </p>
-      <div class="said">
-      <div class="said-card">
-        <h4>Capacity</h4>
-        <p class="said-verdict">Against you</p>
-        <p class="said-meta">as stated in Q2-26 &middot; 35 findings</p>
-        <p class="said-means">Capacity is tight, so you are competing with their other customers for it.</p>
-        <blockquote class="said-quote">
-          <p>&ldquo;We saw improved visibility and signs of tight supply in several product categories.&rdquo;</p>
-          <footer>STMicroelectronics Q2-26 earnings call</footer>
-        </blockquote>
-      </div>
-      <div class="said-card">
-        <h4>Inventory</h4>
-        <p class="said-verdict">Against you</p>
-        <p class="said-meta">as stated in Q2-26 &middot; 18 findings</p>
-        <p class="said-means">They are running lean, so there is no stock to draw on and no pressure to move it.</p>
-        <blockquote class="said-quote">
-          <p>&ldquo;In distribution, inventory further decreased and is now below our standard target.&rdquo;</p>
-          <footer>STMicroelectronics Q2-26 earnings call</footer>
-        </blockquote>
-      </div>
+      <div class="said" id="said">
+        <p class="said-absent">Loading&hellip;</p>
       </div>
     </div>
 
     <div class="report-part is-filed">
       <h3>As they filed it</h3>
       <p class="report-lede">
-        Six filed years, from STMicroelectronics&rsquo; own annual accounts. Facts, not inference.
+        Their own filed annual accounts, with the trailing quarters alongside. Facts, not
+        inference &mdash; and the same charts the application draws, because they are built by
+        the same code.
       </p>
-      <div class="charts">
-      <div class="chart">
-        <div class="chart-head">
-          <h4>Revenue</h4>
-          <p class="chart-latest">$11.8B in FY2025</p>
-        </div>
-        <p class="chart-note">Down from the FY2023 peak for a second year.</p>
-        <div class="bars">
-          <div class="bar-col">
-            <span class="bar-val">$10.2B</span>
-            <span class="bar" style="height:61px;background:#c9cedb"></span>
-          </div>
-          <div class="bar-col">
-            <span class="bar-val">$12.8B</span>
-            <span class="bar" style="height:77px;background:#c9cedb"></span>
-          </div>
-          <div class="bar-col">
-            <span class="bar-val">$16.1B</span>
-            <span class="bar" style="height:97px;background:#c9cedb"></span>
-          </div>
-          <div class="bar-col">
-            <span class="bar-val">$17.3B</span>
-            <span class="bar" style="height:104px;background:#c9cedb"></span>
-          </div>
-          <div class="bar-col">
-            <span class="bar-val">$13.3B</span>
-            <span class="bar" style="height:80px;background:#c9cedb"></span>
-          </div>
-          <div class="bar-col">
-            <span class="bar-val">$11.8B</span>
-            <span class="bar" style="height:71px;background:var(--ink)"></span>
-          </div>
-        </div>
-        <div class="bar-years">
-          <span>20</span>
-          <span>21</span>
-          <span>22</span>
-          <span>23</span>
-          <span>24</span>
-          <span>25</span>
-        </div>
-      </div>
-      <div class="chart">
-        <div class="chart-head">
-          <h4>Gross margin</h4>
-          <p class="chart-latest">33.9% in FY2025</p>
-        </div>
-        <p class="chart-note">Fourteen points off the FY2023 high.</p>
-        <div class="bars">
-          <div class="bar-col">
-            <span class="bar-val">37.1%</span>
-            <span class="bar" style="height:81px;background:#c9cedb"></span>
-          </div>
-          <div class="bar-col">
-            <span class="bar-val">41.7%</span>
-            <span class="bar" style="height:91px;background:#c9cedb"></span>
-          </div>
-          <div class="bar-col">
-            <span class="bar-val">47.3%</span>
-            <span class="bar" style="height:103px;background:#c9cedb"></span>
-          </div>
-          <div class="bar-col">
-            <span class="bar-val">47.9%</span>
-            <span class="bar" style="height:104px;background:#c9cedb"></span>
-          </div>
-          <div class="bar-col">
-            <span class="bar-val">39.3%</span>
-            <span class="bar" style="height:85px;background:#c9cedb"></span>
-          </div>
-          <div class="bar-col">
-            <span class="bar-val">33.9%</span>
-            <span class="bar" style="height:74px;background:var(--gold)"></span>
-          </div>
-        </div>
-        <div class="bar-years">
-          <span>20</span>
-          <span>21</span>
-          <span>22</span>
-          <span>23</span>
-          <span>24</span>
-          <span>25</span>
-        </div>
-      </div>
-      <div class="chart">
-        <div class="chart-head">
-          <h4>Inventory days</h4>
-          <p class="chart-latest">147 days in FY2025</p>
-        </div>
-        <p class="chart-note">Computed from filed figures. Highest of the six years.</p>
-        <div class="bars">
-          <div class="bar-col">
-            <span class="bar-val">105</span>
-            <span class="bar" style="height:74px;background:#c9cedb"></span>
-          </div>
-          <div class="bar-col">
-            <span class="bar-val">97</span>
-            <span class="bar" style="height:69px;background:#c9cedb"></span>
-          </div>
-          <div class="bar-col">
-            <span class="bar-val">111</span>
-            <span class="bar" style="height:79px;background:#c9cedb"></span>
-          </div>
-          <div class="bar-col">
-            <span class="bar-val">109</span>
-            <span class="bar" style="height:77px;background:#c9cedb"></span>
-          </div>
-          <div class="bar-col">
-            <span class="bar-val">127</span>
-            <span class="bar" style="height:90px;background:#c9cedb"></span>
-          </div>
-          <div class="bar-col">
-            <span class="bar-val">147</span>
-            <span class="bar" style="height:104px;background:#9B2C2C"></span>
-          </div>
-        </div>
-        <div class="bar-years">
-          <span>20</span>
-          <span>21</span>
-          <span>22</span>
-          <span>23</span>
-          <span>24</span>
-          <span>25</span>
-        </div>
-      </div>
-      <div class="chart">
-        <div class="chart-head">
-          <h4>Capital spending</h4>
-          <p class="chart-latest">$1.8B in FY2025</p>
-        </div>
-        <p class="chart-note">Less than half the FY2023 level.</p>
-        <div class="bars">
-          <div class="bar-col">
-            <span class="bar-val">$1.3B</span>
-            <span class="bar" style="height:32px;background:#c9cedb"></span>
-          </div>
-          <div class="bar-col">
-            <span class="bar-val">$1.8B</span>
-            <span class="bar" style="height:46px;background:#c9cedb"></span>
-          </div>
-          <div class="bar-col">
-            <span class="bar-val">$3.5B</span>
-            <span class="bar" style="height:89px;background:#c9cedb"></span>
-          </div>
-          <div class="bar-col">
-            <span class="bar-val">$4.1B</span>
-            <span class="bar" style="height:104px;background:#c9cedb"></span>
-          </div>
-          <div class="bar-col">
-            <span class="bar-val">$2.6B</span>
-            <span class="bar" style="height:67px;background:#c9cedb"></span>
-          </div>
-          <div class="bar-col">
-            <span class="bar-val">$1.8B</span>
-            <span class="bar" style="height:47px;background:var(--ink)"></span>
-          </div>
-        </div>
-        <div class="bar-years">
-          <span>20</span>
-          <span>21</span>
-          <span>22</span>
-          <span>23</span>
-          <span>24</span>
-          <span>25</span>
-        </div>
-      </div>
+      <div class="charts" id="charts">
+        <p class="said-absent">Loading&hellip;</p>
       </div>
     </div>
 
     <div class="report-foot">
       End of the free report &middot; the short version &middot; every figure traces to a filing,
-      every quote to a named quarter
+      every quote to a named quarter<br>
+      <span id="coverage-note"></span>
     </div>
 
   </div>
@@ -311,10 +125,10 @@
           <tbody>
           <tr><th scope="row">Which suppliers</th><td class="cmp-text">Our pick, one a week</td><td class="cmp-text">The ones you choose</td></tr>
           <tr><th scope="row">Revenue, margin, inventory days and capex</th><td class="cmp-mark">&#10003;</td><td class="cmp-mark">&#10003;</td></tr>
-          <tr><th scope="row">Six filed years of accounts</th><td class="cmp-mark">&#10003;</td><td class="cmp-mark">&#10003;</td></tr>
+          <tr><th scope="row">Every filed year we hold</th><td class="cmp-mark">&#10003;</td><td class="cmp-mark">&#10003;</td></tr>
           <tr><th scope="row">Capacity and inventory, read for a buyer</th><td class="cmp-mark">&#10003;</td><td class="cmp-mark">&#10003;</td></tr>
           <tr><th scope="row">Every quote with the quarter it came from</th><td class="cmp-mark">&#10003;</td><td class="cmp-mark">&#10003;</td></tr>
-          <tr><th scope="row">Eleven charts, with the trailing quarters</th><td class="cmp-mark">&ndash;</td><td class="cmp-mark">&#10003;</td></tr>
+          <tr><th scope="row">Charts, with the trailing quarters</th><td class="cmp-text">Four</td><td class="cmp-text">Twelve</td></tr>
           <tr><th scope="row">Leverage score across four dimensions</th><td class="cmp-mark">&ndash;</td><td class="cmp-mark">&#10003;</td></tr>
           <tr><th scope="row">Supply signal against installed assets</th><td class="cmp-mark">&ndash;</td><td class="cmp-mark">&#10003;</td></tr>
           <tr><th scope="row">How much of their cost is fixed</th><td class="cmp-mark">&ndash;</td><td class="cmp-mark">&#10003;</td></tr>
@@ -357,6 +171,7 @@
 </footer>
 
 <script src="assets/js/nav.js" defer></script>
+<script src="assets/js/hub.js" defer></script>
 <script src="https://app.semitrical.ai/t.js?v=5" data-anon data-page="/supplier-intelligence.html"></script>
 </body>
 </html>
