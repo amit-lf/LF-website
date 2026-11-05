@@ -87,7 +87,9 @@ nav {
 /* A button that is an anchor still looks like a button. Every page was passing
    style="text-decoration:none;display:inline-block" inline to get this, which only
    works for as long as everyone remembers -- deal-desk.html did not. */
-a.btn-primary, a.btn-secondary, a.offer-cta { text-decoration: none; display: inline-block; }
+a.btn-primary, a.btn-secondary, a.offer-cta, a.nav-cta, a.pick-cta, a.pro-chip,
+a.report-card, a.post { text-decoration: none; }
+a.btn-primary, a.btn-secondary, a.offer-cta, a.nav-cta { display: inline-block; }
 .btn-secondary { padding: 12px 24px; background: transparent; color: var(--ink); border: 1.5px solid var(--rule); border-radius: 6px; font-size: 14px; font-weight: 500; cursor: pointer; font-family: var(--font); }
 .btn-secondary:hover { border-color: var(--ink-3); }
 
