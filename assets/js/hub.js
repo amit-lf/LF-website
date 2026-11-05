@@ -4,8 +4,8 @@
 // the rotation moves, and the line above them says "this week" -- so a static page is a page
 // that lies on a schedule. Everything here comes from one request.
 //
-// api.semitrical.ai, never app.legalforensics.ai: a visitor must not see the old brand, and
-// the fetch shows in the network tab.
+// Always the api.semitrical.ai host: a visitor must not meet a retired brand, and a fetch
+// is visible in the network tab.
 (function () {
   'use strict';
 
