@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Supplier Intelligence &mdash; Semitrical</title>
+<meta name="description" content="What a semiconductor supplier can afford to do, read from their own filings and earnings calls. Every figure traces to the document it came from.">
+<link rel="canonical" href="https://semitrical.ai/supplier-intelligence.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Semitrical">
+<meta property="og:title" content="Supplier Intelligence — Semitrical">
+<meta property="og:description" content="What a semiconductor supplier can afford to do, read from their own filings and earnings calls. Every figure traces to the document it came from.">
+<meta property="og:url" content="https://semitrical.ai/supplier-intelligence.html">
+<meta property="og:image" content="https://semitrical.ai/assets/img/og-semitrical.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Semitrical — see what your suppliers hope you miss">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Supplier Intelligence — Semitrical">
+<meta name="twitter:description" content="What a semiconductor supplier can afford to do, read from their own filings and earnings calls. Every figure traces to the document it came from.">
+<meta name="twitter:image" content="https://semitrical.ai/assets/img/og-semitrical.png">
+<link rel="icon" href="favicon-semitrical.ico">
+<link rel="apple-touch-icon" href="assets/img/semitrical-mark.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/semitrical.css?v=20261105">
+</head>
+<body>
+
+<nav>
+  <a class="logo" href="/" aria-label="Semitrical home"><img src="assets/img/semitrical-logo.png" alt="Semitrical &mdash; removing asymmetry from chip deals" height="34"></a>
+  <div class="nav-links" id="nav-links">
+    <a href="/">Platform</a>
+    <a href="supplier-intelligence.html" class="is-current" aria-current="page">Supplier Intelligence</a>
+    <a href="deal-desk.html">Deal Desk</a>
+    <a href="reports.html">Leverage Reports</a>
+  </div>
+  <a class="nav-cta" href="contact.html">Contact us</a>
+  <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+
+<header class="hero">
+  <span class="hero-badge">SUPPLIER INTELLIGENCE</span>
+  <h1>Your supplier knows their position. Now you do too.</h1>
+  <p class="hero-sub">
+    We put one supplier in front of everyone each week, free and with no account. The reading
+    itself moves when the supplier files, four times a year &mdash; the week only decides whose
+    turn it is.
+  </p>
+</header>
+
+<!-- The rotation, the report and the charts are all filled by assets/js/hub.js from
+     api.semitrical.ai. NOTHING here is typed in: the supplier changes every week and a line
+     that says "this week" above a hardcoded name is a page that lies on a schedule. -->
+<section class="section" style="padding-bottom:0">
+  <p class="rotation" id="rotation">Loading this week&rsquo;s supplier&hellip;</p>
+</section>
+
+<section class="section">
+  <div class="report">
+
+    <div class="report-head">
+      <span class="report-kind">Supplier focus</span>
+      <span class="report-name" id="rep-name">&nbsp;</span>
+      <span class="report-ticker" id="rep-ticker"></span>
+      <span class="report-asat" id="rep-asat"></span>
+    </div>
+
+    <div class="report-part">
+      <h3>What management said</h3>
+      <p class="report-lede">
+        A supplier running flat out is a good quarter for its investors and a bad one for you.
+        We read it your way, not theirs. Only the last two quarters are read &mdash; a position,
+        not a trend.
+      </p>
+      <div class="said" id="said">
+        <p class="said-absent">Loading&hellip;</p>
+      </div>
+    </div>
+
+    <div class="report-part is-filed">
+      <h3>As they filed it</h3>
+      <p class="report-lede">
+        Their own filed annual accounts, with the trailing quarters alongside. Facts, not
+        inference &mdash; and the same charts the application draws, because they are built by
+        the same code.
+      </p>
+      <div class="charts" id="charts">
+        <p class="said-absent">Loading&hellip;</p>
+      </div>
+    </div>
+
+    <div class="report-foot">
+      End of the free report &middot; the short version &middot; every figure traces to a filing,
+      every quote to a named quarter<br>
+      <span id="coverage-note"></span>
+    </div>
+
+  </div>
+</section>
+
+<!-- Pro. The comparison answers the heading, so it stays folded until someone asks by
+     clicking. <details> rather than a handwritten toggle: no script, and the keyboard and
+     screen-reader behaviour comes for free. -->
+<section class="section">
+  <div class="pro">
+    <div class="pro-head">
+      <a class="pro-chip" href="choose-suppliers.html">Pro</a>
+      <h2>So what do I get with Pro?</h2>
+      <p>
+        The full report, on the suppliers you choose, four times a year. What you just read is
+        the short version of it &mdash; and only for the supplier we picked this week.
+      </p>
+      <details class="cmp">
+        <summary>Show what is in each</summary>
+        <table class="cmp-table">
+          <thead>
+            <tr>
+              <th scope="col">What is in the report</th>
+              <th scope="col" class="cmp-col">Free</th>
+              <th scope="col" class="cmp-col is-pro">Pro</th>
+            </tr>
+          </thead>
+          <tbody>
+          <tr><th scope="row">Which suppliers</th><td class="cmp-text">Our pick, one a week</td><td class="cmp-text">The ones you choose</td></tr>
+          <tr><th scope="row">Revenue, margin, inventory days and capex</th><td class="cmp-mark">&#10003;</td><td class="cmp-mark">&#10003;</td></tr>
+          <tr><th scope="row">Every filed year we hold</th><td class="cmp-mark">&#10003;</td><td class="cmp-mark">&#10003;</td></tr>
+          <tr><th scope="row">Capacity and inventory, read for a buyer</th><td class="cmp-mark">&#10003;</td><td class="cmp-mark">&#10003;</td></tr>
+          <tr><th scope="row">Every quote with the quarter it came from</th><td class="cmp-mark">&#10003;</td><td class="cmp-mark">&#10003;</td></tr>
+          <tr><th scope="row">Charts, with the trailing quarters</th><td class="cmp-text">Four</td><td class="cmp-text">Twelve</td></tr>
+          <tr><th scope="row">Leverage score across four dimensions</th><td class="cmp-mark">&ndash;</td><td class="cmp-mark">&#10003;</td></tr>
+          <tr><th scope="row">Supply signal against installed assets</th><td class="cmp-mark">&ndash;</td><td class="cmp-mark">&#10003;</td></tr>
+          <tr><th scope="row">How much of their cost is fixed</th><td class="cmp-mark">&ndash;</td><td class="cmp-mark">&#10003;</td></tr>
+          <tr><th scope="row">Side by side with your other suppliers</th><td class="cmp-mark">&ndash;</td><td class="cmp-mark">&#10003;</td></tr>
+          <tr><th scope="row">News filtered for procurement impact</th><td class="cmp-mark">&ndash;</td><td class="cmp-mark">&#10003;</td></tr>
+          <tr><th scope="row">Ownership and export-control screening</th><td class="cmp-mark">&ndash;</td><td class="cmp-mark">&#10003;</td></tr>
+          </tbody>
+        </table>
+      </details>
+    </div>
+
+    <div class="pro-foot">
+      <p>One supplier or all thirteen. Tell us which ones and we will send you the price.</p>
+      <a class="btn-primary" href="choose-suppliers.html">Choose your suppliers</a>
+    </div>
+  </div>
+</section>
+
+<footer class="site-foot">
+  <div style="max-width:1100px;margin:0 auto">
+    <a class="logo" href="/" aria-label="Semitrical home"><img src="assets/img/semitrical-logo.png" alt="Semitrical" height="26" style="opacity:.9"></a>
+    <p style="margin-top:10px;line-height:1.7">
+      Semiconductor procurement intelligence · © 2026 Semitrical<br>
+      Built from public filings. First-pass analysis to support your own review — not legal,
+      investment or professional advice.
+    </p>
+    <p style="margin-top:10px">
+      <a class="plain" href="/">Platform</a> &middot;
+      <a class="plain" href="supplier-intelligence.html">Supplier Intelligence</a> &middot;
+      <a class="plain" href="deal-desk.html">Deal Desk</a> &middot;
+      <a class="plain" href="reports.html">Leverage Reports</a>
+    </p>
+    <p style="margin-top:8px">
+      <a class="plain" href="about.html">About</a> &middot;
+      <a class="plain" href="/privacy.html">Privacy</a> &middot;
+      <a class="plain" href="mailto:contact@semitrical.ai">contact@semitrical.ai</a> &middot;
+      <a class="plain" href="https://www.linkedin.com/company/semitrical-ai" style="display:inline-flex;align-items:center;gap:5px"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="vertical-align:-2px"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.63-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zm1.78 13.02H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg> LinkedIn</a>
+    </p>
+  </div>
+</footer>
+
+<script src="assets/js/nav.js?v=20261105" defer></script>
+<script src="assets/js/hub.js?v=20261105" defer></script>
+<script src="https://app.semitrical.ai/t.js?v=5" data-anon data-page="/supplier-intelligence.html"></script>
+</body>
+</html>

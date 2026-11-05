@@ -1,0 +1,407 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Samsung DRAM Brief</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap">
+<style>
+/* Buyer view: answers, not the model. Three layers: the answer, why, the proof (evidence cards on demand). */
+:root{
+  --bg:#F4F5F1; --surface:#FFFFFF; --sunk:#ECEEE8; --ink:#1A211D; --muted:#5B655F; --line:#D5D9D1;
+  --accent:#A35A16; --accent-ink:#FFFFFF; --accent-soft:#F6E7D6;
+  --buyer:#1D7466; --buyer-soft:#DCEEE9; --supplier:#B03C2B; --supplier-soft:#F6DFDA; --mixed:#5C6B7A; --mixed-soft:#E3E7EB;
+  --f-display:"DM Sans",-apple-system,"Segoe UI",Arial,sans-serif;
+  --f-body:"DM Sans",-apple-system,"Segoe UI",Arial,sans-serif;
+  --f-mono:"DM Mono",ui-monospace,Menlo,Consolas,monospace;
+  --r:6px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#141916; --surface:#1C221F; --sunk:#232A26; --ink:#E7EAE5; --muted:#A1AAA4; --line:#333C37;
+  --accent:#E09A55; --accent-ink:#1A120A; --accent-soft:#3A2A1A;
+  --buyer:#5CC2AF; --buyer-soft:#173530; --supplier:#EE8A79; --supplier-soft:#3E211C; --mixed:#A3B2C2; --mixed-soft:#262E36; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#141916; --surface:#1C221F; --sunk:#232A26; --ink:#E7EAE5; --muted:#A1AAA4; --line:#333C37;
+  --accent:#E09A55; --accent-ink:#1A120A; --accent-soft:#3A2A1A;
+  --buyer:#5CC2AF; --buyer-soft:#173530; --supplier:#EE8A79; --supplier-soft:#3E211C; --mixed:#A3B2C2; --mixed-soft:#262E36; color-scheme:dark}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:15.5px;line-height:1.55;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:20px 48px}
+.wrap{max-width:880px;margin:0 auto;display:flex;flex-direction:column;gap:18px}
+h1,h2,h3{font-family:var(--f-display);text-wrap:balance;margin:0}
+h1{font-size:30px;font-weight:700;line-height:1.1}
+h2{font-size:20px;font-weight:600}
+h3{font-size:16px;font-weight:600}
+p{margin:0}
+ul,ol{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:8px}
+.eyebrow{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.muted{color:var(--muted)} .small{font-size:13.5px}
+.mono{font-family:var(--f-mono);font-variant-numeric:tabular-nums}
+button,input,select,textarea{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.hex{display:inline-block;width:14px;height:14px;background:var(--accent);clip-path:polygon(25% 5%,75% 5%,100% 50%,75% 95%,25% 95%,0 50%);vertical-align:-1px;margin-right:8px}
+header.top{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px 20px;align-items:flex-end}
+.byline{color:var(--muted);font-size:13.5px;margin-top:6px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:18px;display:flex;flex-direction:column;gap:12px}
+.btn{border:1px solid var(--line);background:var(--surface);border-radius:var(--r);padding:8px 14px;cursor:pointer;font-weight:500}
+.btn:hover{border-color:var(--ink)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink);font-weight:600}
+.btn[disabled]{opacity:.55;cursor:default}
+.pill{display:inline-block;font-size:12px;font-weight:600;padding:2px 9px;border-radius:999px;white-space:nowrap}
+.pill.buyer{background:var(--buyer-soft);color:var(--buyer)} .pill.supplier{background:var(--supplier-soft);color:var(--supplier)}
+.pill.mixed{background:var(--mixed-soft);color:var(--mixed)} .pill.accent{background:var(--accent-soft);color:var(--accent)}
+nav.tabs{display:flex;gap:4px;border-bottom:1px solid var(--line);overflow-x:auto}
+nav.tabs button{background:none;border:0;border-bottom:2px solid transparent;padding:10px 14px;font-family:var(--f-display);font-weight:600;font-size:15.5px;color:var(--muted);cursor:pointer;white-space:nowrap}
+nav.tabs button[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--accent)}
+section.panel{display:flex;flex-direction:column;gap:16px}
+
+/* Verdict */
+.verdict-card{border-left:4px solid var(--accent)}
+.verdict-head{font-family:var(--f-display);font-size:26px;font-weight:700;line-height:1.15}
+.nums{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.num{display:flex;flex-direction:column;gap:2px;min-width:0;padding:10px 12px;background:var(--sunk);border-radius:var(--r)}
+.num .v{font-family:var(--f-display);font-size:30px;font-weight:700;font-variant-numeric:tabular-nums;line-height:1.1}
+.num .k{font-size:12.5px;color:var(--muted)}
+.v.claim{color:var(--supplier)} .v.cost{color:var(--buyer)} .v.just{color:var(--accent)}
+.counter{background:var(--accent-soft);border-radius:var(--r);padding:12px 14px}
+.counter b{font-family:var(--f-display);font-size:17px}
+.meta-row{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:13.5px}
+details.why{border-top:1px solid var(--line);padding-top:10px}
+details.why summary{cursor:pointer;font-weight:600;font-family:var(--f-display);font-size:15.5px}
+details.why[open] summary{margin-bottom:8px}
+.cite{font-family:var(--f-mono);font-size:12px;background:var(--sunk);border:1px solid var(--line);border-radius:4px;padding:0 5px;cursor:pointer;color:var(--ink);margin-left:2px}
+.cite:hover{border-color:var(--accent)}
+
+/* Supplier switch */
+.supbar-row{display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center;margin-top:12px}
+.supbar{display:inline-flex;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;background:var(--surface)}
+.supbar button{border:0;background:none;padding:7px 14px;cursor:pointer;font-weight:500}
+.supbar button + button{border-left:1px solid var(--line)}
+.supbar button[aria-checked="true"]{background:var(--ink);color:var(--bg)}
+.supbar button[aria-checked="true"] .muted{color:inherit;opacity:.75}
+.asked{display:flex;gap:6px;align-items:center;font-size:14px}
+.asked input{width:70px;padding:5px 8px;border:1px solid var(--line);border-radius:4px;background:var(--surface);font-family:var(--f-mono);text-align:right}
+.lev.cur{border-color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink)}
+/* Leverage */
+.lev-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.lev{border:1px solid var(--line);border-radius:var(--r);padding:14px;display:flex;flex-direction:column;gap:8px;min-width:0;background:var(--surface)}
+.lev .name{font-family:var(--f-display);font-weight:600;font-size:17px}
+.scores{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.scores div{display:flex;flex-direction:column}
+.scores .s{font-family:var(--f-display);font-size:26px;font-weight:700;font-variant-numeric:tabular-nums;line-height:1.1}
+.scores .s small{font-size:13px;color:var(--muted);font-weight:500}
+.scores .l{font-size:12px;color:var(--muted)}
+.meter{height:6px;border-radius:3px;background:var(--sunk);position:relative;overflow:hidden}
+.meter i{position:absolute;inset:0 auto 0 0;border-radius:3px;background:var(--buyer)}
+.diverge{font-size:13.5px;border-left:3px solid var(--accent);padding-left:10px}
+
+/* Outlook */
+.timeline{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border:1px solid var(--line);border-radius:var(--r);overflow:hidden;background:var(--surface)}
+.timeline > div{padding:12px 14px;display:flex;flex-direction:column;gap:4px;min-width:0}
+.timeline > div + div{border-left:1px solid var(--line)}
+.timeline .when{font-family:var(--f-mono);font-size:12px;color:var(--muted)}
+.timeline .state{font-family:var(--f-display);font-weight:600;font-size:16px}
+.t-now .state{color:var(--buyer)} .t-mid .state{color:var(--accent)} .t-late .state{color:var(--supplier)}
+
+/* Questions, risks */
+ol.qs li{padding-left:4px}
+ol.qs .why{display:block;font-size:13px;color:var(--muted)}
+.risk{display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 10px;align-items:baseline}
+
+/* Feedback */
+.fb{display:flex;flex-wrap:wrap;gap:6px 8px;align-items:center;font-size:13px;color:var(--muted);border-top:1px dashed var(--line);padding-top:10px}
+.fb button{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:3px 11px;cursor:pointer;font-size:13px}
+.fb button:hover,.fb button[aria-pressed="true"]{border-color:var(--accent);color:var(--ink)}
+.fb .note{flex-basis:100%;display:flex;gap:8px}
+.fb .note input{flex:1;min-width:0;padding:6px 10px;border:1px solid var(--line);border-radius:var(--r);background:var(--bg)}
+
+/* Ask */
+.chat{display:flex;flex-direction:column;gap:12px}
+.msg.q{align-self:flex-end;background:var(--accent-soft);border-radius:var(--r);padding:10px 14px;max-width:85%}
+.msg.a{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:14px 16px;display:flex;flex-direction:column;gap:8px}
+.msg.a ul{gap:4px}
+.msg .src{font-family:var(--f-mono);font-size:11.5px;color:var(--muted)}
+.suggest{display:flex;flex-wrap:wrap;gap:8px}
+.suggest button{text-align:left;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:8px 12px;cursor:pointer}
+.suggest button:hover{border-color:var(--accent)}
+.composer{display:flex;gap:8px;align-items:flex-end}
+.composer textarea{flex:1;min-width:0;resize:vertical;min-height:46px;padding:10px 12px;border:1px solid var(--line);border-radius:var(--r);background:var(--surface)}
+
+/* Evidence dialog */
+dialog{border:1px solid var(--line);border-radius:var(--r);background:var(--surface);color:var(--ink);max-width:560px;width:calc(100% - 32px);padding:18px}
+dialog::backdrop{background:rgba(0,0,0,.35)}
+.ev-meta{display:flex;flex-wrap:wrap;gap:6px 10px;font-size:13px;color:var(--muted);align-items:center}
+footer{font-size:12.5px;color:var(--muted);border-top:1px solid var(--line);padding-top:12px;display:flex;flex-direction:column;gap:4px}
+.toast{min-height:1.2em;font-size:13px;color:var(--muted)}
+
+@media (max-width:720px){
+  .lev-grid,.timeline{grid-template-columns:minmax(0,1fr)}
+  .timeline > div + div{border-left:0;border-top:1px solid var(--line)}
+}
+@media (max-width:520px){
+  .nums{grid-template-columns:minmax(0,1fr)}
+  h1{font-size:25px} .verdict-head{font-size:22px}
+}
+.terms{display:flex;flex-direction:column;border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+.term{display:grid;grid-template-columns:150px minmax(0,1fr) minmax(0,1fr);gap:4px 14px;padding:10px 12px;font-size:14px}
+.term + .term{border-top:1px solid var(--line)}
+.term .t{font-family:var(--f-display);font-weight:600}
+.term .o{color:var(--muted)}
+.term-h{background:var(--sunk);font-family:var(--f-mono);font-size:11.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
+.strip{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;border:1px solid var(--line);border-radius:var(--r);background:var(--surface);overflow:hidden}
+.strip > div{padding:10px 14px;display:flex;flex-direction:column;gap:2px;min-width:0}
+.strip > div + div{border-left:1px solid var(--line)}
+.strip .v{font-family:var(--f-display);font-size:22px;font-weight:700;font-variant-numeric:tabular-nums;line-height:1.1}
+.strip .k{font-size:12.5px;color:var(--muted)}
+.qcard{border:1px solid var(--line);border-radius:var(--r);padding:14px;display:flex;flex-direction:column;gap:8px;background:var(--surface)}
+.qcard .q{font-family:var(--f-display);font-weight:600;font-size:17px;line-height:1.3}
+.qcard .say{font-size:14px;color:var(--muted);border-left:3px solid var(--line);padding-left:10px}
+.qcard .fu{font-size:14px;border-left:3px solid var(--buyer);padding-left:10px}
+.qcard .lbl{font-family:var(--f-mono);font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);display:block;margin-bottom:2px}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chips button{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:4px 12px;cursor:pointer;font-size:13px}
+.chips button[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.layer{display:grid;grid-template-columns:180px minmax(0,1fr);gap:6px 16px;padding:12px 0;border-top:1px solid var(--line)}
+.layer:first-of-type{border-top:0}
+.layer .nm{font-family:var(--f-display);font-weight:600}
+.layer .means{font-weight:600}
+table.trk{border-collapse:collapse;width:100%;font-size:14px}
+table.trk th,table.trk td{text-align:left;padding:7px 8px;border-bottom:1px solid var(--line);vertical-align:top}
+table.trk th{font-family:var(--f-mono);font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);font-weight:500}
+.tbl-wrap{overflow-x:auto}
+.legend{display:flex;flex-wrap:wrap;gap:8px 14px;font-size:13px;align-items:center}
+.sw{display:inline-block;width:12px;height:12px;border-radius:3px;vertical-align:-1px;margin-right:6px}
+.ownfc{display:flex;flex-wrap:wrap;gap:8px 12px;align-items:center;font-size:14px;background:var(--sunk);border-radius:var(--r);padding:10px 12px}
+.ownfc input{width:70px;padding:5px 8px;border:1px solid var(--line);border-radius:4px;background:var(--surface);font-family:var(--f-mono);text-align:right}
+@media (max-width:720px){ .strip{grid-template-columns:repeat(2,minmax(0,1fr))} .strip > div:nth-child(3){border-left:0} .strip > div:nth-child(n+3){border-top:1px solid var(--line)} .layer{grid-template-columns:minmax(0,1fr)} }
+@media (max-width:620px){ .term{grid-template-columns:minmax(0,1fr)} .term-h{display:none} .term .o::before{content:"Offered: ";font-weight:600} .term .a::before{content:"Ask for: ";font-weight:600;color:var(--muted)} }
+.wrap{max-width:860px}
+.exist{background:var(--buyer-soft);border-radius:var(--r);padding:10px 14px;font-size:14px}
+.cmp-wrap{overflow-x:auto}
+table.cmp{border-collapse:collapse;width:100%;font-size:14px}
+table.cmp th,table.cmp td{text-align:left;padding:9px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+table.cmp thead th{font-family:var(--f-display);font-size:15px;font-weight:600}
+table.cmp tbody th{font-weight:600;width:24%}
+table.cmp tbody th div{margin-top:4px;font-weight:400}
+table.cmp .sam{background:var(--accent-soft)}
+table.cmp thead .sam{color:var(--accent)}
+.take{font-size:15px;border-left:3px solid var(--accent);padding-left:10px}
+.desk{background:var(--sunk)}
+.desk-list{gap:6px}
+@media (max-width:620px){
+  table.cmp thead{display:none}
+  table.cmp tr{display:block;border-bottom:1px solid var(--line);padding:8px 0}
+  table.cmp tbody th{display:block;width:auto;border:0;padding:4px 0}
+  table.cmp td{display:grid;grid-template-columns:80px minmax(0,1fr);gap:8px;border:0;padding:4px 6px}
+  table.cmp td::before{content:attr(data-l);font-weight:600;color:var(--muted);font-size:13px}
+}
+@media print{
+  :root{--bg:#fff;--surface:#fff}
+  body{background:#fff}
+  .noprint,.cite,dialog{display:none!important}
+  .card{break-inside:avoid;border-color:#ccc}
+}
+</style>
+
+<div class="wrap">
+  <header class="top">
+    <div>
+      <div class="eyebrow"><span class="hex" aria-hidden="true"></span>Semitrical · DRAM negotiation brief</div>
+      <h1>Samsung DRAM: 1Q27 pricing</h1>
+      <p class="byline">DDR5 server modules · evidence to 3 Nov 2026</p>
+      <div class="supbar-row">
+        <label class="asked" for="askedPct"><b>Samsung</b> is asking for 1Q27 <input type="number" id="askedPct" min="0" max="200" step="1" placeholder="none"> %</label>
+        <span class="small muted" id="askNote"></span>
+      </div>
+    </div>
+  </header>
+
+  <!-- 1. THE ANSWER -->
+  <article class="card verdict-card">
+    <div class="eyebrow">Is <b>Samsung</b>'s 1Q27 increase in line with the market?</div>
+    <p class="verdict-head" id="vHead"></p>
+    <div class="nums" id="vNums"></div>
+    <div class="counter" id="vCounter"></div>
+    <ul id="vWhy"></ul>
+    <p class="exist"><b>Already have an agreement with an annual price reset?</b> Open 2027 at flat, and don't accept a reset above your agreed band or a published index. New supply arrives through 2027 and the makers' own increases are shrinking [D05, D27, D16].</p>
+  </article>
+
+  <!-- 2. SAMSUNG VS THE OTHERS -->
+  <article class="card">
+    <div>
+      <div class="eyebrow">From the makers' own disclosures</div>
+      <h2 style="margin-top:4px"><b>Samsung</b> against the other two</h2>
+    </div>
+    <div class="cmp-wrap"><table class="cmp">
+      <thead><tr><th></th><th class="sam">Samsung</th><th>SK Hynix</th><th>Micron</th></tr></thead>
+      <tbody id="cmp"></tbody>
+    </table></div>
+    <p class="take"><b>Samsung</b>'s increases are the smallest, its supply is growing fast in 4Q26, and it still needs contracts. That is your room.</p>
+  </article>
+
+  <!-- 3. SUPPLY CHAIN -->
+  <article class="card">
+    <div>
+      <div class="eyebrow">Read across the supply chain</div>
+      <h2 style="margin-top:4px">What the makers' suppliers and customers are saying</h2>
+      <p class="small muted" style="margin-top:4px">Price reports track the memory price. These are the signals around it that decide when supply arrives and how long the shortage lasts.</p>
+    </div>
+    <div id="chain"></div>
+  </article>
+
+  <!-- 4. QUESTIONS -->
+  <article class="card">
+    <div>
+      <div class="eyebrow">Questions <b>Samsung</b> has not rehearsed</div>
+      <h2 style="margin-top:4px">Three questions for your next meeting</h2>
+    </div>
+    <div id="qList" style="display:flex;flex-direction:column;gap:12px"></div>
+  </article>
+
+  <!-- 5. FORECAST CHECK -->
+  <article class="card">
+    <div>
+      <div class="eyebrow">Before you quote a forecast</div>
+      <h2 style="margin-top:4px">TrendForce came in 20–40 points low in every quarter we can measure</h2>
+      <p class="small muted cz" style="margin-top:4px">TrendForce's own numbers: the forecast published going into each quarter, its revisions, and the figure it published afterwards. The same lag is likely at the downturn, when buyers will be locked into agreements priced off today's numbers [D43, D51].</p>
+    </div>
+    <div id="trackChart"></div>
+  </article>
+
+  <!-- 6. FULL DESK -->
+  <article class="card desk">
+    <div class="eyebrow">In the full Semitrical DRAM and NAND desks</div>
+    <ul class="desk-list">
+      <li><b>All major suppliers</b>, with leverage scores and supplier-specific questions</li>
+      <li><b>Agreement terms</b> to push for: floors, ceilings, term, deposits, volume flexibility, renewal caps</li>
+      <li><b>The full supply-chain read-across</b>: 50+ signals from equipment, packaging, foundry, NVIDIA, cloud and device makers</li>
+      <li><b>Ask</b>: live answers to your own questions, sourced to the evidence</li>
+      <li><b>Key financial and operating metrics</b> for each supplier: margins, capex, bit growth, inventory and cash, quarter by quarter</li>
+    </ul>
+    <p class="small muted">Talk to your Semitrical contact to see it with your own suppliers and volumes.</p>
+  </article>
+
+
+  <footer>
+    <span>Semitrical analysis from earnings calls and filings across memory makers, their equipment, test and packaging suppliers, TSMC, NVIDIA, cloud providers and device makers, plus TrendForce press releases and public market price data. Evidence to 3 Nov 2026. Tap any grey tag to see the source. Not financial or legal advice.</span>
+  </footer>
+</div>
+
+<dialog id="evDlg" aria-labelledby="evTitle">
+  <div style="display:flex;flex-direction:column;gap:10px">
+    <div style="display:flex;justify-content:space-between;gap:12px;align-items:baseline">
+      <h3 id="evTitle"></h3>
+      <button class="btn" type="button" id="evClose">Close</button>
+    </div>
+    <div class="ev-meta" id="evMeta"></div>
+    <p id="evText"></p>
+    <p class="small muted" id="evSrc"></p>
+  </div>
+</dialog>
+<script>
+const SNAP = {"claim":{"sup":"MU","pct":30,"prod":"DDR5 server modules"},"market":{"central":18.4,"lo":16.6,"hi":20,"adj":5,"rows":[{"k":"forecast","label":"Analyst contract forecast","move":20,"w":40},{"k":"spot","label":"Spot price momentum","move":16.6,"w":30},{"k":"momentum","label":"Makers' reported price momentum","move":18,"w":30}]},"lev":{"MU":2.85,"SKH":3,"SEC":3.3}};
+const EVIDENCE = [{"id": "D01", "co": "Micron", "role": "Memory maker", "per": "FQ4-26 (Sep 2026)", "sig": "Commitments", "text": "More than 75% of fiscal 2027 shipments are already committed, so allocation talks with customers have moved out to 2028. Micron says it has no line of sight to when supply and demand balance and sees conditions staying tight through 2028.", "metric": "FY27 >75% committed", "dir": "Tightening", "src": "Micron FQ4-26 post-earnings call, 30 Sep 2026", "conf": "High"}, {"id": "D02", "co": "Micron", "role": "Memory maker", "per": "FQ4-26 (Sep 2026)", "sig": "Price trajectory", "text": "CFO: fiscal 2027 margins expand on 'continued price increases, albeit at a more moderate pace'; 'we have said for some time that eventually price increases would moderate'.", "metric": "Price rises moderating", "dir": "Mixed", "src": "Micron FQ4-26 post-earnings call, 30 Sep 2026", "conf": "High"}, {"id": "D03", "co": "Micron", "role": "Memory maker", "per": "FQ3-FQ4-26", "sig": "Agreement terms", "text": "26 Strategic Customer Agreements (10 signed last quarter), small to large customers in every business unit. Non-cancellable take-or-pay, mostly five years to 2030 and now being extended beyond 2030. About 3/4 of SCA revenue has a price band with floor and ceiling; about 1/4 is negotiated periodically. The first deals capped price at CQ2-26 levels with a floor at gross margins above any prior peak; newer deals are negotiated at current, higher market conditions. Customers have paid about $22B in deposits ($18B cash). SCAs cover DRAM and NAND; SCA DRAM bits reach a little under 35% of output by 2030.", "metric": "26 SCAs; 3/4 banded", "dir": "Tightening", "src": "Micron FQ3-26 call (Jun 2026) and FQ4-26 call (Sep 2026)", "conf": "High"}, {"id": "D04", "co": "Micron", "role": "Memory maker", "per": "FQ1-FQ3-26", "sig": "Price trajectory", "text": "Micron's DRAM prices rose about 20% (Sep-Nov 2025), mid-60s% (Dec-Feb) and low-60s% (Mar-May) quarter on quarter. In August an analyst noted Micron was 'starting to moderate' increases.", "metric": "+20% / +65% / +60% QoQ", "dir": "Mixed", "src": "Micron FQ1-FQ3-26 calls; KeyBanc conference, Aug 2026", "conf": "High"}, {"id": "D05", "co": "Micron", "role": "Memory maker", "per": "FQ4-26 (Sep 2026)", "sig": "New capacity", "text": "First wafer output from the Idaho fab in mid-2027, with meaningful supply a few quarters later; Tongluo (Taiwan) ships from fiscal 2028. Most of the fiscal 2027 construction increase is for clean rooms that come online in late 2028 and beyond. Micron has signed long-term agreements with tool suppliers and will 'equip the clean rooms... in line with demand trends at the time'.", "metric": "Idaho mid-2027; more late 2028+", "dir": "Capacity shift", "src": "Micron FQ3-26 and FQ4-26 calls", "conf": "High"}, {"id": "D06", "co": "Micron", "role": "Memory maker", "per": "Jun-Oct 2026", "sig": "Wafer intensity", "text": "HBM uses about 3x the wafer per bit of DDR5, rising to about 4x by HBM4E; vertical HBM is higher still. Micron expects blended DRAM cost per bit to rise, and its agreements allow price premiums for new generations (DDR6, LPDDR6, new HBM) to be negotiated later.", "metric": "HBM 3:1 to 4:1", "dir": "Tightening", "src": "Micron FQ3-26 deck (24 Jun 2026); Micron technology webinar, 21 Oct 2026", "conf": "High"}, {"id": "D07", "co": "Micron", "role": "Memory maker", "per": "FQ4-26 (Sep 2026)", "sig": "Latent demand", "text": "Customers have cut memory per system to ship more units; if more supply appears 'it would easily get put into use' through higher content. Server units grow high-teens; Micron calls DRAM the principal constraint on AI build-outs, ahead of logic or power.", "metric": "Server units +high-teens", "dir": "Tightening", "src": "Micron FQ4-26 call; Micron at KeyBanc, Aug 2026", "conf": "High"}, {"id": "D08", "co": "Micron", "role": "Memory maker", "per": "FQ4-26 (Sep 2026)", "sig": "End demand", "text": "Mobile and client bit shipments fell for a second straight quarter; PC and phone unit volumes are declining, though revenue grows on price and mix.", "metric": "Mobile/PC bits down 2 qtrs", "dir": "Loosening", "src": "Micron FQ4-26 call, 30 Sep 2026", "conf": "High"}, {"id": "D09", "co": "Micron", "role": "Memory maker", "per": "FQ4-26 (Sep 2026)", "sig": "HBM pricing", "text": "Micron raised HBM pricing 'significantly' for calendar 2027, resetting at the start of the year to narrow the profitability gap with conventional DRAM.", "metric": "HBM 2027 repriced up", "dir": "Tightening", "src": "Micron FQ4-26 call, 30 Sep 2026", "conf": "High"}, {"id": "D10", "co": "SK Hynix", "role": "Memory maker", "per": "Q3-26 (Oct 2026)", "sig": "Price and bits", "text": "DRAM ASP rose high-20s% quarter on quarter (after ~30% in Q2, mid-60s% in Q1 and ~20% in Q4-25), partly from a richer HBM4 mix. DRAM bits rose ~10%; server DDR5 shipments rose over 40%. Operating margin 80%. NAND ASP rose mid-20s%.", "metric": "DRAM ASP +high-20s%", "dir": "Mixed", "src": "SK Hynix Q3-26 call, 28 Oct 2026; earlier calls", "conf": "High"}, {"id": "D11", "co": "SK Hynix", "role": "Memory maker", "per": "Q3-26 (Oct 2026)", "sig": "Supply step", "text": "Fourth-quarter DRAM bit shipments to grow mid-20s% as the M15X fab ramps to full capacity by year-end and 1c production expands.", "metric": "Q4 DRAM bits +mid-20s%", "dir": "Loosening", "src": "SK Hynix Q3-26 call, 28 Oct 2026", "conf": "High"}, {"id": "D12", "co": "SK Hynix", "role": "Memory maker", "per": "Q3-26 (Oct 2026)", "sig": "Agreement terms", "text": "Long-term agreements with 14 key customers, including major cloud providers; typically five years, with extensions under discussion. Pricing sits 'within a price range agreed upon with the customer' and moves with market conditions; deposits are required. LTAs cover more than 50% of 2027-28 capacity, and DRAM and HBM are 'effectively sold out' through 2029. Non-LTA capacity is kept to 'flexibly respond to market conditions'.", "metric": "LTAs >50% of 2027-28", "dir": "Tightening", "src": "SK Hynix Q3-26 call, 28 Oct 2026", "conf": "High"}, {"id": "D13", "co": "SK Hynix", "role": "Memory maker", "per": "Q3-26 (Oct 2026)", "sig": "Outlook", "text": "Supply cannot keep up with demand, 'a constraint projected to continue through 2030'. Achievable 2027 demand growth: mid-20s% for DRAM, high-teens for NAND. PC and mobile shipments are expected to fall on higher memory prices.", "metric": "Tight 'through 2030'", "dir": "Tightening", "src": "SK Hynix Q3-26 call, 28 Oct 2026", "conf": "High"}, {"id": "D14", "co": "SK Hynix", "role": "Memory maker", "per": "Q3-26 (Oct 2026)", "sig": "Supplier flexibility", "text": "For Yongin and M17, shells are built early but clean rooms open in phases; equipment move-in and ramp 'will be adjusted in line with demand'. If conditions differ, Hynix will flex capex, production and resource allocation. 2027 capex rises significantly.", "metric": "Clean rooms in phases", "dir": "Mixed", "src": "SK Hynix Q3-26 call, 28 Oct 2026", "conf": "High"}, {"id": "D15", "co": "SK Hynix", "role": "Memory maker", "per": "Q3-26 (Oct 2026)", "sig": "HBM", "text": "Customer HBM demand is more than double what Hynix can supply; some customers are cutting stack heights to get more cubes from the same capacity. 2027 HBM volumes and prices are settled and reflect HBM4's higher value; HBM profitability stays 'far above the peak in past cycles'.", "metric": "HBM demand >2x supply", "dir": "Tightening", "src": "SK Hynix Q3-26 call, 28 Oct 2026", "conf": "High"}, {"id": "D16", "co": "Samsung", "role": "Memory maker", "per": "Q3-26 (Oct 2026)", "sig": "Price and bits", "text": "DRAM ASP up about 20% quarter on quarter (after about +40% in Q4-25 and mid-40s% in Q2-26); DRAM bits up low-to-mid single digits; NAND ASP up high-teens. Fourth-quarter DRAM bits to grow mid-to-high teens and NAND mid-teens. A large volume of extra QLC SSD orders arrived from cloud-based personal AI agents.", "metric": "DRAM ASP ~+20%", "dir": "Mixed", "src": "Samsung Q3-26 call, 29 Oct 2026; earlier calls", "conf": "High"}, {"id": "D17", "co": "Samsung", "role": "Memory maker", "per": "Q3-26 (Oct 2026)", "sig": "Agreement terms", "text": "Multi-year contracts signed with 10 major accounts and in talks with 10 more; contracts roll, extended through annual negotiation. Target: 60-70% of mid-to-long-term capacity under multi-year contracts. Demand for contracts is spreading beyond hyperscalers to mobile, automotive and networking; customers are asking for extra supply within periods already covered.", "metric": "Target 60-70% contracted", "dir": "Tightening", "src": "Samsung Q3-26 call, 29 Oct 2026", "conf": "High"}, {"id": "D18", "co": "Samsung", "role": "Memory maker", "per": "Q3-26 (Oct 2026)", "sig": "Capex vs bits", "text": "Expects tight supply into 2028. Higher 2027 capex will not lift 2028 bits much: much of it buys space, construction costs inflate the numbers, tools cost more, upfront payments are needed to lock in supply, and tool lead times are longer. HBM4E and HBM5 have larger dies and more metal layers.", "metric": "Capex inflated", "dir": "Tightening", "src": "Samsung Q3-26 call, 29 Oct 2026", "conf": "High"}, {"id": "D19", "co": "Samsung", "role": "Memory maker", "per": "Q1-Q2-26", "sig": "Fulfilment", "text": "'Available supply is far short of customer demand... our demand fulfillment rate is now at a record low.' Customers are bringing 2027 demand forward; on pre-booked demand alone the 2027 gap is wider than 2026.", "metric": "Fulfilment at record low", "dir": "Tightening", "src": "Samsung Q1-26 call (Apr 2026)", "conf": "High"}, {"id": "D20", "co": "Samsung", "role": "Memory maker", "per": "Q1-26 (Apr 2026)", "sig": "HBM vs DRAM margin", "text": "HBM is priced annually and conventional DRAM quarterly, so rising conventional prices inverted margins; Samsung expects the gap to narrow 'significantly' in 2027 and will keep a balanced mix rather than shift wafers back to conventional DRAM.", "metric": "Margin gap narrows 2027", "dir": "Tightening", "src": "Samsung Q1-26 call (Apr 2026)", "conf": "High"}, {"id": "D21", "co": "Samsung", "role": "Device maker", "per": "Q3-26 (Oct 2026)", "sig": "End demand", "text": "Smartphone volumes fell in Q3, mainly mid and entry models, as memory prices rose; 2027 unit volumes expected to decline. Samsung's own phone and TV units are pressured by memory costs; it expects mobile and PC demand adjustment in 2027.", "metric": "Phone units falling", "dir": "Loosening", "src": "Samsung Q3-26 call (MX, System LSI, Memory), 29 Oct 2026", "conf": "High"}, {"id": "D22", "co": "Nanya", "role": "Memory maker", "per": "Q3-26 (Oct 2026)", "sig": "Renewal repricing", "text": "ASP rose more than 60% quarter on quarter, more than half of it from long-term agreements signed at 2025's low prices expiring and repricing. Bits fell mid-single digits on depleted inventory and stay flat until new fab output in 2H 2027. Gross margin 85.7%.", "metric": "ASP >+60% on renewals", "dir": "Tightening", "src": "Nanya Q3-26 call, 12 Oct 2026", "conf": "High"}, {"id": "D23", "co": "Nanya", "role": "Memory maker", "per": "Q3-26 (Oct 2026)", "sig": "Agreement terms", "text": "Long-term agreements cover 50-70% of output, from quarterly to three years; three-year deals exceed 20%. Floor and ceiling prices are being discussed for new contracts. Fulfilment of inquiries outside contracts is 'quite low'. Expects fourth-quarter ASP to 'improve gradually'.", "metric": "LTA 50-70%", "dir": "Tightening", "src": "Nanya Q3-26 call, 12 Oct 2026", "conf": "High"}, {"id": "D24", "co": "Nanya", "role": "Memory maker", "per": "Q3-26 (Oct 2026)", "sig": "DDR4", "text": "DDR4 is still 12-14% of DRAM demand and short of supply; low-end buyers are down-speccing, extending product lives and using recycled DRAM. Nanya's new fab costs about $16B for 50,000 wafers a month.", "metric": "DDR4 12-14% of demand", "dir": "Tightening", "src": "Nanya Q3-26 call, 12 Oct 2026", "conf": "High"}, {"id": "D25", "co": "Winbond", "role": "Memory maker", "per": "CQ1-CQ2-26", "sig": "DDR4", "text": "Major suppliers 'continue to scale back DDR4 bit shipments'; the DDR4/LPDDR4 gap is 'evident through 2028 and onward'. Winbond's DRAM bits rose ~25% in one quarter as new 16nm capacity ramps.", "metric": "DDR4 gap to 2028", "dir": "Tightening", "src": "Winbond CQ1-26 and CQ2-26 investor presentations", "conf": "High"}, {"id": "D26", "co": "Lam Research", "role": "Equipment", "per": "CQ3-26 (Oct 2026)", "sig": "Memory spend", "text": "Memory was 46% of Lam's systems revenue and memory dollars rose 120% year on year. 2026 equipment spend about mid-$150B; 2027 above $200B, with DRAM the fastest-growing segment. AI token usage up about 250-fold in 18 months.", "metric": "2027 WFE >$200B", "dir": "Capacity shift", "src": "Lam Research CQ3-26 call, 21 Oct 2026", "conf": "High"}, {"id": "D27", "co": "Lam Research", "role": "Equipment", "per": "Sep-Oct 2026", "sig": "Clean rooms and timing", "text": "Clean room space is 'the constraining item... through next year for sure'; a new clean room takes about two years; about 10 new tier-1 fabs come online during 2027. Lam's own December-quarter shipments are limited by its suppliers.", "metric": "~10 fabs online in 2027", "dir": "Capacity shift", "src": "Lam Research at Citi TMT, 9 Sep 2026; CQ3-26 call", "conf": "High"}, {"id": "D28", "co": "Lam Research", "role": "Equipment", "per": "Sep 2026", "sig": "DRAM capex", "text": "Industry DRAM capex about $60B in 2025 rising above $100B; asked about Micron's 'tighter 2027', Lam called it 'likely an industry-wide representation'.", "metric": "DRAM capex $60B to >$100B", "dir": "Capacity shift", "src": "Lam Research at Citi TMT, 9 Sep 2026", "conf": "High"}, {"id": "D29", "co": "Lam Research", "role": "Equipment", "per": "Sep-Oct 2026", "sig": "NAND supply", "text": "NAND raw wafer starts are about 20% below peak; 2026-27 NAND supply comes mostly from upgrading tools to 200+ layers, with greenfield capacity from around 2H 2028. Each 1-point shift of NAND bits to SLC-class devices needs about 2% more wafer capacity.", "metric": "NAND wafers -20% from peak", "dir": "Tightening", "src": "Lam Research at Citi TMT (Sep 2026); CQ3-26 call", "conf": "High"}, {"id": "D30", "co": "Tokyo Electron", "role": "Equipment", "per": "FQ1-27 (Aug 2026)", "sig": "Memory spend", "text": "2026 DRAM equipment spend in the 'low $40 billion' range, up 30% or more, with investment rising 'not only for HBM, but also for commodity DRAM'. 2027 equipment market at least $190B. TEL is raising tool prices, visible from Jan-Mar 2027.", "metric": "DRAM WFE +30%; tool prices up", "dir": "Capacity shift", "src": "Tokyo Electron FQ3-26 to FQ1-27 calls", "conf": "High"}, {"id": "D31", "co": "Tokyo Electron", "role": "Equipment", "per": "2026", "sig": "NAND-to-DRAM conversion", "text": "Samsung's Pyeongtaek plant, planned for NAND and foundry, is now mainly DRAM; SK Hynix moved part of its Cheongju NAND facility to DRAM. These shifts are driving TEL's DRAM orders. Micron also says some suppliers redirect NAND clean room space to DRAM.", "metric": "NAND space moved to DRAM", "dir": "Capacity shift", "src": "Shared Research on Tokyo Electron (2026); Micron FQ2-26 call", "conf": "Medium"}, {"id": "D32", "co": "Advantest", "role": "Test", "per": "FQ1-27 (Jul 2026)", "sig": "Test capacity", "text": "Expects the memory tester market to 'grow significantly next few years as the new fabs come online'; pulling in SoC tester capacity to 10,000 a year as wafer and packaging capacity keeps rising.", "metric": "Memory test grows with new fabs", "dir": "Capacity shift", "src": "Advantest FQ1-27 call, 29 Jul 2026", "conf": "High"}, {"id": "D33", "co": "BESI", "role": "Packaging", "per": "CQ3-26 (Oct 2026)", "sig": "HBM packaging", "text": "'Severe memory shortages this year have extended the use of lower stack heights in current HBM production'; makers maximise output with existing technology, delaying hybrid bonding.", "metric": "Hybrid bonding delayed", "dir": "Tightening", "src": "BESI CQ3-26 call, Oct 2026", "conf": "High"}, {"id": "D34", "co": "BESI", "role": "Packaging", "per": "CQ2-26 (Jul 2026)", "sig": "Cycle risk", "text": "BESI's CEO on memory margins: 'Who would have thought two years ago... margins which we have right now? That's the danger in this industry... If the tide goes out, simply be able to adjust your cost.'", "metric": "Supplier-side cycle caution", "dir": "Mixed", "src": "BESI CQ2-26 call, Jul 2026", "conf": "High"}, {"id": "D35", "co": "TSMC", "role": "Foundry", "per": "CQ3-26 (Oct 2026)", "sig": "AI chip supply", "text": "Demand 'still far above our capability today to supply'; N2 capacity more than doubles in 2027; nearly 20 fabs in progress. TSMC is short of back-end capacity and is sourcing interposers from GlobalFoundries; advanced packaging capacity remains very tight.", "metric": "N2 capacity >2x in 2027", "dir": "Tightening", "src": "TSMC CQ3-26 call, 15 Oct 2026; CQ1-26 call", "conf": "High"}, {"id": "D36", "co": "TSMC", "role": "Foundry", "per": "CQ3-26 (Oct 2026)", "sig": "End demand and costs", "text": "'Consumer and price-sensitive end market segments are being challenged due to the impact of rising component prices'; TSMC is 'prudent' planning 2027. Tool, material and labour inflation is 'real'.", "metric": "Consumer challenged", "dir": "Loosening", "src": "TSMC CQ3-26 call, 15 Oct 2026", "conf": "High"}, {"id": "D37", "co": "NVIDIA", "role": "Accelerators", "per": "FQ2-27 (Aug 2026)", "sig": "Memory cost", "text": "'We are experiencing extreme pricing conditions in memory. The magnitude of the price increase has exceeded our prior expectations and are headed even higher into next year.' NVIDIA cut its gross margin outlook to a 71-72% trough and is raising its own prices.", "metric": "Memory 'headed even higher'", "dir": "Tightening", "src": "NVIDIA FQ2-27 call, Aug 2026", "conf": "High"}, {"id": "D38", "co": "NVIDIA", "role": "Accelerators", "per": "FQ2-27 (Aug 2026)", "sig": "Supply limits", "text": "Next year's growth of about 70% is a supply-constrained number versus about 100% unconstrained; 'our entire supply chain is challenged'. Inference racks also use conventional DRAM (up to 12TB of DDR5 per rack).", "metric": "Supplies ~70% of demand", "dir": "Tightening", "src": "NVIDIA FQ2-27 call; Micron FQ2-26 deck", "conf": "High"}, {"id": "D39", "co": "Microsoft", "role": "Cloud", "per": "FQ4-26 (Jul 2026)", "sig": "Buyer flexibility", "text": "Demand exceeds supply 'in a relatively extreme moment'. Capex has pivoted to short-lived assets (CPUs and GPUs) so that 'if the demand environment changes, you just slow down'. Quarterly capex of $41B includes higher component pricing; Windows OEM revenue to fall high-teens as component costs raise PC prices.", "metric": "Can slow capex quickly", "dir": "Mixed", "src": "Microsoft FQ4-26 call, Jul 2026", "conf": "High"}, {"id": "D40", "co": "Alphabet", "role": "Cloud", "per": "Q2-26 (Jul 2026)", "sig": "Capex", "text": "2026 capex raised to $195-205B; 2027 capex to 'increase significantly'; still supply-constrained and renting third-party capacity.", "metric": "Capex $195-205B", "dir": "Tightening", "src": "Alphabet Q2-26 call, Jul 2026", "conf": "High"}, {"id": "D41", "co": "Meta", "role": "Cloud", "per": "Q3-26 (Oct 2026)", "sig": "Capex and cash", "text": "2026 capex $135-145B; 2027 budget still being set but 'continue investing aggressively'. Third-quarter free cash flow was -$2.1B; Meta is working to bring down compute cost per user.", "metric": "FCF -$2.1B", "dir": "Mixed", "src": "Meta Q3-26 call, Oct 2026", "conf": "High"}, {"id": "D42", "co": "SK Hynix (citing research)", "role": "Cloud", "per": "Q3-26 (Oct 2026)", "sig": "Capex outlook", "text": "Market research estimates cited by SK Hynix: global cloud capex grows more than 60% in 2027 and secured power capacity more than doubles; SK Hynix notes some investors question pacing and returns.", "metric": "Cloud capex +60% in 2027", "dir": "Tightening", "src": "SK Hynix Q3-26 call, 28 Oct 2026", "conf": "Medium"}, {"id": "D43", "co": "TrendForce (public releases)", "role": "Market data", "per": "1Q25-2Q26", "sig": "Forecast track record", "text": "TrendForce's own quarterly DRAM contract forecasts against the figures it published later: 2Q25 forecast -0 to -5%, prices rose; 3Q25 consumer DDR4 forecast +40-45% (7 Jul 25), raised to +85-90% (11 Aug), then a 'near-doubling' (24 Sep); 4Q25 +8-13% (24 Sep 25), raised to +18-23% (29 Oct) and +45-50% (26 Nov), later +45-50%; 1Q26 +55-60% (5 Jan 26), raised to +90-95% (2 Feb), later +93-98%; 2Q26 +58-63% (31 Mar 26), later ~+80%; 3Q26 +13-18% (3 Jul 26), later ~+40%.", "metric": "Low in every measured quarter", "dir": "Mixed", "src": "TrendForce press releases and TrendForce News, Dec 2024 - Oct 2026", "conf": "High"}, {"id": "D44", "co": "TrendForce (public releases)", "role": "Market data", "per": "Jul-Sep 2026", "sig": "Current forecasts", "text": "Conventional DRAM contract prices forecast +13-18% for 3Q26 (3 Jul) and +10-15% for 4Q26 (30 Sep), with server increases under long-term agreements expected to lag the market average.", "metric": "4Q26 +10-15%", "dir": "Mixed", "src": "TrendForce press releases, 3 Jul and 30 Sep 2026", "conf": "High"}, {"id": "D45", "co": "TrendForce (via ADATA)", "role": "Market data", "per": "Aug 2026", "sig": "Next-quarter forecast", "text": "August chart: DDR5 contract prices forecast to rise about 15% in 4Q26 and about 9% in 1Q27, then level off from mid-2027. Since superseded: TrendForce raised 4Q26 to about +20% on 20 Oct.", "metric": "1Q27 about +9%", "dir": "Mixed", "src": "ADATA MarketWatch, TrendForce estimates Aug 2026", "conf": "High"}, {"id": "D46", "co": "TrendForce (via ADATA)", "role": "Market data", "per": "Aug 2026", "sig": "Sufficiency", "text": "Supply minus demand near balance (-0.4% to -1.1%) from Aug 2026 to Mar 2027, then the deficit deepens to -5.7% by late 2027. In 2025, DDR4 prices followed sufficiency with a 1-2 month lag.", "metric": "Deficit deepens 2H27", "dir": "Tightening", "src": "ADATA MarketWatch, TrendForce estimates Aug 2026 and Dec 2025", "conf": "High"}, {"id": "D47", "co": "memoryindex.io", "role": "Market data", "per": "Late Oct 2026", "sig": "Spot momentum", "text": "Spot prices: 13-product basket +6.9% in 30 days; DDR5 16Gb +5%, DDR4 8Gb +6%. Spot leads contract by one to two months.", "metric": "Spot +5-7% a month", "dir": "Tightening", "src": "memoryindex.io, 25 Oct 2026", "conf": "Medium"}, {"id": "D48", "co": "Retail (Stanford / Keepa)", "role": "Market data", "per": "2025-2026", "sig": "Retail", "text": "Cheapest retail DDR5 rose about 5x in a year; DDR4 about 4x since mid-2025.", "metric": "Retail DDR5 ~5x", "dir": "Tightening", "src": "Stanford memory price dataset (McCallum + Keepa)", "conf": "Medium"}, {"id": "D49", "co": "Micron", "role": "Memory maker", "per": "Aug 2026", "sig": "Customer sentiment", "text": "Customers 'are not happy about the extent of volumes we are making available'; they sign agreements but feel they leave opportunity on the table. Customers name DRAM, not power or logic, as their top constraint.", "metric": "Customers short of volume", "dir": "Tightening", "src": "Micron at KeyBanc conference, Aug 2026", "conf": "High"}, {"id": "D50", "co": "SK Hynix and Samsung", "role": "Memory maker", "per": "Q3-26 (Oct 2026)", "sig": "NAND", "text": "NAND prices rose mid-20s% (SK Hynix) and high-teens (Samsung) last quarter. AI inference is moving KV cache to SSDs, and cloud AI agents drove a large volume of extra QLC orders. Micron says its agreements cover NAND as well as DRAM.", "metric": "NAND ASP +high-teens to mid-20s%", "dir": "Tightening", "src": "SK Hynix and Samsung Q3-26 calls; Micron FQ4-26 call", "conf": "High"}, {"id": "D51", "co": "TrendForce", "role": "Market data", "per": "20 Oct 2026", "sig": "Latest forecast", "text": "TrendForce News: DRAM contract prices rose about 80% in 2Q26 and about 40% in 3Q26, and are expected to rise about 20% in 4Q26, slower but supported by AI demand and tight supply. This raises the 30 Sep forecast of +10-15% for 4Q26.", "metric": "4Q26 ~+20%", "dir": "Tightening", "src": "TrendForce News, 20 Oct 2026", "conf": "Medium"}, {"id": "D52", "co": "Samsung", "role": "Memory maker", "per": "Q3-26 (Oct 2026)", "sig": "Capex", "text": "Full-year 2026 capex expected at KRW 84.4 trillion, with KRW 76.8 trillion for the chip (DS) division covering memory and foundry, up KRW 29.3 trillion. Memory capex rises as Samsung invests in new fabs for AI demand, 'consistent with our approach of aligning investment with customer demand'.", "metric": "DS capex KRW 76.8T (2026)", "dir": "Capacity shift", "src": "Samsung Q3-26 call, 29 Oct 2026", "conf": "High"}];
+const TRACKBARS = [["3Q25", "consumer DDR4", [[42.5, "7 Jul 25", "f"], [87.5, "11 Aug 25", "r"], [100, "24 Sep 25", "a", "~100%"]]], ["4Q25", "", [[10.5, "24 Sep 25", "f"], [20.5, "29 Oct 25", "r"], [47.5, "26 Nov 25", "r"], [47.5, "26 Feb 26", "a"]]], ["1Q26", "", [[57.5, "5 Jan 26", "f"], [92.5, "2 Feb 26", "r"], [95.5, "1 Jun 26", "a"]]], ["2Q26", "", [[60.5, "31 Mar 26", "f"], [60.5, "1 Jun 26", "r"], [80, "20 Oct 26", "a", "~80%"]]], ["3Q26", "", [[15.5, "3 Jul 26", "f"], [15.5, "7 Sep 26", "r"], [40, "20 Oct 26", "a", "~40%"]]], ["4Q26", "in progress", [[12.5, "30 Sep 26", "f"], [20, "20 Oct 26", "r", "~20%"]]]];
+const EVMAP = Object.fromEntries(EVIDENCE.map(e=>[e.id,e]));
+const VERSION = "samsung-hook-2026-11-04";
+const EXAMPLE = 30;
+
+const $=s=>document.querySelector(s);
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+function cites(ids){ return ids.map(i=>`<button type="button" class="cite" data-ev="${i}" aria-label="Evidence ${i}">${i}</button>`).join(""); }
+const boldSup=h=>{ const seen=new Set(); return h.replace(/\b(Micron|SK Hynix|Samsung|Nanya|NVIDIA|TSMC)(?!\w)/g,m=>{ if(seen.has(m)) return m; seen.add(m); return `<b>${m}</b>`; }); };
+function withCites(text,bold=true){ let h=esc(text); if(bold) h=boldSup(h); return h.replace(/\[((?:D\d{2}(?:,\s*)?)+)\]/g,(m,ids)=>" "+cites(ids.split(/,\s*/))); }
+function trackSvg(B){
+  const col={f:"var(--mixed)",r:"var(--accent)",a:"var(--supplier)"};
+  const bw=30,gap=6,grp=44,L=46,T=26,base=230,H=330,ymax=110;
+  const widths=B.map(q=>q[2].length*(bw+gap)-gap), W=L+widths.reduce((a,b)=>a+b,0)+grp*(B.length-1)+44;
+  const y=v=>T+(base-T)*(1-v/ymax);
+  let g=`<svg viewBox="0 0 ${W} ${H}" width="100%" style="min-width:640px;display:block" role="img" aria-label="TrendForce DRAM forecasts by quarter with publication dates">`;
+  [0,25,50,75,100].forEach(t=>g+=`<line x1="${L}" x2="${W-8}" y1="${y(t)}" y2="${y(t)}" stroke="var(--line)"/><text x="${L-6}" y="${y(t)+4}" text-anchor="end" font-size="11" fill="var(--muted)">${t}%</text>`);
+  let x=L+8;
+  B.forEach((q,i)=>{ const x0=x; q[2].forEach(b=>{ const [v,d,k,lab]=b;
+      g+=`<rect x="${x}" y="${y(v)}" width="${bw}" height="${base-y(v)}" rx="3" fill="${col[k]}"/><text x="${x+bw/2}" y="${y(v)-5}" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">${lab||(v+"%")}</text><text transform="translate(${x+bw/2+3},${base+8}) rotate(55)" font-size="10" fill="var(--muted)">${d}</text>`;
+      x+=bw+gap; });
+    const cx=x0+widths[i]/2; g+=`<text x="${cx}" y="${H-24}" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)">${q[0]}</text>`; if(q[1]) g+=`<text x="${cx}" y="${H-9}" text-anchor="middle" font-size="10.5" fill="var(--muted)">${q[1]}</text>`;
+    x+=grp-gap; });
+  return `<div style="overflow-x:auto">${g}</svg></div><div class="legend"><span><i class="sw" style="background:var(--mixed)"></i>Forecast going into the quarter</span><span><i class="sw" style="background:var(--accent)"></i>Revised or reaffirmed during the quarter</span><span><i class="sw" style="background:var(--supplier)"></i>TrendForce's later figure</span><span class="muted">Midpoints of published ranges, quarter on quarter; dates are publication dates. Conventional DRAM unless noted.</span></div>`;
+}
+
+
+let ASKED=EXAMPLE;
+try{ const a=localStorage.getItem("sam-hook-asked"); if(a!==null) ASKED = a===""?null:+a; }catch(e){}
+
+const WHY = [
+  `4Q26 contract prices settled near +20%: TrendForce raised its 4Q26 figure from +10–15% to about +20% on 20 Oct, after 3Q26 came in near +40% [D51].`,
+  `Samsung's own DRAM price rose about +20% in 3Q26, down from mid-40s% in 2Q26 and the smallest of the three makers. Its average includes older agreement prices, so it runs below new-contract prices [D16].`,
+  `Spot prices still rise about 5–7% a month, so expect an increase, just a smaller one [D47].`,
+];
+const CMP = [
+  {k:"Latest DRAM price change", ev:"D16, D10, D02", s:"About +20% (3Q26)", h:"High-20s% (3Q26), partly HBM mix", m:"Not disclosed; says 2027 increases 'more moderate' (FQ4-26, Jun–Aug)"},
+  {k:"DRAM bit growth guided", ev:"D16, D11, D05", s:"+Mid-to-high teens (4Q26)", h:"+Mid-20s% (4Q26)", m:"Single digit (FQ1-27, Sep–Nov 2026)"},
+  {k:"How sold out", ev:"D19, D12, D01", s:"Fulfilment at a record low (2Q26)", h:"'Effectively sold out' through 2029", m:"Over 75% of fiscal 2027 committed"},
+  {k:"Multi-year contracts", ev:"D17, D12, D03", s:"10 signed, 10 in talks; targets 60–70% of capacity", h:"14 customers; over 50% of 2027–28 capacity", m:"26 signed; about 35% of DRAM output by 2030"},
+  {k:"New capacity", ev:"D52, D31, D14, D05", s:"Pyeongtaek moved to DRAM; 2026 chip capex KRW 76.8T, but bits lag capex", h:"M15X full by end-2026; Yongin clean rooms open in phases from 2027", m:"Idaho first wafers mid-2027; most new space late 2028+"},
+];
+const CHAIN = [
+  {l:"Equipment", who:"Lam Research, Tokyo Electron", said:"About 10 new tier-1 fabs open in 2027, but the tool makers are themselves short of parts and raising prices.", means:"New supply lands late 2027–28, not in 1Q27.", ev:"D27, D30"},
+  {l:"HBM and packaging", who:"SK Hynix, BESI, TSMC", said:"HBM demand is more than double supply, and HBM was repriced up for 2027.", means:"Makers will not move wafers back to DDR5, so standard DRAM stays tight through 2027.", ev:"D15, D09, D33, D35"},
+  {l:"Accelerators", who:"NVIDIA", said:"Memory prices are 'headed even higher into next year'; NVIDIA can supply only ~70% of its own demand.", means:"Even the largest buyer is absorbing increases and passing them on.", ev:"D37, D38"},
+  {l:"Cloud", who:"Microsoft, Alphabet, Meta", said:"Capex keeps rising into 2027, but Microsoft buys short-lived assets it can slow within months.", means:"The biggest buyers keep the flexibility you are being asked to give up.", ev:"D39, D40, D41"},
+  {l:"Phones and PCs", who:"Samsung, TSMC, Microsoft", said:"Phone and PC volumes are falling as memory costs push up device prices.", means:"That is where any unwind starts, and it frees capacity for servers.", ev:"D21, D36, D08"},
+];
+const QS = [
+  {t:"Price", q:"Your DRAM price rose about 20% in 3Q26, less than SK Hynix's high-20s%, and your DRAM bits grow mid-to-high teens in 4Q26. Why isn't your 1Q27 quote the lowest of the three?", say:"Our server products carry a premium for performance.", follow:"Your own reported trend is the lowest and your supply is growing fastest. Price us on that, reviewed quarterly against a published index.", ev:"D16, D10"},
+  {t:"Agreement terms", q:"Your contracts roll with annual extensions. Can ours reset each year to a published index, in both directions?", say:"Pricing follows market conditions within the agreed framework.", follow:"Then make the reset index-based both ways, so the rolling term protects us in a downturn as it protects you now.", ev:"D17"},
+  {t:"Volume", q:"You moved Pyeongtaek from NAND to DRAM. When does that space ship DRAM bits, and what share comes to us?", say:"Capacity comes online in stages through 2027–28.", follow:"Give us a written share of those bits as they ramp. It is new supply you have not yet committed, and you still have 10 contracts in negotiation.", ev:"D31, D18, D17"},
+];
+
+function verdict(){
+  const r=SNAP.market, lo=Math.round(r.lo), hi=Math.round(r.hi), c=Math.round(r.central), adj=r.adj||5;
+  const open=Math.max(0,lo-2), walk=hi+adj, settle=c===hi?`+${c}%`:`+${c}–${hi}%`, a=ASKED;
+  let head, counter, tile3=[`+${walk}%`,"Consider only for written 2027 volumes"], zone="none";
+  const std=`<b>Open:</b> about +${open}%, below every market signal. <b>Settle:</b> about ${settle}, priced quarterly against a published contract index. <b>Up to +${walk}%:</b> consider this price only for written 2027 volumes.`;
+  if(a==null||!(a>0)){ head=`The market supports about ${settle} for 1Q27.`; counter=std; }
+  else if(a>walk){ zone="above"; head=`Above the market. The evidence supports about ${settle} for 1Q27, not +${a}%.`; counter=std; }
+  else if(a>hi+1){ zone="high"; head=`Above the market range (${settle}). Push down, and consider it only for written 2027 volumes.`; counter=`<b>Open:</b> about +${open}%, below every market signal. <b>Settle:</b> about ${settle}, priced quarterly against a published contract index. <b>Up to +${a}%:</b> consider this price only for written 2027 volumes.`; tile3=[`+${a}%`,"Consider only for written 2027 volumes"]; }
+  else if(a>open){ zone="in"; head=`In line with the market. Negotiate volume and terms, not the size.`;
+    counter=`<b>Open:</b> about +${Math.max(0,a-3)}%. <b>Settle:</b> no higher than +${a}%, priced quarterly against a published contract index. Spend the rest of the meeting on written 2027 volumes and agreement terms.`;
+    tile3=[`+${a}%`,"Accept at most this, with written 2027 volumes"]; }
+  else { zone="below"; head=`Below the market. The evidence supports about ${settle} for 1Q27; +${a}% is a good price.`;
+    counter=`<b>Accept +${a}%</b> and lock it in: ask for the same price for 1Q27 and 2Q27, and for written 2027 volumes at this level. Don't reopen the price.`;
+    tile3=[`+${a}%`,"Lock this in with written 2027 volumes"]; }
+  return {open, walk, settle, head, counter, tile3, zone, a};
+}
+function render(){
+  const V=verdict();
+  $("#askedPct").value = ASKED==null?"":ASKED;
+  $("#askNote").textContent = ASKED===EXAMPLE ? "(example; enter the number in your notice)" : "";
+  $("#vHead").textContent=V.head;
+  $("#vNums").innerHTML=[["claim",V.a?`+${V.a}%`:"–","Samsung is asking"],["cost",V.settle,"What the market supports for 1Q27"],["just",V.tile3[0],V.tile3[1]]].map(([c,v,k])=>`<div class="num"><span class="v ${c}">${v}</span><span class="k">${k}</span></div>`).join("");
+  $("#vCounter").innerHTML=V.counter;
+  $("#vWhy").innerHTML=WHY.map(t=>`<li>${withCites(t)}</li>`).join("");
+  document.querySelectorAll(".exist").forEach(el=>{ if(!el.dataset.done){ el.innerHTML=withCites(el.textContent,false).replace("Already have an agreement with an annual price reset?","<b>Already have an agreement with an annual price reset?</b>"); el.dataset.done=1; } });
+  $("#cmp").innerHTML=CMP.map(r=>`<tr><th scope="row">${esc(r.k)}<div>${cites(r.ev.split(/,\s*/))}</div></th><td class="sam" data-l="Samsung">${esc(r.s)}</td><td data-l="SK Hynix">${esc(r.h)}</td><td data-l="Micron">${esc(r.m)}</td></tr>`).join("");
+  $("#chain").innerHTML=CHAIN.map(c=>`<div class="layer"><div><div class="nm">${esc(c.l)}</div><div class="small muted">${esc(c.who)}</div></div><div style="display:flex;flex-direction:column;gap:4px"><p class="small">${boldSup(esc(c.said))}</p><p class="small means">${esc(c.means)} ${cites(c.ev.split(/,\s*/))}</p></div></div>`).join("");
+  $("#qList").innerHTML=QS.map((q,i)=>`<div class="qcard"><span class="eyebrow">${i+1} · ${esc(q.t)}</span><p class="q">${esc(q.q)}</p><div class="say"><span class="lbl">What they will likely say</span>${esc(q.say)}</div><div class="fu"><span class="lbl">Your follow-up</span>${esc(q.follow)}</div><div class="small muted">Evidence ${cites(q.ev.split(/,\s*/))}</div></div>`).join("");
+  $("#trackChart").innerHTML=trackSvg(TRACKBARS);
+  document.querySelectorAll(".cz").forEach(el=>{ if(!el.dataset.done){ el.innerHTML=withCites(el.textContent,false); el.dataset.done=1; } });
+}
+$("#askedPct").addEventListener("change",e=>{ const v=parseFloat(e.target.value); ASKED= isNaN(v)||v<=0?null:Math.min(v,200); try{ localStorage.setItem("sam-hook-asked",ASKED==null?"":String(ASKED)); }catch(err){} render(); });
+
+/* evidence */
+function openEvidence(id){ const e=EVMAP[id]; if(!e) return;
+  $("#evTitle").textContent=`${e.id} · ${e.co}`;
+  $("#evMeta").innerHTML=`<span>${esc(e.role)}</span><span>${esc(e.per)}</span>${e.metric?`<span class="mono">${esc(e.metric)}</span>`:""}`;
+  $("#evText").textContent=e.text; $("#evSrc").textContent="Source: "+e.src;
+  const d=$("#evDlg"); if(d.showModal) d.showModal(); else d.setAttribute("open",""); }
+$("#evClose").addEventListener("click",()=>$("#evDlg").close());
+$("#evDlg").addEventListener("click",e=>{ if(e.target===e.currentTarget) e.currentTarget.close(); });
+document.addEventListener("click",e=>{ const c=e.target.closest(".cite"); if(c){ e.preventDefault(); openEvidence(c.dataset.ev); } });
+
+
+
+
+render();
+</script>
+
+</body></html>

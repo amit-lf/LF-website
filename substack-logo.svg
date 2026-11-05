@@ -1,0 +1,103 @@
+<svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg" font-family="'Inter', system-ui, -apple-system, sans-serif">
+
+  <!-- Background -->
+  <rect width="500" height="500" fill="#0d0d0d"/>
+
+  <!-- Subtle radial glow -->
+  <defs>
+    <radialGradient id="glow" cx="50%" cy="45%" r="45%">
+      <stop offset="0%" stop-color="#E3BB9B" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#E3BB9B" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="500" height="500" fill="url(#glow)"/>
+
+  <!-- Chip traces: Left -->
+  <line x1="50"  y1="195" x2="178" y2="195" stroke="#E3BB9B" stroke-width="1" opacity="0.3"/>
+  <line x1="50"  y1="218" x2="178" y2="218" stroke="#E3BB9B" stroke-width="1" opacity="0.3"/>
+  <line x1="50"  y1="241" x2="178" y2="241" stroke="#E3BB9B" stroke-width="1" opacity="0.3"/>
+  <line x1="50"  y1="264" x2="178" y2="264" stroke="#E3BB9B" stroke-width="1" opacity="0.3"/>
+  <line x1="50"  y1="287" x2="178" y2="287" stroke="#E3BB9B" stroke-width="1" opacity="0.3"/>
+  <line x1="50"  y1="310" x2="178" y2="310" stroke="#E3BB9B" stroke-width="1" opacity="0.3"/>
+
+  <!-- Chip traces: Right -->
+  <line x1="322" y1="195" x2="450" y2="195" stroke="#E3BB9B" stroke-width="1" opacity="0.3"/>
+  <line x1="322" y1="218" x2="450" y2="218" stroke="#E3BB9B" stroke-width="1" opacity="0.3"/>
+  <line x1="322" y1="241" x2="450" y2="241" stroke="#E3BB9B" stroke-width="1" opacity="0.3"/>
+  <line x1="322" y1="264" x2="450" y2="264" stroke="#E3BB9B" stroke-width="1" opacity="0.3"/>
+  <line x1="322" y1="287" x2="450" y2="287" stroke="#E3BB9B" stroke-width="1" opacity="0.3"/>
+  <line x1="322" y1="310" x2="450" y2="310" stroke="#E3BB9B" stroke-width="1" opacity="0.3"/>
+
+  <!-- Chip traces: Top -->
+  <line x1="199" y1="50"  x2="199" y2="178" stroke="#E3BB9B" stroke-width="1" opacity="0.3"/>
+  <line x1="222" y1="50"  x2="222" y2="178" stroke="#E3BB9B" stroke-width="1" opacity="0.3"/>
+  <line x1="245" y1="50"  x2="245" y2="178" stroke="#E3BB9B" stroke-width="1" opacity="0.3"/>
+  <line x1="268" y1="50"  x2="268" y2="178" stroke="#E3BB9B" stroke-width="1" opacity="0.3"/>
+  <line x1="291" y1="50"  x2="291" y2="178" stroke="#E3BB9B" stroke-width="1" opacity="0.3"/>
+  <line x1="314" y1="50"  x2="314" y2="178" stroke="#E3BB9B" stroke-width="1" opacity="0.3"/>
+
+  <!-- Chip traces: Bottom -->
+  <line x1="199" y1="322" x2="199" y2="450" stroke="#E3BB9B" stroke-width="1" opacity="0.3"/>
+  <line x1="222" y1="322" x2="222" y2="450" stroke="#E3BB9B" stroke-width="1" opacity="0.3"/>
+  <line x1="245" y1="322" x2="245" y2="450" stroke="#E3BB9B" stroke-width="1" opacity="0.3"/>
+  <line x1="268" y1="322" x2="268" y2="450" stroke="#E3BB9B" stroke-width="1" opacity="0.3"/>
+  <line x1="291" y1="322" x2="291" y2="450" stroke="#E3BB9B" stroke-width="1" opacity="0.3"/>
+  <line x1="314" y1="322" x2="314" y2="450" stroke="#E3BB9B" stroke-width="1" opacity="0.3"/>
+
+  <!-- Chip package body -->
+  <rect x="180" y="180" width="140" height="140" rx="10" fill="rgba(227,187,155,0.05)" stroke="#E3BB9B" stroke-width="1.5"/>
+
+  <!-- Pin 1 marker -->
+  <circle cx="194" cy="194" r="4" fill="none" stroke="#E3BB9B" stroke-width="1" opacity="0.55"/>
+
+  <!-- Inner die -->
+  <rect x="204" y="204" width="92" height="92" rx="5" fill="none" stroke="#E3BB9B" stroke-width="0.75" opacity="0.3"/>
+
+  <!-- Logic blocks -->
+  <rect x="212" y="212" width="34" height="34" rx="3" fill="none" stroke="#E3BB9B" stroke-width="0.6" opacity="0.22"/>
+  <rect x="254" y="212" width="34" height="34" rx="3" fill="none" stroke="#E3BB9B" stroke-width="0.6" opacity="0.22"/>
+  <rect x="212" y="254" width="34" height="34" rx="3" fill="none" stroke="#E3BB9B" stroke-width="0.6" opacity="0.22"/>
+  <rect x="254" y="254" width="34" height="34" rx="3" fill="none" stroke="#E3BB9B" stroke-width="0.6" opacity="0.22"/>
+
+  <!-- Internal routing -->
+  <line x1="246" y1="229" x2="254" y2="229" stroke="#E3BB9B" stroke-width="0.75" opacity="0.2"/>
+  <line x1="229" y1="246" x2="229" y2="254" stroke="#E3BB9B" stroke-width="0.75" opacity="0.2"/>
+  <line x1="271" y1="246" x2="271" y2="254" stroke="#E3BB9B" stroke-width="0.75" opacity="0.2"/>
+  <line x1="246" y1="271" x2="254" y2="271" stroke="#E3BB9B" stroke-width="0.75" opacity="0.2"/>
+
+  <!-- Pads: Left -->
+  <rect x="172" y="191" width="8" height="8" rx="1" fill="#E3BB9B" opacity="0.6"/>
+  <rect x="172" y="214" width="8" height="8" rx="1" fill="#E3BB9B" opacity="0.6"/>
+  <rect x="172" y="237" width="8" height="8" rx="1" fill="#E3BB9B" opacity="0.6"/>
+  <rect x="172" y="260" width="8" height="8" rx="1" fill="#E3BB9B" opacity="0.6"/>
+  <rect x="172" y="283" width="8" height="8" rx="1" fill="#E3BB9B" opacity="0.6"/>
+  <rect x="172" y="306" width="8" height="8" rx="1" fill="#E3BB9B" opacity="0.6"/>
+
+  <!-- Pads: Right -->
+  <rect x="320" y="191" width="8" height="8" rx="1" fill="#E3BB9B" opacity="0.6"/>
+  <rect x="320" y="214" width="8" height="8" rx="1" fill="#E3BB9B" opacity="0.6"/>
+  <rect x="320" y="237" width="8" height="8" rx="1" fill="#E3BB9B" opacity="0.6"/>
+  <rect x="320" y="260" width="8" height="8" rx="1" fill="#E3BB9B" opacity="0.6"/>
+  <rect x="320" y="283" width="8" height="8" rx="1" fill="#E3BB9B" opacity="0.6"/>
+  <rect x="320" y="306" width="8" height="8" rx="1" fill="#E3BB9B" opacity="0.6"/>
+
+  <!-- Pads: Top -->
+  <rect x="195" y="172" width="8" height="8" rx="1" fill="#E3BB9B" opacity="0.6"/>
+  <rect x="218" y="172" width="8" height="8" rx="1" fill="#E3BB9B" opacity="0.6"/>
+  <rect x="241" y="172" width="8" height="8" rx="1" fill="#E3BB9B" opacity="0.6"/>
+  <rect x="264" y="172" width="8" height="8" rx="1" fill="#E3BB9B" opacity="0.6"/>
+  <rect x="287" y="172" width="8" height="8" rx="1" fill="#E3BB9B" opacity="0.6"/>
+  <rect x="310" y="172" width="8" height="8" rx="1" fill="#E3BB9B" opacity="0.6"/>
+
+  <!-- Pads: Bottom -->
+  <rect x="195" y="320" width="8" height="8" rx="1" fill="#E3BB9B" opacity="0.6"/>
+  <rect x="218" y="320" width="8" height="8" rx="1" fill="#E3BB9B" opacity="0.6"/>
+  <rect x="241" y="320" width="8" height="8" rx="1" fill="#E3BB9B" opacity="0.6"/>
+  <rect x="264" y="320" width="8" height="8" rx="1" fill="#E3BB9B" opacity="0.6"/>
+  <rect x="287" y="320" width="8" height="8" rx="1" fill="#E3BB9B" opacity="0.6"/>
+  <rect x="310" y="320" width="8" height="8" rx="1" fill="#E3BB9B" opacity="0.6"/>
+
+  <!-- "LF" monogram centered in die -->
+  <text x="250" y="258" text-anchor="middle" dominant-baseline="middle" fill="#E3BB9B" font-size="28" font-weight="800" letter-spacing="-0.02em" opacity="0.9">LF</text>
+
+</svg>

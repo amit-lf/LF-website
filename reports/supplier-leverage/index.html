@@ -1,0 +1,1123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Semitrical — Supplier Intelligence Report · October 2026</title>
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap');
+:root{--ink:#0f0f0e;--ink2:#2e2e2c;--ink3:#5a5a56;--ink4:#9a9a96;--bg:#f8f7f4;--surface:#fff;--border:#e4e2dc;--orange:#e05c1a;--ti:#0f6fad;--ti-light:#eff6ff;--ti-dark:#0a4d7a;--red:#b91c1c;--red-bg:#fef2f2;
+  --on:#1a6b45;--on-light:#f0fdf4;--on-dark:#124d32;
+  --na:#6b21a8;--na-light:#faf5ff;--na-dark:#4c1478;--amber:#92400e;--amber-bg:#fffbeb;--amber:#92400e;--amber-bg:#fffbeb;--green:#166534;--green-bg:#f0fdf4;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'DM Sans',sans-serif;background:#d0cdc8;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+.page{width:210mm;min-height:297mm;background:var(--surface);margin:5mm auto;overflow:hidden;page-break-after:always;display:flex;flex-direction:column;}
+.ph{background:var(--ti);padding:9mm 11mm 6mm;}
+.ph-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:7px;}
+.lgo{display:flex;align-items:center;gap:7px;}
+.lm{width:20px;height:20px;border:1.5px solid rgba(255,255,255,.45);border-radius:3px;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;color:#fff;font-family:'DM Mono',monospace;}
+.lt{font-size:11px;font-weight:600;color:#fff;}.ls{font-size:8px;color:rgba(255,255,255,.4);font-family:'DM Mono',monospace;display:block;}
+.pn{font-size:8px;color:rgba(255,255,255,.35);font-family:'DM Mono',monospace;}
+.ph-main{display:flex;justify-content:space-between;align-items:flex-end;}
+.ph-name{font-size:26px;font-weight:700;color:#fff;letter-spacing:-.6px;line-height:1;}
+.ph-meta{font-size:9px;color:rgba(255,255,255,.55);font-family:'DM Mono',monospace;margin-top:2px;}
+.ph-tag{font-size:11px;color:rgba(255,255,255,.7);margin-top:5px;line-height:1.4;max-width:140mm;}
+.sc{text-align:right;}.scl{font-size:8px;font-family:'DM Mono',monospace;color:rgba(255,255,255,.4);letter-spacing:.05em;text-transform:uppercase;display:block;margin-bottom:2px;}
+.scn{font-size:30px;font-weight:700;font-family:'DM Mono',monospace;color:#fff;letter-spacing:-.5px;line-height:1;}
+.scs{font-size:8px;color:rgba(255,255,255,.4);font-family:'DM Mono',monospace;display:block;margin-top:1px;}
+.sb{background:var(--ti-dark);padding:4px 11mm;display:flex;align-items:center;gap:10px;}
+.sbl{font-size:8px;font-family:'DM Mono',monospace;color:rgba(255,255,255,.35);white-space:nowrap;}
+.sbt{flex:1;height:4px;background:rgba(255,255,255,.1);border-radius:2px;}.sbf{height:4px;border-radius:2px;background:rgba(255,255,255,.6);}
+.sbv{font-size:8px;font-family:'DM Mono',monospace;color:rgba(255,255,255,.4);white-space:nowrap;}
+.body{padding:7mm 11mm 6mm;flex:1;display:flex;flex-direction:column;gap:8px;}
+.sec{font-size:8px;font-family:'DM Mono',monospace;letter-spacing:.1em;color:var(--ink4);text-transform:uppercase;padding-bottom:3px;border-bottom:1px solid var(--border);margin-bottom:6px;}
+.mets{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;}
+.met{background:var(--bg);border:1px solid var(--border);border-radius:4px;padding:6px 8px;}
+.mv{font-size:17px;font-weight:700;font-family:'DM Mono',monospace;letter-spacing:-.4px;line-height:1;color:var(--ti);}
+.ml{font-size:8.5px;color:var(--ink3);margin-top:2px;line-height:1.3;}.mn{font-size:8px;font-family:'DM Mono',monospace;margin-top:2px;color:var(--ink3);}
+.cg{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.cb{background:var(--bg);border:1px solid var(--border);border-radius:5px;padding:8px 10px;}
+.ct{font-size:9px;font-weight:600;color:var(--ink2);margin-bottom:1px;}.cs{font-size:8px;color:var(--ink4);font-family:'DM Mono',monospace;margin-bottom:7px;}
+svg.ch{width:100%;overflow:visible;}.cn{font-size:8px;color:var(--ink3);margin-top:5px;line-height:1.4;}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.three-col{display:grid;grid-template-columns:1fr 1fr 1fr;gap:7px;}
+.lc{border-radius:5px;padding:8px 10px;}
+.lc-now{background:rgba(15,111,173,.05);border:1px solid rgba(15,111,173,.18);}
+.lc-next{background:#fff8f0;border:1px solid #f0c8a0;}
+.lcl{font-size:8px;font-family:'DM Mono',monospace;font-weight:500;letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px;}
+.lc-now .lcl{color:var(--ti);}.lc-next .lcl{color:var(--orange);}
+.lct{font-size:10.5px;color:var(--ink2);line-height:1.55;}
+.qt{border-left:2.5px solid var(--ti);background:var(--ti-light);border-radius:0 4px 4px 0;padding:7px 10px;margin-bottom:7px;}
+.ql{font-size:8px;font-family:'DM Mono',monospace;color:var(--ti);letter-spacing:.05em;text-transform:uppercase;margin-bottom:3px;}
+.qq{font-size:10.5px;color:var(--ink2);line-height:1.5;font-style:italic;}
+.qa{font-size:8px;color:var(--ink4);font-family:'DM Mono',monospace;margin-top:3px;}
+.rr-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.rr{border-radius:5px;padding:9px 11px;}
+.rr.risk{background:var(--red-bg);border:1px solid #fecaca;}
+.rr.res{background:var(--green-bg);border:1px solid #bbf7d0;}
+.rrl{font-size:8px;font-family:'DM Mono',monospace;font-weight:500;letter-spacing:.05em;text-transform:uppercase;margin-bottom:5px;}
+.rr.risk .rrl{color:var(--red);}.rr.res .rrl{color:var(--green);}
+.rrt{font-size:10.5px;line-height:1.6;}
+.rr.risk .rrt{color:#7f1d1d;}.rr.res .rrt{color:#14532d;}
+.ab{background:var(--ink);border-radius:5px;padding:9px 11px;}
+.abl{font-size:8px;font-family:'DM Mono',monospace;color:var(--orange);letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px;}
+.abt{font-size:10.5px;color:#d4d4d0;line-height:1.6;}.abt strong{color:#fff;}
+.pf{padding:5px 11mm;background:var(--bg);border-top:1px solid var(--border);display:flex;justify-content:space-between;font-size:7.5px;color:var(--ink4);font-family:'DM Mono',monospace;}
+.em-table{width:100%;border-collapse:collapse;}
+.em-table th{font-size:8px;font-family:'DM Mono',monospace;letter-spacing:.05em;text-align:left;padding:4px 7px;background:var(--bg);border-bottom:1px solid var(--border);color:var(--ink4);font-weight:500;}
+.em-table th.r{text-align:right;}.em-table td{padding:5px 7px;border-bottom:1px solid var(--border);font-size:11px;vertical-align:middle;}
+.em-table tr:last-child td{border-bottom:none;}.em-table td.r{text-align:right;font-family:'DM Mono',monospace;font-size:10px;}
+.bw{display:flex;align-items:center;gap:5px;}.bwt{width:70px;height:6px;background:#eee;border-radius:3px;flex-shrink:0;}.bwf{height:6px;border-radius:3px;}
+.badge{font-size:8px;padding:2px 6px;border-radius:3px;font-family:'DM Mono',monospace;font-weight:500;}
+.badge-g{background:var(--green-bg);color:var(--green);}.badge-s{background:var(--bg);color:var(--ink4);border:1px solid var(--border);}
+@media print{body{background:white;}.page{margin:0 auto;page-break-after:always;page-break-inside:avoid;}.page:last-child{page-break-after:auto;}}
+@page{size:A4;margin:0;}
+
+
+.ph{padding:9mm 11mm 6mm;}.ph.on{background:#1a6b45;}.ph.na{background:#6b21a8;}
+.ph-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:7px;}
+.ph-main{display:flex;justify-content:space-between;align-items:flex-end;}
+.ph-name{font-size:26px;font-weight:700;color:#fff;letter-spacing:-.6px;line-height:1;}
+.ph-meta{font-size:9px;color:rgba(255,255,255,.55);font-family:'DM Mono',monospace;margin-top:2px;}
+.ph-tag{font-size:11px;color:rgba(255,255,255,.7);margin-top:5px;line-height:1.4;max-width:140mm;}
+.sb.on{background:#124d32;}.sb.na{background:#4c1478;}
+.mets{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;}
+.met{background:var(--bg);border:1px solid var(--border);border-radius:4px;padding:6px 8px;}
+.cg{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.cb{background:var(--bg);border:1px solid var(--border);border-radius:5px;padding:8px 10px;}
+.ct{font-size:9px;font-weight:600;color:var(--ink2);margin-bottom:1px;}.cs{font-size:8px;color:var(--ink4);font-family:'DM Mono',monospace;margin-bottom:7px;}
+.cn{font-size:8px;color:var(--ink3);margin-top:5px;line-height:1.4;}
+.bt{width:100%;border-collapse:collapse;}.bt th{font-size:8px;font-family:'DM Mono',monospace;letter-spacing:.05em;text-align:left;padding:4px 7px;background:var(--bg);border-bottom:1px solid var(--border);color:var(--ink4);font-weight:500;}
+.bt th.r{text-align:right;}.bt td{padding:5px 7px;border-bottom:1px solid var(--border);font-size:11px;vertical-align:middle;}
+.bt tr:last-child td{border-bottom:none;}.bt td.r{text-align:right;font-family:'DM Mono',monospace;font-size:10px;}
+.bw{display:flex;align-items:center;gap:5px;}.bwt{width:55px;height:6px;background:#eee;border-radius:3px;flex-shrink:0;}.bwf{height:6px;border-radius:3px;}
+.badge{font-size:8px;padding:2px 6px;border-radius:3px;font-family:'DM Mono',monospace;font-weight:500;}
+.badge-g{background:#f0fdf4;color:#166534;}.badge-s{background:var(--bg);color:var(--ink4);border:1px solid var(--border);}
+.lc-now{background:rgba(0,0,0,.04);border:1px solid var(--border);}.lc-next{background:#fff8f0;border:1px solid #f0c8a0;}
+.lcl{font-size:8px;font-family:'DM Mono',monospace;font-weight:500;letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px;}
+.lc-now .lcl{color:var(--ink3);}.lc-next .lcl{color:#e05c1a;}.lct{font-size:10.5px;color:var(--ink2);line-height:1.55;}
+.qt{border-left:2.5px solid;border-radius:0 4px 4px 0;padding:7px 10px;margin-bottom:7px;}
+.qt.on{border-left-color:#1a6b45;background:#f0fdf4;}.qt.na{border-left-color:#6b21a8;background:#faf5ff;}
+.ql{font-size:8px;font-family:'DM Mono',monospace;letter-spacing:.05em;text-transform:uppercase;margin-bottom:3px;}
+.qt.on .ql{color:#1a6b45;}.qt.na .ql{color:#6b21a8;}
+.qq{font-size:10.5px;color:var(--ink2);line-height:1.5;font-style:italic;}.qa{font-size:8px;color:var(--ink4);font-family:'DM Mono',monospace;margin-top:3px;}
+.rr-g{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.rr{border-radius:5px;padding:9px 11px;}.rr.risk{background:#fef2f2;border:1px solid #fecaca;}.rr.res{background:#f0fdf4;border:1px solid #bbf7d0;}
+.rrl{font-size:8px;font-family:'DM Mono',monospace;font-weight:500;letter-spacing:.05em;text-transform:uppercase;margin-bottom:5px;}
+.rr.risk .rrl{color:#b91c1c;}.rr.res .rrl{color:#166534;}
+.rrt{font-size:10.5px;line-height:1.6;}.rr.risk .rrt{color:#7f1d1d;}.rr.res .rrt{color:#14532d;}
+.ic{border-radius:5px;padding:8px 10px;}
+.pf{padding:5px 11mm;background:var(--bg);border-top:1px solid var(--border);display:flex;justify-content:space-between;font-size:7.5px;color:var(--ink4);font-family:'DM Mono',monospace;}
+
+.page{width:210mm;min-height:297mm;background:var(--surface);margin:5mm auto;overflow:hidden;page-break-after:always;display:flex;flex-direction:column;}
+
+/* SCREEN ONLY. Everything above lays this out for A4 -- a 210mm sheet, 8px type,
+   page breaks, a press-grey ground. That is right on paper, but a browser tab is
+   where the link actually gets opened, and there it is a 794px column of printer
+   type that reads as an exported PDF. zoom scales the whole sheet, type included,
+   so not one measurement above has to change and printing is untouched -- the
+   @media print block still wins when the page is really printed. The ladder steps
+   zoom down as the window narrows so the sheet never overflows; below 1000px it
+   sits at 1 and the viewport tag lets a phone scale it to fit. */
+@media screen{
+  body{background:#e9e7e2;}
+  .page{zoom:1.45;margin:11px auto;box-shadow:0 2px 16px rgba(0,0,0,.11);}
+}
+@media screen and (max-width:1220px){.page{zoom:1.2;}}
+@media screen and (max-width:1000px){.page{zoom:1;}}
+</style>
+</head>
+<body>
+<div class="page" style="min-height:297mm;display:flex;flex-direction:column;page-break-after:always;">
+  <!-- Cover: light background, "Sample Report" banner, bold contact -->
+  <div style="background:#f5f4f0;flex:1;display:flex;flex-direction:column;padding:12mm 13mm 10mm;position:relative;">
+
+    <!-- Sample Report ribbon -->
+    <div style="position:absolute;top:0;right:0;background:#e05c1a;color:#fff;font-size:8px;font-family:DM Mono,monospace;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:4px 14px 4px 18px;border-radius:0 0 0 6px;">Sample Report</div>
+
+    <!-- Wordmark: crosshair mark + two-tone serif name -->
+    <div style="display:flex;align-items:center;gap:11px;">
+      <svg width="34" height="34" viewBox="0 0 34 34" aria-hidden="true">
+        <circle cx="17" cy="17" r="8.5" fill="none" stroke="#4f86c6" stroke-width="2.2"/>
+        <line x1="17" y1="1" x2="17" y2="9.5" stroke="#4f86c6" stroke-width="2.2" stroke-linecap="round"/>
+        <line x1="17" y1="24.5" x2="17" y2="33" stroke="#4f86c6" stroke-width="2.2" stroke-linecap="round"/>
+        <line x1="1" y1="17" x2="9.5" y2="17" stroke="#4f86c6" stroke-width="2.2" stroke-linecap="round"/>
+        <line x1="24.5" y1="17" x2="33" y2="17" stroke="#4f86c6" stroke-width="2.2" stroke-linecap="round"/>
+        <circle cx="17" cy="17" r="2" fill="#4f86c6"/>
+      </svg>
+      <div>
+        <div style="font-family:Georgia,'Times New Roman',serif;font-size:27px;font-weight:700;letter-spacing:-.3px;line-height:1;"><span style="color:#0f0f0e;">Semi</span><span style="color:#e07a22;">trical</span></div>
+        <div style="font-size:10.5px;color:#666;margin-top:4px;">Turning semiconductor intelligence into a negotiation advantage</div>
+      </div>
+    </div>
+
+    <!-- Hero text block -->
+    <div style="margin-top:auto;margin-bottom:auto;padding:10mm 0;">
+      <div style="font-size:10px;font-family:DM Mono,monospace;color:#e05c1a;letter-spacing:.1em;text-transform:uppercase;margin-bottom:9px;">Sample Report · October 2026</div>
+      <div style="font-size:40px;font-weight:700;color:#0f0f0e;letter-spacing:-.9px;line-height:1.05;margin-bottom:12px;">Semiconductor Supplier<br>Intelligence Report</div>
+      <div style="font-size:17px;font-weight:500;font-style:italic;color:#e05c1a;margin-bottom:11px;">Gain a practical advantage at the negotiating table.</div>
+      <div style="font-size:13px;color:#444;line-height:1.65;max-width:170mm;">
+        <p style="margin-bottom:8px;">Semitrical turns semiconductor suppliers’ dense financial and operating disclosures into procurement intelligence. This sample covers three major suppliers: Texas Instruments, onsemi and Nanya Technology.</p>
+        <p style="margin-bottom:8px;">For each supplier, we compare its latest financials with its own multi-year history, show where it is investing, and weigh its risks and resilience. Then we put it in negotiating terms: where your leverage is, how long it is likely to last, and what to do before it closes.</p>
+        <p style="margin-bottom:9mm;color:#0f0f0e;font-weight:500;">Use it to ask sharper questions, evaluate a price increase, or shape your sourcing strategy.</p>
+      </div>
+
+      <!-- Supplier summary rows -->
+      <div style="display:flex;flex-direction:column;gap:8px;">
+        <div style="display:flex;align-items:center;gap:12px;padding:10px 14px;background:#fff;border:1px solid #dde8f5;border-left:3px solid #0f6fad;border-radius:0 5px 5px 0;">
+          <div style="font-size:13px;font-weight:600;color:#0f6fad;min-width:34mm;">Texas Instruments</div>
+          <div style="font-size:10px;color:#555;font-family:DM Mono,monospace;line-height:1.5;">TXN · Analog · Score 3.00/5 · Leverage window narrowing · Demand accelerating across all end markets</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px;padding:10px 14px;background:#fff;border:1px solid #d5e8dc;border-left:3px solid #1a6b45;border-radius:0 5px 5px 0;">
+          <div style="font-size:13px;font-weight:600;color:#1a6b45;min-width:34mm;">ON Semiconductor</div>
+          <div style="font-size:10px;color:#555;font-family:DM Mono,monospace;line-height:1.5;">ON · Power · SiC · Score 4.00/5 · Leverage product-dependent · AI DC prioritised over auto when constrained</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px;padding:10px 14px;background:#fff;border:1px solid #e0d5ee;border-left:3px solid #6b21a8;border-radius:0 5px 5px 0;">
+          <div style="font-size:13px;font-weight:600;color:#6b21a8;min-width:34mm;">Nanya Technology</div>
+          <div style="font-size:10px;color:#555;font-family:DM Mono,monospace;line-height:1.5;">NTCB · Specialty DRAM · Score 2.00/5 · Revenue at TTM ~$5.8B · Pricing leverage gone · Supply security focus</div>
+        </div>
+      </div>
+
+      <!-- Ecosystem intelligence -->
+      <div style="margin-top:9mm;padding:12px 16px;background:#fff;border:1px solid #e4e2dc;border-left:3px solid #e05c1a;border-radius:0 5px 5px 0;">
+        <div style="font-size:9.5px;font-family:DM Mono,monospace;color:#e05c1a;letter-spacing:.1em;text-transform:uppercase;margin-bottom:5px;">Ecosystem intelligence · Available on request</div>
+        <div style="font-size:12.5px;color:#2e2e2c;line-height:1.6;">Your supplier’s position depends on its own supply chain. On request, we show how shifts at foundries and at materials and substrate suppliers could affect your supplier’s capacity, pricing and allocation, so you can make critical sourcing decisions earlier.</div>
+      </div>
+    </div>
+
+    <!-- Footer: bold contact info -->
+    <div style="border-top:1px solid #ddd;padding-top:8mm;display:flex;justify-content:space-between;align-items:flex-end;">
+      <div>
+        <div style="font-size:12px;font-weight:600;color:#0f0f0e;margin-bottom:5px;">For a demonstration tailored to your suppliers and priorities:</div>
+        <div style="font-size:12.5px;font-family:DM Mono,monospace;"><span style="color:#e05c1a;font-weight:600;">contact@semitrical.ai</span><span style="color:#bbb;"> · </span><span style="color:#0f0f0e;font-weight:600;">semitrical.ai</span></div>
+      </div>
+      <div style="text-align:right;font-size:8px;color:#888;font-family:DM Mono,monospace;line-height:1.8;">7 pages · 3 suppliers<br>Financial trends · Negotiation intelligence</div>
+    </div>
+
+  </div>
+</div>
+<div class="page">
+  <div class="ph">
+    <div class="ph-top">
+      <div class="lgo"><svg class="lmark" width="20" height="20" viewBox="0 0 34 34" aria-hidden="true"><g stroke="#fff" stroke-width="2.6" stroke-linecap="round" fill="none"><circle cx="17" cy="17" r="8.5"/><line x1="17" y1="1.5" x2="17" y2="9"/><line x1="17" y1="25" x2="17" y2="32.5"/><line x1="1.5" y1="17" x2="9" y2="17"/><line x1="25" y1="17" x2="32.5" y2="17"/></g><circle cx="17" cy="17" r="2.2" fill="#fff"/></svg><div><div class="lt">Semitrical</div><span class="ls">Supplier Intelligence</span></div></div>
+      <span class="pn">Texas Instruments · 1 of 2 · Financial Trends</span>
+    </div>
+    <div class="ph-main">
+      <div>
+        <div class="ph-name">Texas Instruments</div>
+        <div class="ph-meta">TXN · Analog · Embedded Processing · October 2026</div>
+        <div class="ph-tag">Margin recovery confirmed. 300mm fab cycle turning from cost burden to operating leverage. Leverage window narrowing — demand accelerating across all end markets.</div>
+      </div>
+      <div class="sc"><span class="scl">Financial pressure score</span><div class="scn">3.00<span style="font-size:13px;opacity:.4">/5</span></div><span class="scs">Higher = more buyer leverage</span></div>
+    </div>
+  </div>
+  <div class="sb"><span class="sbl">Leverage index</span><div class="sbt"><div class="sbf" style="width:60%"></div></div><span class="sbv">3.00 / 5.00 · Moderate · Tightening</span></div>
+
+  <div class="body">
+    <div>
+      <div class="sec">Latest financial position — Q2 FY2026</div>
+      <div class="mets">
+        <div class="met"><div class="mv">$5.46B</div><div class="ml">Q2-26 revenue</div><div class="mn">+23% YoY · +13% QoQ</div></div>
+        <div class="met"><div class="mv">61.4%</div><div class="ml">Gross margin Q2-26</div><div class="mn">+340bps QoQ</div></div>
+        <div class="met"><div class="mv">42.3%</div><div class="ml">Operating margin Q2-26</div><div class="mn">+481bps QoQ</div></div>
+        <div class="met"><div class="mv">$5.4B</div><div class="ml">FCF trailing 12 months</div><div class="mn">Up from $1.5B a year ago</div></div>
+        <div class="met"><div class="mv">199d</div><div class="ml">Inventory days Q2-26</div><div class="mn">−13d QoQ</div></div>
+      </div>
+    </div>
+
+    <div>
+      <div class="sec">Financial trends — FY2020–FY2025 annual · recent quarters dashed</div>
+      <div class="cg">
+
+        <!-- CHART 1: Revenue + GM — TI blue, FY26E split bar, Q1+Q2-26 GM dashed -->
+        <div class="cb">
+          <div class="ct">Revenue ($B) with gross margin overlay</div>
+          <div class="cs">FY20–FY25 · FY26E = H1-26 ×2 · <svg width="17" height="8" viewBox="0 0 17 8" style="vertical-align:-1px;color:var(--ti)"><line x1="0" y1="4" x2="10" y2="4" stroke="currentColor" stroke-width="1.3" stroke-dasharray="2.5,1.5"/><circle cx="13.5" cy="4" r="2.3" fill="#fff" stroke="currentColor" stroke-width="1.1"/></svg> Q1/Q2-26 GM</div>
+          <!-- Rev bars: 0-22B → y80-y15, 65px; y=80-(rev/22)*65 -->
+          <!-- FY26E ~20.6B: H1=10.29B→y=49.6 H2 implied same. Full bar top=y19.2 height=60.8 -->
+          <!-- GM line: 55-70%, 15pp→65px; y=80-((gm-55)/15)*65 -->
+          <!-- Q1-26=58.0→y=67 Q2-26=61.4→y=51 -->
+          <svg class="ch" viewBox="0 -9 210 99" preserveAspectRatio="none">
+            <rect x="4" y="37.3" width="22" height="42.7" fill="rgba(15,111,173,.32)" rx="1.5"/>
+            <rect x="34" y="25.8" width="22" height="54.2" fill="rgba(15,111,173,.32)" rx="1.5"/>
+            <rect x="64" y="20.8" width="22" height="59.2" fill="rgba(15,111,173,.32)" rx="1.5"/>
+            <rect x="94" y="28.2" width="22" height="51.8" fill="rgba(15,111,173,.32)" rx="1.5"/>
+            <rect x="124" y="33.8" width="22" height="46.2" fill="rgba(15,111,173,.32)" rx="1.5"/>
+            <rect x="154" y="27.8" width="22" height="52.2" fill="rgba(15,111,173,.32)" rx="1.5"/>
+            <rect x="183" y="49.6" width="22" height="30.4" fill="rgba(15,111,173,.32)" rx="1.5"/>
+            <rect x="183.25" y="19.2" width="21.5" height="30.4" fill="rgba(15,111,173,.10)" stroke="rgba(15,111,173,.55)" stroke-width="0.5" stroke-dasharray="1.5,1" rx="1.5"/>
+            <text x="15" y="78.6" font-size="5" fill="var(--ti)" font-family="DM Mono" text-anchor="middle">14.5</text>
+            <text x="45" y="78.6" font-size="5" fill="var(--ti)" font-family="DM Mono" text-anchor="middle">18.3</text>
+            <text x="75" y="78.6" font-size="5" fill="var(--ti)" font-family="DM Mono" text-anchor="middle">20.0</text>
+            <text x="105" y="78.6" font-size="5" fill="var(--ti)" font-family="DM Mono" text-anchor="middle">17.5</text>
+            <text x="135" y="78.6" font-size="5" fill="var(--ti)" font-family="DM Mono" text-anchor="middle">15.6</text>
+            <text x="165" y="78.6" font-size="5" fill="var(--ti)" font-family="DM Mono" text-anchor="middle">17.7</text>
+            <text x="194" y="78.6" font-size="5" fill="var(--ti)" font-family="DM Mono" text-anchor="middle">20.6</text>
+            <polyline points="15,35.7 45,25.5 75,21.6 105,39.3 135,53.7 165,57" fill="none" stroke="var(--ti)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            <polyline points="165,57 179.5,54 194,43.8" fill="none" stroke="var(--ti)" stroke-width="1.4" stroke-dasharray="3,2" stroke-linecap="round"/>
+            <circle cx="15" cy="35.7" r="1.8" fill="var(--ti)"/>
+            <circle cx="45" cy="25.5" r="1.8" fill="var(--ti)"/>
+            <circle cx="75" cy="21.6" r="1.8" fill="var(--ti)"/>
+            <circle cx="105" cy="39.3" r="1.8" fill="var(--ti)"/>
+            <circle cx="135" cy="53.7" r="1.8" fill="var(--ti)"/>
+            <circle cx="165" cy="57" r="1.8" fill="var(--ti)"/>
+            <circle cx="179.5" cy="54" r="1.8" fill="#fff" stroke="var(--ti)" stroke-width="1"/>
+            <circle cx="194" cy="43.8" r="1.8" fill="#fff" stroke="var(--ti)" stroke-width="1"/>
+            <text x="75" y="17.6" font-size="5" font-weight="600" fill="var(--ti)" font-family="DM Mono" text-anchor="middle">68.8%</text>
+            <line x1="179.5" y1="51.4" x2="179.5" y2="-1.6" stroke="var(--ti)" stroke-width="0.45" stroke-dasharray="1,1"/>
+            <line x1="194" y1="41.2" x2="194" y2="-1.6" stroke="var(--ti)" stroke-width="0.45" stroke-dasharray="1,1"/>
+            <text x="177.9" y="-3.4" font-size="4.4" font-weight="700" fill="var(--ti)" font-family="DM Mono" text-anchor="end">Q1-26 58.0%</text>
+            <text x="209.5" y="-3.4" font-size="4.4" font-weight="700" fill="var(--ti)" font-family="DM Mono" text-anchor="end">Q2-26 61.4%</text>
+            <rect x="0" y="1" width="7" height="5" fill="rgba(15,111,173,.32)" rx="0.5"/>
+            <text x="9" y="5.6" font-size="5" fill="var(--ti)" font-family="DM Mono">Revenue $B</text>
+            <rect x="46" y="1.25" width="7" height="4.5" fill="rgba(15,111,173,.10)" stroke="rgba(15,111,173,.55)" stroke-width="0.5" stroke-dasharray="1.5,1" rx="0.5"/>
+            <text x="55" y="5.6" font-size="5" fill="var(--ti)" font-family="DM Mono">H2-26 implied</text>
+            <line x1="98" y1="3.5" x2="108" y2="3.5" stroke="var(--ti)" stroke-width="1.6"/>
+            <text x="110" y="5.6" font-size="5" fill="var(--ti)" font-family="DM Mono">Gross margin %</text>
+            <text x="15" y="88" font-size="5.5" fill="#aaa" font-family="DM Mono" text-anchor="middle">FY20</text>
+            <text x="45" y="88" font-size="5.5" fill="#aaa" font-family="DM Mono" text-anchor="middle">FY21</text>
+            <text x="75" y="88" font-size="5.5" fill="#aaa" font-family="DM Mono" text-anchor="middle">FY22</text>
+            <text x="105" y="88" font-size="5.5" fill="#aaa" font-family="DM Mono" text-anchor="middle">FY23</text>
+            <text x="135" y="88" font-size="5.5" fill="#aaa" font-family="DM Mono" text-anchor="middle">FY24</text>
+            <text x="165" y="88" font-size="5.5" fill="#aaa" font-family="DM Mono" text-anchor="middle">FY25</text>
+            <text x="194" y="88" font-size="5.5" fill="var(--ti)" font-family="DM Mono" text-anchor="middle">FY26E</text>
+            </svg>
+          <div class="cn">Peak $20.0B revenue and 68.8% GM in FY22. GM troughed at 57.0% in FY25, then 58.0% in Q1-26 and 61.4% in Q2-26. FY26E: H1 actual $10.3B, doubled at the same run rate to ~$20.6B.</div>
+        </div>
+
+        <!-- CHART 2: CapEx/Dep — corrected ratios, all uniform color, black reference line -->
+        <!-- Ratios: FY20=0.89 FY21=3.26 FY22=3.02 FY23=4.32 FY24=3.20 FY25=2.37 -->
+        <!-- Scale 0-4.5x → y80-y10, 70px; y=80-(val/4.5)*70 -->
+        <!-- FY20=0.89→66.1 FY21=3.26→43.2 FY22=3.02→45.9 FY23=4.32→32.8 FY24=3.20→43.2 FY25=2.37→52.2 -->
+        <!-- 1.0x: y=80-(1/4.5)*70=64.4 -->
+        <div class="cb">
+          <div class="ct">CapEx ÷ depreciation — reinvestment rate</div>
+          <div class="cs">FY2020–FY2025 · CapEx as a multiple of depreciation</div>
+          <svg class="ch" viewBox="0 0 200 90" preserveAspectRatio="none">
+            <line x1="0" y1="17.8" x2="200" y2="17.8" stroke="#f0ede8" stroke-width="0.4"/>
+            <text x="1" y="16.8" font-size="5" fill="#ccc" font-family="DM Mono">4×</text>
+            <line x1="0" y1="33.3" x2="200" y2="33.3" stroke="#f0ede8" stroke-width="0.4"/>
+            <text x="1" y="32.3" font-size="5" fill="#ccc" font-family="DM Mono">3×</text>
+            <line x1="0" y1="48.9" x2="200" y2="48.9" stroke="#f0ede8" stroke-width="0.4"/>
+            <text x="1" y="47.9" font-size="5" fill="#ccc" font-family="DM Mono">2×</text>
+            <line x1="4" y1="64.4" x2="194" y2="64.4" stroke="var(--ti)" stroke-width="0.8" stroke-dasharray="3,2"/>
+            <line x1="194" y1="64.4" x2="194" y2="26" stroke="var(--ti)" stroke-width="0.45" stroke-dasharray="1,1"/>
+            <text x="199" y="18" font-size="5" font-weight="700" fill="var(--ti)" font-family="DM Mono" text-anchor="end">1.0× = replacement</text>
+            <text x="199" y="24" font-size="4.6" fill="var(--ti)" font-family="DM Mono" text-anchor="end">(above = growing plant base)</text>
+            <!-- All bars same TI blue opacity -->
+            <rect x="4" y="66.2" width="22" height="13.8" fill="rgba(15,111,173,.3)" rx="1.5"/>
+            <rect x="34" y="29.3" width="22" height="50.7" fill="rgba(15,111,173,.3)" rx="1.5"/>
+            <rect x="64" y="33.0" width="22" height="47.0" fill="rgba(15,111,173,.3)" rx="1.5"/>
+            <rect x="94" y="12.8" width="22" height="67.2" fill="rgba(15,111,173,.3)" rx="1.5"/>
+            <rect x="124" y="30.2" width="22" height="49.8" fill="rgba(15,111,173,.3)" rx="1.5"/>
+            <rect x="154" y="43.1" width="22" height="36.9" fill="rgba(15,111,173,.3)" rx="1.5"/>
+            <text x="15" y="59" font-size="5.5" fill="var(--ti)" font-family="DM Mono" text-anchor="middle">0.89×</text>
+            <text x="45" y="27.3" font-size="5.5" fill="var(--ti)" font-family="DM Mono" text-anchor="middle">3.26×</text>
+            <text x="75" y="31.0" font-size="5.5" fill="var(--ti)" font-family="DM Mono" text-anchor="middle">3.02×</text>
+            <text x="105" y="10.8" font-size="5.5" fill="var(--ti)" font-family="DM Mono" text-anchor="middle" font-weight="600">4.32×</text>
+            <text x="135" y="28.2" font-size="5.5" fill="var(--ti)" font-family="DM Mono" text-anchor="middle">3.20×</text>
+            <text x="165" y="41.1" font-size="5.5" fill="var(--ti)" font-family="DM Mono" text-anchor="middle">2.37×</text>
+            <text x="15" y="88" font-size="5.5" fill="#aaa" font-family="DM Mono" text-anchor="middle">FY20</text>
+            <text x="45" y="88" font-size="5.5" fill="#aaa" font-family="DM Mono" text-anchor="middle">FY21</text>
+            <text x="75" y="88" font-size="5.5" fill="#aaa" font-family="DM Mono" text-anchor="middle">FY22</text>
+            <text x="105" y="88" font-size="5.5" fill="#aaa" font-family="DM Mono" text-anchor="middle">FY23</text>
+            <text x="135" y="88" font-size="5.5" fill="#aaa" font-family="DM Mono" text-anchor="middle">FY24</text>
+            <text x="165" y="88" font-size="5.5" fill="#aaa" font-family="DM Mono" text-anchor="middle">FY25</text>
+          </svg>
+          <div class="cn">Peak 4.32× in FY23 — TI was building 300mm fabs at the fastest rate in the industry. Now declining to 2.37×, converting to free cash flow. The build explains the margin compression; the decline signals the recovery.</div>
+        </div>
+
+        <!-- CHART 3: DIO — corrected values, all TI blue -->
+        <!-- FY20=137 FY21=117 FY22=161 FY23=225 FY24=252 FY25=231 Q2-26=199 -->
+        <!-- Scale 100-280d → y80-y10, 70px; y=80-((d-100)/180)*70 -->
+        <!-- FY20=137→65.6 FY21=117→73.3 FY22=161→62.3 FY23=225→42.8 FY24=252→32.3 FY25=231→39.4 Q2-26=199→51.1 -->
+        <div class="cb">
+          <div class="ct">Inventory days (DIO) — procurement leverage signal</div>
+          <div class="cs">FY20–FY25 annual · <svg width="17" height="8" viewBox="0 0 17 8" style="vertical-align:-1px;color:var(--ti)"><line x1="0" y1="4" x2="10" y2="4" stroke="currentColor" stroke-width="1.3" stroke-dasharray="2.5,1.5"/><circle cx="13.5" cy="4" r="2.3" fill="#fff" stroke="currentColor" stroke-width="1.1"/></svg> Q1-26 and Q2-26</div>
+          <svg class="ch" viewBox="0 -9 210 99" preserveAspectRatio="none">
+            <line x1="0" y1="21.7" x2="210" y2="21.7" stroke="#f0ede8" stroke-width="0.4"/>
+            <text x="1" y="20.7" font-size="5" fill="#bbb" font-family="DM Mono">250d</text>
+            <line x1="0" y1="50.8" x2="210" y2="50.8" stroke="#f0ede8" stroke-width="0.4"/>
+            <text x="1" y="49.8" font-size="5" fill="#bbb" font-family="DM Mono">175d</text>
+            <line x1="0" y1="80" x2="210" y2="80" stroke="#f0ede8" stroke-width="0.4"/>
+            <text x="1" y="79" font-size="5" fill="#bbb" font-family="DM Mono">100d</text>
+            <polygon points="15,65.5 45,73.5 75,56.4 105,31.5 135,20.7 165,29.2 179.5,36.4 194,41.5 194,80 15,80" fill="rgba(15,111,173,.07)"/>
+            <polyline points="15,65.5 45,73.5 75,56.4 105,31.5 135,20.7 165,29.2" fill="none" stroke="var(--ti)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            <polyline points="165,29.2 179.5,36.4 194,41.5" fill="none" stroke="var(--ti)" stroke-width="1.4" stroke-dasharray="3,2" stroke-linecap="round"/>
+            <circle cx="15" cy="65.5" r="1.8" fill="var(--ti)"/>
+            <circle cx="45" cy="73.5" r="1.8" fill="var(--ti)"/>
+            <circle cx="75" cy="56.4" r="1.8" fill="var(--ti)"/>
+            <circle cx="105" cy="31.5" r="1.8" fill="var(--ti)"/>
+            <circle cx="135" cy="20.7" r="1.8" fill="var(--ti)"/>
+            <circle cx="165" cy="29.2" r="1.8" fill="var(--ti)"/>
+            <circle cx="179.5" cy="36.4" r="1.8" fill="#fff" stroke="var(--ti)" stroke-width="1"/>
+            <circle cx="194" cy="41.5" r="1.8" fill="#fff" stroke="var(--ti)" stroke-width="1"/>
+            <text x="135" y="16.7" font-size="5" font-weight="600" fill="var(--ti)" font-family="DM Mono" text-anchor="middle">252d</text>
+            <line x1="179.5" y1="33.8" x2="179.5" y2="-1.6" stroke="var(--ti)" stroke-width="0.45" stroke-dasharray="1,1"/>
+            <line x1="194" y1="38.9" x2="194" y2="-1.6" stroke="var(--ti)" stroke-width="0.45" stroke-dasharray="1,1"/>
+            <text x="177.9" y="-3.4" font-size="4.4" font-weight="700" fill="var(--ti)" font-family="DM Mono" text-anchor="end">Q1-26 212d</text>
+            <text x="209.5" y="-3.4" font-size="4.4" font-weight="700" fill="var(--ti)" font-family="DM Mono" text-anchor="end">Q2-26 199d</text>
+            <text x="15" y="88" font-size="5.5" fill="#aaa" font-family="DM Mono" text-anchor="middle">FY20</text>
+            <text x="45" y="88" font-size="5.5" fill="#aaa" font-family="DM Mono" text-anchor="middle">FY21</text>
+            <text x="75" y="88" font-size="5.5" fill="#aaa" font-family="DM Mono" text-anchor="middle">FY22</text>
+            <text x="105" y="88" font-size="5.5" fill="#aaa" font-family="DM Mono" text-anchor="middle">FY23</text>
+            <text x="135" y="88" font-size="5.5" fill="#aaa" font-family="DM Mono" text-anchor="middle">FY24</text>
+            <text x="165" y="88" font-size="5.5" fill="#aaa" font-family="DM Mono" text-anchor="middle">FY25</text>
+            <text x="186.75" y="88" font-size="5.5" fill="var(--ti)" font-family="DM Mono" text-anchor="middle">FY26</text>
+            </svg>
+          <div class="cn">DIO peaked 252 days (FY24) — deliberately built to serve customers. Draining: 212 days in Q1-26, 199 days in Q2-26. High inventory = cash TI wants to convert. Use for consignment and payment term negotiations.</div>
+        </div>
+
+        <!-- CHART 4: End market — clean horizontal bars, all blue shades -->
+        <div class="cb">
+          <div class="ct">End market revenue — Q2-26 YoY growth</div>
+          <div class="cs">With FY2025 revenue mix and R&D investment direction</div>
+          <svg class="ch" viewBox="0 0 200 88" preserveAspectRatio="none">
+            <text x="0" y="11" font-size="7.5" fill="var(--ink2)" font-family="DM Sans" font-weight="500">Industrial</text>
+            <rect x="66" y="4" width="110" height="10" fill="#e8f0f8" rx="2"/>
+            <rect x="66" y="4" width="33" height="10" fill="var(--ti)" rx="2"/>
+            <text x="70" y="12.5" font-size="6" fill="#fff" font-family="DM Mono" font-weight="600">+30% YoY</text>
+            <text x="62" y="12" font-size="6" fill="var(--ink4)" font-family="DM Mono" text-anchor="end">33%</text>
+            <text x="0" y="29" font-size="7.5" fill="var(--ink2)" font-family="DM Sans" font-weight="500">Automotive</text>
+            <rect x="66" y="22" width="110" height="10" fill="#e8f0f8" rx="2"/>
+            <rect x="66" y="22" width="18" height="10" fill="rgba(15,111,173,.7)" rx="2"/>
+            <text x="88" y="30.5" font-size="6" fill="var(--ti)" font-family="DM Mono" font-weight="600">Mid-teens YoY</text>
+            <text x="62" y="30" font-size="6" fill="var(--ink4)" font-family="DM Mono" text-anchor="end">33%</text>
+            <text x="0" y="47" font-size="7.5" fill="var(--ink2)" font-family="DM Sans" font-weight="500">Personal elec.</text>
+            <rect x="66" y="40" width="110" height="10" fill="#e8f0f8" rx="2"/>
+            <rect x="66" y="40" width="2" height="10" fill="rgba(15,111,173,.4)" rx="1"/>
+            <text x="72" y="48.5" font-size="6" fill="var(--ink4)" font-family="DM Mono">Flat YoY</text>
+            <text x="62" y="48" font-size="6" fill="var(--ink4)" font-family="DM Mono" text-anchor="end">21%</text>
+            <text x="0" y="65" font-size="7.5" fill="var(--ink2)" font-family="DM Sans" font-weight="500">Data center</text>
+            <rect x="66" y="58" width="110" height="10" fill="#e8f0f8" rx="2"/>
+            <rect x="66" y="58" width="110" height="10" fill="rgba(15,111,173,.85)" rx="2"/>
+            <text x="121" y="66.5" font-size="6" fill="#fff" font-family="DM Mono" font-weight="600" text-anchor="middle">Doubled YoY · fastest</text>
+            <text x="62" y="66" font-size="6" fill="var(--ink4)" font-family="DM Mono" text-anchor="end">9%</text>
+            <text x="0" y="83" font-size="7.5" fill="var(--ink2)" font-family="DM Sans" font-weight="500">Comms equip.</text>
+            <rect x="66" y="76" width="110" height="10" fill="#e8f0f8" rx="2"/>
+            <rect x="66" y="76" width="8" height="10" fill="rgba(15,111,173,.5)" rx="1"/>
+            <text x="78" y="84.5" font-size="6" fill="var(--ink4)" font-family="DM Mono">Grew YoY &amp; QoQ</text>
+            <text x="62" y="84" font-size="6" fill="var(--ink4)" font-family="DM Mono" text-anchor="end">3%</text>
+          </svg>
+          <div class="cn">Data center doubled YoY and grew 20% QoQ in Q2-26. Industrial +30% YoY. R&D "up broadly" in Industrial, Automotive, and Data center — "steady" in Personal Electronics and Comms. FY2025 mix shown left.</div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="sec">End market detail — FY2025 revenue and investment direction</div>
+      <table class="em-table">
+        <thead><tr><th>End market</th><th class="r">FY2025 revenue</th><th class="r">% of TI</th><th>Q2-26 YoY growth</th><th>R&D direction</th><th>Procurement signal</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Industrial</strong></td><td class="r">~$5.8B</td><td class="r">33%</td><td><div class="bw"><div class="bwt"><div class="bwf" style="width:30%;background:var(--ti)"></div></div><span style="font-size:9px;font-family:'DM Mono',monospace;color:var(--green)">+30%</span></div></td><td><span class="badge badge-g">↑ Up broadly</span></td><td style="font-size:10px;color:var(--ink2)">Priority segment. Automation, energy, medical.</td></tr>
+          <tr><td><strong>Automotive</strong></td><td class="r">~$5.8B</td><td class="r">33%</td><td><div class="bw"><div class="bwt"><div class="bwf" style="width:15%;background:var(--ti)"></div></div><span style="font-size:9px;font-family:'DM Mono',monospace;color:var(--green)">Mid-teens</span></div></td><td><span class="badge badge-g">↑ Up broadly</span></td><td style="font-size:10px;color:var(--ink2)">ADAS, BEV powertrain, zonal control.</td></tr>
+          <tr><td><strong>Personal electronics</strong></td><td class="r">~$3.7B</td><td class="r">21%</td><td><div class="bw"><div class="bwt"><div class="bwf" style="width:1%;background:#94a3b8"></div></div><span style="font-size:9px;font-family:'DM Mono',monospace;color:var(--ink4)">~Flat</span></div></td><td><span class="badge badge-s">→ Steady</span></td><td style="font-size:10px;color:var(--ink3)">R&D held steady — relative deprioritisation vs core.</td></tr>
+          <tr><td><strong>Data center</strong></td><td class="r">~$1.5B</td><td class="r">9%</td><td><div class="bw"><div class="bwt"><div class="bwf" style="width:100%;background:var(--ti)"></div></div><span style="font-size:9px;font-family:'DM Mono',monospace;color:var(--green);font-weight:600">Doubled</span></div></td><td><span class="badge badge-g">↑ Up broadly</span></td><td style="font-size:10px;color:var(--ink2)">Fastest growing. GaN power stages, multiphase controllers.</td></tr>
+          <tr><td><strong>Comms equipment</strong></td><td class="r">~$0.5B</td><td class="r">3%</td><td><div class="bw"><div class="bwt"><div class="bwf" style="width:6%;background:rgba(15,111,173,.5)"></div></div><span style="font-size:9px;font-family:'DM Mono',monospace;color:var(--green)">Grew</span></div></td><td><span class="badge badge-s">→ Steady</span></td><td style="font-size:10px;color:var(--ink3)">Small segment. Grew YoY and QoQ in Q2-26.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="pf"><span>Semitrical · semitrical.ai</span><span>Texas Instruments</span></div>
+</div>
+
+<!-- PAGE 2 -->
+<div class="page">
+  <div class="ph">
+    <div class="ph-top">
+      <div class="lgo"><svg class="lmark" width="20" height="20" viewBox="0 0 34 34" aria-hidden="true"><g stroke="#fff" stroke-width="2.6" stroke-linecap="round" fill="none"><circle cx="17" cy="17" r="8.5"/><line x1="17" y1="1.5" x2="17" y2="9"/><line x1="17" y1="25" x2="17" y2="32.5"/><line x1="1.5" y1="17" x2="9" y2="17"/><line x1="25" y1="17" x2="32.5" y2="17"/></g><circle cx="17" cy="17" r="2.2" fill="#fff"/></svg><div><div class="lt">Semitrical</div><span class="ls">Supplier Intelligence</span></div></div>
+      <span class="pn">Texas Instruments · 2 of 2 · Negotiation Intelligence</span>
+    </div>
+    <div class="ph-main">
+      <div>
+        <div class="ph-name">Texas Instruments</div>
+        <div class="ph-meta">TXN · Analog · Embedded Processing · October 2026</div>
+        <div class="ph-tag">Where the leverage is, how long it lasts, and what to do before H2 pricing actions land.</div>
+      </div>
+      <div class="sc"><span class="scl">Financial pressure score</span><div class="scn">3.00<span style="font-size:13px;opacity:.4">/5</span></div><span class="scs">Moderate · Window narrowing</span></div>
+    </div>
+  </div>
+  <div class="sb"><span class="sbl">Leverage index</span><div class="sbt"><div class="sbf" style="width:60%"></div></div><span class="sbv">Treat 3.00 as the ceiling · trailing 12-month reads 2.50</span></div>
+
+  <div class="body">
+    <div>
+      <div class="sec">Negotiation posture</div>
+      <div class="two-col">
+        <div class="lc lc-now">
+          <div class="lcl">⏱ Leverage now</div>
+          <div class="lct">Index 3.00 — moderate. Supply signal reads <strong>EXCESS · tightening</strong>. Leverage still available but narrowing. Q2-26 revenue of $5.46B came in above the guided range — demand is accelerating faster than management expected. Lock pricing and terms now. TI has best lead times in analog (6–13 weeks average) and is actively using availability and competitive pricing to win back market share.</div>
+        </div>
+        <div class="lc lc-next">
+          <div class="lcl">→ Next ~6 months</div>
+          <div class="lct">Leverage declining. Demand strengthening across all end-markets. Q3-26 guidance $5.65B–$6.15B signals continued acceleration. FCF trailing 12 months at $5.4B — up from $1.5B a year ago. As financial pressure eases and demand absorbs spare capacity, TI's incentive to offer pricing concessions diminishes. Assembly and test flagged as "a little tighter externally" — the one supply signal to watch.</div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="ab">
+        <div class="abl">Procurement action — before Q3-26 earnings (October 2026)</div>
+        <div class="abt"><strong>The window is open now and closing.</strong> TI came in above its Q2-26 guidance range. Q3-26 guidance of $5.65B–$6.15B signals continued acceleration. FCF at $5.4B trailing means TI's financial incentive to offer pricing concessions is rapidly diminishing.<br><br><strong>Act now:</strong> (1) Renegotiate annual pricing on PMIC, gate driver, and analog lines while "very competitive" pricing is still TI's stated posture — multi-year volume commitment in exchange for current ASP levels. (2) Use the 199-day inventory position for consignment or pull schedule arrangements — TI wants to convert inventory to cash and values cash-flow acceleration. (3) If you source from Silicon Labs, map product transfer timelines to LFAB now. (4) Engage TI on GaN and data center power design-ins — fastest growing segment, R&D prioritised, earliest design-in secures best allocation.</div>
+      </div>
+    </div>
+
+    <div>
+      <div class="sec">What management said — Q2-26 and Q1-26</div>
+      <div class="qt">
+        <div class="ql">Pricing intent · Q1-26 Capital Management Call</div>
+        <div class="qq">"If demand continues to be strong, and we are monitoring the market price, and there is definitely at least an average price increase in the last several months across the analog market. I think it's likely that prices may go up in the second half of the year."</div>
+        <div class="qa">TI management · Q1-26 Capital Management Call · Implication: H2 pricing actions signalled. Lock annual agreements before mid-year while guidance still describes this as conditional.</div>
+      </div>
+      <div class="qt">
+        <div class="ql">Capacity and demand · Q2-26 transcript</div>
+        <div class="qq">"Our investments in inventory and capacity are serving us well, which allows us to support our customers during this time of increased demand. We are prepared with capacity and have cleanroom space available and are well positioned to support continued growth."</div>
+        <div class="qa">Haviv Ilan, CEO · Q2-26 earnings call · Implication: TI signalling supply adequacy. Buyers with credible long-term demand forecasts better positioned to secure allocation at current pricing.</div>
+      </div>
+    </div>
+
+    <div class="two-col">
+      <div>
+        <div class="sec">Where TI is investing</div>
+        <div class="three-col">
+          <div style="background:var(--ti-light);border:1px solid rgba(15,111,173,.2);border-radius:5px;padding:8px 9px;">
+            <div style="font-size:8px;font-family:'DM Mono',monospace;color:var(--ti);letter-spacing:.05em;text-transform:uppercase;margin-bottom:3px;">300mm</div>
+            <div style="font-size:10px;color:var(--ink2);line-height:1.55;">Phase 3 modular expansion active. >80% wafers on 300mm by FY26. ~40% lower chip cost vs 200mm. No requalification needed as demand ramps.</div>
+          </div>
+          <div style="background:var(--ti-light);border:1px solid rgba(15,111,173,.2);border-radius:5px;padding:8px 9px;">
+            <div style="font-size:8px;font-family:'DM Mono',monospace;color:var(--ti);letter-spacing:.05em;text-transform:uppercase;margin-bottom:3px;">Data center</div>
+            <div style="font-size:10px;color:var(--ink2);line-height:1.55;">GaN power stages, multiphase controllers, hot-swap — all growing into AI infrastructure. Doubled YoY Q2-26. R&D "up broadly."</div>
+          </div>
+          <div style="background:#fff8f0;border:1px solid #f0c8a0;border-radius:5px;padding:8px 9px;">
+            <div style="font-size:8px;font-family:'DM Mono',monospace;color:var(--orange);letter-spacing:.05em;text-transform:uppercase;margin-bottom:3px;">Silicon Labs · 2027</div>
+            <div style="font-size:10px;color:var(--ink2);line-height:1.55;">$7.5B acquisition closing H1 2027. LFAB (Lehi) designated for SiLabs product transfers. Map your SiLabs parts to new TI supply chain now.</div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="sec">Risk and resilience</div>
+        <div class="rr-grid">
+          <div class="rr risk">
+            <div class="rrl">⚠ Risk</div>
+            <div class="rrt">Pricing increase signalled for H2 2026 by management. Assembly and test "a little tighter externally" — supply bottleneck forming. Silicon Labs integration (H1 2027) will consume LFAB capacity. Leverage window closing as demand accelerates and FCF recovers strongly.</div>
+          </div>
+          <div class="rr res">
+            <div class="rrl">✓ Resilience</div>
+            <div class="rrt">Best lead times in analog — sub-13 weeks average, many at 6 weeks. 300mm cost structure lowest in industry. >90% internal manufacturing. $5.4B FCF trailing 12 months and strengthening. Inventory buffer at 199 days serves customer availability.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pf"><span>Semitrical · semitrical.ai</span><span>Texas Instruments</span></div>
+</div>
+<!-- ═══════════ ON SEMI PAGE 1 ═══════════ -->
+<div class="page">
+  <div class="ph on">
+    <div class="ph-top">
+      <div class="lgo"><svg class="lmark" width="20" height="20" viewBox="0 0 34 34" aria-hidden="true"><g stroke="#fff" stroke-width="2.6" stroke-linecap="round" fill="none"><circle cx="17" cy="17" r="8.5"/><line x1="17" y1="1.5" x2="17" y2="9"/><line x1="17" y1="25" x2="17" y2="32.5"/><line x1="1.5" y1="17" x2="9" y2="17"/><line x1="25" y1="17" x2="32.5" y2="17"/></g><circle cx="17" cy="17" r="2.2" fill="#fff"/></svg><div><div class="lt">Semitrical</div><span class="ls">Supplier Intelligence</span></div></div>
+      <span class="pn">ON Semiconductor · 1 of 2 · Financial Trends</span>
+    </div>
+    <div class="ph-main">
+      <div>
+        <div class="ph-name">ON Semiconductor</div>
+        <div class="ph-meta">ON · Power Solutions · Analog · Intelligent Sensing · October 2026</div>
+        <div class="ph-tag">Deliberately exited commodity markets. Pricing power where they have allocation — and they will use it. Leverage is entirely product-dependent.</div>
+      </div>
+      <div class="sc"><span class="scl">Financial pressure score</span><div class="scn">4.00<span style="font-size:13px;opacity:.4">/5</span></div><span class="scs">Higher = more buyer leverage</span></div>
+    </div>
+  </div>
+  <div class="sb on"><span class="sbl">Leverage index</span><div class="sbt"><div class="sbf" style="width:80%"></div></div><span class="sbv">4.00 / 5.00 · Significant pressure, but product-dependent</span></div>
+
+  <div class="body">
+    <div>
+      <div class="sec">Latest financial position — Q2 FY2026</div>
+      <div class="mets">
+        <div class="met"><div class="mv" style="color:var(--on)">$1.60B</div><div class="ml">Q2-26 revenue</div><div class="mn">+6% QoQ · +9% YoY</div></div>
+        <div class="met"><div class="mv" style="color:var(--on)">38.4%</div><div class="ml">Gross margin Q2-26 (GAAP)</div><div class="mn">39.3% non-GAAP · 4th consecutive expansion</div></div>
+        <div class="met"><div class="mv" style="color:var(--on)">16.1%</div><div class="ml">Operating margin Q2-26 (GAAP)</div><div class="mn">20.8% non-GAAP · +170bps QoQ</div></div>
+        <div class="met"><div class="mv" style="color:var(--on)">24.2%</div><div class="ml">FCF margin, trailing 12 months</div><div class="mn">Record · LTM basis</div></div>
+        <div class="met"><div class="mv" style="color:var(--on)">192d</div><div class="ml">Inventory days Q2-26</div><div class="mn">−9d QoQ · draining</div></div>
+      </div>
+    </div>
+
+    <div>
+      <div class="sec">Financial trends — FY2020–FY2025 annual · recent quarters dashed</div>
+      <div class="cg">
+
+        <!-- CHART 1: Revenue + GM -->
+        <!-- FY20=5.26B FY21=6.74B FY22=8.33B FY23=8.25B FY24=7.08B FY25=6.00B -->
+        <!-- GM: FY20=32.7% FY21=40.3% FY22=49.0% FY23=47.1% FY24=45.4% FY25=33.1% -->
+        <!-- Rev scale: 0-9B → y80-y15, 65px; y=80-(rev/9)*65 -->
+        <!-- GM scale: 28-52%, 24pp → y80-y10, 70px; y=80-((gm-28)/24)*70 -->
+        <div class="cb">
+          <div class="ct">Revenue ($B) with gross margin overlay</div>
+          <div class="cs">FY20–FY25 · FY26E = H1-26 ×2 · <svg width="17" height="8" viewBox="0 0 17 8" style="vertical-align:-1px;color:var(--on)"><line x1="0" y1="4" x2="10" y2="4" stroke="currentColor" stroke-width="1.3" stroke-dasharray="2.5,1.5"/><circle cx="13.5" cy="4" r="2.3" fill="#fff" stroke="currentColor" stroke-width="1.1"/></svg> Q1/Q2-26 GM</div>
+          <!-- FY26E ~6.2B: H1=3.12B split bar. Rev scale 0-9B→65px. Full top=y35.2 H1 split y=57.5 -->
+          <!-- Q1-26 GM=38.5%→y=49.4 Q2-26 GM=39.3%→y=48.7 -->
+          <svg class="ch" viewBox="0 -9 210 99" preserveAspectRatio="none">
+            <rect x="4" y="42" width="22" height="38" fill="rgba(26,107,69,.32)" rx="1.5"/>
+            <rect x="34" y="31.3" width="22" height="48.7" fill="rgba(26,107,69,.32)" rx="1.5"/>
+            <rect x="64" y="19.9" width="22" height="60.1" fill="rgba(26,107,69,.32)" rx="1.5"/>
+            <rect x="94" y="20.4" width="22" height="59.6" fill="rgba(26,107,69,.32)" rx="1.5"/>
+            <rect x="124" y="28.9" width="22" height="51.1" fill="rgba(26,107,69,.32)" rx="1.5"/>
+            <rect x="154" y="36.7" width="22" height="43.3" fill="rgba(26,107,69,.32)" rx="1.5"/>
+            <rect x="183" y="57.5" width="22" height="22.5" fill="rgba(26,107,69,.32)" rx="1.5"/>
+            <rect x="183.25" y="35" width="21.5" height="22.5" fill="rgba(26,107,69,.10)" stroke="rgba(26,107,69,.55)" stroke-width="0.5" stroke-dasharray="1.5,1" rx="1.5"/>
+            <text x="15" y="78.6" font-size="5" fill="var(--on)" font-family="DM Mono" text-anchor="middle">5.3</text>
+            <text x="45" y="78.6" font-size="5" fill="var(--on)" font-family="DM Mono" text-anchor="middle">6.7</text>
+            <text x="75" y="78.6" font-size="5" fill="var(--on)" font-family="DM Mono" text-anchor="middle">8.3</text>
+            <text x="105" y="78.6" font-size="5" fill="var(--on)" font-family="DM Mono" text-anchor="middle">8.3</text>
+            <text x="135" y="78.6" font-size="5" fill="var(--on)" font-family="DM Mono" text-anchor="middle">7.1</text>
+            <text x="165" y="78.6" font-size="5" fill="var(--on)" font-family="DM Mono" text-anchor="middle">6.0</text>
+            <text x="194" y="78.6" font-size="5" fill="var(--on)" font-family="DM Mono" text-anchor="middle">6.2</text>
+            <polyline points="15,61.1 45,44.3 75,25.2 105,29.4 135,33.1 165,60.2" fill="none" stroke="var(--on)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            <polyline points="165,60.2 179.5,48.3 194,48.5" fill="none" stroke="var(--on)" stroke-width="1.4" stroke-dasharray="3,2" stroke-linecap="round"/>
+            <circle cx="15" cy="61.1" r="1.8" fill="var(--on)"/>
+            <circle cx="45" cy="44.3" r="1.8" fill="var(--on)"/>
+            <circle cx="75" cy="25.2" r="1.8" fill="var(--on)"/>
+            <circle cx="105" cy="29.4" r="1.8" fill="var(--on)"/>
+            <circle cx="135" cy="33.1" r="1.8" fill="var(--on)"/>
+            <circle cx="165" cy="60.2" r="1.8" fill="var(--on)"/>
+            <circle cx="179.5" cy="48.3" r="1.8" fill="#fff" stroke="var(--on)" stroke-width="1"/>
+            <circle cx="194" cy="48.5" r="1.8" fill="#fff" stroke="var(--on)" stroke-width="1"/>
+            <text x="75" y="21.2" font-size="5" font-weight="600" fill="var(--on)" font-family="DM Mono" text-anchor="middle">49.0%</text>
+            <line x1="179.5" y1="45.7" x2="179.5" y2="-1.6" stroke="var(--on)" stroke-width="0.45" stroke-dasharray="1,1"/>
+            <line x1="194" y1="45.9" x2="194" y2="-1.6" stroke="var(--on)" stroke-width="0.45" stroke-dasharray="1,1"/>
+            <text x="177.9" y="-3.4" font-size="4.4" font-weight="700" fill="var(--on)" font-family="DM Mono" text-anchor="end">Q1-26 38.5%</text>
+            <text x="209.5" y="-3.4" font-size="4.4" font-weight="700" fill="var(--on)" font-family="DM Mono" text-anchor="end">Q2-26 38.4%</text>
+            <rect x="0" y="1" width="7" height="5" fill="rgba(26,107,69,.32)" rx="0.5"/>
+            <text x="9" y="5.6" font-size="5" fill="var(--on)" font-family="DM Mono">Revenue $B</text>
+            <rect x="46" y="1.25" width="7" height="4.5" fill="rgba(26,107,69,.10)" stroke="rgba(26,107,69,.55)" stroke-width="0.5" stroke-dasharray="1.5,1" rx="0.5"/>
+            <text x="55" y="5.6" font-size="5" fill="var(--on)" font-family="DM Mono">H2-26 implied</text>
+            <line x1="98" y1="3.5" x2="108" y2="3.5" stroke="var(--on)" stroke-width="1.6"/>
+            <text x="110" y="5.6" font-size="5" fill="var(--on)" font-family="DM Mono">Gross margin %</text>
+            <text x="15" y="88" font-size="5.5" fill="#aaa" font-family="DM Mono" text-anchor="middle">FY20</text>
+            <text x="45" y="88" font-size="5.5" fill="#aaa" font-family="DM Mono" text-anchor="middle">FY21</text>
+            <text x="75" y="88" font-size="5.5" fill="#aaa" font-family="DM Mono" text-anchor="middle">FY22</text>
+            <text x="105" y="88" font-size="5.5" fill="#aaa" font-family="DM Mono" text-anchor="middle">FY23</text>
+            <text x="135" y="88" font-size="5.5" fill="#aaa" font-family="DM Mono" text-anchor="middle">FY24</text>
+            <text x="165" y="88" font-size="5.5" fill="#aaa" font-family="DM Mono" text-anchor="middle">FY25</text>
+            <text x="194" y="88" font-size="5.5" fill="var(--on)" font-family="DM Mono" text-anchor="middle">FY26E</text>
+            </svg>
+          <div class="cn">Revenue peaked $8.3B (FY22) on upcycle, compressed to $6.0B (FY25) on destocking and portfolio exits. GM followed same arc — 49% peak to 33.1% trough. GAAP GM 38.5% in Q1-26 and 38.4% in Q2-26 (39.3% non-GAAP). Q3 guided 40–42% non-GAAP. FY26E: H1 actual $3.1B, doubled to ~$6.2B.</div>
+        </div>
+
+        <!-- CHART 2: CapEx % revenue — CORRECT VALUES, WIDER VIEWBOX NO OVERLAP -->
+        <!-- FY20=7.3% FY21=6.6% FY22=12.1% FY23=18.6% FY24=9.8% FY25=5.7% -->
+        <!-- Scale 0-21% → y80-y10, 70px; y=80-(val/21)*70 -->
+        <!-- bar heights: FY20=24.3 FY21=22.0 FY22=40.3 FY23=62.0 FY24=32.7 FY25=19.0 -->
+        <!-- bar tops:    FY20=55.7 FY21=58.0 FY22=39.7 FY23=18.0 FY24=47.3 FY25=61.0 -->
+        <!-- 5% target: y=80-(5/21)*70=63.3 -->
+        <!-- 6 bars in 200px: bar_w=22, gap=10; x=3,35,67,99,131,163; centers=14,46,78,110,142,174 -->
+        <div class="cb">
+          <div class="ct">CapEx intensity — FabRight strategy</div>
+          <div class="cs">CapEx % of revenue FY2020–FY2025 · target below 5%</div>
+          <svg class="ch" viewBox="0 0 200 90" preserveAspectRatio="none">
+            <line x1="0" y1="10" x2="200" y2="10" stroke="#f0ede8" stroke-width="0.4"/>
+            <line x1="0" y1="46.7" x2="200" y2="46.7" stroke="#f0ede8" stroke-width="0.4"/>
+            <line x1="0" y1="57" x2="200" y2="57" stroke="#f0ede8" stroke-width="0.4"/>
+            <text x="1" y="9"  font-size="5" fill="#ccc" font-family="DM Mono">21%</text>
+            <text x="1" y="45.7" font-size="5" fill="#ccc" font-family="DM Mono">10%</text>
+            <!-- 5% target — stops well before last bar -->
+            <line x1="3" y1="63.3" x2="193" y2="63.3" stroke="var(--on)" stroke-width="0.8" stroke-dasharray="3,2"/>
+            <line x1="193" y1="63.3" x2="193" y2="32" stroke="var(--on)" stroke-width="0.45" stroke-dasharray="1,1"/>
+            <text x="199" y="24" font-size="5" font-weight="700" fill="var(--on)" font-family="DM Mono" text-anchor="end">5% target</text>
+            <text x="199" y="30" font-size="4.6" fill="var(--on)" font-family="DM Mono" text-anchor="end">(ON targets &lt;5%)</text>
+            <!-- Bars: x=3,35,67,99,131,163 width=22 -->
+            <rect x="3"   y="56" width="22" height="24" fill="rgba(26,107,69,.30)" rx="1.5"/>
+            <rect x="35"  y="58" width="22" height="22" fill="rgba(26,107,69,.28)" rx="1.5"/>
+            <rect x="67"  y="40" width="22" height="40" fill="rgba(26,107,69,.45)" rx="1.5"/>
+            <rect x="99"  y="18" width="22" height="62" fill="rgba(26,107,69,.65)" rx="1.5"/>
+            <rect x="131" y="47" width="22" height="33" fill="rgba(26,107,69,.38)" rx="1.5"/>
+            <rect x="163" y="61" width="22" height="19" fill="rgba(26,107,69,.65)" rx="1.5"/>
+            <!-- Value labels -->
+            <text x="14"  y="54" font-size="5.5" fill="var(--on)" font-family="DM Mono" text-anchor="middle">7.3%</text>
+            <text x="46"  y="56" font-size="5.5" fill="var(--on)" font-family="DM Mono" text-anchor="middle">6.6%</text>
+            <text x="78"  y="38" font-size="5.5" fill="var(--on)" font-family="DM Mono" text-anchor="middle">12.1%</text>
+            <text x="110" y="16" font-size="5.5" fill="var(--on)" font-family="DM Mono" text-anchor="middle" font-weight="600">18.6%</text>
+            <text x="142" y="45" font-size="5.5" fill="var(--on)" font-family="DM Mono" text-anchor="middle">9.8%</text>
+            <text x="174" y="59" font-size="5.5" fill="var(--on)" font-family="DM Mono" text-anchor="middle">5.7%</text>
+            <!-- X labels -->
+            <text x="14"  y="88" font-size="5.5" fill="#aaa" font-family="DM Mono" text-anchor="middle">FY20</text>
+            <text x="46"  y="88" font-size="5.5" fill="#aaa" font-family="DM Mono" text-anchor="middle">FY21</text>
+            <text x="78"  y="88" font-size="5.5" fill="#aaa" font-family="DM Mono" text-anchor="middle">FY22</text>
+            <text x="110" y="88" font-size="5.5" fill="#aaa" font-family="DM Mono" text-anchor="middle">FY23</text>
+            <text x="142" y="88" font-size="5.5" fill="#aaa" font-family="DM Mono" text-anchor="middle">FY24</text>
+            <text x="174" y="88" font-size="5.5" fill="#aaa" font-family="DM Mono" text-anchor="middle">FY25</text>
+          </svg>
+          <div class="cn">CapEx peaked at 18.6% of revenue in FY23 — ON was investing heavily in SiC and fab expansion. Now at 5.7%, approaching the sub-5% FabRight target. Divesting Mountain Top and Philippines — ~$35M annualised savings from 2027. No new fab capacity planned.</div>
+        </div>
+
+        <!-- CHART 3: Utilisation — Q3-25=74% Q4-25=68% Q1-26=77% Q2-26=83% -->
+        <!-- Scale 60-90%, 30pp → y80-y10, 70px; y=80-((u-60)/30)*70 -->
+        <!-- Q3-25=74→y=47.3 Q4-25=68→y=61.3 Q1-26=77→y=40.3 Q2-26=83→y=26.3 -->
+        <div class="cb">
+          <div class="ct">Fab utilisation — recovery signal</div>
+          <div class="cs">Q3-25 through Q2-26 · confirmed from earnings transcripts</div>
+          <svg class="ch" viewBox="0 0 200 90" preserveAspectRatio="none">
+            <line x1="0" y1="10" x2="200" y2="10" stroke="#f0ede8" stroke-width="0.4"/>
+            <line x1="0" y1="40" x2="200" y2="40" stroke="#f0ede8" stroke-width="0.4"/>
+            <line x1="0" y1="70" x2="200" y2="70" stroke="#f0ede8" stroke-width="0.4"/>
+            <text x="1" y="9"  font-size="5" fill="#ccc" font-family="DM Mono">90%</text>
+            <text x="1" y="39" font-size="5" fill="#ccc" font-family="DM Mono">77%</text>
+            <text x="1" y="69" font-size="5" fill="#ccc" font-family="DM Mono">64%</text>
+            <!-- 4 bars evenly: x=20,65,110,155 width=35; centers=37,82,127,172 -->
+            <rect x="20"  y="47" width="35" height="33" fill="rgba(26,107,69,.30)" rx="1.5"/>
+            <rect x="65"  y="61" width="35" height="19" fill="rgba(26,107,69,.28)" rx="1.5"/>
+            <rect x="110" y="40" width="35" height="40" fill="rgba(26,107,69,.48)" rx="1.5"/>
+            <rect x="155" y="26" width="35" height="54" fill="rgba(26,107,69,.70)" rx="1.5"/>
+            <text x="37"  y="44" font-size="7" fill="var(--on)" font-family="DM Mono" text-anchor="middle" font-weight="600">74%</text>
+            <text x="82"  y="58" font-size="7" fill="var(--on)" font-family="DM Mono" text-anchor="middle" font-weight="600">68%</text>
+            <text x="127" y="37" font-size="7" fill="var(--on)" font-family="DM Mono" text-anchor="middle" font-weight="600">77%</text>
+            <text x="172" y="23" font-size="7.5" fill="var(--on)" font-family="DM Mono" text-anchor="middle" font-weight="700">83%</text>
+            <text x="37"  y="88" font-size="5.5" fill="#aaa" font-family="DM Mono" text-anchor="middle">Q3-25</text>
+            <text x="82"  y="88" font-size="5.5" fill="#aaa" font-family="DM Mono" text-anchor="middle">Q4-25</text>
+            <text x="127" y="88" font-size="5.5" fill="#aaa" font-family="DM Mono" text-anchor="middle">Q1-26</text>
+            <text x="172" y="88" font-size="5.5" fill="#aaa" font-family="DM Mono" text-anchor="middle">Q2-26</text>
+          </svg>
+          <div class="cn">Utilisation rose from 68% (Q4-25 trough) to 83% (Q2-26). Management expects flat to up in Q3. Every point of utilisation improvement flows to gross margin with ~2-quarter lag. Q3-26 GM guided 40–42%.</div>
+        </div>
+
+        <!-- CHART 4: End market — all green shades -->
+        <div class="cb">
+          <div class="ct">Revenue by end market — Q2-26</div>
+          <div class="cs">With YoY growth and AI DC priority signal</div>
+          <svg class="ch" viewBox="0 0 200 82" preserveAspectRatio="none">
+            <!-- Automotive 49% -->
+            <text x="0" y="13" font-size="8" fill="var(--ink2)" font-family="DM Sans" font-weight="500">Automotive</text>
+            <text x="0" y="21" font-size="6" fill="var(--ink4)" font-family="DM Mono">$781M · +7% YoY</text>
+            <rect x="76" y="7" width="112" height="11" fill="#e8f5ee" rx="2"/>
+            <rect x="76" y="7" width="55" height="11" fill="var(--on)" rx="2"/>
+            <text x="104" y="16.5" font-size="6.5" fill="#fff" font-family="DM Mono" font-weight="600" text-anchor="middle">49%</text>
+            <!-- Industrial 26% -->
+            <text x="0" y="39" font-size="8" fill="var(--ink2)" font-family="DM Sans" font-weight="500">Industrial</text>
+            <text x="0" y="47" font-size="6" fill="var(--ink4)" font-family="DM Mono">$423M · +4% YoY</text>
+            <rect x="76" y="33" width="112" height="11" fill="#e8f5ee" rx="2"/>
+            <rect x="76" y="33" width="29" height="11" fill="rgba(26,107,69,.6)" rx="2"/>
+            <text x="91" y="42.5" font-size="6.5" fill="#fff" font-family="DM Mono" font-weight="600" text-anchor="middle">26%</text>
+            <!-- AI DC 25% — same width as Industrial, lighter shade -->
+            <text x="0" y="62" font-size="8" fill="var(--ink2)" font-family="DM Sans" font-weight="500">Other / AI DC</text>
+            <text x="0" y="73" font-size="6" fill="var(--ink3)" font-family="DM Mono">$400M · +34% QoQ · on pace 2× in 2026</text>
+            <rect x="76" y="56" width="112" height="11" fill="#e8f5ee" rx="2"/>
+            <rect x="76" y="56" width="29" height="11" fill="rgba(26,107,69,.35)" rx="2"/>
+            <text x="109" y="65.5" font-size="6.5" fill="var(--on)" font-family="DM Mono" font-weight="600">25% · fastest growing</text>
+          </svg>
+          <div class="cn">AI data center drove +34% QoQ surge and is on pace to double in 2026. ⚠ Management confirmed AI DC is prioritised over automotive and industrial when supply is constrained — direct allocation risk for auto buyers on SiC and power products.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- BU TABLE -->
+    <div>
+      <div class="sec">Business unit detail — Q2-26 · with long-term targets</div>
+      <table class="bt">
+        <thead><tr><th>Business unit</th><th class="r">Q2-26 revenue</th><th class="r">QoQ</th><th>YoY growth</th><th>LT GM target</th><th>Signal</th></tr></thead>
+        <tbody>
+          <tr><td><strong>PSG — Power Solutions</strong><br><span style="font-size:9px;color:var(--ink3)">SiC, IGBT, MOSFETs, gate drivers</span></td><td class="r">$829M</td><td class="r" style="color:var(--green)">+13%</td><td><div class="bw"><div class="bwt"><div class="bwf" style="width:100%;background:var(--on)"></div></div><span style="font-size:9px;font-family:'DM Mono',monospace;color:var(--green)">+19% YoY</span></div></td><td><span class="badge badge-g">53% target</span></td><td style="font-size:10px;color:var(--ink2)">AI DC and SiC driving growth. AI DC prioritised when constrained.</td></tr>
+          <tr><td><strong>AMG — Analog &amp; Mixed Signal</strong><br><span style="font-size:9px;color:var(--ink3)">Analog, mixed signal, custom</span></td><td class="r">$546M</td><td class="r" style="color:var(--green)">+1%</td><td><div class="bw"><div class="bwt"><div class="bwf" style="width:10%;background:rgba(26,107,69,.5)"></div></div><span style="font-size:9px;font-family:'DM Mono',monospace;color:var(--red)">−2% YoY</span></div></td><td><span class="badge badge-s">Recovering</span></td><td style="font-size:10px;color:var(--ink2)">Flat to recovering. Moderate leverage on commodity lines.</td></tr>
+          <tr><td><strong>ISG — Intelligent Sensing</strong><br><span style="font-size:9px;color:var(--ink3)">Image sensors, LiDAR, radar</span></td><td class="r">$229M</td><td class="r" style="color:var(--red)">−3%</td><td><div class="bw"><div class="bwt"><div class="bwf" style="width:35%;background:rgba(26,107,69,.4)"></div></div><span style="font-size:9px;font-family:'DM Mono',monospace;color:var(--green)">+7% YoY</span></div></td><td><span class="badge badge-s">Growing</span></td><td style="font-size:10px;color:var(--ink2)">ADAS and industrial sensing. Best leverage in group.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="pf"><span>Semitrical · semitrical.ai</span><span>ON Semiconductor</span></div>
+</div>
+
+<!-- ═══════════ ON SEMI PAGE 2 ═══════════ -->
+<div class="page">
+  <div class="ph on">
+    <div class="ph-top">
+      <div class="lgo"><svg class="lmark" width="20" height="20" viewBox="0 0 34 34" aria-hidden="true"><g stroke="#fff" stroke-width="2.6" stroke-linecap="round" fill="none"><circle cx="17" cy="17" r="8.5"/><line x1="17" y1="1.5" x2="17" y2="9"/><line x1="17" y1="25" x2="17" y2="32.5"/><line x1="1.5" y1="17" x2="9" y2="17"/><line x1="25" y1="17" x2="32.5" y2="17"/></g><circle cx="17" cy="17" r="2.2" fill="#fff"/></svg><div><div class="lt">Semitrical</div><span class="ls">Supplier Intelligence</span></div></div>
+      <span class="pn">ON Semiconductor · 2 of 2 · Negotiation Intelligence</span>
+    </div>
+    <div class="ph-main">
+      <div>
+        <div class="ph-name">ON Semiconductor</div>
+        <div class="ph-meta">ON · Power Solutions · Analog · Intelligent Sensing · October 2026</div>
+        <div class="ph-tag">Your leverage is entirely determined by whether your parts are differentiated or commodity — and onsemi has already decided which business it is in.</div>
+      </div>
+      <div class="sc"><span class="scl">Financial pressure score</span><div class="scn">4.00<span style="font-size:13px;opacity:.4">/5</span></div><span class="scs">Significant pressure, but product-dependent</span></div>
+    </div>
+  </div>
+  <div class="sb on"><span class="sbl">Leverage index</span><div class="sbt"><div class="sbf" style="width:80%"></div></div><span class="sbv">High financial pressure · bifurcate strategy by product type</span></div>
+
+  <div class="body">
+    <div>
+      <div class="sec">Negotiation posture</div>
+      <div class="two-col">
+        <div class="lc lc-now">
+          <div class="lcl">⏱ Leverage now</div>
+          <div class="lct">Index 4.00 reflects significant financial pressure from the revenue downcycle. However this score must be bifurcated by product. For commodity Si power and IGBT lines where alternatives exist — leverage is real. For SiC MOSFET, EliteSiC, and AI data center power where onsemi has your design-in — leverage is structurally limited. AI data center is explicitly being prioritised over automotive when supply is constrained.</div>
+        </div>
+        <div class="lc lc-next">
+          <div class="lcl">→ Next ~6 months</div>
+          <div class="lct">Leverage declining overall. Utilisation rising from 68% to 83% — GM guided 40–42% in Q3. CEO confirmed "delivering growth at accretive gross margins." Second round of price increases implementing — substrate and gold cost pass-through across all markets. Book-to-bill "significantly above 1 for several quarters and continued to strengthen." Lead times extending, customer escalations rising.</div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="ab">
+        <div class="abl">Procurement action — bifurcate strategy by product type</div>
+        <div class="abt"><strong>Commodity Si power and IGBT — act now.</strong> For multi-source products where onsemi has exited or is deprioritising, the financial pressure score of 4.00 is actionable. CEO's own language confirms they do not prioritise these lines. Qualify and activate alternatives to create genuine walk-away leverage.<br><br><strong>SiC and EliteSiC — change strategy.</strong> AI data center is being prioritised over automotive when constrained — this is not temporary. China SiC (+60–70% YoY) is competing directly with your allocation. Secure written allocation commitments and multi-year supply agreements before your next major design-in. If you have SiC in a 2027+ programme without a confirmed supply agreement, escalate now.</div>
+      </div>
+    </div>
+
+    <div>
+      <div class="sec">What management said — Q2-26 and Deutsche Bank conference</div>
+      <div class="qt on">
+        <div class="ql">Strategic positioning · Deutsche Bank Conference Q2-26</div>
+        <div class="qq">"If it's a multi-source product, you can imagine the margin is not as exciting — that's not the business we play in. That's the business we actually exited. We win where our products provide differentiation."</div>
+        <div class="qa">Hassane El-Khoury, CEO · Deutsche Bank conf. Q2-26 · Implication: onsemi will not negotiate on price for commodity lines. Leverage exists only where credible alternatives are qualified.</div>
+      </div>
+      <div class="qt on">
+        <div class="ql">Pricing and supply · Q2-26 earnings call</div>
+        <div class="qq">"We are implementing a second round of price increases to offset these costs and expect to see the benefit over the next several quarters. We do have some surgical cost increases where we see strength or we see really allocation."</div>
+        <div class="qa">Hassane El-Khoury, CEO · Q2-26 · Implication: Price increases are cost pass-through plus surgical increases where allocation is tight. Both types in motion simultaneously.</div>
+      </div>
+    </div>
+
+    <div class="two-col">
+      <div>
+        <div class="sec">Where onsemi is investing</div>
+        <div class="three-col">
+          <div class="ic" style="background:var(--on-light);border:1px solid rgba(26,107,69,.2);">
+            <div style="font-size:8px;font-family:'DM Mono',monospace;color:var(--on);letter-spacing:.05em;text-transform:uppercase;margin-bottom:3px;">SiC · EliteSiC</div>
+            <div style="font-size:10px;color:var(--ink2);line-height:1.55;">Internal SiC substrate via GTAT. Vertically integrated boule to module. China SiC +60–70% YoY. Design wins at Chinese OEMs competing directly with auto allocation.</div>
+          </div>
+          <div class="ic" style="background:var(--on-light);border:1px solid rgba(26,107,69,.2);">
+            <div style="font-size:8px;font-family:'DM Mono',monospace;color:var(--on);letter-spacing:.05em;text-transform:uppercase;margin-bottom:3px;">Treo platform</div>
+            <div style="font-size:10px;color:var(--ink2);line-height:1.55;">New intelligent power platform ramping in zonal architectures. Accretive gross margins. Key to SDV/zonal ECU transition.</div>
+          </div>
+          <div class="ic" style="background:#eff6ff;border:1px solid #bfdbfe;">
+            <div style="font-size:8px;font-family:'DM Mono',monospace;color:#1d4ed8;letter-spacing:.05em;text-transform:uppercase;margin-bottom:3px;">Synaptics · 2027</div>
+            <div style="font-size:10px;color:var(--ink2);line-height:1.55;">$7.6B acquisition closing mid-2027. Connected compute adds to power + sensing. Watch for portfolio rationalisation post-close.</div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="sec">Risk and resilience</div>
+        <div class="rr-g">
+          <div class="rr risk">
+            <div class="rrl">⚠ Risk</div>
+            <div class="rrt">AI DC explicitly prioritised over automotive when supply constrained — direct allocation risk. Lead times extending, customer escalations rising. Second round of price increases across all markets. No new fab capacity — brownfield only. Synaptics integration mid-2027 may cause portfolio disruption.</div>
+          </div>
+          <div class="rr res">
+            <div class="rrl">✓ Resilience</div>
+            <div class="rrt">FCF margin 24.2% over the trailing 12 months. Internal SiC substrate via GTAT removes wafer risk. Vertically integrated on SiC. $3.9B cash, $5.4B total liquidity. FabRight reducing structural costs by $35M annually from 2027.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pf"><span>Semitrical · semitrical.ai</span><span>ON Semiconductor</span></div>
+</div>
+
+<!-- ═══════════ NANYA PAGE 1 ═══════════ -->
+<div class="page">
+  <div class="ph na">
+    <div class="ph-top">
+      <div class="lgo"><svg class="lmark" width="20" height="20" viewBox="0 0 34 34" aria-hidden="true"><g stroke="#fff" stroke-width="2.6" stroke-linecap="round" fill="none"><circle cx="17" cy="17" r="8.5"/><line x1="17" y1="1.5" x2="17" y2="9"/><line x1="17" y1="25" x2="17" y2="32.5"/><line x1="1.5" y1="17" x2="9" y2="17"/><line x1="25" y1="17" x2="32.5" y2="17"/></g><circle cx="17" cy="17" r="2.2" fill="#fff"/></svg><div><div class="lt">Semitrical</div><span class="ls">Supplier Intelligence</span></div></div>
+      <span class="pn">Nanya Technology · 1 of 2 · Financial Trends</span>
+    </div>
+    <div class="ph-main">
+      <div>
+        <div class="ph-name">Nanya Technology</div>
+        <div class="ph-meta">NTCB · Specialty DRAM · DDR4 · DDR5 · LPDDR · October 2026</div>
+        <div class="ph-tag">Revenue at TTM ~$5.8B — nearly double FY2021 peak. Margins at 79.5% and rising. Pricing leverage gone. Conversation has shifted entirely to supply security and 2028 allocation.</div>
+      </div>
+      <div class="sc"><span class="scl">Financial pressure score</span><div class="scn">2.00<span style="font-size:13px;opacity:.4">/5</span></div><span class="scs">Low · window closing rapidly</span></div>
+    </div>
+  </div>
+  <div class="sb na"><span class="sbl">Leverage index</span><div class="sbt"><div class="sbf" style="width:40%"></div></div><span class="sbv">2.00 / 5.00 · Low · Closing rapidly each quarter</span></div>
+
+  <div class="body">
+    <div>
+      <div class="sec">Latest financial position — Q2 FY2026</div>
+      <div class="mets">
+        <div class="met"><div class="mv" style="color:var(--na)">NT$82.6B</div><div class="ml">Q2-26 revenue (~$2.6B)</div><div class="mn">+68.2% QoQ · +684% YoY</div></div>
+        <div class="met"><div class="mv" style="color:var(--na)">79.5%</div><div class="ml">Gross margin Q2-26</div><div class="mn">Up from 67.9% Q1-26</div></div>
+        <div class="met"><div class="mv" style="color:var(--na)">73.7%</div><div class="ml">Operating margin Q2-26</div><div class="mn">+12.4pp QoQ</div></div>
+        <div class="met"><div class="mv" style="color:var(--na)">NT$198B</div><div class="ml">Net cash Q2-26</div><div class="mn">Private placement NT$78.7B</div></div>
+        <div class="met"><div class="mv" style="color:var(--na)">NT$52B</div><div class="ml">FY26E CapEx</div><div class="mn">~4× FY25 · building again</div></div>
+      </div>
+    </div>
+
+    <div>
+      <div class="sec">Financial trends — annual FY2020–FY2025 · quarterly Q3-25 to Q2-26</div>
+      <div class="cg">
+
+        <!-- CHART 1: Revenue + GM annual — CORRECTED -->
+        <!-- Rev USD: FY20=2.07B FY21=3.06B FY22=1.91B FY23=0.96B FY24=1.06B FY25=2.14B -->
+        <!-- GM: FY20=25.7% FY21=43.3% FY22=37.5% FY23=-15.0% FY24=-1.2% FY25=22.5% -->
+        <!-- Rev scale: 0-3.5B → y80-y15, 65px; y=80-(rev/3500)*65 -->
+        <!-- FY20=2070→41.6 FY21=3065→23.0 FY22=1910→44.5 FY23=959→62.2 FY24=1063→60.3 FY25=2137→40.3 -->
+        <!-- GM scale: -20 to 82%, 102pp → y85-y10, 75px; y=85-((gm+20)/102)*75 -->
+        <!-- FY20=25.7→y=32.3 FY21=43.3→y=19.3 FY22=37.5→y=23.6 FY23=-15→y=73.5 FY24=-1.2→y=62.2 FY25=22.5→y=36.4 -->
+        <!-- Q3-25=18.5→y=39.3 Q4-25=49→y=16.9 Q1-26=67.9→y=3.0→cap 5 Q2-26=79.5→y<0→cap 3 -->
+        <div class="cb">
+          <div class="ct">Revenue and gross margin — the full cycle</div>
+          <div class="cs">USD · FY20–FY25 · FY26E = H1-26 ×2 · <svg width="17" height="8" viewBox="0 0 17 8" style="vertical-align:-1px;color:var(--na)"><line x1="0" y1="4" x2="10" y2="4" stroke="currentColor" stroke-width="1.3" stroke-dasharray="2.5,1.5"/><circle cx="13.5" cy="4" r="2.3" fill="#fff" stroke="currentColor" stroke-width="1.1"/></svg> Q1/Q2-26 GM</div>
+          <!-- FY26E ~$5.25B USD (NT$263B÷50): exceeds 3.5B scale — bar capped at chart top, labeled above -->
+          <!-- H1=$2.62B: split at y=80-(2620/3500)*65=31.3. H2 implied: capped at y=15 -->
+          <svg class="ch" viewBox="0 -9 210 99" preserveAspectRatio="none">
+            <rect x="4" y="65" width="22" height="15" fill="rgba(107,33,168,.32)" rx="1.5"/>
+            <rect x="34" y="57.9" width="22" height="22.1" fill="rgba(107,33,168,.32)" rx="1.5"/>
+            <rect x="64" y="66.2" width="22" height="13.8" fill="rgba(107,33,168,.32)" rx="1.5"/>
+            <rect x="94" y="73.1" width="22" height="6.9" fill="rgba(107,33,168,.32)" rx="1.5"/>
+            <rect x="124" y="72.3" width="22" height="7.7" fill="rgba(107,33,168,.32)" rx="1.5"/>
+            <rect x="154" y="64.6" width="22" height="15.4" fill="rgba(107,33,168,.32)" rx="1.5"/>
+            <rect x="183" y="49.9" width="22" height="30.1" fill="rgba(107,33,168,.32)" rx="1.5"/>
+            <rect x="183.25" y="19.8" width="21.5" height="30.1" fill="rgba(107,33,168,.10)" stroke="rgba(107,33,168,.55)" stroke-width="0.5" stroke-dasharray="1.5,1" rx="1.5"/>
+            <text x="15" y="78.6" font-size="5" fill="var(--na)" font-family="DM Mono" text-anchor="middle">2.1</text>
+            <text x="45" y="78.6" font-size="5" fill="var(--na)" font-family="DM Mono" text-anchor="middle">3.1</text>
+            <text x="75" y="78.6" font-size="5" fill="var(--na)" font-family="DM Mono" text-anchor="middle">1.9</text>
+            <text x="105" y="78.6" font-size="5" fill="var(--na)" font-family="DM Mono" text-anchor="middle">1.0</text>
+            <text x="135" y="78.6" font-size="5" fill="var(--na)" font-family="DM Mono" text-anchor="middle">1.1</text>
+            <text x="165" y="78.6" font-size="5" fill="var(--na)" font-family="DM Mono" text-anchor="middle">2.1</text>
+            <text x="194" y="78.6" font-size="5" fill="var(--na)" font-family="DM Mono" text-anchor="middle">8.3</text>
+            <polyline points="15,43.7 45,32.8 75,36.4 105,68.9 135,60.3 165,45.7" fill="none" stroke="var(--na)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            <polyline points="165,45.7 179.5,17.5 194,10.3" fill="none" stroke="var(--na)" stroke-width="1.4" stroke-dasharray="3,2" stroke-linecap="round"/>
+            <circle cx="15" cy="43.7" r="1.8" fill="var(--na)"/>
+            <circle cx="45" cy="32.8" r="1.8" fill="var(--na)"/>
+            <circle cx="75" cy="36.4" r="1.8" fill="var(--na)"/>
+            <circle cx="105" cy="68.9" r="1.8" fill="var(--na)"/>
+            <circle cx="135" cy="60.3" r="1.8" fill="var(--na)"/>
+            <circle cx="165" cy="45.7" r="1.8" fill="var(--na)"/>
+            <circle cx="179.5" cy="17.5" r="1.8" fill="#fff" stroke="var(--na)" stroke-width="1"/>
+            <circle cx="194" cy="10.3" r="1.8" fill="#fff" stroke="var(--na)" stroke-width="1"/>
+            <text x="45" y="28.8" font-size="5" font-weight="600" fill="var(--na)" font-family="DM Mono" text-anchor="middle">43.3%</text>
+            <text x="100.5" y="70.4" font-size="5" font-weight="600" fill="var(--na)" font-family="DM Mono" text-anchor="end">−15.0%</text>
+            <line x1="179.5" y1="14.9" x2="179.5" y2="-1.6" stroke="var(--na)" stroke-width="0.45" stroke-dasharray="1,1"/>
+            <line x1="194" y1="7.7" x2="194" y2="-1.6" stroke="var(--na)" stroke-width="0.45" stroke-dasharray="1,1"/>
+            <text x="177.9" y="-3.4" font-size="4.4" font-weight="700" fill="var(--na)" font-family="DM Mono" text-anchor="end">Q1-26 67.9%</text>
+            <text x="209.5" y="-3.4" font-size="4.4" font-weight="700" fill="var(--na)" font-family="DM Mono" text-anchor="end">Q2-26 79.5%</text>
+            <rect x="0" y="1" width="7" height="5" fill="rgba(107,33,168,.32)" rx="0.5"/>
+            <text x="9" y="5.6" font-size="5" fill="var(--na)" font-family="DM Mono">Revenue $B</text>
+            <rect x="46" y="1.25" width="7" height="4.5" fill="rgba(107,33,168,.10)" stroke="rgba(107,33,168,.55)" stroke-width="0.5" stroke-dasharray="1.5,1" rx="0.5"/>
+            <text x="55" y="5.6" font-size="5" fill="var(--na)" font-family="DM Mono">H2-26 implied</text>
+            <line x1="98" y1="3.5" x2="108" y2="3.5" stroke="var(--na)" stroke-width="1.6"/>
+            <text x="110" y="5.6" font-size="5" fill="var(--na)" font-family="DM Mono">Gross margin %</text>
+            <text x="15" y="88" font-size="5.5" fill="#aaa" font-family="DM Mono" text-anchor="middle">FY20</text>
+            <text x="45" y="88" font-size="5.5" fill="#aaa" font-family="DM Mono" text-anchor="middle">FY21</text>
+            <text x="75" y="88" font-size="5.5" fill="#aaa" font-family="DM Mono" text-anchor="middle">FY22</text>
+            <text x="105" y="88" font-size="5.5" fill="#aaa" font-family="DM Mono" text-anchor="middle">FY23</text>
+            <text x="135" y="88" font-size="5.5" fill="#aaa" font-family="DM Mono" text-anchor="middle">FY24</text>
+            <text x="165" y="88" font-size="5.5" fill="#aaa" font-family="DM Mono" text-anchor="middle">FY25</text>
+            <text x="194" y="88" font-size="5.5" fill="var(--na)" font-family="DM Mono" text-anchor="middle">FY26E</text>
+            </svg>
+          <div class="cn">Revenue peaked FY2021 $3.1B (USD), then collapsed to $1.0B in FY2023 as DRAM cycle turned. GM swung from +43% peak to −15% trough. Recovery entirely ASP-driven: GM 67.9% in Q1-26, 79.5% in Q2-26. FY26E: H1 actual $4.2B, doubled to ~$8.3B, more than 2.5× the FY21 peak.</div>
+        </div>
+
+        <!-- CHART 2: Quarterly GM recovery — Q3-25=18.5% Q4-25=49.0% Q1-26=67.9% Q2-26=79.5% -->
+        <!-- Scale 15-82%, 67pp → y80-y10, 70px; y=80-((gm-15)/67)*70 -->
+        <!-- Q3-25=18.5→y=76.3 Q4-25=49→y=44.2 Q1-26=67.9→y=24.3 Q2-26=79.5→y=12.1 -->
+        <div class="cb">
+          <div class="ct">Gross margin — quarterly recovery</div>
+          <div class="cs">Q3-25 through Q2-26 · four quarters of ASP-driven expansion</div>
+          <svg class="ch" viewBox="0 0 200 88" preserveAspectRatio="none">
+            <line x1="0" y1="10" x2="200" y2="10" stroke="#f0ede8" stroke-width="0.4"/>
+            <text x="1" y="9" font-size="5" fill="#bbb" font-family="DM Mono">80%</text>
+            <line x1="0" y1="40" x2="200" y2="40" stroke="#f0ede8" stroke-width="0.4"/>
+            <text x="1" y="39" font-size="5" fill="#bbb" font-family="DM Mono">50%</text>
+            <line x1="0" y1="70" x2="200" y2="70" stroke="#f0ede8" stroke-width="0.4"/>
+            <text x="1" y="69" font-size="5" fill="#bbb" font-family="DM Mono">20%</text>
+            <polygon points="35,71.5 85,41.0 135,22.1 185,10.5 185,80 35,80" fill="rgba(107,33,168,.07)"/>
+            <polyline points="35,71.5 85,41.0 135,22.1 185,10.5" fill="none" stroke="var(--na)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="35" cy="71.5" r="1.8" fill="var(--na)"/>
+            <text x="35" y="67.5" font-size="5" font-weight="600" fill="var(--na)" font-family="DM Mono" text-anchor="middle">18.5%</text>
+            <circle cx="85" cy="41.0" r="1.8" fill="var(--na)"/>
+            <text x="85" y="37.0" font-size="5" font-weight="600" fill="var(--na)" font-family="DM Mono" text-anchor="middle">49.0%</text>
+            <circle cx="135" cy="22.1" r="1.8" fill="var(--na)"/>
+            <text x="135" y="18.1" font-size="5" font-weight="600" fill="var(--na)" font-family="DM Mono" text-anchor="middle">67.9%</text>
+            <circle cx="185" cy="10.5" r="1.8" fill="var(--na)"/>
+            <text x="185" y="6.5" font-size="5" font-weight="600" fill="var(--na)" font-family="DM Mono" text-anchor="middle">79.5%</text>
+            <text x="63.0" y="62.2" font-size="4.6" fill="rgba(107,33,168,.75)" font-family="DM Mono" text-anchor="start">+30.5pp</text>
+            <text x="113.0" y="37.5" font-size="4.6" fill="rgba(107,33,168,.75)" font-family="DM Mono" text-anchor="start">+18.9pp</text>
+            <text x="163.0" y="22.3" font-size="4.6" fill="rgba(107,33,168,.75)" font-family="DM Mono" text-anchor="start">+11.6pp</text>
+            <text x="35" y="86" font-size="5.5" fill="#aaa" font-family="DM Mono" text-anchor="middle">Q3-25</text>
+            <text x="85" y="86" font-size="5.5" fill="#aaa" font-family="DM Mono" text-anchor="middle">Q4-25</text>
+            <text x="135" y="86" font-size="5.5" fill="#aaa" font-family="DM Mono" text-anchor="middle">Q1-26</text>
+            <text x="185" y="86" font-size="5.5" fill="var(--na)" font-family="DM Mono" text-anchor="middle">Q2-26</text>
+            </svg>
+          <div class="cn">Four consecutive quarters of dramatic GM expansion — each driven by ASP alone. Cost structure confirmed stable: "mostly due to ASP change, cost structure very stable." Q3 guided to improve further.</div>
+        </div>
+
+        <!-- CHART 3: CapEx NT$B — FY23=13.2 FY24=16.1 FY25=13.4 FY26E=52 -->
+        <!-- Scale 0-58B → y80-y10, 70px; y=80-(val/58)*70 -->
+        <!-- FY23=13.2→y=64.1 FY24=16.1→y=60.6 FY25=13.4→y=63.8 FY26E=52→y=17.2 -->
+        <!-- 4 bars: x=15,60,105,140 width=35; centers=32,77,122,157 -->
+        <div class="cb">
+          <div class="ct">CapEx — NT$B · the building signal</div>
+          <div class="cs">FY2023–FY2026E · 4× step-up after years of underinvestment</div>
+          <svg class="ch" viewBox="0 0 200 88" preserveAspectRatio="none">
+            <line x1="0" y1="10" x2="200" y2="10" stroke="#f0ede8" stroke-width="0.4"/>
+            <line x1="0" y1="43.8" x2="200" y2="43.8" stroke="#f0ede8" stroke-width="0.4"/>
+            <line x1="0" y1="67.9" x2="200" y2="67.9" stroke="#f0ede8" stroke-width="0.4"/>
+            <text x="1" y="9"  font-size="5" fill="#ccc" font-family="DM Mono">NT$58B</text>
+            <text x="1" y="39" font-size="5" fill="#ccc" font-family="DM Mono">NT$30B</text>
+            <text x="1" y="66.9" font-size="5" fill="#ccc" font-family="DM Mono">NT$10B</text>
+            <!-- Prior years muted -->
+            <rect x="15" y="64" width="35" height="16" fill="rgba(107,33,168,.22)" rx="1.5"/>
+            <rect x="60" y="61" width="35" height="19" fill="rgba(107,33,168,.22)" rx="1.5"/>
+            <rect x="105" y="64" width="35" height="16" fill="rgba(107,33,168,.22)" rx="1.5"/>
+            <!-- FY26E prominent -->
+            <rect x="149.5" y="17" width="35" height="63" fill="rgba(107,33,168,.55)" rx="1.5"/>
+            <!-- Labels — FY26E in purple not white -->
+            <text x="32"  y="62" font-size="6" fill="var(--na)" font-family="DM Mono" text-anchor="middle">13.2</text>
+            <text x="77"  y="59" font-size="6" fill="var(--na)" font-family="DM Mono" text-anchor="middle">16.1</text>
+            <text x="122" y="62" font-size="6" fill="var(--na)" font-family="DM Mono" text-anchor="middle">13.4</text>
+            <text x="167" y="14" font-size="7" fill="var(--na)" font-family="DM Mono" text-anchor="middle" font-weight="700">NT$52B</text>
+            <text x="167" y="23" font-size="6" fill="var(--na)" font-family="DM Mono" text-anchor="middle">FY26E est.</text>
+            <!-- 4x annotation black -->
+            <text x="141" y="42" font-size="8" fill="#333" font-family="DM Mono" text-anchor="end" font-weight="600">~4×</text>
+            <line x1="142" y1="40" x2="147" y2="30" stroke="#333" stroke-width="0.8"/>
+            <!-- X labels -->
+            <text x="32"  y="86" font-size="5.5" fill="#aaa" font-family="DM Mono" text-anchor="middle">FY23</text>
+            <text x="77"  y="86" font-size="5.5" fill="#aaa" font-family="DM Mono" text-anchor="middle">FY24</text>
+            <text x="122" y="86" font-size="5.5" fill="#aaa" font-family="DM Mono" text-anchor="middle">FY25</text>
+            <text x="167" y="86" font-size="5.5" fill="var(--na)" font-family="DM Mono" text-anchor="middle">FY26E</text>
+          </svg>
+          <div class="cn">NT$52B FY26 CapEx (~4× FY25 of NT$13.4B). H1 actual payments NT$6.9B — bulk of spending in H2 as construction milestones are met. New fab ramp 2028 (30K wafers/month, expandable to 45K). Total new fab cost NT$16B including EUV equipment.</div>
+        </div>
+
+        <!-- CHART 4: DIO — CORRECTED VALUES -->
+        <!-- FY20=114d FY21=93d FY22=240d FY23=293d FY24=373d FY25=193d Q2-26=116d -->
+        <!-- Scale 80-400d → y80-y10, 70px; y=80-((d-80)/320)*70 -->
+        <!-- FY20=114→72.6 FY21=93→75.4 FY22=240→47.8 FY23=293→40.2 FY24=373→28.4 FY25=193→54.4 Q2-26=116→70.9 -->
+        <div class="cb">
+          <div class="ct">Inventory days — severe overhang now clearing</div>
+          <div class="cs">FY20–FY25 annual · <svg width="17" height="8" viewBox="0 0 17 8" style="vertical-align:-1px;color:var(--na)"><line x1="0" y1="4" x2="10" y2="4" stroke="currentColor" stroke-width="1.3" stroke-dasharray="2.5,1.5"/><circle cx="13.5" cy="4" r="2.3" fill="#fff" stroke="currentColor" stroke-width="1.1"/></svg> Q1-26 and Q2-26</div>
+          <svg class="ch" viewBox="0 -9 210 99" preserveAspectRatio="none">
+            <line x1="0" y1="10" x2="210" y2="10" stroke="#f0ede8" stroke-width="0.4"/>
+            <text x="1" y="9" font-size="5" fill="#bbb" font-family="DM Mono">400d</text>
+            <line x1="0" y1="45" x2="210" y2="45" stroke="#f0ede8" stroke-width="0.4"/>
+            <text x="1" y="44" font-size="5" fill="#bbb" font-family="DM Mono">240d</text>
+            <line x1="0" y1="80" x2="210" y2="80" stroke="#f0ede8" stroke-width="0.4"/>
+            <text x="1" y="79" font-size="5" fill="#bbb" font-family="DM Mono">80d</text>
+            <polygon points="15,72.6 45,77.2 75,45.1 105,33.3 135,15.9 165,55.3 179.5,66.7 194,72.1 194,80 15,80" fill="rgba(107,33,168,.07)"/>
+            <polyline points="15,72.6 45,77.2 75,45.1 105,33.3 135,15.9 165,55.3" fill="none" stroke="var(--na)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            <polyline points="165,55.3 179.5,66.7 194,72.1" fill="none" stroke="var(--na)" stroke-width="1.4" stroke-dasharray="3,2" stroke-linecap="round"/>
+            <circle cx="15" cy="72.6" r="1.8" fill="var(--na)"/>
+            <circle cx="45" cy="77.2" r="1.8" fill="var(--na)"/>
+            <circle cx="75" cy="45.1" r="1.8" fill="var(--na)"/>
+            <circle cx="105" cy="33.3" r="1.8" fill="var(--na)"/>
+            <circle cx="135" cy="15.9" r="1.8" fill="var(--na)"/>
+            <circle cx="165" cy="55.3" r="1.8" fill="var(--na)"/>
+            <circle cx="179.5" cy="66.7" r="1.8" fill="#fff" stroke="var(--na)" stroke-width="1"/>
+            <circle cx="194" cy="72.1" r="1.8" fill="#fff" stroke="var(--na)" stroke-width="1"/>
+            <text x="135" y="11.9" font-size="5" font-weight="600" fill="var(--na)" font-family="DM Mono" text-anchor="middle">373d peak</text>
+            <line x1="179.5" y1="64.1" x2="179.5" y2="-1.6" stroke="var(--na)" stroke-width="0.45" stroke-dasharray="1,1"/>
+            <line x1="194" y1="69.5" x2="194" y2="-1.6" stroke="var(--na)" stroke-width="0.45" stroke-dasharray="1,1"/>
+            <text x="177.9" y="-3.4" font-size="4.4" font-weight="700" fill="var(--na)" font-family="DM Mono" text-anchor="end">Q1-26 141d</text>
+            <text x="209.5" y="-3.4" font-size="4.4" font-weight="700" fill="var(--na)" font-family="DM Mono" text-anchor="end">Q2-26 116d</text>
+            <text x="15" y="88" font-size="5.5" fill="#aaa" font-family="DM Mono" text-anchor="middle">FY20</text>
+            <text x="45" y="88" font-size="5.5" fill="#aaa" font-family="DM Mono" text-anchor="middle">FY21</text>
+            <text x="75" y="88" font-size="5.5" fill="#aaa" font-family="DM Mono" text-anchor="middle">FY22</text>
+            <text x="105" y="88" font-size="5.5" fill="#aaa" font-family="DM Mono" text-anchor="middle">FY23</text>
+            <text x="135" y="88" font-size="5.5" fill="#aaa" font-family="DM Mono" text-anchor="middle">FY24</text>
+            <text x="165" y="88" font-size="5.5" fill="#aaa" font-family="DM Mono" text-anchor="middle">FY25</text>
+            <text x="186.75" y="88" font-size="5.5" fill="var(--na)" font-family="DM Mono" text-anchor="middle">FY26</text>
+            </svg>
+          <div class="cn">DIO peaked at 373 days (FY2024) vs 93 days at FY2021 peak — one of the most severe inventory overhangs in memory. Now compressing sharply: 141 days in Q1-26, 116 days in Q2-26, as management confirmed "very low inventory level." As overhang clears, urgency to negotiate on volume diminishes.</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <div class="pf"><span>Semitrical · semitrical.ai</span><span>Nanya Technology</span></div>
+</div>
+
+<!-- ═══════════ NANYA PAGE 2 ═══════════ -->
+<div class="page">
+  <div class="ph na">
+    <div class="ph-top">
+      <div class="lgo"><svg class="lmark" width="20" height="20" viewBox="0 0 34 34" aria-hidden="true"><g stroke="#fff" stroke-width="2.6" stroke-linecap="round" fill="none"><circle cx="17" cy="17" r="8.5"/><line x1="17" y1="1.5" x2="17" y2="9"/><line x1="17" y1="25" x2="17" y2="32.5"/><line x1="1.5" y1="17" x2="9" y2="17"/><line x1="25" y1="17" x2="32.5" y2="17"/></g><circle cx="17" cy="17" r="2.2" fill="#fff"/></svg><div><div class="lt">Semitrical</div><span class="ls">Supplier Intelligence</span></div></div>
+      <span class="pn">Nanya Technology · 2 of 2 · Negotiation Intelligence</span>
+    </div>
+    <div class="ph-main">
+      <div>
+        <div class="ph-name">Nanya Technology</div>
+        <div class="ph-meta">NTCB · Specialty DRAM · DDR4 · DDR5 · LPDDR · October 2026</div>
+        <div class="ph-tag">At 79.5% gross margin and inventory at record lows, the pricing window that existed six months ago is nearly closed. The conversation has shifted to supply security.</div>
+      </div>
+      <div class="sc"><span class="scl">Financial pressure score</span><div class="scn">2.00<span style="font-size:13px;opacity:.4">/5</span></div><span class="scs">Low · focus on supply security now</span></div>
+    </div>
+  </div>
+  <div class="sb na"><span class="sbl">Leverage index</span><div class="sbt"><div class="sbf" style="width:40%"></div></div><span class="sbv">2.00 / 5.00 · Supply tightness through 2027+ · New fab 2028</span></div>
+
+  <div class="body">
+    <div>
+      <div class="sec">Negotiation posture</div>
+      <div class="two-col">
+        <div class="lc lc-now">
+          <div class="lcl">⏱ Leverage now</div>
+          <div class="lct">Score 2.00 — low. Traditional pricing leverage does not exist. Revenue has surged to a trailing twelve-month run-rate of ~$5.8B USD — nearly double the FY2021 peak of $3.1B — at 79.5% gross margin with net cash of NT$198B. Nanya has no financial motivation to offer pricing concessions. The only remaining negotiation lever is the LTA pricing structure, which reprices quarterly "according to market trend." Without explicit price floor provisions, buyers have no protection from continued ASP increases.</div>
+        </div>
+        <div class="lc lc-next">
+          <div class="lcl">→ Next 2+ years</div>
+          <div class="lct">Management does not expect the market to turn down in 2028, and expects supply tightness to persist for several more quarters. ASP "may continue to go higher." Q3 operational results guided to "continue to improve." New fab ramp 2028 (30K wafers/month) will add supply — but is still 18 months away. LTA pricing is "quarterly based" — no fixed price protection unless explicitly negotiated.</div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="ab">
+        <div class="abl">Procurement action — pricing leverage near-closed · focus on supply security</div>
+        <div class="abt"><strong>Pricing leverage is gone — this is now a supply security conversation.</strong> Nanya's trailing twelve-month revenue of ~$5.8B USD is nearly double their FY2021 peak. At 79.5% gross margin, NT$198B net cash, and management guiding further improvement, there is no financial pressure that creates a pricing concession. Do not enter this negotiation expecting to move ASPs down.<br><br><strong>What to do instead:</strong> (1) Request explicit price floor provisions in any LTA — Nanya prices quarterly "according to market trend" by default, meaning no automatic protection from continued ASP increases without an explicit contractual floor. (2) For 2028+ programmes, engage on new fab allocation now — four major customers participated in the NT$78.7B private placement and secured supply priority. Buyers outside that circle need to initiate allocation conversations proactively before capacity is committed. (3) Validate the DDR4/LPDDR4 node roadmap for your programme duration — Nanya is building 1C/1D/1E with EUV from 2028, confirm the node your programme needs is covered. (4) Address geographic concentration in your programme risk review — Taiwan single-source for a 10–15 year automotive programme is a board-level risk, not a procurement conversation.</div>
+      </div>
+    </div>
+
+    <div>
+      <div class="sec">What management said — Q2-26 earnings call</div>
+      <div class="qt na">
+        <div class="ql">Pricing outlook · Q2-26 earnings call</div>
+        <div class="qq">"In general, the pricing trend may continue to go higher. For those relatively short-term [agreements], the price may continue to improve in some way. The shorter one may be improving more."</div>
+        <div class="qa">Dr. Pei-Ing Lee, President · Q2-26 earnings call · Implication: Short-term and spot pricing heading higher. LTAs priced quarterly — no fixed protection without explicit negotiation of price floors.</div>
+      </div>
+      <div class="qt na">
+        <div class="ql">Supply and demand · Q2-26 earnings call</div>
+        <div class="qq">"Supply tightness is expected to persist over the next several quarters. Based on current market demand situation, we are not expecting that the market will be turning our way [i.e., turning down] in 2028."</div>
+        <div class="qa">Dr. Pei-Ing Lee, President · Q2-26 earnings call · Implication: Management sees the tight market extending well into 2027–2028. For programmes with near-term memory requirements, supply security is the priority.</div>
+      </div>
+    </div>
+
+    <div class="two-col">
+      <div>
+        <div class="sec">Design-in considerations</div>
+        <div style="display:flex;flex-direction:column;gap:7px;">
+          <div class="ic" style="background:var(--na-light);border:1px solid rgba(107,33,168,.2);">
+            <div style="font-size:8px;font-family:'DM Mono',monospace;color:var(--na);letter-spacing:.05em;text-transform:uppercase;margin-bottom:3px;">DDR4/LPDDR4 constrained</div>
+            <div style="font-size:10px;color:var(--ink2);line-height:1.55;">DDR4/LPDDR4 ~70% of revenue. "Customers cannot get sufficient supply from different suppliers" — Nanya focusing capacity here where supply is tightest. DDR5 only ~10% of revenue — capacity limited, not demand limited.</div>
+          </div>
+          <div class="ic" style="background:var(--na-light);border:1px solid rgba(107,33,168,.2);">
+            <div style="font-size:8px;font-family:'DM Mono',monospace;color:var(--na);letter-spacing:.05em;text-transform:uppercase;margin-bottom:3px;">New fab · 2028 ramp</div>
+            <div style="font-size:10px;color:var(--ink2);line-height:1.55;">30K wafers/month target (expandable to 45K). NT$16B total CapEx including EUV. 1C/1D/1E node development on schedule. Four major customers participated in NT$78.7B private placement and received supply agreement priority.</div>
+          </div>
+          <div class="ic" style="background:var(--amber-bg);border:1px solid #f0c060;border-left:3px solid #d97706;border-radius:0 5px 5px 0;">
+            <div style="font-size:8px;font-family:'DM Mono',monospace;color:var(--amber);letter-spacing:.05em;text-transform:uppercase;margin-bottom:3px;">⚠ Geographic concentration</div>
+            <div style="font-size:10px;color:var(--ink2);line-height:1.55;">Taiwan-based. For automotive programmes with 10–15 year supply requirements, geographic single-source risk warrants an explicit programme risk review — not just a procurement conversation.</div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="sec">Risk and resilience</div>
+        <div class="rr-g">
+          <div class="rr risk">
+            <div class="rrl">⚠ Risk</div>
+            <div class="rrt">Recovery is pure ASP — if DRAM pricing softens, margins compress immediately. Revenue still below FY2021 peak — volume not fully recovered. LTA pricing quarterly — no automatic protection from rising ASPs. Taiwan geographic concentration for long-duration programmes. Technology gap vs Micron and SK Hynix on advanced nodes.</div>
+          </div>
+          <div class="rr res">
+            <div class="rrl">✓ Resilience</div>
+            <div class="rrt">Net cash NT$198B — financially strongest position in Nanya's history. FY26 CapEx investing in future capacity — not exiting DRAM. Management sees sustained tight market through 2028. DDR4/LPDDR4 supply constrained industry-wide — Nanya has market position where it matters.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pf"><span>Semitrical · semitrical.ai</span><span>Nanya Technology</span></div>
+</div>
+<script src="https://app.semitrical.ai/t.js?v=5" data-headings=".sec" data-page="/supplier-leverage-report"></script>
+</body>
+</html>

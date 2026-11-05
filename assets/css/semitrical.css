@@ -25,9 +25,50 @@ nav {
 }
 .logo { font-size: 18px; font-weight: 700; letter-spacing: -0.02em; }
 .logo span { color: var(--gold); }
-.nav-links { display: flex; gap: 28px; margin-left: 48px; }
+.nav-links { display: flex; align-items: center; gap: 28px; margin-left: 48px; }
 .nav-links a { font-size: 13px; color: var(--ink-3); text-decoration: none; font-weight: 500; }
 .nav-links a:hover { color: var(--ink); }
+/* ── Product submenu ──────────────────────────────────────────────────────────────
+   OPENS ON CLICK, NOT HOVER. A hover menu does not exist on a phone, and a reader who does
+   not already know a thing is clickable will never hover it to find out. The caret is there
+   for the same reason -- it is the only part that says "there is more behind this". */
+.nav-group { position: relative; }
+.nav-sub-toggle {
+  font-family: inherit; font-size: 13px; font-weight: 500; color: var(--ink-3);
+  background: none; border: 0; padding: 6px 0; cursor: pointer;
+  display: inline-flex; align-items: center; gap: 6px;
+}
+.nav-sub-toggle:hover, .nav-sub-toggle[aria-expanded="true"] { color: var(--ink); }
+.nav-sub-toggle.is-current { color: var(--ink); font-weight: 600; }
+/* A chevron, not a filled triangle. At 14px a solid block reads as a bullet or a stray glyph;
+   two hairlines read as the control everyone already knows. Drawn with borders so it inherits
+   the text colour and needs no image. */
+.nav-sub-toggle .caret {
+  width: 6px; height: 6px; margin-top: -3px;
+  border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor;
+  transform: rotate(45deg); transition: transform .15s, margin-top .15s;
+}
+.nav-sub-toggle[aria-expanded="true"] .caret { transform: rotate(225deg); margin-top: 2px; }
+.nav-sub {
+  display: none; position: absolute; top: 100%; left: -14px; min-width: 212px; z-index: 40;
+  background: #fff; border: 1px solid var(--rule); border-radius: 8px; padding: 6px;
+  box-shadow: 0 10px 28px rgba(15, 17, 23, .10);
+}
+.nav-group.is-open .nav-sub { display: block; }
+.nav-sub a { display: block; padding: 9px 12px; border-radius: 6px; font-size: 13.5px; }
+.nav-sub a:hover { background: var(--surface, #f7f8fc); color: var(--ink); }
+.nav-sub a.is-current { color: var(--ink); font-weight: 600; }
+.nav-links .nav-sub a.is-current::after { content: none; }
+
+@media (max-width: 720px) {
+  /* No room to float a panel over a phone menu, so the submenu simply sits in the list,
+     indented, and the toggle stops being a toggle. */
+  .nav-sub { display: block; position: static; border: 0; box-shadow: none;
+             padding: 0 0 0 14px; min-width: 0; }
+  .nav-sub-toggle { pointer-events: none; }
+  .nav-sub-toggle .caret { display: none; }
+}
+
 .nav-cta { margin-left: auto; padding: 8px 20px; background: var(--ink); color: #fff; border: none; border-radius: 6px; font-size: 13px; font-weight: 600; cursor: pointer; font-family: var(--font); }
 .nav-cta:hover { background: #2d3142; }
 
@@ -43,6 +84,10 @@ nav {
 .hero-actions { display: flex; gap: 12px; align-items: center; }
 .btn-primary { padding: 12px 24px; background: var(--ink); color: #fff; border: none; border-radius: 6px; font-size: 14px; font-weight: 600; cursor: pointer; font-family: var(--font); }
 .btn-primary:hover { background: #2d3142; }
+/* A button that is an anchor still looks like a button. Every page was passing
+   style="text-decoration:none;display:inline-block" inline to get this, which only
+   works for as long as everyone remembers -- deal-desk.html did not. */
+a.btn-primary, a.btn-secondary, a.offer-cta { text-decoration: none; display: inline-block; }
 .btn-secondary { padding: 12px 24px; background: transparent; color: var(--ink); border: 1.5px solid var(--rule); border-radius: 6px; font-size: 14px; font-weight: 500; cursor: pointer; font-family: var(--font); }
 .btn-secondary:hover { border-color: var(--ink-3); }
 
@@ -141,7 +186,7 @@ nav {
 .markets-section .section-label { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-3); margin-bottom: 10px; }
 .markets-section h2 { font-size: 28px; font-weight: 700; margin-bottom: 8px; }
 .markets-section .section-sub { font-size: 14px; color: var(--ink-3); margin-bottom: 32px; max-width: 600px; }
-.markets-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+.markets-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; }
 .market-card {
   border: 1px solid var(--rule); border-radius: 10px; padding: 20px;
   transition: border-color 0.2s;
@@ -248,6 +293,9 @@ a.plain:hover { border-color: var(--ink-3); }
   .hero { padding: 48px 20px 36px; }
   .hero h1 { font-size: 30px; }
   .section, .shot-wrap, .signal-section, .screenshot-section { padding-left: 20px; padding-right: 20px; }
+  .section.alt { padding-left: 0; padding-right: 0; }
+  .section.alt > .inner { padding-left: 20px; padding-right: 20px; }
+  .site-foot > div { padding-left: 20px; padding-right: 20px; }
 }
 
 
@@ -267,6 +315,12 @@ footer .logo img { height: 26px; }
   content: ""; position: absolute; left: 0; right: 0; bottom: -17px;
   height: 2px; background: var(--gold);
 }
+
+/* The current-page underline belongs to the TOP row only. Inside the dropdown it drew a bar
+   straight through the word, which reads as a strikethrough -- the current item looked
+   disabled. Placed after the rule it cancels, and one class more specific, so neither order
+   nor a later edit can flip it back. */
+.nav-links .nav-sub a.is-current::after { content: none; }
 
 /* ── LAYOUT: centre the page and use the width ─────────────────────────────────────────
    Sreeram's draft was authored as a single left column with a fixed 48px gutter, so on a
@@ -297,8 +351,21 @@ footer > div {
   width: 100%;
 }
 
-/* Full-bleed bands keep their background edge-to-edge; only the content inside centres. */
-.section.alt { max-width: none; }
+/* Full-bleed bands keep their background edge-to-edge; only the content inside centres.
+
+   And the band's own side padding has to come OFF, onto .inner, or the two kinds of section
+   do not line up. A plain .section is capped at --maxw AND carries 48px of padding, so its
+   text starts 48px inside that box; a band is full-bleed with .inner centred at --maxw, so
+   its text starts exactly on the box edge. That is a 48px step at every boundary between a
+   white section and a grey one -- visible as soon as two sit next to each other, which on the
+   home page they do five times. Padding moves inside, both start in the same place. */
+.section.alt { max-width: none; padding-left: 0; padding-right: 0; }
+.section.alt > .inner { padding-left: 48px; padding-right: 48px; }
+
+/* The footer had its padding inline on every page, which kept it out of the shared centring
+   and left it 48px to the left of every section above it. Same shape of bug as the bands. */
+.site-foot { border-top: 1px solid var(--rule); font-size: 12px; color: var(--ink-3); padding: 36px 0; }
+.site-foot > div { padding-left: 48px; padding-right: 48px; }
 .signal-section { max-width: none; }
 .signal-section > * { max-width: var(--maxw); margin-left: auto; margin-right: auto; }
 
@@ -354,6 +421,7 @@ body { font-size: 15.5px; line-height: 1.7; }
 .shot-caption   { font-size: 12.5px; }
 
 .nav-links a    { font-size: 14px; }
+.nav-links .nav-sub-toggle { font-size: 14px; }   /* the bump above is anchors-only; Product is a button */
 .nav-cta        { font-size: 14px; padding: 9px 22px; }
 .btn-primary,
 .btn-secondary  { font-size: 15px; padding: 13px 26px; }
@@ -460,9 +528,10 @@ footer          { font-size: 13.5px; }
 
   .has-js-nav .nav-links {
     order: 4; flex-basis: 100%;
-    display: none; flex-direction: column; gap: 0;
+    display: none; flex-direction: column; align-items: stretch; gap: 0;
     margin: 0; padding: 6px 0 10px;
   }
+  .nav-links .nav-sub-toggle { font-size: 15.5px; padding: 12px 2px; }
   .has-js-nav .nav-links.is-open { display: flex; }
   .nav-links a {
     padding: 12px 2px; font-size: 15.5px; border-bottom: 1px solid var(--rule);
@@ -537,3 +606,287 @@ footer .logo img { height: 40px; }
 @media (max-width: 420px) {
   .logo img { height: 38px; }
 }
+
+/* Deal desks. A desk is an offer, not a case study, so these sit a step above .case: its own
+   heading, the evidence in two paragraphs, and its own call to action under a rule. */
+.desks { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; align-items: start; }
+.desk { background: var(--white); border: 1px solid var(--rule); border-radius: 12px; padding: 30px; }
+.desk-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 10px; }
+.desk-head h2 { font-size: 24px; font-weight: 700; letter-spacing: -0.015em; margin: 0; }
+.desk-open, .tag-live {
+  font-family: var(--mono); font-size: 10.5px; font-weight: 500; letter-spacing: 0.08em;
+  text-transform: uppercase; color: #1B6B4A; background: #E6F4EC; border-radius: 4px; padding: 3px 8px;
+}
+.desk p { font-size: 14.5px; line-height: 1.75; color: var(--ink-2); margin: 14px 0 0; }
+.desk-cta { margin-top: 22px; border-top: 1px solid var(--rule); padding-top: 20px; }
+.desk-free { font-family: var(--mono); font-size: 11px; color: var(--ink-3); margin: 12px 0 0; }
+/* A technology we cannot evidence yet: one row, the ask on the right, wrapping on a phone. */
+.desk-next {
+  background: var(--white); border: 1px solid var(--rule); border-radius: 12px; padding: 30px;
+  display: flex; flex-wrap: wrap; gap: 26px; align-items: center;
+}
+.desk-next-text { flex: 999 1 420px; min-width: 0; }
+.desk-next h2 { font-size: 21px; font-weight: 700; margin: 0 0 8px; }
+.desk-next p { font-size: 14.5px; line-height: 1.75; color: var(--ink-2); margin: 0; max-width: 70ch; }
+
+/* The three offers, on dark. Supplier Intelligence is ringed and not merely outlined: the
+   three are not equal choices -- it is the product, and the other two are a way in and a way
+   up. */
+.section.alt.offers-section { background: var(--ink); color: #fff; border-top: 0; border-bottom: 0; }
+.section.alt.offers-section .section-label { color: var(--gold-soft); }
+.section.alt.offers-section h2 { color: #fff; }
+.section.alt.offers-section .section-sub { color: #C9D1D9; }
+.offers { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; align-items: stretch; }
+.offer {
+  position: relative; border: 1px solid #3a3f49; border-radius: 12px; padding: 30px;
+  display: flex; flex-direction: column; gap: 14px;
+}
+.offer.is-lead {
+  border: 2px solid var(--gold); background: rgba(217,119,6,0.12);
+  box-shadow: 0 0 0 5px rgba(217,119,6,0.10);
+}
+.offer-ribbon {
+  position: absolute; top: -12px; left: 24px; font-family: var(--mono); font-size: 10.5px;
+  font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; border-radius: 999px;
+  padding: 4px 12px; white-space: nowrap; background: #3a3f49; color: #e8ebf2;
+}
+.offer-ribbon.is-gold { background: var(--gold); color: #fff; }
+.offer-ribbon.is-gold-soft { background: var(--gold-soft); color: var(--ink); }
+.offer-name { font-size: 24px; font-weight: 700; letter-spacing: -0.015em; }
+.offer-price { font-family: var(--mono); font-size: 12.5px; color: var(--ink-4); }
+.offer.is-lead .offer-price { color: var(--gold-soft); }
+.offer-body { font-size: 14px; line-height: 1.7; color: #C9D1D9; flex-grow: 1; }
+.offer-cta {
+  padding: 11px 20px; border-radius: 6px; font-size: 14px; font-weight: 600;
+  text-decoration: none; text-align: center; color: #fff; border: 1px solid var(--ink-4);
+}
+.offer-cta.is-gold { background: var(--gold); border-color: var(--gold); }
+.offer-cta.is-white { background: #fff; color: var(--ink); border-color: #fff; }
+
+/* Guardrails: three plain columns and no cards. These are limits we accept, not features. */
+.guardrails { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 26px; }
+.guardrails h3 { font-size: 16px; font-weight: 600; margin-bottom: 8px; }
+.guardrails p { font-size: 13.5px; line-height: 1.75; color: var(--ink-3); }
+
+/* The trace line under the hero buttons: the claim the whole product rests on. */
+.hero-trace { font-family: var(--mono); font-size: 11.5px; color: var(--ink-4); margin-top: 22px; }
+
+/* Leverage Reports. The whole card is the anchor, so the hover state belongs to the card and
+   the footer strip carries the call to action -- no button inside a link. */
+.report-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(330px, 1fr)); gap: 20px; align-items: stretch; }
+.report-card {
+  display: flex; flex-direction: column; border: 1px solid var(--rule); border-radius: 12px;
+  overflow: hidden; background: var(--white); text-decoration: none; color: inherit;
+  transition: border-color 0.2s;
+}
+.report-card:hover { border-color: var(--gold); }
+.report-card-body { padding: 26px 26px 22px; display: flex; flex-direction: column; gap: 11px; flex-grow: 1; }
+.report-card-body h3 { font-size: 21px; font-weight: 700; letter-spacing: -0.015em; line-height: 1.25; }
+.report-meta { font-family: var(--mono); font-size: 11px; color: var(--ink-4); overflow-wrap: anywhere; }
+.report-blurb { font-size: 14.5px; line-height: 1.75; color: var(--ink-2); flex-grow: 1; }
+/* No button inside the tile. The whole card is the anchor, so a button is a second target
+   for the same action and the gap beside it becomes the one place a click does nothing. The
+   title carries the arrow instead, and the border answers the hover. */
+.report-card-body h3::after { content: " →"; color: var(--gold); }
+
+/* Shorter pieces: one finding each, so a flat list and no card furniture. */
+.posts { display: flex; flex-direction: column; gap: 12px; }
+.post {
+  display: block; border: 1px solid var(--rule); border-radius: 10px; padding: 20px 22px;
+  text-decoration: none; color: inherit; transition: border-color 0.2s;
+}
+.post:hover { border-color: var(--gold); }
+.post-meta { font-family: var(--mono); font-size: 11px; color: var(--ink-4); margin-bottom: 7px; }
+.post h3 { font-size: 17px; font-weight: 600; letter-spacing: -0.01em; }
+.post p { font-size: 14px; line-height: 1.7; color: var(--ink-3); margin-top: 8px; max-width: 78ch; }
+
+/* The ask, dashed because it is not itself a thing to read. */
+.report-ask { border: 1px dashed var(--rule); border-radius: 12px; padding: 26px; margin-top: 16px; }
+.report-ask h3 { font-size: 18px; font-weight: 700; margin-bottom: 8px; }
+.report-ask p { font-size: 14.5px; line-height: 1.75; color: var(--ink-2); margin-bottom: 16px; max-width: 72ch; }
+
+/* ── Supplier Intelligence ─────────────────────────────────────────────────────────── */
+
+/* The rotation. One line: what matters to a returning reader is whose turn is next. */
+.rotation {
+  font-family: var(--mono); font-size: 12.5px; color: var(--ink-3);
+  display: flex; flex-wrap: wrap; gap: 6px 14px; align-items: baseline;
+}
+.rot-now { color: var(--gold); font-weight: 500; }
+.rot-name { color: var(--ink); font-weight: 500; }
+.rot-next { color: var(--ink-2); }
+.rot-sep { color: #c9cedb; }
+.rot-note { color: var(--ink-4); }
+
+/* The free report, as one object. It is the thing we give away, so it has to read as a
+   document with a beginning and an end -- not as more page. */
+.report { border: 1px solid #c9cedb; border-radius: 14px; overflow: hidden; }
+.report-head {
+  background: var(--ink); color: #fff; padding: 22px 30px;
+  display: flex; flex-wrap: wrap; align-items: baseline; gap: 10px 16px;
+}
+.report-kind { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.75; }
+.report-name { font-size: 26px; font-weight: 600; letter-spacing: -0.015em; }
+.report-ticker { font-family: var(--mono); font-size: 13px; opacity: 0.8; }
+.report-asat { font-family: var(--mono); font-size: 11.5px; opacity: 0.75; margin-left: auto; }
+.report-part { padding: 30px; }
+.report-part.is-filed { background: var(--surface); border-top: 1px solid var(--rule); }
+.report-part h3 { font-size: 23px; font-weight: 700; letter-spacing: -0.015em; margin-bottom: 6px; }
+.report-lede { font-size: 14px; line-height: 1.7; color: var(--ink-3); margin-bottom: 20px; max-width: 70ch; }
+.report-foot {
+  border-top: 1px solid var(--rule); padding: 16px 30px;
+  font-family: var(--mono); font-size: 11.5px; color: var(--ink-4); line-height: 1.6;
+}
+
+/* What management said. The border carries the verdict, so the card is readable before the
+   words are. */
+.said { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+.said-card { border: 1px solid var(--rule); border-radius: 12px; padding: 26px; background: var(--white); }
+.said-card h4 { font-size: 21px; font-weight: 700; }
+/* The border and the chip carry the verdict, which comes from the API per supplier -- tight
+   capacity is bad for the buyer and spare capacity is good, so neither colour is the default. */
+.said-card.is-against { border-color: #e8c9c9; }
+.said-card.is-favour { border-color: #c6e3d2; }
+.said-verdict {
+  display: inline-block; margin-top: 10px; font-size: 16px; font-weight: 600;
+  border-radius: 999px; padding: 5px 13px;
+}
+.is-against .said-verdict { color: #9B2C2C; background: #FBECEC; }
+.is-favour .said-verdict { color: #1B6B4A; background: #E6F4EC; }
+.said.is-empty { display: block; }
+.said-absent {
+  font-size: 14px; line-height: 1.75; color: var(--ink-3); max-width: 76ch;
+  border-left: 3px solid var(--rule); padding-left: 16px;
+}
+.said-meta { font-family: var(--mono); font-size: 11.5px; color: var(--ink-3); margin-top: 8px; }
+.said-means { font-size: 14px; line-height: 1.7; color: var(--ink-2); margin-top: 14px; }
+.said-quote { margin-top: 16px; border-left: 3px solid var(--rule); padding-left: 16px; }
+.said-quote p { font-size: 14.5px; line-height: 1.65; }
+.said-quote footer { font-family: var(--mono); font-size: 11px; color: var(--ink-4); margin-top: 8px; }
+
+/* As they filed it. Six bars, the last one coloured, because the shape IS the argument. */
+.charts { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+.chart { border: 1px solid var(--rule); border-radius: 10px; padding: 22px; background: var(--white); }
+.chart-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
+.chart-head h4 { font-size: 16px; font-weight: 600; }
+.chart-latest { font-family: var(--mono); font-size: 12px; color: var(--ink-3); }
+.chart-note { font-size: 12.5px; line-height: 1.6; color: var(--ink-3); margin-top: 6px; }
+.bars { display: flex; align-items: flex-end; gap: 10px; height: 130px; margin-top: 18px; }
+.bar-col { flex: 1 1 0; min-width: 0; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; height: 100%; gap: 6px; }
+.bar-val { font-family: var(--mono); font-size: 10.5px; color: var(--ink-3); }
+.bar { width: 100%; border-radius: 4px 4px 0 0; background: #c9cedb; }
+.bar-years { display: flex; gap: 10px; margin-top: 8px; border-top: 1px solid var(--rule); padding-top: 8px; }
+.bar-years span { flex: 1 1 0; min-width: 0; text-align: center; font-family: var(--mono); font-size: 10.5px; color: var(--ink-4); }
+
+/* Pro */
+.pro { border: 2px solid var(--gold); border-radius: 14px; overflow: hidden; }
+.pro-head { background: rgba(217,119,6,0.09); padding: 26px 30px; }
+.pro-chip {
+  font-family: var(--mono); font-size: 13px; font-weight: 500; letter-spacing: 0.12em;
+  text-transform: uppercase; color: #fff; background: var(--gold); display: inline-block;
+  border-radius: 4px; padding: 5px 11px; margin-bottom: 12px; text-decoration: none;
+}
+.pro-head h2 { font-size: 27px; font-weight: 700; letter-spacing: -0.015em; margin-bottom: 8px; }
+.pro-head > p { font-size: 14.5px; line-height: 1.75; color: var(--ink-2); margin-bottom: 18px; max-width: 72ch; }
+.pro-foot {
+  border-top: 1px solid var(--rule); padding: 24px 30px;
+  display: flex; flex-wrap: wrap; gap: 16px; align-items: center;
+}
+.pro-foot p { flex: 999 1 320px; min-width: 0; font-size: 14.5px; line-height: 1.7; color: var(--ink-2); }
+
+/* The fold. A summary styled as the page's own outline button; the marker is ours so it can
+   point the right way in both states. */
+.cmp summary {
+  display: inline-flex; align-items: center; gap: 9px; cursor: pointer; list-style: none;
+  font-size: 14px; font-weight: 600; color: var(--ink); background: var(--white);
+  border: 1px solid var(--gold); border-radius: 6px; padding: 10px 18px;
+}
+.cmp summary::-webkit-details-marker { display: none; }
+.cmp summary::after {
+  content: ""; width: 6px; height: 6px; margin-top: -3px;
+  border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor;
+  transform: rotate(45deg);
+}
+.cmp[open] summary::after { transform: rotate(225deg); margin-top: 2px; }
+.cmp[open] summary { margin-bottom: 18px; }
+.cmp-table { width: 100%; border-collapse: collapse; font-size: 14px; background: var(--white); border: 1px solid var(--rule); border-radius: 10px; }
+.cmp-table thead tr { background: var(--surface); }
+.cmp-table th[scope="col"] {
+  text-align: left; font-size: 13px; font-weight: 600; color: var(--ink-3);
+  padding: 13px 20px; border-bottom: 1px solid var(--rule);
+}
+.cmp-table th.cmp-col { width: 110px; text-align: center; padding: 13px 12px; border-left: 1px solid var(--rule); font-family: var(--mono); font-size: 12px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; }
+.cmp-table th.cmp-col.is-pro { background: rgba(217,119,6,0.07); color: #8a5a10; }
+.cmp-table th[scope="row"] { text-align: left; font-weight: 400; color: var(--ink-2); padding: 12px 20px; border-top: 1px solid var(--rule); line-height: 1.5; }
+.cmp-mark { text-align: center; padding: 12px; border-top: 1px solid var(--rule); border-left: 1px solid var(--rule); font-size: 16px; color: var(--ink-2); }
+.cmp-text { text-align: center; padding: 12px; border-top: 1px solid var(--rule); border-left: 1px solid var(--rule); font-size: 12.5px; color: var(--ink-3); }
+
+/* The trailing bar is the same measurement over a different window, so it is marked rather
+   than drawn as a seventh year. */
+.bar.is-trailing { background: var(--gold); }
+.bar-growth { display: block; color: var(--ink-4); font-size: 9.5px; margin-top: 2px; }
+
+
+/* ── The Pro picker ─────────────────────────────────────────────────────────────────── */
+.pick-group { margin-bottom: 26px; }
+.pick-group h3 { font-size: 19px; font-weight: 700; letter-spacing: -0.01em; margin-bottom: 14px; }
+.pick-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 10px; }
+.pick-item {
+  position: relative; display: flex; gap: 12px; align-items: flex-start; padding: 15px 17px;
+  border: 1px solid var(--rule); border-radius: 10px; background: var(--white); cursor: pointer;
+}
+.pick-item.is-on { border-color: var(--gold); background: rgba(217,119,6,0.06); }
+/* The real checkbox stays, one pixel and invisible, so the label, the keyboard and a screen
+   reader all keep working -- the browser's own box never matched the card it sat on. */
+.pick-cb { position: absolute; opacity: 0; width: 1px; height: 1px; }
+.pick-tick {
+  flex: 0 0 auto; width: 20px; height: 20px; border-radius: 6px; margin-top: 1px;
+  border: 1px solid #c9cedb; background: var(--white);
+}
+.pick-item.is-on .pick-tick { border-color: var(--gold); background: var(--gold); }
+.pick-item.is-on .pick-tick::after {
+  content: "✓"; color: #fff; font-size: 13px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; height: 100%;
+}
+.pick-cb:focus-visible + .pick-tick { outline: 2px solid var(--gold); outline-offset: 2px; }
+.pick-text { flex: 1 1 auto; min-width: 0; }
+.pick-name { display: block; font-size: 15.5px; font-weight: 600; }
+.pick-ticker { display: block; font-family: var(--mono); font-size: 11.5px; margin-top: 3px; color: var(--ink-3); }
+.pick-total { font-weight: 700; letter-spacing: -0.02em; font-size: 38px; margin-top: 12px; }
+.pick-total.is-empty { font-size: 23px; color: var(--ink-3); }
+.pick-chips { margin-top: 18px; border-top: 1px solid var(--rule); padding-top: 16px; display: flex; flex-wrap: wrap; gap: 7px; }
+.pick-chip { font-family: var(--mono); font-size: 12px; background: var(--white); border: 1px solid var(--rule); border-radius: 999px; padding: 5px 11px; }
+.pick-cta { width: 100%; margin-top: 12px; }
+.pick-cta:disabled { background: var(--rule); color: var(--ink-4); cursor: not-allowed; }
+
+/* The picker's layout: the list takes the width it needs and the panel follows it down, then
+   stacks under it on a phone. Sticky only where there is room to be sticky. */
+.pick-layout { display: flex; flex-wrap: wrap; gap: 28px; align-items: flex-start; }
+.pick-main { flex: 999 1 560px; min-width: 0; }
+.pick-side { flex: 1 1 320px; min-width: 0; }
+@media (min-width: 960px) { .pick-side { position: sticky; top: 90px; } }
+.pick-panel { border: 1px solid var(--rule); border-radius: 12px; padding: 26px; background: var(--surface); }
+.pick-label { font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-3); }
+.pick-count { font-size: 13.5px; color: var(--ink-3); margin-top: 4px; }
+.pick-ask { margin-top: 20px; border-top: 1px solid var(--rule); padding-top: 18px; }
+.pick-ask label { display: block; font-size: 13.5px; font-weight: 600; margin-bottom: 7px; }
+.pick-ask input[type="email"] {
+  width: 100%; font-family: inherit; font-size: 14.5px; padding: 11px 13px;
+  border: 1px solid var(--rule); border-radius: 6px; background: var(--white);
+}
+.pick-note { font-size: 12px; line-height: 1.6; color: var(--ink-4); margin-top: 12px; }
+.pick-err { font-size: 13px; line-height: 1.6; color: #9B2C2C; margin-top: 10px; }
+/* A honeypot, not a hidden field: `display:none` is what a bot checks for. */
+.pick-gotcha { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+.pick-first { font-family: var(--mono); font-size: 11.5px; color: var(--ink-4); margin-top: 16px; }
+.pick-missing { border: 1px dashed var(--rule); border-radius: 10px; padding: 20px; }
+.pick-missing label { display: block; font-size: 14.5px; font-weight: 600; margin-bottom: 6px; }
+.pick-missing p { font-size: 13px; line-height: 1.65; color: var(--ink-3); margin-bottom: 12px; max-width: 62ch; }
+.pick-missing input {
+  width: 100%; max-width: 380px; font-family: inherit; font-size: 14.5px; padding: 11px 14px;
+  border: 1px solid var(--rule); border-radius: 6px;
+}
+.pick-done { border: 1px solid var(--rule); border-radius: 12px; padding: 30px; background: var(--surface); }
+.pick-done h2 { font-size: 24px; font-weight: 700; margin-bottom: 10px; }
+.pick-done p { font-size: 14.5px; line-height: 1.75; color: var(--ink-2); max-width: 66ch; }
+.pick-coverage { font-size: 12.5px; line-height: 1.7; color: var(--ink-4); margin-top: 24px; max-width: 80ch; }

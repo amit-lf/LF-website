@@ -25,19 +25,18 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/semitrical.css">
+<link rel="stylesheet" href="assets/css/semitrical.css?v=20261105">
 </head>
 <body>
 
 <nav>
-  <a class="logo" href="/" aria-label="Semitrical home"><img src="assets/img/semitrical-logo.png" alt="Semitrical — removing asymmetry from chip deals" height="34"></a>
+  <a class="logo" href="/" aria-label="Semitrical home"><img src="assets/img/semitrical-logo.png" alt="Semitrical &mdash; removing asymmetry from chip deals" height="34"></a>
   <div class="nav-links" id="nav-links">
     <a href="/">Platform</a>
-    <a href="markets.html">Markets</a>
-    <a href="evidence.html">Evidence</a>
-    <a href="about.html">About</a>
+    <a href="supplier-intelligence.html">Supplier Intelligence</a>
+    <a href="deal-desk.html">Deal Desk</a>
+    <a href="reports.html">Leverage Reports</a>
   </div>
-  <a class="nav-cta" href="contact.html" style="text-decoration:none;display:inline-block">Contact us</a>
   <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Menu"><span></span><span></span><span></span></button>
 </nav>
 
@@ -46,10 +45,11 @@
   <!-- Both halves of the trade are in the headline on purpose. "Send a list of your suppliers"
        never said who sends and who receives, so it inverted the moment it left the page — read
        in our own inbox it looked like someone asking US for a list. "Get back" fixes that. -->
-  <h1>Send names. Get back <em>what their filings say.</em></h1>
+  <h1>Tell us what you are buying.</h1>
   <p class="hero-sub">
-    No contract and no NDA required to start. Nothing confidential — just the names of the
-    companies you buy from.
+    Name the suppliers, the device, or the date you need an answer by. We will say plainly
+    whether the filings can carry it before anyone pays anything. No contract and no NDA to
+    start, and nothing confidential.
   </p>
 </header>
 
@@ -79,6 +79,15 @@
              asked - and it decides whether any of this applies to them. "Not buying" is a real
              option on purpose: someone researching says so in one click and neither side spends
              a call finding out. -->
+        <label for="need">What do you need <span class="req" aria-hidden="true">*</span></label>
+        <select id="need" name="need" required>
+          <option value="">Please choose&hellip;</option>
+          <option>Cover my suppliers</option>
+          <option>DRAM deal desk</option>
+          <option>Silicon carbide deal desk</option>
+          <option>Something else</option>
+        </select>
+
         <label for="motion">How do you buy chips <span class="req" aria-hidden="true">*</span></label>
         <select id="motion" name="motion" required>
           <option value="">Please choose…</option>
@@ -137,6 +146,12 @@
         <li>You get back what their own accounts say about where they stand — and where the
           answer is “this cannot be seen”, we say that instead of guessing.</li>
       </ol>
+      <h3 style="margin-top:22px">Before you write</h3>
+      <p class="form-note">
+        One supplier a week is free to read with no account.
+        <a href="supplier-intelligence.html">See this week&rsquo;s</a> and judge the data for
+        yourself first. It is the filed half; Pro adds the reading on top.
+      </p>
       <p class="form-note" style="margin-top:18px">
         Prefer email? Write to
         <a class="plain" href="mailto:contact@semitrical.ai">contact@semitrical.ai</a>.
@@ -145,7 +160,7 @@
   </div>
 </section>
 
-<footer style="padding:36px 48px;border-top:1px solid var(--rule);color:var(--ink-3)">
+<footer class="site-foot">
   <div style="max-width:1100px;margin:0 auto">
     <a class="logo" href="/" aria-label="Semitrical home"><img src="assets/img/semitrical-logo.png" alt="Semitrical" height="26" style="opacity:.9"></a>
     <p style="margin-top:10px;line-height:1.7">
@@ -154,16 +169,21 @@
       investment or professional advice.
     </p>
     <p style="margin-top:10px">
-      <a class="plain" href="/">Platform</a> ·
-      <a class="plain" href="markets.html">Markets</a> ·
-      <a class="plain" href="evidence.html">Evidence</a> ·
-      <a class="plain" href="about.html">About</a> ·
-      <a class="plain" href="mailto:contact@semitrical.ai">contact@semitrical.ai</a>
+      <a class="plain" href="/">Platform</a> &middot;
+      <a class="plain" href="supplier-intelligence.html">Supplier Intelligence</a> &middot;
+      <a class="plain" href="deal-desk.html">Deal Desk</a> &middot;
+      <a class="plain" href="reports.html">Leverage Reports</a>
+    </p>
+    <p style="margin-top:8px">
+      <a class="plain" href="about.html">About</a> &middot;
+      <a class="plain" href="/privacy.html">Privacy</a> &middot;
+      <a class="plain" href="mailto:contact@semitrical.ai">contact@semitrical.ai</a> &middot;
+      <a class="plain" href="https://www.linkedin.com/company/semitrical-ai" style="display:inline-flex;align-items:center;gap:5px"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="vertical-align:-2px"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.63-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zm1.78 13.02H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg> LinkedIn</a>
     </p>
   </div>
 </footer>
 
-<script src="assets/js/forms.js"></script>
+<script src="assets/js/forms.js?v=20261105"></script>
 <script>
 // Posted over fetch so the page never navigates away to Formspree's branded thank-you.
 //
@@ -184,6 +204,7 @@
     var name = f.name.value.trim(), email = f.email.value.trim();
     var company = f.company.value.trim();
     var motion = f.motion.value.trim();
+    var need = f.need ? f.need.value.trim() : '';
     if (!name || !email || email.indexOf('@') < 1 || !company || !motion) {
       err.hidden = false; return;
     }
@@ -201,7 +222,8 @@
     // Company and buying motion in the subject, so a non-buyer is visible in the inbox
     // without opening the message.
     data.append('_subject', 'Semitrical enquiry'
-                + (co ? ' — ' + co : '') + (motion ? ' — ' + motion : ''));
+                + (co ? ' — ' + co : '') + (need ? ' — ' + need : '')
+                + (motion ? ' — ' + motion : ''));
     window.semitricalSend(data, { source: 'contact' })
       .then(function () {
         f.hidden = true;
@@ -217,7 +239,7 @@
 })();
 </script>
 
-<script src="assets/js/nav.js" defer></script>
+<script src="assets/js/nav.js?v=20261105" defer></script>
 <script src="https://app.semitrical.ai/t.js?v=5" data-anon data-page="/contact.html"></script>
 </body>
 </html>
