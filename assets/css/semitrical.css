@@ -665,11 +665,15 @@ footer .logo img { height: 40px; }
 .report-meta { font-family: var(--mono); font-size: 11px; color: var(--ink-4); overflow-wrap: anywhere; }
 .report-blurb { font-size: 14.5px; line-height: 1.75; color: var(--ink-2); flex-grow: 1; }
 .report-card-foot {
-  border-top: 1px solid var(--rule); background: var(--surface); padding: 15px 26px;
+  border-top: 1px solid var(--rule); background: var(--surface); padding: 18px 26px;
   display: flex; align-items: center; justify-content: space-between; gap: 12px;
-  font-size: 14.5px; font-weight: 600; color: var(--ink);
 }
-.report-card-foot span:last-child { font-size: 17px; color: var(--gold); line-height: 1; }
+.fake-btn {
+  display: inline-block; padding: 12px 24px; background: var(--ink); color: #fff;
+  border-radius: 6px; font-size: 14px; font-weight: 600;
+}
+.report-card:hover .fake-btn { background: #2d3142; }
+.report-card-arrow { font-size: 17px; color: var(--gold); line-height: 1; }
 
 /* Shorter pieces: one finding each, so a flat list and no card furniture. */
 .posts { display: flex; flex-direction: column; gap: 12px; }
