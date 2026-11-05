@@ -1,0 +1,438 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>SiC Deal Brief</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap">
+<style>
+/* Buyer view: answers, not the model. Three layers: the answer, why, the proof (evidence cards on demand). */
+:root{
+  --bg:#F4F5F1; --surface:#FFFFFF; --sunk:#ECEEE8; --ink:#1A211D; --muted:#5B655F; --line:#D5D9D1;
+  --accent:#A35A16; --accent-ink:#FFFFFF; --accent-soft:#F6E7D6;
+  --buyer:#1D7466; --buyer-soft:#DCEEE9; --supplier:#B03C2B; --supplier-soft:#F6DFDA; --mixed:#5C6B7A; --mixed-soft:#E3E7EB;
+  --f-display:"DM Sans",-apple-system,"Segoe UI",Arial,sans-serif;
+  --f-body:"DM Sans",-apple-system,"Segoe UI",Arial,sans-serif;
+  --f-mono:"DM Mono",ui-monospace,Menlo,Consolas,monospace;
+  --r:6px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#141916; --surface:#1C221F; --sunk:#232A26; --ink:#E7EAE5; --muted:#A1AAA4; --line:#333C37;
+  --accent:#E09A55; --accent-ink:#1A120A; --accent-soft:#3A2A1A;
+  --buyer:#5CC2AF; --buyer-soft:#173530; --supplier:#EE8A79; --supplier-soft:#3E211C; --mixed:#A3B2C2; --mixed-soft:#262E36; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#141916; --surface:#1C221F; --sunk:#232A26; --ink:#E7EAE5; --muted:#A1AAA4; --line:#333C37;
+  --accent:#E09A55; --accent-ink:#1A120A; --accent-soft:#3A2A1A;
+  --buyer:#5CC2AF; --buyer-soft:#173530; --supplier:#EE8A79; --supplier-soft:#3E211C; --mixed:#A3B2C2; --mixed-soft:#262E36; color-scheme:dark}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:15.5px;line-height:1.55;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:20px 48px}
+.wrap{max-width:880px;margin:0 auto;display:flex;flex-direction:column;gap:18px}
+h1,h2,h3{font-family:var(--f-display);text-wrap:balance;margin:0}
+h1{font-size:30px;font-weight:700;line-height:1.1}
+h2{font-size:20px;font-weight:600}
+h3{font-size:16px;font-weight:600}
+p{margin:0}
+ul,ol{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:8px}
+.eyebrow{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.muted{color:var(--muted)} .small{font-size:13.5px}
+.mono{font-family:var(--f-mono);font-variant-numeric:tabular-nums}
+button,input,select,textarea{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.hex{display:inline-block;width:14px;height:14px;background:var(--accent);clip-path:polygon(25% 5%,75% 5%,100% 50%,75% 95%,25% 95%,0 50%);vertical-align:-1px;margin-right:8px}
+header.top{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px 20px;align-items:flex-end}
+.byline{color:var(--muted);font-size:13.5px;margin-top:6px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:18px;display:flex;flex-direction:column;gap:12px}
+.btn{border:1px solid var(--line);background:var(--surface);border-radius:var(--r);padding:8px 14px;cursor:pointer;font-weight:500}
+.btn:hover{border-color:var(--ink)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink);font-weight:600}
+.btn[disabled]{opacity:.55;cursor:default}
+.pill{display:inline-block;font-size:12px;font-weight:600;padding:2px 9px;border-radius:999px;white-space:nowrap}
+.pill.buyer{background:var(--buyer-soft);color:var(--buyer)} .pill.supplier{background:var(--supplier-soft);color:var(--supplier)}
+.pill.mixed{background:var(--mixed-soft);color:var(--mixed)} .pill.accent{background:var(--accent-soft);color:var(--accent)}
+nav.tabs{display:flex;gap:4px;border-bottom:1px solid var(--line);overflow-x:auto}
+nav.tabs button{background:none;border:0;border-bottom:2px solid transparent;padding:10px 14px;font-family:var(--f-display);font-weight:600;font-size:15.5px;color:var(--muted);cursor:pointer;white-space:nowrap}
+nav.tabs button[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--accent)}
+section.panel{display:flex;flex-direction:column;gap:16px}
+
+/* Verdict */
+.verdict-card{border-left:4px solid var(--accent)}
+.verdict-head{font-family:var(--f-display);font-size:26px;font-weight:700;line-height:1.15}
+.nums{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.num{display:flex;flex-direction:column;gap:2px;min-width:0;padding:10px 12px;background:var(--sunk);border-radius:var(--r)}
+.num .v{font-family:var(--f-display);font-size:30px;font-weight:700;font-variant-numeric:tabular-nums;line-height:1.1}
+.num .k{font-size:12.5px;color:var(--muted)}
+.v.claim{color:var(--supplier)} .v.cost{color:var(--buyer)} .v.just{color:var(--accent)}
+.counter{background:var(--accent-soft);border-radius:var(--r);padding:12px 14px}
+.counter b{font-family:var(--f-display);font-size:17px}
+.meta-row{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:13.5px}
+details.why{border-top:1px solid var(--line);padding-top:10px}
+details.why summary{cursor:pointer;font-weight:600;font-family:var(--f-display);font-size:15.5px}
+details.why[open] summary{margin-bottom:8px}
+.cite{font-family:var(--f-mono);font-size:12px;background:var(--sunk);border:1px solid var(--line);border-radius:4px;padding:0 5px;cursor:pointer;color:var(--ink);margin-left:2px}
+.cite:hover{border-color:var(--accent)}
+
+/* Supplier switch */
+.supbar-row{display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center;margin-top:12px}
+.supbar{display:inline-flex;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;background:var(--surface)}
+.supbar button{border:0;background:none;padding:7px 14px;cursor:pointer;font-weight:500}
+.supbar button + button{border-left:1px solid var(--line)}
+.supbar button[aria-checked="true"]{background:var(--ink);color:var(--bg)}
+.supbar button[aria-checked="true"] .muted{color:inherit;opacity:.75}
+.asked{display:flex;gap:6px;align-items:center;font-size:14px}
+.asked input{width:70px;padding:5px 8px;border:1px solid var(--line);border-radius:4px;background:var(--surface);font-family:var(--f-mono);text-align:right}
+.lev.cur{border-color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink)}
+/* Leverage */
+.lev-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.lev{border:1px solid var(--line);border-radius:var(--r);padding:14px;display:flex;flex-direction:column;gap:8px;min-width:0;background:var(--surface)}
+.lev .name{font-family:var(--f-display);font-weight:600;font-size:17px}
+.scores{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.scores div{display:flex;flex-direction:column}
+.scores .s{font-family:var(--f-display);font-size:26px;font-weight:700;font-variant-numeric:tabular-nums;line-height:1.1}
+.scores .s small{font-size:13px;color:var(--muted);font-weight:500}
+.scores .l{font-size:12px;color:var(--muted)}
+.meter{height:6px;border-radius:3px;background:var(--sunk);position:relative;overflow:hidden}
+.meter i{position:absolute;inset:0 auto 0 0;border-radius:3px;background:var(--buyer)}
+.diverge{font-size:13.5px;border-left:3px solid var(--accent);padding-left:10px}
+
+/* Outlook */
+.timeline{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border:1px solid var(--line);border-radius:var(--r);overflow:hidden;background:var(--surface)}
+.timeline > div{padding:12px 14px;display:flex;flex-direction:column;gap:4px;min-width:0}
+.timeline > div + div{border-left:1px solid var(--line)}
+.timeline .when{font-family:var(--f-mono);font-size:12px;color:var(--muted)}
+.timeline .state{font-family:var(--f-display);font-weight:600;font-size:16px}
+.t-now .state{color:var(--buyer)} .t-mid .state{color:var(--accent)} .t-late .state{color:var(--supplier)}
+
+/* Questions, risks */
+ol.qs li{padding-left:4px}
+ol.qs .why{display:block;font-size:13px;color:var(--muted)}
+.risk{display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 10px;align-items:baseline}
+
+/* Feedback */
+
+/* Ask */
+.chat{display:flex;flex-direction:column;gap:12px}
+.msg.q{align-self:flex-end;background:var(--accent-soft);border-radius:var(--r);padding:10px 14px;max-width:85%}
+.msg.a{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:14px 16px;display:flex;flex-direction:column;gap:8px}
+.msg.a ul{gap:4px}
+.msg .src{font-family:var(--f-mono);font-size:11.5px;color:var(--muted)}
+.suggest{display:flex;flex-wrap:wrap;gap:8px}
+.suggest button{text-align:left;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:8px 12px;cursor:pointer}
+.suggest button:hover{border-color:var(--accent)}
+.composer{display:flex;gap:8px;align-items:flex-end}
+.composer textarea{flex:1;min-width:0;resize:vertical;min-height:46px;padding:10px 12px;border:1px solid var(--line);border-radius:var(--r);background:var(--surface)}
+
+/* Evidence dialog */
+dialog{border:1px solid var(--line);border-radius:var(--r);background:var(--surface);color:var(--ink);max-width:560px;width:calc(100% - 32px);padding:18px}
+dialog::backdrop{background:rgba(0,0,0,.35)}
+.ev-meta{display:flex;flex-wrap:wrap;gap:6px 10px;font-size:13px;color:var(--muted);align-items:center}
+footer{font-size:12.5px;color:var(--muted);border-top:1px solid var(--line);padding-top:12px;display:flex;flex-direction:column;gap:4px}
+.toast{min-height:1.2em;font-size:13px;color:var(--muted)}
+
+@media (max-width:720px){
+  .lev-grid,.timeline{grid-template-columns:minmax(0,1fr)}
+  .timeline > div + div{border-left:0;border-top:1px solid var(--line)}
+}
+@media (max-width:520px){
+  .nums{grid-template-columns:minmax(0,1fr)}
+  h1{font-size:25px} .verdict-head{font-size:22px}
+}
+</style>
+
+<div class="wrap">
+  <header class="top">
+    <div>
+      <div class="eyebrow"><span class="hex" aria-hidden="true"></span>Semitrical · SiC power devices · Deal brief</div>
+      <h1 id="title">Infineon SiC price increase</h1>
+      <p class="byline" id="byline"></p>
+      <div class="supbar-row">
+        <div class="supbar" id="supBar" role="radiogroup" aria-label="Supplier"></div>
+        <label class="asked" for="askedPct">Increase asked <input type="number" id="askedPct" min="0" max="50" step="0.5" placeholder="none"> %</label>
+      </div>
+    </div>
+  </header>
+
+  <nav class="tabs" role="tablist" aria-label="Sections">
+    <button role="tab" id="tab-brief" data-tab="brief" aria-selected="true">Deal brief</button>
+    <button role="tab" id="tab-prep" data-tab="prep" aria-selected="false">Meeting prep</button>
+  </nav>
+
+  <!-- BRIEF -->
+  <section class="panel" id="panel-brief" role="tabpanel" aria-labelledby="tab-brief">
+    <article class="card verdict-card" data-section="verdict">
+      <div class="eyebrow">Is an increase justified?</div>
+      <p class="verdict-head" id="vHead"></p>
+      <div class="nums" id="vNums"></div>
+      <div class="counter" id="vCounter"></div>
+      <div class="meta-row" id="vMeta"></div>
+      <details class="why" open>
+        <summary>Why</summary>
+        <ul id="vWhy"></ul>
+      </details>
+      <details class="why">
+        <summary>What would change this</summary>
+        <ul id="vChange"></ul>
+      </details>
+    </article>
+
+    <article class="card" data-section="leverage">
+      <div>
+        <div class="eyebrow">Your leverage on SiC</div>
+        <h2 style="margin-top:4px" id="levHead"></h2>
+      </div>
+      <div class="lev-grid" id="levGrid"></div>
+      <p class="diverge" id="levDiverge"></p>
+      <p class="small muted">Scores run 1–5; higher means a stronger buyer position. Company leverage comes from the supplier scorecard; SiC leverage adds what the SiC supply chain shows.</p>
+    </article>
+
+    <article class="card" data-section="outlook">
+      <div>
+        <div class="eyebrow">Supply outlook</div>
+        <h2 style="margin-top:4px">Loose now, tightening risk from late 2027</h2>
+      </div>
+      <div class="timeline" id="timeline"></div>
+      <p><b>What to lock in now:</b> <span id="lockIn"></span></p>
+    </article>
+
+    <article class="card" data-section="risks">
+      <div class="eyebrow">Watch-outs</div>
+      <div id="risks" style="display:flex;flex-direction:column;gap:10px"></div>
+    </article>
+  </section>
+
+  <!-- PREP -->
+  <section class="panel" id="panel-prep" role="tabpanel" aria-labelledby="tab-prep" hidden>
+    <article class="card" data-section="questions">
+      <div>
+        <div class="eyebrow" id="qsLabel">Questions to ask</div>
+        <h2 style="margin-top:4px">Six questions that test the price</h2>
+      </div>
+      <ol class="qs" id="qs"></ol>
+    </article>
+    <article class="card" data-section="position">
+      <div class="eyebrow">Your opening position</div>
+      <ul id="position"></ul>
+    </article>
+  </section>
+
+
+  <footer>
+    <span id="foot1"></span>
+    <span>Semitrical analysis from company filings, earnings calls and public market indices. Not financial or legal advice.</span>
+  </footer>
+</div>
+
+<dialog id="evDlg" aria-labelledby="evTitle">
+  <div style="display:flex;flex-direction:column;gap:10px">
+    <div style="display:flex;justify-content:space-between;gap:12px;align-items:baseline">
+      <h3 id="evTitle"></h3>
+      <button class="btn" type="button" id="evClose">Close</button>
+    </div>
+    <div class="ev-meta" id="evMeta"></div>
+    <p id="evText"></p>
+    <p class="small muted" id="evSrc"></p>
+  </div>
+</dialog>
+<script>
+const SNAP = {"claim":{"sup":"IFX","pct":8,"drivers":["SiC substrates","Fab materials & chemicals","Packaging & metals","Fab utilities (power and gas)","Air freight & logistics"]},"sup":{"IFX":{"implied":-0.99,"ceiling":4.29,"corroborated":31,"lev10":6.25,"band":"Balanced, leaning to buyer"},"ST":{"implied":1.14,"ceiling":4.32,"corroborated":31,"lev10":5.32,"band":"Balanced, leaning to buyer"},"ON":{"implied":2.81,"ceiling":4.56,"corroborated":31,"lev10":4.7,"band":"Balanced, leaning to supplier"}}};
+const EVIDENCE = [{"id": "E01", "co": "Wolfspeed", "role": "SiC substrate + device (vertical)", "per": "CQ3-25", "sig": "Fab utilization", "text": "Exited Chapter 11. Non-GAAP GM -26%, including ~$47M underutilization at Mohawk Valley and the JP materials plant; aligning production to near-term demand; softness expected through FY26.", "metric": "Underutil. ~$47M", "dir": "Loosening", "model": "M1, M3", "src": "Wolfspeed Transcripts.docx (Q1 FY26)", "conf": "High"}, {"id": "E02", "co": "Wolfspeed", "role": "SiC substrate + device (vertical)", "per": "CQ3-25", "sig": "Capacity investment", "text": "CapEx $104M, down $333M YoY, mostly closing out prior commitments; expected to be substantially lower going forward.", "metric": "CapEx $104M", "dir": "Capacity shift", "model": "M3, M4", "src": "Wolfspeed Transcripts.docx (Q1 FY26)", "conf": "High"}, {"id": "E03", "co": "Wolfspeed", "role": "SiC substrate + device (vertical)", "per": "CQ4-25", "sig": "SiC demand / supply", "text": "Management attributes muted EV demand partly to excess supply across the market and intensifying global competition.", "metric": "", "dir": "Loosening", "model": "M1, M2", "src": "Wolfspeed Transcripts.docx (Q2 FY26)", "conf": "High"}, {"id": "E04", "co": "Wolfspeed", "role": "SiC substrate + device (vertical)", "per": "CQ4-25", "sig": "Substrate market", "text": "Materials revenue $50M; mgmt cites a tightening demand environment and increased competition in substrates.", "metric": "Materials $50M", "dir": "Loosening", "model": "M2", "src": "Wolfspeed Transcripts.docx (Q2 FY26)", "conf": "High"}, {"id": "E05", "co": "Wolfspeed", "role": "SiC substrate + device (vertical)", "per": "CQ4-25", "sig": "SiC→photonics/AI repositioning", "text": "Produced first single-crystal 300mm SiC wafer, positioned 'beyond power' for thermal and optical uses (e.g., optical-grade SiC for AR/VR). Not a near-term revenue source.", "metric": "", "dir": "Capacity shift", "model": "M4", "src": "Wolfspeed Transcripts.docx (Q2 FY26)", "conf": "High"}, {"id": "E06", "co": "Wolfspeed", "role": "SiC substrate + device (vertical)", "per": "CQ1-26", "sig": "SiC→photonics/AI repositioning", "text": "Engaging AI ecosystem on 300mm SiC substrates for AI/HPC packaging (interposers, heat sinks, co-packaging). Freed Durham 150mm space now anchors materials and 300mm work. Early, no revenue.", "metric": "", "dir": "Capacity shift", "model": "M4", "src": "Wolfspeed Transcripts.docx (Q3 FY26)", "conf": "High"}, {"id": "E07", "co": "Wolfspeed", "role": "SiC substrate + device (vertical)", "per": "CQ1-26", "sig": "Fab utilization", "text": "Underutilization ~$46M; GM -20.6%. Analyst notes utilization at competitors has also come down.", "metric": "Underutil. ~$46M", "dir": "Loosening", "model": "M1, M3", "src": "Wolfspeed Transcripts.docx (Q3 FY26)", "conf": "High"}, {"id": "E08", "co": "Wolfspeed", "role": "SiC substrate + device (vertical)", "per": "CQ2-26", "sig": "Substrate market", "text": "Materials revenue fell to ~$43M. 150mm LTAs partly rolling off; customers digesting inventory while moving to 200mm.", "metric": "Materials ~$43M", "dir": "Loosening", "model": "M2", "src": "Wolfspeed Transcripts.docx (Q4 FY26)", "conf": "High"}, {"id": "E09", "co": "Wolfspeed", "role": "SiC substrate + device (vertical)", "per": "CQ2-26", "sig": "Fab utilization", "text": "Gross margin breakeven needs ~$800M annual revenue run-rate; current run-rate ~$600M. Gross CapEx just $5M.", "metric": "Breakeven ~$800M", "dir": "Loosening", "model": "M1, M3", "src": "Wolfspeed Transcripts.docx (Q4 FY26)", "conf": "High"}, {"id": "E10", "co": "Wolfspeed", "role": "SiC substrate + device (vertical)", "per": "FY26 (to Jun-26)", "sig": "Substrate pricing", "text": "10-K: materials sales fell on lower volumes as substrate customers rebalance supply to weak end demand, with continued pricing pressure from increased substrate supply, particularly from China. Power products also saw continued pricing pressure.", "metric": "", "dir": "Loosening", "model": "M2", "src": "Wolfspeed 10K 2026 MDA.pdf", "conf": "High"}, {"id": "E11", "co": "Coherent", "role": "SiC substrate (Silicon Carbide LLC) + photonics", "per": "CQ3-25", "sig": "Capacity investment", "text": "Data center growth constrained by indium phosphide laser supply; aggressively ramping 6-inch InP in Texas and Sweden to double internal capacity.", "metric": "CapEx ~$104M", "dir": "Capacity shift", "model": "M3, M4", "src": "Coherent FY2026 Transcripts (Q1 FY26)", "conf": "High"}, {"id": "E12", "co": "Coherent", "role": "SiC substrate (Silicon Carbide LLC) + photonics", "per": "CQ2-26", "sig": "Capacity investment", "text": "Quarterly CapEx reached $556M (from $104M four quarters earlier), directed to data center/communications capacity; InP doubling a quarter early, doubling again by end CY27.", "metric": "CapEx $556M", "dir": "Capacity shift", "model": "M3, M4", "src": "Coherent FY2026 Transcripts (Q4 FY26)", "conf": "High"}, {"id": "E13", "co": "Coherent", "role": "SiC substrate (Silicon Carbide LLC) + photonics", "per": "CQ1-26", "sig": "SiC→photonics/AI repositioning", "text": "Pitching SiC substrates and diamond-SiC ceramic (Thermadite) as AI XPU thermal solutions; revenue expected from 2H CY27. SiC appears in calls as a thermal/AI story, not as power-substrate growth.", "metric": "", "dir": "Capacity shift", "model": "M4", "src": "Coherent FY2026 Transcripts (OFC investor briefing)", "conf": "Medium"}, {"id": "E14", "co": "Coherent", "role": "SiC substrate (Silicon Carbide LLC) + photonics", "per": "FY26 (to Jun-26)", "sig": "SiC business status", "text": "10-K: Silicon Carbide LLC still loss-making (minority share of losses $18M) and holds $604M of restricted cash usable only by that subsidiary. Coherent does not discuss SiC substrate demand or pricing in MD&A.", "metric": "NCI loss $18M", "dir": "Mixed", "model": "M2, M4", "src": "Coherent 10K 2026 MDA.pdf", "conf": "Medium"}, {"id": "E15", "co": "Aixtron", "role": "SiC epitaxy equipment", "per": "CQ3-25", "sig": "Capacity investment", "text": "SiC market in a longer digestion period, especially in western regions; no major new fab investment decisions on the agenda.", "metric": "", "dir": "Capacity shift", "model": "M3", "src": "Aixtron Transcripts (Q3-25)", "conf": "High"}, {"id": "E16", "co": "Aixtron", "role": "SiC epitaxy equipment", "per": "CQ4-25", "sig": "Capacity investment", "text": "Substantial idle SiC capacity at several western customers, some 6-inch capacity reduced or scrapped; China SiC also softened in 2H25 amid large overcapacity. SiC ≤10% of 2026 revenue.", "metric": "SiC ≤10% of rev", "dir": "Capacity shift", "model": "M3, M4", "src": "Aixtron Transcripts (FY25 call)", "conf": "High"}, {"id": "E17", "co": "Aixtron", "role": "SiC epitaxy equipment", "per": "CQ4-25", "sig": "Substrate pricing", "text": "SiC substrate prices have dropped significantly; substrate is probably the single largest cost in a SiC device.", "metric": "", "dir": "Loosening", "model": "M2", "src": "Aixtron Transcripts (FY25 call)", "conf": "High"}, {"id": "E18", "co": "Aixtron", "role": "SiC epitaxy equipment", "per": "2026 (investor conf.)", "sig": "Fab utilization", "text": "SiC customers running at ~40-50% utilization, slowly rising; 80-85% normally needed before capacity tool orders, expected mid-to-end 2027. Elsewhere described as approaching 50-70%.", "metric": "Util. ~40-70%", "dir": "Loosening", "model": "M1, M3", "src": "Aixtron Transcripts (investor conference)", "conf": "Medium"}, {"id": "E19", "co": "Aixtron", "role": "SiC epitaxy equipment", "per": "1H-26", "sig": "Capacity shift to photonics", "text": "Laser 'boom' since March 2026: SiC customers stepping aside freed Aixtron's own shop floor and supplier capacity, which is now used for laser tools. CEO notes it would be different if SiC recovered at the same time.", "metric": "", "dir": "Capacity shift", "model": "M3, M4", "src": "Aixtron Transcripts (Q1-26)", "conf": "High"}, {"id": "E20", "co": "Aixtron", "role": "SiC epitaxy equipment", "per": "CQ2-26", "sig": "Capacity shift to photonics", "text": "Optoelectronics = 75% of equipment orders; customers ramping InP EML/CW laser capacity well into 2027. SiC installed base still underutilized; customers cautious on new capacity.", "metric": "Opto 75% of orders", "dir": "Capacity shift", "model": "M3", "src": "Aixtron Transcripts (Q2-26)", "conf": "High"}, {"id": "E21", "co": "Applied Materials", "role": "Equipment (ICAPS incl. power)", "per": "FY26 call", "sig": "Capacity investment", "text": "ICAPS (mature-node, incl. power) still digesting installed capacity; utilization improving; power and photonics called out as bright spots.", "metric": "", "dir": "Mixed", "model": "M3", "src": "Applied Materials Transcripts", "conf": "Medium"}, {"id": "E22", "co": "Entegris", "role": "Materials (SiC CMP slurries)", "per": "CQ4-25", "sig": "Input cost", "text": "SiC was a revenue headwind in 2025; expected stable to slightly improving in 2026.", "metric": "", "dir": "Loosening", "model": "M2", "src": "Entegris Transcripts (FY25 call)", "conf": "High"}, {"id": "E23", "co": "Entegris", "role": "Materials (SiC CMP slurries)", "per": "2026 call", "sig": "Input cost", "text": "Being approached for more supply agreements; current guidance does not assume material price increases.", "metric": "", "dir": "Mixed", "model": "M2", "src": "Entegris Transcripts", "conf": "Medium"}, {"id": "E24", "co": "Entegris", "role": "Materials", "per": "CQ2-26", "sig": "Foundry utilization", "text": "Mainstream foundry utilization ~80-85%; power management and silicon photonics strong, consumer weak.", "metric": "Util. 80-85%", "dir": "Mixed", "model": "M3", "src": "Entegris Transcripts (Q2-26)", "conf": "High"}, {"id": "E25", "co": "Tower Semiconductor", "role": "Specialty foundry (SiPho, power)", "per": "CQ4-25", "sig": "Capacity shift to photonics", "text": "Added $270M CapEx on top of $650M plan, targeting SiPho capacity >5x Q4-25 shipments; >70% reserved through 2028 with prepayments.", "metric": "CapEx +$920M plan", "dir": "Capacity shift", "model": "M3, M4", "src": "Tower Transcripts (Q4-25)", "conf": "High"}, {"id": "E26", "co": "Tower Semiconductor", "role": "Specialty foundry (SiPho, power)", "per": "CQ4-25", "sig": "Fab utilization", "text": "Fab utilization: Fab 2 ~60%, Fab 3 85%, Fab 5 75%, Fab 7 full, Fab 9 65% (Fab 2/9 mid-repurposing to SiPho/SiGe).", "metric": "Util. 60-85%+", "dir": "Mixed", "model": "M3", "src": "Tower Transcripts (Q4-25)", "conf": "High"}, {"id": "E27", "co": "Tower Semiconductor", "role": "Specialty foundry (SiPho, power)", "per": "CQ2-26", "sig": "Capacity shift to photonics", "text": "SiPho revenue +60% QoQ, annualized run-rate >$680M; targeting $1B by Q4-26. Mgmt says RF-SOI capacity is fairly fungible to power, SiPho fungible to SiGe.", "metric": "SiPho run-rate $680M", "dir": "Capacity shift", "model": "M3, M4", "src": "Tower Transcripts (Q2-26)", "conf": "High"}, {"id": "E28", "co": "Infineon", "role": "Counterpart (SiC device maker)", "per": "CQ1-26", "sig": "Sourcing structure", "text": "More than 6 qualified SiC wafer and boule suppliers; claims industry-leading 200mm cost position (Kulim). Diversified sourcing means it captures falling substrate prices.", "metric": "6+ substrate suppliers", "dir": "Loosening", "model": "M2, M4", "src": "Infineon Q1/Q2-26 investor ppt", "conf": "High"}, {"id": "E29", "co": "Infineon", "role": "Counterpart (SiC device maker)", "per": "CQ1-26", "sig": "Capacity redeployment", "text": "Refocusing HV automotive drivetrain business; redeploying front-end capacity to AI data center where demand exceeds supply. HV drivetrain revenue down low-to-mid hundreds of €M; ~1pt GM drag from lower volume, idle cost and charges.", "metric": "~1pt GM drag", "dir": "Capacity shift", "model": "M1, M4", "src": "Infineon Q2-26 investor ppt and remarks", "conf": "High"}, {"id": "E30", "co": "Infineon", "role": "Counterpart (SiC device maker)", "per": "CQ1-26", "sig": "Demand", "text": "AI business on allocation; AI-related demand driving low double-digit growth in overall SiC business this fiscal year.", "metric": "SiC growth low-DD", "dir": "Tightening", "model": "M1", "src": "Infineon Q2-26 investor ppt and remarks", "conf": "High"}, {"id": "E31", "co": "Infineon", "role": "Counterpart (SiC device maker)", "per": "CQ2-26", "sig": "Pricing posture", "text": "Announced price increases twice (latest July) where demand outstrips supply, first in AI power, now adjacent areas; full P&L effect from Q1 FY27. Stated cost pressures: precious metals, logistics, merit increases, Middle East — substrates not mentioned. Idle costs flat QoQ.", "metric": "2 price increases", "dir": "Tightening", "model": "M1, M2", "src": "Infineon Q3-26 Transcript", "conf": "High"}, {"id": "E32", "co": "Infineon", "role": "Counterpart (SiC device maker)", "per": "CQ2-26", "sig": "Contracting", "text": "Capacity reservation agreements commit volume, not price; prices float with market.", "metric": "", "dir": "Mixed", "model": "M1", "src": "Infineon Q3-26 Transcript", "conf": "High"}, {"id": "E33", "co": "STMicroelectronics", "role": "Counterpart (vertical SiC)", "per": "Ongoing", "sig": "Sourcing structure", "text": "Fully vertically integrated SiC from powder to module at Catania (200mm), plus Sanan JV for China. Less exposed to merchant substrate market.", "metric": "", "dir": "Mixed", "model": "M2, M4", "src": "ST Investor Presentation (July)", "conf": "High"}, {"id": "E34", "co": "STMicroelectronics", "role": "Counterpart (vertical SiC)", "per": "CQ2-26", "sig": "Demand", "text": "SiC revenue up low-teens YoY and mid-30s% QoQ; book-to-bill well above 1; double-digit SiC growth expected in 2026. 6→8-inch transition causing some supply tightness.", "metric": "SiC +mid-30% QoQ", "dir": "Tightening", "model": "M1", "src": "ST Microelectronics Q2-26 Transcript", "conf": "High"}, {"id": "E35", "co": "STMicroelectronics", "role": "Counterpart (vertical SiC)", "per": "2026", "sig": "Market structure", "text": "Describes SiC as an increasingly competitive market; expects SiC revenue back to 2024 levels only in 2027.", "metric": "", "dir": "Loosening", "model": "M1", "src": "ST Investor Presentation (July)", "conf": "High"}, {"id": "E36", "co": "ON Semiconductor", "role": "Counterpart (vertical SiC)", "per": "CQ2-26", "sig": "Pricing posture", "text": "Says price actions offset cost increases that are 'material in nature' — substrates or gold — applied across markets including auto; selective increases where on allocation.", "metric": "", "dir": "Mixed", "model": "M2", "src": "ON Semiconductor Q2-26 Transcript", "conf": "High"}, {"id": "E37", "co": "ON Semiconductor", "role": "Counterpart (vertical SiC)", "per": "CQ2-26", "sig": "Demand", "text": "Expects China SiC revenue +60-70% YoY in 2026 on share gains; utilization up ~8pts in Q2 after a 6pt drop in Q4-25.", "metric": "China SiC +60-70%", "dir": "Tightening", "model": "M1", "src": "ON Semiconductor Q2-26 Transcript", "conf": "High"}, {"id": "E38", "co": "Index: copper", "role": "Market index", "per": "12m to Sep-26", "sig": "Input price", "text": "Copper averaged $12,852/t over Q4-25 to Q3-26 versus $9,463/t over the prior four quarters, up 35.8%. Spot was up about 27% YoY on 23 Oct 2026. Used in lead frames, baseplates and DBC/AMB substrates.", "metric": "12m avg +35.8%", "dir": "Tightening", "model": "M2", "src": "World Bank Pink Sheet, Jan & Oct 2026 (quarterly averages); Trading Economics spot", "conf": "High"}, {"id": "E39", "co": "Index: silver", "role": "Market index", "per": "12m to Sep-26", "sig": "Input price", "text": "Silver averaged $68.6/oz over Q4-25 to Q3-26 versus $34.1/oz over the prior four quarters, up 101%. It peaked near $84/oz in Q1-26 and was about $54/oz on 23 Oct 2026 (+11% YoY spot). Used in silver sintering for SiC modules.", "metric": "12m avg +101%", "dir": "Tightening", "model": "M2", "src": "World Bank Pink Sheet, Jan & Oct 2026 (quarterly averages); Trading Economics spot", "conf": "High"}, {"id": "E40", "co": "Index: gold", "role": "Market index", "per": "12m to Sep-26", "sig": "Input price", "text": "Gold averaged $4,452/oz over Q4-25 to Q3-26 versus $3,070/oz over the prior four quarters, up 45%. Spot was 2.9% lower YoY on 23 Oct 2026 because October 2025 was near a record high.", "metric": "12m avg +45.0%", "dir": "Tightening", "model": "M2", "src": "World Bank Pink Sheet, Jan & Oct 2026 (quarterly averages); Trading Economics spot", "conf": "High"}, {"id": "E41", "co": "Index: EU energy", "role": "Market index", "per": "12m to Sep-26", "sig": "Input price", "text": "European gas (TTF) averaged $15.25/mmbtu over Q4-25 to Q3-26 versus $12.79 the prior year, up 19%, but the rise is recent: Q3-26 averaged $21.53 and spot was about +190% YoY in late October 2026. German wholesale power averaged about EUR 167/MWh in October 2026 versus EUR 86 a year earlier (+93%).", "metric": "12m avg +19%; spot +93-190%", "dir": "Tightening", "model": "M2, M3", "src": "World Bank Pink Sheet, Jan & Oct 2026 (quarterly averages); Trading Economics; euenergy.live", "conf": "High"}, {"id": "E42", "co": "Index: air freight", "role": "Market index", "per": "Oct-25 to Oct-26", "sig": "Logistics cost", "text": "Baltic Air Freight Index was 4.6% lower YoY in October 2025, up 32.7% YoY in May 2026 after the Iran war shock in March and April, and up 26.4% YoY in mid-October 2026. A 12-month average rise of roughly 20% is an estimate from these points.", "metric": "~+20% (12m est.)", "dir": "Tightening", "model": "M2", "src": "Baltic Exchange BAI reports (Nov 2025, Jun 2026); Air Cargo News / TAC Index, 22 Oct 2026", "conf": "Medium"}];
+const HYP = [{"part": "SiC fabs are physically converted to photonics", "verdict": "Not supported", "ev": "—", "why": "No transcript describes a SiC device or substrate line being retooled for lasers or SiPho. Converted capacity is silicon (Tower) or new InP lines (Coherent).", "mean": "Don't use this as a negotiating argument."}, {"part": "Capital and management focus is moving from SiC to photonics", "verdict": "Supported", "ev": "E02, E12, E20, E25, E27", "why": "Coherent CapEx up >5x into InP; Aixtron orders 75% opto; Tower adding ~$920M SiPho capacity. SiC capex near zero.", "mean": "SiC suppliers are not investing — leverage today, scarcity risk later."}, {"part": "Equipment supply chain shifted from SiC to lasers", "verdict": "Supported", "ev": "E19", "why": "Aixtron explicitly reassigned SiC-idle factory and supplier capacity to laser tools.", "mean": "If SiC demand recovers while photonics is still booming, SiC epi tool lead times could stretch — recovery would be slower and tighter."}, {"part": "SiC material makers repositioning toward AI thermal/optical", "verdict": "Supported (early)", "ev": "E05, E06, E13", "why": "Wolfspeed 300mm SiC and Coherent Thermadite target AI packaging/cooling and AR optics; pre-revenue until 2027.", "mean": "No near-term impact on power-substrate supply. Watch item."}, {"part": "SiC device capacity redeployed to AI power", "verdict": "Supported (Infineon)", "ev": "E29, E30", "why": "Infineon is moving front-end capacity from HV drivetrain to AI and taking idle/refocus charges.", "mean": "Infineon is deprioritising automotive SiC — weaker commitment, but also more willingness to deal to fill lines, and stronger case to dual-source with ST/ON Semiconductor."}, {"part": "SiC supply is tightening now", "verdict": "Not supported", "ev": "E07, E09, E10, E17, E18", "why": "Utilization ~40-70% vs 80-85% threshold; substrate prices falling on Chinese oversupply. Exception: ST transition-related tightness (E34).", "mean": "Near-term SiC price increases are not justified by supply or input costs."}, {"part": "SiC supply could tighten in 2027-28", "verdict": "Plausible", "ev": "E02, E18, E34, E37", "why": "Demand recovering (ST, ON Semiconductor, AI) with almost no new capacity investment; Aixtron expects orders to resume mid-to-late 2027.", "mean": "Lock volume, not price, for 2027-28 while suppliers need loading."}];
+const EVMAP = Object.fromEntries(EVIDENCE.map(e=>[e.id,e]));
+const SUP = {IFX:"Infineon", ST:"STMicroelectronics", ON:"ON Semiconductor"};
+const SUPS = ["IFX","ST","ON"];
+const AS_OF = "24 Oct 2026";
+const VERSION = "sic-brief-2026-10-24";
+
+/* ---------- formatting ---------- */
+const $=s=>document.querySelector(s);
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const sgn=(x,d=0)=>(x>0?"+":x<0?"−":"")+Math.abs(x).toFixed(d)+"%";
+const about=x=>"about "+sgn(Math.round(x));
+const to5=x=>1+0.4*x;
+function band(x10){ return x10>=7?"Strong buyer position": x10>=5?"Leaning to buyer": x10>=3?"Leaning to supplier":"Supplier holds leverage"; }
+function bandClass(x10){ return x10>=5?"buyer": x10>=3?"mixed":"supplier"; }
+function cites(ids){ return ids.map(i=>`<button type="button" class="cite" data-ev="${i}" aria-label="Evidence ${i}">${i}</button>`).join(""); }
+function withCites(text){ return esc(text).replace(/\[((?:E\d{2}(?:,\s*)?)+)\]/g,(m,ids)=>" "+cites(ids.split(/,\s*/))); }
+
+/* ---------- content (from the published snapshot) ---------- */
+const COMPANY = {IFX:{score:3.55}, ST:{score:4.55}, ON:{score:null}};
+const LETTER = {IFX:8, ST:null, ON:null};           // price letters on file
+let CUR = "IFX";
+let ASKED = Object.assign({}, LETTER);
+try{ const a=JSON.parse(localStorage.getItem("sic-brief-asked")||"null"); if(a) Object.assign(ASKED,a); const c=localStorage.getItem("sic-brief-sup"); if(SUPS.includes(c)) CUR=c; }catch(e){}
+const LEVTXT = {
+  IFX:"Spare SiC capacity and falling substrate costs. Its price increases are aimed at AI power products on allocation, not SiC demand [E29, E31].",
+  ST:"Under pressure as a company, but its SiC lines are filling: book-to-bill above 1 during the move to 8-inch wafers [E34].",
+  ON:"Grows most of its own substrate, so it gains least from falling prices, and its China SiC sales are guided up 60–70% [E37].",
+};
+const METALS = `Metals, energy and freight did rise: over the past 12 months copper averaged 36% higher, silver 101%, gold 45%, European gas 19% and air freight about 20% [E38, E39, E40, E41, E42].`;
+const S = {
+  IFX:{
+    why:[
+      `Substrates, the largest single cost in a SiC device, are getting cheaper. Wolfspeed reports pricing pressure from Chinese supply and Aixtron says prices have dropped significantly [E10, E17]. Infineon buys all its substrate from six or more suppliers, so it gets the full benefit [E28].`,
+      METALS+` They are a smaller part of cost than substrates, so the falls outweigh the rises.`,
+      `Infineon has spare SiC capacity and is carrying idle cost while it refocuses its high-voltage business [E29, E31]. That cost comes from its own loading and is not a reason to raise your price.`,
+    ],
+    change:[
+      `If substrate prices stop falling, Infineon's net input costs would rise about 4%; still well short of 8% [E10, E17].`,
+      `If its energy costs rise about 60% rather than the 12-month gas average of about 20%, close to where European power prices are now, the most it could argue rises to about +6% [E41].`,
+    ],
+    lockin:"2027–28 volume and allocation, with price indexed or reviewed rather than fixed. Infineon already offers volume-only capacity reservations on AI products; ask for the same on SiC [E32].",
+    risks:[
+      ["supplier","AI power products are different","Infineon's AI power products are on allocation and it has raised prices twice. Keep them out of the SiC discussion and negotiate them separately [E30, E31]."],
+      ["accent","Under-investment now, tightness later","SiC capital spending is near zero and equipment makers are prioritising lasers. Today's leverage is real but has a shelf life [E09, E16, E19]."],
+    ],
+    qs:[
+      ["Which of your SiC input costs rose this year, and by how much? Which fell?","Substrate prices have fallen [E10, E17]; ask for the split by input."],
+      ["What share of this part's cost is copper, silver and energy?","Those are the inputs that rose [E38, E39, E41]. An index clause would track them in both directions."],
+      ["How much of your SiC substrate is under long-term contracts, and when do those prices reset?","You buy from six or more suppliers in a falling market [E28]."],
+      ["How loaded are your SiC lines while you refocus high-voltage capacity to AI?","What would extra volume from us be worth to that loading [E29]?"],
+      ["Are the 2026 price increases aimed at SiC or at AI power products on allocation?","We expect them to be treated separately [E31]."],
+      ["Would you offer a 2027–28 volume reservation without fixed pricing, like your AI capacity reservations?","Locks supply before the market tightens [E32]."],
+    ],
+  },
+  ST:{
+    why:[
+      `ST makes part of its own substrate in Catania, so falling market prices help it less than a supplier that buys all of its substrate [E33, E10, E17].`,
+      METALS+` ST makes SiC in Italy, so European power prices reach most of its energy cost.`,
+      `ST's SiC lines are filling, with book-to-bill above 1 during the move to 8-inch wafers [E34], yet it calls the SiC market increasingly competitive [E35].`,
+    ],
+    change:[
+      `ST has not confirmed how much substrate it makes in-house since a 2022 target of 40%. If it buys more on the market, its costs fall further and its case weakens [E33].`,
+      `If its energy costs rise about 60%, close to current European power prices, the most it could argue rises to about +6% [E41].`,
+    ],
+    lockin:"2027–28 volume and allocation, with price reviewed rather than fixed. ST's lines are tighter than peers', so secure allocation through the 8-inch transition [E34].",
+    risks:[
+      ["supplier","Tight during the 8-inch move","Some SiC tightness during ST's 6- to 8-inch transition: allocation risk if demand jumps [E34]."],
+      ["accent","Under-investment now, tightness later","SiC capital spending is near zero across the industry and tool makers are prioritising lasers [E09, E16, E19]."],
+    ],
+    qs:[
+      ["What share of your SiC substrate do you make in Catania, and what share do you buy?","Bought substrate is getting cheaper [E10, E17, E33]."],
+      ["Which of your SiC input costs rose this year, and by how much? Which fell?","Ask for the split by input."],
+      ["How much of your energy is hedged, and until when?","European power prices have risen sharply [E41]."],
+      ["How tight are your SiC lines during the 8-inch move, and when does that ease?","Your book-to-bill is above 1 [E34]."],
+      ["You describe SiC as increasingly competitive. How does that show in your pricing to us?","Your own words [E35]."],
+      ["Would you commit 2027–28 volume and allocation with price reviewed rather than fixed?","Locks supply before the market tightens [E18, E19]."],
+    ],
+  },
+  ON:{
+    why:[
+      `ON Semiconductor grows most of its own SiC crystals, so falling substrate prices help it least of the three [E36, E10, E17].`,
+      METALS+` ON Semiconductor names gold behind its price actions [E36].`,
+      `Its SiC utilization is rising from a low base and China SiC sales are guided up 60–70% [E37]. It wants volume, which is your lever.`,
+    ],
+    change:[
+      `ON Semiconductor last said more than half its substrate is made internally (2024); our estimate is higher. If it buys more on the market, its costs fall and its case weakens.`,
+      `If its energy costs rise about 60%, the most it could argue rises to about +6% [E41].`,
+    ],
+    lockin:"2027–28 volume and allocation, with price reviewed rather than fixed, before China demand absorbs the spare capacity [E37].",
+    risks:[
+      ["mixed","'Substrates' claim is unclear","ON Semiconductor cites substrates and gold behind its price actions. Ask whether it means SiC wafers or package substrates [E36]."],
+      ["supplier","China demand could absorb capacity","China SiC sales guided up 60–70% could tighten what is left for you in 2027 [E37]."],
+    ],
+    qs:[
+      ["When you cite substrates, do you mean SiC wafers or package substrates?","Your price actions name both substrates and gold [E36]."],
+      ["What share of your SiC substrate is internal today?","Market substrate prices are falling [E10, E17]."],
+      ["How much gold is in this package, and would you accept a metals index that moves both ways?","Gold averaged 45% higher, but is now below last year's level [E40]."],
+      ["Your utilization is rising from a low base. What is extra volume from us worth?","Utilization rose about 8 points last quarter [E37]."],
+      ["How much of your China SiC growth uses capacity we would need in 2027?","China SiC guided up 60–70% [E37]."],
+      ["Would you commit 2027–28 volume and allocation with price reviewed rather than fixed?","Locks supply before the market tightens [E18, E19]."],
+    ],
+  },
+};
+const TIMELINE = [
+  ["t-now","Now · 2H 2026","Loose","SiC fabs run at about 40–70% utilization and substrate prices are falling [E17, E18]."],
+  ["t-mid","2027","Filling up","Demand is recovering while almost no new SiC capacity is being built [E09, E16, E34, E37]."],
+  ["t-late","2H 2027 – 2028","Tightening risk","New tool orders resume near 80–85% utilization, and the tool supply chain is busy with laser equipment [E18, E19]."],
+];
+
+/* the verdict, from net input costs; "most they can argue" counts rising costs only */
+function verdict(s){
+  const x=SNAP.sup[s], net=x.implied, arg=x.ceiling, asked=ASKED[s], name=SUP[s];
+  const netR=Math.round(net), argR=Math.round(arg);
+  const support = net<=0.5 ? 0 : netR;
+  let head;
+  if(asked!=null && asked>0){
+    head = support===0 ? `Not justified on cost. Hold price.` : asked>support+0.5 ? `Only about +${support}% is justified on cost, not +${asked}%.` : `Broadly in line with costs. Negotiate terms, not the size.`;
+  } else head = support===0 ? `No increase is justified on cost.` : `Costs support at most about +${support}%.`;
+  const open = support===0 ? (net<-0.5 ? `hold price, or ask for about ${sgn(netR)} to share the substrate savings` : `hold price`) : `about +${support}% at most`;
+  const counter = `<b>Open:</b> ${open}. <b>If pressed on metals and energy:</b> agree an index that covers every input, substrates included, so falls pass through as well as rises (about ${sgn(netR)} today). <b>Walk-away:</b> about ${sgn(argR)}, and only in return for 2027–28 supply security.`;
+  const position = [
+    support===0 ? `Open by holding price${net<-0.5?`; net input costs are down about ${Math.abs(netR)}%`:""}.` : `Open at no more than about +${support}%, what net input costs support.`,
+    `If ${name} insists on metals and energy, offer an index on all inputs, substrates included, so it moves both ways.`,
+    `Treat about ${sgn(argR)} as the walk-away: it is the most ${name} can argue by counting only the costs that rose.`,
+    `Ask for 2027–28 volume and allocation in return for any increase, with price reviewed rather than fixed.`,
+  ];
+  return {net, arg, asked, support, head, counter, position};
+}
+
+function renderSupBar(){
+  $("#supBar").innerHTML = SUPS.map(s=>`<button type="button" role="radio" aria-checked="${s===CUR}" data-sup="${s}">${SUP[s]}${LETTER[s]?` <span class="small muted">· letter</span>`:""}</button>`).join("");
+  $("#askedPct").value = ASKED[CUR]==null ? "" : ASKED[CUR];
+}
+function render(){
+  const s=CUR, V=verdict(s), C=S[s];
+  renderSupBar();
+  $("#title").textContent = `${SUP[s]} SiC pricing`;
+  $("#byline").textContent = `As of ${AS_OF} · ` + (V.asked ? `increase asked: +${V.asked}%` : `no price letter on file; enter one above to test it`);
+  $("#vHead").textContent = V.head;
+  $("#vNums").innerHTML = [
+    ["claim", V.asked? sgn(V.asked):"–", V.asked? `${SUP[s]} is asking`:"No increase asked"],
+    ["cost", sgn(Math.round(V.net)), "Net change in its input costs"],
+    ["just", sgn(Math.round(V.arg)), "Most it can argue, counting only costs that rose"],
+  ].map(([c,v,k])=>`<div class="num"><span class="v ${c}">${v}</span><span class="k">${k}</span></div>`).join("");
+  $("#vCounter").innerHTML = V.counter;
+  $("#vMeta").innerHTML = `<span class="pill accent">Confidence: medium</span><span class="muted">Directions come from company statements and market indices; some cost shares are estimates.</span>`;
+  $("#vWhy").innerHTML = C.why.map(t=>`<li>${withCites(t)}</li>`).join("");
+  $("#vChange").innerHTML = C.change.map(t=>`<li>${withCites(t)}</li>`).join("");
+
+  const order=[...SUPS].sort((a,b)=>SNAP.sup[b].lev10-SNAP.sup[a].lev10);
+  $("#levHead").textContent = `Most room with ${SUP[order[0]]} on SiC`;
+  $("#levGrid").innerHTML = SUPS.map(k=>{ const x=SNAP.sup[k].lev10, v=to5(x), c=COMPANY[k].score;
+    return `<div class="lev${k===s?" cur":""}"><span class="name">${SUP[k]}</span>
+      <div class="scores"><div><span class="s mono">${v.toFixed(1)}<small> /5</small></span><span class="l">SiC leverage</span></div>
+      <div><span class="s mono" style="color:var(--muted)">${c==null?"–":c.toFixed(1)}${c==null?"":"<small> /5</small>"}</span><span class="l">${c==null?"Company score not yet available":"Company leverage"}</span></div></div>
+      <div class="meter" aria-hidden="true"><i style="width:${(v-1)/4*100}%"></i></div>
+      <span><span class="pill ${bandClass(x)}">${band(x)}</span></span>
+      <p class="small">${withCites(LEVTXT[k])}</p></div>`; }).join("");
+  const div = SUPS.filter(k=>COMPANY[k].score!=null && Math.abs(COMPANY[k].score-to5(SNAP.sup[k].lev10))>0.5);
+  $("#levDiverge").innerHTML = div.map(k=> k==="ST"
+      ? `<b>ST scores higher as a company than on SiC.</b> Its finances are under pressure, but its SiC lines are filling. Press ST on other categories; press Infineon on SiC.`
+      : `<b>${SUP[k]}'s company and SiC scores differ.</b>`).join(" ");
+  $("#levDiverge").hidden = !div.length;
+
+  $("#timeline").innerHTML = TIMELINE.map(([c,w,st,t])=>`<div class="${c}"><span class="when">${w}</span><span class="state">${st}</span><span class="small">${withCites(t)}</span></div>`).join("");
+  $("#lockIn").innerHTML = withCites(C.lockin);
+  $("#risks").innerHTML = C.risks.map(([c,h,t])=>`<div class="risk"><span class="pill ${c}">${esc(h)}</span><span class="small">${withCites(t)}</span></div>`).join("");
+  $("#qsLabel").textContent = `Questions to ask ${SUP[s]}`;
+  $("#qs").innerHTML = C.qs.map(([q,w])=>`<li><b>${esc(q)}</b><span class="why">${withCites(w)}</span></li>`).join("");
+  $("#position").innerHTML = V.position.map(t=>`<li>${esc(t)}</li>`).join("");
+  $("#foot1").textContent = `Brief published ${AS_OF}. Evidence from company documents for Jul 2025 – Jun 2026 and market indices to Oct 2026.`;
+}
+$("#supBar").addEventListener("click",e=>{ const b=e.target.closest("button[data-sup]"); if(!b) return; CUR=b.dataset.sup; try{ localStorage.setItem("sic-brief-sup",CUR); }catch(err){} render(); });
+$("#askedPct").addEventListener("change",e=>{ const v=parseFloat(e.target.value); ASKED[CUR]= isNaN(v)||v<=0 ? null : Math.min(v,50); try{ localStorage.setItem("sic-brief-asked",JSON.stringify(ASKED)); }catch(err){} render(); });
+
+/* ---------- evidence dialog ---------- */
+function openEvidence(id){ const e=EVMAP[id]; if(!e) return;
+  $("#evTitle").textContent = `${e.id} · ${e.co}`;
+  $("#evMeta").innerHTML = `<span>${esc(e.per)}</span><span>${esc(e.sig)}</span>${e.metric?`<span class="mono">${esc(e.metric)}</span>`:""}`;
+  $("#evText").textContent = e.text; $("#evSrc").textContent = "Source: "+e.src;
+  const d=$("#evDlg"); if(d.showModal) d.showModal(); else d.setAttribute("open","");
+}
+$("#evClose").addEventListener("click",()=>$("#evDlg").close());
+$("#evDlg").addEventListener("click",e=>{ if(e.target===e.currentTarget) e.currentTarget.close(); });
+document.addEventListener("click",e=>{ const c=e.target.closest(".cite"); if(c){ e.preventDefault(); openEvidence(c.dataset.ev); } });
+
+/* ---------- tabs ---------- */
+const TABS=["brief","prep"];
+function selectTab(t){ if(!TABS.includes(t)) t="brief";
+  TABS.forEach(x=>{ $("#tab-"+x).setAttribute("aria-selected",x===t?"true":"false"); $("#panel-"+x).hidden=x!==t; });
+  try{ sessionStorage.setItem("sic-brief-tab",t); }catch(e){} }
+document.querySelectorAll("nav.tabs button").forEach(b=>b.addEventListener("click",()=>selectTab(b.dataset.tab)));
+
+/* ---------- boot ---------- */
+render();
+let start="brief"; try{ start=sessionStorage.getItem("sic-brief-tab")||"brief"; }catch(e){}
+const h=(location.hash||"").slice(1); if(TABS.includes(h)) start=h; selectTab(start);
+</script>
+
+</body></html>
