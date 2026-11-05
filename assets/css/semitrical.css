@@ -612,10 +612,10 @@ footer .logo img { height: 40px; }
 /* The three offers, on dark. Supplier Intelligence is ringed and not merely outlined: the
    three are not equal choices -- it is the product, and the other two are a way in and a way
    up. */
-.offers-section { background: var(--ink); color: #fff; border: 0; }
-.offers-section .section-label { color: var(--gold-soft); }
-.offers-section h2 { color: #fff; }
-.offers-section .section-sub { color: #C9D1D9; }
+.section.alt.offers-section { background: var(--ink); color: #fff; border-top: 0; border-bottom: 0; }
+.section.alt.offers-section .section-label { color: var(--gold-soft); }
+.section.alt.offers-section h2 { color: #fff; }
+.section.alt.offers-section .section-sub { color: #C9D1D9; }
 .offers { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; align-items: stretch; }
 .offer {
   position: relative; border: 1px solid #3a3f49; border-radius: 12px; padding: 30px;
