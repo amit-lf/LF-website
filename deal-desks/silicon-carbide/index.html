@@ -3,7 +3,123 @@
 :root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}
 
 @media print{.lf-chrome{display:none!important}}
+
+/* ── PRINT: the PDF is a document that leaves the building, so it carries our name on every
+   sheet. position:fixed repeats an element on every printed page in Chrome, which is how the
+   header, footer and watermark get there without being in the flow. */
+@media print {
+  @page { size: A4; margin: 16mm 14mm 18mm; }
+
+  .pdf-only { display: block !important; }
+
+  .pdf-head b span { color: #A35A16; }
+
+
+  /* Read THROUGH, not around. A watermark that fights the text makes the PDF worse than the
+     free web page it came from. */
+  .pdf-mark {
+    position: fixed; top: 44%; left: 0; right: 0; text-align: center;
+    font-family: var(--f-body); font-size: 58pt; font-weight: 700; letter-spacing: -0.03em;
+    color: #A35A16; opacity: 0.06; transform: rotate(-24deg); z-index: 0;
+  }
+
+  /* The print palette is fixed: a reader in dark mode would otherwise print a black page. */
+  :root {
+    --bg: #fff; --surface: #fff; --sunk: #F4F5F1; --ink: #1A211D; --muted: #5B655F;
+    --line: #D5D9D1; --accent: #A35A16; --accent-soft: #F6E7D6;
+  }
+  body { background: #fff !important; }
+}
+.pdf-only { display: none; }
+
+/* ── The PDF cover. Print only; the web page has its own title block. */
+.pdf-cover { display: none; }
+@media print {
+  .pdf-cover {
+    display: flex !important; flex-direction: column; justify-content: space-between;
+    /* The page box less Chrome's margins, so the cover fills its sheet and nothing else
+       climbs onto it. */
+    height: 247mm; page-break-after: always; break-after: page;
+  }
+  .pdf-cover-top img { width: 52mm; height: auto; display: block; }
+  .pdf-cover-eyebrow {
+    font-family: var(--f-mono); font-size: 9pt; font-weight: 500; letter-spacing: 0.16em;
+    text-transform: uppercase; color: #A35A16; margin: 22mm 0 6mm;
+  }
+  .pdf-cover h1 {
+    font-family: var(--f-body); font-size: 34pt; line-height: 1.08; font-weight: 700;
+    letter-spacing: -0.025em; color: #1A211D; margin: 0; max-width: 22ch;
+  }
+  .pdf-cover-sub {
+    font-family: var(--f-body); font-size: 13pt; line-height: 1.5; color: #5B655F;
+    margin: 8mm 0 0; max-width: 46ch;
+  }
+  .pdf-cover-rule { border: 0; border-top: 2pt solid #A35A16; width: 28mm; margin: 10mm 0 0; }
+  .pdf-cover-meta {
+    display: grid; grid-template-columns: 0.75fr 1fr 1.7fr; gap: 10mm;
+    border-top: 1.5pt solid #1A211D; padding-top: 6mm; margin-bottom: 7mm;
+  }
+  .pdf-cover-meta dt {
+    font-family: var(--f-mono); font-size: 8pt; font-weight: 500; letter-spacing: 0.14em;
+    text-transform: uppercase; color: #5B655F; margin-bottom: 2.5mm;
+  }
+  .pdf-cover-meta dd {
+    font-family: var(--f-body); font-size: 14pt; font-weight: 700; letter-spacing: -0.015em;
+    color: #1A211D; margin: 0; line-height: 1.25; white-space: nowrap;
+  }
+  .pdf-cover-foot {
+    font-family: var(--f-body); font-size: 8pt; line-height: 1.65; color: #5B655F;
+    border-top: 0.5pt solid #D5D9D1; padding-top: 3.5mm;
+  }
+}
+
+/* The PDF offer. Not a gate -- the brief above is complete. */
+.pdf-offer { border:1px solid var(--line); border-radius:12px; background:var(--sunk);
+  padding:26px; margin:28px auto 0; max-width:860px; font-family:var(--f-body); }
+.pdf-offer h2 { font-size:21px; font-weight:700; letter-spacing:-0.015em; margin:0 0 6px; color:var(--ink); }
+.pdf-offer p.lede { font-size:14.5px; line-height:1.7; color:var(--muted); margin:0 0 18px; max-width:62ch; }
+.pdf-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(190px,1fr)); gap:12px; }
+.pdf-grid label { display:block; font-size:12.5px; font-weight:600; color:var(--ink); margin-bottom:5px; }
+.pdf-grid .opt { font-weight:400; color:var(--muted); }
+.pdf-grid input { width:100%; font:inherit; font-size:14.5px; padding:10px 12px;
+  border:1px solid var(--line); border-radius:6px; background:var(--surface); color:var(--ink); }
+.pdf-actions { display:flex; flex-wrap:wrap; gap:12px; align-items:center; margin-top:16px; }
+.pdf-actions button { font:inherit; font-size:14.5px; font-weight:600; padding:11px 22px;
+  border:0; border-radius:6px; background:var(--ink); color:var(--surface); cursor:pointer; }
+.pdf-actions button:disabled { opacity:.55; cursor:default; }
+.pdf-small { font-size:12px; line-height:1.6; color:var(--muted); margin:12px 0 0; max-width:66ch; }
+.pdf-err { font-size:13px; line-height:1.6; color:#9B2C2C; margin:10px 0 0; }
+.pdf-hp { position:absolute; left:-9999px; width:1px; height:1px; opacity:0; }
+.pdf-done { border:1px solid var(--line); border-radius:12px; background:var(--sunk);
+  padding:26px; margin:28px auto 0; max-width:860px; font-family:var(--f-body); }
+.pdf-done h2 { font-size:21px; font-weight:700; margin:0 0 6px; color:var(--ink); }
+.pdf-done p { font-size:14.5px; line-height:1.7; color:var(--muted); margin:0; max-width:62ch; }
+@media print { .pdf-offer, .pdf-done { display:none !important; } }
 </style></head><body>
+<section class="pdf-cover" aria-hidden="true">
+  <div class="pdf-cover-top">
+    <img src="/assets/img/semitrical-logo.png" alt="Semitrical">
+    <p class="pdf-cover-eyebrow">Deal Desk &middot; Silicon carbide</p>
+    <h1>Infineon SiC price increase</h1>
+    <p class="pdf-cover-sub">Read through the substrate and equipment makers, because that is where overcapacity shows up before a device maker acknowledges it.</p>
+    <hr class="pdf-cover-rule">
+  </div>
+  <div>
+    <dl class="pdf-cover-meta">
+      <div><dt>Author</dt><dd>Semitrical.ai</dd></div>
+      <div><dt>Date</dt><dd>24 October 2026</dd></div>
+      <div><dt>Contact</dt><dd>contact@semitrical.ai</dd></div>
+    </dl>
+    <p class="pdf-cover-foot">
+      SiC power devices, evidence to 24 October 2026. Every figure traces to a filed document and every quote to a named quarter.
+      Built from public filings. First-pass analysis to support your own review &mdash; not
+      legal, investment or professional advice.
+    </p>
+  </div>
+</section>
+
+<div class="pdf-only pdf-mark" aria-hidden="true">semitrical.ai</div>
+
 <nav class="lf-chrome" style="display:flex;align-items:center;flex-wrap:wrap;gap:16px 24px;padding:14px 22px;border-bottom:1px solid var(--line);background:var(--surface);font-family:var(--f-body)"><a href="/" style="text-decoration:none;display:flex;flex-direction:column;line-height:1.1"><span style="font-size:19px;font-weight:700;letter-spacing:-0.02em;color:var(--ink)">Semi<span style="color:var(--accent)">trical</span></span><span style="font-family:var(--f-mono);font-size:7.5px;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted)">Removing asymmetry from chip deals</span></a><a href="/" style="font-size:13px;font-weight:500;color:var(--muted);text-decoration:none;white-space:nowrap">Platform</a><a href="/supplier-intelligence.html" style="font-size:13px;font-weight:500;color:var(--muted);text-decoration:none;white-space:nowrap">Supplier Intelligence</a><a href="/deal-desk.html" style="font-size:13px;font-weight:500;color:var(--ink);text-decoration:none;white-space:nowrap">Deal Desk</a><a href="/reports.html" style="font-size:13px;font-weight:500;color:var(--muted);text-decoration:none;white-space:nowrap">Leverage Reports</a><a href="/contact.html" style="margin-left:auto;padding:8px 18px;background:var(--ink);color:var(--surface);border-radius:6px;font-size:13px;font-weight:600;text-decoration:none;white-space:nowrap">Contact us</a></nav>
 
 
@@ -443,5 +559,43 @@ let start="brief"; try{ start=sessionStorage.getItem("sic-brief-tab")||"brief"; 
 const h=(location.hash||"").slice(1); if(TABS.includes(h)) start=h; selectTab(start);
 </script>
 
+
+<section class="pdf-offer" id="pdf-offer">
+  <h2>Want this as a PDF?</h2>
+  <p class="lede">
+    We can send you the brief as a PDF at the email you provide &mdash; the same brief you have
+    just read, in a format you can forward. Nothing above is held back either way.
+  </p>
+  <form id="pdf-form" data-brief="silicon-carbide" novalidate>
+    <div class="pdf-grid">
+      <div><label for="pdf-email">Work email</label>
+        <input id="pdf-email" name="email" type="email" placeholder="you@company.com" required></div>
+      <div><label for="pdf-name">Name <span class="opt">optional</span></label>
+        <input id="pdf-name" name="name_" type="text"></div>
+      <div><label for="pdf-company">Company <span class="opt">optional</span></label>
+        <input id="pdf-company" name="company" type="text"></div>
+      <div><label for="pdf-role">Your role <span class="opt">optional</span></label>
+        <input id="pdf-role" name="role" type="text"></div>
+    </div>
+    <input class="pdf-hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+    <div class="pdf-actions">
+      <button id="pdf-send" type="submit">Send it to me</button>
+    </div>
+    <p class="pdf-small">
+      We use your address to send the brief and to answer you. We never publish or sell it.
+    </p>
+    <p class="pdf-err" id="pdf-note" hidden></p>
+  </form>
+</section>
+
+<section class="pdf-done" id="pdf-done" hidden>
+  <h2>On its way.</h2>
+  <p>
+    Check your inbox in a minute or two. If it has not arrived, email contact@semitrical.ai and
+    we will send it straight over.
+  </p>
+</section>
+
 <footer class="lf-chrome" style="border-top:1px solid var(--line);background:var(--surface);padding:34px 22px 44px;font-family:var(--f-body);font-size:12px;color:var(--muted);line-height:1.7"><a href="/" style="text-decoration:none;font-size:17px;font-weight:700;letter-spacing:-0.02em;color:var(--ink)">Semi<span style="color:var(--accent)">trical</span></a><p style="margin:9px 0 0">Semiconductor procurement intelligence &middot; &copy; 2026 Semitrical<br>Built from public filings. First-pass analysis to support your own review &mdash; not legal, investment or professional advice.</p><p style="margin:12px 0 0"><a href="/" style="color:var(--muted)">Platform</a> &middot; <a href="/supplier-intelligence.html" style="color:var(--muted)">Supplier Intelligence</a> &middot; <a href="/deal-desk.html" style="color:var(--muted)">Deal Desk</a> &middot; <a href="/reports.html" style="color:var(--muted)">Leverage Reports</a></p><p style="margin:7px 0 0"><a href="/about.html" style="color:var(--muted)">About</a> &middot; <a href="/privacy.html" style="color:var(--muted)">Privacy</a> &middot; <a href="mailto:contact@semitrical.ai" style="color:var(--muted);font-weight:600">contact@semitrical.ai</a> &middot; <a href="https://www.linkedin.com/company/semitrical-ai" style="color:var(--muted)">LinkedIn</a></p></footer>
+<script src="/assets/js/brief-pdf.js" defer></script>
 </body></html>
