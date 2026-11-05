@@ -42,75 +42,295 @@
 
 <header class="hero">
   <span class="hero-badge">SUPPLIER INTELLIGENCE</span>
-  <h1>Your supplier knows their position. <em>Now you do too.</em></h1>
+  <h1>Your supplier knows their position. Now you do too.</h1>
   <p class="hero-sub">
-    A supplier&rsquo;s commercial team spends the year on pricing and contract strategy for a
-    handful of product lines. Your team covers twenty suppliers and several hundred part
-    numbers. We close that gap using what the supplier has already published.
+    We put one supplier in front of everyone each week, free and with no account. The reading
+    itself moves when the supplier files, four times a year &mdash; the week only decides whose
+    turn it is.
   </p>
 </header>
 
+<!-- The rotation as a line, not a band. A gold block the width of the page pulled the eye off
+     the report below it and said the supplier's name a second time; the report's own header
+     already does that. What this line is for is NEXT week. -->
+<section class="section" style="padding-bottom:0">
+  <p class="rotation">
+    <span class="rot-now">&#9679; This week</span>
+    <span class="rot-name">STMicroelectronics</span>
+    <span class="rot-sep">|</span>
+    <span>Next week</span>
+    <span class="rot-next">NXP Semiconductors</span>
+    <span class="rot-note">&middot; thirteen suppliers, so yours comes round every few months</span>
+  </p>
+</section>
+
 <section class="section">
-  <p class="section-label">What you get</p>
-  <h2>Four readings on every supplier we cover</h2>
-  <div class="cases">
-    <article class="case">
-      <h3>Financial position</h3>
-      <p>
-        Revenue, margin, inventory days and capital spending across six filed years with the
-        trailing quarters, from the supplier&rsquo;s own accounts. Facts, not inference.
-      </p>
-    </article>
-    <article class="case">
+  <div class="report">
+
+    <div class="report-head">
+      <span class="report-kind">Supplier focus</span>
+      <span class="report-name">STMicroelectronics</span>
+      <span class="report-ticker">STM</span>
+      <span class="report-asat">As at Q2-26 &middot; FY2025 accounts &middot; free this week</span>
+    </div>
+
+    <div class="report-part">
       <h3>What management said</h3>
-      <p>
-        Capacity and inventory, read from the buyer&rsquo;s seat rather than a
-        shareholder&rsquo;s &mdash; a supplier running flat out is a good quarter for its
-        investors and a bad one for you. Every reading carries the sentence it came from and
-        the quarter it was said in.
+      <p class="report-lede">
+        A supplier running flat out is a good quarter for its investors and a bad one for you.
+        We read it your way, not theirs. Only the last two quarters are read &mdash; a position,
+        not a trend.
       </p>
-    </article>
-    <article class="case">
-      <h3>Where the room sits</h3>
-      <p>
-        How much of a supplier&rsquo;s cost stays in place when your volume moves, fitted on
-        their own filed accounts and tested against a year held out of the fit.
+      <div class="said">
+      <div class="said-card">
+        <h4>Capacity</h4>
+        <p class="said-verdict">Against you</p>
+        <p class="said-meta">as stated in Q2-26 &middot; 35 findings</p>
+        <p class="said-means">Capacity is tight, so you are competing with their other customers for it.</p>
+        <blockquote class="said-quote">
+          <p>&ldquo;We saw improved visibility and signs of tight supply in several product categories.&rdquo;</p>
+          <footer>STMicroelectronics Q2-26 earnings call</footer>
+        </blockquote>
+      </div>
+      <div class="said-card">
+        <h4>Inventory</h4>
+        <p class="said-verdict">Against you</p>
+        <p class="said-meta">as stated in Q2-26 &middot; 18 findings</p>
+        <p class="said-means">They are running lean, so there is no stock to draw on and no pressure to move it.</p>
+        <blockquote class="said-quote">
+          <p>&ldquo;In distribution, inventory further decreased and is now below our standard target.&rdquo;</p>
+          <footer>STMicroelectronics Q2-26 earnings call</footer>
+        </blockquote>
+      </div>
+      </div>
+    </div>
+
+    <div class="report-part is-filed">
+      <h3>As they filed it</h3>
+      <p class="report-lede">
+        Six filed years, from STMicroelectronics&rsquo; own annual accounts. Facts, not inference.
       </p>
-    </article>
-    <article class="case">
-      <h3>Ownership and exposure</h3>
-      <p>
-        Who ultimately owns the supplier, and what that means for export control and
-        continuity. A clean screening result is reported as what it is &mdash; not covered is
-        never shown as cleared.
-      </p>
-    </article>
+      <div class="charts">
+      <div class="chart">
+        <div class="chart-head">
+          <h4>Revenue</h4>
+          <p class="chart-latest">$11.8B in FY2025</p>
+        </div>
+        <p class="chart-note">Down from the FY2023 peak for a second year.</p>
+        <div class="bars">
+          <div class="bar-col">
+            <span class="bar-val">$10.2B</span>
+            <span class="bar" style="height:61px;background:#c9cedb"></span>
+          </div>
+          <div class="bar-col">
+            <span class="bar-val">$12.8B</span>
+            <span class="bar" style="height:77px;background:#c9cedb"></span>
+          </div>
+          <div class="bar-col">
+            <span class="bar-val">$16.1B</span>
+            <span class="bar" style="height:97px;background:#c9cedb"></span>
+          </div>
+          <div class="bar-col">
+            <span class="bar-val">$17.3B</span>
+            <span class="bar" style="height:104px;background:#c9cedb"></span>
+          </div>
+          <div class="bar-col">
+            <span class="bar-val">$13.3B</span>
+            <span class="bar" style="height:80px;background:#c9cedb"></span>
+          </div>
+          <div class="bar-col">
+            <span class="bar-val">$11.8B</span>
+            <span class="bar" style="height:71px;background:var(--ink)"></span>
+          </div>
+        </div>
+        <div class="bar-years">
+          <span>20</span>
+          <span>21</span>
+          <span>22</span>
+          <span>23</span>
+          <span>24</span>
+          <span>25</span>
+        </div>
+      </div>
+      <div class="chart">
+        <div class="chart-head">
+          <h4>Gross margin</h4>
+          <p class="chart-latest">33.9% in FY2025</p>
+        </div>
+        <p class="chart-note">Fourteen points off the FY2023 high.</p>
+        <div class="bars">
+          <div class="bar-col">
+            <span class="bar-val">37.1%</span>
+            <span class="bar" style="height:81px;background:#c9cedb"></span>
+          </div>
+          <div class="bar-col">
+            <span class="bar-val">41.7%</span>
+            <span class="bar" style="height:91px;background:#c9cedb"></span>
+          </div>
+          <div class="bar-col">
+            <span class="bar-val">47.3%</span>
+            <span class="bar" style="height:103px;background:#c9cedb"></span>
+          </div>
+          <div class="bar-col">
+            <span class="bar-val">47.9%</span>
+            <span class="bar" style="height:104px;background:#c9cedb"></span>
+          </div>
+          <div class="bar-col">
+            <span class="bar-val">39.3%</span>
+            <span class="bar" style="height:85px;background:#c9cedb"></span>
+          </div>
+          <div class="bar-col">
+            <span class="bar-val">33.9%</span>
+            <span class="bar" style="height:74px;background:var(--gold)"></span>
+          </div>
+        </div>
+        <div class="bar-years">
+          <span>20</span>
+          <span>21</span>
+          <span>22</span>
+          <span>23</span>
+          <span>24</span>
+          <span>25</span>
+        </div>
+      </div>
+      <div class="chart">
+        <div class="chart-head">
+          <h4>Inventory days</h4>
+          <p class="chart-latest">147 days in FY2025</p>
+        </div>
+        <p class="chart-note">Computed from filed figures. Highest of the six years.</p>
+        <div class="bars">
+          <div class="bar-col">
+            <span class="bar-val">105</span>
+            <span class="bar" style="height:74px;background:#c9cedb"></span>
+          </div>
+          <div class="bar-col">
+            <span class="bar-val">97</span>
+            <span class="bar" style="height:69px;background:#c9cedb"></span>
+          </div>
+          <div class="bar-col">
+            <span class="bar-val">111</span>
+            <span class="bar" style="height:79px;background:#c9cedb"></span>
+          </div>
+          <div class="bar-col">
+            <span class="bar-val">109</span>
+            <span class="bar" style="height:77px;background:#c9cedb"></span>
+          </div>
+          <div class="bar-col">
+            <span class="bar-val">127</span>
+            <span class="bar" style="height:90px;background:#c9cedb"></span>
+          </div>
+          <div class="bar-col">
+            <span class="bar-val">147</span>
+            <span class="bar" style="height:104px;background:#9B2C2C"></span>
+          </div>
+        </div>
+        <div class="bar-years">
+          <span>20</span>
+          <span>21</span>
+          <span>22</span>
+          <span>23</span>
+          <span>24</span>
+          <span>25</span>
+        </div>
+      </div>
+      <div class="chart">
+        <div class="chart-head">
+          <h4>Capital spending</h4>
+          <p class="chart-latest">$1.8B in FY2025</p>
+        </div>
+        <p class="chart-note">Less than half the FY2023 level.</p>
+        <div class="bars">
+          <div class="bar-col">
+            <span class="bar-val">$1.3B</span>
+            <span class="bar" style="height:32px;background:#c9cedb"></span>
+          </div>
+          <div class="bar-col">
+            <span class="bar-val">$1.8B</span>
+            <span class="bar" style="height:46px;background:#c9cedb"></span>
+          </div>
+          <div class="bar-col">
+            <span class="bar-val">$3.5B</span>
+            <span class="bar" style="height:89px;background:#c9cedb"></span>
+          </div>
+          <div class="bar-col">
+            <span class="bar-val">$4.1B</span>
+            <span class="bar" style="height:104px;background:#c9cedb"></span>
+          </div>
+          <div class="bar-col">
+            <span class="bar-val">$2.6B</span>
+            <span class="bar" style="height:67px;background:#c9cedb"></span>
+          </div>
+          <div class="bar-col">
+            <span class="bar-val">$1.8B</span>
+            <span class="bar" style="height:47px;background:var(--ink)"></span>
+          </div>
+        </div>
+        <div class="bar-years">
+          <span>20</span>
+          <span>21</span>
+          <span>22</span>
+          <span>23</span>
+          <span>24</span>
+          <span>25</span>
+        </div>
+      </div>
+      </div>
+    </div>
+
+    <div class="report-foot">
+      End of the free report &middot; the short version &middot; every figure traces to a filing,
+      every quote to a named quarter
+    </div>
+
   </div>
 </section>
 
+<!-- Pro. The comparison answers the heading, so it stays folded until someone asks by
+     clicking. <details> rather than a handwritten toggle: no script, and the keyboard and
+     screen-reader behaviour comes for free. -->
 <section class="section">
-  <p class="section-label">How it is built</p>
-  <h2>Nothing here is a forecast</h2>
-  <p class="section-sub">
-    We read the position a supplier is already in, from what they have already published.
-    Quotes are matched word for word against the transcript before they are shown, and one we
-    cannot match is dropped rather than paraphrased. Where the filings will not support an
-    answer, the platform says so instead of estimating &mdash; a model that declines where the
-    data runs out is worth more in a negotiation than one that guesses.
-  </p>
-</section>
+  <div class="pro">
+    <div class="pro-head">
+      <a class="pro-chip" href="choose-suppliers.html">Pro</a>
+      <h2>So what do I get with Pro?</h2>
+      <p>
+        The full report, on the suppliers you choose, four times a year. What you just read is
+        the short version of it &mdash; and only for the supplier we picked this week.
+      </p>
+      <details class="cmp">
+        <summary>Show what is in each</summary>
+        <table class="cmp-table">
+          <thead>
+            <tr>
+              <th scope="col">What is in the report</th>
+              <th scope="col" class="cmp-col">Free</th>
+              <th scope="col" class="cmp-col is-pro">Pro</th>
+            </tr>
+          </thead>
+          <tbody>
+          <tr><th scope="row">Which suppliers</th><td class="cmp-text">Our pick, one a week</td><td class="cmp-text">The ones you choose</td></tr>
+          <tr><th scope="row">Revenue, margin, inventory days and capex</th><td class="cmp-mark">&#10003;</td><td class="cmp-mark">&#10003;</td></tr>
+          <tr><th scope="row">Six filed years of accounts</th><td class="cmp-mark">&#10003;</td><td class="cmp-mark">&#10003;</td></tr>
+          <tr><th scope="row">Capacity and inventory, read for a buyer</th><td class="cmp-mark">&#10003;</td><td class="cmp-mark">&#10003;</td></tr>
+          <tr><th scope="row">Every quote with the quarter it came from</th><td class="cmp-mark">&#10003;</td><td class="cmp-mark">&#10003;</td></tr>
+          <tr><th scope="row">Eleven charts, with the trailing quarters</th><td class="cmp-mark">&ndash;</td><td class="cmp-mark">&#10003;</td></tr>
+          <tr><th scope="row">Leverage score across four dimensions</th><td class="cmp-mark">&ndash;</td><td class="cmp-mark">&#10003;</td></tr>
+          <tr><th scope="row">Supply signal against installed assets</th><td class="cmp-mark">&ndash;</td><td class="cmp-mark">&#10003;</td></tr>
+          <tr><th scope="row">How much of their cost is fixed</th><td class="cmp-mark">&ndash;</td><td class="cmp-mark">&#10003;</td></tr>
+          <tr><th scope="row">Side by side with your other suppliers</th><td class="cmp-mark">&ndash;</td><td class="cmp-mark">&#10003;</td></tr>
+          <tr><th scope="row">News filtered for procurement impact</th><td class="cmp-mark">&ndash;</td><td class="cmp-mark">&#10003;</td></tr>
+          <tr><th scope="row">Ownership and export-control screening</th><td class="cmp-mark">&ndash;</td><td class="cmp-mark">&#10003;</td></tr>
+          </tbody>
+        </table>
+      </details>
+    </div>
 
-<section class="section">
-  <p class="section-label">Getting it</p>
-  <h2>Priced per supplier, per year</h2>
-  <p class="section-sub">
-    Cover the suppliers your chip spend actually concentrates in. One supplier a week is free
-    to read with no account, so you can see the depth before you decide.
-  </p>
-  <p class="hero-actions">
-    <a class="btn-primary" href="https://app.semitrical.ai/hub">See this week&rsquo;s supplier</a>
-    <a class="btn-secondary" href="contact.html">Talk to us</a>
-  </p>
+    <div class="pro-foot">
+      <p>One supplier or all thirteen. Tell us which ones and we will send you the price.</p>
+      <a class="btn-primary" href="choose-suppliers.html" style="text-decoration:none;display:inline-block">Choose your suppliers</a>
+    </div>
+  </div>
 </section>
 
 <footer style="padding:36px 48px;border-top:1px solid var(--rule);font-size:12px;color:var(--ink-3)">

@@ -690,3 +690,108 @@ footer .logo img { height: 40px; }
 .report-ask { border: 1px dashed var(--rule); border-radius: 12px; padding: 26px; margin-top: 16px; }
 .report-ask h3 { font-size: 18px; font-weight: 700; margin-bottom: 8px; }
 .report-ask p { font-size: 14.5px; line-height: 1.75; color: var(--ink-2); margin-bottom: 16px; max-width: 72ch; }
+
+/* ── Supplier Intelligence ─────────────────────────────────────────────────────────── */
+
+/* The rotation. One line: what matters to a returning reader is whose turn is next. */
+.rotation {
+  font-family: var(--mono); font-size: 12.5px; color: var(--ink-3);
+  display: flex; flex-wrap: wrap; gap: 6px 14px; align-items: baseline;
+}
+.rot-now { color: var(--gold); font-weight: 500; }
+.rot-name { color: var(--ink); font-weight: 500; }
+.rot-next { color: var(--ink-2); }
+.rot-sep { color: #c9cedb; }
+.rot-note { color: var(--ink-4); }
+
+/* The free report, as one object. It is the thing we give away, so it has to read as a
+   document with a beginning and an end -- not as more page. */
+.report { border: 1px solid #c9cedb; border-radius: 14px; overflow: hidden; }
+.report-head {
+  background: var(--ink); color: #fff; padding: 22px 30px;
+  display: flex; flex-wrap: wrap; align-items: baseline; gap: 10px 16px;
+}
+.report-kind { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.75; }
+.report-name { font-size: 26px; font-weight: 600; letter-spacing: -0.015em; }
+.report-ticker { font-family: var(--mono); font-size: 13px; opacity: 0.8; }
+.report-asat { font-family: var(--mono); font-size: 11.5px; opacity: 0.75; margin-left: auto; }
+.report-part { padding: 30px; }
+.report-part.is-filed { background: var(--surface); border-top: 1px solid var(--rule); }
+.report-part h3 { font-size: 23px; font-weight: 700; letter-spacing: -0.015em; margin-bottom: 6px; }
+.report-lede { font-size: 14px; line-height: 1.7; color: var(--ink-3); margin-bottom: 20px; max-width: 70ch; }
+.report-foot {
+  border-top: 1px solid var(--rule); padding: 16px 30px;
+  font-family: var(--mono); font-size: 11.5px; color: var(--ink-4); line-height: 1.6;
+}
+
+/* What management said. The border carries the verdict, so the card is readable before the
+   words are. */
+.said { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+.said-card { border: 1px solid #e8c9c9; border-radius: 12px; padding: 26px; background: var(--white); }
+.said-card h4 { font-size: 21px; font-weight: 700; }
+.said-verdict {
+  display: inline-block; margin-top: 10px; font-size: 16px; font-weight: 600;
+  color: #9B2C2C; background: #FBECEC; border-radius: 999px; padding: 5px 13px;
+}
+.said-meta { font-family: var(--mono); font-size: 11.5px; color: var(--ink-3); margin-top: 8px; }
+.said-means { font-size: 14px; line-height: 1.7; color: var(--ink-2); margin-top: 14px; }
+.said-quote { margin-top: 16px; border-left: 3px solid var(--rule); padding-left: 16px; }
+.said-quote p { font-size: 14.5px; line-height: 1.65; }
+.said-quote footer { font-family: var(--mono); font-size: 11px; color: var(--ink-4); margin-top: 8px; }
+
+/* As they filed it. Six bars, the last one coloured, because the shape IS the argument. */
+.charts { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+.chart { border: 1px solid var(--rule); border-radius: 10px; padding: 22px; background: var(--white); }
+.chart-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
+.chart-head h4 { font-size: 16px; font-weight: 600; }
+.chart-latest { font-family: var(--mono); font-size: 12px; color: var(--ink-3); }
+.chart-note { font-size: 12.5px; line-height: 1.6; color: var(--ink-3); margin-top: 6px; }
+.bars { display: flex; align-items: flex-end; gap: 10px; height: 130px; margin-top: 18px; }
+.bar-col { flex: 1 1 0; min-width: 0; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; height: 100%; gap: 6px; }
+.bar-val { font-family: var(--mono); font-size: 10.5px; color: var(--ink-3); }
+.bar { width: 100%; border-radius: 4px 4px 0 0; }
+.bar-years { display: flex; gap: 10px; margin-top: 8px; border-top: 1px solid var(--rule); padding-top: 8px; }
+.bar-years span { flex: 1 1 0; min-width: 0; text-align: center; font-family: var(--mono); font-size: 10.5px; color: var(--ink-4); }
+
+/* Pro */
+.pro { border: 2px solid var(--gold); border-radius: 14px; overflow: hidden; }
+.pro-head { background: rgba(217,119,6,0.09); padding: 26px 30px; }
+.pro-chip {
+  font-family: var(--mono); font-size: 13px; font-weight: 500; letter-spacing: 0.12em;
+  text-transform: uppercase; color: #fff; background: var(--gold); display: inline-block;
+  border-radius: 4px; padding: 5px 11px; margin-bottom: 12px; text-decoration: none;
+}
+.pro-head h2 { font-size: 27px; font-weight: 700; letter-spacing: -0.015em; margin-bottom: 8px; }
+.pro-head > p { font-size: 14.5px; line-height: 1.75; color: var(--ink-2); margin-bottom: 18px; max-width: 72ch; }
+.pro-foot {
+  border-top: 1px solid var(--rule); padding: 24px 30px;
+  display: flex; flex-wrap: wrap; gap: 16px; align-items: center;
+}
+.pro-foot p { flex: 999 1 320px; min-width: 0; font-size: 14.5px; line-height: 1.7; color: var(--ink-2); }
+
+/* The fold. A summary styled as the page's own outline button; the marker is ours so it can
+   point the right way in both states. */
+.cmp summary {
+  display: inline-flex; align-items: center; gap: 9px; cursor: pointer; list-style: none;
+  font-size: 14px; font-weight: 600; color: var(--ink); background: var(--white);
+  border: 1px solid var(--gold); border-radius: 6px; padding: 10px 18px;
+}
+.cmp summary::-webkit-details-marker { display: none; }
+.cmp summary::after {
+  content: ""; width: 6px; height: 6px; margin-top: -3px;
+  border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor;
+  transform: rotate(45deg);
+}
+.cmp[open] summary::after { transform: rotate(225deg); margin-top: 2px; }
+.cmp[open] summary { margin-bottom: 18px; }
+.cmp-table { width: 100%; border-collapse: collapse; font-size: 14px; background: var(--white); border: 1px solid var(--rule); border-radius: 10px; }
+.cmp-table thead tr { background: var(--surface); }
+.cmp-table th[scope="col"] {
+  text-align: left; font-size: 13px; font-weight: 600; color: var(--ink-3);
+  padding: 13px 20px; border-bottom: 1px solid var(--rule);
+}
+.cmp-table th.cmp-col { width: 110px; text-align: center; padding: 13px 12px; border-left: 1px solid var(--rule); font-family: var(--mono); font-size: 12px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; }
+.cmp-table th.cmp-col.is-pro { background: rgba(217,119,6,0.07); color: #8a5a10; }
+.cmp-table th[scope="row"] { text-align: left; font-weight: 400; color: var(--ink-2); padding: 12px 20px; border-top: 1px solid var(--rule); line-height: 1.5; }
+.cmp-mark { text-align: center; padding: 12px; border-top: 1px solid var(--rule); border-left: 1px solid var(--rule); font-size: 16px; color: var(--ink-2); }
+.cmp-text { text-align: center; padding: 12px; border-top: 1px solid var(--rule); border-left: 1px solid var(--rule); font-size: 12.5px; color: var(--ink-3); }
