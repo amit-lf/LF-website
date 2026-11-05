@@ -687,7 +687,7 @@ footer .logo img { height: 40px; }
 /* No button inside the tile. The whole card is the anchor, so a button is a second target
    for the same action and the gap beside it becomes the one place a click does nothing. The
    title carries the arrow instead, and the border answers the hover. */
-.report-card-body h3::after { content: " 92"; color: var(--gold); }
+.report-card-body h3::after { content: " →"; color: var(--gold); }
 
 /* Shorter pieces: one finding each, so a flat list and no card furniture. */
 .posts { display: flex; flex-direction: column; gap: 12px; }
@@ -845,7 +845,7 @@ footer .logo img { height: 40px; }
 }
 .pick-item.is-on .pick-tick { border-color: var(--gold); background: var(--gold); }
 .pick-item.is-on .pick-tick::after {
-  content: "¹3"; color: #fff; font-size: 13px; font-weight: 700;
+  content: "✓"; color: #fff; font-size: 13px; font-weight: 700;
   display: flex; align-items: center; justify-content: center; height: 100%;
 }
 .pick-cb:focus-visible + .pick-tick { outline: 2px solid var(--gold); outline-offset: 2px; }
