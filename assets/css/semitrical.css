@@ -84,6 +84,10 @@ nav {
 .hero-actions { display: flex; gap: 12px; align-items: center; }
 .btn-primary { padding: 12px 24px; background: var(--ink); color: #fff; border: none; border-radius: 6px; font-size: 14px; font-weight: 600; cursor: pointer; font-family: var(--font); }
 .btn-primary:hover { background: #2d3142; }
+/* A button that is an anchor still looks like a button. Every page was passing
+   style="text-decoration:none;display:inline-block" inline to get this, which only
+   works for as long as everyone remembers -- deal-desk.html did not. */
+a.btn-primary, a.btn-secondary, a.offer-cta { text-decoration: none; display: inline-block; }
 .btn-secondary { padding: 12px 24px; background: transparent; color: var(--ink); border: 1.5px solid var(--rule); border-radius: 6px; font-size: 14px; font-weight: 500; cursor: pointer; font-family: var(--font); }
 .btn-secondary:hover { border-color: var(--ink-3); }
 
