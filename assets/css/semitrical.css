@@ -760,7 +760,7 @@ footer .logo img { height: 40px; }
 .bars { display: flex; align-items: flex-end; gap: 10px; height: 130px; margin-top: 18px; }
 .bar-col { flex: 1 1 0; min-width: 0; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; height: 100%; gap: 6px; }
 .bar-val { font-family: var(--mono); font-size: 10.5px; color: var(--ink-3); }
-.bar { width: 100%; border-radius: 4px 4px 0 0; }
+.bar { width: 100%; border-radius: 4px 4px 0 0; background: #c9cedb; }
 .bar-years { display: flex; gap: 10px; margin-top: 8px; border-top: 1px solid var(--rule); padding-top: 8px; }
 .bar-years span { flex: 1 1 0; min-width: 0; text-align: center; font-family: var(--mono); font-size: 10.5px; color: var(--ink-4); }
 
@@ -809,19 +809,9 @@ footer .logo img { height: 40px; }
 
 /* The trailing bar is the same measurement over a different window, so it is marked rather
    than drawn as a seventh year. */
-.bar.is-trailing { opacity: 0.55; }
+.bar.is-trailing { background: var(--gold); }
 .bar-growth { display: block; color: var(--ink-4); font-size: 9.5px; margin-top: 2px; }
 
-/* Line charts are drawn here, not by a library: ten points and two runs do not need one.
-   Annual is solid, the trailing quarters dashed, because they are different bases and one
-   continuous line would say they are the same measurement. */
-.linechart { width: 100%; height: auto; margin-top: 14px; display: block; }
-.ln-annual { stroke: var(--gold); stroke-width: 2; }
-.ln-trailing { stroke: var(--gold); stroke-width: 2; stroke-dasharray: 4 3; opacity: 0.75; }
-.pt { fill: var(--gold); }
-.pt.is-quarter { fill: var(--white); stroke: var(--gold); stroke-width: 1.5; }
-.pt.is-covered { fill: var(--white); stroke: var(--ink-4); stroke-width: 1.5; }
-.ln-mid { font-family: var(--mono); color: var(--ink-2) !important; font-weight: 500; }
 
 /* ── The Pro picker ─────────────────────────────────────────────────────────────────── */
 .pick-group { margin-bottom: 26px; }

@@ -116,8 +116,23 @@
     return row[key];
   }
 
-  function barChart(c, key) {
+  // ALL FOUR AS BARS, six annual plus one trailing, so the four read identically.
+  //
+  // A rate chart arrives as six annual points and FOUR quarters; a level chart arrives as six
+  // annual plus one TTM total. Ten bars in a row would stand four quarter-length periods beside
+  // six year-length ones and imply they are the same unit -- and two of those quarters sit
+  // inside the last filed year, which a line marks with a hollow dot and a bar cannot. So the
+  // rate charts keep only their LAST quarter, labelled as a quarter.
+  function trailingRows(c, key) {
     var rows = (c.data || []).filter(function (r) { return value(r, key, c.chart) != null; });
+    if (c.chart !== 'line') return rows;
+    var annual = rows.filter(function (r) { return r.section !== 'quarter'; });
+    var quarters = rows.filter(function (r) { return r.section === 'quarter'; });
+    return annual.concat(quarters.slice(-1));
+  }
+
+  function barChart(c, key) {
+    var rows = trailingRows(c, key);
     var vals = rows.map(function (r) { return value(r, key, c.chart); });
     var top = Math.max.apply(null, vals.concat([0])) || 1;
 
@@ -128,86 +143,23 @@
       var h = Math.max(6, Math.round((v / top) * 104));
       var col = el('div', 'bar-col');
       col.appendChild(el('span', 'bar-val', fmt(v, c.unit)));
-      var bar = el('span', 'bar' + (r.isTTM || r.section === 'ttm' ? ' is-trailing' : ''));
+      var isTrail = r.isTTM || r.section === 'ttm' || r.section === 'quarter';
+      var bar = el('span', 'bar' + (isTrail ? ' is-trailing' : ''));
       bar.style.height = h + 'px';
       col.appendChild(bar);
       bars.appendChild(col);
 
       // The trailing bar names itself. An unlabelled seventh bar beside six years reads as a
       // seventh year, which is the one reading that would be wrong.
-      var lab = r.isTTM || r.section === 'ttm' ? 'TTM' : String(r.label).replace(/^FY/, '');
+      var lab = (r.isTTM || r.section === 'ttm') ? 'TTM'
+              : r.section === 'quarter' ? r.label
+              : String(r.label).replace(/^FY/, '');
       var yr = el('span', null, lab);
       var growth = c.value_label_key ? r[c.value_label_key] : null;
       if (growth) yr.appendChild(el('span', 'bar-growth', growth));
       years.appendChild(yr);
     });
     return [bars, years];
-  }
-
-  var NS = 'http://www.w3.org/2000/svg';
-  function svgEl(tag, attrs) {
-    var n = document.createElementNS(NS, tag);
-    Object.keys(attrs || {}).forEach(function (k) { n.setAttribute(k, attrs[k]); });
-    return n;
-  }
-
-  function lineChart(c, key) {
-    var rows = (c.data || []).filter(function (r) { return value(r, key, c.chart) != null; });
-    if (rows.length < 2) return [];
-
-    var W = 300, H = 130, padL = 6, padR = 6, padT = 14, padB = 20;
-    var vals = rows.map(function (r) { return value(r, key, c.chart); });
-    var lo = Math.min.apply(null, vals), hi = Math.max.apply(null, vals);
-    if (hi === lo) { hi = lo + 1; }
-    var span = hi - lo;
-    // A little headroom so the top point is not welded to the frame.
-    lo -= span * 0.12; hi += span * 0.12;
-
-    function x(i) { return padL + (i * (W - padL - padR)) / (rows.length - 1); }
-    function y(v) { return padT + (1 - (v - lo) / (hi - lo)) * (H - padT - padB); }
-
-    var svg = svgEl('svg', {
-      viewBox: '0 0 ' + W + ' ' + H, role: 'img', class: 'linechart',
-      'aria-label': c.title + ': ' + fmt(vals[0], c.unit) + ' in ' + rows[0].label +
-                    ' to ' + fmt(vals[vals.length - 1], c.unit) + ' in ' + rows[rows.length - 1].label
-    });
-
-    // Annual and trailing are different bases, so they are drawn as different lines rather
-    // than one continuous series that implies they are the same measurement.
-    var annual = [], quarters = [];
-    rows.forEach(function (r, i) {
-      (r.section === 'quarter' ? quarters : annual).push([x(i), y(value(r, key, c.chart)), r]);
-    });
-    function poly(pts, cls) {
-      if (pts.length < 2) return;
-      svg.appendChild(svgEl('polyline', {
-        class: cls, fill: 'none',
-        points: pts.map(function (p) { return p[0] + ',' + p[1]; }).join(' ')
-      }));
-    }
-    // Join the two runs so the eye follows one reading, with the trailing run dashed.
-    if (annual.length && quarters.length) {
-      poly([annual[annual.length - 1], quarters[0]], 'ln-trailing');
-    }
-    poly(annual, 'ln-annual');
-    poly(quarters, 'ln-trailing');
-
-    annual.concat(quarters).forEach(function (p) {
-      var r = p[2];
-      svg.appendChild(svgEl('circle', {
-        cx: p[0], cy: p[1], r: 3,
-        class: 'pt' + (r.section === 'quarter' ? ' is-quarter' : '') +
-               (r.covered ? ' is-covered' : '')
-      }));
-    });
-
-    var first = rows[0], last = rows[rows.length - 1];
-    var caption = el('div', 'bar-years');
-    caption.appendChild(el('span', null, String(first.label).replace(/^FY/, '')));
-    var mid = el('span', 'ln-mid', fmt(value(last, key, c.chart), c.unit));
-    caption.appendChild(mid);
-    caption.appendChild(el('span', null, String(last.label).replace(/^FY/, '')));
-    return [svg, caption];
   }
 
   function charts(d) {
@@ -227,14 +179,14 @@
       var card = el('div', 'chart');
       var head = el('div', 'chart-head');
       head.appendChild(el('h4', null, c.title));
-      var rows = (c.data || []).filter(function (r) { return value(r, key, c.chart) != null; });
+      var rows = trailingRows(c, key);
       var last = rows[rows.length - 1];
       if (last) {
         head.appendChild(el('p', 'chart-latest',
           fmt(value(last, key, c.chart), c.unit) + ' · ' + last.label));
       }
       card.appendChild(head);
-      var parts = c.chart === 'line' ? lineChart(c, key) : barChart(c, key);
+      var parts = barChart(c, key);
       parts.forEach(function (n) { card.appendChild(n); });
       box.appendChild(card);
     });
