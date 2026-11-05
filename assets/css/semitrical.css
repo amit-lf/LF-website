@@ -293,6 +293,9 @@ a.plain:hover { border-color: var(--ink-3); }
   .hero { padding: 48px 20px 36px; }
   .hero h1 { font-size: 30px; }
   .section, .shot-wrap, .signal-section, .screenshot-section { padding-left: 20px; padding-right: 20px; }
+  .section.alt { padding-left: 0; padding-right: 0; }
+  .section.alt > .inner { padding-left: 20px; padding-right: 20px; }
+  .site-foot > div { padding-left: 20px; padding-right: 20px; }
 }
 
 
@@ -348,8 +351,21 @@ footer > div {
   width: 100%;
 }
 
-/* Full-bleed bands keep their background edge-to-edge; only the content inside centres. */
-.section.alt { max-width: none; }
+/* Full-bleed bands keep their background edge-to-edge; only the content inside centres.
+
+   And the band's own side padding has to come OFF, onto .inner, or the two kinds of section
+   do not line up. A plain .section is capped at --maxw AND carries 48px of padding, so its
+   text starts 48px inside that box; a band is full-bleed with .inner centred at --maxw, so
+   its text starts exactly on the box edge. That is a 48px step at every boundary between a
+   white section and a grey one -- visible as soon as two sit next to each other, which on the
+   home page they do five times. Padding moves inside, both start in the same place. */
+.section.alt { max-width: none; padding-left: 0; padding-right: 0; }
+.section.alt > .inner { padding-left: 48px; padding-right: 48px; }
+
+/* The footer had its padding inline on every page, which kept it out of the shared centring
+   and left it 48px to the left of every section above it. Same shape of bug as the bands. */
+.site-foot { border-top: 1px solid var(--rule); font-size: 12px; color: var(--ink-3); padding: 36px 0; }
+.site-foot > div { padding-left: 48px; padding-right: 48px; }
 .signal-section { max-width: none; }
 .signal-section > * { max-width: var(--maxw); margin-left: auto; margin-right: auto; }
 
@@ -668,16 +684,10 @@ footer .logo img { height: 40px; }
 .report-card-body h3 { font-size: 21px; font-weight: 700; letter-spacing: -0.015em; line-height: 1.25; }
 .report-meta { font-family: var(--mono); font-size: 11px; color: var(--ink-4); overflow-wrap: anywhere; }
 .report-blurb { font-size: 14.5px; line-height: 1.75; color: var(--ink-2); flex-grow: 1; }
-.report-card-foot {
-  border-top: 1px solid var(--rule); background: var(--surface); padding: 18px 26px;
-  display: flex; align-items: center; justify-content: space-between; gap: 12px;
-}
-.fake-btn {
-  display: inline-block; padding: 12px 24px; background: var(--ink); color: #fff;
-  border-radius: 6px; font-size: 14px; font-weight: 600;
-}
-.report-card:hover .fake-btn { background: #2d3142; }
-.report-card-arrow { font-size: 17px; color: var(--gold); line-height: 1; }
+/* No button inside the tile. The whole card is the anchor, so a button is a second target
+   for the same action and the gap beside it becomes the one place a click does nothing. The
+   title carries the arrow instead, and the border answers the hover. */
+.report-card-body h3::after { content: " 92"; color: var(--gold); }
 
 /* Shorter pieces: one finding each, so a flat list and no card furniture. */
 .posts { display: flex; flex-direction: column; gap: 12px; }
