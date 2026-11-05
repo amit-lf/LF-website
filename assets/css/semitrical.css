@@ -182,7 +182,7 @@ nav {
 .markets-section .section-label { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-3); margin-bottom: 10px; }
 .markets-section h2 { font-size: 28px; font-weight: 700; margin-bottom: 8px; }
 .markets-section .section-sub { font-size: 14px; color: var(--ink-3); margin-bottom: 32px; max-width: 600px; }
-.markets-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+.markets-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; }
 .market-card {
   border: 1px solid var(--rule); border-radius: 10px; padding: 20px;
   transition: border-color 0.2s;
@@ -608,3 +608,45 @@ footer .logo img { height: 40px; }
 .desk-next-text { flex: 999 1 420px; min-width: 0; }
 .desk-next h2 { font-size: 21px; font-weight: 700; margin: 0 0 8px; }
 .desk-next p { font-size: 14.5px; line-height: 1.75; color: var(--ink-2); margin: 0; max-width: 70ch; }
+
+/* The three offers, on dark. Supplier Intelligence is ringed and not merely outlined: the
+   three are not equal choices -- it is the product, and the other two are a way in and a way
+   up. */
+.offers-section { background: var(--ink); color: #fff; border: 0; }
+.offers-section .section-label { color: var(--gold-soft); }
+.offers-section h2 { color: #fff; }
+.offers-section .section-sub { color: #C9D1D9; }
+.offers { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; align-items: stretch; }
+.offer {
+  position: relative; border: 1px solid #3a3f49; border-radius: 12px; padding: 30px;
+  display: flex; flex-direction: column; gap: 14px;
+}
+.offer.is-lead {
+  border: 2px solid var(--gold); background: rgba(217,119,6,0.12);
+  box-shadow: 0 0 0 5px rgba(217,119,6,0.10);
+}
+.offer-ribbon {
+  position: absolute; top: -12px; left: 24px; font-family: var(--mono); font-size: 10.5px;
+  font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; border-radius: 999px;
+  padding: 4px 12px; white-space: nowrap; background: #3a3f49; color: #e8ebf2;
+}
+.offer-ribbon.is-gold { background: var(--gold); color: #fff; }
+.offer-ribbon.is-gold-soft { background: var(--gold-soft); color: var(--ink); }
+.offer-name { font-size: 24px; font-weight: 700; letter-spacing: -0.015em; }
+.offer-price { font-family: var(--mono); font-size: 12.5px; color: var(--ink-4); }
+.offer.is-lead .offer-price { color: var(--gold-soft); }
+.offer-body { font-size: 14px; line-height: 1.7; color: #C9D1D9; flex-grow: 1; }
+.offer-cta {
+  padding: 11px 20px; border-radius: 6px; font-size: 14px; font-weight: 600;
+  text-decoration: none; text-align: center; color: #fff; border: 1px solid var(--ink-4);
+}
+.offer-cta.is-gold { background: var(--gold); border-color: var(--gold); }
+.offer-cta.is-white { background: #fff; color: var(--ink); border-color: #fff; }
+
+/* Guardrails: three plain columns and no cards. These are limits we accept, not features. */
+.guardrails { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 26px; }
+.guardrails h3 { font-size: 16px; font-weight: 600; margin-bottom: 8px; }
+.guardrails p { font-size: 13.5px; line-height: 1.75; color: var(--ink-3); }
+
+/* The trace line under the hero buttons: the claim the whole product rests on. */
+.hero-trace { font-family: var(--mono); font-size: 11.5px; color: var(--ink-4); margin-top: 22px; }
