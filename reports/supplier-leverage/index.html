@@ -149,10 +149,29 @@ svg.ch{width:100%;overflow:visible;}.cn{font-size:8px;color:var(--ink3);margin-t
     --mixed:#5C6B7A; color-scheme: light;
   }
 }
+
+/* SITE CHROME, matching semitrical.css exactly. Values are repeated rather than referenced
+   because this document defines --ink and --surface itself and cannot load the site's sheet.
+   Two things were wrong first time round: the nav used a literal 48px gutter, so it hugged the
+   left on a wide screen while every other page centres its nav on the content below it; and the
+   logo was copied at 34px from a rule the stylesheet overrides twice further down. The site
+   runs 60px in the bar and 40px in the footer. */
+nav.lf-chrome {
+  padding-left: max(48px, calc((100% - 1180px) / 2));
+  padding-right: max(48px, calc((100% - 1180px) / 2));
+  padding-top: 15px; padding-bottom: 15px;
+}
+nav.lf-chrome img { height: 60px !important; }
+footer.lf-chrome img { height: 40px !important; }
+@media (max-width: 820px) {
+  nav.lf-chrome { padding-top: 12px; padding-bottom: 12px; }
+  nav.lf-chrome img { height: 46px !important; }
+}
+@media (max-width: 420px) { nav.lf-chrome img { height: 38px !important; } }
 </style>
 </head>
 <body>
-<nav class="lf-chrome" style="display:flex;align-items:center;padding:16px 48px;border-bottom:1px solid #e2e4ea;background:#fff;font-family:'DM Sans',system-ui,sans-serif">
+<nav class="lf-chrome" style="display:flex;align-items:center;border-bottom:1px solid #e2e4ea;background:#fff;font-family:'DM Sans',system-ui,sans-serif">
   <a href="/" aria-label="Semitrical home" style="display:block;text-decoration:none"><img src="/assets/img/semitrical-logo.png" alt="Semitrical &mdash; removing asymmetry from chip deals" height="34" style="display:block;height:34px;width:auto"></a>
   <div style="display:flex;align-items:center;gap:28px;margin-left:48px;flex-wrap:wrap">
     <a href="/" style="font-size:13px;font-weight:500;color:#5c6078;text-decoration:none">Platform</a>
