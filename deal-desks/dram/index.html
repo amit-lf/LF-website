@@ -99,6 +99,24 @@
 .pdf-hint { font-family:var(--f-body); font-size:13px; color:var(--muted); margin:10px 0 0; }
 .pdf-hint a { color:var(--accent); font-weight:600; text-decoration:none; border-bottom:1px solid currentColor; }
 @media print { .pdf-hint { display:none !important; } }
+
+/* PINNED LIGHT. semitrical.ai has no dark mode, and this document is part of it now -- its own
+   dark palette above would put a dark page under a white site header. The palette is left in
+   place, just not reachable: delete this block to give the document its dark mode back. */
+:root, :root[data-theme="dark"] {
+  --bg:#F4F5F1; --surface:#FFFFFF; --sunk:#ECEEE8; --ink:#1A211D; --muted:#5B655F;
+  --line:#D5D9D1; --accent:#A35A16; --accent-ink:#FFFFFF; --accent-soft:#F6E7D6;
+  --buyer:#1D7466; --buyer-soft:#DCEEE9; --supplier:#B03C2B; --supplier-soft:#F6DFDA;
+  --mixed:#5C6B7A; color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg:#F4F5F1; --surface:#FFFFFF; --sunk:#ECEEE8; --ink:#1A211D; --muted:#5B655F;
+    --line:#D5D9D1; --accent:#A35A16; --accent-ink:#FFFFFF; --accent-soft:#F6E7D6;
+    --buyer:#1D7466; --buyer-soft:#DCEEE9; --supplier:#B03C2B; --supplier-soft:#F6DFDA;
+    --mixed:#5C6B7A; color-scheme: light;
+  }
+}
 </style></head><body>
 <section class="pdf-cover" aria-hidden="true">
   <div class="pdf-cover-top">
@@ -124,7 +142,16 @@
 
 <div class="pdf-only pdf-mark" aria-hidden="true">semitrical.ai</div>
 
-<nav class="lf-chrome" style="display:flex;align-items:center;flex-wrap:wrap;gap:16px 24px;padding:14px 22px;border-bottom:1px solid var(--line);background:var(--surface);font-family:var(--f-body)"><a href="/" style="text-decoration:none;display:flex;flex-direction:column;line-height:1.1"><span style="font-size:19px;font-weight:700;letter-spacing:-0.02em;color:var(--ink)">Semi<span style="color:var(--accent)">trical</span></span><span style="font-family:var(--f-mono);font-size:7.5px;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted)">Removing asymmetry from chip deals</span></a><a href="/" style="font-size:13px;font-weight:500;color:var(--muted);text-decoration:none;white-space:nowrap">Platform</a><a href="/supplier-intelligence.html" style="font-size:13px;font-weight:500;color:var(--muted);text-decoration:none;white-space:nowrap">Supplier Intelligence</a><a href="/deal-desk.html" style="font-size:13px;font-weight:500;color:var(--ink);text-decoration:none;white-space:nowrap">Deal Desk</a><a href="/reports.html" style="font-size:13px;font-weight:500;color:var(--muted);text-decoration:none;white-space:nowrap">Leverage Reports</a><a href="/contact.html" style="margin-left:auto;padding:8px 18px;background:var(--ink);color:var(--surface);border-radius:6px;font-size:13px;font-weight:600;text-decoration:none;white-space:nowrap">Contact us</a></nav>
+<nav class="lf-chrome" style="display:flex;align-items:center;padding:16px 48px;border-bottom:1px solid #e2e4ea;background:#fff;font-family:'DM Sans',system-ui,sans-serif">
+  <a href="/" aria-label="Semitrical home" style="display:block;text-decoration:none"><img src="/assets/img/semitrical-logo.png" alt="Semitrical &mdash; removing asymmetry from chip deals" height="34" style="display:block;height:34px;width:auto"></a>
+  <div style="display:flex;align-items:center;gap:28px;margin-left:48px;flex-wrap:wrap">
+    <a href="/" style="font-size:13px;font-weight:500;color:#5c6078;text-decoration:none">Platform</a>
+    <a href="/supplier-intelligence.html" style="font-size:13px;font-weight:500;color:#5c6078;text-decoration:none">Supplier Intelligence</a>
+    <a href="/deal-desk.html" style="font-size:13px;font-weight:500;color:#0f1117;text-decoration:none">Deal Desk</a>
+    <a href="/reports.html" style="font-size:13px;font-weight:500;color:#5c6078;text-decoration:none">Leverage Reports</a>
+  </div>
+  <a href="/contact.html" style="margin-left:auto;padding:9px 22px;background:#0f1117;color:#fff;border-radius:6px;font-size:13px;font-weight:600;text-decoration:none;white-space:nowrap">Contact us</a>
+</nav>
 
 
 <title>Samsung DRAM Brief</title>
@@ -571,6 +598,23 @@ render();
   </p>
 </section>
 
-<footer class="lf-chrome" style="border-top:1px solid var(--line);background:var(--surface);padding:34px 22px 44px;font-family:var(--f-body);font-size:12px;color:var(--muted);line-height:1.7"><a href="/" style="text-decoration:none;font-size:17px;font-weight:700;letter-spacing:-0.02em;color:var(--ink)">Semi<span style="color:var(--accent)">trical</span></a><p style="margin:9px 0 0">Semiconductor procurement intelligence &middot; &copy; 2026 Semitrical<br>Built from public filings. First-pass analysis to support your own review &mdash; not legal, investment or professional advice.</p><p style="margin:12px 0 0"><a href="/" style="color:var(--muted)">Platform</a> &middot; <a href="/supplier-intelligence.html" style="color:var(--muted)">Supplier Intelligence</a> &middot; <a href="/deal-desk.html" style="color:var(--muted)">Deal Desk</a> &middot; <a href="/reports.html" style="color:var(--muted)">Leverage Reports</a></p><p style="margin:7px 0 0"><a href="/about.html" style="color:var(--muted)">About</a> &middot; <a href="/privacy.html" style="color:var(--muted)">Privacy</a> &middot; <a href="mailto:contact@semitrical.ai" style="color:var(--muted);font-weight:600">contact@semitrical.ai</a> &middot; <a href="https://www.linkedin.com/company/semitrical-ai" style="color:var(--muted)">LinkedIn</a></p></footer>
+<footer class="lf-chrome" style="padding:36px 48px;border-top:1px solid #e2e4ea;background:#fff;font-family:'DM Sans',system-ui,sans-serif;font-size:12px;color:#5c6078;line-height:1.7">
+  <div style="max-width:1180px;margin:0 auto">
+    <a href="/" aria-label="Semitrical home" style="display:inline-block;text-decoration:none"><img src="/assets/img/semitrical-logo.png" alt="Semitrical" height="26" style="display:block;height:26px;width:auto;opacity:.9"></a>
+    <p style="margin:10px 0 0">Semiconductor procurement intelligence &middot; &copy; 2026 Semitrical<br>
+      Built from public filings. First-pass analysis to support your own review &mdash; not legal,
+      investment or professional advice.</p>
+    <p style="margin:10px 0 0">
+      <a href="/" style="color:#5c6078">Platform</a> &middot;
+      <a href="/supplier-intelligence.html" style="color:#5c6078">Supplier Intelligence</a> &middot;
+      <a href="/deal-desk.html" style="color:#5c6078">Deal Desk</a> &middot;
+      <a href="/reports.html" style="color:#5c6078">Leverage Reports</a></p>
+    <p style="margin:8px 0 0">
+      <a href="/about.html" style="color:#5c6078">About</a> &middot;
+      <a href="/privacy.html" style="color:#5c6078">Privacy</a> &middot;
+      <a href="mailto:contact@semitrical.ai" style="color:#5c6078;font-weight:600">contact@semitrical.ai</a> &middot;
+      <a href="https://www.linkedin.com/company/semitrical-ai" style="color:#5c6078">LinkedIn</a></p>
+  </div>
+</footer>
 <script src="/assets/js/brief-pdf.js" defer></script>
 </body></html>
