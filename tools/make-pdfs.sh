@@ -20,4 +20,4 @@ $N "http://127.0.0.1:9334/deal-desks/silicon-carbide/" \
 # sent rather than published, and it carries no PDF-request form for the same reason.
 $N "http://127.0.0.1:9334/reports/netapp/" \
    "d/d1c4da632ee493c5/semitrical-netapp-supplier-position.pdf" \
-   "NetApp and its five suppliers" "evidence to 6 Nov 2026"
+   "NetApp's five suppliers" "evidence to 6 Nov 2026"
