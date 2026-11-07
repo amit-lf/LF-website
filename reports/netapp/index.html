@@ -66,6 +66,31 @@ tbody th{font-weight:600;white-space:nowrap}
 td.n,th.n{font-family:var(--f-mono);font-variant-numeric:tabular-nums;white-space:nowrap}
 td.lo{color:var(--supplier)} td.hi{color:var(--buyer)}
 tbody tr.now th,tbody tr.now td{background:var(--accent-soft)}
+/* The 2023 trough row. It is set apart rather than sitting in the series because it is there as
+   a REFERENCE POINT, not as part of the recent record -- it is the only evidence that today's
+   margins are a recovery and not a norm, and that is the whole reason it survived the cut to
+   recent years. */
+tbody tr.ref th,tbody tr.ref td{background:transparent;color:var(--muted);border-top:1px dashed var(--line)}
+tbody tr.ref th span{display:block;font-family:var(--f-mono);font-size:9.5px;font-weight:500;
+  letter-spacing:.06em;text-transform:uppercase;color:var(--supplier);margin-top:2px}
+.rng{font-size:12.5px;color:var(--muted);line-height:1.6;margin-top:-4px}
+.rng b{color:var(--ink);font-weight:600;font-family:var(--f-mono);font-variant-numeric:tabular-nums}
+
+/* ── The 2027 timeline. Every row is a DATED statement by a NAMED party, which is why this
+   section can exist at all: we do not forecast, and we are not doing so here. The convergence is
+   the suppliers' own published schedule, read next to the buyer's own commitment maturity. */
+.tl{display:flex;flex-direction:column;border:1px solid var(--line);border-radius:var(--r);
+  background:var(--surface);overflow:hidden}
+.tl > div{display:grid;grid-template-columns:120px minmax(0,1fr);gap:5px 18px;padding:14px 16px}
+.tl > div + div{border-top:1px solid var(--line)}
+.tl .when{font-family:var(--f-mono);font-size:11.5px;font-weight:500;letter-spacing:.04em;
+  text-transform:uppercase;color:var(--accent)}
+.tl .who{font-family:var(--f-display);font-weight:600;font-size:14.5px}
+.tl .what{font-size:14px;line-height:1.55}
+.tl .what .src{font-family:var(--f-mono);font-size:10.5px;color:var(--muted);display:block;margin-top:4px}
+.tl > div.buyer-row{background:var(--buyer-soft)}
+.tl > div.buyer-row .when{color:var(--buyer)}
+@media (max-width:620px){ .tl > div{grid-template-columns:minmax(0,1fr)} }
 caption{caption-side:bottom;text-align:left;padding:10px 12px;font-size:12.5px;color:var(--muted);line-height:1.6}
 
 /* ── A supplier profile. The whole point of this document: one supplier assembled in one place,
@@ -239,7 +264,7 @@ footer.lf-chrome img{height:40px!important}
     <img src="/assets/img/semitrical-logo.png" alt="Semitrical">
     <p class="pdf-cover-eyebrow">Supplier picture &middot; prepared for NetApp, Inc.</p>
     <h1>NetApp's five suppliers</h1>
-    <p class="pdf-cover-sub">Six filed years and their own words, one supplier at a time &mdash; and the five places where what NetApp has said it wants and what its suppliers have said they will offer do not agree.</p>
+    <p class="pdf-cover-sub">Where each one stands in its latest filed year, the five places where NetApp's stated strategy and its suppliers' stated terms do not agree, and what their own published schedules land in 2027.</p>
     <hr class="pdf-cover-rule">
   </div>
   <div>
@@ -275,9 +300,9 @@ footer.lf-chrome img{height:40px!important}
 <header style="display:flex;flex-direction:column;gap:11px">
   <div class="eyebrow"><span class="hex" aria-hidden="true"></span>Semitrical &middot; Supplier picture &middot; prepared for NetApp</div>
   <h1>NetApp's five suppliers</h1>
-  <p class="lede muted">Six filed years and their own words, one supplier at a time &mdash; and
-    the five places where what NetApp has said it wants and what its suppliers have said they will
-    offer do not agree.</p>
+  <p class="lede muted">Where each one stands in its latest filed year, the five places where
+    NetApp's stated strategy and its suppliers' stated terms do not agree, and what their own
+    published schedules land in 2027.</p>
   <p class="small muted mono">Micron &middot; SK Hynix &middot; Samsung Electronics &middot; Kioxia &middot; Seagate &nbsp;|&nbsp; evidence to 6 November 2026</p>
 </header>
 
@@ -285,9 +310,11 @@ footer.lf-chrome img{height:40px!important}
 <section class="s">
   <div class="hd"><span class="n">01</span><h2>What this is</h2></div>
 
-  <p>This is a picture of the five companies NetApp buys memory and drives from. Each of them files
-    public accounts and holds public earnings calls, and this report reads six years of those
-    accounts and their management's own statements from the buyer's side of the table.</p>
+  <p>This is a picture of the five companies NetApp buys memory and drives from. Each files public
+    accounts and holds public earnings calls, and this report reads them from the buyer's side of
+    the table. <b>The analysis is on the latest filed year and the one before it</b> &mdash; 2025
+    for four of the five, 2026 for Seagate. Earlier years appear only where a single reference point
+    is needed, and section 03 says where and why.</p>
 
   <p>It is not a report about how NetApp is performing &mdash; that is already in NetApp's own
     filing and NetApp already knows it. What its filing does carry is NetApp's <b>stated strategy
@@ -316,7 +343,8 @@ footer.lf-chrome img{height:40px!important}
     <h3>What this report will not do</h3>
     <ul>
       <li><b>It does not forecast a price.</b> Nothing here predicts DRAM, NAND or drive pricing for
-        a future quarter.</li>
+        a future quarter. Section 06 is about 2027, and every row in it is a dated statement a named
+        supplier made about its own plans &mdash; their calendar, not our projection.</li>
       <li><b>It gives no single score.</b> There is no blended supplier rating, because a blended
         number hides which dimension moved and can come out flattering for every supplier at once.
         Each dimension is reported on its own.</li>
@@ -412,10 +440,10 @@ footer.lf-chrome img{height:40px!important}
   <div class="hd"><span class="n">03</span><h2>What the five have in common, and where they part</h2></div>
 
   <div class="card key">
-    <p class="lede"><b>All five came through a 2023 that was at or below break&#8209;even, and all
-      five have now moved supply onto binding, multi&#8209;year, part&#8209;prepaid allocation.
-      Three of the five are at the best gross margin in their own six&#8209;year record. But only
-      one of the five has a capital programme behind it.</b></p>
+    <p class="lede"><b>As of their latest filed year, all five have moved supply onto binding,
+      multi&#8209;year, part&#8209;prepaid allocation, and three of the five are earning the best
+      gross margin in their own record. But only one of the five has a capital programme behind
+      it.</b></p>
     <p>That last clause is the whole report. The five look alike from the outside and their cost
       cases are not alike at all, and the difference is visible in filed figures they published
       themselves.</p>
@@ -445,23 +473,26 @@ footer.lf-chrome img{height:40px!important}
   </div>
 
   <ul>
-    <li><b>The 2023 trough was severe and universal.</b> Micron's gross margin was &minus;9.1%,
-      Kioxia's &minus;12.0%, SK Hynix's &minus;1.6%, Samsung's 30.3% and Seagate's 18.3%. Every
-      current reading is a recovery from that, not a step onto a new plateau. It explains why these
-      companies are rebuilding margin rather than negotiating &mdash; and it also means none of them
-      has demonstrated it can hold the level it is at.</li>
-    <li><b>Reinvestment is where they separate.</b> Micron at 42% of revenue and SK Hynix at 28%
-      are spending heavily. Kioxia at 12% and Seagate at 4.7% are not, relative to each one's own
-      history. A supplier whose margin is at a record while its own capital spending is near its own
-      low has a weaker cost argument than one whose spending is at a record too, and section 03
-      gives each one its own six years so that comparison is made against the right baseline.</li>
+    <li><b>Reinvestment is where they separate, and it is the live question.</b> Micron at 42% of
+      revenue and SK Hynix at 28% are spending heavily. Kioxia at 12% and Seagate at 4.7% are not,
+      relative to each one's own history. <b>A supplier at a record margin while its own capital
+      spending sits near its own low has a weaker cost argument than one spending at a record
+      too</b> &mdash; and section 04 gives each supplier its own baseline so that comparison is made
+      against the right one.</li>
     <li><b>Two of the five have conceded demand damage from their own prices.</b> SK Hynix and
       Kioxia each said so independently, on dated calls, about PC and mobile. That is the most
       useful material in the report and it came from the suppliers.</li>
-    <li><b>Reading this as a direction of travel is deliberately not offered.</b> Each figure is a
-      position in a range with the years named. We do not publish trend claims on supplier readings,
-      because a trend requires reducing each period to one comparable number &mdash; which is the
-      blended score this report does not produce.</li>
+    <li><b>Why a 2023 figure appears in a 2026 report.</b> It is the only evidence that the current
+      level is a recovery rather than a norm: Micron's gross margin was &minus;9.1% that year,
+      Kioxia's &minus;12.0%, SK Hynix's &minus;1.6%. <b>Without it, SK Hynix's 60.4% reads as a
+      permanent state of affairs, which argues the supplier's case rather than the buyer's.</b> It
+      earns one column and one line per supplier and nothing more; everything else in section 04 is
+      the last two filed years.</li>
+    <li><b>What is not offered, and what is.</b> We do not reduce a supplier to a score or publish a
+      direction of travel in its numbers, because a trend needs each period compressed to one
+      comparable figure and that is the blended score this report refuses. <b>Section 06 is
+      different in kind:</b> it assembles the suppliers' own dated statements about their own plans
+      into one calendar. That is their schedule, not our projection.</li>
   </ul>
 </section>
 
@@ -485,21 +516,17 @@ footer.lf-chrome img{height:40px!important}
 
     <div class="tw">
       <table>
-        <caption>Micron Technology, six filed fiscal years. Dollars in millions. Fiscal year ends
-          in the preceding August or September.</caption>
-        <thead><tr><th class="n">FY</th><th class="n">Revenue</th><th class="n">Gross margin</th>
-          <th class="n">Op margin</th><th class="n">Inv days</th><th class="n">Capex</th>
-          <th class="n">Capex % rev</th></tr></thead>
+        <caption>Micron Technology, the last two filed years, with 2023 shown for reference because it is the
+          only evidence that the current level is a recovery rather than a norm. Dollars in millions. Fiscal year ends in the preceding August or September.</caption>
+        <thead><tr><th class="n">FY</th><th class="n">Revenue</th><th class="n">Gross margin</th><th class="n">Op margin</th><th class="n">Inv days</th><th class="n">Capex</th><th class="n">Capex % rev</th></tr></thead>
         <tbody>
-          <tr><th class="n">2020</th><td class="n">21,435</td><td class="n">30.6%</td><td class="n">14.0%</td><td class="n">132</td><td class="n">8,223</td><td class="n">38%</td></tr>
-          <tr><th class="n">2021</th><td class="n">27,705</td><td class="n">37.6%</td><td class="n">22.7%</td><td class="n">95</td><td class="n">10,030</td><td class="n">36%</td></tr>
-          <tr><th class="n">2022</th><td class="n">30,758</td><td class="n hi">45.2%</td><td class="n">31.5%</td><td class="n">144</td><td class="n">12,067</td><td class="n">39%</td></tr>
-          <tr><th class="n">2023</th><td class="n">15,540</td><td class="n lo">&minus;9.1%</td><td class="n lo">&minus;37.0%</td><td class="n">181</td><td class="n">7,676</td><td class="n">49%</td></tr>
           <tr><th class="n">2024</th><td class="n">25,111</td><td class="n">22.4%</td><td class="n">5.2%</td><td class="n">166</td><td class="n">8,386</td><td class="n">33%</td></tr>
           <tr class="now"><th class="n">2025</th><td class="n">37,378</td><td class="n">39.8%</td><td class="n">26.1%</td><td class="n">136</td><td class="n">15,857</td><td class="n">42%</td></tr>
+          <tr class="ref"><th class="n">2023<span>trough</span></th><td class="n">15,540</td><td class="n">&minus;9.1%</td><td class="n">&minus;37.0%</td><td class="n">181</td><td class="n">7,676</td><td class="n">49%</td></tr>
         </tbody>
       </table>
     </div>
+        <p class="rng">Its own range across all 6 filed years: gross margin <b>&minus;9.1% (2023)</b> to <b>45.2% (2022)</b> &middot; capital expenditure <b>33% (2024)</b> to <b>49% (2023)</b> of revenue.</p>
 
     <p class="sub">What its management has said</p>
     <div class="qs">
@@ -561,20 +588,17 @@ footer.lf-chrome img{height:40px!important}
 
     <div class="tw">
       <table>
-        <caption>SK Hynix, six filed fiscal years. Reported in Korean won, so shown as ratios and
-          days only &mdash; no exchange&#8209;rate assumption enters any figure here.</caption>
-        <thead><tr><th class="n">FY</th><th class="n">Gross margin</th><th class="n">Op margin</th>
-          <th class="n">Inv days</th><th class="n">Capex % rev</th></tr></thead>
+        <caption>SK Hynix, the last two filed years, with 2023 shown for reference because it is the
+          only evidence that the current level is a recovery rather than a norm. Reported in Korean won, so shown as ratios and days only &mdash; no exchange&#8209;rate assumption enters any figure here.</caption>
+        <thead><tr><th class="n">FY</th><th class="n">Gross margin</th><th class="n">Op margin</th><th class="n">Inv days</th><th class="n">Capex % rev</th></tr></thead>
         <tbody>
-          <tr><th class="n">2020</th><td class="n">33.9%</td><td class="n">15.7%</td><td class="n">106</td><td class="n">34%</td></tr>
-          <tr><th class="n">2021</th><td class="n">44.1%</td><td class="n">28.9%</td><td class="n">136</td><td class="n">29%</td></tr>
-          <tr><th class="n">2022</th><td class="n">35.0%</td><td class="n">15.3%</td><td class="n">197</td><td class="n hi">43%</td></tr>
-          <tr><th class="n">2023</th><td class="n lo">&minus;1.6%</td><td class="n lo">&minus;23.6%</td><td class="n">148</td><td class="n lo">25%</td></tr>
           <tr><th class="n">2024</th><td class="n">48.1%</td><td class="n">35.5%</td><td class="n">141</td><td class="n">24%</td></tr>
           <tr class="now"><th class="n">2025</th><td class="n">60.4%</td><td class="n">48.6%</td><td class="n">136</td><td class="n">28%</td></tr>
+          <tr class="ref"><th class="n">2023<span>trough</span></th><td class="n">&minus;1.6%</td><td class="n">&minus;23.6%</td><td class="n">148</td><td class="n">25%</td></tr>
         </tbody>
       </table>
     </div>
+        <p class="rng">Its own range across all 6 filed years: gross margin <b>&minus;1.6% (2023)</b> to <b>60.4% (2025)</b> &middot; capital expenditure <b>24% (2024)</b> to <b>43% (2022)</b> of revenue.</p>
 
     <p class="sub">What its management has said</p>
     <div class="qs">
@@ -641,22 +665,17 @@ footer.lf-chrome img{height:40px!important}
 
     <div class="tw">
       <table>
-        <caption>Samsung Electronics, six filed fiscal years. Reported in Korean won, so shown as
-          ratios and days only. These are <b>group</b> figures covering businesses beyond memory, so
-          the capital spending share is context rather than a reading of the memory division on its
-          own.</caption>
-        <thead><tr><th class="n">FY</th><th class="n">Gross margin</th><th class="n">Op margin</th>
-          <th class="n">Inv days</th><th class="n">Capex % rev</th></tr></thead>
+        <caption>Samsung Electronics, the last two filed years, with 2023 shown for reference because it is the
+          only evidence that the current level is a recovery rather than a norm. Reported in Korean won, so shown as ratios and days only. These are <b>group</b> figures covering businesses beyond memory, so the capital spending share is context rather than a reading of the memory division on its own.</caption>
+        <thead><tr><th class="n">FY</th><th class="n">Gross margin</th><th class="n">Op margin</th><th class="n">Inv days</th><th class="n">Capex % rev</th></tr></thead>
         <tbody>
-          <tr><th class="n">2020</th><td class="n">39.0%</td><td class="n">15.2%</td><td class="n">81</td><td class="n">16%</td></tr>
-          <tr><th class="n">2021</th><td class="n hi">40.5%</td><td class="n">18.5%</td><td class="n">91</td><td class="n">17%</td></tr>
-          <tr><th class="n">2022</th><td class="n">37.1%</td><td class="n">14.4%</td><td class="n">100</td><td class="n">16%</td></tr>
-          <tr><th class="n">2023</th><td class="n lo">30.3%</td><td class="n lo">2.5%</td><td class="n">104</td><td class="n hi">22%</td></tr>
           <tr><th class="n">2024</th><td class="n">38.0%</td><td class="n">10.9%</td><td class="n">101</td><td class="n">17%</td></tr>
-          <tr class="now"><th class="n">2025</th><td class="n">39.4%</td><td class="n">13.1%</td><td class="n">95</td><td class="n lo">14%</td></tr>
+          <tr class="now"><th class="n">2025</th><td class="n">39.4%</td><td class="n">13.1%</td><td class="n">95</td><td class="n">14%</td></tr>
+          <tr class="ref"><th class="n">2023<span>trough</span></th><td class="n">30.3%</td><td class="n">2.5%</td><td class="n">104</td><td class="n">22%</td></tr>
         </tbody>
       </table>
     </div>
+        <p class="rng">Its own range across all 6 filed years: gross margin <b>30.3% (2023)</b> to <b>40.5% (2021)</b> &middot; capital expenditure <b>14% (2025)</b> to <b>22% (2023)</b> of revenue.</p>
 
     <p class="sub">What its management has said</p>
     <div class="qs">
@@ -724,20 +743,17 @@ footer.lf-chrome img{height:40px!important}
 
     <div class="tw">
       <table>
-        <caption>Kioxia Holdings, six filed fiscal years. Reported in Japanese yen, so shown as
-          ratios and days only.</caption>
-        <thead><tr><th class="n">FY</th><th class="n">Gross margin</th><th class="n">Op margin</th>
-          <th class="n">Inv days</th><th class="n">Capex % rev</th></tr></thead>
+        <caption>Kioxia Holdings, the last two filed years, with 2023 shown for reference because it is the
+          only evidence that the current level is a recovery rather than a norm. Reported in Japanese yen, so shown as ratios and days only.</caption>
+        <thead><tr><th class="n">FY</th><th class="n">Gross margin</th><th class="n">Op margin</th><th class="n">Inv days</th><th class="n">Capex % rev</th></tr></thead>
         <tbody>
-          <tr><th class="n">2020</th><td class="n">14.5%</td><td class="n">0.6%</td><td class="n">93</td><td class="n">22%</td></tr>
-          <tr><th class="n">2021</th><td class="n">25.3%</td><td class="n">14.2%</td><td class="n">97</td><td class="n">26%</td></tr>
-          <tr><th class="n">2022</th><td class="n">3.3%</td><td class="n">&minus;7.7%</td><td class="n">107</td><td class="n hi">40%</td></tr>
-          <tr><th class="n">2023</th><td class="n lo">&minus;12.0%</td><td class="n lo">&minus;23.5%</td><td class="n lo">82</td><td class="n">28%</td></tr>
           <tr><th class="n">2024</th><td class="n">33.4%</td><td class="n">26.5%</td><td class="n">113</td><td class="n">13%</td></tr>
-          <tr class="now"><th class="n">2025</th><td class="n">43.3%</td><td class="n">37.2%</td><td class="n hi">114</td><td class="n lo">12%</td></tr>
+          <tr class="now"><th class="n">2025</th><td class="n">43.3%</td><td class="n">37.2%</td><td class="n">114</td><td class="n">12%</td></tr>
+          <tr class="ref"><th class="n">2023<span>trough</span></th><td class="n">&minus;12.0%</td><td class="n">&minus;23.5%</td><td class="n">82</td><td class="n">28%</td></tr>
         </tbody>
       </table>
     </div>
+        <p class="rng">Its own range across all 6 filed years: gross margin <b>&minus;12.0% (2023)</b> to <b>43.3% (2025)</b> &middot; capital expenditure <b>12% (2025)</b> to <b>40% (2022)</b> of revenue.</p>
 
     <p class="sub">What its management has said</p>
     <div class="qs">
@@ -802,22 +818,18 @@ footer.lf-chrome img{height:40px!important}
 
     <div class="tw">
       <table>
-        <caption>Seagate Technology, seven filed fiscal years &mdash; its fiscal 2026 is already
-          filed. Dollars in millions. Fiscal year ends in June.</caption>
-        <thead><tr><th class="n">FY</th><th class="n">Revenue</th><th class="n">Gross margin</th>
-          <th class="n">Op margin</th><th class="n">Inv days</th><th class="n">Capex</th>
-          <th class="n">Capex % rev</th></tr></thead>
+        <caption>Seagate Technology, the last three filed years, with 2023 shown for reference because it is the
+          only evidence that the current level is a recovery rather than a norm. Dollars in millions. Fiscal year ends in June.</caption>
+        <thead><tr><th class="n">FY</th><th class="n">Revenue</th><th class="n">Gross margin</th><th class="n">Op margin</th><th class="n">Inv days</th><th class="n">Capex</th><th class="n">Capex % rev</th></tr></thead>
         <tbody>
-          <tr><th class="n">2020</th><td class="n">10,509</td><td class="n">27.0%</td><td class="n">12.4%</td><td class="n lo">54</td><td class="n">585</td><td class="n hi">5.6%</td></tr>
-          <tr><th class="n">2021</th><td class="n">10,681</td><td class="n">27.3%</td><td class="n">14.0%</td><td class="n">57</td><td class="n">498</td><td class="n">4.7%</td></tr>
-          <tr><th class="n">2022</th><td class="n">11,661</td><td class="n">29.7%</td><td class="n">16.8%</td><td class="n">70</td><td class="n">381</td><td class="n">3.3%</td></tr>
-          <tr><th class="n">2023</th><td class="n">7,384</td><td class="n lo">18.3%</td><td class="n lo">&minus;4.6%</td><td class="n">69</td><td class="n">316</td><td class="n">4.3%</td></tr>
-          <tr><th class="n">2024</th><td class="n">6,551</td><td class="n">23.4%</td><td class="n">6.9%</td><td class="n hi">90</td><td class="n">254</td><td class="n">3.9%</td></tr>
-          <tr><th class="n">2025</th><td class="n">9,097</td><td class="n">35.2%</td><td class="n">20.8%</td><td class="n">89</td><td class="n">265</td><td class="n lo">2.9%</td></tr>
+          <tr><th class="n">2024</th><td class="n">6,551</td><td class="n">23.4%</td><td class="n">6.9%</td><td class="n">90</td><td class="n">254</td><td class="n">3.9%</td></tr>
+          <tr><th class="n">2025</th><td class="n">9,097</td><td class="n">35.2%</td><td class="n">20.8%</td><td class="n">89</td><td class="n">265</td><td class="n">2.9%</td></tr>
           <tr class="now"><th class="n">2026</th><td class="n">12,195</td><td class="n">45.6%</td><td class="n">33.6%</td><td class="n">86</td><td class="n">569</td><td class="n">4.7%</td></tr>
+          <tr class="ref"><th class="n">2023<span>trough</span></th><td class="n">7,384</td><td class="n">18.3%</td><td class="n">&minus;4.6%</td><td class="n">69</td><td class="n">316</td><td class="n">4.3%</td></tr>
         </tbody>
       </table>
     </div>
+        <p class="rng">Its own range across all 7 filed years: gross margin <b>18.3% (2023)</b> to <b>45.6% (2026)</b> &middot; capital expenditure <b>2.9% (2025)</b> to <b>5.6% (2020)</b> of revenue.</p>
 
     <p class="sub">What its management has said</p>
     <div class="qs">
@@ -1147,9 +1159,117 @@ footer.lf-chrome img{height:40px!important}
   </div>
 </section>
 
+<!-- ───────────────────────── 6 ───────────────────────── -->
+<section class="s">
+  <div class="hd"><span class="n">06</span><h2>What lands in 2027</h2></div>
+
+  <div class="card key">
+    <p class="lede"><b>Calendar and fiscal 2027 is the year in which NetApp's largest commitment
+      tranche falls due, Seagate's pricing is already fixed and cannot be reopened, SK Hynix's new
+      capacity has only just begun to open, and Samsung says relief still has not arrived.</b></p>
+    <p>The year of least room coincides with the year of largest cash commitment. That is the thing
+      worth preparing for now, and it is the one place in this report where the right answer is to
+      act before the quarter rather than after it.</p>
+  </div>
+
+  <p>Nothing in this section is our forecast. <b>Every row below is a dated statement made by a
+    named party about its own plans</b> &mdash; the suppliers' published schedule read next to
+    NetApp's own commitment maturity. We do not predict prices, and this is not a prediction; it is
+    a calendar that already exists in six separate documents and has not been assembled in one
+    place.</p>
+
+  <div class="tl">
+    <div class="buyer-row">
+      <div><p class="when">FY2027</p><p class="who">NetApp</p></div>
+      <div class="what"><b>$1.1bn of its $1.4bn of off&#8209;balance&#8209;sheet purchase commitments
+        falls due</b>, the largest single&#8209;year tranche, against about $1.27bn of annual
+        materials spend. Of the total, $1.0bn is firm, non&#8209;cancelable and unconditional.
+        <span class="src">Form 10&#8209;K FY2026, Liquidity and Capital Resources; Note 16</span></div>
+    </div>
+    <div>
+      <div><p class="when">Already set</p><p class="who">Seagate</p></div>
+      <div class="what">Contracts &ldquo;define both product configuration and pricing terms,
+        <b>covering the entirety of calendar 2027</b>&rdquo;. Nearline is allocated into calendar
+        2028, extended from &ldquo;almost fully allocated through calendar 2027&rdquo; one quarter
+        earlier.
+        <span class="src">Seagate Q4&#8209;26 and Q3&#8209;26 earnings calls</span></div>
+    </div>
+    <div>
+      <div><p class="when">Early 2027</p><p class="who">SK Hynix</p></div>
+      <div class="what">Capacity expansion follows &ldquo;the <b>clean room opening of the Yongin
+        Phase 1 in early 2027</b>&rdquo;, with the M15X schedule pulled forward. A clean room
+        opening is the start of a ramp, not the arrival of output.
+        <span class="src">SK Hynix Q2&#8209;26 earnings call</span></div>
+    </div>
+    <div>
+      <div><p class="when">FY2027</p><p class="who">Micron</p></div>
+      <div class="what">Capital expenditure to &ldquo;step up meaningfully&rdquo;, with
+        <b>construction&#8209;related spending up over $10bn year on year</b>, directed at HBM and
+        DRAM. Against $15.9bn actually spent in FY2025, this is the one supplier whose cost case has
+        a published programme behind it.
+        <span class="src">Micron Q2&#8209;26 earnings call</span></div>
+    </div>
+    <div>
+      <div><p class="when">Late 2027</p><p class="who">Seagate</p></div>
+      <div class="what">Mozaic 5, the 5&#8209;plus terabyte&#8209;per&#8209;disk platform, is
+        &ldquo;on track for <b>qualification shipments in late calendar 2027</b>&rdquo;. A platform
+        transition narrows what is available at lower capacity points while it is under way.
+        <span class="src">Seagate Q4&#8209;26 earnings call</span></div>
+    </div>
+    <div>
+      <div><p class="when">2028</p><p class="who">Kioxia</p></div>
+      <div class="what">A long&#8209;term agreement to be signed in <b>calendar 2028</b>, targeting
+        50% of shipments under agreement. Until then Kioxia is the least committed of the five, and
+        2027 is the window in which that is still true.
+        <span class="src">Kioxia Q1&#8209;26 earnings call</span></div>
+    </div>
+    <div>
+      <div><p class="when">Through 2028</p><p class="who">Samsung</p></div>
+      <div class="what">&ldquo;we believe it will be <b>unlikely to see any significant increase in
+        incremental supply through 2028</b>&rdquo;, because fab construction to wafer production
+        &ldquo;exceeds three years&rdquo;. This one is a supplier's forecast rather than a filed
+        fact, and it is marked as such wherever it appears in this report.
+        <span class="src">Samsung Electronics Q2&#8209;26 earnings call</span></div>
+    </div>
+  </div>
+
+  <h3>What the calendar implies, and what it does not</h3>
+
+  <p>Three things follow from the rows above without any assumption added.</p>
+
+  <ul>
+    <li><b>2027 drive pricing is not negotiable and 2027 drive volume largely is not either.</b>
+      Seagate has said both. Any effort spent on calendar 2027 nearline price is spent against
+      contracts that already exist; the live window is 2028, and Seagate's customers are reportedly
+      already asking for 2029.</li>
+    <li><b>The earliest dated capacity event is a clean room opening in early 2027.</b> On SK
+      Hynix's own account that is when expansion begins, not when supply arrives &mdash; and
+      Samsung puts fab&#8209;to&#8209;wafer lead time above three years. So the supply side of 2027
+      is, by the suppliers' own statements, no better than 2026.</li>
+    <li><b>NetApp's commitment maturity is concentrated in exactly that year.</b> $1.1bn due in
+      FY2027, $1.0bn of it non&#8209;cancelable, with $25m provided against excess. The buyer's
+      obligation peaks in the year the suppliers describe as still tight.</li>
+  </ul>
+
+  <p>What does <b>not</b> follow, and is not claimed anywhere here: that prices will rise in 2027,
+    that any supplier will miss its schedule, or that a shortage is coming. <b>Those are forecasts
+    and we do not make them.</b> The calendar says where the room is and is not; what happens inside
+    it depends on demand, which section 07 explains we cannot see.</p>
+
+  <div class="card gate">
+    <h3>The one thing worth doing before FY2027 begins</h3>
+    <p>Of the five conflicts in section 05, <b>three have a window that closes</b>. Kioxia's
+      uncommitted volume is uncommitted until its 2028 agreement. Seagate's negotiable period is
+      2028 onward, which means the conversation happens in 2027. And the share&#8209;of&#8209;output
+      structure in conflict 3 has to be agreed before a quantity is signed, not after.</p>
+    <p>None of that requires a forecast. It requires acting on a calendar the suppliers have
+      published themselves.</p>
+  </div>
+</section>
+
 <!-- ───────────────────────── 5 ───────────────────────── -->
 <section class="s">
-  <div class="hd"><span class="n">06</span><h2>What we are withholding, and why</h2></div>
+  <div class="hd"><span class="n">07</span><h2>What we are withholding, and why</h2></div>
 
   <div class="card gate">
     <p>Our cost model splits a supplier's cost base into a fixed part and a part that moves with
@@ -1202,7 +1322,7 @@ footer.lf-chrome img{height:40px!important}
 
 <!-- ───────────────────────── 6 ───────────────────────── -->
 <section class="s">
-  <div class="hd"><span class="n">07</span><h2>How to check every figure</h2></div>
+  <div class="hd"><span class="n">08</span><h2>How to check every figure</h2></div>
 
   <p>Nothing here is proprietary data. It is public disclosure, read carefully and assembled from the
     buyer's side. Every number can be traced back.</p>
@@ -1213,10 +1333,15 @@ footer.lf-chrome img{height:40px!important}
         filed statements, and the formula is given wherever a derived figure appears.</caption>
       <thead><tr><th>Part</th><th>Source</th></tr></thead>
       <tbody>
-        <tr><th>Supplier annual figures</th><td>Six filed fiscal years each for Micron, SK Hynix,
-          Samsung Electronics and Kioxia, and seven for Seagate, whose fiscal 2026 is already filed.
-          Revenue, gross profit, operating income, inventories, cost of revenue and capital
-          expenditure, as filed.</td></tr>
+        <tr><th>Supplier annual figures</th><td>Read from six filed fiscal years each for Micron,
+          SK Hynix, Samsung Electronics and Kioxia, and seven for Seagate whose fiscal 2026 is
+          already filed. <b>The profiles in section 04 show the most recent two, plus 2023 as a
+          reference row and the full range as one line</b>, so every comparison keeps its baseline
+          without four years of history in the table. Revenue, gross profit, operating income,
+          inventories, cost of revenue and capital expenditure, as filed.</td></tr>
+        <tr><th>The 2027 calendar</th><td>Section 06 contains no source of its own. Each row is a
+          dated statement by the named party about its own plans, cited in the row, plus NetApp's
+          commitment maturity from its own Form 10&#8209;K.</td></tr>
         <tr><th>Supplier quotes</th><td>Earnings calls and earnings presentations for the quarters
           named beside each quote. Each quote was verified against its source document before it was
           stored, and a quote that failed verification is not shown.</td></tr>
