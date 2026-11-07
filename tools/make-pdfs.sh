@@ -21,9 +21,9 @@ $N "http://127.0.0.1:9334/deal-desks/silicon-carbide/" \
 $N "http://127.0.0.1:9334/reports/netapp/" \
    "d/d1c4da632ee493c5/semitrical-netapp-supplier-position.pdf" \
    "NetApp's five suppliers" "evidence to 7 Nov 2026"
-# The 2027 one-pager. PUBLIC and linked, unlike the company report -- it names no buyer, so it is
-# the artifact meant to be forwarded. One A4 sheet is part of the claim, so check the page count
-# after any content change.
+# The 2027 planning note. PUBLIC, unlike the company report -- it names no buyer, so it is the
+# artifact meant to be forwarded. Three pages: it was one sheet when it was tables and pills, and
+# became three when it was rewritten as prose with two exhibits for an executive reader.
 $N "http://127.0.0.1:9334/findings/memory-2027/" \
    "d/8183c257f6325cb2/semitrical-memory-storage-2027.pdf" \
    "Memory and storage: what is already committed for 2027" "evidence to 3 Nov 2026"
