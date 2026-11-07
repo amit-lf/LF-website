@@ -16,3 +16,8 @@ $N "http://127.0.0.1:9334/deal-desks/dram/" \
 $N "http://127.0.0.1:9334/deal-desks/silicon-carbide/" \
    "d/5c82be03a7146df9/semitrical-sic-deal-brief.pdf" \
    "SiC deal brief" "evidence to 24 Oct 2026"
+# Company-specific position report. NOT linked from the site -- it names a prospect, so it is
+# sent rather than published, and it carries no PDF-request form for the same reason.
+$N "http://127.0.0.1:9334/reports/netapp/" \
+   "d/d1c4da632ee493c5/semitrical-netapp-supplier-position.pdf" \
+   "NetApp and its five suppliers" "evidence to 6 Nov 2026"

@@ -1,0 +1,774 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>NetApp and Its Five Suppliers</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap">
+<style>
+/* ── PINNED LIGHT, matching the deal desks. semitrical.ai has no dark mode and this document
+   is part of the site now; a dark body under a white site header reads as broken. */
+:root, :root[data-theme="dark"] {
+  --bg:#F4F5F1; --surface:#FFFFFF; --sunk:#ECEEE8; --ink:#1A211D; --muted:#5B655F;
+  --line:#D5D9D1; --accent:#A35A16; --accent-ink:#FFFFFF; --accent-soft:#F6E7D6;
+  --buyer:#1D7466; --buyer-soft:#DCEEE9; --supplier:#B03C2B; --supplier-soft:#F6DFDA;
+  --f-display:"DM Sans",-apple-system,"Segoe UI",Arial,sans-serif;
+  --f-body:"DM Sans",-apple-system,"Segoe UI",Arial,sans-serif;
+  --f-mono:"DM Mono",ui-monospace,Menlo,Consolas,monospace;
+  --r:6px; color-scheme:light;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#F4F5F1; --surface:#FFFFFF; --sunk:#ECEEE8; --ink:#1A211D; --muted:#5B655F;
+  --line:#D5D9D1; --accent:#A35A16; --accent-ink:#FFFFFF; --accent-soft:#F6E7D6; color-scheme:light; } }
+
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:15.5px;line-height:1.62}
+img{max-width:100%}
+.wrap{max-width:820px;margin:0 auto;display:flex;flex-direction:column;gap:30px;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));
+  padding-block:34px 56px}
+h1,h2,h3{font-family:var(--f-display);text-wrap:balance;margin:0}
+h1{font-size:31px;font-weight:700;line-height:1.1;letter-spacing:-0.02em}
+h2{font-size:21px;font-weight:700;letter-spacing:-0.015em}
+h3{font-size:16.5px;font-weight:600}
+p{margin:0;max-width:70ch}
+ul,ol{margin:0;padding-left:21px;display:flex;flex-direction:column;gap:9px;max-width:70ch}
+a{color:var(--accent)}
+.eyebrow{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
+.muted{color:var(--muted)} .small{font-size:13.5px} .mono{font-family:var(--f-mono);font-variant-numeric:tabular-nums}
+.hex{display:inline-block;width:14px;height:14px;background:var(--accent);
+  clip-path:polygon(25% 5%,75% 5%,100% 50%,75% 95%,25% 95%,0 50%);vertical-align:-1px;margin-right:8px}
+
+/* A numbered section is numbered because the reader is meant to be able to cite it back at us
+   in a meeting. */
+section.s{display:flex;flex-direction:column;gap:14px}
+section.s > .hd{display:flex;gap:12px;align-items:baseline;border-top:2px solid var(--ink);padding-top:12px}
+section.s > .hd .n{font-family:var(--f-mono);font-size:13px;font-weight:500;color:var(--accent);padding-top:3px}
+.lede{font-size:17px;line-height:1.6;max-width:66ch}
+
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:20px;
+  display:flex;flex-direction:column;gap:12px}
+.card.key{border-left:4px solid var(--accent)}
+.card.gate{background:var(--accent-soft);border-color:#E3CBAE}
+.strip{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border:1px solid var(--line);
+  border-radius:var(--r);background:var(--surface);overflow:hidden}
+.strip > div{padding:13px 15px;display:flex;flex-direction:column;gap:3px;min-width:0}
+.strip > div + div{border-left:1px solid var(--line)}
+.strip .v{font-family:var(--f-display);font-size:25px;font-weight:700;font-variant-numeric:tabular-nums;line-height:1.1}
+.strip .k{font-size:12.5px;color:var(--muted);line-height:1.45}
+
+.tw{overflow-x:auto;border:1px solid var(--line);border-radius:var(--r);background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-size:14px}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+thead th{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--muted);font-weight:500;background:var(--sunk);white-space:nowrap}
+tbody tr:last-child td,tbody tr:last-child th{border-bottom:0}
+tbody th{font-weight:600;white-space:nowrap}
+td.n,th.n{font-family:var(--f-mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+td.lo{color:var(--supplier)} td.hi{color:var(--buyer)}
+caption{caption-side:bottom;text-align:left;padding:10px 12px;font-size:12.5px;color:var(--muted);line-height:1.6}
+
+/* A quote block carries its own citation. A figure and a quote taken from different sentences is
+   a bug, so the citation sits inside the block it belongs to and never floats. */
+.q{border-left:3px solid var(--accent);padding:2px 0 2px 14px;display:flex;flex-direction:column;gap:7px}
+.q blockquote{margin:0;font-size:15px;line-height:1.6;max-width:68ch}
+.q .src{font-family:var(--f-mono);font-size:11.5px;color:var(--muted)}
+.q .means{font-size:14px;color:var(--muted);max-width:68ch}
+.q .means b{color:var(--ink);font-weight:600}
+.sup-block{display:flex;flex-direction:column;gap:16px}
+.sup-block > h3{display:flex;flex-wrap:wrap;gap:10px;align-items:baseline}
+.pill{display:inline-block;font-family:var(--f-mono);font-size:11px;font-weight:500;padding:2px 9px;
+  border-radius:999px;white-space:nowrap;background:var(--sunk);color:var(--muted)}
+
+.lever{display:grid;grid-template-columns:28px minmax(0,1fr);gap:4px 14px;align-items:start}
+.lever .num{font-family:var(--f-display);font-size:22px;font-weight:700;color:var(--accent);line-height:1.15}
+.lever .body{display:flex;flex-direction:column;gap:9px}
+.lever .body .ask{background:var(--sunk);border-radius:var(--r);padding:11px 14px;font-size:14.5px;max-width:68ch}
+.lever .body .ask b{display:block;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.07em;
+  text-transform:uppercase;color:var(--muted);margin-bottom:4px;font-weight:500}
+
+.ask-cta{border:1px solid var(--line);border-radius:12px;background:var(--surface);padding:24px;
+  display:flex;flex-direction:column;gap:10px}
+.ask-cta a{font-size:14.5px;font-weight:600;text-decoration:none;border-bottom:1px solid currentColor}
+footer.doc{font-size:12.5px;color:var(--muted);border-top:1px solid var(--line);padding-top:14px;
+  display:flex;flex-direction:column;gap:6px;max-width:72ch}
+
+@media (max-width:760px){
+  .strip{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .strip > div:nth-child(3){border-left:0}
+  .strip > div:nth-child(n+3){border-top:1px solid var(--line)}
+}
+@media (max-width:520px){
+  h1{font-size:25px} .lede{font-size:15.5px} .strip{grid-template-columns:minmax(0,1fr)}
+  .strip > div + div{border-left:0;border-top:1px solid var(--line)}
+}
+
+/* ════════ PRINT ════════
+   position:fixed repeats an element on every printed page in Chrome. That is how the watermark
+   reaches every sheet without sitting in the flow; the running header and page numbers come from
+   tools/topdf.js, not from here. */
+@media print{
+  @page{ size:A4; margin:16mm 14mm 18mm; }
+  .lf-chrome,.ask-cta,.noprint{display:none!important}
+  .pdf-only{display:block!important}
+  :root{--bg:#fff;--surface:#fff;--sunk:#F4F5F1;--ink:#1A211D;--muted:#5B655F;
+        --line:#D5D9D1;--accent:#A35A16;--accent-soft:#F6E7D6}
+  body{background:#fff!important;font-size:10.5pt;line-height:1.55}
+  .wrap{max-width:none;padding:0;gap:22px}
+  h1{font-size:20pt} h2{font-size:14pt} h3{font-size:11.5pt}
+  .lede{font-size:11.5pt}
+  section.s{break-inside:avoid}
+  .card,.q,.tw,.lever,.strip{break-inside:avoid}
+  table{font-size:9pt} th,td{padding:5pt 7pt}
+  /* Read THROUGH, not around. A watermark that fights the text makes the PDF worse than the
+     page it came from. */
+  .pdf-mark{position:fixed;top:44%;left:0;right:0;text-align:center;font-family:var(--f-body);
+    font-size:58pt;font-weight:700;letter-spacing:-0.03em;color:#A35A16;opacity:.06;
+    transform:rotate(-24deg);z-index:0}
+}
+.pdf-only{display:none}
+
+/* ── The PDF cover. Print only; the web page has its own title block above. */
+.pdf-cover{display:none}
+@media print{
+  .pdf-cover{display:flex!important;flex-direction:column;justify-content:space-between;
+    /* The page box less Chrome's margins, so the cover fills its own sheet and nothing else
+       climbs onto it. */
+    height:247mm;page-break-after:always;break-after:page}
+  .pdf-cover-top img{width:52mm;height:auto;display:block}
+  .pdf-cover-eyebrow{font-family:var(--f-mono);font-size:9pt;font-weight:500;letter-spacing:.16em;
+    text-transform:uppercase;color:#A35A16;margin:22mm 0 6mm}
+  .pdf-cover h1{font-family:var(--f-body);font-size:34pt;line-height:1.08;font-weight:700;
+    letter-spacing:-.025em;color:#1A211D;margin:0;max-width:22ch}
+  .pdf-cover-sub{font-family:var(--f-body);font-size:13pt;line-height:1.5;color:#5B655F;
+    margin:8mm 0 0;max-width:46ch}
+  .pdf-cover-rule{border:0;border-top:2pt solid #A35A16;width:28mm;margin:10mm 0 0}
+  .pdf-cover-meta{display:grid;grid-template-columns:.75fr 1fr 1.7fr;gap:10mm;
+    border-top:1.5pt solid #1A211D;padding-top:6mm;margin-bottom:7mm}
+  .pdf-cover-meta dt{font-family:var(--f-mono);font-size:8pt;font-weight:500;letter-spacing:.14em;
+    text-transform:uppercase;color:#5B655F;margin-bottom:2.5mm}
+  .pdf-cover-meta dd{font-family:var(--f-body);font-size:14pt;font-weight:700;letter-spacing:-.015em;
+    color:#1A211D;margin:0;line-height:1.25;white-space:nowrap}
+  .pdf-cover-foot{font-family:var(--f-body);font-size:8pt;line-height:1.65;color:#5B655F;
+    border-top:.5pt solid #D5D9D1;padding-top:3.5mm}
+}
+
+/* SITE CHROME, matching semitrical.css exactly. Values are repeated rather than referenced
+   because this document defines --ink and --surface itself and cannot load the site's sheet.
+   The nav gutter must be the site's centring expression, not a literal 48px, or the nav hugs the
+   left on a wide screen while the content below it is centred; and the logo is 60px in the bar
+   and 40px in the footer, which is what the stylesheet actually resolves to. */
+nav.lf-chrome{
+  padding-left:max(48px,calc((100% - 1180px) / 2));
+  padding-right:max(48px,calc((100% - 1180px) / 2));
+  padding-top:15px;padding-bottom:15px}
+nav.lf-chrome img{height:60px!important}
+footer.lf-chrome img{height:40px!important}
+@media (max-width:820px){ nav.lf-chrome{padding-top:12px;padding-bottom:12px} nav.lf-chrome img{height:46px!important} }
+@media (max-width:420px){ nav.lf-chrome img{height:38px!important} }
+</style></head><body>
+
+<section class="pdf-cover" aria-hidden="true">
+  <div class="pdf-cover-top">
+    <img src="/assets/img/semitrical-logo.png" alt="Semitrical">
+    <p class="pdf-cover-eyebrow">Supplier position report &middot; NetApp, Inc.</p>
+    <h1>NetApp and its five suppliers</h1>
+    <p class="pdf-cover-sub">Where each one sits in its own filed accounts, what its management has committed to on the record, and the three questions that have evidence behind them.</p>
+    <hr class="pdf-cover-rule">
+  </div>
+  <div>
+    <dl class="pdf-cover-meta">
+      <div><dt>Author</dt><dd>Semitrical.ai</dd></div>
+      <div><dt>Date</dt><dd>6 November 2026</dd></div>
+      <div><dt>Contact</dt><dd>contact@semitrical.ai</dd></div>
+    </dl>
+    <p class="pdf-cover-foot">
+      Micron, SK Hynix, Samsung Electronics, Kioxia and Seagate. Evidence to 6 November 2026.
+      Every figure traces to a filed document and every quote to a named quarter.
+      Built from public filings. First-pass analysis to support your own review &mdash; not
+      legal, investment or professional advice.
+    </p>
+  </div>
+</section>
+
+<div class="pdf-only pdf-mark" aria-hidden="true">semitrical.ai</div>
+
+<nav class="lf-chrome" style="display:flex;align-items:center;border-bottom:1px solid #e2e4ea;background:#fff;font-family:'DM Sans',system-ui,sans-serif">
+  <a href="/" aria-label="Semitrical home" style="display:block;text-decoration:none"><img src="/assets/img/semitrical-logo.png" alt="Semitrical &mdash; removing asymmetry from chip deals" height="60" style="display:block;height:60px;width:auto"></a>
+  <div style="display:flex;align-items:center;gap:28px;margin-left:48px;flex-wrap:wrap">
+    <a href="/" style="font-size:13px;font-weight:500;color:#5c6078;text-decoration:none">Platform</a>
+    <a href="/supplier-intelligence.html" style="font-size:13px;font-weight:500;color:#5c6078;text-decoration:none">Supplier Intelligence</a>
+    <a href="/deal-desk.html" style="font-size:13px;font-weight:500;color:#5c6078;text-decoration:none">Deal Desk</a>
+    <a href="/reports.html" style="font-size:13px;font-weight:500;color:#0f1117;text-decoration:none">Leverage Reports</a>
+  </div>
+  <a href="/contact.html" style="margin-left:auto;padding:9px 22px;background:#0f1117;color:#fff;border-radius:6px;font-size:13px;font-weight:600;text-decoration:none;white-space:nowrap">Contact us</a>
+</nav>
+
+<div class="wrap">
+
+<header style="display:flex;flex-direction:column;gap:11px">
+  <div class="eyebrow"><span class="hex" aria-hidden="true"></span>Semitrical &middot; Supplier position report</div>
+  <h1>NetApp and its five suppliers</h1>
+  <p class="lede muted">Where each one sits in its own filed accounts, what its management has
+    committed to on the record, and the three questions that have evidence behind them.</p>
+  <p class="small muted mono">Micron &middot; SK Hynix &middot; Samsung Electronics &middot; Kioxia &middot; Seagate &nbsp;|&nbsp; evidence to 6 November 2026</p>
+</header>
+
+<!-- ───────────────────────── 1 ───────────────────────── -->
+<section class="s">
+  <div class="hd"><span class="n">01</span><h2>What this report is</h2></div>
+
+  <p>NetApp buys memory and hard drives from five companies that all file public accounts and all
+    hold public earnings calls. This report reads those filings from the buyer's side of the table.</p>
+
+  <p>It answers three questions. Where does each supplier sit today, measured against its own
+    history rather than against a peer average. What has each one's management said on the record,
+    in a named quarter, about price, capacity and the contracts it wants. And which of those
+    statements can be used in a negotiation, because the supplier's own numbers either support it
+    or do not.</p>
+
+  <div class="card gate">
+    <h3>What this report will not do</h3>
+    <ul>
+      <li><b>It does not forecast a price.</b> Nothing here predicts DRAM, NAND or drive pricing for
+        a future quarter.</li>
+      <li><b>It gives no single score.</b> There is no blended supplier rating, because a blended
+        number hides which dimension moved and can come out flattering for every supplier at once.
+        Each dimension is reported on its own.</li>
+      <li><b>It does not split any of these five into fixed and variable cost.</b> Our cost model is
+        deliberately withheld for memory, and the reason is set out in section 06. A revenue change
+        there is price times volume, and the two do not behave the same way.</li>
+      <li><b>Where the filings will not carry an answer, it says so</b> rather than estimating one.</li>
+    </ul>
+  </div>
+
+  <p class="small muted">A note on what absence means. Where a figure is not shown for a supplier,
+    that means it is not in the material we have read &mdash; not that the supplier does not report
+    it. We never treat a gap in our own reading as a gap in a supplier's disclosure.</p>
+</section>
+
+<!-- ───────────────────────── 2 ───────────────────────── -->
+<section class="s">
+  <div class="hd"><span class="n">02</span><h2>The finding, in one page</h2></div>
+
+  <div class="card key">
+    <p class="lede"><b>All five of NetApp's suppliers have moved supply onto binding, prepaid,
+      multi&#8209;year allocation at the same time &mdash; and NetApp's own 10&#8209;K already shows
+      what that is costing.</b></p>
+    <p>This is not an inference about intent. Each of the five has described the shift in its own
+      words on a dated earnings call, and NetApp's FY2026 filing reports both the committed amount
+      and the margin effect.</p>
+  </div>
+
+  <p>The second half of the finding is the part that is easy to miss. NetApp holds almost no
+    component inventory and carries the timing risk as commitments instead. At 24 April 2026 it held
+    <span class="mono">$14 million</span> of purchased components &mdash; down from
+    <span class="mono">$81 million</span> a year earlier, and roughly <b>four days</b> of its annual
+    materials spend. Over the same period it carried <span class="mono">$1.4 billion</span> of
+    off&#8209;balance&#8209;sheet purchase commitments, of which <span class="mono">$1.1 billion</span>
+    falls due in fiscal 2027.</p>
+
+  <p>Its suppliers, meanwhile, were holding between <b>86 and 136 days</b> of inventory in their
+    latest filed year. The stock sits upstream. NetApp pays for the timing in commitments rather
+    than in working capital &mdash; which is a defensible way to run a balance sheet, and also the
+    reason a price move lands on NetApp's margin fast, with little buffer behind it.</p>
+
+  <div class="strip">
+    <div><span class="v">$1.4bn</span><span class="k">Committed to suppliers, off balance sheet, at 24 Apr 2026</span></div>
+    <div><span class="v">4 days</span><span class="k">Purchased components held, against annual materials spend</span></div>
+    <div><span class="v">56%</span><span class="k">Hybrid Cloud product gross margin FY26, from 60% in FY24</span></div>
+    <div><span class="v">+$126m</span><span class="k">Increase in materials cost in FY26</span></div>
+  </div>
+  <p class="small muted">Source: NetApp FY2026 Form 10&#8209;K, filed 5 June 2026 for the year ended
+    24 April 2026. Days of purchased components is our arithmetic on two figures from that filing:
+    components inventory of $14m against materials cost of about $1.27bn, being the 91% of the
+    $1,395m cost of Hybrid Cloud product revenues that NetApp attributes to materials.</p>
+</section>
+
+<!-- ───────────────────────── 3 ───────────────────────── -->
+<section class="s">
+  <div class="hd"><span class="n">03</span><h2>NetApp's own position, from NetApp's own filing</h2></div>
+
+  <p>Before reading the suppliers, it is worth setting out what NetApp has already told the market.
+    Everything in this section is quoted or calculated from the FY2026 10&#8209;K.</p>
+
+  <div class="tw">
+    <table>
+      <caption>NetApp, Inc., Form 10&#8209;K for the fiscal years ended 24 April 2026, 25 April 2025
+        and 26 April 2024. Dollars in millions. Product gross margin is the complement of the
+        cost&#8209;to&#8209;revenue ratio NetApp discloses for its Hybrid Cloud segment.</caption>
+      <thead><tr><th>&nbsp;</th><th class="n">FY2026</th><th class="n">FY2025</th><th class="n">FY2024</th></tr></thead>
+      <tbody>
+        <tr><th>Net revenues</th><td class="n">6,925</td><td class="n">6,572</td><td class="n">6,268</td></tr>
+        <tr><th>Gross margin, total company</th><td class="n">71%</td><td class="n">70%</td><td class="n">71%</td></tr>
+        <tr><th>Hybrid Cloud product revenues</th><td class="n">3,194</td><td class="n">3,040</td><td class="n">&mdash;</td></tr>
+        <tr><th>Cost of Hybrid Cloud product revenues</th><td class="n">1,395</td><td class="n">1,278</td><td class="n">1,131</td></tr>
+        <tr><th>&hellip; as % of Hybrid Cloud product revenues</th><td class="n">44%</td><td class="n">42%</td><td class="n">40%</td></tr>
+        <tr><th>Implied Hybrid Cloud product gross margin</th><td class="n lo">56%</td><td class="n">58%</td><td class="n hi">60%</td></tr>
+        <tr><th>Materials as % of that cost</th><td class="n">91%</td><td class="n">89%</td><td class="n">88%</td></tr>
+        <tr><th>Purchased components in inventory</th><td class="n lo">14</td><td class="n">81</td><td class="n">&mdash;</td></tr>
+        <tr><th>Finished goods in inventory</th><td class="n">184</td><td class="n">105</td><td class="n">&mdash;</td></tr>
+        <tr><th>Off&#8209;balance&#8209;sheet purchase commitments</th><td class="n">1,400</td><td class="n">&mdash;</td><td class="n">&mdash;</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>Three things follow directly, with no modelling involved.</p>
+
+  <ul>
+    <li><b>The squeeze is in the product line, not the company total.</b> Total gross margin is flat
+      at about 71% because support and public cloud revenue carries it. The product margin inside
+      Hybrid Cloud fell from 60% to 56% in two years, and NetApp attributes the latest step to
+      component cost directly.</li>
+    <li><b>Materials are now a larger share of a larger cost.</b> They rose from 88% to 91% of cost
+      of product revenues while that cost itself grew. There is less non&#8209;material cost left to
+      absorb a component increase.</li>
+    <li><b>The committed amount is close to a full year of materials.</b> The
+      <span class="mono">$1.1bn</span> due in FY2027 is roughly nine tenths of the
+      <span class="mono">$1.27bn</span> of materials NetApp consumed in FY2026.</li>
+  </ul>
+
+  <div class="q">
+    <blockquote>&ldquo;We have experienced increased costs for memory and other components, which
+      have affected our gross margins, and we expect costs will remain elevated, or continue to
+      increase, in the near term.&rdquo;</blockquote>
+    <p class="src">NetApp, Form 10&#8209;K FY2026, Business Environment &mdash; Supply Chain</p>
+  </div>
+
+  <div class="q">
+    <blockquote>&ldquo;We raised our pricing in the fourth quarter of fiscal 2026, in line with
+      market trends. We expect to continue adjusting prices as necessary to offset rising costs and
+      remain aligned with the market.&rdquo;</blockquote>
+    <p class="src">NetApp, Form 10&#8209;K FY2026, strategic actions</p>
+    <p class="means">The increase has already been passed to NetApp's own customers, and NetApp has
+      told the market it expects to do it again. <b>So the question a procurement team is answerable
+      for is no longer whether cost rose, but whether this particular supplier's increase is
+      supported by that supplier's own cost position.</b> Sections 04 and 05 are about exactly
+      that.</p>
+  </div>
+
+  <p>NetApp's own risk disclosure names the structure that the next two sections document from the
+    other side of the table:</p>
+
+  <div class="q">
+    <blockquote>&ldquo;Potential for binding price or purchase commitments with our suppliers at
+      higher than market rates&rdquo;</blockquote>
+    <p class="src">NetApp, Form 10&#8209;K FY2026, risks of the outsourced manufacturing model</p>
+  </div>
+</section>
+
+<!-- ───────────────────────── 4 ───────────────────────── -->
+<section class="s">
+  <div class="hd"><span class="n">04</span><h2>Where each supplier sits in its own accounts</h2></div>
+
+  <p>Each of the five is measured against six years of its own filed results, not against the other
+    four. That matters because these businesses are not comparable to one another: a fab and a drive
+    plant convert capital into output at completely different rates, so a cross&#8209;company
+    capital intensity comparison says more about the technology than about the supplier's choices.
+    Measured against itself, each number means something.</p>
+
+  <div class="tw">
+    <table>
+      <caption>Latest filed fiscal year per supplier, against that supplier's own six&#8209;year
+        range. Gross margin and capital expenditure as a share of revenue are reported as
+        percentages, and inventory as days, so that the Korean&#8209; and Japanese&#8209;reporting
+        companies are comparable to the two dollar reporters with no exchange&#8209;rate assumption
+        entering the figure. Inventory days are our arithmetic: closing inventories over cost of
+        revenue, annualised.</caption>
+      <thead><tr>
+        <th>Supplier</th><th class="n">Latest FY</th><th class="n">Gross margin</th>
+        <th class="n">Its own 6&#8209;year low</th><th class="n">Its own 6&#8209;year high</th>
+        <th class="n">Inventory days</th><th class="n">Capex % of revenue</th>
+      </tr></thead>
+      <tbody>
+        <tr><th>Micron</th><td class="n">2025</td><td class="n">39.8%</td><td class="n lo">&minus;9.1% (2023)</td><td class="n">45.2% (2022)</td><td class="n">136</td><td class="n">42%</td></tr>
+        <tr><th>SK Hynix</th><td class="n">2025</td><td class="n hi">60.4%</td><td class="n lo">&minus;1.6% (2023)</td><td class="n">60.4% (2025)</td><td class="n">136</td><td class="n">28%</td></tr>
+        <tr><th>Samsung Electronics</th><td class="n">2025</td><td class="n">39.4%</td><td class="n">30.3% (2023)</td><td class="n">40.5% (2021)</td><td class="n">95</td><td class="n">14%</td></tr>
+        <tr><th>Kioxia</th><td class="n">2025</td><td class="n">43.3%</td><td class="n lo">&minus;12.0% (2023)</td><td class="n">43.3% (2025)</td><td class="n">114</td><td class="n">12%</td></tr>
+        <tr><th>Seagate</th><td class="n">2026</td><td class="n">45.6%</td><td class="n">18.3% (2023)</td><td class="n">45.6% (2026)</td><td class="n">86</td><td class="n">4.7%</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>What the table says</h3>
+
+  <ul>
+    <li><b>Three of the five are at the best gross margin in their own six&#8209;year record.</b>
+      SK Hynix at 60.4%, Kioxia at 43.3% and Seagate at 45.6% are each at their own high. Micron at
+      39.8% and Samsung at 39.4% are below their own peaks of 45.2% and 40.5%.</li>
+    <li><b>Every one of them came through a severe 2023.</b> Micron's gross margin was &minus;9.1%
+      that year, Kioxia's &minus;12.0%, SK Hynix's &minus;1.6%, Seagate's 18.3%, Samsung's 30.3%.
+      The current position is a recovery from a loss&#8209;making trough, not a step onto a new
+      plateau. <b>This is the single most useful fact in the report for a buyer</b>, and it cuts both
+      ways: it explains why these suppliers are rebuilding margin rather than negotiating, and it
+      also means the current level is not something any of them has demonstrated it can hold.</li>
+    <li><b>Reinvestment separates them sharply.</b> Micron is putting 42% of revenue into capital
+      expenditure and SK Hynix 28%. Kioxia is at 12% and Seagate at 4.7%. For Kioxia that is against
+      its own 40% in fiscal 2022 &mdash; a record gross margin alongside reinvestment at roughly a
+      third of its own prior peak. For Seagate, 4.7% sits inside the 2.9% to 5.6% band it has run
+      for six years, so its record margin has not required a change in spending.</li>
+    <li><b>Inventory is held upstream.</b> Micron and SK Hynix are each at 136 days, Kioxia 114,
+      Samsung 95, Seagate 86. Against NetApp's four days of purchased components, the buffer in this
+      chain sits on the supplier side of it.</li>
+  </ul>
+
+  <p class="small muted">On reading this as a direction of travel: it is deliberately not presented
+    as one. Each row is a position in a range, with the years named. We do not publish trend claims
+    on supplier readings, because a trend requires reducing each period to a single comparable
+    number, and that is the blended score this report does not produce. A named year in a named
+    range is as far as this evidence goes.</p>
+</section>
+
+<!-- ───────────────────────── 5 ───────────────────────── -->
+<section class="s">
+  <div class="hd"><span class="n">05</span><h2>What their management has committed to, on the record</h2></div>
+
+  <p>Every quote below is verbatim from a named quarter's earnings call or presentation. The line
+    under each one is what it means for a buyer, and it is labelled as our reading rather than
+    presented as part of the quote.</p>
+
+  <div class="sup-block">
+    <h3>Micron <span class="pill">Q2&#8209;26, Q3&#8209;26</span></h3>
+
+    <div class="q">
+      <blockquote>&ldquo;Those LTAs had no binding terms in them. It was more of a handshake, kind
+        of an understanding with customers about ensuring that there is good level of supply chain
+        planning that we do&hellip;&rdquo;</blockquote>
+      <p class="src">Micron Q3&#8209;26 earnings call</p>
+      <p class="means">Micron is drawing an explicit line between its older long&#8209;term
+        agreements and the supply commitment agreements it is signing now. <b>If NetApp holds an
+        agreement written under the older framework, what it is being asked to accept on renewal is
+        a different instrument, not a renewal of the same one.</b></p>
+    </div>
+
+    <div class="q">
+      <blockquote>&ldquo;These SCAs are meant to achieve the objectives for the customers in terms
+        of their ability to plan and be able to count on supply commitments that are in the
+        agreements, but also for us to be able to count on specific commitments that are there from
+        the customers.&rdquo;</blockquote>
+      <p class="src">Micron Q2&#8209;26 earnings call</p>
+      <p class="means">The obligation runs in both directions. <b>A volume commitment NetApp cannot
+        hit becomes NetApp's exposure &mdash; and that is the mechanism its own 10&#8209;K names as
+        a risk.</b></p>
+    </div>
+
+    <div class="q">
+      <blockquote>&ldquo;We expect fiscal 2026 CapEx to be above $25,000,000,000&hellip; We project
+        our fiscal 2027 CapEx to step up meaningfully to support HBM and DRAM&#8209;related
+        investments. We expect construction&#8209;related CapEx to increase by over
+        $10,000,000,000 year over year in fiscal 2027&hellip;&rdquo;</blockquote>
+      <p class="src">Micron Q2&#8209;26 earnings call</p>
+      <p class="means">Micron is the one supplier of the five whose cost&#8209;increase argument has
+        a visible capital programme behind it &mdash; the guided figure is well above the
+        <span class="mono">$15.9bn</span> it actually spent in FY2025. <b>That is a genuine
+        justification, and it is also aimed at HBM and leading&#8209;edge DRAM rather than at the
+        parts an enterprise storage buyer consumes.</b> Worth separating in the conversation.</p>
+    </div>
+
+    <div class="q">
+      <blockquote>&ldquo;With all of the efforts that we are doing, we still don't have line of
+        sight as to when the supply is going to be able to meet demand&hellip;&rdquo;</blockquote>
+      <p class="src">Micron Q3&#8209;26 earnings call</p>
+    </div>
+  </div>
+
+  <div class="sup-block">
+    <h3>SK Hynix <span class="pill">Q1&#8209;26, Q2&#8209;26</span></h3>
+
+    <div class="q">
+      <blockquote>&ldquo;To date, we have concluded LTA negotiations with around 10 customers,
+        including our key customers&hellip; financial mechanisms such as deposits are incorporated
+        to support contract fulfillment&hellip;&rdquo;</blockquote>
+      <p class="src">SK Hynix Q2&#8209;26 earnings call</p>
+      <p class="means">Around ten customers are inside the agreement structure, and a cash deposit
+        is part of it. <b>Whether NetApp is one of those ten is the first thing to establish, because
+        it decides whether this is an allocation conversation or a pricing one.</b></p>
+    </div>
+
+    <div class="q">
+      <blockquote>&ldquo;In the PC and mobile markets, some signs of demand softening have emerged,
+        including adjustments in such shipments and changes in product portfolios due to cost
+        pressures stemming from higher memory prices.&rdquo;</blockquote>
+      <p class="src">SK Hynix Q1&#8209;26</p>
+      <p class="means">This is the most useful single sentence any of the five has said for a buyer.
+        <b>SK Hynix's own management has conceded that higher memory prices are destroying demand in
+        two of its end markets.</b> The tight&#8209;supply account is not uniform across segments,
+        and the supplier said so first.</p>
+    </div>
+
+    <div class="q">
+      <blockquote>&ldquo;we are pulling forward the mass production schedule for M15X and proceeding
+        with investments to rapidly expand production capacity following the clean room opening of
+        the Yongin Phase 1 in early 2027.&rdquo;</blockquote>
+      <p class="src">SK Hynix Q2&#8209;26 earnings call</p>
+      <p class="means">A dated capacity milestone. <b>Early 2027 is a point at which to put a
+        reopener in a contract, rather than accept a term priced on today's balance.</b></p>
+    </div>
+  </div>
+
+  <div class="sup-block">
+    <h3>Samsung Electronics <span class="pill">Q1&#8209;26, Q2&#8209;26</span></h3>
+
+    <div class="q">
+      <blockquote>&ldquo;DRAM and NAND supply volumes under multi&#8209;year supply contracts will
+        easily account for 60%&ndash;70% of our planned capacity based on our current mid to
+        long&#8209;term production plan.&rdquo;</blockquote>
+      <p class="src">Samsung Electronics Q2&#8209;26 earnings call</p>
+      <p class="means">Samsung has quantified what is already committed. <b>A buyer outside those
+        contracts is negotiating over the remaining 30% to 40%, which is the single most important
+        number to know before opening.</b></p>
+    </div>
+
+    <div class="q">
+      <blockquote>&ldquo;we are negotiating the contractual terms, giving priority to customers
+        willing to accept mutually binding contractual conditions&hellip; To enhance the binding
+        nature of multi&#8209;year supply commitments, we've included substantial advance payments
+        as a contractual requirement to be maintained over the multi&#8209;year contract
+        period.&rdquo;</blockquote>
+      <p class="src">Samsung Electronics Q2&#8209;26 earnings call</p>
+      <p class="means">Advance payment is stated as a requirement, not an option. <b>That is a
+        working&#8209;capital cost, and it belongs in the comparison when a prepaid allocation is set
+        against a higher unit price without one.</b></p>
+    </div>
+
+    <div class="q">
+      <blockquote>&ldquo;despite industry&#8209;wide increases in CapEx, considering the lead time
+        from new fab construction to actual wafer production, which exceeds three years&hellip; We
+        believe it will be unlikely to see any significant increase in incremental supply through
+        2028.&rdquo;</blockquote>
+      <p class="src">Samsung Electronics Q2&#8209;26 earnings call</p>
+      <p class="means">Samsung has put a date on its own view of when supply relief arrives.
+        <b>It is a supplier's statement in a market where it benefits from being believed &mdash; but
+        it is on the record, and it is the horizon against which a multi&#8209;year term should be
+        judged.</b></p>
+    </div>
+  </div>
+
+  <div class="sup-block">
+    <h3>Kioxia <span class="pill">Q1&#8209;26, Q4&#8209;25</span></h3>
+
+    <div class="q">
+      <blockquote>&ldquo;The biggest driver should be ASP up continuously from the first quarter. It
+        is expected that ASP will continuously grow.&rdquo;</blockquote>
+      <p class="src">Kioxia Q1&#8209;26 earnings call</p>
+    </div>
+
+    <div class="q">
+      <blockquote>&ldquo;we plan to spend an average of JPY 470 billion annually on capital
+        expenditures from FY 2026 to FY 2028.&rdquo;</blockquote>
+      <p class="src">Kioxia Q1&#8209;26 earnings call</p>
+      <p class="means">Set this against section 04. Kioxia is at its best gross margin in six years
+        while capital expenditure runs at 12% of revenue, against its own 40% in fiscal 2022.
+        <b>Of the five, Kioxia is the one whose record margin is least accompanied by a
+        step&#8209;up in its own spending &mdash; which makes a cost&#8209;driven increase from
+        Kioxia the one most worth asking it to itemise.</b></p>
+    </div>
+
+    <div class="q">
+      <blockquote>&ldquo;The PC market is expected to see a decrease in shipments due to rising BOM
+        costs, leading to a slight decline in NAND demand compared to calendar year 2025.&rdquo;</blockquote>
+      <p class="src">Kioxia Q1&#8209;26 earnings call</p>
+      <p class="means">The same concession SK Hynix made, from a second supplier independently.
+        <b>Two of the five have now said on the record that their own price increases are reducing
+        demand somewhere.</b></p>
+    </div>
+
+    <div class="q">
+      <blockquote>&ldquo;we will have a long&#8209;term agreement that we will be signing in calendar
+        year 2028. Most, we would say 50% of our shipment will be covered by LTA if things go
+        well.&rdquo;</blockquote>
+      <p class="src">Kioxia Q1&#8209;26 earnings call</p>
+      <p class="means">Kioxia is the least committed of the five today, and says so. <b>That makes it
+        the supplier where volume is most available now and the terms are least settled.</b></p>
+    </div>
+  </div>
+
+  <div class="sup-block">
+    <h3>Seagate <span class="pill">Q3&#8209;26, Q4&#8209;26</span></h3>
+
+    <div class="q">
+      <blockquote>&ldquo;the vast majority of our nearline exabytes are now allocated into calendar
+        2028. Importantly, we are not seeing customers pull back on planning horizons. As our
+        strategic relationships deepen, many are actively seeking to extend planning horizons
+        through 2029 and beyond&rdquo;</blockquote>
+      <p class="src">Seagate Q4&#8209;26 earnings call</p>
+      <p class="means">One quarter earlier Seagate described nearline as &ldquo;almost fully
+        allocated through calendar 2027&rdquo;. <b>The allocation horizon it describes moved out by a
+        year between two consecutive calls, which is the strongest statement of scarcity any of the
+        five has made.</b></p>
+    </div>
+
+    <div class="q">
+      <blockquote>&ldquo;We remain disciplined in securing orders from these customers prior to
+        initiating drive production, with contracts that define both product configuration and
+        pricing terms, covering the entirety of calendar 2027.&rdquo;</blockquote>
+      <p class="src">Seagate Q4&#8209;26 earnings call</p>
+      <p class="means">Seagate does not build before it has the order and the price. <b>Volume for
+        calendar 2027 is priced in contracts that already exist, so the live negotiation is 2028 and
+        beyond.</b></p>
+    </div>
+
+    <div class="q">
+      <blockquote>&ldquo;Our value&#8209;based pricing approach enables customers to plan with
+        confidence while contributing to sustained profit growth for Seagate&hellip;&rdquo;</blockquote>
+      <p class="src">Seagate Q3&#8209;26 earnings call</p>
+      <p class="means">Seagate has described its own pricing as value&#8209;based rather than
+        cost&#8209;plus. <b>A cost pass&#8209;through argument from Seagate is therefore inconsistent
+        with the way Seagate has told its own investors it prices</b> &mdash; and section 04 shows a
+        record gross margin on capital spending inside its normal band. Of the five, this is the
+        weakest cost&#8209;based case.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ───────────────────────── 6 ───────────────────────── -->
+<section class="s">
+  <div class="hd"><span class="n">06</span><h2>Three questions that have evidence behind them</h2></div>
+
+  <p>These are not opening positions. Each one is a question whose answer is already partly on the
+    record, which is what makes it hard to deflect.</p>
+
+  <div class="lever">
+    <div class="num">1</div>
+    <div class="body">
+      <h3>Which segment is this increase actually priced for?</h3>
+      <p>SK Hynix and Kioxia have each said, independently and on dated calls, that higher memory
+        prices are reducing demand in PC and mobile. So the tight&#8209;supply account is not
+        uniform across end markets, by the suppliers' own accounts. Enterprise storage is not the
+        segment they described as softening &mdash; but it is also not the AI and HBM demand that
+        Micron and Samsung name when they justify capital spending.</p>
+      <div class="ask"><b>Ask</b>Your own Q1 commentary describes demand softening in PC and mobile
+        from higher memory prices. Enterprise nearline and enterprise DRAM are a different segment.
+        Which one is the increase you have sent us priced against?</div>
+    </div>
+  </div>
+
+  <div class="lever">
+    <div class="num">2</div>
+    <div class="body">
+      <h3>What exactly is the prepayment buying?</h3>
+      <p>Samsung states that advance payments are a contractual requirement and that 60% to 70% of
+        planned capacity is already under multi&#8209;year contract. SK Hynix incorporates deposits.
+        Micron's new agreements carry binding terms its previous ones did not. A prepaid allocation
+        and a higher unit price with no prepayment are two different commercial offers, and the cash
+        cost of the first belongs in the comparison.</p>
+      <div class="ask"><b>Ask</b>You have said 60% to 70% of planned capacity is committed. For the
+        remainder, price the same volume two ways: with the advance payment and without it. We will
+        compare them on total cost, including our cost of that cash.</div>
+    </div>
+  </div>
+
+  <div class="lever">
+    <div class="num">3</div>
+    <div class="body">
+      <h3>Is the increase cost, or is it margin recovery?</h3>
+      <p>The answer differs by supplier, and section 04 says which is which. Micron has a guided
+        capital programme above $25bn and a step&#8209;up beyond that in FY2027 &mdash; a real cost
+        argument. Kioxia is at a six&#8209;year&#8209;high gross margin with capital spending at 12%
+        of revenue, against its own 40% in fiscal 2022. Seagate is at a six&#8209;year&#8209;high
+        gross margin inside its normal spending band, and describes its own pricing as
+        value&#8209;based rather than cost&#8209;plus.</p>
+      <div class="ask"><b>Ask</b>Where a supplier claims cost: which cost, and in which quarter did
+        it appear in your filed accounts? Where a supplier prices on value: then say so, and we will
+        negotiate on value &mdash; starting with what our volume and our planning horizon are worth
+        to you.</div>
+    </div>
+  </div>
+
+  <div class="card gate">
+    <h3>What we are withholding, and why</h3>
+    <p>Our cost model splits a supplier's cost base into a fixed part and a part that moves with
+      revenue, and reports what a volume change does to it. <b>We do not run it for any of these
+      five, and that is a deliberate exclusion rather than a gap.</b></p>
+    <p>The reason is in the table in section 04. For a memory or drive supplier, revenue is price
+      multiplied by volume, and those two move independently &mdash; Micron's revenue went from
+      $30.8bn to $15.5bn and back to $37.4bn in three years, with gross margin between &minus;9.1%
+      and 45.2%. A revenue change cannot stand in for a volume change in that data, so a model built
+      on revenue would produce a fixed&#8209;cost share that reads precisely and means nothing.</p>
+    <p>Their <b>filed figures</b> are a different matter, and are used freely throughout this report.
+      A fact and an inference get different treatment. A model that declines to answer where the
+      data will not carry a number is worth more than one that fills the gap.</p>
+  </div>
+</section>
+
+<!-- ───────────────────────── 7 ───────────────────────── -->
+<section class="s">
+  <div class="hd"><span class="n">07</span><h2>How to check every figure in this report</h2></div>
+
+  <p>Nothing here is proprietary data. It is public disclosure, read carefully and assembled from
+    the buyer's side. Every number can be traced back.</p>
+
+  <div class="tw">
+    <table>
+      <caption>Where each part of this report comes from. Supplier annual figures are drawn from the
+        suppliers' own filed statements as held in our database; percentages and days are our
+        arithmetic on those statements, and the formula is given wherever a derived figure appears.</caption>
+      <thead><tr><th>Section</th><th>Source</th></tr></thead>
+      <tbody>
+        <tr><th>NetApp figures and quotes</th><td>NetApp, Inc. Form 10&#8209;K for the fiscal year
+          ended 24 April 2026, filed with the SEC on 5 June 2026. CIK 0001002047, accession
+          0001193125&#8209;26&#8209;259683.</td></tr>
+        <tr><th>Supplier annual figures</th><td>Six filed fiscal years each for Micron, SK Hynix,
+          Samsung Electronics and Kioxia, and seven for Seagate, whose fiscal 2026 is already filed.
+          Revenue, gross profit, operating income, inventories, cost of revenue and capital
+          expenditure.</td></tr>
+        <tr><th>Supplier quotes</th><td>Earnings calls and earnings presentations for the quarters
+          named beside each quote. Each quote was verified against its source document before it was
+          stored, and a quote that failed verification is not shown.</td></tr>
+        <tr><th>Derived figures</th><td>Inventory days are closing inventories over cost of revenue,
+          annualised. Capital expenditure share is capital expenditure over revenue. Days of
+          purchased components is NetApp's components inventory over its materials cost. Each is
+          stated where it is used.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p class="small muted">One disclosure about our own coverage. The quotes in section 05 come from
+    our reading of earnings calls and presentations for the quarters named. That reading is not a
+    complete transcript archive for all five suppliers, so the absence of a quote on a given topic
+    means we have not recorded one &mdash; never that the supplier has not addressed it. Where this
+    report asserts something, it is because a verified quote or a filed figure supports it.</p>
+</section>
+
+<!-- ───────────────────────── ask ───────────────────────── -->
+<section class="ask-cta">
+  <h2>Name your three suppliers</h2>
+  <p>This report covers five. If you want the same reading on the suppliers you negotiate with, tell
+    us which three &mdash; we will send back what their own filings and earnings calls say about
+    your position: how much of their cost moves when volume moves, where their capacity and
+    inventory sit, and what management committed to on the record and in which quarter. If you have
+    had a price increase letter, send it and we will check it against their cost data. Where the
+    filings will not support an answer, we say so rather than estimate. We hold thirteen suppliers
+    today; if yours are not among them we will tell you before you spend any time on it.</p>
+  <p><a href="/three-suppliers.html">Name your three suppliers &rarr;</a></p>
+</section>
+
+<footer class="doc">
+  <p>Semitrical &middot; supplier position report &middot; NetApp, Inc. &middot; evidence to
+    6 November 2026 &middot; contact@semitrical.ai</p>
+  <p>Built from public filings. First&#8209;pass analysis to support your own review &mdash; not
+    legal, investment or professional advice. NetApp, Micron, SK Hynix, Samsung Electronics, Kioxia
+    and Seagate are named here as the subjects of public disclosure; no relationship with or
+    endorsement by any of them is implied.</p>
+</footer>
+
+</div>
+
+<footer class="lf-chrome" style="padding:36px 48px;border-top:1px solid #e2e4ea;background:#fff;font-family:'DM Sans',system-ui,sans-serif;font-size:12px;color:#5c6078;line-height:1.7">
+  <div style="max-width:1180px;margin:0 auto">
+    <a href="/" aria-label="Semitrical home" style="display:inline-block;text-decoration:none"><img src="/assets/img/semitrical-logo.png" alt="Semitrical" height="40" style="display:block;height:40px;width:auto;opacity:.9"></a>
+    <p style="margin:10px 0 0">Semiconductor procurement intelligence &middot; &copy; 2026 Semitrical<br>
+      Built from public filings. First-pass analysis to support your own review &mdash; not legal,
+      investment or professional advice.</p>
+    <p style="margin:10px 0 0">
+      <a href="/" style="color:#5c6078">Platform</a> &middot;
+      <a href="/supplier-intelligence.html" style="color:#5c6078">Supplier Intelligence</a> &middot;
+      <a href="/deal-desk.html" style="color:#5c6078">Deal Desk</a> &middot;
+      <a href="/reports.html" style="color:#5c6078">Leverage Reports</a></p>
+    <p style="margin:8px 0 0">
+      <a href="/about.html" style="color:#5c6078">About</a> &middot;
+      <a href="/privacy.html" style="color:#5c6078">Privacy</a> &middot;
+      <a href="mailto:contact@semitrical.ai" style="color:#5c6078;font-weight:600">contact@semitrical.ai</a> &middot;
+      <a href="https://www.linkedin.com/company/semitrical-ai" style="color:#5c6078">LinkedIn</a></p>
+  </div>
+</footer>
+<script src="https://app.semitrical.ai/t.js?v=5" data-anon data-page="/reports/netapp/"></script>
+</body></html>
