@@ -106,6 +106,50 @@ caption{caption-side:bottom;text-align:left;padding:10px 12px;font-size:12.5px;c
 .lever .body .ask b{display:block;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.07em;
   text-transform:uppercase;color:var(--muted);margin-bottom:4px;font-weight:500}
 
+/* ── A conflict: one thing the buyer has said it wants, one thing a supplier has said it will
+   offer, and the gap. The two quotes sit SIDE BY SIDE because the gap is only visible when they
+   are read together -- that is the entire reason this section exists. The path below them is
+   OUR JUDGMENT and is marked as such, because a recommendation does not trace to a quote the
+   way a finding does, and the moment those two are presented alike the document stops being
+   auditable. */
+.cf{display:flex;flex-direction:column;gap:14px;border:1px solid var(--line);border-radius:10px;
+  background:var(--surface);padding:22px}
+.cf > header{display:flex;flex-direction:column;gap:6px}
+.cf h3{font-size:19px;font-weight:700;letter-spacing:-0.015em}
+.cf .two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.cf .side{display:flex;flex-direction:column;gap:7px;background:var(--sunk);border-radius:var(--r);padding:14px}
+.cf .side.them{background:var(--supplier-soft)}
+.cf .side .who{font-family:var(--f-mono);font-size:10px;letter-spacing:.09em;text-transform:uppercase;
+  color:var(--muted);font-weight:500}
+.cf .side.them .who{color:var(--supplier)}
+.cf .side blockquote{margin:0;font-size:14px;line-height:1.55}
+.cf .side .src{font-family:var(--f-mono);font-size:10.5px;color:var(--muted)}
+.cf .gap{font-size:15.5px;border-left:3px solid var(--accent);padding-left:14px;max-width:68ch}
+.cf .path{border:1px dashed #C9A275;border-radius:var(--r);padding:15px 16px;display:flex;
+  flex-direction:column;gap:9px;background:var(--accent-soft)}
+.cf .path h4{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--accent);font-weight:500}
+.cf .path p{font-size:14.5px}
+.cf .path .derv{font-size:13px;color:var(--muted);border-top:1px solid #E3CBAE;padding-top:8px}
+.cf .path .derv b{color:var(--ink);font-weight:600}
+.cf .ask{background:var(--sunk);border-radius:var(--r);padding:12px 15px;font-size:14.5px;max-width:68ch}
+.cf .ask b{display:block;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--muted);margin-bottom:4px;font-weight:500}
+@media (max-width:680px){ .cf .two{grid-template-columns:minmax(0,1fr)} .cf{padding:16px} }
+
+/* The stated-objective list in section 02. Each row is a quote and nothing else, because the
+   point of that section is that these are the buyer's OWN words, not our summary of them. */
+.obj{display:flex;flex-direction:column;gap:0;border:1px solid var(--line);border-radius:var(--r);
+  overflow:hidden;background:var(--surface)}
+.obj > div{display:grid;grid-template-columns:170px minmax(0,1fr);gap:6px 18px;padding:15px 16px}
+.obj > div + div{border-top:1px solid var(--line)}
+.obj .nm{font-family:var(--f-display);font-weight:600;font-size:14.5px}
+.obj .nm span{display:block;font-family:var(--f-mono);font-size:10.5px;font-weight:500;
+  color:var(--muted);margin-top:3px;letter-spacing:.04em}
+.obj blockquote{margin:0;font-size:14.5px;line-height:1.58}
+.obj .src{font-family:var(--f-mono);font-size:10.5px;color:var(--muted);margin-top:5px}
+@media (max-width:620px){ .obj > div{grid-template-columns:minmax(0,1fr)} }
+
 .ask-cta{border:1px solid var(--line);border-radius:12px;background:var(--surface);padding:24px;
   display:flex;flex-direction:column;gap:10px}
 .ask-cta a{font-size:14.5px;font-weight:600;text-decoration:none;border-bottom:1px solid currentColor}
@@ -195,7 +239,7 @@ footer.lf-chrome img{height:40px!important}
     <img src="/assets/img/semitrical-logo.png" alt="Semitrical">
     <p class="pdf-cover-eyebrow">Supplier picture &middot; prepared for NetApp, Inc.</p>
     <h1>NetApp's five suppliers</h1>
-    <p class="pdf-cover-sub">Six filed years and their own management's words, one supplier at a time &mdash; and which of them has a cost case that holds.</p>
+    <p class="pdf-cover-sub">Six filed years and their own words, one supplier at a time &mdash; and the five places where what NetApp has said it wants and what its suppliers have said they will offer do not agree.</p>
     <hr class="pdf-cover-rule">
   </div>
   <div>
@@ -231,8 +275,9 @@ footer.lf-chrome img{height:40px!important}
 <header style="display:flex;flex-direction:column;gap:11px">
   <div class="eyebrow"><span class="hex" aria-hidden="true"></span>Semitrical &middot; Supplier picture &middot; prepared for NetApp</div>
   <h1>NetApp's five suppliers</h1>
-  <p class="lede muted">Six filed years and their own management's words, one supplier at a time
-    &mdash; and which of them has a cost case that holds.</p>
+  <p class="lede muted">Six filed years and their own words, one supplier at a time &mdash; and
+    the five places where what NetApp has said it wants and what its suppliers have said they will
+    offer do not agree.</p>
   <p class="small muted mono">Micron &middot; SK Hynix &middot; Samsung Electronics &middot; Kioxia &middot; Seagate &nbsp;|&nbsp; evidence to 6 November 2026</p>
 </header>
 
@@ -244,9 +289,12 @@ footer.lf-chrome img{height:40px!important}
     public accounts and holds public earnings calls, and this report reads six years of those
     accounts and their management's own statements from the buyer's side of the table.</p>
 
-  <p>It is not a report about NetApp. NetApp's own position is already in NetApp's own filing, and
-    two figures from it are worth stating once, because they are what make a supplier picture worth
-    having rather than interesting:</p>
+  <p>It is not a report about how NetApp is performing &mdash; that is already in NetApp's own
+    filing and NetApp already knows it. What its filing does carry is NetApp's <b>stated strategy
+    and capital position</b>, and section 02 quotes those so that section 05 can test the supplier
+    picture against what NetApp has said it wants rather than against anything we assumed.</p>
+
+  <p>Four figures set the stakes:</p>
 
   <div class="strip">
     <div><span class="v">$1.4bn</span><span class="k">Committed to suppliers off balance sheet at 24 Apr 2026, $1.1bn of it due in FY2027</span></div>
@@ -285,7 +333,83 @@ footer.lf-chrome img{height:40px!important}
 
 <!-- ───────────────────────── 2 ───────────────────────── -->
 <section class="s">
-  <div class="hd"><span class="n">02</span><h2>What the five have in common, and where they part</h2></div>
+  <div class="hd"><span class="n">02</span><h2>What NetApp has said it is trying to do</h2></div>
+
+  <p>This section contains no analysis. It is NetApp's own stated strategy and its own capital
+    position, quoted, because section 05 tests the supplier picture against these and not against
+    anything we have assumed about what NetApp wants.</p>
+
+  <div class="obj">
+    <div>
+      <div class="nm">Multi&#8209;source where possible<span>Stated supply strategy</span></div>
+      <div>
+        <blockquote>&ldquo;We rely on a limited number of suppliers for materials&hellip; <b>We strive
+          to have multiple suppliers qualified to provide critical components where possible</b> and
+          have our products manufactured in a number of locations to mitigate our supply chain risk.
+          Our strategy has been to develop close relationships with our suppliers, maximizing the
+          exchange of critical information&hellip;&rdquo;</blockquote>
+        <p class="src">Form 10&#8209;K FY2026, Manufacturing and Supply Chain</p>
+      </div>
+    </div>
+    <div>
+      <div class="nm">Stay asset&#8209;light<span>Stated manufacturing model</span></div>
+      <div>
+        <blockquote>&ldquo;We use contract manufacturers for the production of major subassemblies
+          and final system configuration. <b>This manufacturing strategy minimizes capital
+          investments and overhead expenditures while creating flexibility for rapid
+          expansion.</b>&rdquo;</blockquote>
+        <p class="src">Form 10&#8209;K FY2026, Manufacturing and Supply Chain</p>
+      </div>
+    </div>
+    <div>
+      <div class="nm">Protect gross margin<span>Named as a forward&#8209;looking objective</span></div>
+      <div>
+        <blockquote>&ldquo;<b>our ability to maintain our gross margins, including managing component
+          costs</b>&rdquo;</blockquote>
+        <p class="src">Form 10&#8209;K FY2026, forward&#8209;looking statements</p>
+      </div>
+    </div>
+    <div>
+      <div class="nm">Run on short lead times<span>Stated demand visibility</span></div>
+      <div>
+        <blockquote>&ldquo;Our business is characterized by seasonal and intra&#8209;quarter
+          variability in demand, as well as <b>short lead times and product delivery
+          schedules.</b> Accordingly, <b>backlog may vary materially quarter to quarter and at any
+          given time may not be a meaningful indicator of future revenue.</b>&rdquo;</blockquote>
+        <p class="src">Form 10&#8209;K FY2026, Backlog</p>
+      </div>
+    </div>
+    <div>
+      <div class="nm">Return cash to shareholders<span>Demonstrated use of capital</span></div>
+      <div>
+        <blockquote>&ldquo;On May 21, 2026 our Board of Directors authorized the repurchase of an
+          additional <b>$1.0 billion</b> of our common stock.&rdquo; In fiscal 2026 NetApp used
+          <b>$950 million</b> for share repurchases and <b>$413 million</b> for dividends, against
+          <b>$198 million</b> of purchases of property and equipment.</blockquote>
+        <p class="src">Form 10&#8209;K FY2026, Liquidity and Capital Resources</p>
+      </div>
+    </div>
+  </div>
+
+  <p>Two figures from the same filing set the price of capital for everything in section 05.</p>
+
+  <div class="strip">
+    <div><span class="v">~3%</span><span class="k">Pre&#8209;tax return on cash: $113m of interest income on about $3.6bn of cash and short&#8209;term investments</span></div>
+    <div><span class="v">$1.0bn</span><span class="k">Firm, non&#8209;cancelable, unconditional purchase commitments for inventory</span></div>
+    <div><span class="v">$25m</span><span class="k">Liability recorded for commitments in excess of demand forecast &mdash; 2.5% of that $1.0bn</span></div>
+    <div><span class="v">2.9%</span><span class="k">Capital expenditure as a share of revenue, which is what asset&#8209;light looks like</span></div>
+  </div>
+
+  <p class="small muted">All five from the FY2026 Form 10&#8209;K. The return on cash is our
+    arithmetic on two figures from it &mdash; interest income of $113m against the year&#8209;end
+    cash and short&#8209;term investments balance of about $3.6bn &mdash; so it is approximate, and
+    the true figure depends on the average balance through the year rather than the closing one.
+    The $25m excess&#8209;commitment liability is quoted as reported at 24 April 2026.</p>
+</section>
+
+<!-- ───────────────────────── 3 ───────────────────────── -->
+<section class="s">
+  <div class="hd"><span class="n">03</span><h2>What the five have in common, and where they part</h2></div>
 
   <div class="card key">
     <p class="lede"><b>All five came through a 2023 that was at or below break&#8209;even, and all
@@ -343,7 +467,7 @@ footer.lf-chrome img{height:40px!important}
 
 <!-- ───────────────────────── 3 ───────────────────────── -->
 <section class="s">
-  <div class="hd"><span class="n">03</span><h2>The five, one at a time</h2></div>
+  <div class="hd"><span class="n">04</span><h2>The five, one at a time</h2></div>
 
   <p>Each profile holds that supplier's six filed years and that supplier's own words together.
     Figures are from filed statements; quotes are verbatim from the quarter named beside them; and
@@ -747,60 +871,285 @@ footer.lf-chrome img{height:40px!important}
   </div>
 </section>
 
-<!-- ───────────────────────── 4 ───────────────────────── -->
+<!-- ───────────────────────── 5 ───────────────────────── -->
 <section class="s">
-  <div class="hd"><span class="n">04</span><h2>Three questions that have evidence behind them</h2></div>
+  <div class="hd"><span class="n">05</span><h2>Where the stated strategy and the available terms conflict</h2></div>
 
-  <p>These are not opening positions. Each is a question whose answer is already partly on the
-    record, which is what makes it hard to deflect.</p>
+  <p>This is the part neither filing contains. Section 02 is what NetApp has said it wants. Sections
+    03 and 04 are what its five suppliers have said they will offer. Read together, they do not
+    agree in five places.</p>
 
-  <div class="lever">
-    <div class="num">1</div>
-    <div class="body">
-      <h3>Which segment is this increase priced for?</h3>
-      <p>SK Hynix and Kioxia have each said, independently and on dated calls, that higher memory
-        prices are reducing demand in PC and mobile. Micron and Samsung both attribute their guided
-        capital increases to AI and leading&#8209;edge work. Neither of those is enterprise storage.</p>
-      <div class="ask"><b>Ask</b>Your own Q1 commentary describes demand softening in PC and mobile
-        from higher memory prices, and your capital guidance is attributed to AI and
-        next&#8209;generation process work. Enterprise nearline and enterprise DRAM are neither.
-        Which one is the increase you have sent us priced against?</div>
-    </div>
+  <p>Each conflict below puts the two statements side by side and names the gap. Under them is a
+    <b>viable path</b>, which is <b>our judgment and not a finding</b> &mdash; a recommendation does
+    not trace back to a quoted sentence the way a figure does, so every path shows the step it was
+    derived from and can be disagreed with on the merits. Two of the five end in a question we
+    cannot answer from public data, and those say so rather than guessing.</p>
+
+  <div class="tw">
+    <table>
+      <caption>The five conflicts in one view. Every cell on both sides is quoted or calculated in
+        section 02 or section 04.</caption>
+      <thead><tr><th>NetApp has said</th><th>Its suppliers have said</th><th>The gap</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>&ldquo;multiple suppliers qualified&hellip; where possible&rdquo;</td>
+          <td>Samsung: 60&ndash;70% of capacity committed, prepayment required. SK Hynix: ~10 LTA customers, deposits. Micron: binding SCAs.</td>
+          <td>A second source now costs a deposit too, so multi&#8209;sourcing has a price it did not have before</td>
+        </tr>
+        <tr>
+          <td>&ldquo;minimizes capital investments&rdquo; &mdash; capex 2.9% of revenue</td>
+          <td>Advance payments are &ldquo;a contractual requirement to be maintained over the multi&#8209;year contract period&rdquo;</td>
+          <td>Prepaid allocation is capital in all but name</td>
+        </tr>
+        <tr>
+          <td>&ldquo;short lead times&hellip; backlog&hellip; may not be a meaningful indicator of future revenue&rdquo;</td>
+          <td>Seagate allocated into calendar 2028 and seeking 2029+. Samsung: no significant incremental supply through 2028.</td>
+          <td>Asked to commit volume two to three years out on roughly a quarter of demand visibility</td>
+        </tr>
+        <tr>
+          <td>$1.0bn non&#8209;cancelable inventory commitments, $25m provided against excess</td>
+          <td>SK Hynix and Kioxia each report their own prices softening demand in PC and mobile</td>
+          <td>Two suppliers have described the demand risk the provision is meant to cover</td>
+        </tr>
+        <tr>
+          <td>$1.363bn returned to shareholders in FY2026, $1.0bn more authorized May 2026</td>
+          <td>Prepayment is a precondition of allocation at Samsung and SK Hynix</td>
+          <td>Both claims land on the same cash</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 
-  <div class="lever">
-    <div class="num">2</div>
-    <div class="body">
-      <h3>What is the prepayment buying?</h3>
-      <p>Samsung states advance payments are a contractual requirement and that 60&ndash;70% of
-        planned capacity is committed. SK Hynix incorporates deposits. Micron's new agreements carry
-        binding terms its previous ones did not. A prepaid allocation and a higher unit price with no
-        prepayment are two different offers.</p>
-      <div class="ask"><b>Ask</b>You have said 60% to 70% of planned capacity is committed. For the
-        remainder, price the same volume two ways &mdash; with the advance payment and without it.
-        We will compare them on total cost, including our cost of that cash.</div>
+  <!-- ── 1 ── -->
+  <div class="cf">
+    <header><h3>1. Multi&#8209;sourcing is still possible, but it is no longer free</h3></header>
+    <div class="two">
+      <div class="side">
+        <p class="who">NetApp</p>
+        <blockquote>&ldquo;We strive to have multiple suppliers qualified to provide critical
+          components where possible&hellip; to mitigate our supply chain risk.&rdquo;</blockquote>
+        <p class="src">Form 10&#8209;K FY2026</p>
+      </div>
+      <div class="side them">
+        <p class="who">Samsung Electronics</p>
+        <blockquote>&ldquo;we are negotiating the contractual terms, giving priority to customers
+          willing to accept mutually binding contractual conditions and who can provide assurance
+          about committed demand.&rdquo;</blockquote>
+        <p class="src">Q2&#8209;26 earnings call</p>
+      </div>
     </div>
+    <p class="gap">Qualifying a second supplier used to cost engineering time. Now each qualified
+      supplier also wants binding volume and, at Samsung and SK Hynix, cash. <b>Two qualified
+      sources means two sets of commitments covering demand that will only be filled once.</b></p>
+    <div class="path">
+      <h4>A viable path &mdash; our judgment</h4>
+      <p>Keep the multi&#8209;source objective but move it from <b>two suppliers per component</b> to
+        <b>one committed source plus one qualified and uncommitted source per technology</b>. Carry
+        the commitment where the price of commitment is lowest, and hold the uncommitted leg
+        wherever a supplier still has open volume.</p>
+      <p>On the filed record, <b>the uncommitted leg in NAND is Kioxia.</b> It is targeting only 50%
+        of shipments under long&#8209;term agreement by 2028, where Samsung is already at 60&ndash;70%
+        of capacity committed. It is also the supplier with the weakest cost case in section 04 &mdash;
+        a record 43.3% gross margin on capital spending of 12% of revenue against its own 40% in
+        fiscal 2022.</p>
+      <p class="derv"><b>Derived from:</b> NetApp's stated multi&#8209;source objective, plus
+        Kioxia's own 50%&#8209;by&#8209;2028 target and Samsung's own 60&ndash;70% figure, plus the
+        capital&#8209;spending comparison in Kioxia's profile. <b>What we do not know:</b> whether
+        Kioxia is qualified on the parts in question, or can be. That is an engineering answer, not
+        a filings one.</p>
+    </div>
+    <div class="ask"><b>Ask the committed supplier</b>If you are asking for binding volume and a
+      deposit, you are asking us to stop dual&#8209;sourcing this part. Price that. What does the
+      single&#8209;source version cost against the dual&#8209;source version, on the same volume?</div>
   </div>
 
-  <div class="lever">
-    <div class="num">3</div>
-    <div class="body">
-      <h3>Is this cost, or is it margin recovery?</h3>
-      <p>The answer differs by supplier and section 03 says which is which. Micron has a guided
-        programme above $25bn against $15.9bn actually spent &mdash; a real cost argument. Kioxia is
-        at a six&#8209;year&#8209;high margin with spending at 12% of revenue against its own 40% in
-        2022. Seagate is at a record margin inside its normal band and says it prices on value.</p>
-      <div class="ask"><b>Ask</b>Where a supplier claims cost: which cost, and in which quarter did
-        it appear in your filed accounts? Where a supplier prices on value: then say so, and we will
-        negotiate on value &mdash; starting with what our volume and our planning horizon are worth
-        to you.</div>
+  <!-- ── 2 ── -->
+  <div class="cf">
+    <header><h3>2. Whether to prepay is arithmetic, not a judgment call</h3></header>
+    <div class="two">
+      <div class="side">
+        <p class="who">NetApp</p>
+        <blockquote>&ldquo;This manufacturing strategy minimizes capital investments and overhead
+          expenditures while creating flexibility for rapid expansion.&rdquo; Interest income of
+          $113m on about $3.6bn of cash and short&#8209;term investments.</blockquote>
+        <p class="src">Form 10&#8209;K FY2026</p>
+      </div>
+      <div class="side them">
+        <p class="who">Samsung Electronics</p>
+        <blockquote>&ldquo;we've included substantial advance payments as a contractual requirement
+          to be maintained over the multi&#8209;year contract period. We've already received a
+          significant portion of these payments&hellip;&rdquo;</blockquote>
+        <p class="src">Q2&#8209;26 earnings call</p>
+      </div>
     </div>
+    <p class="gap">An advance payment held for the life of a multi&#8209;year contract is capital
+      tied up in a supplier's balance sheet. <b>That is the opposite of the asset&#8209;light model
+      NetApp has described to its investors</b> &mdash; and unlike a fab, it buys no asset.</p>
+    <div class="path">
+      <h4>A viable path &mdash; our judgment</h4>
+      <p>Stop treating this as a strategic question and price it. <b>NetApp earns about 3% pre&#8209;tax
+        on its cash.</b> So a prepayment is worth making only if the discount it secures, or the
+        price increase it avoids, exceeds roughly 3% a year over the period the cash is held &mdash;
+        before any allowance for the risk that the committed volume is not needed.</p>
+      <p>That single test converts &ldquo;should we prepay for allocation?&rdquo; into a number a
+        supplier can be asked to beat. <b>Below the threshold, the asset&#8209;light objective and
+        the economics agree and the answer is no.</b> Above it, prepaying is consistent with
+        protecting gross margin, which section 02 shows NetApp names as an objective in its own
+        right.</p>
+      <p class="derv"><b>Derived from:</b> two figures in NetApp's own filing &mdash; interest income
+        of $113m and the $3.6bn cash and short&#8209;term investments balance &mdash; set against
+        Samsung's stated prepayment requirement. <b>Where it is approximate:</b> the yield uses the
+        closing balance, not the average through the year, and a company may reasonably use its
+        weighted cost of capital instead of its cash yield, which would raise the threshold rather
+        than lower it.</p>
+    </div>
+    <div class="ask"><b>Ask</b>Price the same volume two ways &mdash; with the advance payment and
+      without it. We will compare them on total cost including our own cost of that cash, and we
+      will tell you the threshold the discount has to clear.</div>
+  </div>
+
+  <!-- ── 3 ── -->
+  <div class="cf">
+    <header><h3>3. The commitment horizon is longer than the demand visibility</h3></header>
+    <div class="two">
+      <div class="side">
+        <p class="who">NetApp</p>
+        <blockquote>&ldquo;Our business is characterized by&hellip; short lead times and product
+          delivery schedules. Accordingly, backlog may vary materially quarter to quarter and at any
+          given time may not be a meaningful indicator of future revenue.&rdquo;</blockquote>
+        <p class="src">Form 10&#8209;K FY2026, Backlog</p>
+      </div>
+      <div class="side them">
+        <p class="who">Seagate</p>
+        <blockquote>&ldquo;the vast majority of our nearline exabytes are now allocated into calendar
+          2028&hellip; many are actively seeking to extend planning horizons through 2029 and
+          beyond&rdquo;</blockquote>
+        <p class="src">Q4&#8209;26 earnings call</p>
+      </div>
+    </div>
+    <p class="gap">This is the structural conflict and it is the one worth taking to a board.
+      <b>NetApp has told the market its own order book is not a meaningful indicator of future
+      revenue, and its suppliers are asking it to commit quantities two and three years out.</b>
+      Nothing in NetApp's filing supports a demand forecast of that length.</p>
+    <div class="path">
+      <h4>A viable path &mdash; our judgment</h4>
+      <p>Commit to <b>capacity</b> rather than to <b>quantity</b>. Pay to reserve a defined share of
+        a supplier's output over the term, with the quantity drawn against it set quarterly inside a
+        band. The supplier gets the planning visibility it says it is buying; NetApp does not sign a
+        number it has told its own investors it cannot forecast.</p>
+      <p>The suppliers' own words suggest visibility, not volume, is what they are after. Micron
+        says its agreements exist so that both sides &ldquo;can count on&rdquo; what is in them, and
+        Samsung asks for &ldquo;assurance about committed demand&rdquo;. <b>A reserved share with a
+        quarterly draw provides that assurance. Whether any of the five will write it that way, we
+        do not know</b> &mdash; nothing in their public statements says they have.</p>
+      <p class="derv"><b>Derived from:</b> NetApp's own backlog disclosure set against Seagate's
+        2028 allocation horizon and Samsung's through&#8209;2028 statement, plus Micron's and
+        Samsung's descriptions of what their agreements are for. <b>What we do not know:</b> whether
+        a share&#8209;of&#8209;output structure is on offer from any of them. Treat this as the
+        position to open from, not a term we have seen agreed.</p>
+    </div>
+    <div class="ask"><b>Ask</b>We cannot forecast quantity three years out and our own filings say
+      so. We can commit to a share of your output across the term. Will you price a reserved share
+      with a quarterly draw inside an agreed band, instead of a fixed quantity?</div>
+  </div>
+
+  <!-- ── 4 ── -->
+  <div class="cf">
+    <header><h3>4. Two suppliers have described the risk the $25m provision is covering</h3></header>
+    <div class="two">
+      <div class="side">
+        <p class="who">NetApp</p>
+        <blockquote>&ldquo;we had <b>$1.0 billion</b> in non&#8209;cancelable purchase commitments for
+          inventory&hellip; We record a liability for firm, non&#8209;cancelable and unconditional
+          purchase commitments for quantities in excess of our future demand forecasts&hellip; such
+          liability amounted to <b>$25 million</b>.&rdquo;</blockquote>
+        <p class="src">Form 10&#8209;K FY2026, Commitments and Contingencies</p>
+      </div>
+      <div class="side them">
+        <p class="who">SK Hynix &middot; Kioxia</p>
+        <blockquote>&ldquo;demand softening have emerged&hellip; due to cost pressures stemming from
+          higher memory prices.&rdquo; &mdash; &ldquo;The PC market is expected to see a decrease in
+          shipments due to rising BOM costs, leading to a slight decline in NAND demand&hellip;&rdquo;</blockquote>
+        <p class="src">SK Hynix Q1&#8209;26 &middot; Kioxia Q1&#8209;26</p>
+      </div>
+    </div>
+    <p class="gap">The provision is <b>2.5% of the non&#8209;cancelable book</b>, and it is set
+      against NetApp's own demand forecast. Two of its suppliers have independently said on the
+      record that the current price level is reducing end demand in their own markets. <b>Those two
+      facts belong in the same conversation and they are currently in two different documents.</b></p>
+    <div class="path">
+      <h4>A viable path &mdash; our judgment, and the limit of it</h4>
+      <p>The useful question is not whether $25m is enough. It is <b>at what level of demand decline
+        the provision stops being enough</b>, and then whether the non&#8209;cancelable book should
+        be shorter rather than better provided for.</p>
+      <p><b>We cannot answer that and will not estimate it.</b> It needs NetApp's own demand forecast
+        and the maturity profile of the $1.0bn, neither of which is public &mdash; the filing gives
+        the total and the FY2027 split, not the detail. What the public record does establish is that
+        the risk is not hypothetical, because two of the five suppliers have named it themselves.</p>
+      <p class="derv"><b>Derived from:</b> the $1.0bn and $25m figures as reported, plus the SK Hynix
+        and Kioxia demand statements. <b>What would answer it:</b> the commitment maturity schedule
+        and the demand forecast the provision is calculated against. That is an internal exercise,
+        and it is the right one to run before the next commitment is signed rather than after.</p>
+    </div>
+    <div class="ask"><b>Ask internally, not of the supplier</b>At what decline in product demand does
+      the excess&#8209;commitment liability need to double? Run it against the maturity profile of
+      the $1.0bn, not against the annual total.</div>
+  </div>
+
+  <!-- ── 5 ── -->
+  <div class="cf">
+    <header><h3>5. Prepayment and the buyback are claims on the same cash</h3></header>
+    <div class="two">
+      <div class="side">
+        <p class="who">NetApp</p>
+        <blockquote>$950m of share repurchases and $413m of dividends in fiscal 2026, against $198m
+          of property and equipment. &ldquo;On May 21, 2026 our Board of Directors authorized the
+          repurchase of an additional $1.0 billion of our common stock.&rdquo;</blockquote>
+        <p class="src">Form 10&#8209;K FY2026, Liquidity and Capital Resources</p>
+      </div>
+      <div class="side them">
+        <p class="who">SK Hynix</p>
+        <blockquote>&ldquo;financial mechanisms such as deposits are incorporated to support contract
+          fulfillment and enhance the visibility and reliability of customers' mid to long&#8209;term
+          demand plans.&rdquo;</blockquote>
+        <p class="src">Q2&#8209;26 earnings call</p>
+      </div>
+    </div>
+    <p class="gap">NetApp returned <b>$1.363bn</b> to shareholders in fiscal 2026 and authorized
+      <b>$1.0bn</b> more in May 2026, against <b>$3.6bn</b> of cash and short&#8209;term investments.
+      <b>A supplier deposit of any size competes with a commitment the board has already made.</b>
+      That makes allocation prepayment a capital allocation decision, not a procurement one.</p>
+    <div class="path">
+      <h4>A viable path &mdash; our judgment, and the limit of it</h4>
+      <p>Take the prepayment to whoever owns the buyback, with the threshold from conflict 2
+        attached, and <b>decide it once as a capital question with a ceiling</b> rather than deal by
+        deal in a negotiation. A procurement team asked to agree a deposit under allocation pressure
+        is not the right place for that decision to be made by default.</p>
+      <p><b>Which use of the cash is worth more, we cannot say.</b> Comparing a prepayment discount
+        against a share repurchase requires a view on NetApp's own share price, and that is not a
+        question public filings answer or one we would offer a number on.</p>
+      <p class="derv"><b>Derived from:</b> the fiscal 2026 capital returns and the May 2026
+        authorization as reported, plus SK Hynix's and Samsung's stated deposit and prepayment
+        requirements. <b>What we are not doing:</b> recommending one use of capital over the other.
+        The finding is that they are the same pool and are currently being decided in two different
+        rooms.</p>
+    </div>
+    <div class="ask"><b>Ask internally</b>What is the ceiling on supplier prepayment for the year, who
+      approves it, and does it come out of the buyback envelope or sit beside it?</div>
+  </div>
+
+  <div class="card key">
+    <p class="lede">Three of these five have a path we would act on. <b>Two end in a question that
+      needs NetApp's own data, and we have said so rather than filling the gap.</b></p>
+    <p>That is deliberate. A supplier picture built from public filings can tell you what to ask for
+      and what a claim is worth. It cannot tell you what your own demand forecast will bear, and a
+      report that pretends otherwise is worth less than one that marks the line.</p>
   </div>
 </section>
 
 <!-- ───────────────────────── 5 ───────────────────────── -->
 <section class="s">
-  <div class="hd"><span class="n">05</span><h2>What we are withholding, and why</h2></div>
+  <div class="hd"><span class="n">06</span><h2>What we are withholding, and why</h2></div>
 
   <div class="card gate">
     <p>Our cost model splits a supplier's cost base into a fixed part and a part that moves with
@@ -820,11 +1169,40 @@ footer.lf-chrome img{height:40px!important}
     report, and <b>no single score</b> per supplier &mdash; a blended rating hides which dimension
     moved, and one we built came out flattering for every supplier at once because it was measuring
     how confidently management speaks rather than the business.</p>
+
+  <h3>What this report cannot answer, and what would answer it</h3>
+
+  <p>Public filings establish what a supplier's position is and what its claims are worth. They do
+    not reach inside the buyer. These four questions came up in section 05 and are marked there as
+    unanswered:</p>
+
+  <div class="tw">
+    <table>
+      <caption>Every one of these is answerable, but not from public data. Three of the four need
+        one internal input each.</caption>
+      <thead><tr><th>Question</th><th>What would answer it</th></tr></thead>
+      <tbody>
+        <tr><td>At what demand decline does the $25m excess&#8209;commitment liability stop being
+          enough?</td><td>The maturity profile of the $1.0bn non&#8209;cancelable book, and the
+          demand forecast the provision is calculated against</td></tr>
+        <tr><td>Can Kioxia be the uncommitted source on the parts in question?</td><td>Current
+          qualification status by part &mdash; an engineering answer, not a filings one</td></tr>
+        <tr><td>Is a prepayment better than the authorized buyback?</td><td>A view on NetApp's own
+          share price, which is not a question we would put a number on</td></tr>
+        <tr><td>Is the increase on a specific letter supported by that supplier's cost
+          position?</td><td>The letter. We check it against six filed years for that supplier and
+          its own statements in the quarter it cites</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>The last of those is the one worth sending us. It is a single document and the answer is
+    checkable.</p>
 </section>
 
 <!-- ───────────────────────── 6 ───────────────────────── -->
 <section class="s">
-  <div class="hd"><span class="n">06</span><h2>How to check every figure</h2></div>
+  <div class="hd"><span class="n">07</span><h2>How to check every figure</h2></div>
 
   <p>Nothing here is proprietary data. It is public disclosure, read carefully and assembled from the
     buyer's side. Every number can be traced back.</p>
@@ -848,9 +1226,15 @@ footer.lf-chrome img{height:40px!important}
         <tr><th>Currency</th><td>Micron and Seagate report in US dollars and are shown in dollars.
           SK Hynix, Samsung and Kioxia report in won and yen and are shown <b>only</b> as ratios and
           days, so no exchange&#8209;rate assumption enters any figure in this report.</td></tr>
-        <tr><th>The two NetApp figures in section 01</th><td>NetApp, Inc. Form 10&#8209;K for the
-          fiscal year ended 24 April 2026, filed 5 June 2026. CIK 0001002047, accession
-          0001193125&#8209;26&#8209;259683.</td></tr>
+        <tr><th>NetApp's objectives, capital position and commitments</th><td>NetApp, Inc. Form
+          10&#8209;K for the fiscal year ended 24 April 2026, filed with the SEC on 5 June 2026.
+          CIK 0001002047, accession 0001193125&#8209;26&#8209;259683. Sections quoted: Manufacturing
+          and Supply Chain, Backlog, forward&#8209;looking statements, Liquidity and Capital
+          Resources, and Note 16 Commitments and Contingencies.</td></tr>
+        <tr><th>The conflicts in section 05</th><td>Not from any single source &mdash; each is one
+          quoted NetApp statement set against one quoted supplier statement, both cited in place.
+          The <b>paths</b> under them are our judgment, not findings, and each shows what it was
+          derived from and where it stops.</td></tr>
       </tbody>
     </table>
   </div>
