@@ -26,4 +26,4 @@ $N "http://127.0.0.1:9334/reports/netapp/" \
 # after any content change.
 $N "http://127.0.0.1:9334/findings/memory-2027/" \
    "d/8183c257f6325cb2/semitrical-memory-storage-2027.pdf" \
-   "Memory and storage 2027 - what is already fixed" "evidence to 3 Nov 2026"
+   "Memory and storage: what is already committed for 2027" "evidence to 3 Nov 2026"
