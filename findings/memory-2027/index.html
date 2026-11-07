@@ -1,0 +1,238 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Memory and Storage 2027</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&display=swap">
+<style>
+/* ── A ONE-PAGE DECISION CALENDAR, not an outlook.
+   Every row is a dated statement a named party made about its own plans. We publish no price
+   forecast, so the page earns its place by saying what is ALREADY FIXED and by when a buyer has
+   to decide -- which nobody publishes, because it means reading transcripts instead of having
+   opinions. The hard constraint is one printed A4 sheet; if something has to go, it is prose. */
+:root, :root[data-theme="dark"]{
+  --bg:#F4F5F1; --surface:#FFFFFF; --sunk:#ECEEE8; --ink:#1A211D; --muted:#5B655F;
+  --line:#D5D9D1; --accent:#A35A16; --accent-soft:#F6E7D6;
+  --locked:#B03C2B; --locked-soft:#F6DFDA; --open:#1D7466; --open-soft:#DCEEE9;
+  --f:"DM Sans",-apple-system,"Segoe UI",Arial,sans-serif;
+  --m:"DM Mono",ui-monospace,Menlo,Consolas,monospace;
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#F4F5F1; --surface:#FFFFFF; --sunk:#ECEEE8; --ink:#1A211D; --muted:#5B655F;
+  --line:#D5D9D1; --accent:#A35A16; --accent-soft:#F6E7D6; color-scheme:light; } }
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f);font-size:14.5px;line-height:1.5}
+img{max-width:100%}
+.wrap{max-width:900px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));
+  padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:28px 48px;
+  display:flex;flex-direction:column;gap:16px}
+h1{font-family:var(--f);font-size:28px;font-weight:700;letter-spacing:-.025em;line-height:1.08;margin:0;text-wrap:balance}
+h2{font-size:15px;font-weight:700;letter-spacing:-.01em;margin:0;border-top:2px solid var(--ink);padding-top:7px}
+h3{font-size:13.5px;font-weight:700;margin:0}
+p{margin:0}
+ul{margin:0;padding-left:17px;display:flex;flex-direction:column;gap:4px}
+a{color:var(--accent)}
+.eyebrow{font-family:var(--m);font-size:10.5px;font-weight:500;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--accent)}
+.hex{display:inline-block;width:12px;height:12px;background:var(--accent);
+  clip-path:polygon(25% 5%,75% 5%,100% 50%,75% 95%,25% 95%,0 50%);vertical-align:-1px;margin-right:7px}
+.sm{font-size:12px;color:var(--muted);line-height:1.45}
+.sm b{color:var(--ink)}
+.lede{font-size:16px;line-height:1.42}
+.sec{display:flex;flex-direction:column;gap:7px}
+.hd{display:flex;justify-content:space-between;align-items:flex-end;gap:14px;flex-wrap:wrap;
+  border-bottom:2px solid var(--accent);padding-bottom:8px}
+.meta{font-family:var(--m);font-size:10.5px;color:var(--muted);line-height:1.5;text-align:right}
+.key{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--accent);
+  border-radius:6px;padding:14px 16px;display:flex;flex-direction:column;gap:6px}
+.tw{overflow-x:auto;border:1px solid var(--line);border-radius:5px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-size:12.5px}
+th,td{text-align:left;padding:5px 8px;border-bottom:1px solid var(--line);vertical-align:top}
+thead th{font-family:var(--m);font-size:9.5px;letter-spacing:.05em;text-transform:uppercase;
+  color:var(--muted);font-weight:500;background:var(--sunk)}
+tbody tr:last-child td,tbody tr:last-child th{border-bottom:0}
+tbody th{font-weight:600;white-space:nowrap}
+.src{font-family:var(--m);font-size:9.5px;color:var(--muted);display:block;margin-top:2px}
+.tag{display:inline-block;font-family:var(--m);font-size:9.5px;font-weight:500;padding:1px 6px;
+  border-radius:99px;white-space:nowrap}
+.tag.l{background:var(--locked-soft);color:var(--locked)}
+.tag.o{background:var(--open-soft);color:var(--open)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.box{border:1px solid var(--line);border-radius:5px;padding:11px 13px;background:var(--surface);
+  display:flex;flex-direction:column;gap:5px}
+.box.o{background:var(--open-soft);border-color:#BFDDD6}
+.box.g{background:var(--accent-soft);border-color:#E3CBAE}
+.box .t{font-family:var(--m);font-size:9.5px;letter-spacing:.07em;text-transform:uppercase;color:var(--muted)}
+.dec{display:grid;grid-template-columns:auto 1fr;gap:5px 11px;align-items:baseline;font-size:12.5px}
+.dec .by{font-family:var(--m);font-size:10.5px;font-weight:500;color:var(--accent);white-space:nowrap}
+.foot{border-top:1px solid var(--line);padding-top:9px;font-size:11px;color:var(--muted);line-height:1.5}
+.ask{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:13px 15px;font-size:13px}
+.ask a{font-weight:600;text-decoration:none;border-bottom:1px solid currentColor}
+
+@media (max-width:640px){ .two{grid-template-columns:minmax(0,1fr)} h1{font-size:23px} }
+
+/* ── PRINT: one A4 sheet. Sizes drop hard because the whole point is that it fits. */
+@media print{
+  @page{ size:A4; margin:8mm 8mm 10mm; }
+  .lf-chrome,.ask,.noprint{display:none!important}
+  :root{--bg:#fff;--surface:#fff;--sunk:#F4F5F1}
+  body{background:#fff!important;font-size:6.9pt;line-height:1.22}
+  .wrap{max-width:none;padding:0;gap:2.6pt}
+  h1{font-size:11.5pt} h2{font-size:7.6pt;padding-top:2pt;border-top-width:1.2pt}
+  h3{font-size:7.1pt} .lede{font-size:7.6pt;line-height:1.22}
+  .sec{gap:2pt} .key{padding:5pt 6pt;gap:2pt} .box{padding:4.5pt 5.5pt;gap:2pt}
+  table{font-size:6.3pt} th,td{padding:1.6pt 2.8pt}
+  thead th{font-size:5.4pt} .src{font-size:5.4pt;margin-top:1pt} .sm{font-size:5.9pt;line-height:1.3}
+  .tag{font-size:5.4pt} .dec{font-size:6.3pt;gap:3pt 8pt} .dec .by{font-size:5.6pt}
+  .foot{font-size:5.4pt;padding-top:3pt;line-height:1.35} .meta{font-size:5.6pt}
+  .two{gap:4pt} .hd{padding-bottom:2pt;border-bottom-width:1.2pt}
+  .tw,.box,.key{break-inside:avoid}
+}
+</style></head><body>
+
+<nav class="lf-chrome" style="display:flex;align-items:center;border-bottom:1px solid #e2e4ea;background:#fff;font-family:'DM Sans',system-ui,sans-serif;padding-left:max(48px,calc((100% - 1180px)/2));padding-right:max(48px,calc((100% - 1180px)/2));padding-top:15px;padding-bottom:15px">
+  <a href="/" aria-label="Semitrical home" style="display:block;text-decoration:none"><img src="/assets/img/semitrical-logo.png" alt="Semitrical" style="display:block;height:60px;width:auto"></a>
+  <div style="display:flex;align-items:center;gap:28px;margin-left:48px;flex-wrap:wrap">
+    <a href="/" style="font-size:13px;font-weight:500;color:#5c6078;text-decoration:none">Platform</a>
+    <a href="/supplier-intelligence.html" style="font-size:13px;font-weight:500;color:#5c6078;text-decoration:none">Supplier Intelligence</a>
+    <a href="/deal-desk.html" style="font-size:13px;font-weight:500;color:#5c6078;text-decoration:none">Deal Desk</a>
+    <a href="/reports.html" style="font-size:13px;font-weight:500;color:#5c6078;text-decoration:none">Leverage Reports</a>
+  </div>
+  <a href="/contact.html" style="margin-left:auto;padding:9px 22px;background:#0f1117;color:#fff;border-radius:6px;font-size:13px;font-weight:600;text-decoration:none;white-space:nowrap">Contact us</a>
+</nav>
+
+<div class="wrap">
+
+<div class="hd">
+  <div>
+    <p class="eyebrow"><span class="hex" aria-hidden="true"></span>Semitrical finding &middot; memory and storage</p>
+    <h1>2027 is already sold. Here is what is fixed, what is open, and when you have to decide.</h1>
+  </div>
+  <p class="meta">A planning note for CPOs,<br>VPs of Sourcing and Supply Chain<br>Evidence to 3 November 2026</p>
+</div>
+
+<div class="key">
+  <p class="lede"><b>By their own public statements, the memory makers have already committed most
+    of their 2027 output, and the capacity meant to relieve it does not produce inside 2027.</b>
+    Micron says more than 75% of fiscal 2027 shipments are committed. SK Hynix's long&#8209;term
+    agreements cover more than half of 2027&ndash;28 capacity. Seagate has priced the entirety of
+    calendar 2027.</p>
+  <p class="sm"><b>No forecast appears on this page.</b> Every line is a dated statement a named
+    company made about its own plans. We publish no view on where prices go; what we can tell you is
+    what is already contracted, which turns out to be the more useful half.</p>
+</div>
+
+<div class="sec">
+  <h2>1 &middot; Already fixed for 2027 &mdash; so not negotiable, whatever the quote says</h2>
+  <div class="tw"><table>
+    <thead><tr><th>Supplier</th><th>What is already committed</th><th>Status</th></tr></thead>
+    <tbody>
+      <tr><th>Micron</th><td>&ldquo;More than 75% of fiscal 2027 shipments are already committed&rdquo;, with allocation talks moved out to 2028. Calendar 2027 HBM pricing raised &ldquo;significantly&rdquo; and reset at the start of the year.<span class="src">FQ4&#8209;26 call, 30 Sep 2026</span></td><td><span class="tag l">Locked</span></td></tr>
+      <tr><th>SK Hynix</th><td>Agreements with <b>14 key customers</b>, typically five years, covering <b>more than 50% of 2027&ndash;28 capacity</b>. Deposits required. 2027 HBM volumes and prices settled.<span class="src">Q3&#8209;26 call, 28 Oct 2026</span></td><td><span class="tag l">Locked</span></td></tr>
+      <tr><th>Samsung</th><td>Multi&#8209;year contracts are <b>60&ndash;70% of planned capacity</b>; advance payments are &ldquo;a contractual requirement&rdquo;. On pre&#8209;booked demand alone the 2027 gap is wider than 2026.<span class="src">Q1&#8209;26 and Q2&#8209;26 calls</span></td><td><span class="tag l">Locked</span></td></tr>
+      <tr><th>Seagate</th><td>Contracts &ldquo;define both product configuration and pricing terms, covering the entirety of calendar 2027&rdquo;. Nearline is allocated into calendar 2028.<span class="src">Q4&#8209;26 call</span></td><td><span class="tag l">Locked</span></td></tr>
+      <tr><th>Kioxia</th><td>Targeting only <b>50% of shipments under agreement by 2028</b> &mdash; least committed of the five, and 2027 is while that holds.<span class="src">Q1&#8209;26 call</span></td><td><span class="tag o">Open</span></td></tr>
+    </tbody>
+  </table></div>
+  <p class="sm"><b>What to do with it:</b> arguing 2027 price with a supplier that has already
+    contracted 2027 is arguing against signed paper. The live window at Micron, SK Hynix and Seagate
+    is <b>2028</b>; at Kioxia it is now.</p>
+</div>
+
+<div class="sec">
+  <h2>2 &middot; When the new capacity actually produces &mdash; on the builders' own timelines</h2>
+  <div class="tw"><table>
+    <thead><tr><th>Date</th><th>Who</th><th>What they said, and what it means</th></tr></thead>
+    <tbody>
+      <tr><th>Through 2027</th><td>Lam Research</td><td>Clean room space is &ldquo;the constraining item&hellip; through next year for sure&rdquo;; a new clean room takes <b>about two years</b>; about <b>10 new tier&#8209;1 fabs come online during 2027</b>. Fabs opening is not output shipping.<span class="src">Citi TMT 9 Sep 2026; CQ3&#8209;26 call</span></td></tr>
+      <tr><th>Mid&#8209;2027</th><td>Micron</td><td>First Idaho wafers, with <b>meaningful supply a few quarters later</b>. Tongluo ships from fiscal 2028, and most fiscal 2027 construction spend is for clean rooms online <b>late 2028 and beyond</b>.<span class="src">FQ3&#8209;26 and FQ4&#8209;26 calls</span></td></tr>
+      <tr><th>Phased 2027</th><td>SK Hynix</td><td>Yongin and M17 shells go up early but clean rooms open in phases, and ramp &ldquo;will be adjusted in line with demand&rdquo;. <b>The ramp is discretionary, not automatic.</b><span class="src">Q3&#8209;26 call, 28 Oct 2026</span></td></tr>
+      <tr><th>Into 2028</th><td>Samsung</td><td>Higher 2027 capex <b>will not lift 2028 bits much</b>: much of it buys space, construction and tool costs inflate the figure, and tool lead times are longer.<span class="src">Q3&#8209;26 call, 29 Oct 2026</span></td></tr>
+      <tr><th>2H 2028</th><td>Lam Research</td><td>NAND wafer starts <b>about 20% below peak</b>; 2026&ndash;27 supply comes mostly from upgrading tools to 200+ layers, greenfield only <b>from around 2H 2028</b>.<span class="src">Citi TMT Sep 2026; CQ3&#8209;26 call</span></td></tr>
+    </tbody>
+  </table></div>
+</div>
+
+<div class="sec">
+  <h2>3 &middot; Four openings the suppliers have given you themselves</h2>
+  <div class="two">
+    <div class="box o">
+      <p class="t">1 &middot; They have said the increases moderate</p>
+      <p>Micron's CFO: fiscal 2027 margins expand on &ldquo;continued price increases, <b>albeit at a
+        more moderate pace</b>&rdquo;, adding &ldquo;we have said for some time that eventually price
+        increases would moderate&rdquo;.<span class="src">Micron FQ4&#8209;26 call, 30 Sep 2026</span></p>
+      <p class="sm">Expect an increase, and argue about its size against the supplier's own word.</p>
+    </div>
+    <div class="box o">
+      <p class="t">2 &middot; They have said their prices are killing demand</p>
+      <p>SK Hynix: PC and mobile shipments are expected to <b>fall</b> on higher memory prices.
+        Samsung: smartphone volumes already fell, and 2027 unit volumes are expected to decline.
+        TSMC: price&#8209;sensitive segments &ldquo;are being challenged&rdquo; by rising component
+        prices.<span class="src">Q3&#8209;26 calls, Oct 2026</span></p>
+      <p class="sm">The tight&#8209;supply account is not uniform by segment, and they said it first.</p>
+    </div>
+    <div class="box o">
+      <p class="t">3 &middot; DDR4 has second sources adding capacity</p>
+      <p>Winbond's DRAM bits rose about <b>25% in one quarter</b> as 16nm ramps, and it describes the
+        DDR4/LPDDR4 gap as evident through 2028. Nanya's bits stay flat only <b>until new fab output
+        in 2H 2027</b>.<span class="src">Winbond CQ1&ndash;CQ2&#8209;26 presentations; Nanya Q3&#8209;26 call, 12 Oct 2026</span></p>
+      <p class="sm">Where the part is DDR4&#8209;class, the single&#8209;source assumption is wrong.</p>
+    </div>
+    <div class="box o">
+      <p class="t">4 &middot; Kioxia is the uncommitted door</p>
+      <p>Only <b>50% of shipments targeted under agreement by 2028</b>, against Samsung already at
+        60&ndash;70% of capacity and Micron above 75% of FY27. Kioxia's gross margin is at a
+        six&#8209;year high with capital spending at 12% of revenue, against its own 40% in fiscal
+        2022.<span class="src">Kioxia Q1&#8209;26 call; filed accounts</span></p>
+      <p class="sm">Qualification, not availability, is the constraint here &mdash; so start it now.</p>
+    </div>
+  </div>
+</div>
+
+<div class="sec">
+  <h2>4 &middot; Three decisions, and the date each one is really due</h2>
+  <div class="dec">
+    <span class="by">Before FY27<br>commitments</span>
+    <span><b>Prepay, or not.</b> Samsung requires advance payments, SK Hynix deposits &mdash; a capital decision, not a procurement one. <b>Price it against your own return on cash:</b> it pays only if the discount beats what that cash earns while it is held. Set the annual ceiling and the approver before a negotiation forces it.</span>
+    <span class="by">Before signing<br>a quantity</span>
+    <span><b>Commit capacity, not quantity.</b> Suppliers say they are buying planning visibility. A reserved share of output with a quarterly draw inside an agreed band gives them that without you signing a number you cannot forecast. Untested: nothing public says any of them has written it that way.</span>
+    <span class="by">Q1 2027,<br>at the latest</span>
+    <span><b>Open the second source while it is still open.</b> Kioxia for NAND, Winbond and Nanya for DDR4&#8209;class DRAM. Qualification takes longer than the window: Kioxia's agreement year is 2028, Nanya's new output 2H 2027.</span>
+  </div>
+</div>
+
+<div class="sec">
+  <h2>5 &middot; Two things not to plan on</h2>
+  <div class="box g">
+    <p><b>The forecast you are probably using.</b> TrendForce came in <b>20&ndash;40 points low in
+      every quarter we can measure</b> &mdash; it raised 4Q26 DDR5 from +10&ndash;15% to about +20%
+      on 20 October, after 3Q26 settled near +40%. Its August chart has 1Q27 at about +9%, levelling
+      from mid&#8209;2027. The same lag is likely at the turn, which is when buyers will be locked
+      into agreements priced off today's numbers.</p>
+    <p><b>The supplier's own outlook.</b> Samsung expects it &ldquo;unlikely to see any significant
+      increase in incremental supply through 2028&rdquo;; SK Hynix calls the constraint one
+      &ldquo;projected to continue through 2030&rdquo;. <b>These are forecasts by interested
+      parties</b>, not filed facts &mdash; worth knowing, not a basis for accepting a term.</p>
+  </div>
+</div>
+
+<div class="ask noprint">
+  <b>If you are holding a price increase letter</b>, send it to us. We will check it against that
+  supplier's own filings and what its management said in the quarter the letter cites, and tell you
+  where the claim is supported and where it is not. No charge, and we will say plainly where the
+  filings cannot settle it. &nbsp;<a href="/three-suppliers.html">Name your three suppliers &rarr;</a>
+</div>
+
+<p class="foot">
+  <b>Sources:</b> earnings calls, investor presentations and filed statements for the quarters named
+  beside each line &mdash; Micron, SK Hynix, Samsung, Kioxia, Seagate, Nanya, Winbond, Lam Research,
+  TSMC &mdash; plus TrendForce press releases for the forecast comparison. Evidence to 3 Nov 2026;
+  every quote verified against its source before publication. <b>Nothing here is a price forecast or
+  a prediction of shortage.</b> Semitrical &middot; contact@semitrical.ai &middot; built from public
+  filings; first&#8209;pass analysis to support your own review, not legal, investment or
+  professional advice.
+</p>
+
+</div>
+<script src="https://app.semitrical.ai/t.js?v=5" data-anon data-page="/findings/memory-2027/"></script>
+</body></html>
