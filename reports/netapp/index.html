@@ -131,6 +131,24 @@ caption{caption-side:bottom;text-align:left;padding:10px 12px;font-size:12.5px;c
 .lever .body .ask b{display:block;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.07em;
   text-transform:uppercase;color:var(--muted);margin-bottom:4px;font-weight:500}
 
+/* ── THE ONE PAGE. A reader who stops here must still have the three useful things, so this
+   block is styled to be read on its own and is the only part of the document that is allowed to
+   repeat material from further down. */
+.opener{border:1px solid var(--line);border-left:5px solid var(--accent);border-radius:10px;
+  background:var(--surface);padding:24px;display:flex;flex-direction:column;gap:18px}
+.opener > h2{font-size:23px;font-weight:700;letter-spacing:-0.02em;margin-top:-6px}
+.one{display:grid;grid-template-columns:34px minmax(0,1fr);gap:4px 16px;align-items:start}
+.one .num{font-family:var(--f-display);font-size:27px;font-weight:700;color:var(--accent);line-height:1}
+.one .bd{display:flex;flex-direction:column;gap:7px}
+.one h3{font-size:16px;font-weight:700;line-height:1.35}
+.one p{font-size:14.5px;max-width:68ch}
+.one p.sm{font-size:13.5px;color:var(--muted);border-left:2px solid var(--line);padding-left:11px}
+.one p.sm b{color:var(--ink)}
+.opener-foot{background:var(--accent-soft);border-radius:var(--r);padding:14px 16px;font-size:14px}
+.opener-foot p{max-width:70ch}
+@media print{ .opener{break-inside:avoid;break-after:page;page-break-after:always} }
+@media (max-width:520px){ .opener{padding:16px} .one{grid-template-columns:minmax(0,1fr)} }
+
 /* ── A conflict: one thing the buyer has said it wants, one thing a supplier has said it will
    offer, and the gap. The two quotes sit SIDE BY SIDE because the gap is only visible when they
    are read together -- that is the entire reason this section exists. The path below them is
@@ -264,7 +282,7 @@ footer.lf-chrome img{height:40px!important}
     <img src="/assets/img/semitrical-logo.png" alt="Semitrical">
     <p class="pdf-cover-eyebrow">Supplier picture &middot; prepared for NetApp, Inc.</p>
     <h1>NetApp's five suppliers</h1>
-    <p class="pdf-cover-sub">Where each one stands in its latest filed year, the six places where NetApp's stated strategy and its suppliers' stated terms do not agree, and what their own published schedules land in 2027.</p>
+    <p class="pdf-cover-sub">Their own disclosures show the increases are price, not volume. Where each stands in its latest filed year, the six places their terms conflict with NetApp's stated strategy, and what their published schedules land in 2027.</p>
     <hr class="pdf-cover-rule">
   </div>
   <div>
@@ -300,11 +318,71 @@ footer.lf-chrome img{height:40px!important}
 <header style="display:flex;flex-direction:column;gap:11px">
   <div class="eyebrow"><span class="hex" aria-hidden="true"></span>Semitrical &middot; Supplier picture &middot; prepared for NetApp</div>
   <h1>NetApp's five suppliers</h1>
-  <p class="lede muted">Where each one stands in its latest filed year, the six places where
-    NetApp's stated strategy and its suppliers' stated terms do not agree, and what their own
-    published schedules land in 2027.</p>
+  <p class="lede muted">Their own disclosures show the increases are price, not volume. Where each
+    stands in its latest filed year, the six places their terms conflict with NetApp's stated
+    strategy, and what their published schedules land in 2027.</p>
   <p class="small muted mono">Micron &middot; SK Hynix &middot; Samsung Electronics &middot; Kioxia &middot; Seagate &nbsp;|&nbsp; evidence to 6 November 2026</p>
 </header>
+
+<!-- ───────── THE ONE PAGE. Everything after this is the working detail.
+     It exists because the three most useful things in this report were on page 20, and a reader
+     who stops after one page should still have them. ───────── -->
+<section class="opener">
+  <p class="eyebrow"><span class="hex" aria-hidden="true"></span>If you read one page</p>
+  <h2>Three things your suppliers have disclosed that are worth acting on</h2>
+
+  <div class="one">
+    <div class="num">1</div>
+    <div class="bd">
+      <h3>The increases are price, not volume &mdash; and the makers publish both numbers</h3>
+      <p>SK Hynix reported DRAM bit shipments <b>flat</b> quarter on quarter while average selling
+        price rose <b>mid&#8209;60%</b>, with a record 72% operating margin in the same quarter.
+        Samsung reported blended DRAM ASP up <b>low 90%</b>. Kioxia put price at <b>70% of the
+        revenue driver</b> with volume up low single digits. Micron: revenue +74% on
+        <b>mid&#8209;single&#8209;digit</b> bit growth.</p>
+      <p class="sm">Why it matters: with volume flat, there is no fixed&#8209;cost absorption to
+        explain the margin, and no volume growth for a cost argument to rest on. Micron is the one
+        maker that has said its own bit costs are rising &mdash; credit that, and note its margin
+        still went from 44.7% to 84.6% in four quarters. <b>Section 03.</b></p>
+    </div>
+  </div>
+
+  <div class="one">
+    <div class="num">2</div>
+    <div class="bd">
+      <h3>Whether to prepay for allocation is arithmetic, and the number is about 3%</h3>
+      <p>NetApp earned <b>$113m of interest income</b> on roughly <b>$3.6bn</b> of cash and
+        short&#8209;term investments &mdash; about 3% pre&#8209;tax. Samsung states advance payments
+        are &ldquo;a contractual requirement&rdquo;; SK Hynix incorporates deposits. <b>A prepayment
+        is worth making only if the discount it secures beats about 3% a year over the period the
+        cash is held</b>, before any allowance for volume you may not need.</p>
+      <p class="sm">It converts a strategy debate into a threshold a supplier can be asked to beat.
+        It also competes directly with the <b>$1.0bn buyback authorized in May 2026</b>, which makes
+        it a capital decision rather than a procurement one. <b>Section 06, conflict 2.</b></p>
+    </div>
+  </div>
+
+  <div class="one">
+    <div class="num">3</div>
+    <div class="bd">
+      <h3>Two of the five have said their own prices are destroying demand</h3>
+      <p>SK Hynix: &ldquo;demand softening have emerged&hellip; <b>due to cost pressures stemming
+        from higher memory prices</b>&rdquo; in PC and mobile. Kioxia, independently: the PC market
+        will see &ldquo;a decrease in shipments due to <b>rising BOM costs</b>, leading to a slight
+        decline in NAND demand&rdquo;.</p>
+      <p class="sm">These are quotable admissions from a named quarter, and they mean the
+        tight&#8209;supply account is not uniform across end markets &mdash; by the suppliers' own
+        statements. <b>Sections 05 and 06.</b></p>
+    </div>
+  </div>
+
+  <div class="opener-foot">
+    <p><b>What we are not telling you:</b> no price forecast, no supplier score, and no claim that a
+      particular increase is unjustified &mdash; blended ASP across a product line is not the price
+      of your part. <b>The one thing worth sending us is a price increase letter</b>; it is a single
+      document and the answer is checkable against the quarter it cites.</p>
+  </div>
+</section>
 
 <!-- ───────────────────────── 1 ───────────────────────── -->
 <section class="s">
@@ -314,11 +392,11 @@ footer.lf-chrome img{height:40px!important}
     accounts and holds public earnings calls, and this report reads them from the buyer's side of
     the table. <b>The analysis is on the latest filed year and the one before it</b> &mdash; 2025
     for four of the five, 2026 for Seagate. Earlier years appear only where a single reference point
-    is needed, and section 03 says where and why.</p>
+    is needed, and section 04 says where and why.</p>
 
   <p>It is not a report about how NetApp is performing &mdash; that is already in NetApp's own
     filing and NetApp already knows it. What its filing does carry is NetApp's <b>stated strategy
-    and capital position</b>, and section 02 quotes those so that section 05 can test the supplier
+    and capital position</b>, and section 02 quotes those so that section 06 can test the supplier
     picture against what NetApp has said it wants rather than against anything we assumed.</p>
 
   <p>Four figures set the stakes:</p>
@@ -333,10 +411,11 @@ footer.lf-chrome img{height:40px!important}
   <p class="small muted">NetApp figures from its Form 10&#8209;K for the year ended 24 April 2026,
     filed 5 June 2026. Days of purchased components is our arithmetic: $14m of components inventory
     against materials cost of about $1.27bn, being the 91% of the $1,395m cost of Hybrid Cloud
-    product revenues that NetApp attributes to materials. Supplier figures are from section 03.</p>
+    product revenues that NetApp attributes to materials. Supplier figures are from section 04.</p>
 
   <p>The stock in this chain sits upstream and the commitments sit downstream. That is a defensible
-    way to run a balance sheet, and it also means the five companies in section 03 are the ones whose
+    way to run a balance sheet, and it also means the five companies in
+    section 05 are the ones whose
     position decides what a renewal costs.</p>
 
   <div class="card gate">
@@ -349,7 +428,7 @@ footer.lf-chrome img{height:40px!important}
         number hides which dimension moved and can come out flattering for every supplier at once.
         Each dimension is reported on its own.</li>
       <li><b>It does not split any of these five into fixed and variable cost.</b> Our cost model is
-        deliberately withheld for memory, and the reason is set out in section 05.</li>
+        deliberately withheld for memory, and the reason is set out in section 08.</li>
       <li><b>Where the filings will not carry an answer, it says so</b> rather than estimating one.</li>
     </ul>
   </div>
@@ -364,7 +443,7 @@ footer.lf-chrome img{height:40px!important}
   <div class="hd"><span class="n">02</span><h2>What NetApp has said it is trying to do</h2></div>
 
   <p>This section contains no analysis. It is NetApp's own stated strategy and its own capital
-    position, quoted, because section 05 tests the supplier picture against these and not against
+    position, quoted, because section 06 tests the supplier picture against these and not against
     anything we have assumed about what NetApp wants.</p>
 
   <div class="obj">
@@ -419,7 +498,7 @@ footer.lf-chrome img{height:40px!important}
     </div>
   </div>
 
-  <p>Two figures from the same filing set the price of capital for everything in section 05.</p>
+  <p>Two figures from the same filing set the price of capital for everything in section 06.</p>
 
   <div class="strip">
     <div><span class="v">~3%</span><span class="k">Pre&#8209;tax return on cash: $113m of interest income on about $3.6bn of cash and short&#8209;term investments</span></div>
@@ -437,7 +516,138 @@ footer.lf-chrome img{height:40px!important}
 
 <!-- ───────────────────────── 3 ───────────────────────── -->
 <section class="s">
-  <div class="hd"><span class="n">03</span><h2>What the five have in common, and where they part</h2></div>
+  <div class="hd"><span class="n">03</span><h2>Price or volume: what the makers disclosed themselves</h2></div>
+
+  <div class="card key">
+    <p class="lede"><b>Across the four memory makers' most recent reported quarters, essentially all
+      of the revenue increase came from price. Bit shipments were flat to low single digits.</b></p>
+    <p>This is not our calculation. Each maker discloses its own average selling price change and
+      its own bit shipment change every quarter, and each has reported the same shape. Set beside
+      their gross margins over the same quarters, it settles the question a cost&#8209;justification
+      letter asks you to treat as open.</p>
+  </div>
+
+  <div class="tw">
+    <table>
+      <caption>Each maker's own disclosed average selling price and bit shipment change, quarter on
+        quarter, beside its filed gross margin for the same quarter. &ldquo;Bits&rdquo; is the unit
+        memory is sold in &mdash; capacity shipped, independent of how many chips or modules that
+        took. Revenue is price multiplied by bits, so the two columns together say which one moved.
+        Gross margins are from filed quarterly statements; the ASP and bit figures are quoted from
+        the earnings call or presentation for that quarter.</caption>
+      <thead><tr>
+        <th>Maker</th><th>Quarter</th><th>Product</th>
+        <th class="n">Bit shipments Q/Q</th><th class="n">ASP Q/Q</th><th class="n">Gross margin</th>
+      </tr></thead>
+      <tbody>
+        <tr><th rowspan="2">Micron</th><td>FQ1&#8209;26</td><td>DRAM</td>
+          <td class="n">Up slightly</td><td class="n">+about 20%</td><td class="n">56.0%</td></tr>
+        <tr class="now"><td>FQ2&#8209;26</td><td>DRAM</td>
+          <td class="n">+mid&#8209;single digits</td><td class="n hi">+mid&#8209;60s%</td><td class="n">74.4%</td></tr>
+        <tr><th rowspan="2">SK Hynix</th><td>Q4&#8209;25</td><td>DRAM</td>
+          <td class="n">+low single digit</td><td class="n">+20%</td><td class="n">68.8%</td></tr>
+        <tr class="now"><td>Q1&#8209;26</td><td>DRAM</td>
+          <td class="n lo">Flat</td><td class="n hi">+mid&#8209;60%</td><td class="n">79.3%</td></tr>
+        <tr><th rowspan="2">Samsung</th><td>Q4&#8209;25</td><td>DRAM</td>
+          <td class="n">In line with guidance</td><td class="n">+about 40%</td><td class="n">&mdash;</td></tr>
+        <tr class="now"><td>Q1&#8209;26</td><td>DRAM</td>
+          <td class="n">&mdash;</td><td class="n hi">+low 90% range</td><td class="n">&mdash;</td></tr>
+        <tr class="now"><th>Kioxia</th><td>Q1&#8209;26</td><td>NAND</td>
+          <td class="n">+low single digit</td><td class="n hi">+70%</td><td class="n">78.1%</td></tr>
+        <tr><th>SK Hynix</th><td>Q1&#8209;26</td><td>NAND</td>
+          <td class="n lo">&minus;about 10%</td><td class="n hi">+mid&#8209;70%</td><td class="n">79.3%</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p class="small muted">Samsung reports memory within a group income statement and does not file a
+    memory&#8209;segment gross margin, so those two cells are left empty rather than filled with a
+    group figure that would describe a different business. SK Hynix's own presentation states a
+    higher absolute revenue for Q1&#8209;26 than the figure in our financial records, while the
+    growth rates agree; percentages and margins are therefore used throughout and absolute won
+    amounts are not.</p>
+
+  <h3>In their own words</h3>
+
+  <div class="qs">
+    <div class="q">
+      <blockquote>&ldquo;<b>B/G Flat QoQ &middot; ASP Mid&#8209;60% &uarr;QoQ</b>&rdquo; for DRAM,
+        and &ldquo;B/G Approx. 10% &darr; QoQ &middot; ASP Mid&#8209;70% &uarr; QoQ&rdquo; for NAND.
+        Operating margin &ldquo;72%, record high quarterly OPM&rdquo;.</blockquote>
+      <p class="src">SK Hynix Q1&#8209;26 earnings presentation, Revenue Analysis</p>
+      <p class="means">The clearest single disclosure in this report. <b>Flat bits, price up roughly
+        two thirds, and a record operating margin in the same quarter.</b> There is no volume
+        increase here for a cost argument to stand on, and no fixed&#8209;cost absorption to explain
+        the margin &mdash; nothing was absorbed, because nothing more was shipped.</p>
+    </div>
+
+    <div class="q">
+      <blockquote>&ldquo;Amid a sharp rise in market pricing and the effect of our improved product
+        portfolio following expanded server application sales, our <b>blended ASP rose by low 90%
+        range QoQ for DRAM</b>, high 80% QoQ for NAND.&rdquo;</blockquote>
+      <p class="src">Jaejune Kim, EVP of Memory, Samsung Electronics, Q1&#8209;26 earnings call</p>
+      <p class="means">Samsung attributes the increase to <b>market pricing and product mix</b>. Mix
+        is a legitimate reason for a blended average to move, and it is not a cost increase either.</p>
+    </div>
+
+    <div class="q">
+      <blockquote>&ldquo;<b>The selling price went up by 70%</b>, like for like blended ASP both
+        increased by 70%. The quarter&#8209;on&#8209;quarter shipment volume also increased the low
+        single digit.&rdquo; &mdash; and on the next quarter, &ldquo;<b>ASP accounts for 70% as a
+        driver.</b>&rdquo;</blockquote>
+      <p class="src">Yoshihiko Kawamura, CFO, Kioxia, Q1&#8209;26 earnings call</p>
+      <p class="means">Kioxia has quantified the split itself: <b>price is 70% of the revenue
+        driver, volume is low single digits.</b> Its gross margin in that quarter was 78.1%, against
+        43.3% for the full prior year.</p>
+    </div>
+
+    <div class="q">
+      <blockquote>DRAM FQ2&#8209;26: &ldquo;Revenue increased 74% Q/Q &middot; <b>Bit shipments up
+        mid&#8209;single digits Q/Q &middot; ASPs increased in mid&#8209;60s percentage
+        range</b>&rdquo;.</blockquote>
+      <p class="src">Micron FQ2&#8209;26 investor presentation, Performance by technology</p>
+      <p class="means">Same shape at Micron. <b>Revenue up 74%, bits up mid&#8209;single digits.</b>
+        Its filed gross margin moved from 44.7% in Q4&#8209;25 to 84.6% in Q3&#8209;26 across four
+        quarters.</p>
+    </div>
+
+    <div class="q">
+      <blockquote>&ldquo;Both of these trends to higher performance &mdash; as well as greenfield
+        investments that take time to ramp scale and are not as efficient &mdash; both of these are
+        going to be trends that we expect will actually <b>increase DRAM bit costs</b> here in the
+        near term.&rdquo;</blockquote>
+      <p class="src">Micron Q3&#8209;26 earnings call</p>
+      <p class="means">The counterweight, and it belongs here. <b>Micron is the one maker that has
+        said on the record that its own unit costs are rising</b>, because of performance mix and
+        the inefficiency of ramping new plants. That is a real cost argument and it should be
+        credited. It also has to be read against the line above it: in the quarter Micron's ASP rose
+        by the mid&#8209;60s percent, its bits rose by mid&#8209;single digits. <b>A rising bit cost
+        does not account for a margin that went from 44.7% to 84.6%.</b></p>
+    </div>
+  </div>
+
+  <div class="card gate">
+    <h3>What this does and does not prove</h3>
+    <p><b>It does settle the price&#8209;versus&#8209;volume question</b>, because the makers
+      disclose both numbers and the answer is not close. When bits are flat and price is up by two
+      thirds, revenue growth is price. That also removes the one objection that otherwise defeats a
+      margin&#8209;based argument &mdash; better fixed&#8209;cost absorption at higher volume &mdash;
+      because the volume is not there.</p>
+    <p><b>It does not prove any particular increase is unjustified.</b> Micron has stated its bit
+      costs are rising. A supplier may have higher input costs on a specific part, a mix shift, or a
+      contract basis that differs from its blended average. <b>Blended ASP across a whole product
+      line is not the price of your part</b>, and that gap is exactly what the ask in section 06
+      is for.</p>
+    <p>On reading the quarters as a direction of travel: each figure here is a disclosed quarterly
+      number with its quarter named, and the attribution of cause comes from the maker's own
+      sentence in that quarter rather than from anything we fitted. We are not projecting the next
+      one.</p>
+  </div>
+</section>
+
+<!-- ───────────────────────── 3 ───────────────────────── -->
+<section class="s">
+  <div class="hd"><span class="n">04</span><h2>What the five have in common, and where they part</h2></div>
 
   <div class="card key">
     <p class="lede"><b>As of their latest filed year, all five have moved supply onto binding,
@@ -477,7 +687,7 @@ footer.lf-chrome img{height:40px!important}
       spending 42% of revenue on capital expenditure and SK Hynix 28%; Kioxia is at 12% against its
       own 40% in 2022, and Seagate at 4.7%. That is a real difference in where the cash is going,
       and <b>it raises the question rather than answering it</b> &mdash; capital spending is not
-      cost, and the paragraph below says why. Section 04 gives each supplier its own baseline so the
+      cost, and the paragraph below says why. Section 05 gives each supplier its own baseline so the
       comparison is at least made against the right one.</li>
     <li><b>Two of the five have conceded demand damage from their own prices.</b> SK Hynix and
       Kioxia each said so independently, on dated calls, about PC and mobile. That is the most
@@ -486,11 +696,11 @@ footer.lf-chrome img{height:40px!important}
       level is a recovery rather than a norm: Micron's gross margin was &minus;9.1% that year,
       Kioxia's &minus;12.0%, SK Hynix's &minus;1.6%. <b>Without it, SK Hynix's 60.4% reads as a
       permanent state of affairs, which argues the supplier's case rather than the buyer's.</b> It
-      earns one column and one line per supplier and nothing more; everything else in section 04 is
+      earns one column and one line per supplier and nothing more; everything else in section 05 is
       the last two filed years.</li>
     <li><b>What is not offered, and what is.</b> We do not reduce a supplier to a score or publish a
       direction of travel in its numbers, because a trend needs each period compressed to one
-      comparable figure and that is the blended score this report refuses. <b>Section 06 is
+      comparable figure and that is the blended score this report refuses. <b>Section 07 is
       different in kind:</b> it assembles the suppliers' own dated statements about their own plans
       into one calendar. That is their schedule, not our projection.</li>
   </ul>
@@ -517,10 +727,13 @@ footer.lf-chrome img{height:40px!important}
       <li><b>Capital intensity tracks technology node and product mix.</b> NAND needs less capital
         per bit than leading&#8209;edge DRAM or HBM, so the ratios partly measure what a supplier
         makes rather than how it prices.</li>
-      <li><b>Rising gross margin does not prove price outran cost either.</b> It also results from
-        better fixed&#8209;cost absorption at higher volume, which Micron's own commentary calls the
-        primary lever on its margin. Separating the two needs bit shipments and average selling
-        price. <b>We do not hold those, so we do not make the claim.</b></li>
+      <li><b>Rising gross margin would not prove price outran cost on its own.</b> It also results
+        from better fixed&#8209;cost absorption at higher volume, which Micron's own commentary calls
+        the primary lever on its margin. Separating the two needs bit shipments and average selling
+        price, which are <b>not in the filed annual accounts</b> &mdash; but the makers disclose both
+        every quarter on their calls, and section 03 uses what they have said. <b>That is why the
+        price&#8209;versus&#8209;volume question is settled in this report and the
+        cost&#8209;justification question is not.</b></li>
       <li><b>Three of the five report in won or yen.</b> An increase quoted in dollars can be a flat
         price in a supplier's own currency.</li>
     </ul>
@@ -531,14 +744,15 @@ footer.lf-chrome img{height:40px!important}
       said about its own pricing &mdash; Seagate that it prices on value rather than cost, SK Hynix
       that customers are &ldquo;prioritizing procurement over price&rdquo; &mdash; which are
       admissions, not inferences of ours. The cost question itself is testable, and the test needs
-      unit cost data only the supplier holds. <b>Section 05 asks for it rather than scoring them on
+      unit cost data only the supplier holds. <b>Section 06
+      asks for it rather than scoring them on
       capital spending.</b></p>
   </div>
 </section>
 
 <!-- ───────────────────────── 3 ───────────────────────── -->
 <section class="s">
-  <div class="hd"><span class="n">04</span><h2>The five, one at a time</h2></div>
+  <div class="hd"><span class="n">05</span><h2>The five, one at a time</h2></div>
 
   <p>Each profile holds that supplier's six filed years and that supplier's own words together.
     Figures are from filed statements; quotes are verbatim from the quarter named beside them; and
@@ -550,7 +764,7 @@ footer.lf-chrome img{height:40px!important}
       <div class="row"><h3>Micron Technology</h3><span class="pill">DRAM and NAND</span><span class="pill">Reports in USD</span><span class="pill hi">The only published capital programme</span></div>
       <p class="reads">Micron is the only one of the five <b>below its own peak gross margin while
         spending at a record</b>, and the only one that has published a forward capital programme.
-        That does not make an increase justified &mdash; capital spending is not cost, as section 03
+        That does not make an increase justified &mdash; capital spending is not cost, as section 04
         sets out &mdash; but it is the one supplier whose spending can be asked about with specifics,
         and <b>the programme is aimed at HBM and leading&#8209;edge DRAM</b>, a different product
         from the parts an enterprise storage line consumes.</p>
@@ -931,10 +1145,10 @@ footer.lf-chrome img{height:40px!important}
 
 <!-- ───────────────────────── 5 ───────────────────────── -->
 <section class="s">
-  <div class="hd"><span class="n">05</span><h2>Where the stated strategy and the available terms conflict</h2></div>
+  <div class="hd"><span class="n">06</span><h2>Where the stated strategy and the available terms conflict</h2></div>
 
   <p>This is the part neither filing contains. Section 02 is what NetApp has said it wants. Sections
-    03 and 04 are what its five suppliers have said they will offer. Read together, they do not
+    04 and 05 are what its five suppliers have said they will offer. Read together, they do not
     agree in six places.</p>
 
   <p>Each conflict below puts the two statements side by side and names the gap. Under them is a
@@ -947,7 +1161,7 @@ footer.lf-chrome img{height:40px!important}
     <table>
       <caption>The first five conflicts in one view; the sixth is set out below the table because it
         is about how price is set rather than about a term. Every cell on both sides is quoted or calculated in
-        section 02 or section 04.</caption>
+        section 02 or section 05.</caption>
       <thead><tr><th>NetApp has said</th><th>Its suppliers have said</th><th>The gap</th></tr></thead>
       <tbody>
         <tr>
@@ -1009,7 +1223,8 @@ footer.lf-chrome img{height:40px!important}
       <p>On the filed record, <b>the uncommitted leg in NAND is Kioxia.</b> It is targeting only 50%
         of shipments under long&#8209;term agreement by 2028, where Samsung is already at 60&ndash;70%
         of capacity committed. That is an availability argument and it stands on its own; we are not
-        resting it on Kioxia's capital spending, which section 03 explains cannot settle a pricing
+        resting it on Kioxia's capital spending, which section 04
+        explains cannot settle a pricing
         question either way.</p>
       <p class="derv"><b>Derived from:</b> NetApp's stated multi&#8209;source objective, plus
         Kioxia's own 50%&#8209;by&#8209;2028 target and Samsung's own 60&ndash;70% figure, plus the
@@ -1227,7 +1442,7 @@ footer.lf-chrome img{height:40px!important}
         A supplier that supplies it has made a cost claim that can be checked. A supplier that
         declines has told you it is a price decision, and the negotiation should move to leverage:
         volume, planning horizon, prepayment, and term.</p>
-      <p>Section 03 explains why we do not run this test from public accounts ourselves. Capital
+      <p>Section 04 explains why we do not run this test from public accounts ourselves. Capital
         spending is not cost, gross margin expands on volume absorption as readily as on price, and
         separating the two requires bit shipments and average selling price that are not disclosed.
         <b>The question is sound; only the supplier holds the data that answers it.</b></p>
@@ -1256,7 +1471,7 @@ footer.lf-chrome img{height:40px!important}
 
 <!-- ───────────────────────── 6 ───────────────────────── -->
 <section class="s">
-  <div class="hd"><span class="n">06</span><h2>What lands in 2027</h2></div>
+  <div class="hd"><span class="n">07</span><h2>What lands in 2027</h2></div>
 
   <div class="card key">
     <p class="lede"><b>Calendar and fiscal 2027 is the year in which NetApp's largest commitment
@@ -1349,11 +1564,12 @@ footer.lf-chrome img{height:40px!important}
   <p>What does <b>not</b> follow, and is not claimed anywhere here: that prices will rise in 2027,
     that any supplier will miss its schedule, or that a shortage is coming. <b>Those are forecasts
     and we do not make them.</b> The calendar says where the room is and is not; what happens inside
-    it depends on demand, which section 07 explains we cannot see.</p>
+    it depends on demand, which section 08
+    explains we cannot see.</p>
 
   <div class="card gate">
     <h3>The one thing worth doing before FY2027 begins</h3>
-    <p>Of the six conflicts in section 05, <b>three have a window that closes</b>. Kioxia's
+    <p>Of the six conflicts in section 06, <b>three have a window that closes</b>. Kioxia's
       uncommitted volume is uncommitted until its 2028 agreement. Seagate's negotiable period is
       2028 onward, which means the conversation happens in 2027. And the share&#8209;of&#8209;output
       structure in conflict 3 has to be agreed before a quantity is signed, not after.</p>
@@ -1364,13 +1580,13 @@ footer.lf-chrome img{height:40px!important}
 
 <!-- ───────────────────────── 5 ───────────────────────── -->
 <section class="s">
-  <div class="hd"><span class="n">07</span><h2>What we are withholding, and why</h2></div>
+  <div class="hd"><span class="n">08</span><h2>What we are withholding, and why</h2></div>
 
   <div class="card gate">
     <p>Our cost model splits a supplier's cost base into a fixed part and a part that moves with
       revenue, and reports what a volume change does to it. <b>We do not run it for any of these
       five, and that is a deliberate exclusion rather than a gap.</b></p>
-    <p>The reason is in the Micron table in section 03. For a memory or drive supplier, revenue is
+    <p>The reason is in the Micron table in section 05. For a memory or drive supplier, revenue is
       price multiplied by volume, and the two move independently &mdash; Micron's revenue went
       $30.8bn, then $15.5bn, then $37.4bn in three years, with gross margin between &minus;9.1% and
       45.2%. A revenue change cannot stand in for a volume change in that data, so a model built on
@@ -1388,7 +1604,8 @@ footer.lf-chrome img{height:40px!important}
   <h3>What this report cannot answer, and what would answer it</h3>
 
   <p>Public filings establish what a supplier's position is and what its claims are worth. They do
-    not reach inside the buyer. These four questions came up in section 05 and are marked there as
+    not reach inside the buyer. These four questions came up in section 06
+    and are marked there as
     unanswered:</p>
 
   <div class="tw">
@@ -1417,7 +1634,7 @@ footer.lf-chrome img{height:40px!important}
 
 <!-- ───────────────────────── 6 ───────────────────────── -->
 <section class="s">
-  <div class="hd"><span class="n">08</span><h2>How to check every figure</h2></div>
+  <div class="hd"><span class="n">09</span><h2>How to check every figure</h2></div>
 
   <p>Nothing here is proprietary data. It is public disclosure, read carefully and assembled from the
     buyer's side. Every number can be traced back.</p>
@@ -1430,11 +1647,11 @@ footer.lf-chrome img{height:40px!important}
       <tbody>
         <tr><th>Supplier annual figures</th><td>Read from six filed fiscal years each for Micron,
           SK Hynix, Samsung Electronics and Kioxia, and seven for Seagate whose fiscal 2026 is
-          already filed. <b>The profiles in section 04 show the most recent two, plus 2023 as a
+          already filed. <b>The profiles in section 05 show the most recent two, plus 2023 as a
           reference row and the full range as one line</b>, so every comparison keeps its baseline
           without four years of history in the table. Revenue, gross profit, operating income,
           inventories, cost of revenue and capital expenditure, as filed.</td></tr>
-        <tr><th>The 2027 calendar</th><td>Section 06 contains no source of its own. Each row is a
+        <tr><th>The 2027 calendar</th><td>Section 07 contains no source of its own. Each row is a
           dated statement by the named party about its own plans, cited in the row, plus NetApp's
           commitment maturity from its own Form 10&#8209;K.</td></tr>
         <tr><th>Supplier quotes</th><td>Earnings calls and earnings presentations for the quarters
@@ -1451,7 +1668,7 @@ footer.lf-chrome img{height:40px!important}
           CIK 0001002047, accession 0001193125&#8209;26&#8209;259683. Sections quoted: Manufacturing
           and Supply Chain, Backlog, forward&#8209;looking statements, Liquidity and Capital
           Resources, and Note 16 Commitments and Contingencies.</td></tr>
-        <tr><th>The conflicts in section 05</th><td>Not from any single source &mdash; each is one
+        <tr><th>The conflicts in section 06</th><td>Not from any single source &mdash; each is one
           quoted NetApp statement set against one quoted supplier statement, both cited in place.
           The <b>paths</b> under them are our judgment, not findings, and each shows what it was
           derived from and where it stops.</td></tr>
@@ -1459,7 +1676,7 @@ footer.lf-chrome img{height:40px!important}
     </table>
   </div>
 
-  <p class="small muted">One disclosure about our own coverage. The quotes in section 03 come from
+  <p class="small muted">One disclosure about our own coverage. The quotes in section 05 come from
     our reading of earnings calls and presentations for the quarters named. That reading is not a
     complete transcript archive for all five suppliers, so the absence of a quote on a given topic
     means we have not recorded one &mdash; never that the supplier has not addressed it. Where this
