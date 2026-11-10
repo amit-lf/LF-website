@@ -89,7 +89,7 @@ nav {
    style="text-decoration:none;display:inline-block" inline to get this, which only
    works for as long as everyone remembers -- deal-desk.html did not. */
 a.btn-primary, a.btn-secondary, a.offer-cta, a.nav-cta, a.pick-cta, a.pro-chip,
-a.report-card, a.post { text-decoration: none; }
+a.report-card, a.post, a.desk { text-decoration: none; }
 a.btn-primary, a.btn-secondary, a.offer-cta, a.nav-cta { display: inline-block; }
 .btn-secondary { padding: 12px 24px; background: transparent; color: var(--ink); border: 1.5px solid var(--rule); border-radius: 6px; font-size: 14px; font-weight: 500; cursor: pointer; font-family: var(--font); }
 .btn-secondary:hover { border-color: var(--ink-3); }
@@ -613,7 +613,12 @@ footer .logo img { height: 40px; }
 /* Deal desks. A desk is an offer, not a case study, so these sit a step above .case: its own
    heading, the evidence in two paragraphs, and its own call to action under a rule. */
 .desks { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; align-items: start; }
-.desk { background: var(--white); border: 1px solid var(--rule); border-radius: 12px; padding: 30px; }
+/* The whole card is the link. A tile with a button inside it gives a reader two targets for
+   one destination, and the smaller one is the only one that works -- people click the card. */
+.desk { background: var(--white); border: 1px solid var(--rule); border-radius: 12px; padding: 30px;
+  display: block; color: inherit; }
+.desk:hover { border-color: var(--gold); }
+.desk-head h2::after { content: " →"; color: var(--gold); }
 .desk-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 10px; }
 .desk-head h2 { font-size: 24px; font-weight: 700; letter-spacing: -0.015em; margin: 0; }
 .desk-open, .tag-live {
