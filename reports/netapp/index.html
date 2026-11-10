@@ -1,0 +1,1735 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover">
+<!-- NOINDEX, deliberately. This report names a prospect and the decision was that it is
+     SENT, not published. Nothing links to it and it is not in the sitemap, but robots.txt
+     allows everything, so a leaked URL would otherwise be indexable. A meta tag rather than
+     a robots.txt Disallow: a disallow stops the crawl, so the crawler never reads the
+     noindex and the URL can still surface from an external link. -->
+<meta name="robots" content="noindex, nofollow">
+<title>NetApp's Five Suppliers</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap">
+<style>
+/* ── PINNED LIGHT, matching the deal desks. semitrical.ai has no dark mode and this document
+   is part of the site now; a dark body under a white site header reads as broken. */
+:root, :root[data-theme="dark"] {
+  --bg:#F4F5F1; --surface:#FFFFFF; --sunk:#ECEEE8; --ink:#1A211D; --muted:#5B655F;
+  --line:#D5D9D1; --accent:#A35A16; --accent-ink:#FFFFFF; --accent-soft:#F6E7D6;
+  --buyer:#1D7466; --buyer-soft:#DCEEE9; --supplier:#B03C2B; --supplier-soft:#F6DFDA;
+  --f-display:"DM Sans",-apple-system,"Segoe UI",Arial,sans-serif;
+  --f-body:"DM Sans",-apple-system,"Segoe UI",Arial,sans-serif;
+  --f-mono:"DM Mono",ui-monospace,Menlo,Consolas,monospace;
+  --r:6px; color-scheme:light;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#F4F5F1; --surface:#FFFFFF; --sunk:#ECEEE8; --ink:#1A211D; --muted:#5B655F;
+  --line:#D5D9D1; --accent:#A35A16; --accent-ink:#FFFFFF; --accent-soft:#F6E7D6; color-scheme:light; } }
+
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:15.5px;line-height:1.62}
+img{max-width:100%}
+.wrap{max-width:820px;margin:0 auto;display:flex;flex-direction:column;gap:30px;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));
+  padding-block:34px 56px}
+h1,h2,h3,h4{font-family:var(--f-display);text-wrap:balance;margin:0}
+h1{font-size:31px;font-weight:700;line-height:1.1;letter-spacing:-0.02em}
+h2{font-size:21px;font-weight:700;letter-spacing:-0.015em}
+h3{font-size:16.5px;font-weight:600}
+h4{font-size:14px;font-weight:600}
+p{margin:0;max-width:70ch}
+ul,ol{margin:0;padding-left:21px;display:flex;flex-direction:column;gap:9px;max-width:70ch}
+a{color:var(--accent)}
+.eyebrow{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
+.muted{color:var(--muted)} .small{font-size:13.5px} .mono{font-family:var(--f-mono);font-variant-numeric:tabular-nums}
+.hex{display:inline-block;width:14px;height:14px;background:var(--accent);
+  clip-path:polygon(25% 5%,75% 5%,100% 50%,75% 95%,25% 95%,0 50%);vertical-align:-1px;margin-right:8px}
+
+/* A numbered section is numbered because the reader is meant to be able to cite it back at us
+   in a meeting. */
+section.s{display:flex;flex-direction:column;gap:14px}
+section.s > .hd{display:flex;gap:12px;align-items:baseline;border-top:2px solid var(--ink);padding-top:12px}
+section.s > .hd .n{font-family:var(--f-mono);font-size:13px;font-weight:500;color:var(--accent);padding-top:3px}
+.lede{font-size:17px;line-height:1.6;max-width:66ch}
+
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:20px;
+  display:flex;flex-direction:column;gap:12px}
+.card.key{border-left:4px solid var(--accent)}
+.card.gate{background:var(--accent-soft);border-color:#E3CBAE}
+.strip{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border:1px solid var(--line);
+  border-radius:var(--r);background:var(--surface);overflow:hidden}
+.strip > div{padding:13px 15px;display:flex;flex-direction:column;gap:3px;min-width:0}
+.strip > div + div{border-left:1px solid var(--line)}
+.strip .v{font-family:var(--f-display);font-size:25px;font-weight:700;font-variant-numeric:tabular-nums;line-height:1.1}
+.strip .k{font-size:12.5px;color:var(--muted);line-height:1.45}
+
+.tw{overflow-x:auto;border:1px solid var(--line);border-radius:var(--r);background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-size:14px}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+thead th{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--muted);font-weight:500;background:var(--sunk);white-space:nowrap}
+tbody tr:last-child td,tbody tr:last-child th{border-bottom:0}
+tbody th{font-weight:600;white-space:nowrap}
+td.n,th.n{font-family:var(--f-mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+td.lo{color:var(--supplier)} td.hi{color:var(--buyer)}
+tbody tr.now th,tbody tr.now td{background:var(--accent-soft)}
+/* The 2023 trough row. It is set apart rather than sitting in the series because it is there as
+   a REFERENCE POINT, not as part of the recent record -- it is the only evidence that today's
+   margins are a recovery and not a norm, and that is the whole reason it survived the cut to
+   recent years. */
+tbody tr.ref th,tbody tr.ref td{background:transparent;color:var(--muted);border-top:1px dashed var(--line)}
+tbody tr.ref th span{display:block;font-family:var(--f-mono);font-size:9.5px;font-weight:500;
+  letter-spacing:.06em;text-transform:uppercase;color:var(--supplier);margin-top:2px}
+.rng{font-size:12.5px;color:var(--muted);line-height:1.6;margin-top:-4px}
+.rng b{color:var(--ink);font-weight:600;font-family:var(--f-mono);font-variant-numeric:tabular-nums}
+
+/* ── The 2027 timeline. Every row is a DATED statement by a NAMED party, which is why this
+   section can exist at all: we do not forecast, and we are not doing so here. The convergence is
+   the suppliers' own published schedule, read next to the buyer's own commitment maturity. */
+.tl{display:flex;flex-direction:column;border:1px solid var(--line);border-radius:var(--r);
+  background:var(--surface);overflow:hidden}
+.tl > div{display:grid;grid-template-columns:120px minmax(0,1fr);gap:5px 18px;padding:14px 16px}
+.tl > div + div{border-top:1px solid var(--line)}
+.tl .when{font-family:var(--f-mono);font-size:11.5px;font-weight:500;letter-spacing:.04em;
+  text-transform:uppercase;color:var(--accent)}
+.tl .who{font-family:var(--f-display);font-weight:600;font-size:14.5px}
+.tl .what{font-size:14px;line-height:1.55}
+.tl .what .src{font-family:var(--f-mono);font-size:10.5px;color:var(--muted);display:block;margin-top:4px}
+.tl > div.buyer-row{background:var(--buyer-soft)}
+.tl > div.buyer-row .when{color:var(--buyer)}
+@media (max-width:620px){ .tl > div{grid-template-columns:minmax(0,1fr)} }
+caption{caption-side:bottom;text-align:left;padding:10px 12px;font-size:12.5px;color:var(--muted);line-height:1.6}
+
+/* ── A supplier profile. The whole point of this document: one supplier assembled in one place,
+   its filed years and its own words together, rather than numbers in one section and quotes in
+   another where no single supplier is ever a picture. */
+.prof{display:flex;flex-direction:column;gap:16px;border:1px solid var(--line);border-radius:10px;
+  background:var(--surface);padding:22px}
+.prof > header{display:flex;flex-direction:column;gap:7px}
+.prof > header .row{display:flex;flex-wrap:wrap;gap:10px;align-items:baseline}
+.prof h3{font-size:22px;font-weight:700;letter-spacing:-0.015em}
+.prof .reads{font-size:15.5px;max-width:68ch}
+.prof .reads b{font-weight:600}
+.pill{display:inline-block;font-family:var(--f-mono);font-size:11px;font-weight:500;padding:2px 9px;
+  border-radius:999px;white-space:nowrap;background:var(--sunk);color:var(--muted)}
+.pill.hi{background:var(--supplier-soft);color:var(--supplier)}
+.pill.ok{background:var(--buyer-soft);color:var(--buyer)}
+.prof .sub{font-family:var(--f-mono);font-size:11px;letter-spacing:.07em;text-transform:uppercase;
+  color:var(--muted);border-bottom:1px solid var(--line);padding-bottom:5px}
+.prof .close{background:var(--sunk);border-radius:var(--r);padding:14px 16px;display:flex;
+  flex-direction:column;gap:7px}
+.prof .close h4{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.07em;text-transform:uppercase;
+  color:var(--muted);font-weight:500}
+.prof .close p{font-size:14.5px}
+
+/* A quote block carries its own citation. A figure and a quote taken from different sentences is
+   a bug, so the citation sits inside the block it belongs to and never floats. */
+.q{border-left:3px solid var(--accent);padding:2px 0 2px 14px;display:flex;flex-direction:column;gap:7px}
+.q blockquote{margin:0;font-size:15px;line-height:1.6;max-width:68ch}
+.q .src{font-family:var(--f-mono);font-size:11.5px;color:var(--muted)}
+.q .means{font-size:14px;color:var(--muted);max-width:68ch}
+.q .means b{color:var(--ink);font-weight:600}
+.qs{display:flex;flex-direction:column;gap:15px}
+
+.lever{display:grid;grid-template-columns:28px minmax(0,1fr);gap:4px 14px;align-items:start}
+.lever .num{font-family:var(--f-display);font-size:22px;font-weight:700;color:var(--accent);line-height:1.15}
+.lever .body{display:flex;flex-direction:column;gap:9px}
+.lever .body .ask{background:var(--sunk);border-radius:var(--r);padding:11px 14px;font-size:14.5px;max-width:68ch}
+.lever .body .ask b{display:block;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.07em;
+  text-transform:uppercase;color:var(--muted);margin-bottom:4px;font-weight:500}
+
+/* ── THE ONE PAGE. A reader who stops here must still have the three useful things, so this
+   block is styled to be read on its own and is the only part of the document that is allowed to
+   repeat material from further down. */
+.opener{border:1px solid var(--line);border-left:5px solid var(--accent);border-radius:10px;
+  background:var(--surface);padding:24px;display:flex;flex-direction:column;gap:18px}
+.opener > h2{font-size:23px;font-weight:700;letter-spacing:-0.02em;margin-top:-6px}
+.one{display:grid;grid-template-columns:34px minmax(0,1fr);gap:4px 16px;align-items:start}
+.one .num{font-family:var(--f-display);font-size:27px;font-weight:700;color:var(--accent);line-height:1}
+.one .bd{display:flex;flex-direction:column;gap:7px}
+.one h3{font-size:16px;font-weight:700;line-height:1.35}
+.one p{font-size:14.5px;max-width:68ch}
+.one p.sm{font-size:13.5px;color:var(--muted);border-left:2px solid var(--line);padding-left:11px}
+.one p.sm b{color:var(--ink)}
+.opener-foot{background:var(--accent-soft);border-radius:var(--r);padding:14px 16px;font-size:14px}
+.opener-foot p{max-width:70ch}
+@media print{ .opener{break-inside:avoid;break-after:page;page-break-after:always} }
+@media (max-width:520px){ .opener{padding:16px} .one{grid-template-columns:minmax(0,1fr)} }
+
+/* ── A conflict: one thing the buyer has said it wants, one thing a supplier has said it will
+   offer, and the gap. The two quotes sit SIDE BY SIDE because the gap is only visible when they
+   are read together -- that is the entire reason this section exists. The path below them is
+   OUR JUDGMENT and is marked as such, because a recommendation does not trace to a quote the
+   way a finding does, and the moment those two are presented alike the document stops being
+   auditable. */
+.cf{display:flex;flex-direction:column;gap:14px;border:1px solid var(--line);border-radius:10px;
+  background:var(--surface);padding:22px}
+.cf > header{display:flex;flex-direction:column;gap:6px}
+.cf h3{font-size:19px;font-weight:700;letter-spacing:-0.015em}
+.cf .two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.cf .side{display:flex;flex-direction:column;gap:7px;background:var(--sunk);border-radius:var(--r);padding:14px}
+.cf .side.them{background:var(--supplier-soft)}
+.cf .side .who{font-family:var(--f-mono);font-size:10px;letter-spacing:.09em;text-transform:uppercase;
+  color:var(--muted);font-weight:500}
+.cf .side.them .who{color:var(--supplier)}
+.cf .side blockquote{margin:0;font-size:14px;line-height:1.55}
+.cf .side .src{font-family:var(--f-mono);font-size:10.5px;color:var(--muted)}
+.cf .gap{font-size:15.5px;border-left:3px solid var(--accent);padding-left:14px;max-width:68ch}
+.cf .path{border:1px dashed #C9A275;border-radius:var(--r);padding:15px 16px;display:flex;
+  flex-direction:column;gap:9px;background:var(--accent-soft)}
+.cf .path h4{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--accent);font-weight:500}
+.cf .path p{font-size:14.5px}
+.cf .path .derv{font-size:13px;color:var(--muted);border-top:1px solid #E3CBAE;padding-top:8px}
+.cf .path .derv b{color:var(--ink);font-weight:600}
+.cf .ask{background:var(--sunk);border-radius:var(--r);padding:12px 15px;font-size:14.5px;max-width:68ch}
+.cf .ask b{display:block;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--muted);margin-bottom:4px;font-weight:500}
+@media (max-width:680px){ .cf .two{grid-template-columns:minmax(0,1fr)} .cf{padding:16px} }
+
+/* The stated-objective list in section 02. Each row is a quote and nothing else, because the
+   point of that section is that these are the buyer's OWN words, not our summary of them. */
+.obj{display:flex;flex-direction:column;gap:0;border:1px solid var(--line);border-radius:var(--r);
+  overflow:hidden;background:var(--surface)}
+.obj > div{display:grid;grid-template-columns:170px minmax(0,1fr);gap:6px 18px;padding:15px 16px}
+.obj > div + div{border-top:1px solid var(--line)}
+.obj .nm{font-family:var(--f-display);font-weight:600;font-size:14.5px}
+.obj .nm span{display:block;font-family:var(--f-mono);font-size:10.5px;font-weight:500;
+  color:var(--muted);margin-top:3px;letter-spacing:.04em}
+.obj blockquote{margin:0;font-size:14.5px;line-height:1.58}
+.obj .src{font-family:var(--f-mono);font-size:10.5px;color:var(--muted);margin-top:5px}
+@media (max-width:620px){ .obj > div{grid-template-columns:minmax(0,1fr)} }
+
+.ask-cta{border:1px solid var(--line);border-radius:12px;background:var(--surface);padding:24px;
+  display:flex;flex-direction:column;gap:10px}
+.ask-cta a{font-size:14.5px;font-weight:600;text-decoration:none;border-bottom:1px solid currentColor}
+footer.doc{font-size:12.5px;color:var(--muted);border-top:1px solid var(--line);padding-top:14px;
+  display:flex;flex-direction:column;gap:6px;max-width:72ch}
+
+@media (max-width:760px){
+  .strip{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .strip > div:nth-child(3){border-left:0}
+  .strip > div:nth-child(n+3){border-top:1px solid var(--line)}
+}
+@media (max-width:520px){
+  h1{font-size:25px} .lede{font-size:15.5px} .strip{grid-template-columns:minmax(0,1fr)}
+  .strip > div + div{border-left:0;border-top:1px solid var(--line)}
+  .prof{padding:16px} .prof h3{font-size:19px}
+}
+
+/* ════════ PRINT ════════
+   position:fixed repeats an element on every printed page in Chrome. That is how the watermark
+   reaches every sheet without sitting in the flow; the running header and page numbers come from
+   tools/topdf.js, not from here. */
+@media print{
+  @page{ size:A4; margin:16mm 14mm 18mm; }
+  .lf-chrome,.ask-cta,.noprint{display:none!important}
+  .pdf-only{display:block!important}
+  :root{--bg:#fff;--surface:#fff;--sunk:#F4F5F1;--ink:#1A211D;--muted:#5B655F;
+        --line:#D5D9D1;--accent:#A35A16;--accent-soft:#F6E7D6}
+  body{background:#fff!important;font-size:10.5pt;line-height:1.55}
+  .wrap{max-width:none;padding:0;gap:22px}
+  h1{font-size:20pt} h2{font-size:14pt} h3{font-size:11.5pt}
+  .lede{font-size:11.5pt}
+  /* A profile is the unit a reader carries into a meeting, so it is kept on one sheet where it
+     fits rather than split across two. */
+  .prof{break-inside:avoid;padding:14pt}
+  .card,.q,.tw,.lever,.strip{break-inside:avoid}
+  table{font-size:9pt} th,td{padding:5pt 7pt}
+  /* Read THROUGH, not around. A watermark that fights the text makes the PDF worse than the
+     page it came from. */
+  .pdf-mark{position:fixed;top:44%;left:0;right:0;text-align:center;font-family:var(--f-body);
+    font-size:58pt;font-weight:700;letter-spacing:-0.03em;color:#A35A16;opacity:.06;
+    transform:rotate(-24deg);z-index:0}
+}
+.pdf-only{display:none}
+
+/* ── The PDF cover. Print only; the web page has its own title block above. */
+.pdf-cover{display:none}
+@media print{
+  .pdf-cover{display:flex!important;flex-direction:column;justify-content:space-between;
+    /* The page box less Chrome's margins, so the cover fills its own sheet and nothing else
+       climbs onto it. */
+    height:247mm;page-break-after:always;break-after:page}
+  .pdf-cover-top img{width:52mm;height:auto;display:block}
+  .pdf-cover-eyebrow{font-family:var(--f-mono);font-size:9pt;font-weight:500;letter-spacing:.16em;
+    text-transform:uppercase;color:#A35A16;margin:22mm 0 6mm}
+  .pdf-cover h1{font-family:var(--f-body);font-size:34pt;line-height:1.08;font-weight:700;
+    letter-spacing:-.025em;color:#1A211D;margin:0;max-width:22ch}
+  .pdf-cover-sub{font-family:var(--f-body);font-size:13pt;line-height:1.5;color:#5B655F;
+    margin:8mm 0 0;max-width:46ch}
+  .pdf-cover-rule{border:0;border-top:2pt solid #A35A16;width:28mm;margin:10mm 0 0}
+  .pdf-cover-meta{display:grid;grid-template-columns:.75fr 1fr 1.7fr;gap:10mm;
+    border-top:1.5pt solid #1A211D;padding-top:6mm;margin-bottom:7mm}
+  .pdf-cover-meta dt{font-family:var(--f-mono);font-size:8pt;font-weight:500;letter-spacing:.14em;
+    text-transform:uppercase;color:#5B655F;margin-bottom:2.5mm}
+  .pdf-cover-meta dd{font-family:var(--f-body);font-size:14pt;font-weight:700;letter-spacing:-.015em;
+    color:#1A211D;margin:0;line-height:1.25;white-space:nowrap}
+  .pdf-cover-foot{font-family:var(--f-body);font-size:8pt;line-height:1.65;color:#5B655F;
+    border-top:.5pt solid #D5D9D1;padding-top:3.5mm}
+}
+
+/* SITE CHROME, matching semitrical.css exactly. Values are repeated rather than referenced
+   because this document defines --ink and --surface itself and cannot load the site's sheet.
+   The nav gutter must be the site's centring expression, not a literal 48px, or the nav hugs the
+   left on a wide screen while the content below it is centred; and the logo is 60px in the bar
+   and 40px in the footer, which is what the stylesheet actually resolves to. */
+nav.lf-chrome{
+  padding-left:max(48px,calc((100% - 1180px) / 2));
+  padding-right:max(48px,calc((100% - 1180px) / 2));
+  padding-top:15px;padding-bottom:15px}
+nav.lf-chrome img{height:60px!important}
+footer.lf-chrome img{height:40px!important}
+@media (max-width:820px){ nav.lf-chrome{padding-top:12px;padding-bottom:12px} nav.lf-chrome img{height:46px!important} }
+@media (max-width:420px){ nav.lf-chrome img{height:38px!important} }
+</style></head><body>
+
+<section class="pdf-cover" aria-hidden="true">
+  <div class="pdf-cover-top">
+    <img src="/assets/img/semitrical-logo.png" alt="Semitrical">
+    <p class="pdf-cover-eyebrow">Supplier picture &middot; prepared for NetApp, Inc.</p>
+    <h1>NetApp's five suppliers</h1>
+    <p class="pdf-cover-sub">Their own disclosures show the increases are price, not volume. Where each stands in its latest filed year, the six places their terms conflict with NetApp's stated strategy, and what their published schedules land in 2027.</p>
+    <hr class="pdf-cover-rule">
+  </div>
+  <div>
+    <dl class="pdf-cover-meta">
+      <div><dt>Author</dt><dd>Semitrical.ai</dd></div>
+      <div><dt>Date</dt><dd>6 November 2026</dd></div>
+      <div><dt>Contact</dt><dd>contact@semitrical.ai</dd></div>
+    </dl>
+    <p class="pdf-cover-foot">
+      Micron, SK Hynix, Samsung Electronics, Kioxia and Seagate. Evidence to 6 November 2026.
+      Every figure traces to a filed document and every quote to a named quarter.
+      Built from public filings. First-pass analysis to support your own review &mdash; not
+      legal, investment or professional advice.
+    </p>
+  </div>
+</section>
+
+<div class="pdf-only pdf-mark" aria-hidden="true">semitrical.ai</div>
+
+<nav class="lf-chrome" style="display:flex;align-items:center;border-bottom:1px solid #e2e4ea;background:#fff;font-family:'DM Sans',system-ui,sans-serif">
+  <a href="/" aria-label="Semitrical home" style="display:block;text-decoration:none"><img src="/assets/img/semitrical-logo.png" alt="Semitrical &mdash; removing asymmetry from chip deals" height="60" style="display:block;height:60px;width:auto"></a>
+  <div style="display:flex;align-items:center;gap:28px;margin-left:48px;flex-wrap:wrap">
+    <a href="/" style="font-size:13px;font-weight:500;color:#5c6078;text-decoration:none">Platform</a>
+    <a href="/supplier-intelligence.html" style="font-size:13px;font-weight:500;color:#5c6078;text-decoration:none">Supplier Intelligence</a>
+    <a href="/deal-desk.html" style="font-size:13px;font-weight:500;color:#5c6078;text-decoration:none">Deal Desk</a>
+    <a href="/reports.html" style="font-size:13px;font-weight:500;color:#0f1117;text-decoration:none">Leverage Reports</a>
+  </div>
+  <a href="/contact.html" style="margin-left:auto;padding:9px 22px;background:#0f1117;color:#fff;border-radius:6px;font-size:13px;font-weight:600;text-decoration:none;white-space:nowrap">Contact us</a>
+</nav>
+
+<div class="wrap">
+
+<header style="display:flex;flex-direction:column;gap:11px">
+  <div class="eyebrow">Supplier picture &middot; prepared for NetApp</div>
+  <h1>NetApp's five suppliers</h1>
+  <p class="lede muted">Their own disclosures show the increases are price, not volume. Where each
+    stands in its latest filed year, the six places their terms conflict with NetApp's stated
+    strategy, and what their published schedules land in 2027.</p>
+  <p class="small muted mono">Micron &middot; SK Hynix &middot; Samsung Electronics &middot; Kioxia &middot; Seagate &nbsp;|&nbsp; evidence to 6 November 2026</p>
+</header>
+
+<!-- ───────── THE ONE PAGE. Everything after this is the working detail.
+     It exists because the three most useful things in this report were on page 20, and a reader
+     who stops after one page should still have them. ───────── -->
+<section class="opener">
+  <p class="eyebrow">If you read one page</p>
+  <h2>Three things your suppliers have disclosed that are worth acting on</h2>
+
+  <div class="one">
+    <div class="num">1</div>
+    <div class="bd">
+      <h3>The increases are price, not volume &mdash; and the makers publish both numbers</h3>
+      <p>SK Hynix reported DRAM bit shipments <b>flat</b> quarter on quarter while average selling
+        price rose <b>mid&#8209;60%</b>, with a record 72% operating margin in the same quarter.
+        Samsung reported blended DRAM ASP up <b>low 90%</b>. Kioxia put price at <b>70% of the
+        revenue driver</b> with volume up low single digits. Micron: revenue +74% on
+        <b>mid&#8209;single&#8209;digit</b> bit growth.</p>
+      <p class="sm">Why it matters: with volume flat, there is no fixed&#8209;cost absorption to
+        explain the margin, and no volume growth for a cost argument to rest on. Micron is the one
+        maker that has said its own bit costs are rising &mdash; credit that, and note its margin
+        still went from 44.7% to 84.6% in four quarters. <b>Section 03.</b></p>
+    </div>
+  </div>
+
+  <div class="one">
+    <div class="num">2</div>
+    <div class="bd">
+      <h3>Whether to prepay for allocation is arithmetic, and the number is about 3%</h3>
+      <p>NetApp earned <b>$113m of interest income</b> on roughly <b>$3.6bn</b> of cash and
+        short&#8209;term investments &mdash; about 3% pre&#8209;tax. Samsung states advance payments
+        are &ldquo;a contractual requirement&rdquo;; SK Hynix incorporates deposits. <b>A prepayment
+        is worth making only if the discount it secures beats about 3% a year over the period the
+        cash is held</b>, before any allowance for volume you may not need.</p>
+      <p class="sm">It converts a strategy debate into a threshold a supplier can be asked to beat.
+        It also competes directly with the <b>$1.0bn buyback authorized in May 2026</b>, which makes
+        it a capital decision rather than a procurement one. <b>Section 06, conflict 2.</b></p>
+    </div>
+  </div>
+
+  <div class="one">
+    <div class="num">3</div>
+    <div class="bd">
+      <h3>Two of the five have said their own prices are destroying demand</h3>
+      <p>SK Hynix: &ldquo;demand softening have emerged&hellip; <b>due to cost pressures stemming
+        from higher memory prices</b>&rdquo; in PC and mobile. Kioxia, independently: the PC market
+        will see &ldquo;a decrease in shipments due to <b>rising BOM costs</b>, leading to a slight
+        decline in NAND demand&rdquo;.</p>
+      <p class="sm">These are quotable admissions from a named quarter, and they mean the
+        tight&#8209;supply account is not uniform across end markets &mdash; by the suppliers' own
+        statements. <b>Sections 05 and 06.</b></p>
+    </div>
+  </div>
+
+  <div class="opener-foot">
+    <p><b>What we are not telling you:</b> no price forecast, no supplier score, and no claim that a
+      particular increase is unjustified &mdash; blended ASP across a product line is not the price
+      of your part. <b>The one thing worth sending us is a price increase letter</b>; it is a single
+      document and the answer is checkable against the quarter it cites.</p>
+  </div>
+</section>
+
+<!-- ───────────────────────── 1 ───────────────────────── -->
+<section class="s">
+  <div class="hd"><span class="n">01</span><h2>What this is</h2></div>
+
+  <p>This is a picture of the five companies NetApp buys memory and drives from. Each files public
+    accounts and holds public earnings calls, and this report reads them from the buyer's side of
+    the table. <b>The analysis is on the latest filed year and the one before it</b> &mdash; 2025
+    for four of the five, 2026 for Seagate. Earlier years appear only where a single reference point
+    is needed, and section 04 says where and why.</p>
+
+  <p>It is not a report about how NetApp is performing &mdash; that is already in NetApp's own
+    filing and NetApp already knows it. What its filing does carry is NetApp's <b>stated strategy
+    and capital position</b>, and section 02 quotes those so that section 06 can test the supplier
+    picture against what NetApp has said it wants rather than against anything we assumed.</p>
+
+  <p>Four figures set the stakes:</p>
+
+  <div class="strip">
+    <div><span class="v">$1.4bn</span><span class="k">Committed to suppliers off balance sheet at 24 Apr 2026, $1.1bn of it due in FY2027</span></div>
+    <div><span class="v">4 days</span><span class="k">Purchased components held, against about $1.27bn of annual materials</span></div>
+    <div><span class="v">86&ndash;136</span><span class="k">Days of inventory the five suppliers were holding in their latest filed year</span></div>
+    <div><span class="v">5 of 5</span><span class="k">Suppliers that have moved supply onto binding, multi&#8209;year, part&#8209;prepaid allocation</span></div>
+  </div>
+
+  <p class="small muted">NetApp figures from its Form 10&#8209;K for the year ended 24 April 2026,
+    filed 5 June 2026. Days of purchased components is our arithmetic: $14m of components inventory
+    against materials cost of about $1.27bn, being the 91% of the $1,395m cost of Hybrid Cloud
+    product revenues that NetApp attributes to materials. Supplier figures are from section 04.</p>
+
+  <p>The stock in this chain sits upstream and the commitments sit downstream. That is a defensible
+    way to run a balance sheet, and it also means the five companies in
+    section 05 are the ones whose
+    position decides what a renewal costs.</p>
+
+  <div class="card gate">
+    <h3>What this report will not do</h3>
+    <ul>
+      <li><b>It does not forecast a price.</b> Nothing here predicts DRAM, NAND or drive pricing for
+        a future quarter. Section 06 is about 2027, and every row in it is a dated statement a named
+        supplier made about its own plans &mdash; their calendar, not our projection.</li>
+      <li><b>It gives no single score.</b> There is no blended supplier rating, because a blended
+        number hides which dimension moved and can come out flattering for every supplier at once.
+        Each dimension is reported on its own.</li>
+      <li><b>It does not split any of these five into fixed and variable cost.</b> Our cost model is
+        deliberately withheld for memory, and the reason is set out in section 08.</li>
+      <li><b>Where the filings will not carry an answer, it says so</b> rather than estimating one.</li>
+    </ul>
+  </div>
+
+  <p class="small muted">A note on what absence means. Where a figure is not shown for a supplier,
+    that means it is not in the material we have read &mdash; not that the supplier does not report
+    it. We never treat a gap in our own reading as a gap in a supplier's disclosure.</p>
+</section>
+
+<!-- ───────────────────────── 2 ───────────────────────── -->
+<section class="s">
+  <div class="hd"><span class="n">02</span><h2>What NetApp has said it is trying to do</h2></div>
+
+  <p>This section contains no analysis. It is NetApp's own stated strategy and its own capital
+    position, quoted, because section 06 tests the supplier picture against these and not against
+    anything we have assumed about what NetApp wants.</p>
+
+  <div class="obj">
+    <div>
+      <div class="nm">Multi&#8209;source where possible<span>Stated supply strategy</span></div>
+      <div>
+        <blockquote>&ldquo;We rely on a limited number of suppliers for materials&hellip; <b>We strive
+          to have multiple suppliers qualified to provide critical components where possible</b> and
+          have our products manufactured in a number of locations to mitigate our supply chain risk.
+          Our strategy has been to develop close relationships with our suppliers, maximizing the
+          exchange of critical information&hellip;&rdquo;</blockquote>
+        <p class="src">Form 10&#8209;K FY2026, Manufacturing and Supply Chain</p>
+      </div>
+    </div>
+    <div>
+      <div class="nm">Stay asset&#8209;light<span>Stated manufacturing model</span></div>
+      <div>
+        <blockquote>&ldquo;We use contract manufacturers for the production of major subassemblies
+          and final system configuration. <b>This manufacturing strategy minimizes capital
+          investments and overhead expenditures while creating flexibility for rapid
+          expansion.</b>&rdquo;</blockquote>
+        <p class="src">Form 10&#8209;K FY2026, Manufacturing and Supply Chain</p>
+      </div>
+    </div>
+    <div>
+      <div class="nm">Protect gross margin<span>Named as a forward&#8209;looking objective</span></div>
+      <div>
+        <blockquote>&ldquo;<b>our ability to maintain our gross margins, including managing component
+          costs</b>&rdquo;</blockquote>
+        <p class="src">Form 10&#8209;K FY2026, forward&#8209;looking statements</p>
+      </div>
+    </div>
+    <div>
+      <div class="nm">Run on short lead times<span>Stated demand visibility</span></div>
+      <div>
+        <blockquote>&ldquo;Our business is characterized by seasonal and intra&#8209;quarter
+          variability in demand, as well as <b>short lead times and product delivery
+          schedules.</b> Accordingly, <b>backlog may vary materially quarter to quarter and at any
+          given time may not be a meaningful indicator of future revenue.</b>&rdquo;</blockquote>
+        <p class="src">Form 10&#8209;K FY2026, Backlog</p>
+      </div>
+    </div>
+    <div>
+      <div class="nm">Return cash to shareholders<span>Demonstrated use of capital</span></div>
+      <div>
+        <blockquote>&ldquo;On May 21, 2026 our Board of Directors authorized the repurchase of an
+          additional <b>$1.0 billion</b> of our common stock.&rdquo; In fiscal 2026 NetApp used
+          <b>$950 million</b> for share repurchases and <b>$413 million</b> for dividends, against
+          <b>$198 million</b> of purchases of property and equipment.</blockquote>
+        <p class="src">Form 10&#8209;K FY2026, Liquidity and Capital Resources</p>
+      </div>
+    </div>
+  </div>
+
+  <p>Two figures from the same filing set the price of capital for everything in section 06.</p>
+
+  <div class="strip">
+    <div><span class="v">~3%</span><span class="k">Pre&#8209;tax return on cash: $113m of interest income on about $3.6bn of cash and short&#8209;term investments</span></div>
+    <div><span class="v">$1.0bn</span><span class="k">Firm, non&#8209;cancelable, unconditional purchase commitments for inventory</span></div>
+    <div><span class="v">$25m</span><span class="k">Liability recorded for commitments in excess of demand forecast &mdash; 2.5% of that $1.0bn</span></div>
+    <div><span class="v">2.9%</span><span class="k">Capital expenditure as a share of revenue, which is what asset&#8209;light looks like</span></div>
+  </div>
+
+  <p class="small muted">All five from the FY2026 Form 10&#8209;K. The return on cash is our
+    arithmetic on two figures from it &mdash; interest income of $113m against the year&#8209;end
+    cash and short&#8209;term investments balance of about $3.6bn &mdash; so it is approximate, and
+    the true figure depends on the average balance through the year rather than the closing one.
+    The $25m excess&#8209;commitment liability is quoted as reported at 24 April 2026.</p>
+</section>
+
+<!-- ───────────────────────── 3 ───────────────────────── -->
+<section class="s">
+  <div class="hd"><span class="n">03</span><h2>Price or volume: what the makers disclosed themselves</h2></div>
+
+  <div class="card key">
+    <p class="lede"><b>Across the four memory makers' most recent reported quarters, essentially all
+      of the revenue increase came from price. Bit shipments were flat to low single digits.</b></p>
+    <p>This is not our calculation. Each maker discloses its own average selling price change and
+      its own bit shipment change every quarter, and each has reported the same shape. Set beside
+      their gross margins over the same quarters, it settles the question a cost&#8209;justification
+      letter asks you to treat as open.</p>
+  </div>
+
+  <div class="tw">
+    <table>
+      <caption>Each maker's own disclosed average selling price and bit shipment change, quarter on
+        quarter, beside its filed gross margin for the same quarter. &ldquo;Bits&rdquo; is the unit
+        memory is sold in &mdash; capacity shipped, independent of how many chips or modules that
+        took. Revenue is price multiplied by bits, so the two columns together say which one moved.
+        Gross margins are from filed quarterly statements; the ASP and bit figures are quoted from
+        the earnings call or presentation for that quarter.</caption>
+      <thead><tr>
+        <th>Maker</th><th>Quarter</th><th>Product</th>
+        <th class="n">Bit shipments Q/Q</th><th class="n">ASP Q/Q</th><th class="n">Gross margin</th>
+      </tr></thead>
+      <tbody>
+        <tr><th rowspan="2">Micron</th><td>FQ1&#8209;26</td><td>DRAM</td>
+          <td class="n">Up slightly</td><td class="n">+about 20%</td><td class="n">56.0%</td></tr>
+        <tr class="now"><td>FQ2&#8209;26</td><td>DRAM</td>
+          <td class="n">+mid&#8209;single digits</td><td class="n hi">+mid&#8209;60s%</td><td class="n">74.4%</td></tr>
+        <tr><th rowspan="2">SK Hynix</th><td>Q4&#8209;25</td><td>DRAM</td>
+          <td class="n">+low single digit</td><td class="n">+20%</td><td class="n">68.8%</td></tr>
+        <tr class="now"><td>Q1&#8209;26</td><td>DRAM</td>
+          <td class="n lo">Flat</td><td class="n hi">+mid&#8209;60%</td><td class="n">79.3%</td></tr>
+        <tr><th rowspan="2">Samsung</th><td>Q4&#8209;25</td><td>DRAM</td>
+          <td class="n">In line with guidance</td><td class="n">+about 40%</td><td class="n">&mdash;</td></tr>
+        <tr class="now"><td>Q1&#8209;26</td><td>DRAM</td>
+          <td class="n">&mdash;</td><td class="n hi">+low 90% range</td><td class="n">&mdash;</td></tr>
+        <tr class="now"><th>Kioxia</th><td>Q1&#8209;26</td><td>NAND</td>
+          <td class="n">+low single digit</td><td class="n hi">+70%</td><td class="n">78.1%</td></tr>
+        <tr><th>SK Hynix</th><td>Q1&#8209;26</td><td>NAND</td>
+          <td class="n lo">&minus;about 10%</td><td class="n hi">+mid&#8209;70%</td><td class="n">79.3%</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p class="small muted">Samsung reports memory within a group income statement and does not file a
+    memory&#8209;segment gross margin, so those two cells are left empty rather than filled with a
+    group figure that would describe a different business. SK Hynix's own presentation states a
+    higher absolute revenue for Q1&#8209;26 than the figure in our financial records, while the
+    growth rates agree; percentages and margins are therefore used throughout and absolute won
+    amounts are not.</p>
+
+  <h3>In their own words</h3>
+
+  <div class="qs">
+    <div class="q">
+      <blockquote>&ldquo;<b>B/G Flat QoQ &middot; ASP Mid&#8209;60% &uarr;QoQ</b>&rdquo; for DRAM,
+        and &ldquo;B/G Approx. 10% &darr; QoQ &middot; ASP Mid&#8209;70% &uarr; QoQ&rdquo; for NAND.
+        Operating margin &ldquo;72%, record high quarterly OPM&rdquo;.</blockquote>
+      <p class="src">SK Hynix Q1&#8209;26 earnings presentation, Revenue Analysis</p>
+      <p class="means">The clearest single disclosure in this report. <b>Flat bits, price up roughly
+        two thirds, and a record operating margin in the same quarter.</b> There is no volume
+        increase here for a cost argument to stand on, and no fixed&#8209;cost absorption to explain
+        the margin &mdash; nothing was absorbed, because nothing more was shipped.</p>
+    </div>
+
+    <div class="q">
+      <blockquote>&ldquo;Amid a sharp rise in market pricing and the effect of our improved product
+        portfolio following expanded server application sales, our <b>blended ASP rose by low 90%
+        range QoQ for DRAM</b>, high 80% QoQ for NAND.&rdquo;</blockquote>
+      <p class="src">Jaejune Kim, EVP of Memory, Samsung Electronics, Q1&#8209;26 earnings call</p>
+      <p class="means">Samsung attributes the increase to <b>market pricing and product mix</b>. Mix
+        is a legitimate reason for a blended average to move, and it is not a cost increase either.</p>
+    </div>
+
+    <div class="q">
+      <blockquote>&ldquo;<b>The selling price went up by 70%</b>, like for like blended ASP both
+        increased by 70%. The quarter&#8209;on&#8209;quarter shipment volume also increased the low
+        single digit.&rdquo; &mdash; and on the next quarter, &ldquo;<b>ASP accounts for 70% as a
+        driver.</b>&rdquo;</blockquote>
+      <p class="src">Yoshihiko Kawamura, CFO, Kioxia, Q1&#8209;26 earnings call</p>
+      <p class="means">Kioxia has quantified the split itself: <b>price is 70% of the revenue
+        driver, volume is low single digits.</b> Its gross margin in that quarter was 78.1%, against
+        43.3% for the full prior year.</p>
+    </div>
+
+    <div class="q">
+      <blockquote>DRAM FQ2&#8209;26: &ldquo;Revenue increased 74% Q/Q &middot; <b>Bit shipments up
+        mid&#8209;single digits Q/Q &middot; ASPs increased in mid&#8209;60s percentage
+        range</b>&rdquo;.</blockquote>
+      <p class="src">Micron FQ2&#8209;26 investor presentation, Performance by technology</p>
+      <p class="means">Same shape at Micron. <b>Revenue up 74%, bits up mid&#8209;single digits.</b>
+        Its filed gross margin moved from 44.7% in Q4&#8209;25 to 84.6% in Q3&#8209;26 across four
+        quarters.</p>
+    </div>
+
+    <div class="q">
+      <blockquote>&ldquo;Both of these trends to higher performance &mdash; as well as greenfield
+        investments that take time to ramp scale and are not as efficient &mdash; both of these are
+        going to be trends that we expect will actually <b>increase DRAM bit costs</b> here in the
+        near term.&rdquo;</blockquote>
+      <p class="src">Micron Q3&#8209;26 earnings call</p>
+      <p class="means">The counterweight, and it belongs here. <b>Micron is the one maker that has
+        said on the record that its own unit costs are rising</b>, because of performance mix and
+        the inefficiency of ramping new plants. That is a real cost argument and it should be
+        credited. It also has to be read against the line above it: in the quarter Micron's ASP rose
+        by the mid&#8209;60s percent, its bits rose by mid&#8209;single digits. <b>A rising bit cost
+        does not account for a margin that went from 44.7% to 84.6%.</b></p>
+    </div>
+  </div>
+
+  <div class="card gate">
+    <h3>What this does and does not prove</h3>
+    <p><b>It does settle the price&#8209;versus&#8209;volume question</b>, because the makers
+      disclose both numbers and the answer is not close. When bits are flat and price is up by two
+      thirds, revenue growth is price. That also removes the one objection that otherwise defeats a
+      margin&#8209;based argument &mdash; better fixed&#8209;cost absorption at higher volume &mdash;
+      because the volume is not there.</p>
+    <p><b>It does not prove any particular increase is unjustified.</b> Micron has stated its bit
+      costs are rising. A supplier may have higher input costs on a specific part, a mix shift, or a
+      contract basis that differs from its blended average. <b>Blended ASP across a whole product
+      line is not the price of your part</b>, and that gap is exactly what the ask in section 06
+      is for.</p>
+    <p>On reading the quarters as a direction of travel: each figure here is a disclosed quarterly
+      number with its quarter named, and the attribution of cause comes from the maker's own
+      sentence in that quarter rather than from anything we fitted. We are not projecting the next
+      one.</p>
+  </div>
+</section>
+
+<!-- ───────────────────────── 3 ───────────────────────── -->
+<section class="s">
+  <div class="hd"><span class="n">04</span><h2>What the five have in common, and where they part</h2></div>
+
+  <div class="card key">
+    <p class="lede"><b>As of their latest filed year, all five have moved supply onto binding,
+      multi&#8209;year, part&#8209;prepaid allocation, and three of the five are earning the best
+      gross margin in their own record. But only one of the five has a capital programme behind
+      it.</b></p>
+    <p>That last clause is the whole report. The five look alike from the outside and their cost
+      cases are not alike at all, and the difference is visible in filed figures they published
+      themselves.</p>
+  </div>
+
+  <div class="tw">
+    <table>
+      <caption>Latest filed fiscal year per supplier, set against that supplier's own
+        six&#8209;year range. Gross margin, operating margin and capital expenditure are reported as
+        percentages, and inventory as days, so the Korean&#8209; and Japanese&#8209;reporting
+        companies are comparable to the two dollar reporters with no exchange&#8209;rate assumption
+        entering any figure. Inventory days are closing inventories over cost of revenue,
+        annualised.</caption>
+      <thead><tr>
+        <th>Supplier</th><th class="n">Latest FY</th><th class="n">Gross margin</th>
+        <th class="n">Its own 6&#8209;yr low</th><th class="n">Its own 6&#8209;yr high</th>
+        <th class="n">Op margin</th><th class="n">Inv days</th><th class="n">Capex % rev</th>
+      </tr></thead>
+      <tbody>
+        <tr><th>Micron</th><td class="n">2025</td><td class="n">39.8%</td><td class="n lo">&minus;9.1% (2023)</td><td class="n">45.2% (2022)</td><td class="n">26.1%</td><td class="n">136</td><td class="n">42%</td></tr>
+        <tr><th>SK Hynix</th><td class="n">2025</td><td class="n hi">60.4%</td><td class="n lo">&minus;1.6% (2023)</td><td class="n">60.4% (2025)</td><td class="n hi">48.6%</td><td class="n">136</td><td class="n">28%</td></tr>
+        <tr><th>Samsung Electronics</th><td class="n">2025</td><td class="n">39.4%</td><td class="n">30.3% (2023)</td><td class="n">40.5% (2021)</td><td class="n">13.1%</td><td class="n">95</td><td class="n">14%</td></tr>
+        <tr><th>Kioxia</th><td class="n">2025</td><td class="n">43.3%</td><td class="n lo">&minus;12.0% (2023)</td><td class="n">43.3% (2025)</td><td class="n">37.2%</td><td class="n">114</td><td class="n">12%</td></tr>
+        <tr><th>Seagate</th><td class="n">2026</td><td class="n">45.6%</td><td class="n">18.3% (2023)</td><td class="n">45.6% (2026)</td><td class="n">33.6%</td><td class="n">86</td><td class="n">4.7%</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <ul>
+    <li><b>Reinvestment separates them, but it does not settle anything on its own.</b> Micron is
+      spending 42% of revenue on capital expenditure and SK Hynix 28%; Kioxia is at 12% against its
+      own 40% in 2022, and Seagate at 4.7%. That is a real difference in where the cash is going,
+      and <b>it raises the question rather than answering it</b> &mdash; capital spending is not
+      cost, and the paragraph below says why. Section 05 gives each supplier its own baseline so the
+      comparison is at least made against the right one.</li>
+    <li><b>Two of the five have conceded demand damage from their own prices.</b> SK Hynix and
+      Kioxia each said so independently, on dated calls, about PC and mobile. That is the most
+      useful material in the report and it came from the suppliers.</li>
+    <li><b>Why a 2023 figure appears in a 2026 report.</b> It is the only evidence that the current
+      level is a recovery rather than a norm: Micron's gross margin was &minus;9.1% that year,
+      Kioxia's &minus;12.0%, SK Hynix's &minus;1.6%. <b>Without it, SK Hynix's 60.4% reads as a
+      permanent state of affairs, which argues the supplier's case rather than the buyer's.</b> It
+      earns one column and one line per supplier and nothing more; everything else in section 05 is
+      the last two filed years.</li>
+    <li><b>What is not offered, and what is.</b> We do not reduce a supplier to a score or publish a
+      direction of travel in its numbers, because a trend needs each period compressed to one
+      comparable figure and that is the blended score this report refuses. <b>Section 07 is
+      different in kind:</b> it assembles the suppliers' own dated statements about their own plans
+      into one calendar. That is their schedule, not our projection.</li>
+  </ul>
+
+  <div class="card gate">
+    <h3>Why filed accounts cannot settle whether a price increase is justified</h3>
+
+    <p>It is tempting to read heavy capital spending as a legitimate cost case and light spending as
+      margin recovery. <b>That inference does not hold, and this report does not make it.</b></p>
+
+    <ul>
+      <li><b>Capital spending is not cost.</b> It never touches cost of goods sold; depreciation
+        does, and it follows the spending by years. Micron's $15.9bn in fiscal 2025 raises its
+        depreciation across the rest of the decade, not its cost this year &mdash; and Kioxia's 12%
+        today sits alongside depreciation from the 40% it spent in 2022, which is still running
+        through its accounts.</li>
+      <li><b>Light spending can mean the plant is already built.</b> The same low ratio supports the
+        opposite conclusion depending on where a supplier is in its own build cycle.</li>
+      <li><b>Memory and drive prices are set by supply and demand, not by cost.</b> Micron's gross
+        margin moved from &minus;9.1% to 45.2% without its cost base moving anything like that far.
+        For a commodity, &ldquo;the market cleared here&rdquo; is an honest answer rather than an
+        evasion, and a buyer who insists on a cost justification may get a worse answer than one who
+        negotiates on leverage.</li>
+      <li><b>Capital intensity tracks technology node and product mix.</b> NAND needs less capital
+        per bit than leading&#8209;edge DRAM or HBM, so the ratios partly measure what a supplier
+        makes rather than how it prices.</li>
+      <li><b>Rising gross margin would not prove price outran cost on its own.</b> It also results
+        from better fixed&#8209;cost absorption at higher volume, which Micron's own commentary calls
+        the primary lever on its margin. Separating the two needs bit shipments and average selling
+        price, which are <b>not in the filed annual accounts</b> &mdash; but the makers disclose both
+        every quarter on their calls, and section 03 uses what they have said. <b>That is why the
+        price&#8209;versus&#8209;volume question is settled in this report and the
+        cost&#8209;justification question is not.</b></li>
+      <li><b>Three of the five report in won or yen.</b> An increase quoted in dollars can be a flat
+        price in a supplier's own currency.</li>
+    </ul>
+
+    <p><b>What the filed accounts do establish, and what this report rests on instead:</b> none of
+      the five is loss&#8209;making, so any argument that an increase is needed for viability is
+      contradicted by their own statements. Everything beyond that comes from what management has
+      said about its own pricing &mdash; Seagate that it prices on value rather than cost, SK Hynix
+      that customers are &ldquo;prioritizing procurement over price&rdquo; &mdash; which are
+      admissions, not inferences of ours. The cost question itself is testable, and the test needs
+      unit cost data only the supplier holds. <b>Section 06
+      asks for it rather than scoring them on
+      capital spending.</b></p>
+  </div>
+</section>
+
+<!-- ───────────────────────── 3 ───────────────────────── -->
+<section class="s">
+  <div class="hd"><span class="n">05</span><h2>The five, one at a time</h2></div>
+
+  <p>Each profile holds that supplier's six filed years and that supplier's own words together.
+    Figures are from filed statements; quotes are verbatim from the quarter named beside them; and
+    the line marked as our reading is labelled as ours rather than presented as part of the quote.</p>
+
+  <!-- ─── MICRON ─── -->
+  <div class="prof">
+    <header>
+      <div class="row"><h3>Micron Technology</h3><span class="pill">DRAM and NAND</span><span class="pill">Reports in USD</span><span class="pill hi">The only published capital programme</span></div>
+      <p class="reads">Micron is the only one of the five <b>below its own peak gross margin while
+        spending at a record</b>, and the only one that has published a forward capital programme.
+        That does not make an increase justified &mdash; capital spending is not cost, as section 04
+        sets out &mdash; but it is the one supplier whose spending can be asked about with specifics,
+        and <b>the programme is aimed at HBM and leading&#8209;edge DRAM</b>, a different product
+        from the parts an enterprise storage line consumes.</p>
+    </header>
+
+    <div class="tw">
+      <table>
+        <caption>Micron Technology, the last two filed years, with 2023 shown for reference because it is the
+          only evidence that the current level is a recovery rather than a norm. Dollars in millions. Fiscal year ends in the preceding August or September.</caption>
+        <thead><tr><th class="n">FY</th><th class="n">Revenue</th><th class="n">Gross margin</th><th class="n">Op margin</th><th class="n">Inv days</th><th class="n">Capex</th><th class="n">Capex % rev</th></tr></thead>
+        <tbody>
+          <tr><th class="n">2024</th><td class="n">25,111</td><td class="n">22.4%</td><td class="n">5.2%</td><td class="n">166</td><td class="n">8,386</td><td class="n">33%</td></tr>
+          <tr class="now"><th class="n">2025</th><td class="n">37,378</td><td class="n">39.8%</td><td class="n">26.1%</td><td class="n">136</td><td class="n">15,857</td><td class="n">42%</td></tr>
+          <tr class="ref"><th class="n">2023<span>trough</span></th><td class="n">15,540</td><td class="n">&minus;9.1%</td><td class="n">&minus;37.0%</td><td class="n">181</td><td class="n">7,676</td><td class="n">49%</td></tr>
+        </tbody>
+      </table>
+    </div>
+        <p class="rng">Its own range across all 6 filed years: gross margin <b>&minus;9.1% (2023)</b> to <b>45.2% (2022)</b> &middot; capital expenditure <b>33% (2024)</b> to <b>49% (2023)</b> of revenue.</p>
+
+    <p class="sub">What its management has said</p>
+    <div class="qs">
+      <div class="q">
+        <blockquote>&ldquo;We expect fiscal 2026 CapEx to be above $25,000,000,000&hellip; We project
+          our fiscal 2027 CapEx to step up meaningfully to support HBM and DRAM&#8209;related
+          investments. We expect construction&#8209;related CapEx to increase by over
+          $10,000,000,000 year over year in fiscal 2027&hellip;&rdquo;</blockquote>
+        <p class="src">Micron Q2&#8209;26 earnings call</p>
+        <p class="means">Against the <span class="mono">$15,857m</span> it actually spent in FY2025,
+          the guided figure is a step up of roughly 60%. <b>That is a large commitment, and it
+          reaches cost through depreciation over years rather than through this year's price.</b> It
+          is also explicitly directed at HBM and leading&#8209;edge DRAM.</p>
+      </div>
+      <div class="q">
+        <blockquote>&ldquo;Those LTAs had no binding terms in them. It was more of a handshake, kind
+          of an understanding with customers about ensuring that there is good level of supply chain
+          planning that we do&hellip;&rdquo;</blockquote>
+        <p class="src">Micron Q3&#8209;26 earnings call</p>
+        <p class="means">Micron is drawing its own line between the agreements it used to sign and
+          the supply commitment agreements it signs now. <b>What is offered at renewal is a different
+          instrument, not a renewal of the same one.</b></p>
+      </div>
+      <div class="q">
+        <blockquote>&ldquo;These SCAs are meant to achieve the objectives for the customers in terms
+          of their ability to plan and be able to count on supply commitments that are in the
+          agreements, but also for us to be able to count on specific commitments that are there
+          from the customers.&rdquo;</blockquote>
+        <p class="src">Micron Q2&#8209;26 earnings call</p>
+        <p class="means">The obligation runs both ways. <b>A volume commitment a buyer cannot hit
+          becomes the buyer's exposure.</b></p>
+      </div>
+      <div class="q">
+        <blockquote>&ldquo;With all of the efforts that we are doing, we still don't have line of
+          sight as to when the supply is going to be able to meet demand, because demand continues
+          to escalate at a very rapid pace over time.&rdquo;</blockquote>
+        <p class="src">Micron Q3&#8209;26 earnings call</p>
+      </div>
+    </div>
+
+    <div class="close">
+      <h4>Where the argument is</h4>
+      <p>Not on capital spending, which is not cost. The argument is <b>which product the increase
+        is priced for</b>. Micron has tied its programme to HBM and leading&#8209;edge DRAM;
+        separate that from the parts actually being bought, and <b>ask for unit cost on the line
+        being quoted</b> &mdash; cost per bit or per module, for the specific part, in the quarter
+        cited. That is the only form of the cost question that can be answered.</p>
+    </div>
+  </div>
+
+  <!-- ─── SK HYNIX ─── -->
+  <div class="prof">
+    <header>
+      <div class="row"><h3>SK Hynix</h3><span class="pill">DRAM and NAND</span><span class="pill">Ratios only &mdash; reports in KRW</span><span class="pill ok">Said its own prices are hurting demand</span></div>
+      <p class="reads">The most profitable of the five by a wide margin: a <b>60.4% gross margin and
+        a 48.6% operating margin</b>, both its own six&#8209;year highs, recovered from an operating
+        loss of &minus;23.6% two years earlier. Capital spending at 28% of revenue sits in the
+        middle of its own range, not at the top of it.</p>
+    </header>
+
+    <div class="tw">
+      <table>
+        <caption>SK Hynix, the last two filed years, with 2023 shown for reference because it is the
+          only evidence that the current level is a recovery rather than a norm. Reported in Korean won, so shown as ratios and days only &mdash; no exchange&#8209;rate assumption enters any figure here.</caption>
+        <thead><tr><th class="n">FY</th><th class="n">Gross margin</th><th class="n">Op margin</th><th class="n">Inv days</th><th class="n">Capex % rev</th></tr></thead>
+        <tbody>
+          <tr><th class="n">2024</th><td class="n">48.1%</td><td class="n">35.5%</td><td class="n">141</td><td class="n">24%</td></tr>
+          <tr class="now"><th class="n">2025</th><td class="n">60.4%</td><td class="n">48.6%</td><td class="n">136</td><td class="n">28%</td></tr>
+          <tr class="ref"><th class="n">2023<span>trough</span></th><td class="n">&minus;1.6%</td><td class="n">&minus;23.6%</td><td class="n">148</td><td class="n">25%</td></tr>
+        </tbody>
+      </table>
+    </div>
+        <p class="rng">Its own range across all 6 filed years: gross margin <b>&minus;1.6% (2023)</b> to <b>60.4% (2025)</b> &middot; capital expenditure <b>24% (2024)</b> to <b>43% (2022)</b> of revenue.</p>
+
+    <p class="sub">What its management has said</p>
+    <div class="qs">
+      <div class="q">
+        <blockquote>&ldquo;In the PC and mobile markets, some signs of demand softening have
+          emerged, including adjustments in such shipments and changes in product portfolios due to
+          cost pressures stemming from higher memory prices.&rdquo;</blockquote>
+        <p class="src">SK Hynix Q1&#8209;26</p>
+        <p class="means">This is the most useful single sentence any of the five has said.
+          <b>SK Hynix's own management has conceded that higher memory prices are destroying demand
+          in two of its end markets.</b> The tight&#8209;supply account is not uniform across
+          segments, and the supplier said it first.</p>
+      </div>
+      <div class="q">
+        <blockquote>&ldquo;To date, we have concluded LTA negotiations with around 10 customers,
+          including our key customers&hellip; financial mechanisms such as deposits are incorporated
+          to support contract fulfillment and enhance the visibility and reliability of customers'
+          mid to long&#8209;term demand plans.&rdquo;</blockquote>
+        <p class="src">SK Hynix Q2&#8209;26 earnings call</p>
+        <p class="means">About ten customers are inside the structure and a cash deposit is part of
+          it. <b>Whether you are one of the ten decides whether this is an allocation conversation
+          or a pricing one.</b></p>
+      </div>
+      <div class="q">
+        <blockquote>&ldquo;we are pulling forward the mass production schedule for M15X and
+          proceeding with investments to rapidly expand production capacity following the clean room
+          opening of the Yongin Phase 1 in early 2027.&rdquo;</blockquote>
+        <p class="src">SK Hynix Q2&#8209;26 earnings call</p>
+        <p class="means">A dated capacity milestone, from the supplier. <b>Early 2027 is a date to
+          put a reopener against, rather than accept a term priced on today's balance.</b></p>
+      </div>
+      <div class="q">
+        <blockquote>&ldquo;As this supply demand imbalance persists, customers are prioritizing
+          procurement over price&hellip; Therefore, the favorable pricing environment is expected to
+          continue for the time being.&rdquo;</blockquote>
+        <p class="src">SK Hynix Q1&#8209;26</p>
+        <p class="means"><b>&ldquo;Customers are prioritizing procurement over price&rdquo; is a
+          statement about buyer behavior, not about cost.</b> Read next to the first quote in this
+          profile, it describes a supplier that knows its prices are too high somewhere and expects
+          to hold them anyway.</p>
+      </div>
+    </div>
+
+    <div class="close">
+      <h4>Where the argument is</h4>
+      <p>SK Hynix has the highest margins of the five and mid&#8209;range reinvestment, so a
+        cost&#8209;driven increase is the hardest to sustain here. <b>Its own two statements sit
+        against each other</b>: prices are softening demand in PC and mobile, and the pricing
+        environment is expected to stay favorable. Ask which of the two applies to enterprise, and
+        put the Yongin date in the contract.</p>
+    </div>
+  </div>
+
+  <!-- ─── SAMSUNG ─── -->
+  <div class="prof">
+    <header>
+      <div class="row"><h3>Samsung Electronics</h3><span class="pill">DRAM and NAND</span><span class="pill">Ratios only &mdash; reports in KRW</span><span class="pill">Has quantified what is already committed</span></div>
+      <p class="reads">The one supplier that has <b>put a number on how much of its capacity is
+        already spoken for</b>, which makes it the most useful of the five to ask structural
+        questions of. Its margins are the mildest of the group &mdash; a 30.3% floor rather than a
+        loss in 2023 &mdash; and group capital spending is at <b>14% of revenue, its lowest in the
+        six years shown</b>.</p>
+    </header>
+
+    <div class="tw">
+      <table>
+        <caption>Samsung Electronics, the last two filed years, with 2023 shown for reference because it is the
+          only evidence that the current level is a recovery rather than a norm. Reported in Korean won, so shown as ratios and days only. These are <b>group</b> figures covering businesses beyond memory, so the capital spending share is context rather than a reading of the memory division on its own.</caption>
+        <thead><tr><th class="n">FY</th><th class="n">Gross margin</th><th class="n">Op margin</th><th class="n">Inv days</th><th class="n">Capex % rev</th></tr></thead>
+        <tbody>
+          <tr><th class="n">2024</th><td class="n">38.0%</td><td class="n">10.9%</td><td class="n">101</td><td class="n">17%</td></tr>
+          <tr class="now"><th class="n">2025</th><td class="n">39.4%</td><td class="n">13.1%</td><td class="n">95</td><td class="n">14%</td></tr>
+          <tr class="ref"><th class="n">2023<span>trough</span></th><td class="n">30.3%</td><td class="n">2.5%</td><td class="n">104</td><td class="n">22%</td></tr>
+        </tbody>
+      </table>
+    </div>
+        <p class="rng">Its own range across all 6 filed years: gross margin <b>30.3% (2023)</b> to <b>40.5% (2021)</b> &middot; capital expenditure <b>14% (2025)</b> to <b>22% (2023)</b> of revenue.</p>
+
+    <p class="sub">What its management has said</p>
+    <div class="qs">
+      <div class="q">
+        <blockquote>&ldquo;DRAM and NAND supply volumes under multi&#8209;year supply contracts will
+          easily account for 60%&ndash;70% of our planned capacity based on our current mid to
+          long&#8209;term production plan.&rdquo;</blockquote>
+        <p class="src">Samsung Electronics Q2&#8209;26 earnings call</p>
+        <p class="means">Samsung has quantified what is committed. <b>A buyer outside those
+          contracts is negotiating over the remaining 30% to 40%, and that is the single most
+          important number to hold before opening.</b></p>
+      </div>
+      <div class="q">
+        <blockquote>&ldquo;To enhance the binding nature of multi&#8209;year supply commitments,
+          we've included substantial advance payments as a contractual requirement to be maintained
+          over the multi&#8209;year contract period. We've already received a significant portion of
+          these payments&hellip;&rdquo;</blockquote>
+        <p class="src">Samsung Electronics Q2&#8209;26 earnings call</p>
+        <p class="means">Advance payment is stated as a requirement, not an option. <b>It is a
+          working&#8209;capital cost and it belongs in the comparison whenever a prepaid allocation
+          is set against a higher unit price without one.</b></p>
+      </div>
+      <div class="q">
+        <blockquote>&ldquo;despite industry&#8209;wide increases in CapEx, considering the lead time
+          from new fab construction to actual wafer production, which exceeds three years, this
+          means that any meaningful increase in supply capacity will take considerable time. We
+          believe it will be unlikely to see any significant increase in incremental supply through
+          2028.&rdquo;</blockquote>
+        <p class="src">Samsung Electronics Q2&#8209;26 earnings call</p>
+        <p class="means">Samsung has dated its own view of when relief arrives. <b>It is a
+          supplier's statement in a market where it benefits from being believed &mdash; but it is
+          on the record, and it is the horizon any multi&#8209;year term should be judged
+          against.</b></p>
+      </div>
+      <div class="q">
+        <blockquote>&ldquo;In 2026, we anticipate a substantial year&#8209;on&#8209;year increase in
+          CapEx driven by sustained demand related to AI. We'll further expand preemptive R&amp;D
+          investments in next generation processes and core technologies&hellip;&rdquo;</blockquote>
+        <p class="src">Samsung Electronics Q1&#8209;26 earnings call</p>
+        <p class="means">The guided increase is attributed to <b>AI&#8209;related demand and
+          next&#8209;generation process work</b>, not to broad commodity capacity. That is the same
+          distinction as in the Micron profile, and it is the distinction to insist on.</p>
+      </div>
+    </div>
+
+    <div class="close">
+      <h4>Where the argument is</h4>
+      <p>Samsung is the most useful of the five to ask structural questions of, because it has
+        published the structure: 60&ndash;70% committed, prepayment required, no supply relief
+        before 2028. <b>Those three statements define the shape of any deal on offer</b>, and the
+        last one is a forecast from an interested party rather than a filed fact. Price the
+        prepayment, and get the 2028 claim written as a condition rather than accepted as context.</p>
+    </div>
+  </div>
+
+  <!-- ─── KIOXIA ─── -->
+  <div class="prof">
+    <header>
+      <div class="row"><h3>Kioxia Holdings</h3><span class="pill">NAND</span><span class="pill">Ratios only &mdash; reports in JPY</span><span class="pill ok">Least committed of the five</span></div>
+      <p class="reads">Kioxia is at its <b>best gross margin in six years, 43.3%</b>, with capital
+        spending at 12% of revenue against its own 40% in fiscal 2022. <b>Read that as a question,
+        not a verdict</b> &mdash; the 2022 plant is producing now and still depreciating, so low
+        spending today is as consistent with having already built as with harvesting. What is not
+        ambiguous is that it is <b>the least locked&#8209;up of the five by its own account</b>,
+        which makes it the one where volume is most available and terms least settled.</p>
+    </header>
+
+    <div class="tw">
+      <table>
+        <caption>Kioxia Holdings, the last two filed years, with 2023 shown for reference because it is the
+          only evidence that the current level is a recovery rather than a norm. Reported in Japanese yen, so shown as ratios and days only.</caption>
+        <thead><tr><th class="n">FY</th><th class="n">Gross margin</th><th class="n">Op margin</th><th class="n">Inv days</th><th class="n">Capex % rev</th></tr></thead>
+        <tbody>
+          <tr><th class="n">2024</th><td class="n">33.4%</td><td class="n">26.5%</td><td class="n">113</td><td class="n">13%</td></tr>
+          <tr class="now"><th class="n">2025</th><td class="n">43.3%</td><td class="n">37.2%</td><td class="n">114</td><td class="n">12%</td></tr>
+          <tr class="ref"><th class="n">2023<span>trough</span></th><td class="n">&minus;12.0%</td><td class="n">&minus;23.5%</td><td class="n">82</td><td class="n">28%</td></tr>
+        </tbody>
+      </table>
+    </div>
+        <p class="rng">Its own range across all 6 filed years: gross margin <b>&minus;12.0% (2023)</b> to <b>43.3% (2025)</b> &middot; capital expenditure <b>12% (2025)</b> to <b>40% (2022)</b> of revenue.</p>
+
+    <p class="sub">What its management has said</p>
+    <div class="qs">
+      <div class="q">
+        <blockquote>&ldquo;we plan to spend an average of JPY 470 billion annually on capital
+          expenditures from FY 2026 to FY 2028.&rdquo;</blockquote>
+        <p class="src">Kioxia Q1&#8209;26 earnings call</p>
+        <p class="means">A flat multi&#8209;year plan at a record margin. <b>It does not establish
+          that an increase is unjustified</b> &mdash; the depreciation from the 2022 build is still
+          in the accounts. It does mean there is <b>no new programme to point at</b>, so a
+          cost&#8209;driven increase here is the one most worth asking to see itemised.</p>
+      </div>
+      <div class="q">
+        <blockquote>&ldquo;we will have a long&#8209;term agreement that we will be signing in
+          calendar year 2028. Most, we would say 50% of our shipment will be covered by LTA if
+          things go well. This is what we are trying to aim for.&rdquo;</blockquote>
+        <p class="src">Kioxia Q1&#8209;26 earnings call</p>
+        <p class="means">Where Samsung is already at 60&ndash;70% committed, Kioxia is <b>aiming</b>
+          at 50% by 2028. <b>Of the five, this is where uncommitted volume actually exists.</b></p>
+      </div>
+      <div class="q">
+        <blockquote>&ldquo;The PC market is expected to see a decrease in shipments due to rising BOM
+          costs, leading to a slight decline in NAND demand compared to calendar year 2025.&rdquo;</blockquote>
+        <p class="src">Kioxia Q1&#8209;26 earnings call</p>
+        <p class="means">The same concession SK Hynix made, from a second supplier independently.
+          <b>Two of the five have said on the record that their own price increases are reducing
+          demand somewhere.</b></p>
+      </div>
+      <div class="q">
+        <blockquote>&ldquo;The biggest driver should be ASP up continuously from the first quarter.
+          It is expected that ASP will continuously grow.&rdquo;</blockquote>
+        <p class="src">Kioxia Q1&#8209;26 earnings call</p>
+      </div>
+      <div class="q">
+        <blockquote>&ldquo;We have agreed with Sandisk to extend the contract period of the joint
+          venture (JV) at the Yokkaichi Plant by five years, from the end of 2029 to the end of
+          2034.&rdquo;</blockquote>
+        <p class="src">Kioxia Q3 and Q4&#8209;25 earnings presentation</p>
+        <p class="means">Its largest manufacturing base is secured to 2034. <b>Continuity risk is
+          not the concern with Kioxia; price discipline is.</b></p>
+      </div>
+    </div>
+
+    <div class="close">
+      <h4>Where the argument is</h4>
+      <p>Availability, not cost. <b>Inventory near its own high, and half its shipments still
+        uncommitted on its own 2028 target</b> &mdash; if any of the five is worth approaching for
+        incremental volume on open terms, the filed record says it is this one. On price, ask for
+        unit cost; the capital figures raise the question and cannot close it.</p>
+    </div>
+  </div>
+
+  <!-- ─── SEAGATE ─── -->
+  <div class="prof">
+    <header>
+      <div class="row"><h3>Seagate Technology</h3><span class="pill">Nearline hard drives</span><span class="pill">Reports in USD</span><span class="pill ok">Says it prices on value, not cost</span></div>
+      <p class="reads">The most dramatic recovery of the five and the clearest statement of scarcity.
+        <b>Gross margin 45.6% against a prior six&#8209;year high of 29.7%</b>, operating margin
+        33.6% against a prior high of 16.8% &mdash; achieved on capital spending of 4.7% of revenue,
+        inside the 2.9% to 5.6% band it has run throughout. And it has told investors in plain terms
+        that its pricing is not cost&#8209;based.</p>
+    </header>
+
+    <div class="tw">
+      <table>
+        <caption>Seagate Technology, the last three filed years, with 2023 shown for reference because it is the
+          only evidence that the current level is a recovery rather than a norm. Dollars in millions. Fiscal year ends in June.</caption>
+        <thead><tr><th class="n">FY</th><th class="n">Revenue</th><th class="n">Gross margin</th><th class="n">Op margin</th><th class="n">Inv days</th><th class="n">Capex</th><th class="n">Capex % rev</th></tr></thead>
+        <tbody>
+          <tr><th class="n">2024</th><td class="n">6,551</td><td class="n">23.4%</td><td class="n">6.9%</td><td class="n">90</td><td class="n">254</td><td class="n">3.9%</td></tr>
+          <tr><th class="n">2025</th><td class="n">9,097</td><td class="n">35.2%</td><td class="n">20.8%</td><td class="n">89</td><td class="n">265</td><td class="n">2.9%</td></tr>
+          <tr class="now"><th class="n">2026</th><td class="n">12,195</td><td class="n">45.6%</td><td class="n">33.6%</td><td class="n">86</td><td class="n">569</td><td class="n">4.7%</td></tr>
+          <tr class="ref"><th class="n">2023<span>trough</span></th><td class="n">7,384</td><td class="n">18.3%</td><td class="n">&minus;4.6%</td><td class="n">69</td><td class="n">316</td><td class="n">4.3%</td></tr>
+        </tbody>
+      </table>
+    </div>
+        <p class="rng">Its own range across all 7 filed years: gross margin <b>18.3% (2023)</b> to <b>45.6% (2026)</b> &middot; capital expenditure <b>2.9% (2025)</b> to <b>5.6% (2020)</b> of revenue.</p>
+
+    <p class="sub">What its management has said</p>
+    <div class="qs">
+      <div class="q">
+        <blockquote>&ldquo;Our value&#8209;based pricing approach enables customers to plan with
+          confidence while contributing to sustained profit growth for Seagate&hellip;&rdquo;</blockquote>
+        <p class="src">Seagate Q3&#8209;26 earnings call</p>
+        <p class="means">Seagate has described its own pricing as value&#8209;based rather than
+          cost&#8209;plus. <b>A cost pass&#8209;through argument from Seagate is inconsistent with
+          the way Seagate tells its own investors it prices</b> &mdash; which is an admission rather
+          than an inference of ours, and it does not depend on reading anything into its capital
+          spending.</p>
+      </div>
+      <div class="q">
+        <blockquote>&ldquo;the vast majority of our nearline exabytes are now allocated into calendar
+          2028. Importantly, we are not seeing customers pull back on planning horizons. As our
+          strategic relationships deepen, many are actively seeking to extend planning horizons
+          through 2029 and beyond&rdquo;</blockquote>
+        <p class="src">Seagate Q4&#8209;26 earnings call</p>
+        <p class="means">One quarter earlier Seagate described nearline as &ldquo;almost fully
+          allocated through calendar 2027&rdquo;. <b>The horizon it describes moved out by a full
+          year between two consecutive calls &mdash; the strongest scarcity statement in this
+          report.</b></p>
+      </div>
+      <div class="q">
+        <blockquote>&ldquo;We remain disciplined in securing orders from these customers prior to
+          initiating drive production, with contracts that define both product configuration and
+          pricing terms, covering the entirety of calendar 2027.&rdquo;</blockquote>
+        <p class="src">Seagate Q4&#8209;26 earnings call</p>
+        <p class="means">Seagate does not build before it has the order and the price.
+          <b>Calendar 2027 volume is priced in contracts that already exist, so the live negotiation
+          is 2028 and beyond.</b></p>
+      </div>
+      <div class="q">
+        <blockquote>&ldquo;We believe these actions will enable us to deliver nearline exabyte growth
+          in the mid&#8209;20% range over the next few years.&rdquo;</blockquote>
+        <p class="src">Seagate Q4&#8209;26 earnings call</p>
+        <p class="means">Output growth is guided at the same time as near&#8209;full allocation,
+          which means <b>the incremental exabytes are most likely to go to customers who already
+          hold an agreement.</b></p>
+      </div>
+    </div>
+
+    <div class="close">
+      <h4>Where the argument is</h4>
+      <p>Scarcity here is real, and <b>Seagate has already told its investors it does not price on
+        cost</b>, so a cost audit is arguing a case it has declined to make. Argue instead on what a
+        committed multi&#8209;year planning horizon is worth to a supplier that has said it values
+        exactly that, and accept that the window being negotiated is 2028 onward.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ───────────────────────── 5 ───────────────────────── -->
+<section class="s">
+  <div class="hd"><span class="n">06</span><h2>Where the stated strategy and the available terms conflict</h2></div>
+
+  <p>This is the part neither filing contains. Section 02 is what NetApp has said it wants. Sections
+    04 and 05 are what its five suppliers have said they will offer. Read together, they do not
+    agree in six places.</p>
+
+  <p>Each conflict below puts the two statements side by side and names the gap. Under them is a
+    <b>viable path</b>, which is <b>our judgment and not a finding</b> &mdash; a recommendation does
+    not trace back to a quoted sentence the way a figure does, so every path shows the step it was
+    derived from and can be disagreed with on the merits. Two of the five end in a question we
+    cannot answer from public data, and those say so rather than guessing.</p>
+
+  <div class="tw">
+    <table>
+      <caption>The first five conflicts in one view; the sixth is set out below the table because it
+        is about how price is set rather than about a term. Every cell on both sides is quoted or calculated in
+        section 02 or section 05.</caption>
+      <thead><tr><th>NetApp has said</th><th>Its suppliers have said</th><th>The gap</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>&ldquo;multiple suppliers qualified&hellip; where possible&rdquo;</td>
+          <td>Samsung: 60&ndash;70% of capacity committed, prepayment required. SK Hynix: ~10 LTA customers, deposits. Micron: binding SCAs.</td>
+          <td>A second source now costs a deposit too, so multi&#8209;sourcing has a price it did not have before</td>
+        </tr>
+        <tr>
+          <td>&ldquo;minimizes capital investments&rdquo; &mdash; capex 2.9% of revenue</td>
+          <td>Advance payments are &ldquo;a contractual requirement to be maintained over the multi&#8209;year contract period&rdquo;</td>
+          <td>Prepaid allocation is capital in all but name</td>
+        </tr>
+        <tr>
+          <td>&ldquo;short lead times&hellip; backlog&hellip; may not be a meaningful indicator of future revenue&rdquo;</td>
+          <td>Seagate allocated into calendar 2028 and seeking 2029+. Samsung: no significant incremental supply through 2028.</td>
+          <td>Asked to commit volume two to three years out on roughly a quarter of demand visibility</td>
+        </tr>
+        <tr>
+          <td>$1.0bn non&#8209;cancelable inventory commitments, $25m provided against excess</td>
+          <td>SK Hynix and Kioxia each report their own prices softening demand in PC and mobile</td>
+          <td>Two suppliers have described the demand risk the provision is meant to cover</td>
+        </tr>
+        <tr>
+          <td>$1.363bn returned to shareholders in FY2026, $1.0bn more authorized May 2026</td>
+          <td>Prepayment is a precondition of allocation at Samsung and SK Hynix</td>
+          <td>Both claims land on the same cash</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ── 1 ── -->
+  <div class="cf">
+    <header><h3>1. Multi&#8209;sourcing is still possible, but it is no longer free</h3></header>
+    <div class="two">
+      <div class="side">
+        <p class="who">NetApp</p>
+        <blockquote>&ldquo;We strive to have multiple suppliers qualified to provide critical
+          components where possible&hellip; to mitigate our supply chain risk.&rdquo;</blockquote>
+        <p class="src">Form 10&#8209;K FY2026</p>
+      </div>
+      <div class="side them">
+        <p class="who">Samsung Electronics</p>
+        <blockquote>&ldquo;we are negotiating the contractual terms, giving priority to customers
+          willing to accept mutually binding contractual conditions and who can provide assurance
+          about committed demand.&rdquo;</blockquote>
+        <p class="src">Q2&#8209;26 earnings call</p>
+      </div>
+    </div>
+    <p class="gap">Qualifying a second supplier used to cost engineering time. Now each qualified
+      supplier also wants binding volume and, at Samsung and SK Hynix, cash. <b>Two qualified
+      sources means two sets of commitments covering demand that will only be filled once.</b></p>
+    <div class="path">
+      <h4>A viable path &mdash; our judgment</h4>
+      <p>Keep the multi&#8209;source objective but move it from <b>two suppliers per component</b> to
+        <b>one committed source plus one qualified and uncommitted source per technology</b>. Carry
+        the commitment where the price of commitment is lowest, and hold the uncommitted leg
+        wherever a supplier still has open volume.</p>
+      <p>On the filed record, <b>the uncommitted leg in NAND is Kioxia.</b> It is targeting only 50%
+        of shipments under long&#8209;term agreement by 2028, where Samsung is already at 60&ndash;70%
+        of capacity committed. That is an availability argument and it stands on its own; we are not
+        resting it on Kioxia's capital spending, which section 04
+        explains cannot settle a pricing
+        question either way.</p>
+      <p class="derv"><b>Derived from:</b> NetApp's stated multi&#8209;source objective, plus
+        Kioxia's own 50%&#8209;by&#8209;2028 target and Samsung's own 60&ndash;70% figure, plus the
+        capital&#8209;spending comparison in Kioxia's profile. <b>What we do not know:</b> whether
+        Kioxia is qualified on the parts in question, or can be. That is an engineering answer, not
+        a filings one.</p>
+    </div>
+    <div class="ask"><b>Ask the committed supplier</b>If you are asking for binding volume and a
+      deposit, you are asking us to stop dual&#8209;sourcing this part. Price that. What does the
+      single&#8209;source version cost against the dual&#8209;source version, on the same volume?</div>
+  </div>
+
+  <!-- ── 2 ── -->
+  <div class="cf">
+    <header><h3>2. Whether to prepay is arithmetic, not a judgment call</h3></header>
+    <div class="two">
+      <div class="side">
+        <p class="who">NetApp</p>
+        <blockquote>&ldquo;This manufacturing strategy minimizes capital investments and overhead
+          expenditures while creating flexibility for rapid expansion.&rdquo; Interest income of
+          $113m on about $3.6bn of cash and short&#8209;term investments.</blockquote>
+        <p class="src">Form 10&#8209;K FY2026</p>
+      </div>
+      <div class="side them">
+        <p class="who">Samsung Electronics</p>
+        <blockquote>&ldquo;we've included substantial advance payments as a contractual requirement
+          to be maintained over the multi&#8209;year contract period. We've already received a
+          significant portion of these payments&hellip;&rdquo;</blockquote>
+        <p class="src">Q2&#8209;26 earnings call</p>
+      </div>
+    </div>
+    <p class="gap">An advance payment held for the life of a multi&#8209;year contract is capital
+      tied up in a supplier's balance sheet. <b>That is the opposite of the asset&#8209;light model
+      NetApp has described to its investors</b> &mdash; and unlike a fab, it buys no asset.</p>
+    <div class="path">
+      <h4>A viable path &mdash; our judgment</h4>
+      <p>Stop treating this as a strategic question and price it. <b>NetApp earns about 3% pre&#8209;tax
+        on its cash.</b> So a prepayment is worth making only if the discount it secures, or the
+        price increase it avoids, exceeds roughly 3% a year over the period the cash is held &mdash;
+        before any allowance for the risk that the committed volume is not needed.</p>
+      <p>That single test converts &ldquo;should we prepay for allocation?&rdquo; into a number a
+        supplier can be asked to beat. <b>Below the threshold, the asset&#8209;light objective and
+        the economics agree and the answer is no.</b> Above it, prepaying is consistent with
+        protecting gross margin, which section 02 shows NetApp names as an objective in its own
+        right.</p>
+      <p class="derv"><b>Derived from:</b> two figures in NetApp's own filing &mdash; interest income
+        of $113m and the $3.6bn cash and short&#8209;term investments balance &mdash; set against
+        Samsung's stated prepayment requirement. <b>Where it is approximate:</b> the yield uses the
+        closing balance, not the average through the year, and a company may reasonably use its
+        weighted cost of capital instead of its cash yield, which would raise the threshold rather
+        than lower it.</p>
+    </div>
+    <div class="ask"><b>Ask</b>Price the same volume two ways &mdash; with the advance payment and
+      without it. We will compare them on total cost including our own cost of that cash, and we
+      will tell you the threshold the discount has to clear.</div>
+  </div>
+
+  <!-- ── 3 ── -->
+  <div class="cf">
+    <header><h3>3. The commitment horizon is longer than the demand visibility</h3></header>
+    <div class="two">
+      <div class="side">
+        <p class="who">NetApp</p>
+        <blockquote>&ldquo;Our business is characterized by&hellip; short lead times and product
+          delivery schedules. Accordingly, backlog may vary materially quarter to quarter and at any
+          given time may not be a meaningful indicator of future revenue.&rdquo;</blockquote>
+        <p class="src">Form 10&#8209;K FY2026, Backlog</p>
+      </div>
+      <div class="side them">
+        <p class="who">Seagate</p>
+        <blockquote>&ldquo;the vast majority of our nearline exabytes are now allocated into calendar
+          2028&hellip; many are actively seeking to extend planning horizons through 2029 and
+          beyond&rdquo;</blockquote>
+        <p class="src">Q4&#8209;26 earnings call</p>
+      </div>
+    </div>
+    <p class="gap">This is the structural conflict and it is the one worth taking to a board.
+      <b>NetApp has told the market its own order book is not a meaningful indicator of future
+      revenue, and its suppliers are asking it to commit quantities two and three years out.</b>
+      Nothing in NetApp's filing supports a demand forecast of that length.</p>
+    <div class="path">
+      <h4>A viable path &mdash; our judgment</h4>
+      <p>Commit to <b>capacity</b> rather than to <b>quantity</b>. Pay to reserve a defined share of
+        a supplier's output over the term, with the quantity drawn against it set quarterly inside a
+        band. The supplier gets the planning visibility it says it is buying; NetApp does not sign a
+        number it has told its own investors it cannot forecast.</p>
+      <p>The suppliers' own words suggest visibility, not volume, is what they are after. Micron
+        says its agreements exist so that both sides &ldquo;can count on&rdquo; what is in them, and
+        Samsung asks for &ldquo;assurance about committed demand&rdquo;. <b>A reserved share with a
+        quarterly draw provides that assurance. Whether any of the five will write it that way, we
+        do not know</b> &mdash; nothing in their public statements says they have.</p>
+      <p class="derv"><b>Derived from:</b> NetApp's own backlog disclosure set against Seagate's
+        2028 allocation horizon and Samsung's through&#8209;2028 statement, plus Micron's and
+        Samsung's descriptions of what their agreements are for. <b>What we do not know:</b> whether
+        a share&#8209;of&#8209;output structure is on offer from any of them. Treat this as the
+        position to open from, not a term we have seen agreed.</p>
+    </div>
+    <div class="ask"><b>Ask</b>We cannot forecast quantity three years out and our own filings say
+      so. We can commit to a share of your output across the term. Will you price a reserved share
+      with a quarterly draw inside an agreed band, instead of a fixed quantity?</div>
+  </div>
+
+  <!-- ── 4 ── -->
+  <div class="cf">
+    <header><h3>4. Two suppliers have described the risk the $25m provision is covering</h3></header>
+    <div class="two">
+      <div class="side">
+        <p class="who">NetApp</p>
+        <blockquote>&ldquo;we had <b>$1.0 billion</b> in non&#8209;cancelable purchase commitments for
+          inventory&hellip; We record a liability for firm, non&#8209;cancelable and unconditional
+          purchase commitments for quantities in excess of our future demand forecasts&hellip; such
+          liability amounted to <b>$25 million</b>.&rdquo;</blockquote>
+        <p class="src">Form 10&#8209;K FY2026, Commitments and Contingencies</p>
+      </div>
+      <div class="side them">
+        <p class="who">SK Hynix &middot; Kioxia</p>
+        <blockquote>&ldquo;demand softening have emerged&hellip; due to cost pressures stemming from
+          higher memory prices.&rdquo; &mdash; &ldquo;The PC market is expected to see a decrease in
+          shipments due to rising BOM costs, leading to a slight decline in NAND demand&hellip;&rdquo;</blockquote>
+        <p class="src">SK Hynix Q1&#8209;26 &middot; Kioxia Q1&#8209;26</p>
+      </div>
+    </div>
+    <p class="gap">The provision is <b>2.5% of the non&#8209;cancelable book</b>, and it is set
+      against NetApp's own demand forecast. Two of its suppliers have independently said on the
+      record that the current price level is reducing end demand in their own markets. <b>Those two
+      facts belong in the same conversation and they are currently in two different documents.</b></p>
+    <div class="path">
+      <h4>A viable path &mdash; our judgment, and the limit of it</h4>
+      <p>The useful question is not whether $25m is enough. It is <b>at what level of demand decline
+        the provision stops being enough</b>, and then whether the non&#8209;cancelable book should
+        be shorter rather than better provided for.</p>
+      <p><b>We cannot answer that and will not estimate it.</b> It needs NetApp's own demand forecast
+        and the maturity profile of the $1.0bn, neither of which is public &mdash; the filing gives
+        the total and the FY2027 split, not the detail. What the public record does establish is that
+        the risk is not hypothetical, because two of the five suppliers have named it themselves.</p>
+      <p class="derv"><b>Derived from:</b> the $1.0bn and $25m figures as reported, plus the SK Hynix
+        and Kioxia demand statements. <b>What would answer it:</b> the commitment maturity schedule
+        and the demand forecast the provision is calculated against. That is an internal exercise,
+        and it is the right one to run before the next commitment is signed rather than after.</p>
+    </div>
+    <div class="ask"><b>Ask internally, not of the supplier</b>At what decline in product demand does
+      the excess&#8209;commitment liability need to double? Run it against the maturity profile of
+      the $1.0bn, not against the annual total.</div>
+  </div>
+
+  <!-- ── 5 ── -->
+  <div class="cf">
+    <header><h3>5. Prepayment and the buyback are claims on the same cash</h3></header>
+    <div class="two">
+      <div class="side">
+        <p class="who">NetApp</p>
+        <blockquote>$950m of share repurchases and $413m of dividends in fiscal 2026, against $198m
+          of property and equipment. &ldquo;On May 21, 2026 our Board of Directors authorized the
+          repurchase of an additional $1.0 billion of our common stock.&rdquo;</blockquote>
+        <p class="src">Form 10&#8209;K FY2026, Liquidity and Capital Resources</p>
+      </div>
+      <div class="side them">
+        <p class="who">SK Hynix</p>
+        <blockquote>&ldquo;financial mechanisms such as deposits are incorporated to support contract
+          fulfillment and enhance the visibility and reliability of customers' mid to long&#8209;term
+          demand plans.&rdquo;</blockquote>
+        <p class="src">Q2&#8209;26 earnings call</p>
+      </div>
+    </div>
+    <p class="gap">NetApp returned <b>$1.363bn</b> to shareholders in fiscal 2026 and authorized
+      <b>$1.0bn</b> more in May 2026, against <b>$3.6bn</b> of cash and short&#8209;term investments.
+      <b>A supplier deposit of any size competes with a commitment the board has already made.</b>
+      That makes allocation prepayment a capital allocation decision, not a procurement one.</p>
+    <div class="path">
+      <h4>A viable path &mdash; our judgment, and the limit of it</h4>
+      <p>Take the prepayment to whoever owns the buyback, with the threshold from conflict 2
+        attached, and <b>decide it once as a capital question with a ceiling</b> rather than deal by
+        deal in a negotiation. A procurement team asked to agree a deposit under allocation pressure
+        is not the right place for that decision to be made by default.</p>
+      <p><b>Which use of the cash is worth more, we cannot say.</b> Comparing a prepayment discount
+        against a share repurchase requires a view on NetApp's own share price, and that is not a
+        question public filings answer or one we would offer a number on.</p>
+      <p class="derv"><b>Derived from:</b> the fiscal 2026 capital returns and the May 2026
+        authorization as reported, plus SK Hynix's and Samsung's stated deposit and prepayment
+        requirements. <b>What we are not doing:</b> recommending one use of capital over the other.
+        The finding is that they are the same pool and are currently being decided in two different
+        rooms.</p>
+    </div>
+    <div class="ask"><b>Ask internally</b>What is the ceiling on supplier prepayment for the year, who
+      approves it, and does it come out of the buyback envelope or sit beside it?</div>
+  </div>
+
+  <!-- ── 6 ── -->
+  <div class="cf">
+    <header><h3>6. NetApp is asked to manage component cost against suppliers who do not price on cost</h3></header>
+    <div class="two">
+      <div class="side">
+        <p class="who">NetApp</p>
+        <blockquote>&ldquo;our ability to maintain our gross margins, <b>including managing component
+          costs</b>&rdquo; &mdash; named as a forward&#8209;looking objective in its own
+          right.</blockquote>
+        <p class="src">Form 10&#8209;K FY2026, forward&#8209;looking statements</p>
+      </div>
+      <div class="side them">
+        <p class="who">Seagate &middot; SK Hynix</p>
+        <blockquote>&ldquo;Our <b>value&#8209;based pricing</b> approach&hellip;&rdquo; &mdash;
+          &ldquo;customers are <b>prioritizing procurement over price</b>&hellip; the favorable
+          pricing environment is expected to continue for the time being.&rdquo;</blockquote>
+        <p class="src">Seagate Q3&#8209;26 &middot; SK Hynix Q1&#8209;26</p>
+      </div>
+    </div>
+    <p class="gap">NetApp has told the market it will manage component cost. <b>Two of its five
+      suppliers have told their own markets that cost is not what sets their price.</b> A
+      negotiation run as a cost audit against a supplier that prices on value and scarcity is
+      arguing a case the other side has already declined to make.</p>
+    <div class="path">
+      <h4>A viable path &mdash; our judgment</h4>
+      <p>Put the cost question once, in the only form that can be answered, and treat the answer as
+        the fork. <b>Ask for cost per bit or per module on the specific part in the quarter cited.</b>
+        A supplier that supplies it has made a cost claim that can be checked. A supplier that
+        declines has told you it is a price decision, and the negotiation should move to leverage:
+        volume, planning horizon, prepayment, and term.</p>
+      <p>Section 04 explains why we do not run this test from public accounts ourselves. Capital
+        spending is not cost, gross margin expands on volume absorption as readily as on price, and
+        separating the two requires bit shipments and average selling price that are not disclosed.
+        <b>The question is sound; only the supplier holds the data that answers it.</b></p>
+      <p class="derv"><b>Derived from:</b> NetApp's own stated objective on component cost, set
+        against Seagate's and SK Hynix's own descriptions of how they price. <b>What we do not
+        know:</b> whether any of the five will provide unit cost. None has offered it publicly, so
+        treat a refusal as information rather than as a failed request.</p>
+    </div>
+    <div class="ask"><b>Ask</b>If this increase is a cost pass&#8209;through, give us cost per bit or
+      per module for this part in the quarter you have cited, and we will check it against your
+      filed accounts. If you would rather not, then this is a price decision rather than a cost one
+      &mdash; say so, and we will negotiate on what our volume and our planning horizon are worth to
+      you.</div>
+  </div>
+
+  <div class="card key">
+    <p class="lede">Four of these six have a path we would act on. <b>Two end in a question that
+      needs data we do not have &mdash; NetApp's own demand forecast, and unit cost that only the
+      supplier holds &mdash; and we have said so rather than filling the gap.</b></p>
+    <p>That is deliberate. A supplier picture built from public filings can tell you what to ask for
+      and what a claim is worth. It cannot tell you what your own demand forecast will bear, and it
+      cannot separate a cost increase from margin recovery without unit data nobody publishes. A
+      report that pretends otherwise is worth less than one that marks the line.</p>
+  </div>
+</section>
+
+<!-- ───────────────────────── 6 ───────────────────────── -->
+<section class="s">
+  <div class="hd"><span class="n">07</span><h2>What lands in 2027</h2></div>
+
+  <div class="card key">
+    <p class="lede"><b>Calendar and fiscal 2027 is the year in which NetApp's largest commitment
+      tranche falls due, Seagate's pricing is already fixed and cannot be reopened, SK Hynix's new
+      capacity has only just begun to open, and Samsung says relief still has not arrived.</b></p>
+    <p>The year of least room coincides with the year of largest cash commitment. That is the thing
+      worth preparing for now, and it is the one place in this report where the right answer is to
+      act before the quarter rather than after it.</p>
+  </div>
+
+  <p>Nothing in this section is our forecast. <b>Every row below is a dated statement made by a
+    named party about its own plans</b> &mdash; the suppliers' published schedule read next to
+    NetApp's own commitment maturity. We do not predict prices, and this is not a prediction; it is
+    a calendar that already exists in six separate documents and has not been assembled in one
+    place.</p>
+
+  <div class="tl">
+    <div class="buyer-row">
+      <div><p class="when">FY2027</p><p class="who">NetApp</p></div>
+      <div class="what"><b>$1.1bn of its $1.4bn of off&#8209;balance&#8209;sheet purchase commitments
+        falls due</b>, the largest single&#8209;year tranche, against about $1.27bn of annual
+        materials spend. Of the total, $1.0bn is firm, non&#8209;cancelable and unconditional.
+        <span class="src">Form 10&#8209;K FY2026, Liquidity and Capital Resources; Note 16</span></div>
+    </div>
+    <div>
+      <div><p class="when">Already set</p><p class="who">Seagate</p></div>
+      <div class="what">Contracts &ldquo;define both product configuration and pricing terms,
+        <b>covering the entirety of calendar 2027</b>&rdquo;. Nearline is allocated into calendar
+        2028, extended from &ldquo;almost fully allocated through calendar 2027&rdquo; one quarter
+        earlier.
+        <span class="src">Seagate Q4&#8209;26 and Q3&#8209;26 earnings calls</span></div>
+    </div>
+    <div>
+      <div><p class="when">Early 2027</p><p class="who">SK Hynix</p></div>
+      <div class="what">Capacity expansion follows &ldquo;the <b>clean room opening of the Yongin
+        Phase 1 in early 2027</b>&rdquo;, with the M15X schedule pulled forward. A clean room
+        opening is the start of a ramp, not the arrival of output.
+        <span class="src">SK Hynix Q2&#8209;26 earnings call</span></div>
+    </div>
+    <div>
+      <div><p class="when">FY2027</p><p class="who">Micron</p></div>
+      <div class="what">Capital expenditure to &ldquo;step up meaningfully&rdquo;, with
+        <b>construction&#8209;related spending up over $10bn year on year</b>, directed at HBM and
+        DRAM. Against $15.9bn actually spent in FY2025, this is the one supplier whose cost case has
+        a published programme behind it.
+        <span class="src">Micron Q2&#8209;26 earnings call</span></div>
+    </div>
+    <div>
+      <div><p class="when">Late 2027</p><p class="who">Seagate</p></div>
+      <div class="what">Mozaic 5, the 5&#8209;plus terabyte&#8209;per&#8209;disk platform, is
+        &ldquo;on track for <b>qualification shipments in late calendar 2027</b>&rdquo;. A platform
+        transition narrows what is available at lower capacity points while it is under way.
+        <span class="src">Seagate Q4&#8209;26 earnings call</span></div>
+    </div>
+    <div>
+      <div><p class="when">2028</p><p class="who">Kioxia</p></div>
+      <div class="what">A long&#8209;term agreement to be signed in <b>calendar 2028</b>, targeting
+        50% of shipments under agreement. Until then Kioxia is the least committed of the five, and
+        2027 is the window in which that is still true.
+        <span class="src">Kioxia Q1&#8209;26 earnings call</span></div>
+    </div>
+    <div>
+      <div><p class="when">Through 2028</p><p class="who">Samsung</p></div>
+      <div class="what">&ldquo;we believe it will be <b>unlikely to see any significant increase in
+        incremental supply through 2028</b>&rdquo;, because fab construction to wafer production
+        &ldquo;exceeds three years&rdquo;. This one is a supplier's forecast rather than a filed
+        fact, and it is marked as such wherever it appears in this report.
+        <span class="src">Samsung Electronics Q2&#8209;26 earnings call</span></div>
+    </div>
+  </div>
+
+  <h3>What the calendar implies, and what it does not</h3>
+
+  <p>Three things follow from the rows above without any assumption added.</p>
+
+  <ul>
+    <li><b>2027 drive pricing is not negotiable and 2027 drive volume largely is not either.</b>
+      Seagate has said both. Any effort spent on calendar 2027 nearline price is spent against
+      contracts that already exist; the live window is 2028, and Seagate's customers are reportedly
+      already asking for 2029.</li>
+    <li><b>The earliest dated capacity event is a clean room opening in early 2027.</b> On SK
+      Hynix's own account that is when expansion begins, not when supply arrives &mdash; and
+      Samsung puts fab&#8209;to&#8209;wafer lead time above three years. So the supply side of 2027
+      is, by the suppliers' own statements, no better than 2026.</li>
+    <li><b>NetApp's commitment maturity is concentrated in exactly that year.</b> $1.1bn due in
+      FY2027, $1.0bn of it non&#8209;cancelable, with $25m provided against excess. The buyer's
+      obligation peaks in the year the suppliers describe as still tight.</li>
+  </ul>
+
+  <p>What does <b>not</b> follow, and is not claimed anywhere here: that prices will rise in 2027,
+    that any supplier will miss its schedule, or that a shortage is coming. <b>Those are forecasts
+    and we do not make them.</b> The calendar says where the room is and is not; what happens inside
+    it depends on demand, which section 08
+    explains we cannot see.</p>
+
+  <div class="card gate">
+    <h3>The one thing worth doing before FY2027 begins</h3>
+    <p>Of the six conflicts in section 06, <b>three have a window that closes</b>. Kioxia's
+      uncommitted volume is uncommitted until its 2028 agreement. Seagate's negotiable period is
+      2028 onward, which means the conversation happens in 2027. And the share&#8209;of&#8209;output
+      structure in conflict 3 has to be agreed before a quantity is signed, not after.</p>
+    <p>None of that requires a forecast. It requires acting on a calendar the suppliers have
+      published themselves.</p>
+  </div>
+</section>
+
+<!-- ───────────────────────── 5 ───────────────────────── -->
+<section class="s">
+  <div class="hd"><span class="n">08</span><h2>What we are withholding, and why</h2></div>
+
+  <div class="card gate">
+    <p>Our cost model splits a supplier's cost base into a fixed part and a part that moves with
+      revenue, and reports what a volume change does to it. <b>We do not run it for any of these
+      five, and that is a deliberate exclusion rather than a gap.</b></p>
+    <p>The reason is in the Micron table in section 05. For a memory or drive supplier, revenue is
+      price multiplied by volume, and the two move independently &mdash; Micron's revenue went
+      $30.8bn, then $15.5bn, then $37.4bn in three years, with gross margin between &minus;9.1% and
+      45.2%. A revenue change cannot stand in for a volume change in that data, so a model built on
+      revenue would return a fixed&#8209;cost share that reads precisely and means nothing.</p>
+    <p>Their <b>filed figures</b> are a different matter and are used freely throughout this report.
+      A fact and an inference get different treatment. A model that declines to answer where the
+      data will not carry a number is worth more than one that fills the gap.</p>
+  </div>
+
+  <p>The same rule explains two other absences. There is <b>no price forecast</b> anywhere in this
+    report, and <b>no single score</b> per supplier &mdash; a blended rating hides which dimension
+    moved, and one we built came out flattering for every supplier at once because it was measuring
+    how confidently management speaks rather than the business.</p>
+
+  <h3>What this report cannot answer, and what would answer it</h3>
+
+  <p>Public filings establish what a supplier's position is and what its claims are worth. They do
+    not reach inside the buyer. These four questions came up in section 06
+    and are marked there as
+    unanswered:</p>
+
+  <div class="tw">
+    <table>
+      <caption>Every one of these is answerable, but not from public data. Three of the four need
+        one internal input each.</caption>
+      <thead><tr><th>Question</th><th>What would answer it</th></tr></thead>
+      <tbody>
+        <tr><td>At what demand decline does the $25m excess&#8209;commitment liability stop being
+          enough?</td><td>The maturity profile of the $1.0bn non&#8209;cancelable book, and the
+          demand forecast the provision is calculated against</td></tr>
+        <tr><td>Can Kioxia be the uncommitted source on the parts in question?</td><td>Current
+          qualification status by part &mdash; an engineering answer, not a filings one</td></tr>
+        <tr><td>Is a prepayment better than the authorized buyback?</td><td>A view on NetApp's own
+          share price, which is not a question we would put a number on</td></tr>
+        <tr><td>Is the increase on a specific letter supported by that supplier's cost
+          position?</td><td>The letter. We check it against six filed years for that supplier and
+          its own statements in the quarter it cites</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>The last of those is the one worth sending us. It is a single document and the answer is
+    checkable.</p>
+</section>
+
+<!-- ───────────────────────── 6 ───────────────────────── -->
+<section class="s">
+  <div class="hd"><span class="n">09</span><h2>How to check every figure</h2></div>
+
+  <p>Nothing here is proprietary data. It is public disclosure, read carefully and assembled from the
+    buyer's side. Every number can be traced back.</p>
+
+  <div class="tw">
+    <table>
+      <caption>Where each part of this report comes from. Percentages and days are our arithmetic on
+        filed statements, and the formula is given wherever a derived figure appears.</caption>
+      <thead><tr><th>Part</th><th>Source</th></tr></thead>
+      <tbody>
+        <tr><th>Supplier annual figures</th><td>Read from six filed fiscal years each for Micron,
+          SK Hynix, Samsung Electronics and Kioxia, and seven for Seagate whose fiscal 2026 is
+          already filed. <b>The profiles in section 05 show the most recent two, plus 2023 as a
+          reference row and the full range as one line</b>, so every comparison keeps its baseline
+          without four years of history in the table. Revenue, gross profit, operating income,
+          inventories, cost of revenue and capital expenditure, as filed.</td></tr>
+        <tr><th>The 2027 calendar</th><td>Section 07 contains no source of its own. Each row is a
+          dated statement by the named party about its own plans, cited in the row, plus NetApp's
+          commitment maturity from its own Form 10&#8209;K.</td></tr>
+        <tr><th>Supplier quotes</th><td>Earnings calls and earnings presentations for the quarters
+          named beside each quote. Each quote was verified against its source document before it was
+          stored, and a quote that failed verification is not shown.</td></tr>
+        <tr><th>Derived figures</th><td>Inventory days are closing inventories over cost of revenue,
+          annualised. Capital expenditure share is capital expenditure over revenue. Gross and
+          operating margin are over revenue. Each is stated where it is used.</td></tr>
+        <tr><th>Currency</th><td>Micron and Seagate report in US dollars and are shown in dollars.
+          SK Hynix, Samsung and Kioxia report in won and yen and are shown <b>only</b> as ratios and
+          days, so no exchange&#8209;rate assumption enters any figure in this report.</td></tr>
+        <tr><th>NetApp's objectives, capital position and commitments</th><td>NetApp, Inc. Form
+          10&#8209;K for the fiscal year ended 24 April 2026, filed with the SEC on 5 June 2026.
+          CIK 0001002047, accession 0001193125&#8209;26&#8209;259683. Sections quoted: Manufacturing
+          and Supply Chain, Backlog, forward&#8209;looking statements, Liquidity and Capital
+          Resources, and Note 16 Commitments and Contingencies.</td></tr>
+        <tr><th>The conflicts in section 06</th><td>Not from any single source &mdash; each is one
+          quoted NetApp statement set against one quoted supplier statement, both cited in place.
+          The <b>paths</b> under them are our judgment, not findings, and each shows what it was
+          derived from and where it stops.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p class="small muted">One disclosure about our own coverage. The quotes in section 05 come from
+    our reading of earnings calls and presentations for the quarters named. That reading is not a
+    complete transcript archive for all five suppliers, so the absence of a quote on a given topic
+    means we have not recorded one &mdash; never that the supplier has not addressed it. Where this
+    report asserts something, a verified quote or a filed figure supports it.</p>
+</section>
+
+<!-- ───────────────────────── ask ───────────────────────── -->
+<section class="ask-cta">
+  <h2>Name your three suppliers</h2>
+  <p>This report covers five. If you want the same picture of the suppliers you negotiate with, tell
+    us which three &mdash; we will send back what their own filings and earnings calls say about
+    your position: how much of their cost moves when volume moves, where their capacity and
+    inventory sit, and what management committed to on the record and in which quarter. If you have
+    had a price increase letter, send it and we will check it against their cost data. Where the
+    filings will not support an answer, we say so rather than estimate. We hold thirteen suppliers
+    today; if yours are not among them we will tell you before you spend any time on it.</p>
+  <p><a href="/three-suppliers.html">Name your three suppliers &rarr;</a></p>
+</section>
+
+<footer class="doc">
+  <p>Semitrical &middot; supplier picture &middot; prepared for NetApp, Inc. &middot; evidence to
+    6 November 2026 &middot; contact@semitrical.ai</p>
+  <p>Built from public filings. First&#8209;pass analysis to support your own review &mdash; not
+    legal, investment or professional advice. NetApp, Micron, SK Hynix, Samsung Electronics, Kioxia
+    and Seagate are named here as the subjects of public disclosure; no relationship with or
+    endorsement by any of them is implied.</p>
+</footer>
+
+</div>
+
+<footer class="lf-chrome" style="padding:36px 48px;border-top:1px solid #e2e4ea;background:#fff;font-family:'DM Sans',system-ui,sans-serif;font-size:12px;color:#5c6078;line-height:1.7">
+  <div style="max-width:1180px;margin:0 auto">
+    <a href="/" aria-label="Semitrical home" style="display:inline-block;text-decoration:none"><img src="/assets/img/semitrical-logo.png" alt="Semitrical" height="40" style="display:block;height:40px;width:auto;opacity:.9"></a>
+    <p style="margin:10px 0 0">Semiconductor procurement intelligence &middot; &copy; 2026 Semitrical<br>
+      Built from public filings. First-pass analysis to support your own review &mdash; not legal,
+      investment or professional advice.</p>
+    <p style="margin:10px 0 0">
+      <a href="/" style="color:#5c6078">Platform</a> &middot;
+      <a href="/supplier-intelligence.html" style="color:#5c6078">Supplier Intelligence</a> &middot;
+      <a href="/deal-desk.html" style="color:#5c6078">Deal Desk</a> &middot;
+      <a href="/reports.html" style="color:#5c6078">Leverage Reports</a></p>
+    <p style="margin:8px 0 0">
+      <a href="/about.html" style="color:#5c6078">About</a> &middot;
+      <a href="/privacy.html" style="color:#5c6078">Privacy</a> &middot;
+      <a href="mailto:contact@semitrical.ai" style="color:#5c6078;font-weight:600">contact@semitrical.ai</a> &middot;
+      <a href="https://www.linkedin.com/company/semitrical-ai" style="color:#5c6078">LinkedIn</a></p>
+  </div>
+</footer>
+<script src="https://app.semitrical.ai/t.js?v=5" data-anon data-page="/reports/netapp/"></script>
+</body></html>

@@ -16,3 +16,14 @@ $N "http://127.0.0.1:9334/deal-desks/dram/" \
 $N "http://127.0.0.1:9334/deal-desks/silicon-carbide/" \
    "d/5c82be03a7146df9/semitrical-sic-deal-brief.pdf" \
    "SiC deal brief" "evidence to 24 Oct 2026"
+# Company-specific position report. NOT linked from the site -- it names a prospect, so it is
+# sent rather than published, and it carries no PDF-request form for the same reason.
+$N "http://127.0.0.1:9334/reports/netapp/" \
+   "d/d1c4da632ee493c5/semitrical-netapp-supplier-position.pdf" \
+   "NetApp's five suppliers" "evidence to 7 Nov 2026"
+# The 2027 planning note. PUBLIC, unlike the company report -- it names no buyer, so it is the
+# artifact meant to be forwarded. Three pages: it was one sheet when it was tables and pills, and
+# became three when it was rewritten as prose with two exhibits for an executive reader.
+$N "http://127.0.0.1:9334/findings/memory-2027/" \
+   "d/8183c257f6325cb2/semitrical-memory-storage-2027.pdf" \
+   "Memory and storage: what is already committed for 2027" "evidence to 3 Nov 2026"

@@ -1,0 +1,396 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Memory and Storage 2027</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap">
+<style>
+/* ── A PLANNING NOTE FOR AN EXECUTIVE READER. Two A4 pages.
+   An earlier draft used filled callout panels, red and green status pills and 6.9pt type to fit
+   one sheet, and read as a brochure. The fix is not more decoration but less: ONE accent colour
+   used for rules, section numbers and a single series in each exhibit; no filled panels; tables
+   set as financial exhibits; generous leading. The two SVG figures are here because each carries
+   an argument prose makes slowly -- how little of 2027 is unsold, and that every capacity
+   milestone lands after it. Decorative graphics would undo the whole point. */
+:root, :root[data-theme="dark"]{
+  --bg:#FFFFFF; --sunk:#F4F5F1; --ink:#1A211D; --muted:#5B655F; --line:#D5D9D1;
+  --rule:#1A211D; --accent:#A35A16; --accent-pale:#E8D3BC;
+  --f:"DM Sans",-apple-system,"Segoe UI",Arial,sans-serif;
+  --m:"DM Mono",ui-monospace,Menlo,Consolas,monospace;
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#FFFFFF; --sunk:#F4F5F1; --ink:#1A211D; --muted:#5B655F; --line:#D5D9D1;
+  --rule:#1A211D; --accent:#A35A16; --accent-pale:#E8D3BC; color-scheme:light; } }
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f);font-size:15.5px;line-height:1.62}
+img{max-width:100%}
+.wrap{max-width:760px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));
+  padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:40px 56px;
+  display:flex;flex-direction:column;gap:24px}
+h1{font-size:29px;font-weight:700;letter-spacing:-.022em;line-height:1.14;margin:0;max-width:30ch;text-wrap:balance}
+h2{font-size:17px;font-weight:600;letter-spacing:-.008em;margin:0}
+p{margin:0;max-width:72ch}
+a{color:var(--accent)}
+.title{display:flex;flex-direction:column;gap:11px;border-bottom:1.5px solid var(--rule);padding-bottom:15px}
+.kicker{font-family:var(--m);font-size:11px;font-weight:500;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--accent)}
+.standfirst{font-size:17.5px;line-height:1.5;color:var(--muted);max-width:62ch}
+.byline{display:flex;flex-wrap:wrap;gap:3px 22px;font-family:var(--m);font-size:11px;color:var(--muted)}
+.sec{display:flex;flex-direction:column;gap:10px}
+.sec > .shd{display:flex;gap:11px;align-items:baseline;border-top:1px solid var(--line);padding-top:11px}
+.sec > .shd .n{font-family:var(--m);font-size:11px;font-weight:500;color:var(--accent);
+  letter-spacing:.06em;padding-top:3px;white-space:nowrap}
+.tw{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:13.5px}
+caption{caption-side:top;text-align:left;font-family:var(--m);font-size:10.5px;letter-spacing:.07em;
+  text-transform:uppercase;color:var(--muted);padding-bottom:6px}
+th,td{text-align:left;padding:7px 12px 7px 0;border-bottom:1px solid var(--line);vertical-align:top}
+thead th{font-family:var(--m);font-size:10px;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--muted);font-weight:500;border-bottom:1px solid var(--rule);padding-bottom:5px}
+tbody th{font-weight:600;white-space:nowrap;padding-right:18px}
+tbody tr:last-child td,tbody tr:last-child th{border-bottom:0}
+td.w{white-space:nowrap;font-family:var(--m);font-size:12.5px;color:var(--muted)}
+.cite{font-family:var(--m);font-size:10.5px;color:var(--muted);display:block;margin-top:3px}
+.note{font-size:13px;color:var(--muted);line-height:1.55;max-width:72ch;
+  border-left:2px solid var(--line);padding-left:14px}
+.note b{color:var(--ink);font-weight:600}
+.pull{font-size:16px;line-height:1.5;border-left:2.5px solid var(--accent);padding-left:16px;max-width:66ch}
+dl.dec{margin:0;display:grid;grid-template-columns:max-content 1fr;gap:11px 22px}
+dl.dec dt{font-family:var(--m);font-size:11px;font-weight:500;color:var(--accent);
+  letter-spacing:.04em;line-height:1.4;padding-top:2px}
+dl.dec dd{margin:0;max-width:66ch}
+figure{margin:0;display:flex;flex-direction:column;gap:7px}
+figure svg{max-width:100%;height:auto;display:block}
+figcaption{font-size:12px;color:var(--muted);line-height:1.5;max-width:74ch}
+figcaption b{color:var(--ink);font-weight:600}
+figcaption .cite{margin-top:6px;line-height:1.55}
+.figlabel{font-family:var(--m);font-size:10.5px;letter-spacing:.07em;text-transform:uppercase;color:var(--muted)}
+.foot{border-top:1px solid var(--rule);padding-top:11px;font-size:11.5px;color:var(--muted);
+  line-height:1.55;max-width:80ch}
+.ask{font-size:14px;line-height:1.58;border-top:1px solid var(--line);padding-top:15px;max-width:70ch}
+.ask a{font-weight:600;text-decoration:none;border-bottom:1px solid currentColor}
+
+@media (max-width:620px){ h1{font-size:24px} dl.dec{grid-template-columns:minmax(0,1fr);gap:4px 0} }
+
+/* ── PRINT: two A4 pages, set for reading rather than for fitting. */
+@media print{
+  @page{ size:A4; margin:16mm 15mm 17mm; }
+  .lf-chrome,.ask,.noprint{display:none!important}
+  body{background:#fff!important;font-size:8.8pt;line-height:1.42}
+  .wrap{max-width:none;padding:0;gap:11pt}
+  h1{font-size:19pt;max-width:26ch} h2{font-size:10.6pt}
+  .standfirst{font-size:10.6pt;line-height:1.4} .kicker{font-size:7.4pt}
+  .byline{font-size:7.4pt} .title{padding-bottom:8pt;gap:6pt}
+  .sec{gap:6pt} .sec > .shd{padding-top:7pt} .sec > .shd .n{font-size:7.4pt}
+  table{font-size:8pt} th,td{padding:3.8pt 9pt 3.8pt 0}
+  thead th{font-size:6.5pt} caption{font-size:6.6pt;padding-bottom:3.5pt}
+  td.w{font-size:7.4pt} .cite{font-size:6.5pt;margin-top:1.5pt}
+  .note{font-size:7.6pt;line-height:1.4;padding-left:9pt}
+  .pull{font-size:9.6pt;line-height:1.38;padding-left:10pt}
+  dl.dec{gap:6pt 14pt} dl.dec dt{font-size:7.2pt}
+  figure{gap:4pt} figcaption{font-size:6.8pt;line-height:1.4} .figlabel{font-size:6.6pt}
+  figcaption .cite{margin-top:3pt;line-height:1.45}
+  .foot{font-size:6.6pt;line-height:1.42;padding-top:6pt}
+  /* The SVG must not be split, but its source note may flow. Holding the whole figure block
+     together pushed each exhibit wholesale onto the next page and left half a page empty. */
+  figure svg{break-inside:avoid}
+  .sec > .shd{break-after:avoid}
+  dl.dec,table{break-inside:avoid}
+  .brk{break-before:page;page-break-before:always}
+}
+</style></head><body>
+
+<nav class="lf-chrome" style="display:flex;align-items:center;border-bottom:1px solid #e2e4ea;background:#fff;font-family:'DM Sans',system-ui,sans-serif;padding-left:max(48px,calc((100% - 1180px)/2));padding-right:max(48px,calc((100% - 1180px)/2));padding-top:15px;padding-bottom:15px">
+  <a href="/" aria-label="Semitrical home" style="display:block;text-decoration:none"><img src="/assets/img/semitrical-logo.png" alt="Semitrical" style="display:block;height:60px;width:auto"></a>
+  <div style="display:flex;align-items:center;gap:28px;margin-left:48px;flex-wrap:wrap">
+    <a href="/" style="font-size:13px;font-weight:500;color:#5c6078;text-decoration:none">Platform</a>
+    <a href="/supplier-intelligence.html" style="font-size:13px;font-weight:500;color:#5c6078;text-decoration:none">Supplier Intelligence</a>
+    <a href="/deal-desk.html" style="font-size:13px;font-weight:500;color:#5c6078;text-decoration:none">Deal Desk</a>
+    <a href="/reports.html" style="font-size:13px;font-weight:500;color:#5c6078;text-decoration:none">Leverage Reports</a>
+  </div>
+  <a href="/contact.html" style="margin-left:auto;padding:9px 22px;background:#0f1117;color:#fff;border-radius:6px;font-size:13px;font-weight:600;text-decoration:none;white-space:nowrap">Contact us</a>
+</nav>
+
+<div class="wrap">
+
+<header class="title">
+  <p class="kicker">Planning note</p>
+  <h1>Memory and storage: what is already committed for 2027</h1>
+  <p class="standfirst">The makers have contracted most of next year's output, and the capacity meant
+    to relieve it does not produce inside next year. This note sets out what is fixed, where room
+    remains, and when each decision is actually due.</p>
+  <div class="byline">
+    <span>Prepared for chief procurement officers and vice presidents of sourcing and supply chain</span>
+    <span>Evidence to 3 November 2026</span>
+  </div>
+</header>
+
+<p class="pull">Three of the five largest suppliers have told their own investors how much of 2027 is
+  already sold. Micron puts it above 75% of fiscal 2027 shipments. SK Hynix's long&#8209;term
+  agreements cover more than half of its 2027&ndash;28 capacity. Seagate has contracted both
+  configuration and price for the entirety of calendar 2027.</p>
+
+<p>This note contains no price forecast. Every statement in it was made publicly by a named company
+  about its own plans, on a dated earnings call or in a filed document, and is cited where it
+  appears. What makes it worth an executive's time is not that it predicts next year, but that it
+  establishes how much of next year has already been decided &mdash; which determines where a
+  negotiation can still achieve something and where it cannot.</p>
+
+<section class="sec">
+  <div class="shd"><span class="n">01</span><h2>What is already committed</h2></div>
+
+  <p>The pattern across the five suppliers is consistent, and over the past year it has changed in
+    kind rather than degree. Supply that was once allocated informally is now contracted, for
+    multiple years, with cash attached. Micron has said explicitly that its earlier agreements
+    carried no binding terms and were &ldquo;more of a handshake&rdquo;, while the agreements it
+    signs now bind both sides. Samsung and SK Hynix both require money up front.</p>
+
+  <p>For a buyer the practical consequence is that the negotiable share of 2027 is small, and very
+    unevenly distributed. Four of the five have little left to sell for next year. One does.</p>
+
+  <figure>
+    <p class="figlabel">Figure 1 &middot; How much of 2027 each supplier has already committed</p>
+    <svg viewBox="0 0 680 212" role="img" aria-label="Committed share of 2027 output by supplier: Seagate priced for all of calendar 2027, Micron above 75 percent of fiscal 2027 shipments, Samsung 60 to 70 percent of planned capacity, SK Hynix more than 50 percent of 2027 to 28 capacity, and Kioxia targeting only 50 percent by 2028.">
+      <!-- axis -->
+      <line x1="150" y1="178" x2="648" y2="178" stroke="currentColor" stroke-width="1" opacity=".45"/>
+      <g font-family="DM Mono, monospace" font-size="10" fill="currentColor" opacity=".55" text-anchor="middle">
+        <text x="150" y="194">0%</text>
+        <text x="274.5" y="194">25%</text>
+        <text x="399" y="194">50%</text>
+        <text x="523.5" y="194">75%</text>
+        <text x="648" y="194">100%</text>
+      </g>
+      <g stroke="currentColor" opacity=".16" stroke-width="1">
+        <line x1="274.5" y1="18" x2="274.5" y2="178"/>
+        <line x1="399" y1="18" x2="399" y2="178"/>
+        <line x1="523.5" y1="18" x2="523.5" y2="178"/>
+        <line x1="648" y1="18" x2="648" y2="178"/>
+      </g>
+
+      <g font-family="DM Sans, sans-serif" font-size="11.5" fill="currentColor">
+        <!-- Seagate: entirety of calendar 2027 -->
+        <text x="142" y="27" text-anchor="end" font-weight="600">Seagate</text>
+        <rect x="150" y="17" width="498" height="13" fill="#A35A16"/>
+        <text x="640" y="27" text-anchor="end" font-size="10" fill="#FFFFFF" font-family="DM Mono, monospace">entirety of CY2027, price and configuration</text>
+
+        <!-- Micron: >75% of FY27 shipments -->
+        <text x="142" y="62" text-anchor="end" font-weight="600">Micron</text>
+        <rect x="150" y="52" width="373.5" height="13" fill="#A35A16"/>
+        <path d="M523.5 52 L537 58.5 L523.5 65 Z" fill="#A35A16"/>
+        <text x="546" y="62" font-size="10" fill="currentColor" opacity=".7" font-family="DM Mono, monospace">&gt;75% of FY27 shipments</text>
+
+        <!-- Samsung: 60-70% of planned capacity -->
+        <text x="142" y="97" text-anchor="end" font-weight="600">Samsung</text>
+        <rect x="150" y="87" width="298.8" height="13" fill="#A35A16"/>
+        <rect x="448.8" y="87" width="49.8" height="13" fill="#E8D3BC"/>
+        <text x="508" y="97" font-size="10" fill="currentColor" opacity=".7" font-family="DM Mono, monospace">60&ndash;70% of planned capacity</text>
+
+        <!-- SK Hynix: >50% of 2027-28 capacity -->
+        <text x="142" y="132" text-anchor="end" font-weight="600">SK Hynix</text>
+        <rect x="150" y="122" width="249" height="13" fill="#A35A16"/>
+        <path d="M399 122 L412.5 128.5 L399 135 Z" fill="#A35A16"/>
+        <text x="421" y="132" font-size="10" fill="currentColor" opacity=".7" font-family="DM Mono, monospace">&gt;50% of 2027&ndash;28 capacity</text>
+
+        <!-- Kioxia: target 50% by 2028 -->
+        <text x="142" y="167" text-anchor="end" font-weight="600">Kioxia</text>
+        <rect x="150" y="157" width="249" height="13" fill="none" stroke="#A35A16" stroke-width="1" stroke-dasharray="3 3"/>
+        <text x="407" y="167" font-size="10" fill="currentColor" opacity=".7" font-family="DM Mono, monospace">targeting 50% by 2028 &mdash; not yet committed</text>
+      </g>
+    </svg>
+    <figcaption><b>The bases are not identical and the chart should not be read as if they were.</b>
+      Each bar is drawn to the figure that supplier itself disclosed, with the measure written
+      beside it; arrows mark &ldquo;more than&rdquo;, and the dashed bar is a target rather than a
+      position.
+      <span class="cite"><b>Micron:</b> &ldquo;more than 75% of fiscal 2027 shipments are already
+      committed&rdquo;, with allocation discussions moved out to 2028 &mdash; FQ4&#8209;26 call,
+      30 Sep 2026. <b>SK Hynix:</b> agreements with fourteen key customers, typically five years,
+      covering more than 50% of 2027&ndash;28 capacity, with deposits required &mdash; Q3&#8209;26
+      call, 28 Oct 2026. <b>Samsung:</b> multi&#8209;year contracts are 60&ndash;70% of planned
+      capacity and advance payments are &ldquo;a contractual requirement&rdquo; maintained across the
+      term &mdash; Q1&#8209;26 and Q2&#8209;26 calls. <b>Seagate:</b> contracts &ldquo;define both
+      product configuration and pricing terms, covering the entirety of calendar 2027&rdquo;, with
+      nearline allocated into 2028 &mdash; Q4&#8209;26 call. <b>Kioxia:</b> targeting only 50% of
+      shipments under agreement by 2028, the agreement year itself being 2028 &mdash; Q1&#8209;26
+      call.</span></figcaption>
+  </figure>
+
+
+  <p class="note">The implication is uncomfortable but useful. Where a supplier has already
+    contracted 2027, a negotiation about 2027 price is a negotiation against signed paper. For
+    Micron, SK Hynix and Seagate the live commercial window is <b>2028</b>. For Kioxia it is now.</p>
+</section>
+
+<section class="sec">
+  <div class="shd"><span class="n">02</span><h2>When new capacity actually produces</h2></div>
+
+  <p>Capital expenditure across the industry is rising steeply, and it is tempting to read that as
+    relief arriving. The companies building the capacity describe something slower. A clean room
+    takes roughly two years to construct, equipment lead times have lengthened, and several of the
+    programmes announced for 2027 are buying building shells rather than output. Samsung has said
+    plainly that higher 2027 spending will not lift 2028 bit supply by much, because much of it buys
+    space and because construction and tool costs have inflated the figure itself.</p>
+
+  <figure>
+    <p class="figlabel">Figure 2 &middot; When the announced capacity reaches output</p>
+    <svg viewBox="0 0 680 196" role="img" aria-label="Timeline of capacity milestones from 2026 to 2029. Micron's Idaho fab produces first wafers mid 2027 with meaningful supply later; SK Hynix opens Yongin clean rooms in phases through 2027 with a discretionary ramp; Micron Tongluo ships from fiscal 2028; NAND greenfield capacity arrives from the second half of 2028; and most of Micron's fiscal 2027 construction spend comes online late 2028 and beyond. The 2027 contracting window closes before any of them.">
+      <!-- time axis -->
+      <line x1="60" y1="46" x2="648" y2="46" stroke="currentColor" stroke-width="1" opacity=".45"/>
+      <g stroke="currentColor" opacity=".16" stroke-width="1">
+        <line x1="207" y1="30" x2="207" y2="180"/>
+        <line x1="354" y1="30" x2="354" y2="180"/>
+        <line x1="501" y1="30" x2="501" y2="180"/>
+      </g>
+      <g font-family="DM Mono, monospace" font-size="10.5" fill="currentColor" opacity=".6" text-anchor="middle">
+        <text x="133" y="38">2026</text><text x="280" y="38">2027</text>
+        <text x="427" y="38">2028</text><text x="574" y="38">2029</text>
+      </g>
+
+      <!-- the window that is already contracted -->
+      <rect x="207" y="52" width="147" height="15" fill="#A35A16" opacity=".16"/>
+      <text x="280" y="63" font-family="DM Sans, sans-serif" font-size="10" fill="#A35A16" text-anchor="middle" font-weight="600">2027 output already contracted</text>
+
+      <!-- milestones -->
+      <g font-family="DM Sans, sans-serif" font-size="11" fill="currentColor">
+        <circle cx="280" cy="88" r="4" fill="#A35A16"/>
+        <line x1="280" y1="88" x2="354" y2="88" stroke="#A35A16" stroke-width="1.5" stroke-dasharray="3 3"/>
+        <text x="362" y="92">Micron Idaho: first wafers, <tspan font-style="italic">meaningful supply a few quarters later</tspan></text>
+
+        <circle cx="300" cy="113" r="4" fill="#A35A16"/>
+        <line x1="300" y1="113" x2="380" y2="113" stroke="#A35A16" stroke-width="1.5" stroke-dasharray="3 3"/>
+        <text x="388" y="117">SK Hynix Yongin and M17: clean rooms in phases, ramp discretionary</text>
+
+        <circle cx="390" cy="138" r="4" fill="#A35A16"/>
+        <text x="402" y="142">Micron Tongluo ships from fiscal 2028</text>
+
+        <circle cx="464" cy="163" r="4" fill="#A35A16"/>
+        <line x1="464" y1="163" x2="574" y2="163" stroke="#A35A16" stroke-width="1.5"/>
+        <text x="582" y="167" font-size="10.5">NAND greenfield</text>
+      </g>
+      <text x="60" y="92" font-family="DM Mono, monospace" font-size="9.5" fill="currentColor" opacity=".6" text-anchor="start">mid&#8209;2027</text>
+      <text x="60" y="117" font-family="DM Mono, monospace" font-size="9.5" fill="currentColor" opacity=".6">phased 27</text>
+      <text x="60" y="142" font-family="DM Mono, monospace" font-size="9.5" fill="currentColor" opacity=".6">FY2028</text>
+      <text x="60" y="167" font-family="DM Mono, monospace" font-size="9.5" fill="currentColor" opacity=".6">2H 2028</text>
+    </svg>
+    <figcaption><b>Not one of these programmes delivers output inside the window being contracted
+      now.</b> Positions are taken from the dates each company gave for its own programme.
+      <span class="cite"><b>Micron:</b> first wafer output from Idaho in mid&#8209;2027 with
+      meaningful supply a few quarters later; Tongluo ships from fiscal 2028; most of the fiscal
+      2027 construction increase is for clean rooms coming online in late 2028 and beyond &mdash;
+      FQ3&#8209;26 and FQ4&#8209;26 calls. <b>SK Hynix:</b> at Yongin and M17 the shells are built
+      early but clean rooms open in phases, and ramp &ldquo;will be adjusted in line with
+      demand&rdquo; &mdash; Q3&#8209;26 call, 28 Oct 2026. <b>Samsung:</b> higher 2027 capital
+      expenditure will not lift 2028 bits much, because much of it buys space and because
+      construction and tool costs inflate the figure &mdash; Q3&#8209;26 call, 29 Oct 2026.
+      <b>Lam Research:</b> clean room space is &ldquo;the constraining item&hellip; through next year
+      for sure&rdquo;, a new clean room takes about two years, roughly ten new tier&#8209;one fabs
+      come online during 2027, and NAND greenfield capacity arrives only from the second half of
+      2028 &mdash; Citi TMT, 9 Sep 2026 and CQ3&#8209;26 call.</span></figcaption>
+  </figure>
+
+</section>
+
+<section class="sec">
+  <div class="shd"><span class="n">03</span><h2>Where room remains, on the suppliers' own evidence</h2></div>
+
+  <p>The position is not uniformly adverse, and the openings in it come from the suppliers rather
+    than from any interpretation of ours. Four are worth putting into a negotiation.</p>
+
+  <p><b>The suppliers have said the increases moderate.</b> Micron's chief financial officer
+    described fiscal 2027 margin expansion as resting on &ldquo;continued price increases, albeit at
+    a more moderate pace&rdquo;, adding that &ldquo;we have said for some time that eventually price
+    increases would moderate&rdquo;. A buyer should expect an increase and argue about its size
+    against the supplier's own characterisation of it.</p>
+
+  <p><b>Two of them have said their prices are reducing demand.</b> SK Hynix expects personal
+    computer and mobile shipments to fall because of higher memory prices. Samsung has reported that
+    smartphone volumes already fell and expects 2027 unit volumes to decline. TSMC describes
+    price&#8209;sensitive end segments as &ldquo;being challenged&rdquo; by rising component costs.
+    The scarcity account is therefore not uniform across end markets, and the suppliers established
+    that themselves.</p>
+
+  <p><b>DDR4&#8209;class parts have second sources adding capacity.</b> Winbond's DRAM bit shipments
+    rose about 25% in a single quarter as 16&#8209;nanometre capacity ramped, and it describes the
+    DDR4 and LPDDR4 supply gap as evident through 2028. Nanya's bits stay flat only until new fab
+    output arrives in the second half of 2027. Where a part is DDR4&#8209;class, the assumption that
+    it is single&#8209;sourced is likely to be wrong.</p>
+
+  <p><b>Kioxia remains the uncommitted supplier.</b> Against Samsung at 60&ndash;70% of capacity and
+    Micron above 75% of fiscal 2027, Kioxia is targeting only half its shipments under agreement by
+    2028. Its gross margin sits at a six&#8209;year high while capital spending runs at 12% of
+    revenue, against its own 40% in fiscal 2022. The binding constraint for a buyer here is
+    qualification time rather than availability, which argues for starting now.</p>
+</section>
+
+<section class="sec">
+  <div class="shd"><span class="n">04</span><h2>Three decisions, and when each is due</h2></div>
+
+  <dl class="dec">
+    <dt>Before fiscal 2027<br>commitments are signed</dt>
+    <dd><b>Whether to prepay for allocation.</b> Samsung requires advance payments and SK Hynix
+      requires deposits, which makes this a capital allocation decision rather than a procurement
+      one. It reduces to arithmetic: a prepayment is worth making only if the discount it secures
+      exceeds what that cash earns over the period it is held, before any allowance for volume that
+      may not be needed. Setting the annual ceiling and the approver in advance prevents the
+      decision being made by default under allocation pressure.</dd>
+
+    <dt>Before any quantity<br>is committed</dt>
+    <dd><b>Whether to commit capacity rather than quantity.</b> The suppliers describe themselves as
+      buying planning visibility. A reserved share of output, with the quantity drawn against it set
+      quarterly within an agreed band, provides that visibility without committing to a number the
+      buyer cannot forecast. This is untested: nothing in the public record indicates that any of
+      the five has written an agreement that way.</dd>
+
+    <dt>First quarter 2027<br>at the latest</dt>
+    <dd><b>Whether to qualify the second source while it is still available.</b> Kioxia for NAND,
+      Winbond and Nanya for DDR4&#8209;class DRAM. Qualification takes longer than the window
+      allows: Kioxia's agreement year is 2028 and Nanya's new output arrives in the second half of
+      2027.</dd>
+  </dl>
+</section>
+
+<section class="sec">
+  <div class="shd"><span class="n">05</span><h2>Two cautions on the evidence</h2></div>
+
+  <p><b>On published price forecasts.</b> TrendForce, the source most widely used for contract
+    price planning, came in between 20 and 40 points below the outcome in every quarter we can
+    measure. It raised its fourth&#8209;quarter 2026 DDR5 figure from 10&ndash;15% to about 20% on
+    20 October, after the third quarter settled near 40%, and its August projection has the first
+    quarter of 2027 at about 9% with prices levelling from mid&#8209;year. The same lag should be
+    expected at the turn &mdash; precisely when buyers will be committed to agreements priced off
+    today's figures.</p>
+
+  <p><b>On the suppliers' own outlooks.</b> Samsung expects it &ldquo;unlikely to see any significant
+    increase in incremental supply through 2028&rdquo;, and SK Hynix describes the constraint as one
+    &ldquo;projected to continue through 2030&rdquo;. These are forecasts made by parties that
+    benefit from being believed. They are on the public record and worth knowing; they are not a
+    sound basis for accepting a contract term.</p>
+
+  <p class="note">We publish no view of our own on where prices go. Where the filed record will
+    not settle a question, this note says so rather than estimating &mdash; including whether a
+    particular increase is justified by cost, which cannot be answered from published accounts and
+    needs unit cost data only the supplier holds.</p>
+</section>
+
+<div class="ask noprint">
+  If you are holding a price increase letter, send it to us. We will check it against that
+  supplier's own filings and against what its management said in the quarter the letter cites, and
+  tell you where the claim is supported and where it is not. There is no charge, and we will say
+  plainly where the filings cannot settle it. &nbsp;<a href="/three-suppliers.html">Name your three suppliers &rarr;</a>
+</div>
+
+<p class="foot">
+  <b>Sources.</b> Earnings calls, investor presentations and filed statements for the quarters cited
+  beside each statement: Micron Technology, SK Hynix, Samsung Electronics, Kioxia Holdings, Seagate
+  Technology, Nanya Technology, Winbond Electronics, Lam Research and TSMC, together with TrendForce
+  press releases for the forecast comparison. Evidence to 3 November 2026. Each quotation was
+  verified against its source document before publication, and a quotation that failed verification
+  is not shown. Nothing in this note is a price forecast or a prediction of shortage; where a
+  statement is a supplier's own outlook rather than a filed fact, it is identified as such.
+  Semitrical &middot; semitrical.ai &middot; contact@semitrical.ai. Built from public filings.
+  First&#8209;pass analysis to support your own review, and not legal, investment or professional
+  advice.
+</p>
+
+</div>
+<script src="https://app.semitrical.ai/t.js?v=5" data-anon data-page="/findings/memory-2027/"></script>
+</body></html>
