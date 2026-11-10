@@ -1,4 +1,10 @@
 <!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover">
+<!-- NOINDEX, deliberately. This report names a prospect and the decision was that it is
+     SENT, not published. Nothing links to it and it is not in the sitemap, but robots.txt
+     allows everything, so a leaked URL would otherwise be indexable. A meta tag rather than
+     a robots.txt Disallow: a disallow stops the crawl, so the crawler never reads the
+     noindex and the URL can still surface from an external link. -->
+<meta name="robots" content="noindex, nofollow">
 <title>NetApp's Five Suppliers</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap">
