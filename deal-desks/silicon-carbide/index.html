@@ -162,7 +162,7 @@ footer.lf-chrome img { height: 40px !important; }
 <div class="pdf-only pdf-mark" aria-hidden="true">semitrical.ai</div>
 
 <nav class="lf-chrome" style="display:flex;align-items:center;border-bottom:1px solid #e2e4ea;background:#fff;font-family:'DM Sans',system-ui,sans-serif">
-  <a href="/" aria-label="Semitrical home" style="display:block;text-decoration:none"><img src="/assets/img/semitrical-logo.png" alt="Semitrical &mdash; removing asymmetry from chip deals" height="34" style="display:block;height:34px;width:auto"></a>
+  <a href="/" aria-label="Semitrical home" style="display:block;text-decoration:none"><img src="/assets/img/semitrical-logo.png" alt="Semitrical &mdash; We help you get better deals and steadier supply, through shared facts with your semiconductor suppliers." height="34" style="display:block;height:34px;width:auto"></a>
   <div style="display:flex;align-items:center;gap:28px;margin-left:48px;flex-wrap:wrap">
     <a href="/" style="font-size:13px;font-weight:500;color:#5c6078;text-decoration:none">Platform</a>
     <a href="/supplier-intelligence.html" style="font-size:13px;font-weight:500;color:#5c6078;text-decoration:none">Supplier Intelligence</a>
@@ -379,7 +379,7 @@ footer{font-size:12.5px;color:var(--muted);border-top:1px solid var(--line);padd
     <article class="card" data-section="questions">
       <div>
         <div class="eyebrow" id="qsLabel">Questions to ask</div>
-        <h2 style="margin-top:4px">Six questions that test the price</h2>
+        <h2 style="margin-top:4px">Six questions to discuss on price</h2>
       </div>
       <ol class="qs" id="qs"></ol>
     </article>
@@ -423,7 +423,7 @@ const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",
 const sgn=(x,d=0)=>(x>0?"+":x<0?"−":"")+Math.abs(x).toFixed(d)+"%";
 const about=x=>"about "+sgn(Math.round(x));
 const to5=x=>1+0.4*x;
-function band(x10){ return x10>=7?"Strong buyer position": x10>=5?"Leaning to buyer": x10>=3?"Leaning to supplier":"Supplier holds leverage"; }
+function band(x10){ return x10>=7?"Strong buyer position": x10>=5?"Leaning to buyer": x10>=3?"Leaning to supplier":"Supplier has the stronger position"; }
 function bandClass(x10){ return x10>=5?"buyer": x10>=3?"mixed":"supplier"; }
 function cites(ids){ return ids.map(i=>`<button type="button" class="cite" data-ev="${i}" aria-label="Evidence ${i}">${i}</button>`).join(""); }
 function withCites(text){ return esc(text).replace(/\[((?:E\d{2}(?:,\s*)?)+)\]/g,(m,ids)=>" "+cites(ids.split(/,\s*/))); }
@@ -571,7 +571,7 @@ function render(){
       <p class="small">${withCites(LEVTXT[k])}</p></div>`; }).join("");
   const div = SUPS.filter(k=>COMPANY[k].score!=null && Math.abs(COMPANY[k].score-to5(SNAP.sup[k].lev10))>0.5);
   $("#levDiverge").innerHTML = div.map(k=> k==="ST"
-      ? `<b>ST scores higher as a company than on SiC.</b> Its finances are under pressure, but its SiC lines are filling. Press ST on other categories; press Infineon on SiC.`
+      ? `<b>ST scores higher as a company than on SiC.</b> Its finances are under pressure, but its SiC lines are filling. Raise other categories with ST; raise SiC with Infineon.`
       : `<b>${SUP[k]}'s company and SiC scores differ.</b>`).join(" ");
   $("#levDiverge").hidden = !div.length;
 
